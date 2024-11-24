@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "eslint:recommended", // ESLint 的推荐规则集
+    "plugin:vue/vue3-recommended" // 如果你在使用 Vue 3，并且安装了 eslint-plugin-vue
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    // 在这里添加你的自定义规则
+    "@typescript-eslint/no-explicit-any": "warn", // 对使用 any 类型发出警告
+    "semi": ["error", "always"] // 要求在每个语句的末尾使用分号
+  }
+}

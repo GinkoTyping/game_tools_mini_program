@@ -1,41 +1,42 @@
 <template>
   <view class="content">
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
-    </view>
+    <uni-collapse ref="collapse" accordion>
+      <uni-collapse-item
+        :title="localeLabels.class[classKey]"
+        v-for="classKey in Object.keys(allData)"
+        :key="classKey"
+      >
+        <view class="content" v-for="specItem in bisData[classKey]" :key="specItem.spec">
+          {{ localeLabels[classKey][specItem.spec] }}
+        </view>
+      </uni-collapse-item>
+    </uni-collapse>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const title = ref('Hello')
+import { ref } from "vue";
+
+import { ILocaleLabels } from "@/interface/ILocaleLabels";
+import { IWowBIS } from "@/interface/IWowBIS";
+import allData from "@/data/spec-data.json";
+import labels from "@/data/zh.json";
+
+const localeLabels = labels as ILocaleLabels;
+const bisData = allData as IWowBIS;
 </script>
 
-<style>
+<style scoped>
+uni-collapse-item {
+  width: 100vw;
+}
+::v-deep .uni-collapse-item__title-text {
+  text-align: center !important;
+}
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
 }
 </style>
