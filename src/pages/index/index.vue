@@ -10,9 +10,9 @@
         class="spec"
         v-for="specItem in bisData[classKey]"
         :key="specItem.spec"
+        @click="() => onClickSpec(classKey, specItem.spec)"
       >
-        <image :src="specIcon(classKey, specItem.spec)">
-        </image>
+        <image :src="specIcon(classKey, specItem.spec)"> </image>
         <text>{{ localeLabels[classKey][specItem.spec] }}</text>
       </view>
     </uni-collapse-item>
@@ -20,13 +20,14 @@
 </template>
 
 <script setup lang="ts">
-import "@/static/css/index.scss";
-import { computed, ref } from "vue";
+import '@/static/css/index.scss';
 
-import { ILocaleLabels } from "@/interface/ILocaleLabels";
-import { IWowBIS } from "@/interface/IWowBIS";
-import allData from "@/data/spec-data.json";
-import labels from "@/data/zh.json";
+import { computed } from 'vue';
+
+import { ILocaleLabels } from '@/interface/ILocaleLabels';
+import { IWowBIS } from '@/interface/IWow';
+import allData from '@/data/spec-data.json';
+import labels from '@/data/zh.json';
 
 const localeLabels = labels as ILocaleLabels;
 const bisData = allData as IWowBIS;
@@ -34,6 +35,12 @@ const specIcon = computed(
   () => (classKey: string, specKey: string) =>
     `/static/images/specs/${classKey}_${specKey}.gif`
 );
+
+function onClickSpec(classKey: string, specKey: string) {
+  uni.navigateTo({
+    url: `/pages/bis/index?classKey=${classKey}&specKey=${specKey}`,
+  });
+}
 </script>
 
 <style lang="scss" scoped>
@@ -74,3 +81,4 @@ const specIcon = computed(
   }
 }
 </style>
+@/interface/IWow

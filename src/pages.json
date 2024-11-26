@@ -11,11 +11,17 @@
 			"style": {
 				"navigationBarTitleText": "银子的搜罗坊"
 			}
+		},
+		{
+			"path": "pages/bis/index",
+			"style": {
+				"navigationBarTitleText": "职业配装"
+			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#181818"
 	}
 }
