@@ -11,7 +11,9 @@
         v-for="specItem in bisData[classKey]"
         :key="specItem.spec"
       >
-        {{ localeLabels[classKey][specItem.spec] }}
+        <image :src="specIcon(classKey, specItem.spec)">
+        </image>
+        <text>{{ localeLabels[classKey][specItem.spec] }}</text>
       </view>
     </uni-collapse-item>
   </uni-collapse>
@@ -19,7 +21,7 @@
 
 <script setup lang="ts">
 import "@/static/css/index.scss";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import { ILocaleLabels } from "@/interface/ILocaleLabels";
 import { IWowBIS } from "@/interface/IWowBIS";
@@ -28,6 +30,10 @@ import labels from "@/data/zh.json";
 
 const localeLabels = labels as ILocaleLabels;
 const bisData = allData as IWowBIS;
+const specIcon = computed(
+  () => (classKey: string, specKey: string) =>
+    `/static/images/specs/${classKey}_${specKey}.gif`
+);
 </script>
 
 <style lang="scss" scoped>
@@ -38,19 +44,32 @@ const bisData = allData as IWowBIS;
   width: 100vw;
   .uni-collapse-item__title.uni-collapse-item-border {
     line-height: 40px;
-    border-bottom: 2px solid $uni-bg-color-grey;
+    border-bottom: 4px solid $uni-bg-color-grey;
     padding-left: 32px;
     box-sizing: border-box;
     font-size: 16px;
   }
   .uni-collapse-item__wrap {
-    padding-left: 32px;
-    box-sizing: border-box;
     background-color: $uni-bg-color-grey !important;
+    .uni-collapse-item__wrap-content {
+      border: none !important;
+    }
     .spec {
+      padding-left: 32px;
+      box-sizing: border-box;
       font-size: 16px;
       color: $uni-text-color-inverse;
       line-height: 40px;
+      border-bottom: 4px solid $uni-bg-color;
+      position: relative;
+      image {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
     }
   }
 }
