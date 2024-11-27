@@ -18,7 +18,13 @@ function getSlotLabel(key: string) {
     legs: '腿部',
     boots: '脚部',
     ring: '戒指',
+    ['ring 1']: '戒指',
+    ['ring 2']: '戒指',
     trinket: '饰品',
+    ['trinket 1']: '饰品',
+    ['trinket 2']: '饰品',
+    ['alt (aoe)']: '饰品',
+    ['alt (single)']: '饰品',
     weapon: '武器',
     ['main hand']: '主手',
     ['off hand']: '副手',
@@ -32,9 +38,18 @@ function getSourceLabel(source: string) {
     return source;
   }
   if (['crafting'].includes(source.toLowerCase())) {
-    return '制造';
+    return '制造装备';
   }
-  return source.replace(/[a-zA-Z\s|\/]/g, '');
+
+  const output = source.replace(/[a-zA-Z\s|\/]/g, '');
+
+  if (output.length) {
+    return output;
+  } else if (source.toLowerCase().includes('catalyst')) {
+    return '职业套装';
+  }
+
+  return output;
 }
 
 function mapBisItems(items: IBisItem[]) {

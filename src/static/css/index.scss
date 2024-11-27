@@ -14,45 +14,90 @@ $priest: rgb(255, 255, 255);
 .warrior {
   color: $warrior;
 }
+.warrior::before {
+  background-color: $warrior;
+}
 
 .evoker {
   color: $evoker;
+}
+.evoker::before {
+  background-color: $evoker;
 }
 
 .hunter {
   color: $hunter;
 }
+.hunter::before {
+  background-color: $hunter;
+}
 
 .priest {
   color: $priest;
+}
+.priest::before  {
+  background-color: $priest;
 }
 
 .death-knight {
   color: $death-knight;
 }
+.death-knight::before {
+  background-color: $death-knight;
+}
 
 .shaman {
   color: $shaman;
+}
+.shaman::before  {
+  background-color: $shaman;
 }
 
 .mage {
   color: $mage;
 }
+.mage::before  {
+  background-color: $mage;
+}
+
 .warlock {
   color: $warlock;
 }
+.warlock::before  {
+  background-color: $warlock;
+}
+
 .monk {
   color: $monk;
 }
+.monk::before  {
+  background-color: $monk;
+}
+
 .druid {
   color: $druid;
 }
+.druid::before  {
+  background-color: $druid;
+}
+
 .demon-hunter {
   color: $demon-hunter;
 }
+.demon-hunter::before {
+  background-color: $demon-hunter;
+}
+
 .paladin {
   color: $paladin;
 }
+.paladin::before {
+  background-color: $paladin;
+}
+
 .rogue {
   color: $rogue;
+}
+.rogue::before {
+  background-color: $rogue;
 }

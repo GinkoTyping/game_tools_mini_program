@@ -38,7 +38,7 @@ const specIcon = computed(
 
 function onClickSpec(classKey: string, specKey: string) {
   uni.navigateTo({
-    url: `/pages/bis/index?classKey=${classKey}&specKey=${specKey}`,
+    url: `/pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${localeLabels.class[classKey]} · ${localeLabels[classKey][specKey]}`,
   });
 }
 </script>
