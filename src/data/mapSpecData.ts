@@ -3,6 +3,7 @@ import rawData from '@/data/spec-data.json';
 import { IWowBIS, IBisItem } from '@/interface/IWow';
 
 function getSlotLabel(key: string) {
+  const lowerCaseKey = key.toLowerCase();
   type Locale = {
     [key: string]: string;
   };
@@ -17,12 +18,6 @@ function getSlotLabel(key: string) {
     belt: '腰带',
     legs: '腿部',
     boots: '脚部',
-    ring: '戒指',
-    ['ring 1']: '戒指',
-    ['ring 2']: '戒指',
-    trinket: '饰品',
-    ['trinket 1']: '饰品',
-    ['trinket 2']: '饰品',
     ['alt (aoe)']: '饰品',
     ['alt (single)']: '饰品',
     weapon: '武器',
@@ -30,35 +25,67 @@ function getSlotLabel(key: string) {
     ['off hand']: '副手',
   };
 
-  return locales[key.toLowerCase() as any];
+  if (locales[lowerCaseKey]?.length) {
+    return locales[lowerCaseKey];
+  }
+
+  if (lowerCaseKey.includes('trinket')) {
+    return '饰品';
+  }
+
+  if (lowerCaseKey.includes('ring')) {
+    return '戒指';
+  }
+
+  return '';
 }
 
 function getSourceLabel(source: string) {
   if (!source) {
-    return source;
+    return { source: '/', isLoot: false };
   }
-  if (['crafting'].includes(source.toLowerCase())) {
-    return '制造装备';
+  if (
+    ['crafting', 'leatherworking', 'blacksmithing'].includes(
+      source.toLowerCase()
+    )
+  ) {
+    return { source: '制造装备', isLoot: false };
+  }
+  
+  if (source.toLowerCase().includes('catalyst')) {
+    return { source: '职业套装', isLoot: false };
   }
 
-  const output = source.replace(/[a-zA-Z\s|\/]/g, '');
+  const output = source.replace(/[a-zA-Z\s|\/\(\)尼鲁巴尔王宫]/g, '');
+  return { source: output.replace(',,', ''), isLoot: true };
+}
 
-  if (output.length) {
-    return output;
-  } else if (source.toLowerCase().includes('catalyst')) {
-    return '职业套装';
+function isTrink(item: IBisItem) {
+  const lowerCaseSource = item.slot?.toLowerCase();
+  if (!lowerCaseSource) {
+    return false;
   }
-
-  return output;
+  if (
+    lowerCaseSource.includes('trinket') ||
+    lowerCaseSource.includes('single') ||
+    lowerCaseSource.includes('aoe')
+  ) {
+    return true;
+  }
+  return false;
 }
 
 function mapBisItems(items: IBisItem[]) {
   return items.reduce((pre: IBisItem[], cur: IBisItem) => {
-    if (cur.item && cur.slot !== 'Slot') {
-      pre.push({
+    // 饰品有单独的栏位展示
+    if (cur.item && cur.slot !== 'Slot' && !isTrink(cur)) {
+      const { source, isLoot } = getSourceLabel(cur.source);
+;      pre.push({
         ...cur,
         slot: getSlotLabel(cur.slot),
-        source: getSourceLabel(cur.source),
+        wrap: false,
+        source,
+        isLoot,
       });
     }
     return pre;

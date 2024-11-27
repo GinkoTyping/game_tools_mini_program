@@ -35,14 +35,28 @@
 
       <uni-table ref="table" stripe emptyText="暂无更多数据">
         <uni-tr>
-          <uni-th width="40" align="left">部位</uni-th>
-          <uni-th width="80" align="left">装备</uni-th>
-          <uni-th width="80" align="left">来源</uni-th>
+          <uni-th width="45" align="left">部位</uni-th>
+          <uni-th width="130" align="left">装备</uni-th>
+          <uni-th width="130" align="left">来源</uni-th>
         </uni-tr>
         <uni-tr v-for="(item, index) in tableData" :key="index">
-          <uni-td>{{ item.slot }}</uni-td>
-          <uni-td>{{ item.item }}</uni-td>
-          <uni-td>{{ item.source }}</uni-td>
+          <uni-td >{{ item.slot }}</uni-td>
+          <uni-td >
+            <view
+              class="ellipsis"
+              :class="[item.wrap ? 'disale-ellipsis' : '']"
+              @click="() => switchWrap(item)"
+              >{{ item.item }}</view
+            >
+          </uni-td>
+          <uni-td >
+            <view
+              class="ellipsis"
+              :class="[item.wrap ? 'disale-ellipsis' : '']"
+              @click="() => switchWrap(item)"
+              >{{ item.source }}</view
+            >
+          </uni-td>
         </uni-tr>
       </uni-table>
     </uni-card>
@@ -54,7 +68,7 @@
 import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
-import { IWowBIS, ISpceBIS } from '@/interface/IWow';
+import { IWowBIS, ISpceBIS, IBisItem } from '@/interface/IWow';
 import { mapSpecData } from '@/data/mapSpecData';
 
 const bisData: IWowBIS = mapSpecData();
@@ -94,6 +108,10 @@ function setNaviTitle(title: string) {
   uni.setNavigationBarTitle({
     title: title,
   });
+}
+
+function switchWrap(item: IBisItem) {
+  item.wrap = !item.wrap;
 }
 </script>
 
@@ -153,6 +171,8 @@ $light-border: rgb(68, 68, 68);
   border: 2px $light-border solid;
   .uni-table-th,
   .uni-table-td {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
     border-bottom: 1px $uni-bg-color solid !important;
   }
   .uni-table-th {
@@ -171,7 +191,17 @@ $light-border: rgb(68, 68, 68);
       color: $uni-text-color-inverse;
     }
   }
+  .disale-ellipsis {
+    white-space: normal !important;
+  }
+  .ellipsis {
+    width: 130px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
+
 .bis .menu {
   margin-bottom: 10px;
   .menu_active {

@@ -3,6 +3,8 @@ export interface IBisItem {
   item: string;
   source: string;
   itemIcon: string;
+  wrap?: boolean;
+  isLoot?: boolean;
 }
 
 export interface ITrinks {
