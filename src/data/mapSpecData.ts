@@ -1,6 +1,6 @@
 // TODO 迁移至插件内处理？
 import rawData from '@/data/spec-data.json';
-import { IWowBIS, IBisItem } from '@/interface/IWow';
+import { IWowBIS, IBisItem, ITrinks } from '@/interface/IWow';
 
 function getSlotLabel(key: string) {
   const lowerCaseKey = key.toLowerCase();
@@ -23,6 +23,7 @@ function getSlotLabel(key: string) {
     weapon: '武器',
     ['main hand']: '主手',
     ['off hand']: '副手',
+    offhand: '副手',
   };
 
   if (locales[lowerCaseKey]?.length) {
@@ -45,15 +46,19 @@ function getSourceLabel(source: string) {
     return { source: '/', isLoot: false };
   }
   if (
-    ['crafting', 'leatherworking', 'blacksmithing'].includes(
+    ['crafting', 'leatherworking', 'blacksmithing', 'crafted'].includes(
       source.toLowerCase()
     )
   ) {
     return { source: '制造装备', isLoot: false };
   }
-  
+
   if (source.toLowerCase().includes('catalyst')) {
     return { source: '职业套装', isLoot: false };
+  }
+
+  if (source.toLowerCase().includes('trash')) {
+    return { source: '团本小怪', isLoot: false };
   }
 
   const output = source.replace(/[a-zA-Z\s|\/\(\)尼鲁巴尔王宫]/g, '');
@@ -67,6 +72,7 @@ function isTrink(item: IBisItem) {
   }
   if (
     lowerCaseSource.includes('trinket') ||
+    lowerCaseSource.includes('staff') ||
     lowerCaseSource.includes('single') ||
     lowerCaseSource.includes('aoe')
   ) {
@@ -80,7 +86,7 @@ function mapBisItems(items: IBisItem[]) {
     // 饰品有单独的栏位展示
     if (cur.item && cur.slot !== 'Slot' && !isTrink(cur)) {
       const { source, isLoot } = getSourceLabel(cur.source);
-;      pre.push({
+      pre.push({
         ...cur,
         slot: getSlotLabel(cur.slot),
         wrap: false,
@@ -88,6 +94,16 @@ function mapBisItems(items: IBisItem[]) {
         isLoot,
       });
     }
+    return pre;
+  }, []);
+}
+
+function mapTrinks(list: ITrinks[]) {
+  return list.reduce((pre: ITrinks[], cur: ITrinks) => {
+    if (pre.length >= 4) {
+      return pre;
+    }
+    pre.push(cur);
     return pre;
   }, []);
 }
@@ -101,6 +117,7 @@ export function mapSpecData() {
       overall: mapBisItems(specItem.overall),
       bisItemRaid: mapBisItems(specItem.bisItemRaid),
       bisItemMythic: mapBisItems(specItem.bisItemMythic),
+      trinkets: mapTrinks(specItem.trinkets),
     }));
 
     data[key] = value;

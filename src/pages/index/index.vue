@@ -81,4 +81,3 @@ function onClickSpec(classKey: string, specKey: string) {
   }
 }
 </style>
-@/interface/IWow

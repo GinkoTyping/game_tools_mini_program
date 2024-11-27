@@ -66,13 +66,21 @@
   </uni-section>
   <uni-section :class="[classKey]" title="饰品">
     <uni-card>
-
+      <view class="tier" v-for="tier in currentData?.trinkets">
+        <view class="tier-label" :data-label="tier.label">
+          <text>{{ tier.label }}</text>
+        </view>
+        <view class="trink-container">
+          <view class="trink"></view>
+          <view class="trink"></view>
+        </view>
+      </view>
     </uni-card>
   </uni-section>
 </template>
 
 <script lang="ts" setup>
-// TODO row默认只展示一行，点击展示两行
+// TODO 后端储存图片
 import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
@@ -252,6 +260,33 @@ $light-border: rgb(68, 68, 68);
       width: 2px;
       height: 10px;
       background-color: $light-border;
+    }
+  }
+}
+
+.tier {
+  margin-bottom: 8px;
+  .tier-label {
+    width: 90px;
+    min-height: 80px;
+    border-radius: 6px;
+    font-size: 50px;
+    line-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    &[data-label='S'] {
+      background-color: rgb(244, 123, 0);
+    }
+    &[data-label='A'] {
+      background-color: rgb(152, 50, 221);
+    }
+    &[data-label='B'] {
+      background-color: rgb(2, 103, 200);
+    }
+    &[data-label='C'] {
+      background-color: rgb(29, 245, 1);
     }
   }
 }
