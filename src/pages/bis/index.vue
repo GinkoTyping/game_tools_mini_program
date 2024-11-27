@@ -36,12 +36,12 @@
       <uni-table ref="table" stripe emptyText="暂无更多数据">
         <uni-tr>
           <uni-th width="45" align="left">部位</uni-th>
-          <uni-th width="130" align="left">装备</uni-th>
-          <uni-th width="130" align="left">来源</uni-th>
+          <uni-th width="160" align="left">装备</uni-th>
+          <uni-th width="100" align="left">来源</uni-th>
         </uni-tr>
         <uni-tr v-for="(item, index) in tableData" :key="index">
-          <uni-td >{{ item.slot }}</uni-td>
-          <uni-td >
+          <uni-td>{{ item.slot }}</uni-td>
+          <uni-td>
             <view
               class="ellipsis"
               :class="[item.wrap ? 'disale-ellipsis' : '']"
@@ -49,16 +49,24 @@
               >{{ item.item }}</view
             >
           </uni-td>
-          <uni-td >
+          <uni-td>
             <view
               class="ellipsis"
-              :class="[item.wrap ? 'disale-ellipsis' : '']"
+              :class="[
+                item.wrap ? 'disale-ellipsis' : '',
+                item.isLoot ? 'is-loot' : '',
+              ]"
               @click="() => switchWrap(item)"
               >{{ item.source }}</view
             >
           </uni-td>
         </uni-tr>
       </uni-table>
+    </uni-card>
+  </uni-section>
+  <uni-section :class="[classKey]" title="饰品">
+    <uni-card>
+
     </uni-card>
   </uni-section>
 </template>
@@ -186,16 +194,24 @@ $light-border: rgb(68, 68, 68);
     }
     &:nth-child(2) {
       color: rgb(163, 53, 238);
+      view {
+        width: 160px !important;
+      }
     }
     &:nth-child(3) {
-      color: $uni-text-color-inverse;
+      color: rgb(221, 221, 221);
+      view {
+        width: 100px !important;
+      }
     }
+  }
+  .is-loot {
+    color: $uni-text-color-inverse !important;
   }
   .disale-ellipsis {
     white-space: normal !important;
   }
   .ellipsis {
-    width: 130px !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
