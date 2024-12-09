@@ -108,6 +108,26 @@ function mapTrinks(list: ITrinks[]) {
   }, []);
 }
 
+function getTrinketURLs(data: IWowBIS) {
+  const rawData = JSON.parse(JSON.stringify(data)) as IWowBIS;
+  return Object.values(rawData).reduce((pre: Array<any>, cur) => {
+    cur.forEach((specItem) => {
+      specItem.trinkets.forEach((tier) => {
+        const regex = /url\("([^"]*)"\)/;
+        tier.trinkets.forEach((url) => {
+          if (url.length) {
+            const matched = url.match(regex)?.[1];
+            if (!pre.includes(matched)) {
+              pre.push(matched);
+            }
+          }
+        });
+      });
+    });
+    return pre;
+  }, []);
+}
+
 export function mapSpecData() {
   const data = JSON.parse(JSON.stringify(rawData)) as IWowBIS;
   Object.entries(data).forEach((item, index) => {
