@@ -100,21 +100,35 @@ function mapBisItems(items: IBisItem[]) {
 
 function mapTrinks(list: ITrinks[]) {
   return list.reduce((pre: ITrinks[], cur: ITrinks) => {
-    if (pre.length >= 4) {
+    if (pre.length >= 4 || !cur.trinkets?.length) {
       return pre;
     }
+
+    cur.label = cur.label.replace('\n', '');
+    cur.trinkets = cur.trinkets
+      .map(url => getImageFileName(url))
+      .filter(url => url?.length);
     pre.push(cur);
     return pre;
   }, []);
 }
 
+function getImageFileName(url: string) {
+  const regex = /url\("([^"]*)"\)/;
+  const path = url.match(regex)?.[1];
+  if (path?.length) {
+    return path.split('/').pop() ?? '';
+  }
+  return '';
+}
+
 function getTrinketURLs(data: IWowBIS) {
   const rawData = JSON.parse(JSON.stringify(data)) as IWowBIS;
   return Object.values(rawData).reduce((pre: Array<any>, cur) => {
-    cur.forEach((specItem) => {
-      specItem.trinkets.forEach((tier) => {
+    cur.forEach(specItem => {
+      specItem.trinkets.forEach(tier => {
         const regex = /url\("([^"]*)"\)/;
-        tier.trinkets.forEach((url) => {
+        tier.trinkets.forEach(url => {
           if (url.length) {
             const matched = url.match(regex)?.[1];
             if (!pre.includes(matched)) {

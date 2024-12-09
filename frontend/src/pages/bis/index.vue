@@ -66,13 +66,14 @@
   </uni-section>
   <uni-section :class="[classKey]" title="饰品">
     <uni-card>
-      <view class="tier" v-for="tier in currentData?.trinkets">
-        <view class="tier-label" :data-label="tier.label">
+      <view class="tier" v-for="(tier, index) in currentData?.trinkets">
+        <view class="tier-label" :data-label="index">
           <text>{{ tier.label }}</text>
         </view>
         <view class="trink-container">
-          <view class="trink"></view>
-          <view class="trink"></view>
+          <view class="trink" v-for="trinket in tier.trinkets" :key="trinket">
+            <img :src="`/static/images/trinkets/${trinket}`" alt="" srcset="" />
+          </view>
         </view>
       </view>
     </uni-card>
@@ -266,6 +267,7 @@ $light-border: rgb(68, 68, 68);
 
 .tier {
   margin-bottom: 8px;
+  display: flex;
   .tier-label {
     width: 90px;
     min-height: 80px;
@@ -276,17 +278,29 @@ $light-border: rgb(68, 68, 68);
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    &[data-label='S'] {
+    &[data-label='0'] {
       background-color: rgb(244, 123, 0);
     }
-    &[data-label='A'] {
+    &[data-label='1'] {
       background-color: rgb(152, 50, 221);
     }
-    &[data-label='B'] {
+    &[data-label='2'] {
       background-color: rgb(2, 103, 200);
     }
-    &[data-label='C'] {
+    &[data-label='3'] {
       background-color: rgb(29, 245, 1);
+    }
+  }
+  .trink-container {
+    margin-left: 10px;
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    image {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      margin-right: 6px;
     }
   }
 }
