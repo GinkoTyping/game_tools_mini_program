@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Marauder",
+    "slug": "marauder",
+    "startingNodeSlug": "node-47175",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Witch",
+    "slug": "witch",
+    "startingNodeSlug": "node-54447",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Ranger",
+    "slug": "ranger",
+    "startingNodeSlug": "node-50459",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Duelist",
+    "slug": "duelist",
+    "startingNodeSlug": "node-50986",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Shadow",
+    "slug": "shadow",
+    "startingNodeSlug": "node-44683",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Templar",
+    "slug": "templar",
+    "startingNodeSlug": "node-61525",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Warrior",
+    "slug": "warrior",
+    "startingNodeSlug": "node-47175",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Sorceress",
+    "slug": "sorceress",
+    "startingNodeSlug": "node-54447",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Huntress",
+    "slug": "huntress",
+    "startingNodeSlug": "node-50459",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Mercenary",
+    "slug": "mercenary",
+    "startingNodeSlug": "node-50986",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Monk",
+    "slug": "monk",
+    "startingNodeSlug": "node-44683",
+    "__typename": "Poe2Character"
+  },
+  {
+    "name": "Druid",
+    "slug": "druid",
+    "startingNodeSlug": "node-61525",
+    "__typename": "Poe2Character"
+  }
+]
