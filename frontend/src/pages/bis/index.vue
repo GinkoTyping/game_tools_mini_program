@@ -83,6 +83,7 @@
 <script lang="ts" setup>
 // TODO 后端储存图片
 import { onLoad } from '@dcloudio/uni-app';
+import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
 import { IWowBIS, ISpceBIS, IBisItem } from '@/interface/IWow';
@@ -93,7 +94,10 @@ const bisData: IWowBIS = mapSpecData();
 const classKey = ref('');
 const specKey = ref('');
 const currentData = ref<ISpceBIS | null>();
+const query = ref<any>({});
 onLoad((options: any) => {
+  query.value = options;
+
   classKey.value = options.classKey ?? 'death-knight';
   specKey.value = options.specKey ?? 'blood';
   currentData.value = bisData[classKey.value].find(
@@ -103,6 +107,15 @@ onLoad((options: any) => {
   setNaviTitle(options.title);
 
   console.log(currentData.value);
+});
+
+onShareAppMessage(() => {
+  const { title, classKey, specKey } = query.value;
+
+  return {
+    title: `BIS - ${title}`,
+    path: `pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${title}`
+  };
 });
 
 const currentTableName = ref('overall');

@@ -20,14 +20,19 @@
 </template>
 
 <script setup lang="ts">
-import '@/static/css/index.scss';
-
 import { computed } from 'vue';
+import { onShareAppMessage } from '@dcloudio/uni-app';
 
+import '@/static/css/index.scss';
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
 import { IWowBIS } from '@/interface/IWow';
 import allData from '@/data/spec-data.json';
 import labels from '@/data/zh.json';
+
+onShareAppMessage(() => ({
+  title: 'WOW BIS 查询',
+  path: 'pages/index/index',
+}));
 
 const localeLabels = labels as ILocaleLabels;
 const bisData = allData as IWowBIS;
