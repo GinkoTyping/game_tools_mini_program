@@ -1,11 +1,12 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 import fs from 'fs';
+const jsonData = JSON.parse(fs.readFileSync('./spec-data.json'));
 
 export function getDB() {
   return open({
     filename: './database.db',
-    driver: sqlite3.verbose().Database
+    driver: sqlite3.verbose().Database,
   });
 }
 
@@ -25,21 +26,7 @@ async function createTables() {
         origin_updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         stats_priority TEXT NOT NULL,
         bis_type INTEGER NOT NULL DEFAULT 0,
-        slot_head TEXT NOT NULL,
-        slot_neck TEXT NOT NULL,
-        slot_shoulders TEXT NOT NULL,
-        slot_cloak TEXT NOT NULL,
-        slot_chest TEXT NOT NULL,
-        slot_wrist TEXT NOT NULL,
-        slot_gloves TEXT NOT NULL,
-        slot_belt TEXT NOT NULL,
-        slot_boots TEXT NOT NULL,
-        slot_ring_0 TEXT NOT NULL,
-        slot_ring_1 TEXT NOT NULL,
-        slot_trinket_0 TEXT NOT NULL,
-        slot_trinket_1 TEXT NOT NULL,
-        slot_weapon_0 TEXT NOT NULL,
-        slot_weapon_1 TEXT
+        bis_items TEXT NOT NULL
       )
     `);
     await db.run(`
@@ -72,13 +59,14 @@ async function createTables() {
 
 async function updateItemData() {
   const db = await getDB();
-  const jsonData = JSON.parse(fs.readFileSync('./spec-data.json'));
   function searchItems(output, items) {
-    items.forEach(item => {
+    items.forEach((item) => {
       if (item.item === 'Item') {
         return;
       }
-      const hasFound = output.some(outputItem => outputItem.item === item.item.trim());
+      const hasFound = output.some(
+        (outputItem) => outputItem.item === item.item.trim()
+      );
       if (!hasFound) {
         // TODO 爬去数据时 就应该处理好
         output.push({
@@ -93,34 +81,81 @@ async function updateItemData() {
   }
 
   const slotItems = Object.values(jsonData).reduce((pre, cur) => {
-    cur.forEach(spec => {
-      pre = searchItems(pre, [...spec.overall, ...spec.bisItemRaid, ...spec.bisItemMythic]);
+    cur.forEach((spec) => {
+      pre = searchItems(pre, [
+        ...spec.overall,
+        ...spec.bisItemRaid,
+        ...spec.bisItemMythic,
+      ]);
     });
     return pre;
   }, []);
-  console.log(slotItems);
 
-  try {
-    slotItems.forEach(item => {
-      console.log(item);
-      
-      db.run(`
+  async function updateItem(item) {
+    const foundItem = await db.get(
+      `
+      SELECT * FROM wow_item WHERE name=?1
+      `,
+      [item.item]
+    );
+
+    if (foundItem) {
+      await db.run(
+        `
+        UPDATE wow_item SET slot=?1,name=?2,source=?3,image=?4 WHERE id=?5`,
+        [item.slot, item.item, item.source, item.itemIcon, foundItem.id]
+      );
+    } else {
+      await db.run(
+        `
         INSERT INTO wow_item(slot, name, source, image) VALUES(?1, ?2, ?3, ?4)
-      `, [
-        item.slot,
-        item.item,
-        item.source,
-        item.itemIcon]);
-    })
-  } catch (error) {
-    
+      `,
+        [item.slot, item.item, item.source, item.itemIcon]
+      );
+    }
   }
 
+  const updatePromises = slotItems.map((item) => updateItem(item));
+  await Promise.all(updatePromises);
+}
+
+async function updateSpecData() {
+  const db = await getDB();
+  Object.entries(([roleClass, specs]) => {
+    specs.forEach((spec) => {
+      ['overall', 'bisItemRaid', 'bisItemMythic'].forEach((typeName) => {
+        let type = 0;
+        if (typeName === 'bisItemRaid') {
+          type = 1;
+        } else if ((typeName = 'bisItemMythic')) {
+          type = 2;
+        } else {
+          type = 0;
+        }
+        
+        db.run(
+          `
+          INSERT INTO wow_bis(role_class, class_spec, stats_priority, bis_type, bis_items) VALUES(?1, ?2, ?3, ?4, ?5)`,
+          [
+            roleClass,
+            spec.spec,
+            spec.statsPriority,
+            type,
+            spec[typeName]
+              .filter((item) => item.item.toLowerCase() !== 'item')
+              .map((item) => item.item)
+              .join('@'),
+          ]
+        );
+      });
+    });
+  });
 }
 
 async function init() {
   await createTables();
   updateItemData();
+  updateSpecData();
 }
 
 init();
