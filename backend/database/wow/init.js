@@ -26,7 +26,8 @@ async function createTables() {
         origin_updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         stats_priority TEXT NOT NULL,
         bis_type INTEGER NOT NULL DEFAULT 0,
-        bis_items TEXT NOT NULL
+        bis_items TEXT NOT NULL,
+        bis_trinkets TEXT NOT NULL
       )
     `);
     await db.run(`
@@ -38,13 +39,6 @@ async function createTables() {
         image TEXT
       )
     `);
-
-    // 插入初始数据
-    // await db.run(
-    //   'INSERT INTO wow_bis (title, content) VALUES (?, ?)',
-    //   ['First Post', 'Hello SQLite!']
-    // );
-    // console.log('初始数据插入成功');
 
     // 查询数据
     const data = await db.all('SELECT * FROM wow_bis');
@@ -135,7 +129,7 @@ async function updateSpecData() {
 
         db.run(
           `
-          INSERT INTO wow_bis(role_class, class_spec, stats_priority, bis_type, bis_items) VALUES(?1, ?2, ?3, ?4, ?5)`,
+          INSERT INTO wow_bis(role_class, class_spec, stats_priority, bis_type, bis_items, bis_trinkets) VALUES(?1, ?2, ?3, ?4, ?5, ?6)`,
           [
             roleClass,
             spec.spec,
@@ -144,6 +138,9 @@ async function updateSpecData() {
             spec[typeName]
               .filter((item) => item.item.toLowerCase() !== 'item')
               .map((item) => item.item.trim())
+              .join('@'),
+            spec.trinkets
+              .map((item) => `${item.label}|${item.trinkets.join(',')}`)
               .join('@'),
           ]
         );
