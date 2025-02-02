@@ -48,7 +48,6 @@ async function createTables() {
 
     // 查询数据
     const data = await db.all('SELECT * FROM wow_bis');
-    console.log('data:', data);
 
     // 关闭连接
     await db.close();
@@ -121,7 +120,8 @@ async function updateItemData() {
 
 async function updateSpecData() {
   const db = await getDB();
-  Object.entries(([roleClass, specs]) => {
+
+  Object.entries(jsonData).forEach(([roleClass, specs]) => {
     specs.forEach((spec) => {
       ['overall', 'bisItemRaid', 'bisItemMythic'].forEach((typeName) => {
         let type = 0;
@@ -132,7 +132,7 @@ async function updateSpecData() {
         } else {
           type = 0;
         }
-        
+
         db.run(
           `
           INSERT INTO wow_bis(role_class, class_spec, stats_priority, bis_type, bis_items) VALUES(?1, ?2, ?3, ?4, ?5)`,
@@ -143,7 +143,7 @@ async function updateSpecData() {
             type,
             spec[typeName]
               .filter((item) => item.item.toLowerCase() !== 'item')
-              .map((item) => item.item)
+              .map((item) => item.item.trim())
               .join('@'),
           ]
         );
@@ -154,8 +154,8 @@ async function updateSpecData() {
 
 async function init() {
   await createTables();
-  updateItemData();
-  updateSpecData();
+  await updateItemData();
+  await updateSpecData();
 }
 
 init();
