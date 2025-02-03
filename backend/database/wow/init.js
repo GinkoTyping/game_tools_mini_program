@@ -139,9 +139,7 @@ async function updateSpecData() {
               .filter((item) => item.item.toLowerCase() !== 'item')
               .map((item) => item.item.trim())
               .join('@'),
-            spec.trinkets
-              .map((item) => `${item.label}|${item.trinkets.join(',')}`)
-              .join('@'),
+            JSON.stringify(spec.trinkets)
           ]
         );
       });
