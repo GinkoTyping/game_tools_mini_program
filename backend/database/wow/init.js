@@ -1,11 +1,20 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 import fs from 'fs';
-const jsonData = JSON.parse(fs.readFileSync('./spec-data.json'));
+import path from 'path';
+import { fileURLToPath } from 'url'; // 导入 fileURLToPath
+
+// 获取当前文件的路径和目录
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const jsonData = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, './spec-data.json'))
+);
 
 export function getDB() {
   return open({
-    filename: './database.db',
+    filename: path.resolve(__dirname, './database.db'),
     driver: sqlite3.verbose().Database,
   });
 }
@@ -121,7 +130,7 @@ async function updateSpecData() {
         let type = 0;
         if (typeName === 'bisItemRaid') {
           type = 1;
-        } else if ((typeName = 'bisItemMythic')) {
+        } else if (typeName === 'bisItemMythic') {
           type = 2;
         } else {
           type = 0;
@@ -139,7 +148,7 @@ async function updateSpecData() {
               .filter((item) => item.item.toLowerCase() !== 'item')
               .map((item) => item.item.trim())
               .join('@'),
-            JSON.stringify(spec.trinkets)
+            JSON.stringify(spec.trinkets),
           ]
         );
       });
