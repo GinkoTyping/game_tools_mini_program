@@ -1,6 +1,9 @@
 import { getDB } from '../../database/wow/init.js';
 
-export async function queryBIS(roleClass, classSpec) {
+export async function getBisBySpec(req, res) {
+  const roleClass = req.params.roleClass;
+  const classSpec = req.params.classSpec;
+
   const db = await getDB();
 
   const data = await db.all(
@@ -28,6 +31,6 @@ export async function queryBIS(roleClass, classSpec) {
   const outputPromises = data.map((item) => mapBisItem(item));
   const outputReses = await Promise.allSettled(outputPromises);
   const output = outputReses.map((res) => res.value);
-  return output;
+
+  res.json(output);
 }
-queryBIS('death-knight', 'blood');

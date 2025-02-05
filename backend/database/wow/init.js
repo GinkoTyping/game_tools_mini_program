@@ -156,10 +156,8 @@ async function updateSpecData() {
   });
 }
 
-async function init() {
+export async function init() {
   await createTables();
   await updateItemData();
   await updateSpecData();
 }
-
-init();
