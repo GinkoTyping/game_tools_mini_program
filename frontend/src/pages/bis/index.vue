@@ -42,12 +42,21 @@
         <uni-tr v-for="(item, index) in tableData" :key="index">
           <uni-td>{{ item.slot }}</uni-td>
           <uni-td>
-            <view
-              class="ellipsis"
-              :class="[item.wrap ? 'disale-ellipsis' : '']"
-              @click="() => switchWrap(item)"
-              >{{ item.name }}</view
-            >
+            <view class="slot-container">
+              <img
+                :src="`/static/images/wow/items/${item.image}`"
+                alt=""
+                srcset=""
+                style="width: 14px; height: 14px"
+              />
+              <view
+                class="ellipsis"
+                style="flex: 1"
+                :class="[item.wrap ? 'disale-ellipsis' : '']"
+                @click="() => switchWrap(item)"
+                >{{ item.name }}</view
+              >
+            </view>
           </uni-td>
           <uni-td>
             <view
@@ -109,7 +118,7 @@ onShareAppMessage(() => {
 
   return {
     title: `BIS - ${title}`,
-    path: `pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${title}`
+    path: `pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${title}`,
   };
 });
 
@@ -199,7 +208,15 @@ $light-border: rgb(68, 68, 68);
     padding-left: 4px !important;
     padding-right: 4px !important;
     border-bottom: 1px $uni-bg-color solid !important;
+    .slot-container {
+      display: flex;
+      align-items: center;
+      image {
+        margin-right: 4px;
+      }
+    }
   }
+
   .uni-table-th {
     font-weight: 800;
     color: #ffffff;

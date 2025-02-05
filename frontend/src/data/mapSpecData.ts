@@ -91,6 +91,7 @@ export function mapBisItems(items: IBisItem[]) {
         slot: getSlotLabel(cur.slot),
         wrap: false,
         source,
+        image: cur.image?.split('/').pop() ?? '',
         isLoot,
       });
     }
