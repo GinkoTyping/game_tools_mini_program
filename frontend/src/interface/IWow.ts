@@ -1,8 +1,9 @@
 export interface IBisItem {
+  name: string;
   slot: string;
   item: string;
   source: string;
-  itemIcon: string;
+  image: string;
   wrap?: boolean;
   isLoot?: boolean;
 }
@@ -13,8 +14,8 @@ export interface ITrinks {
 }
 
 export interface ISpceBIS {
-  spec: string;
-  collectedAt: string;
+  classSpec: string;
+  updatedAt: string;
   statsPriority: string;
   overall: IBisItem[];
   bisItemRaid: IBisItem[];

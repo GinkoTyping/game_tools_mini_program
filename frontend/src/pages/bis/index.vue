@@ -46,7 +46,7 @@
               class="ellipsis"
               :class="[item.wrap ? 'disale-ellipsis' : '']"
               @click="() => switchWrap(item)"
-              >{{ item.item }}</view
+              >{{ item.name }}</view
             >
           </uni-td>
           <uni-td>
@@ -86,27 +86,22 @@ import { onLoad } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
-import { IWowBIS, ISpceBIS, IBisItem } from '@/interface/IWow';
-import { mapSpecData } from '@/data/mapSpecData';
-
-const bisData: IWowBIS = mapSpecData();
+import { ISpceBIS, IBisItem } from '@/interface/IWow';
+import { queryBis } from '@/api/wow';
 
 const classKey = ref('');
 const specKey = ref('');
 const currentData = ref<ISpceBIS | null>();
 const query = ref<any>({});
-onLoad((options: any) => {
+onLoad(async (options: any) => {
   query.value = options;
 
   classKey.value = options.classKey ?? 'death-knight';
   specKey.value = options.specKey ?? 'blood';
-  currentData.value = bisData[classKey.value].find(
-    item => item.spec === specKey.value
-  );
+  currentData.value = await queryBis(classKey.value, specKey.value);
+  console.log(currentData.value);
 
   setNaviTitle(options.title);
-
-  console.log(currentData.value);
 });
 
 onShareAppMessage(() => {

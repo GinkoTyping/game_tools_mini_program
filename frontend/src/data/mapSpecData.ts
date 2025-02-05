@@ -81,10 +81,10 @@ function isTrink(item: IBisItem) {
   return false;
 }
 
-function mapBisItems(items: IBisItem[]) {
+export function mapBisItems(items: IBisItem[]) {
   return items.reduce((pre: IBisItem[], cur: IBisItem) => {
     // 饰品有单独的栏位展示
-    if (cur.item && cur.slot !== 'Slot' && !isTrink(cur)) {
+    if ((cur.item || cur.name) && cur.slot !== 'Slot' && !isTrink(cur)) {
       const { source, isLoot } = getSourceLabel(cur.source);
       pre.push({
         ...cur,
@@ -98,7 +98,7 @@ function mapBisItems(items: IBisItem[]) {
   }, []);
 }
 
-function mapTrinks(list: ITrinks[]) {
+export function mapTrinks(list: ITrinks[]) {
   return list.reduce((pre: ITrinks[], cur: ITrinks) => {
     if (pre.length >= 4 || !cur.trinkets?.length) {
       return pre;
