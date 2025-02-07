@@ -1,4 +1,35 @@
+import { BlizzAPI } from 'blizzapi';
+import { configDotenv } from 'dotenv';
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 import { getDB } from '../../database/wow/init.js';
+
+let api;
+function setBlizzAPI() {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  configDotenv({ path: path.resolve(__dirname, '../../.env') });
+  console.log(process.env);
+  api = new BlizzAPI({
+    region: 'us',
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+  });
+}
+setBlizzAPI();
+
+export async function getItemPreviewById(req, res) {
+  const res = await api.query(`/data/wow/item/${req.params.id}`, {
+    params: {
+      namespace: 'static-us',
+      locale: 'zh_CN',
+    },
+  });
+  console.log(res);
+  res.json(res);
+}
 
 export async function getBisBySpec(req, res) {
   const roleClass = req.params.roleClass;
