@@ -11,7 +11,6 @@ function setBlizzAPI() {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
   configDotenv({ path: path.resolve(__dirname, '../../.env') });
-  console.log(process.env);
   api = new BlizzAPI({
     region: 'us',
     clientId: process.env.CLIENT_ID,
@@ -21,14 +20,14 @@ function setBlizzAPI() {
 setBlizzAPI();
 
 export async function getItemPreviewById(req, res) {
-  const res = await api.query(`/data/wow/item/${req.params.id}`, {
+  const data = await api.query(`/data/wow/item/${req.params.id}`, {
     params: {
       namespace: 'static-us',
       locale: 'zh_CN',
     },
   });
-  console.log(res);
-  res.json(res);
+  console.log(data);
+  res.json(data);
 }
 
 export async function getBisBySpec(req, res) {
