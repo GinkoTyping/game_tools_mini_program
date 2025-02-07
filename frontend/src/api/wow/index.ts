@@ -1,8 +1,8 @@
 import { IBisItem, ITrinks } from '@/interface/IWow';
 import { mapBisItems, mapTrinks } from '@/data/mapSpecData';
 
-const BASE_URL = 'https://ginkolearn.cyou';
-// const BASE_URL = 'http://localhost:3000';
+// const BASE_URL = 'https://ginkolearn.cyou';
+const BASE_URL = 'http://localhost:3000';
 
 enum BisType {
   Overall = 0,

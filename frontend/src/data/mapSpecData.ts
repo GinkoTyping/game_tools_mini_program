@@ -38,31 +38,7 @@ function getSlotLabel(key: string) {
     return '戒指';
   }
 
-  return '';
-}
-
-function getSourceLabel(source: string) {
-  if (!source) {
-    return { source: '/', isLoot: false };
-  }
-  if (
-    ['crafting', 'leatherworking', 'blacksmithing', 'crafted'].includes(
-      source.toLowerCase()
-    )
-  ) {
-    return { source: '制造装备', isLoot: false };
-  }
-
-  if (source.toLowerCase().includes('catalyst')) {
-    return { source: '职业套装', isLoot: false };
-  }
-
-  if (source.toLowerCase().includes('trash')) {
-    return { source: '团本小怪', isLoot: false };
-  }
-
-  const output = source.replace(/[a-zA-Z\s|\/\(\)尼鲁巴尔王宫]/g, '');
-  return { source: output.replace(',,', ''), isLoot: true };
+  return key;
 }
 
 function isTrink(item: IBisItem) {
@@ -85,13 +61,11 @@ export function mapBisItems(items: IBisItem[]) {
   return items.reduce((pre: IBisItem[], cur: IBisItem) => {
     // 饰品有单独的栏位展示
     if ((cur.item || cur.name) && cur.slot !== 'Slot' && !isTrink(cur)) {
-      const { source, isLoot } = getSourceLabel(cur.source);
+      const { source, isLoot } = JSON.parse(cur.source);
       pre.push({
         ...cur,
-        slot: getSlotLabel(cur.slot),
         wrap: false,
         source,
-        image: cur.image?.split('/').pop() ?? '',
         isLoot,
       });
     }
@@ -101,44 +75,11 @@ export function mapBisItems(items: IBisItem[]) {
 
 export function mapTrinks(list: ITrinks[]) {
   return list.reduce((pre: ITrinks[], cur: ITrinks) => {
-    if (pre.length >= 4 || !cur.trinkets?.length) {
+    if (pre.length < 4 && cur.trinkets?.length) {
+      pre.push(cur);
       return pre;
     }
 
-    cur.label = cur.label.replace('\n', '');
-    cur.trinkets = cur.trinkets
-      .map(url => getImageFileName(url))
-      .filter(url => url?.length);
-    pre.push(cur);
-    return pre;
-  }, []);
-}
-
-function getImageFileName(url: string) {
-  const regex = /url\("([^"]*)"\)/;
-  const path = url.match(regex)?.[1];
-  if (path?.length) {
-    return path.split('/').pop() ?? '';
-  }
-  return '';
-}
-
-function getTrinketURLs(data: IWowBIS) {
-  const rawData = JSON.parse(JSON.stringify(data)) as IWowBIS;
-  return Object.values(rawData).reduce((pre: Array<any>, cur) => {
-    cur.forEach(specItem => {
-      specItem.trinkets.forEach(tier => {
-        const regex = /url\("([^"]*)"\)/;
-        tier.trinkets.forEach(url => {
-          if (url.length) {
-            const matched = url.match(regex)?.[1];
-            if (!pre.includes(matched)) {
-              pre.push(matched);
-            }
-          }
-        });
-      });
-    });
     return pre;
   }, []);
 }
@@ -152,7 +93,7 @@ export function mapSpecData() {
       overall: mapBisItems(specItem.overall),
       bisItemRaid: mapBisItems(specItem.bisItemRaid),
       bisItemMythic: mapBisItems(specItem.bisItemMythic),
-      trinkets: mapTrinks(specItem.trinkets),
+      trinkets: specItem.trinkets,
     }));
 
     data[key] = value;
