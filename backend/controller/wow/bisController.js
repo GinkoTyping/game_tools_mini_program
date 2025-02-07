@@ -20,14 +20,44 @@ function setBlizzAPI() {
 setBlizzAPI();
 
 export async function getItemPreviewById(req, res) {
-  const data = await api.query(`/data/wow/item/${req.params.id}`, {
-    params: {
-      namespace: 'static-us',
-      locale: 'zh_CN',
-    },
-  });
-  console.log(data);
-  res.json(data);
+  const db = await getDB();
+  const item = await db.get(
+    `
+  SELECT preview FROM wow_item WHERE id=?1`,
+    [req.params.id]
+  );
+  if (item?.preview) {
+    console.log('cached.', item.preview);
+    res.json(JSON.parse(item.preview));
+  } else {
+    try {
+      console.log('fetching data...');
+      const data = await api.query(`/data/wow/item/${req.params.id}`, {
+        params: {
+          namespace: 'static-us',
+          locale: 'zh_CN',
+        },
+      });
+
+      if (item) {
+        db.run(`UPDATE wow_item SET preview=?1 WHERE id=?2`, [
+          JSON.stringify(data),
+          data.id,
+        ]);
+      } else {
+        db.run(`INSERT INTO wow_item(id, name, preview) VALUES(?1, ?2, ?3)`, [
+          data.id,
+          data.name,
+          JSON.stringify(data),
+        ]);
+      }
+
+      res.json(data);
+    } catch (error) {
+      console.log(error);
+      res.json(null);
+    }
+  }
 }
 
 export async function getBisBySpec(req, res) {

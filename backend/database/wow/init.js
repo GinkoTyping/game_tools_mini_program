@@ -45,7 +45,8 @@ async function createTables() {
         slot TEXT,
         name TEXT NOT NULL,
         source TEXT,
-        image TEXT
+        image TEXT,
+        preview TEXT
       )
     `);
 
