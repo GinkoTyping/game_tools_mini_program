@@ -1,11 +1,11 @@
 <template>
   <uni-section :class="[classKey]" title="属性优先级">
-    <uni-card>
+    <uni-card class="section-card">
       <text :class="[classKey]">{{ currentData?.statsPriority }}</text>
     </uni-card>
   </uni-section>
   <uni-section class="bis" :class="[classKey]" title="BIS配装">
-    <uni-card>
+    <uni-card class="section-card">
       <view class="menu">
         <text
           @click="() => switchBisTable('overall')"
@@ -53,7 +53,12 @@
                 class="ellipsis"
                 style="flex: 1"
                 :class="[item.wrap ? 'disale-ellipsis' : '']"
-                @click="() => switchWrap(item)"
+                @click="
+                  () => {
+                    switchDetail(true, item);
+                    switchWrap(item);
+                  }
+                "
                 >{{ item.name }}</view
               >
             </view>
@@ -74,19 +79,125 @@
     </uni-card>
   </uni-section>
   <uni-section :class="[classKey]" title="饰品">
-    <uni-card>
+    <uni-card class="section-card">
       <view class="tier" v-for="(tier, index) in currentData?.trinkets">
         <view class="tier-label" :data-label="index">
           <text>{{ tier.label }}</text>
         </view>
         <view class="trink-container">
-          <view class="trink" v-for="trinket in tier.trinkets" :key="trinket">
-            <img :src="`/static/images/trinkets/${trinket}`" alt="" srcset="" />
+          <view
+            class="trink"
+            v-for="trinket in tier.trinkets"
+            :key="trinket.image"
+          >
+            <img
+              @click="() => switchDetail(true, trinket)"
+              :src="`/static/images/wow/trinkets/${trinket.image}`"
+              alt=""
+              srcset=""
+            />
           </view>
         </view>
       </view>
     </uni-card>
   </uni-section>
+  <uni-popup ref="popup">
+    <uni-load-more
+      v-show="status === 'loading'"
+      color="#007AFF"
+      :status="status"
+    />
+    <img
+      v-show="currentItem?.image && status !== 'loading'"
+      class="preview-image"
+      :src="`/static/images/wow/${currentItem?.source ? 'items' : 'trinkets'}/${
+        currentItem?.image
+      }`"
+      alt=""
+    />
+    <uni-card v-show="status !== 'loading'" class="previw-popup">
+      <text class="name">{{ currentDetails.name }}</text>
+      <text class="qulity">{{ currentDetails.quality?.name }}</text>
+      <text class="item-level">物品等级：{{ currentDetails.level }}</text>
+      <text class="binding">{{
+        currentDetails.preview_item?.binding.name
+      }}</text>
+      <view class="type">
+        <text>{{ currentDetails.preview_item?.inventory_type?.name }}</text>
+        <text v-show="currentDetails.item_class?.id === 2">{{
+          currentDetails.preview_item?.item_subclass?.name
+        }}</text>
+      </view>
+      <view
+        class="damage justify-between"
+        v-show="currentDetails.preview_item?.weapon"
+      >
+        <text>{{
+          currentDetails.preview_item?.weapon?.damage?.display_string
+        }}</text>
+        <text>{{
+          currentDetails.preview_item?.weapon?.attack_speed?.display_string
+        }}</text>
+      </view>
+      <text class="damage-dps">{{
+        currentDetails.preview_item?.weapon?.dps?.display_string
+      }}</text>
+      <text
+        class="non-bonus-stat"
+        v-for="stat in currentDetails.preview_item?.stats?.filter((item: any) => !item.is_equip_bonus)"
+      >
+        {{ stat.display.display_string }}
+      </text>
+      <text
+        class="bonus-stat"
+        v-for="stat in currentDetails.preview_item?.stats?.filter((item: any) => item.is_equip_bonus)"
+      >
+        {{ stat.display.display_string }}
+      </text>
+      <text
+        class="spell"
+        v-show="currentDetails.preview_item?.spells?.length"
+        v-for="spell in currentDetails.preview_item?.spells"
+        :key="spell.spell.id"
+        >{{ spell.description }}</text
+      >
+
+      <text class="durability">{{
+        currentDetails.preview_item?.durability?.display_string
+      }}</text>
+      <text class="requirements"
+        >{{
+          currentDetails.preview_item?.requirements?.level.display_string
+        }}</text
+      >
+      <text v-show="currentDetails?.description" class="description"
+        >“{{ currentDetails.description }}”</text
+      >
+      <view class="price">
+        <view>
+          <text>售价：</text>
+        </view>
+        <view>
+          <img src="/static/images/wow/money-gold.gif" alt="" srcset="" />
+          <text>{{
+            currentDetails.preview_item?.sell_price.display_strings.gold
+          }}</text>
+        </view>
+        <view>
+          <img src="/static/images/wow/money-silver.gif" alt="" srcset="" />
+          <text>{{
+            currentDetails.preview_item?.sell_price.display_strings.silver
+          }}</text>
+        </view>
+        <view>
+          <img src="/static/images/wow/money-copper.gif" alt="" srcset="" />
+          <text>{{
+            currentDetails.preview_item?.sell_price.display_strings.copper
+          }}</text>
+        </view>
+      </view>
+    </uni-card>
+  </uni-popup>
 </template>
 
 <script lang="ts" setup>
@@ -95,8 +206,8 @@ import { onLoad } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
-import { ISpceBIS, IBisItem } from '@/interface/IWow';
-import { queryBis } from '@/api/wow';
+import { ISpceBIS, IBisItem, ITrinks } from '@/interface/IWow';
+import { queryBis, queryItemPreview } from '@/api/wow';
 
 const classKey = ref('');
 const specKey = ref('');
@@ -147,13 +258,43 @@ function setNaviTitle(title: string) {
 function switchWrap(item: IBisItem) {
   item.wrap = !item.wrap;
 }
+
+const popup = ref<any>('');
+const currentDetails = ref<any>({});
+const status = ref('loading');
+const currentItem = ref<
+  IBisItem | { image: string; id: number; source?: string }
+>();
+async function switchDetail(
+  isShow: boolean,
+  item: IBisItem | { image: string; id: number }
+) {
+  currentDetails.value = {};
+  if (isShow) {
+    status.value = 'loading';
+    popup.value.open(true);
+
+    currentItem.value = item;
+    currentDetails.value = await queryItemPreview(item.id);
+    if (currentDetails.value) {
+      status.value = '';
+      console.log(currentDetails.value);
+    } else {
+      popup.value.open(false);
+    }
+  }
+}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+page {
+  background-color: red;
+}
+
 $light-border: rgb(68, 68, 68);
-::v-deep uni-section {
+::v-deep .uni-section {
   .uni-section-header {
-    background-color: $uni-bg-color-grey;
+    background-color: $uni-bg-color-grey !important;
     color: inherit !important;
     .uni-section-header__content {
       color: inherit !important;
@@ -197,6 +338,51 @@ $light-border: rgb(68, 68, 68);
     margin: 0 auto !important;
     border: none !important;
     background-color: $uni-bg-color-grey-light !important;
+  }
+}
+
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+::v-deep .preview-image {
+  width: 10vw;
+  height: 10vw;
+}
+::v-deep .previw-popup .uni-card {
+  width: 70vw !important;
+  border: 1px solid #ffffff !important;
+  text {
+    color: #fff;
+  }
+  .uni-card__content {
+    display: flex;
+    flex-direction: column;
+  }
+  .name {
+    color: $color-mythic;
+  }
+  .qulity,
+  .bonus-stat,
+  .spell {
+    color: $color-uncommon;
+  }
+  .item-level,
+  .description {
+    color: $uni-text-color-inverse;
+  }
+  .price {
+    display: flex;
+    view {
+      display: flex;
+      align-items: center;
+      margin-right: 4px;
+    }
+    image {
+      width: 16px;
+      height: 16px;
+      margin-right: 4px;
+    }
   }
 }
 
@@ -304,16 +490,16 @@ $light-border: rgb(68, 68, 68);
     align-items: center;
     color: #ffffff;
     &[data-label='0'] {
-      background-color: rgb(244, 123, 0);
+      background-color: $color-legend;
     }
     &[data-label='1'] {
-      background-color: rgb(152, 50, 221);
+      background-color: $color-mythic;
     }
     &[data-label='2'] {
-      background-color: rgb(2, 103, 200);
+      background-color: $color-rare;
     }
     &[data-label='3'] {
-      background-color: rgb(29, 245, 1);
+      background-color: $color-uncommon;
     }
   }
   .trink-container {

@@ -14,6 +14,11 @@
 
 /* 颜色变量 */
 
+$color-mythic: rgb(163, 53, 238);
+$color-legend: rgb(244, 123, 0);
+$color-rare: rgb(2, 103, 200);
+$color-uncommon: rgb(29, 245, 1);
+
 /* 行为相关颜色 */
 $uni-color-primary: #007aff;
 $uni-color-success: #4cd964;
@@ -28,9 +33,9 @@ $uni-text-color-placeholder: #808080;
 $uni-text-color-disable: #c0c0c0;
 
 /* 背景颜色 */
-$uni-bg-color: rgb(16,16,16);
-$uni-bg-color-grey: rgb(24,24,24);
-$uni-bg-color-grey-light: rgb(32,32,32);
+$uni-bg-color: rgb(16, 16, 16);
+$uni-bg-color-grey: rgb(24, 24, 24);
+$uni-bg-color-grey-light: rgb(32, 32, 32);
 $uni-bg-color-hover: #f1f1f1; // 点击状态颜色
 $uni-bg-color-mask: rgba(0, 0, 0, 0.4); // 遮罩颜色
 

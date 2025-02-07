@@ -1,4 +1,5 @@
 export interface IBisItem {
+  id: number;
   name: string;
   slot: string;
   item: string;
@@ -10,7 +11,7 @@ export interface IBisItem {
 
 export interface ITrinks {
   label: string;
-  trinkets: string[];
+  trinkets: { image: string; id: number }[];
 }
 
 export interface ISpceBIS {

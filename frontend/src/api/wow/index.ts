@@ -42,3 +42,35 @@ export async function queryBis(roleClass: string, classSpec: string) {
     ),
   };
 }
+
+export async function queryItemPreview(id: number) {
+  try {
+    const res: any = await uni.request({
+      url: `${BASE_URL}/wow/item/${id}`,
+    });
+    if (res.data?.preview_item.stats) {
+      res.data.preview_item.stats = res.data.preview_item.stats.reduce(
+        (pre: any, cur: any) => {
+          if (cur.is_equip_bonus || !cur.is_negated) {
+            pre.push(cur);
+          } else if (cur.is_negated) {
+            const negated = pre.find((item: any) => !item.is_equip_bonus);
+            if (negated) {
+              negated.display.display_string += ` 或 ${cur.type.name}`;
+            } else {
+              pre.push(cur);
+            }
+          }
+
+          return pre;
+        },
+        []
+      );
+    }
+
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
