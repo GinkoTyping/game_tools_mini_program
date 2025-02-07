@@ -70,13 +70,7 @@ async function updateItemData() {
         (outputItem) => outputItem.item === item.item.trim()
       );
       if (!hasFound) {
-        // TODO 爬去数据时 就应该处理好
-        output.push({
-          slot: item.slot?.trim(),
-          item: item.item?.trim(),
-          source: item.source?.trim(),
-          itemIcon: item.itemIcon?.trim(),
-        });
+        output.push(item);
       }
     });
     return output;
@@ -96,24 +90,40 @@ async function updateItemData() {
   async function updateItem(item) {
     const foundItem = await db.get(
       `
-      SELECT * FROM wow_item WHERE name=?1
+      SELECT * FROM wow_item WHERE id=?1
       `,
-      [item.item]
+      [item.id]
     );
 
     if (foundItem) {
       await db.run(
         `
         UPDATE wow_item SET slot=?1,name=?2,source=?3,image=?4 WHERE id=?5`,
-        [item.slot, item.item, item.source, item.itemIcon, foundItem.id]
+        [
+          item.slot,
+          item.item,
+          JSON.stringify(item.source),
+          item.itemIcon,
+          foundItem.id,
+        ]
       );
     } else {
-      await db.run(
-        `
-        INSERT INTO wow_item(slot, name, source, image) VALUES(?1, ?2, ?3, ?4)
-      `,
-        [item.slot, item.item, item.source, item.itemIcon]
-      );
+      try {
+        await db.run(
+          `
+          INSERT INTO wow_item(id, slot, name, source, image) VALUES(?1, ?2, ?3, ?4, ?5)
+        `,
+          [
+            item.id,
+            item.slot,
+            item.item,
+            JSON.stringify(item.source),
+            item.itemIcon,
+          ]
+        );
+      } catch (error) {
+        console.log(item);
+      }
     }
   }
 
