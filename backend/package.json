@@ -11,8 +11,6 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "cheerio": "^1.0.0",
-    "clipboardy": "^4.0.0",
-    "puppeteer": "^24.2.0"
+    "clipboardy": "^4.0.0"
   }
 }

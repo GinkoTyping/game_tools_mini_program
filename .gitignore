@@ -27,3 +27,4 @@ backend/.env
 .vs/Game-Tools-Mini-Program/FileContentIndex/e63bb117-4a59-40b6-9f67-c00c41998066.vsidx
 .vs/Game-Tools-Mini-Program/v17/.wsuo
 **/target
+crawler/.env
