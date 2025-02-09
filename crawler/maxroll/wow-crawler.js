@@ -18,15 +18,16 @@ async function crawler() {
     const html = await page.content();
     const $ = cheerio.load(html);
 
-    const data = await getStatsPriority($);
-    console.log(data);
+    const priority = await getStatsPriority($);
+    const ratings = getSpecRating($);
+    console.log('priority', priority);
+    console.log('ratings', ratings);
   } catch (error) {
     console.error(error);
   } finally {
     await browser?.close?.();
   }
 }
-crawler();
 
 async function getStatsPriority(context) {
   const $ = context;
@@ -121,3 +122,57 @@ async function getStatsPriority(context) {
   await Promise.allSettled(translationPromises);
   return output;
 }
+
+function getSpecRating(context) {
+  const $ = context;
+  const ratings = [
+    {
+      label: '单体',
+      rating: 0,
+    },
+    {
+      label: 'AOE',
+      rating: 0,
+    },
+    {
+      label: '功能性',
+      rating: 0,
+    },
+    {
+      label: '生存能力',
+      rating: 0,
+    },
+    {
+      label: '移动性',
+      rating: 0,
+    },
+  ];
+  // overview 部分
+  $('#main-article')
+    .children('div')
+    .eq(2)
+    // overview 部分 的左半边
+    .children()
+    .first()
+    .children()
+    .first()
+
+    // rating面板
+    .children()
+    .last()
+    .children()
+    .last()
+    .children()
+    .last()
+    .children()
+    .each((index, element) => {
+      ratings[index].rating = $(element)
+        .find('div')
+        .children()
+        .filter((index, bar) => !$(bar).attr('class').includes('grey')).length;
+    });
+
+  return ratings;
+}
+
+crawler();
