@@ -6,12 +6,13 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "jsdom": "^26.0.0",
     "md5": "^2.3.0",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "clipboardy": "^4.0.0"
+    "cheerio": "^1.0.0",
+    "clipboardy": "^4.0.0",
+    "puppeteer": "^24.2.0"
   }
 }
