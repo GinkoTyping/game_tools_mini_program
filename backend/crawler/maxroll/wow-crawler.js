@@ -1,5 +1,6 @@
 import * as cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
+import { translate } from '../api';
 
 async function crawler() {
   let browser;
@@ -17,7 +18,7 @@ async function crawler() {
     const html = await page.content();
     const $ = cheerio.load(html);
 
-    const data = getStatsPriority($);
+    const data = await getStatsPriority($);
     console.log(data);
   } catch (error) {
     console.error(error);
@@ -27,7 +28,7 @@ async function crawler() {
 }
 crawler();
 
-function getStatsPriority(context) {
+async function getStatsPriority(context) {
   const $ = context;
   // 0:= | 1: > | 2: >>
   const ICON_MAP = {
@@ -46,12 +47,14 @@ function getStatsPriority(context) {
   };
   const output = [];
 
+  // 获取属性优先级
   $('div[data-wow-type="priority"]').each((index, element) => {
     const priority = {
       talentLabel: '',
       talentID: '',
       stats: [],
       relations: [],
+      desc: [],
     };
     $(element)
       .find($('.mxt-stat span'))
@@ -67,6 +70,7 @@ function getStatsPriority(context) {
     output.push(priority);
   });
 
+  // 获取英雄专精和属性优先级的对应关系
   $('div[data-wow-type="priority"]')
     .first()
     .parentsUntil('#main-article')
@@ -80,5 +84,36 @@ function getStatsPriority(context) {
       }
     });
 
+  // 获取属性优先级的讲解文本
+  $('div[data-wow-type="priority"]')
+    .first()
+    .parentsUntil('#main-article')
+    .last()
+    .children()
+    .last()
+    .children()
+    .each((index, element) => {
+      if ($(element).children('ul').length && index <= output.length - 1) {
+        $(element)
+          .children('ul')
+          .first()
+          .children('li')
+          .each((childIndex, descItem) => {
+            output[index].desc.push($(descItem).text());
+          });
+      }
+    });
+
+  async function translateDesc(statDataItem, index) {
+    if (statDataItem.desc.length) {
+      const output = await translate(statDataItem.desc.join('||'));
+      output[index].desc = output.split('||');
+    }
+  }
+  const translationPromises = output.map((item, index) =>
+    translateDesc(item, index)
+  );
+
+  await Promise.allSettled(translationPromises);
   return output;
 }
