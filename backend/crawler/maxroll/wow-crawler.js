@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
-import { translate } from '../api';
+import { translate } from '../api/index.js';
 
 async function crawler() {
   let browser;
@@ -106,8 +106,12 @@ async function getStatsPriority(context) {
 
   async function translateDesc(statDataItem, index) {
     if (statDataItem.desc.length) {
-      const output = await translate(statDataItem.desc.join('||'));
-      output[index].desc = output.split('||');
+      const data = await translate(statDataItem.desc.join('||'));
+      // 部分字段翻译有歧义，手动替换
+      output[index].desc = data
+        .replace('急躁', '急速')
+        .replace('状态', '属性')
+        .split('||');
     }
   }
   const translationPromises = output.map((item, index) =>

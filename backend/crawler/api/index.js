@@ -10,7 +10,8 @@ configDotenv({ path: path.resolve(__dirname, '../../.env') });
 const BASE_URL = process.env.BACK_END_URL;
 
 export async function translate(input) {
-  return axios.post(`${BASE_URL}/translate`, {
+  const res = await axios.post(`${BASE_URL}/common/translate`, {
     text: input,
   });
+  return res.data;
 }
