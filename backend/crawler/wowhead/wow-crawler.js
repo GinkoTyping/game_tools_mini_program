@@ -2,8 +2,9 @@ import * as cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
 
 async function crawler() {
+  let browser;
   try {
-    const browser = await puppeteer.launch({ headless: true });
+    browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
     await page.goto(
@@ -17,7 +18,7 @@ async function crawler() {
   } catch (error) {
     console.error(error);
   } finally {
-    await browser.close();
+    await browser?.close?.();
   }
 }
 crawler();
