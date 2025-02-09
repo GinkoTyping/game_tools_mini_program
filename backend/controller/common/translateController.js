@@ -56,6 +56,6 @@ async function translate(text, from = 'en', to = 'zh') {
 }
 
 export async function getTranslation(req, res) {
-  const res = await translate(req.body.text);
-  res.json(res);
+  const output = await translate(req.body.text);
+  res.json(output);
 }
