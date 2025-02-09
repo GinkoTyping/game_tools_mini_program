@@ -55,4 +55,7 @@ async function translate(text, from = 'en', to = 'zh') {
   }
 }
 
-translate("Use a defensive while you're affected by ‍Cultivated Poisons since it hits like a truck!");
+export async function getTranslation(req, res) {
+  const res = await translate(req.body.text);
+  res.json(res);
+}
