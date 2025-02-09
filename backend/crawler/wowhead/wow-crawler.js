@@ -1,45 +1,39 @@
-import axios from "axios";
-import { JSDOM } from "jsdom";
+import axios from 'axios';
+import { JSDOM } from 'jsdom';
 
 async function crawler(params) {
   try {
-    // todo 无法获取国外网站，搁置
     const response = await axios.get(
-      "https://www.wowhead.com/cn/guide/classes/evoker/devastation/bis-gear"
+      'https://maxroll.gg/wow/class-guides/augmentation-evoker-mythic-plus-guide',
+      {
+        headers: {
+          'User-Agent':
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+          'Accept-Encoding': 'UTF-8'
+        },
+      }
     ); // 替换为你的 URL
     const { window } = new JSDOM(response.data);
     const document = window.document;
+    console.log(response.data);
+    console.log(JSON.stringify(document));
 
-    const data = getBisItem(document, "#overall-bis");
+    const data = getStatsPriority(document);
     console.log(data);
   } catch (error) {
-    console.error("Error fetching or parsing HTML:", error);
+    console.error('Error fetching or parsing HTML:', error);
   }
 }
 crawler();
 
-function getBisItem(document, containerId) {
-  let itemDoms;
-  if (containerId === "#overall-bis") {
-    const overallBIS = document.querySelector("#guide-body tbody");
-    itemDoms = overallBIS.querySelectorAll("tr");
-  } else {
-    itemDoms = document.querySelectorAll(`${containerId} tbody tr`);
-  }
-
-  return Array.from(itemDoms).map((dom) => {
-    const tds = dom.querySelectorAll("td");
-    const columns = Array.from(tds).reduce((pre, cur) => {
-      pre.push(cur.innerText);
-      return pre;
-    }, []);
-
-    const itemIcon = dom.querySelector("img")?.src;
-    return {
-      slot: columns[0],
-      item: columns[1],
-      source: columns[2],
-      itemIcon,
-    };
-  });
+function getStatsPriority(document) {
+  const statsContainers = document.querySelectorAll(
+    'div[data-wow-type="priority"]'
+  );
+  const stats = statsContainers.querySelectorAll('.mxt-stat span');
+  const relations = statsContainers.querySelectorAll('.mxt-relation path');
+  return {
+    stats: Array.from(stats).map((item) => item.innerText),
+    relations: Array.from(relations).map((item) => item.d),
+  };
 }

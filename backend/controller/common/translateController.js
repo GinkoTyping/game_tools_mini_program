@@ -55,10 +55,4 @@ async function translate(text, from = 'en', to = 'zh') {
   }
 }
 
-// 使用示例
-(async () => {
-  const result = await translate('Hello World!');
-  console.log('翻译结果:', result); // 输出：你好，世界！
-})();
-
 translate("Use a defensive while you're affected by ‍Cultivated Poisons since it hits like a truck!");
