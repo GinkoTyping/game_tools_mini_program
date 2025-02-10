@@ -8,8 +8,8 @@ import { fileURLToPath } from 'url'; // 导入 fileURLToPath
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const jsonData = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, './data/spec-data.json'))
+const wowheadData = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, './data/wowhead.json'))
 );
 
 export function getDB() {
@@ -77,7 +77,7 @@ async function updateItemData() {
     return output;
   }
 
-  const slotItems = Object.values(jsonData).reduce((pre, cur) => {
+  const slotItems = Object.values(wowheadData).reduce((pre, cur) => {
     cur.forEach((spec) => {
       pre = searchItems(pre, [
         ...spec.overall,
@@ -135,7 +135,7 @@ async function updateItemData() {
 async function updateSpecData() {
   const db = await getDB();
 
-  Object.entries(jsonData).forEach(([roleClass, specs]) => {
+  Object.entries(wowheadData).forEach(([roleClass, specs]) => {
     specs.forEach((spec) => {
       ['overall', 'bisItemRaid', 'bisItemMythic'].forEach((typeName) => {
         let type = 0;
