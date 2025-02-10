@@ -35,13 +35,13 @@ async function crawler() {
 
     const $ = cheerio.load(html);
 
-    // const priority = await getStatsPriority($);
-    // const ratings = getSpecRating($);
-    // console.log('priority', priority);
-    // console.log('ratings', ratings);
-
+    const priority = await getStatsPriority($);
+    const ratings = getSpecRating($);
     const dungeonTips = await getDungeonTips($);
-    console.log(dungeonTips);
+
+    console.log('priority', priority);
+    console.log('ratings', ratings);
+    console.log('dungeonTips', dungeonTips);
   } catch (error) {
     console.error(error);
   } finally {
@@ -199,35 +199,51 @@ function getSpecRating(context) {
 async function getDungeonTips(context) {
   const $ = context;
   const data = [];
+  // 设置地下城的分类
+  $('#boss-tips-header')
+    .parent()
+    .parent()
+    .siblings()
+    .first()
+    .children()
+    .first()
+    .children()
+    .first()
+    .children()
+    .first()
+    .children()
+    .each((index, dungeonTab) => {
+      data.push({ dungeonTitle: $(dungeonTab).text(), children: [] });
+    });
+
+  // 获取各个地下城的tips
   $('#boss-tips-header')
     .parent()
     .parent()
     .children()
-    .each((index, tipsContainer) => {
+    .each((dungeonIndex, tipsContainer) => {
       $(tipsContainer)
         .children()
         .each((index, element) => {
           if ($(element).is('h3')) {
-            data.push({ title: $(element).text(), children: [] });
+            data[dungeonIndex].children.push({
+              title: $(element).text(),
+              children: [],
+            });
           } else if ($(element).is('h4')) {
-            data
+            data[dungeonIndex].children
               .at(-1)
               .children.push({ title: $(element).text(), children: [] });
           } else if ($(element).is('ul')) {
-            if (data.at(-1).children.at(-1)?.children) {
-              data.at(-1).children.at(-1).children = mapDescWithIcon(
-                $,
-                element,
-                data.at(-1).children.at(-1).children
-              );
+            if (data[dungeonIndex].children.at(-1).children.at(-1)?.title) {
+              data[dungeonIndex].children.at(-1).children.at(-1).children =
+                mapDescWithIcon($, element);
             } else {
-              data.at(-1).children = mapDescWithIcon(
+              data[dungeonIndex].children.at(-1).children = mapDescWithIcon(
                 $,
-                element,
-                data.at(-1).children
+                element
               );
             }
-
           }
         });
     });
@@ -247,16 +263,18 @@ function mapDescWithIcon(context, element) {
       $(desc)
         .children('span')
         .each((index, element) => {
-          if ($(element).find('.wow-trait').length) {
-            totalText.replace($(element).text(), `*${$(element).text()}*`);
+          if ($(element).find('mark').length) {
+            totalText = $(element).find('mark').text();
+          } else if ($(element).find('span[data-wow-id]').length) {
+            totalText = totalText.replace(
+              $(element).text(),
+              `*${$(element).text()}*`
+            );
+            const id = Number(
+              $(element).find('span[data-wow-id]').attr('data-wow-id')
+            );
             spellTags.push({
-              id: $(element).find('.wow-trait').attr('data-wow-id'),
-              title: $(element).text(),
-            });
-          } else if ($(element).find('.wow-spell').length) {
-            totalText.replace($(element).text(), `@${$(element).text()}@`);
-            enemySpellTags.push({
-              id: $(element).find('.wow-spell').attr('data-wow-id'),
+              id: isNaN(id) ? null : id,
               title: $(element).text(),
             });
           }
