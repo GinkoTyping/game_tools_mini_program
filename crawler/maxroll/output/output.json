@@ -1,0 +1,2157 @@
+[
+  {
+    "status": "fulfilled",
+    "value": {
+      "roleClass": "death-knight",
+      "classSpec": "frost",
+      "stats": [
+        {
+          "talentLabel": "",
+          "talentID": "",
+          "stats": [
+            "暴击",
+            "力量",
+            "精通",
+            "急速",
+            "全能"
+          ],
+          "relations": [
+            10,
+            1,
+            10,
+            1
+          ],
+          "desc": []
+        }
+      ],
+      "ratings": [
+        {
+          "label": "单体",
+          "rating": 3
+        },
+        {
+          "label": "AOE",
+          "rating": 5
+        },
+        {
+          "label": "功能性",
+          "rating": 2
+        },
+        {
+          "label": "生存能力",
+          "rating": 5
+        },
+        {
+          "label": "移动性",
+          "rating": 2
+        }
+      ],
+      "dungeonTips": [
+        {
+          "dungeonTitle": "Ara-Kara, City of Echoes",
+          "children": [
+            {
+              "title": "Boss Tips",
+              "children": [
+                {
+                  "title": "Avanoxx",
+                  "children": [
+                    {
+                      "totalText": "Use [‍Icebound Fortitude] or [‍Lichborne] on [‍Alerting Shrill].",
+                      "spells": [
+                        {
+                          "id": 48792,
+                          "title": "‍Icebound Fortitude"
+                        },
+                        {
+                          "id": 49039,
+                          "title": "‍Lichborne"
+                        },
+                        {
+                          "id": 438476,
+                          "title": "‍Alerting Shrill"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "You can also [‍Death Strike] between hits if necessary.",
+                          "spells": [
+                            {
+                              "id": 45470,
+                              "title": "‍Death Strike"
+                            }
+                          ],
+                          "children": []
+                        },
+                        {
+                          "totalText": "[‍Alerting Shrill] is physical damage don't waste your [‍Anti-Magic Shell] on it.",
+                          "spells": [
+                            {
+                              "id": 438476,
+                              "title": "‍Alerting Shrill"
+                            },
+                            {
+                              "id": 48707,
+                              "title": "‍Anti-Magic Shell"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": "Use [‍Anti-Magic Shell] on [‍Gossamer Onslaught].",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 438473,
+                          "title": "‍Gossamer Onslaught"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "If [‍Blinding Sleet] is available, you can use it on the Starved Crawlers and they will refixate so you can do damage to them. This can also cause the fixates to be worse than before so be careful!",
+                      "spells": [
+                        {
+                          "id": 207167,
+                          "title": "‍Blinding Sleet"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Avoid kiting Starved Crawlers into the boss else the boss receives [‍Insatiable].",
+                      "spells": [
+                        {
+                          "id": 446788,
+                          "title": "‍Insatiable"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "AoE them down if you are not fixated by them.",
+                          "spells": [],
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Anub'zekt",
+                  "children": [
+                    {
+                      "totalText": "You can use [‍Anti-Magic Shell] before every other cast of [‍Infestation] expires so it does not spawn a [‍Ceaseless Swarm].",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 433740,
+                          "title": "‍Infestation"
+                        },
+                        {
+                          "id": 433747,
+                          "title": "‍Ceaseless Swarm"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Throughout the fight Bloodstained Webmage spawn and cast ‍[‍Web Wrap] at someone random during the fight.",
+                      "spells": [
+                        {
+                          "id": 442210,
+                          "title": "‍Web Wrap"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "Use ‍[‍Death Grip] to get them under the boss to cleave them down easily.",
+                          "spells": [
+                            {
+                              "id": 49576,
+                              "title": "‍Death Grip"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Ki'katal the Harvester",
+                  "children": [
+                    {
+                      "totalText": "Use a [‍Anti-Magic Shell], [‍Icebound Fortitude], or [‍Lichborne] while affected by [‍Cultivated Poisons] since it hits like a truck.",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 48792,
+                          "title": "‍Icebound Fortitude"
+                        },
+                        {
+                          "id": 49039,
+                          "title": "‍Lichborne"
+                        },
+                        {
+                          "id": 461487,
+                          "title": "‍Cultivated Poisons"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "You can also [‍Death Strike] between ticks if necessary.",
+                          "spells": [
+                            {
+                              "id": 45470,
+                              "title": "‍Death Strike"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": "[‍Death's Advance] allows you to not go in to the blood that roots you and not get gripped, just be out of melee when the cast completes.",
+                      "spells": [
+                        {
+                          "id": 48265,
+                          "title": "‍Death's Advance"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Trash Tips",
+              "children": [
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:",
+                  "spells": [],
+                  "children": [
+                    {
+                      "totalText": "[‍Resonant Barrage] from Trilling Attendant.",
+                      "spells": [
+                        {
+                          "id": 434793,
+                          "title": "‍Resonant Barrage"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Horrifying Shrill] from Ixin.",
+                      "spells": [
+                        {
+                          "id": 434802,
+                          "title": "‍Horrifying Shrill"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Revolting Volley] from Bloodstained Webmage.",
+                      "spells": [
+                        {
+                          "id": 448248,
+                          "title": "‍Revolting Volley"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Venom Volley] from Blood Overseer.",
+                      "spells": [
+                        {
+                          "id": 433841,
+                          "title": "‍Venom Volley"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "totalText": "Pay extra attention to these casts:",
+                  "spells": [],
+                  "children": [
+                    {
+                      "totalText": "[‍Alarm Shrill] from Sentry Stagshell.",
+                      "spells": [
+                        {
+                          "id": 432967,
+                          "title": "‍Alarm Shrill"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "A really long cast that needs to get disrupted. ",
+                          "spells": [],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": "[‍Massive Slam] from Nerubian Hauler and Hulking Bloodguard.",
+                      "spells": [
+                        {
+                          "id": 434252,
+                          "title": "‍Massive Slam"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "A short stun that ramps in damage done per cast. ",
+                          "spells": [],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": "A really long cast that needs to get disrupted. ",
+                      "spells": [],
+                      "children": []
+                    },
+                    {
+                      "totalText": "A short stun that ramps in damage done per cast. ",
+                      "spells": [],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "dungeonTitle": "City of Threads",
+          "children": [
+            {
+              "title": "Boss Tips",
+              "children": [
+                {
+                  "title": "Orator Krix'vizk",
+                  "children": [
+                    {
+                      "totalText": "[Use your defensives during ‍Vociferous Indoctrination.]",
+                      "spells": [
+                        {
+                          "id": 434829,
+                          "title": "Use your defensives during ‍Vociferous Indoctrination."
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Make sure to be on top of the tank when the boss casts ‍[‍Vociferous Indoctrination] to not get cut off from the group.",
+                      "spells": [
+                        {
+                          "id": 434829,
+                          "title": "‍Vociferous Indoctrination"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "If you pre [‍Anti-Magic Shell] [‍Shadows of Doubt], it removes a set of balls to dodge.",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 448561,
+                          "title": "‍Shadows of Doubt"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Angle your camera so you can see the people with ‍[‍Shadows of Doubt] to be able to dodge their orbs easily when removed.",
+                      "spells": [
+                        {
+                          "id": 448561,
+                          "title": "‍Shadows of Doubt"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "If you are playing [‍Null Magic], your [‍Shadows of Doubt] expires before the rest of your group's debuffs.",
+                      "spells": [
+                        {
+                          "id": 126016,
+                          "title": "‍Null Magic"
+                        },
+                        {
+                          "id": 448561,
+                          "title": "‍Shadows of Doubt"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Fangs of the Queen",
+                  "children": [
+                    {
+                      "totalText": "Watch out for [‍Knife Throw]. Use [‍Icebound Fortitude] or [‍Lichborne] if you're targeted by this ability.",
+                      "spells": [
+                        {
+                          "id": 440107,
+                          "title": "‍Knife Throw"
+                        },
+                        {
+                          "id": 48792,
+                          "title": "‍Icebound Fortitude"
+                        },
+                        {
+                          "id": 49039,
+                          "title": "‍Lichborne"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "You can pre-immune [‍Ice Sickles] with [‍Anti-Magic Shell].",
+                      "spells": [
+                        {
+                          "id": 440238,
+                          "title": "‍Ice Sickles"
+                        },
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Your tank will get afflicted by [‍Freezing Blood], be close to the tank so he can drop his stacks quickly.",
+                      "spells": [
+                        {
+                          "id": 440470,
+                          "title": "‍Freezing Blood"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "The Coaglamation",
+                  "children": [
+                    {
+                      "totalText": "[‍Anti-Magic Shell] allows you to soak multiple orbs that spawn from [‍Viscous Darkness].",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 441216,
+                          "title": "‍Viscous Darkness"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[If you have taken any damage recently, use ‍Death Strike to heal off the absorb on yourself if you have nothing better to do.]",
+                      "spells": [
+                        {
+                          "id": 45470,
+                          "title": "If you have taken any damage recently, use ‍Death Strike to heal off the absorb on yourself if you have nothing better to do."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Izo, the Grand Splicer",
+                  "children": [
+                    {
+                      "totalText": "Use [‍Anti-Magic Shell] for every other cast of [‍Splice] and rotate between [‍Icebound Fortitude], [‍Lichborne], and using [‍Death Strike] to heal yourself for this since it's the highest damage event during this fight.",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 439341,
+                          "title": "‍Splice"
+                        },
+                        {
+                          "id": 48792,
+                          "title": "‍Icebound Fortitude"
+                        },
+                        {
+                          "id": 49039,
+                          "title": "‍Lichborne"
+                        },
+                        {
+                          "id": 45470,
+                          "title": "‍Death Strike"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Use [‍Anti-Magic Zone] on the overlap between [‍Splice] and [‍Tremor Slam].",
+                      "spells": [
+                        {
+                          "id": 96194,
+                          "title": "‍Anti-Magic Zone"
+                        },
+                        {
+                          "id": 439341,
+                          "title": "‍Splice"
+                        },
+                        {
+                          "id": 437700,
+                          "title": "‍Tremor Slam"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "[‍Tremor Slam] looks like a physical effect but is actually nature damage.",
+                          "spells": [
+                            {
+                              "id": 437700,
+                              "title": "‍Tremor Slam"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Trash Tips",
+              "children": [
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:Important abilities to interrupt in this dungeon are:",
+                  "spells": [],
+                  "children": [
+                    {
+                      "totalText": "[‍Web Bolt] from Sureki Silkbinder.",
+                      "spells": [
+                        {
+                          "id": 443427,
+                          "title": "‍Web Bolt"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Grimweave Blast] from Covert Webmancer.",
+                      "spells": [
+                        {
+                          "id": 442536,
+                          "title": "‍Grimweave Blast"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Mending Web] from Covert Webmancer.",
+                      "spells": [
+                        {
+                          "id": 452162,
+                          "title": "‍Mending Web"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Twist Thoughts] from Herald of Anurek.",
+                      "spells": [
+                        {
+                          "id": 443433,
+                          "title": "‍Twist Thoughts"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Void Wave] from Sureki Unnaturaler.",
+                      "spells": [
+                        {
+                          "id": 446086,
+                          "title": "‍Void Wave"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "dungeonTitle": "The Stonevault",
+          "children": [
+            {
+              "title": "Boss Tips",
+              "children": [
+                {
+                  "title": "E.D.N.A.",
+                  "children": [
+                    {
+                      "totalText": "Always stack in a line to spawn [‍Volatile Spikes] close together to ensure you can detonate them all with 1 [‍Refracting Beam].",
+                      "spells": [
+                        {
+                          "id": 424903,
+                          "title": "‍Volatile Spikes"
+                        },
+                        {
+                          "id": 424805,
+                          "title": "‍Refracting Beam"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "Use [‍Anti-Magic Shell] to pre-immune the stacks before they are cleared with [‍Refracting Beam].",
+                          "spells": [
+                            {
+                              "id": 48707,
+                              "title": "‍Anti-Magic Shell"
+                            },
+                            {
+                              "id": 424805,
+                              "title": "‍Refracting Beam"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": "Use [‍Icebound Fortitude], [‍Lichborne], or [‍Anti-Magic Zone] for [‍Earth Shatterer].",
+                      "spells": [
+                        {
+                          "id": 48792,
+                          "title": "‍Icebound Fortitude"
+                        },
+                        {
+                          "id": 49039,
+                          "title": "‍Lichborne"
+                        },
+                        {
+                          "id": 51052,
+                          "title": "‍Anti-Magic Zone"
+                        },
+                        {
+                          "id": 424879,
+                          "title": "‍Earth Shatterer"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Skarmorak",
+                  "children": [
+                    {
+                      "totalText": "Use [‍Anti-Magic Shell], [‍Icebound Fortitude], [‍Lichborne], or [‍Anti-Magic Zone] before [‍Unstable Crash] happens or while you have multiple stacks of  [‍Unstable Energy].",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 48792,
+                          "title": "‍Icebound Fortitude"
+                        },
+                        {
+                          "id": 49039,
+                          "title": "‍Lichborne"
+                        },
+                        {
+                          "id": 51052,
+                          "title": "‍Anti-Magic Zone"
+                        },
+                        {
+                          "id": 423538,
+                          "title": "‍Unstable Crash"
+                        },
+                        {
+                          "id": 423572,
+                          "title": "‍Unstable Energy"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "You can [‍Death Strike] between ticks of [‍Unstable Energy] as well.",
+                          "spells": [
+                            {
+                              "id": 45470,
+                              "title": "‍Death Strike"
+                            },
+                            {
+                              "id": 423572,
+                              "title": "‍Unstable Energy"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "title": "Master Machinists Brokk and Dorlita",
+                  "children": [
+                    {
+                      "totalText": "Put Speaker Brokk in focus, so you can use [‍Mind Freeze] easily.",
+                      "spells": [
+                        {
+                          "id": 47528,
+                          "title": "‍Mind Freeze"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "During [‍Exhaust Vents], 3 out of the 4 vents in the intercardinal directions are active. Look around and locate the safe vent, go there quickly to not get cut off by puddles on the ground. ",
+                      "spells": [
+                        {
+                          "id": 443954,
+                          "title": "‍Exhaust Vents"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "The [‍Magma Wave] from the cube will always traverse in the cardinal directions so as long as you are on a vent you are in a safespot.",
+                      "spells": [
+                        {
+                          "id": 463057,
+                          "title": "‍Magma Wave"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Use your defensives during [‍Exhaust Vents] and [‍Blazing Crescendo].",
+                      "spells": [
+                        {
+                          "id": 428820,
+                          "title": "‍Exhaust Vents"
+                        },
+                        {
+                          "id": 428508,
+                          "title": "‍Blazing Crescendo"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Killing both bosses at the same time is a must to avoid [‍Silenced Speaker].",
+                      "spells": [
+                        {
+                          "id": 439577,
+                          "title": "‍Silenced Speaker"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Void Speaker Eirich",
+                  "children": [
+                    {
+                      "totalText": "[‍Void Corruption] applies a debuff to you that you need to clear with ‍[‍Void Rift].",
+                      "spells": [
+                        {
+                          "id": 427329,
+                          "title": "‍Void Corruption"
+                        },
+                        {
+                          "id": 427315,
+                          "title": "‍Void Rift"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "Immune the application of it with ‍[‍Anti-Magic Shell] whenever possible.",
+                          "spells": [
+                            {
+                              "id": 48707,
+                              "title": "‍Anti-Magic Shell"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": "Use defensives on [‍Entropic Reckoning] to allow you to drop it on top of another zone.",
+                      "spells": [
+                        {
+                          "id": 427854,
+                          "title": "‍Entropic Reckoning"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Trash Tips",
+              "children": [
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:Important abilities to interrupt in this dungeon are:",
+                  "spells": [
+                    {
+                      "id": 429427,
+                      "title": "‍Earth Burst Totem"
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:Important abilities to interrupt in this dungeon are:",
+                  "spells": [
+                    {
+                      "id": 428879,
+                      "title": "‍Smash Rock"
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:Important abilities to interrupt in this dungeon are:",
+                  "spells": [],
+                  "children": [
+                    {
+                      "totalText": "[‍Howling Fear] from Ghastly Voidsoul.",
+                      "spells": [
+                        {
+                          "id": 449455,
+                          "title": "‍Howling Fear"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Censoring Gear] from Turned Speaker.",
+                      "spells": [
+                        {
+                          "id": 429545,
+                          "title": "‍Censoring Gear"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Piercing Wail] from Void Bound Howler.",
+                      "spells": [
+                        {
+                          "id": 445207,
+                          "title": "‍Piercing Wail"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Restoring Metals] from Forgebound Mender and Cursedforge Mender.",
+                      "spells": [
+                        {
+                          "id": 429109,
+                          "title": "‍Restoring Metals"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Arcing Void] from Cursedheart Invader.",
+                      "spells": [
+                        {
+                          "id": 426283,
+                          "title": "‍Arcing Void"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "dungeonTitle": "The Dawnbreaker",
+          "children": [
+            {
+              "title": "Boss Tips",
+              "children": [
+                {
+                  "title": "Speaker Shadowcrown",
+                  "children": [
+                    {
+                      "totalText": "[Consider using a defensive if you're affected by ‍Collapsing Night. ]",
+                      "spells": [
+                        {
+                          "id": 453140,
+                          "title": "Consider using a defensive if you're affected by ‍Collapsing Night. "
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "As a melee, unless you are playing with less than 2 ranged or people are dead, you should not get this.",
+                          "spells": [],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": " Interrupt[‍Shadow Bolt] whenever cast.",
+                      "spells": [
+                        {
+                          "id": 428086,
+                          "title": "‍Shadow Bolt"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Anub'ikkaj",
+                  "children": [
+                    {
+                      "totalText": "Use [‍Anti-Magic Shell], [‍Icebound Fortitude], [‍Lichborne], or [‍Anti-Magic Zone] for the [‍Dark Orb] and [‍Shadowy Decay].",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 48792,
+                          "title": "‍Icebound Fortitude"
+                        },
+                        {
+                          "id": 49039,
+                          "title": "‍Lichborne"
+                        },
+                        {
+                          "id": 51052,
+                          "title": "‍Anti-Magic Zone"
+                        },
+                        {
+                          "id": 426860,
+                          "title": "‍Dark Orb"
+                        },
+                        {
+                          "id": 426787,
+                          "title": "‍Shadowy Decay"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Rasha'nan",
+                  "children": [
+                    {
+                      "totalText": "[‍Erosive Spray] applies [‍Lingering Erosion] which can be immuned with [‍Anti-Magic Shell].",
+                      "spells": [
+                        {
+                          "id": 448888,
+                          "title": "‍Erosive Spray"
+                        },
+                        {
+                          "id": 440193,
+                          "title": "‍Lingering Erosion"
+                        },
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "If [‍Arathi Bomb] is about to explode, its damage can be immuned with [‍Anti-Magic Shell].",
+                      "spells": [
+                        {
+                          "id": 434655,
+                          "title": "‍Arathi Bomb"
+                        },
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Use [‍Death's Advance] to quickly break [‍Spinneret's Strands].",
+                      "spells": [
+                        {
+                          "id": 48265,
+                          "title": "‍Death's Advance"
+                        },
+                        {
+                          "id": 434089,
+                          "title": "‍Spinneret's Strands"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Trash Tips",
+              "children": [
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:",
+                  "spells": [],
+                  "children": [
+                    {
+                      "totalText": "[‍Night Bolt] from Nightfall Shadowmage.",
+                      "spells": [
+                        {
+                          "id": 431303,
+                          "title": "‍Night Bolt"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Ensnaring Shadows] from Nightfall Shadowmage.",
+                      "spells": [
+                        {
+                          "id": 431309,
+                          "title": "‍Ensnaring Shadows"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Tormenting Beam] from Nightfall Darkcaster.",
+                      "spells": [
+                        {
+                          "id": 431333,
+                          "title": "‍Tormenting Beam"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Umbral Barrier] from Nightfall Darkcaster.",
+                      "spells": [
+                        {
+                          "id": 432520,
+                          "title": "‍Umbral Barrier"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "dungeonTitle": "Mists of Tirna Scithe",
+          "children": [
+            {
+              "title": "Boss Tips",
+              "children": [
+                {
+                  "title": "Ingra Maloch",
+                  "children": [
+                    {
+                      "totalText": "Interrupt [‍Spirit Bolt] every time a non-tank player is targeted unless it is a warrior that has [‍Spell Reflect] ready.",
+                      "spells": [
+                        {
+                          "id": 323057,
+                          "title": "‍Spirit Bolt"
+                        },
+                        {
+                          "id": 69901,
+                          "title": "‍Spell Reflect"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Use [‍Anti-Magic Shell] or [‍Lichborne] on [‍Repulsive Visage] to immune the fear.",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 49039,
+                          "title": "‍Lichborne"
+                        },
+                        {
+                          "id": 328756,
+                          "title": "‍Repulsive Visage"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Try to line up your big cooldowns with Droman Oulfarran's [‍Droman's Wrath] to gain a huge DPS boost. This happens when Droman Oulfarran reaches 20% health.",
+                      "spells": [
+                        {
+                          "id": 323059,
+                          "title": "‍Droman's Wrath"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Mistcaller",
+                  "children": [
+                    {
+                      "totalText": "[‍Chains of Ice] the Illusionary Vulpins to prevent them from reaching their target.",
+                      "spells": [
+                        {
+                          "id": 45524,
+                          "title": "‍Chains of Ice"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "If you or your group has nothing for Illusionary Vulpins, you can [‍Death Grip] and [‍Anti-Magic Shell] it. Careful as it still does the aoe stun and will hit other people, but you will not get stunned!",
+                          "spells": [
+                            {
+                              "id": 49576,
+                              "title": "‍Death Grip"
+                            },
+                            {
+                              "id": 48707,
+                              "title": "‍Anti-Magic Shell"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": "Use defensives during the [‍Guessing Game] as it is the only time damage is dealt during this fight.",
+                      "spells": [
+                        {
+                          "id": 321471,
+                          "title": "‍Guessing Game"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Tred'ova",
+                  "children": [
+                    {
+                      "totalText": "The [‍Mind Link] is always cast on the tank, make sure you are on the opposite side of the boss and run away with [‍Death's Advance] to break it as fast as possible.",
+                      "spells": [
+                        {
+                          "id": 322614,
+                          "title": "‍Mind Link"
+                        },
+                        {
+                          "id": 48265,
+                          "title": "‍Death's Advance"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Immune the pull in of [‍Coalescing Poison] with [‍Death's Advance].",
+                      "spells": [
+                        {
+                          "id": 463602,
+                          "title": "‍Coalescing Poison"
+                        },
+                        {
+                          "id": 48265,
+                          "title": "‍Death's Advance"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Kill the Gormling Larva if you are not the [‍Marked Prey] target.",
+                      "spells": [
+                        {
+                          "id": 322563,
+                          "title": "‍Marked Prey"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Trash Tips",
+              "children": [
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:Important abilities to interrupt in this dungeon are:",
+                  "spells": [
+                    {
+                      "id": 324909,
+                      "title": "‍Furious Thrashing"
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:Important abilities to interrupt in this dungeon are:",
+                  "spells": [],
+                  "children": []
+                },
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:Important abilities to interrupt in this dungeon are:",
+                  "spells": [],
+                  "children": [
+                    {
+                      "totalText": "[‍Spirit Bolt] from Drust Harvester.",
+                      "spells": [
+                        {
+                          "id": 322767,
+                          "title": "‍Spirit Bolt"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Harvest Essence] from Drust Harvester.",
+                      "spells": [
+                        {
+                          "id": 322938,
+                          "title": "‍Harvest Essence"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Nourish the Forest] from Mistveil Tender.",
+                      "spells": [
+                        {
+                          "id": 324914,
+                          "title": "‍Nourish the Forest"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Bramblethorn Coat] from Mistveil Shaper.",
+                      "spells": [
+                        {
+                          "id": 324776,
+                          "title": "‍Bramblethorn Coat"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Stimulate Regeneration] from Spinemaw Staghorn.",
+                      "spells": [
+                        {
+                          "id": 340544,
+                          "title": "‍Stimulate Regeneration"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Stimulate Resistance] from Spinemaw Staghorn.",
+                      "spells": [
+                        {
+                          "id": 326046,
+                          "title": "‍Stimulate Resistance"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "dungeonTitle": "The Necrotic Wake",
+          "children": [
+            {
+              "title": "Boss Tips",
+              "children": [
+                {
+                  "title": "Blightbone",
+                  "children": [
+                    {
+                      "totalText": "Use [‍Anti-Magic Shell] on [‍Heaving Retch] or other defensives if you are targeted back to back.",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 320596,
+                          "title": "‍Heaving Retch"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Cleave down the Carrion Worms if you are not being targeted.",
+                      "spells": [],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Amarth, The Harvester",
+                  "children": [
+                    {
+                      "totalText": "Use both charges of [‍Death Grip] and [‍Abomination Limb] to bring in the Reanimated Crosbowman or Reanimated Mages.",
+                      "spells": [
+                        {
+                          "id": 49576,
+                          "title": "‍Death Grip"
+                        },
+                        {
+                          "id": 383269,
+                          "title": "‍Abomination Limb"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Interrupt [‍Necrotic Bolt] as much as possible.",
+                      "spells": [
+                        {
+                          "id": 320170,
+                          "title": "‍Necrotic Bolt"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Surgeon Stitchflesh",
+                  "children": [
+                    {
+                      "totalText": "Make sure you always have a charge of [‍Death's Advance] to easily get to the center of the room for the [‍Meat Hooks].",
+                      "spells": [
+                        {
+                          "id": 48265,
+                          "title": "‍Death's Advance"
+                        },
+                        {
+                          "id": 320208,
+                          "title": "‍Meat Hooks"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Nalthor the Rimebinder",
+                  "children": [
+                    {
+                      "totalText": "Evoker Priest ",
+                      "spells": [
+                        {
+                          "id": 320788,
+                          "title": "‍Frozen Binds"
+                        },
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Evoker Priest ",
+                      "spells": [
+                        {
+                          "id": 321368,
+                          "title": "‍Icebound Aegis"
+                        },
+                        {
+                          "id": 48792,
+                          "title": "‍Icebound Fortitude"
+                        },
+                        {
+                          "id": 49039,
+                          "title": "‍Lichborne"
+                        },
+                        {
+                          "id": 51052,
+                          "title": "‍Anti-Magic Zone"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Evoker Priest ",
+                      "spells": [
+                        {
+                          "id": 328181,
+                          "title": "‍Frigid Cold"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Evoker Priest ",
+                      "spells": [
+                        {
+                          "id": 321894,
+                          "title": "‍Dark Exile"
+                        },
+                        {
+                          "id": 370665,
+                          "title": "‍Rescued"
+                        },
+                        {
+                          "id": 73325,
+                          "title": "‍Leap of Faith"
+                        },
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "To know when to [‍Anti-Magic Shell], the boss targets you as he is casting. It is a 1 second cast so you need to be quick but this is an extremely high damage gain if you are able to be grabbed out of the animation.",
+                          "spells": [
+                            {
+                              "id": 48707,
+                              "title": "‍Anti-Magic Shell"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Trash Tips",
+              "children": [
+                {
+                  "totalText": "You can stop the [‍Drain Fluids] from Corpse Harvester and Corpse Collectors with ‍[‍Death Grip] and other cc's. ",
+                  "spells": [
+                    {
+                      "id": 334748,
+                      "title": "‍Drain Fluids"
+                    },
+                    {
+                      "id": 49576,
+                      "title": "‍Death Grip"
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "totalText": "Be wary of the Skeletal Marauder's ‍[‍Gruesome Cleave] as it is a fast frontal.",
+                  "spells": [
+                    {
+                      "id": 324323,
+                      "title": "‍Gruesome Cleave"
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "totalText": "It is very important to aim the ‍[‍Throw Cleaver] from the Flesh Crafter's on the high health targets in the pack to kill them faster.",
+                  "spells": [
+                    {
+                      "id": 323496,
+                      "title": "‍Throw Cleaver"
+                    }
+                  ],
+                  "children": []
+                },
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:Important abilities to interrupt in this dungeon are:",
+                  "spells": [],
+                  "children": [
+                    {
+                      "totalText": "[‍Drain Fluids] from Corpse Harvester and Corpse Collector.",
+                      "spells": [
+                        {
+                          "id": 334748,
+                          "title": "‍Drain Fluids"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Necrotic Bolt] from Zolramus Sorceror & Zolarmus Necromancer.",
+                      "spells": [
+                        {
+                          "id": 320462,
+                          "title": "‍Necrotic Bolt"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Rasping Scream] from Skeletal Marauder.",
+                      "spells": [
+                        {
+                          "id": 324293,
+                          "title": "‍Rasping Scream"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Frostbolt Volley] from Reanimted Mage.",
+                      "spells": [
+                        {
+                          "id": 328667,
+                          "title": "‍Frostbolt Volley"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Goresplatter] from Corpse Collector.",
+                      "spells": [
+                        {
+                          "id": 338353,
+                          "title": "‍Goresplatter"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Repair Flesh] from Flesh Crafter.",
+                      "spells": [
+                        {
+                          "id": 327127,
+                          "title": "‍Repair Flesh"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "dungeonTitle": "Siege of Boralus",
+          "children": [
+            {
+              "title": "Boss Tips",
+              "children": [
+                {
+                  "title": "Chopper Redhook",
+                  "children": [
+                    {
+                      "totalText": "Line up your cooldowns with the boss walking over Bombs which afflict him with [‍Heavy Ordnance].",
+                      "spells": [
+                        {
+                          "id": 280933,
+                          "title": "‍Heavy Ordnance"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Irontide Powdershots are standing still in range and the majority of the time are casting ‍[‍Molten Slug], use [‍Death Grip] or [‍Abomination Limb] to bring them in.",
+                      "spells": [
+                        {
+                          "id": 257641,
+                          "title": "‍Molten Slug"
+                        },
+                        {
+                          "id": 49576,
+                          "title": "‍Death Grip"
+                        },
+                        {
+                          "id": 383269,
+                          "title": "‍Abomination Limb"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Use [‍Anti-Magic Shell] if you are targeted by [‍Molten Slug].",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 257641,
+                          "title": "‍Molten Slug"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Always watch where the tank is facing the Irontide Cleavers to dodge the ‍[‍Heavy Slash] especially when kiting the boss.",
+                      "spells": [
+                        {
+                          "id": 257292,
+                          "title": "‍Heavy Slash"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Dread Captain Lockwood",
+                  "children": [
+                    {
+                      "totalText": "You can pre [‍Anti-Magic Shell] [‍Mass Bombardment] to not drop any [‍Sighted Artillery].",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 463185,
+                          "title": "‍Mass Bombardment"
+                        },
+                        {
+                          "id": 272426,
+                          "title": "‍Sighted Artillery"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Focus down the Ashvane Cannoneer during the phase change to quickly use [‍Unstable Ordnance] to get the boss down from the ship.",
+                      "spells": [
+                        {
+                          "id": 268976,
+                          "title": "‍Unstable Ordnance"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Always be standing behind Dread Captain Lockwood as ‍[‍Clear the Deck] is a very fast frontal cone.",
+                      "spells": [
+                        {
+                          "id": 269029,
+                          "title": "‍Clear the Deck"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "The Ashvane Canoneer casts [‍Broadside] which is another frontal cone to dodge.",
+                      "spells": [
+                        {
+                          "id": 268260,
+                          "title": "‍Broadside"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Hadal Darkfathom",
+                  "children": [
+                    {
+                      "totalText": "Always use a charge of [‍Death's Advance] when [‍Tidal Surge] happens to dodge the waves and be in a decent position for [‍Break Water].",
+                      "spells": [
+                        {
+                          "id": 48265,
+                          "title": "‍Death's Advance"
+                        },
+                        {
+                          "id": 276068,
+                          "title": "‍Tidal Surge"
+                        },
+                        {
+                          "id": 257882,
+                          "title": "‍Break Water"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Use [‍Anti-Magic Shell] on every other [‍Break Water] and rotate a defensive for the other one.",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 257882,
+                          "title": "‍Break Water"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Viq'Goth",
+                  "children": [
+                    {
+                      "totalText": "You can pre ‍[‍Anti-Magic Shell] on [‍Putrid Waters] but it is never a 100% immune since only 2 people get affected by this debuff.",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 274991,
+                          "title": "‍Putrid Waters"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "If you are standing in a different position than anyone else you can see the animation come from the boss towards you and use use ‍[‍Anti-Magic Shell] well before it hits you but it is quite fast and affects you from farther away than you expect.",
+                          "spells": [
+                            {
+                              "id": 48707,
+                              "title": "‍Anti-Magic Shell"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Trash Tips",
+              "children": [
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:Important abilities to interrupt in this dungeon are:",
+                  "spells": [],
+                  "children": [
+                    {
+                      "totalText": "[‍Brackish Bolt] from Irontide Waveshaper.",
+                      "spells": [
+                        {
+                          "id": 257063,
+                          "title": "‍Brackish Bolt"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Watertight Shell] from Irontide Waveshaper.",
+                      "spells": [
+                        {
+                          "id": 256957,
+                          "title": "‍Watertight Shell"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Water Bolt] from Bilge Rat Tempest.",
+                      "spells": [
+                        {
+                          "id": 272581,
+                          "title": "‍Water Bolt"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Choking Waters] from Bilge Rat Tempest.",
+                      "spells": [
+                        {
+                          "id": 272571,
+                          "title": "‍Choking Waters"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Bolstering Shout] from Ashvane Commander.",
+                      "spells": [
+                        {
+                          "id": 275826,
+                          "title": "‍Bolstering Shout"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "dungeonTitle": "Grim Batol",
+          "children": [
+            {
+              "title": "Boss Tips",
+              "children": [
+                {
+                  "title": "General Umbriss",
+                  "children": [
+                    {
+                      "totalText": "[‍Death's Advance] is useful for helping you dodge [‍Shadowflame Breath].",
+                      "spells": [
+                        {
+                          "id": 48265,
+                          "title": "‍Death's Advance"
+                        },
+                        {
+                          "id": 448566,
+                          "title": "‍Shadowflame Breath"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Rotate [‍Icebound Fortitude] and [‍Lichborne] on [‍Commanding Roar].",
+                      "spells": [
+                        {
+                          "id": 48792,
+                          "title": "‍Icebound Fortitude"
+                        },
+                        {
+                          "id": 49039,
+                          "title": "‍Lichborne"
+                        },
+                        {
+                          "id": 448847,
+                          "title": "‍Commanding Roar"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Forgemaster Throngus",
+                  "children": [
+                    {
+                      "totalText": "Use [‍Anti-Magic Shell] during [‍Blistering Heat].",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 452008,
+                          "title": "‍Blistering Heat"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Bait [‍Fiery Cleave] close towards the edge to save as much space as possible.",
+                      "spells": [
+                        {
+                          "id": 447395,
+                          "title": "‍Fiery Cleave"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Drahga Shadowburner",
+                  "children": [
+                    {
+                      "totalText": "Use [‍Death's Advance] and [‍Anti-Magic Shell] for [‍Twilight Buffet] to immune the knockback and prevent damage.",
+                      "spells": [
+                        {
+                          "id": 48265,
+                          "title": "‍Death's Advance"
+                        },
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 456751,
+                          "title": "‍Twilight Buffet"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Help slow the Shadowflame Spirits with [‍Chains of Ice], especially once they are under the boss.",
+                      "spells": [
+                        {
+                          "id": 45524,
+                          "title": "‍Chains of Ice"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "You can [‍Death Grip] the Shadowflame Spirits if they are not on you to help with kiting, this does not cause them to refixate.",
+                      "spells": [
+                        {
+                          "id": 49576,
+                          "title": "‍Death Grip"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "title": "Erudax, the Duke of Below",
+                  "children": [
+                    {
+                      "totalText": "[[‍Anti-Magic Shell]] allows you to clear multiple Void Tendrils. Careful as this does damage still so you need to watch the amount of ‍Anti-Magic Shell absorb you have remaining!",
+                      "spells": [
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        },
+                        {
+                          "id": 48707,
+                          "title": "‍Anti-Magic Shell"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Icebound Fortitude] also allows you to clear Void Tendrils but is not up for every wave.",
+                      "spells": [
+                        {
+                          "id": 48792,
+                          "title": "‍Icebound Fortitude"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[Rotate ‍Lichborne and ‍Anti-Magic Zone for ‍Abyssal Corruption.]",
+                      "spells": [
+                        {
+                          "id": 49039,
+                          "title": "Rotate ‍Lichborne and ‍Anti-Magic Zone for ‍Abyssal Corruption."
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "Trash Tips",
+              "children": [
+                {
+                  "totalText": "Important abilities to interrupt in this dungeon are:Important abilities to interrupt in this dungeon are:",
+                  "spells": [],
+                  "children": [
+                    {
+                      "totalText": "[‍Earth Bolt] from Twilight Earthcaller.",
+                      "spells": [
+                        {
+                          "id": 451261,
+                          "title": "‍Earth Bolt"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Mass Tremor] from Twilight Earthcaller.",
+                      "spells": [
+                        {
+                          "id": 451871,
+                          "title": "‍Mass Tremor"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Shadowflame Bolt] from Twilight Beguiler.",
+                      "spells": [
+                        {
+                          "id": 76369,
+                          "title": "‍Shadowflame Bolt"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Sear Mind] from Twilight Beguiler.",
+                      "spells": [
+                        {
+                          "id": 76711,
+                          "title": "‍Sear Mind"
+                        }
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "totalText": "Pay extra attention to these casts:",
+                  "spells": [],
+                  "children": [
+                    {
+                      "totalText": "[‍Umbral Wind] from Twilight Destroyer",
+                      "spells": [
+                        {
+                          "id": 451939,
+                          "title": "‍Umbral Wind"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "You can LoS this cast.",
+                          "spells": [],
+                          "children": []
+                        },
+                        {
+                          "totalText": "If you are not hiding from it, make sure you use [‍Death Charge] or you are not facing towards the edge to not fall down.",
+                          "spells": [
+                            {
+                              "id": 444347,
+                              "title": "‍Death Charge"
+                            }
+                          ],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": "You can LoS this cast.",
+                      "spells": [],
+                      "children": []
+                    },
+                    {
+                      "totalText": "If you are not hiding from it, make sure you use [‍Death Charge] or you are not facing towards the edge to not fall down.",
+                      "spells": [
+                        {
+                          "id": 444347,
+                          "title": "‍Death Charge"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Reckless Tactic] from Twilight Overseer",
+                      "spells": [
+                        {
+                          "id": 451379,
+                          "title": "‍Reckless Tactic"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Molten Wake] from Molten Giant",
+                      "spells": [
+                        {
+                          "id": 451965,
+                          "title": "‍Molten Wake"
+                        }
+                      ],
+                      "children": []
+                    },
+                    {
+                      "totalText": "[‍Ascension] and [‍Dark Eruption] from Twilight Lavabender",
+                      "spells": [
+                        {
+                          "id": 451387,
+                          "title": "‍Ascension"
+                        },
+                        {
+                          "id": 456713,
+                          "title": "‍Dark Eruption"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "‍Ascension triggers at 50% HP and starts pulsing ‍Scorching Heat group damage, make sure to focus it as it does an immense amount of damage.",
+                          "spells": [],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": "[‍Corrupt] and [‍Mind Piercer] from Faceless Corruptor",
+                      "spells": [
+                        {
+                          "id": 451395,
+                          "title": "‍Corrupt"
+                        },
+                        {
+                          "id": 451391,
+                          "title": "‍Mind Piercer"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "totalText": "Be aware especially when you have stacks of ‍Shadow Wound from Mutated Hatchlings.",
+                          "spells": [],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "totalText": "‍Ascension triggers at 50% HP and starts pulsing ‍Scorching Heat group damage, make sure to focus it as it does an immense amount of damage.",
+                      "spells": [],
+                      "children": []
+                    },
+                    {
+                      "totalText": "Be aware especially when you have stacks of ‍Shadow Wound from Mutated Hatchlings.",
+                      "spells": [],
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

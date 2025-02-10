@@ -8,40 +8,69 @@ import { fileURLToPath } from 'url';
 import '../util/set-env.js';
 import { translate } from '../api/index.js';
 
-async function crawler() {
+const specs = {
+  'death-knight': ['blood', 'frost', 'unholy'],
+  'demon-hunter': ['havoc', 'vengeance'],
+  druid: ['balance', 'feral', 'guardian', 'restoration'],
+  mage: ['arcane', 'fire', 'frost'],
+  monk: ['brewmaster', 'mistweaver', 'windwalker'],
+  paladin: ['holy', 'protection', 'retribution'],
+  rogue: ['assassination', 'outlaw', 'subtlety'],
+  shaman: ['elemental', 'enhancement', 'restoration'],
+  warlock: ['affliction', 'demonology', 'destruction'],
+  warrior: ['arms', 'fury', 'protection'],
+  evoker: ['devastation', 'preservation', 'augmentation'],
+  hunter: ['beast-mastery', 'marksmanship', 'survival'],
+  priest: ['discipline', 'holy', 'shadow'],
+};
+
+async function collectBySpec(roleClass, classSpec) {
   let browser;
   try {
     let html;
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
 
     // 开发调测时，读取本地的静态文件
     if (process.env.IS_DEV) {
-      const __filename = fileURLToPath(import.meta.url);
-      const __dirname = path.dirname(__filename);
-      html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf-8');
+      const staticFilePath = process.env.DEV_FILE
+        ? `./cache/${process.env.DEV_FILE}.html`
+        : './cache/template.html';
+      html = fs.readFileSync(path.resolve(__dirname, staticFilePath), 'utf-8');
     } else {
-      browser = await puppeteer.launch({ headless: true });
-      const page = await browser.newPage();
+      const staticFilePath = `./cache/${classSpec}-${roleClass}.html`;
+      if (fs.existsSync(path.resolve(__dirname, staticFilePath))) {
+        html = fs.readFileSync(
+          path.resolve(__dirname, staticFilePath),
+          'utf-8'
+        );
+      } else {
+        browser = await puppeteer.launch({ headless: true });
+        const page = await browser.newPage();
 
-      //  勿使用代理
-      await page.goto(
-        'https://maxroll.gg/wow/class-guides/augmentation-evoker-mythic-plus-guide',
-        {
-          timeout: 120000,
-        }
-      );
+        //  勿使用代理
+        await page.goto(
+          `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-mythic-plus-guide`,
+          {
+            timeout: 120000,
+          }
+        );
 
-      html = await page.content();
+        html = await page.content();
+        fs.writeFileSync(
+          path.resolve(__dirname, staticFilePath),
+          html,
+          'utf-8'
+        );
+      }
     }
 
     const $ = cheerio.load(html);
 
-    const priority = await getStatsPriority($);
+    const stats = await getStatsPriority($);
     const ratings = getSpecRating($);
     const dungeonTips = await getDungeonTips($);
-
-    console.log('priority', priority);
-    console.log('ratings', ratings);
-    console.log('dungeonTips', dungeonTips);
+    return { roleClass, classSpec, stats, ratings, dungeonTips };
   } catch (error) {
     console.error(error);
   } finally {
@@ -49,13 +78,34 @@ async function crawler() {
   }
 }
 
+async function crawler() {
+  const crawlerPromises = Object.entries(specs).reduce(
+    (pre, [roleClass, classSpecs]) => {
+      pre.push(...classSpecs.map((spec) => collectBySpec(roleClass, spec)));
+      return pre;
+    },
+    []
+  );
+
+  const data = await Promise.allSettled(crawlerPromises);
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  fs.writeFileSync(
+    path.resolve(__dirname, './output/output.json'),
+    JSON.stringify(data, null, 2),
+    'utf-8'
+  );
+  console.log(data);
+}
+
 async function getStatsPriority(context) {
   const $ = context;
-  // 0:= | 1: > | 2: >>
+  // 0:= | 1: > | 2: >> | 10: >=
   const ICON_MAP = {
     'M8 6l16 10l-16 10': 1,
-    'M2 6l16 10l-16 10 M14 6l16 10l-16 10': 2,
     'M8 12l16 0M8 20l16 0': 0,
+    'M8 6l16 10l-16 10 M8 31l16 0': 10,
+    'M2 6l16 10l-16 10 M14 6l16 10l-16 10': 2,
   };
   const STAT_MAP = {
     intellect: '智力',
@@ -239,10 +289,9 @@ async function getDungeonTips(context) {
               data[dungeonIndex].children.at(-1).children.at(-1).children =
                 mapDescWithIcon($, element);
             } else {
-              data[dungeonIndex].children.at(-1).children = mapDescWithIcon(
-                $,
-                element
-              );
+              data[dungeonIndex].children
+                .at(-1)
+                .children.push(...mapDescWithIcon($, element));
             }
           }
         });
@@ -256,24 +305,16 @@ function mapDescWithIcon(context, element) {
   $(element)
     .children()
     .each((index, desc) => {
-      let totalText = $(desc).text();
-      const spellTags = [];
-      const enemySpellTags = [];
+      const spells = [];
       let liChildren = [];
       $(desc)
         .children('span')
         .each((index, element) => {
-          if ($(element).find('mark').length) {
-            totalText = $(element).find('mark').text();
-          } else if ($(element).find('span[data-wow-id]').length) {
-            totalText = totalText.replace(
-              $(element).text(),
-              `*${$(element).text()}*`
-            );
+          if ($(element).find('span[data-wow-id]').length) {
             const id = Number(
               $(element).find('span[data-wow-id]').attr('data-wow-id')
             );
-            spellTags.push({
+            spells.push({
               id: isNaN(id) ? null : id,
               title: $(element).text(),
             });
@@ -282,10 +323,24 @@ function mapDescWithIcon(context, element) {
       if ($(desc).find('ul').length) {
         liChildren = mapDescWithIcon($, $(desc).find('ul'));
       }
+
+      // 获取基础的文本字段
+      let totalText;
+      if ($(element).find('mark').length) {
+        totalText = $(element).find('mark').text();
+      } else {
+        $(desc).find('ul').remove();
+        totalText = $(desc).text();
+      }
+      if (spells.length) {
+        spells.forEach((spell) => {
+          totalText = totalText.replace(spell.title, `[${spell.title}]`);
+        });
+      }
+
       children.push({
         totalText,
-        spellTags,
-        enemySpellTags,
+        spells,
         children: liChildren,
       });
     });
