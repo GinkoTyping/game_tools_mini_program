@@ -28,9 +28,7 @@ let totalCount = 0;
 let currentCount = 0;
 
 async function collectBySpec(roleClass, classSpec) {
-  console.log(
-    `正在获取${classSpec} ${roleClass}的数据...`
-  );
+  console.log(`正在获取${classSpec} ${roleClass}的数据...`);
   let browser;
   try {
     let html;
@@ -103,15 +101,36 @@ async function crawler() {
   );
 
   const data = await Promise.allSettled(crawlerPromises);
+
+  saveFile(data.map((item) => item.value));
+}
+
+function saveFile(data, isOverrideAll = false) {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
+  const filePath = path.resolve(__dirname, './output/output.json');
+  let dataToWrite;
+  if (!fs.existsSync(filePath) || isOverrideAll) {
+    dataToWrite = data;
+  } else {
+    dataToWrite = JSON.parse(fs.readFileSync(filePath));
+    data.forEach((item) => {
+      let foundItemIndex = dataToWrite.findIndex(
+        (existedItem) =>
+          existedItem.roleClass === item.roleClass &&
+          existedItem.classSpec === item.classSpec
+      );
+      if (foundItemIndex === -1) {
+        dataToWrite.push(item);
+      } else {
+        dataToWrite.splice(foundItemIndex, 1, item);
+      }
+    });
+  }
+
   fs.writeFileSync(
     path.resolve(__dirname, './output/output.json'),
-    JSON.stringify(
-      data.map((item) => item.value),
-      null,
-      2
-    ),
+    JSON.stringify(dataToWrite, null, 2),
     'utf-8'
   );
 }
