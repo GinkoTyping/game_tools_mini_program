@@ -6,6 +6,7 @@
   },
   "devDependencies": {
     "cheerio": "^1.0.0",
+    "p-limit": "^6.2.0",
     "puppeteer": "^24.2.0"
   }
 }

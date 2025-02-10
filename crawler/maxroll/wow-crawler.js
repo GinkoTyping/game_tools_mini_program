@@ -1,5 +1,6 @@
 import * as cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
+import pLimit from 'p-limit';
 
 import fs from 'fs';
 import path from 'path';
@@ -78,10 +79,14 @@ async function collectBySpec(roleClass, classSpec) {
   }
 }
 
+// 控制并发数量
+const limit = pLimit(5);
 async function crawler() {
   const crawlerPromises = Object.entries(specs).reduce(
     (pre, [roleClass, classSpecs]) => {
-      pre.push(...classSpecs.map((spec) => collectBySpec(roleClass, spec)));
+      pre.push(
+        ...classSpecs.map((spec) => limit(() => collectBySpec(roleClass, spec)))
+      );
       return pre;
     },
     []
