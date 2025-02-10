@@ -74,6 +74,12 @@ async function collectBySpec(roleClass, classSpec) {
     const stats = await getStatsPriority($);
     const ratings = getSpecRating($);
     const dungeonTips = await getDungeonTips($);
+
+    // 概率性出现 属性优先级数据获取失败
+    if (!stats[0]?.stats.length) {
+      console.log(`${classSpec} ${roleClass} 的属性优先级数据获取失败。`);
+    }
+
     return { roleClass, classSpec, stats, ratings, dungeonTips };
   } catch (error) {
     console.error(error);
