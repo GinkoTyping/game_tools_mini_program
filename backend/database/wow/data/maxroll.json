@@ -55,15 +55,15 @@
                 "title": "Avanoxx",
                 "children": [
                   {
-                    "totalText": "[‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into ]Starved Crawler[, who then cast ‍Hunger and fixate on the other players in your group.]",
+                    "totalText": "[‍Alerting Shrill] does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into Starved Crawler, who then cast [‍Hunger] and fixate on the other players in your group.",
                     "spells": [
                       {
                         "id": 438476,
-                        "title": "‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into "
+                        "title": "‍Alerting Shrill"
                       },
                       {
                         "id": 438490,
-                        "title": ", who then cast ‍Hunger and fixate on the other players in your group."
+                        "title": "‍Hunger"
                       }
                     ],
                     "children": [
@@ -4028,11 +4028,11 @@
                 "title": "Orator Krix'vizk",
                 "children": [
                   {
-                    "totalText": "[Use your defensives during ‍Vociferous Indoctrination.]",
+                    "totalText": "Use your defensives during [‍Vociferous Indoctrination].",
                     "spells": [
                       {
                         "id": 434829,
-                        "title": "Use your defensives during ‍Vociferous Indoctrination."
+                        "title": "‍Vociferous Indoctrination"
                       }
                     ],
                     "children": []
@@ -4152,11 +4152,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "[If you have taken any damage recently, use ‍Death Strike to heal off the absorb on yourself if you have nothing better to do.]",
+                    "totalText": "If you have taken any damage recently, use [‍Death Strike] to heal off the absorb on yourself if you have nothing better to do.",
                     "spells": [
                       {
                         "id": 45470,
-                        "title": "If you have taken any damage recently, use ‍Death Strike to heal off the absorb on yourself if you have nothing better to do."
+                        "title": "‍Death Strike"
                       }
                     ],
                     "children": []
@@ -4594,11 +4594,11 @@
                 "title": "Speaker Shadowcrown",
                 "children": [
                   {
-                    "totalText": "[Consider using a defensive if you're affected by ‍Collapsing Night. ]",
+                    "totalText": "Consider using a defensive if you're affected by [‍Collapsing Night]. ",
                     "spells": [
                       {
                         "id": 453140,
-                        "title": "Consider using a defensive if you're affected by ‍Collapsing Night. "
+                        "title": "‍Collapsing Night"
                       }
                     ],
                     "children": [
@@ -5650,11 +5650,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "[Rotate ‍Lichborne and ‍Anti-Magic Zone for ‍Abyssal Corruption.]",
+                    "totalText": "Rotate ‍Lichborne and ‍Anti-Magic Zone for ‍Abyssal Corruption.",
                     "spells": [
                       {
                         "id": 49039,
-                        "title": "Rotate ‍Lichborne and ‍Anti-Magic Zone for ‍Abyssal Corruption."
+                        "title": "‍Lichborne‍Anti-Magic Zone‍Abyssal Corruption"
                       }
                     ],
                     "children": []
@@ -6180,11 +6180,11 @@
                 "title": "Orator Krix'vizk",
                 "children": [
                   {
-                    "totalText": "[Use your defensives during ‍Vociferous Indoctrination.]",
+                    "totalText": "Use your defensives during [‍Vociferous Indoctrination].",
                     "spells": [
                       {
                         "id": 434829,
-                        "title": "Use your defensives during ‍Vociferous Indoctrination."
+                        "title": "‍Vociferous Indoctrination"
                       }
                     ],
                     "children": []
@@ -6304,11 +6304,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "[If you have taken any damage recently, use ‍Death Strike to heal off the absorb on yourself if you have nothing better to do.]",
+                    "totalText": "If you have taken any damage recently, use [‍Death Strike] to heal off the absorb on yourself if you have nothing better to do.",
                     "spells": [
                       {
                         "id": 45470,
-                        "title": "If you have taken any damage recently, use ‍Death Strike to heal off the absorb on yourself if you have nothing better to do."
+                        "title": "‍Death Strike"
                       }
                     ],
                     "children": []
@@ -6746,11 +6746,11 @@
                 "title": "Speaker Shadowcrown",
                 "children": [
                   {
-                    "totalText": "[Consider using a defensive if you're affected by ‍Collapsing Night. ]",
+                    "totalText": "Consider using a defensive if you're affected by [‍Collapsing Night]. ",
                     "spells": [
                       {
                         "id": 453140,
-                        "title": "Consider using a defensive if you're affected by ‍Collapsing Night. "
+                        "title": "‍Collapsing Night"
                       }
                     ],
                     "children": [
@@ -7802,11 +7802,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "[Rotate ‍Lichborne and ‍Anti-Magic Zone for ‍Abyssal Corruption.]",
+                    "totalText": "Rotate ‍Lichborne and ‍Anti-Magic Zone for ‍Abyssal Corruption.",
                     "spells": [
                       {
                         "id": 49039,
-                        "title": "Rotate ‍Lichborne and ‍Anti-Magic Zone for ‍Abyssal Corruption."
+                        "title": "‍Lichborne‍Anti-Magic Zone‍Abyssal Corruption"
                       }
                     ],
                     "children": []
@@ -9845,15 +9845,15 @@
                 "title": "Avanoxx",
                 "children": [
                   {
-                    "totalText": "[‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into ]Starved Crawler[, who then cast ‍Hunger and fixate on the other players in your group.]",
+                    "totalText": "[‍Alerting Shrill] does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into Starved Crawler, who then cast [‍Hunger] and fixate on the other players in your group.",
                     "spells": [
                       {
                         "id": 438476,
-                        "title": "‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into "
+                        "title": "‍Alerting Shrill"
                       },
                       {
                         "id": 438490,
-                        "title": ", who then cast ‍Hunger and fixate on the other players in your group."
+                        "title": "‍Hunger"
                       }
                     ],
                     "children": [
@@ -15293,11 +15293,11 @@
                 "title": "Izo, the Grand Splicer",
                 "children": [
                   {
-                    "totalText": "[Use your defensives for ‍Splice since it's the highest damage event during this fight.]",
+                    "totalText": "Use your defensives for [‍Splice] since it's the highest damage event during this fight.",
                     "spells": [
                       {
                         "id": 439341,
-                        "title": "Use your defensives for ‍Splice since it's the highest damage event during this fight."
+                        "title": "‍Splice"
                       }
                     ],
                     "children": []
@@ -15513,11 +15513,11 @@
                 "title": "Master Machinists Brokk and Dorlita",
                 "children": [
                   {
-                    "totalText": "[Use your defensive during ‍Exhaust Vents and ‍Blazing Crescendo.]",
+                    "totalText": "Use your defensive during ‍Exhaust Vents and ‍Blazing Crescendo.",
                     "spells": [
                       {
                         "id": 428820,
-                        "title": "Use your defensive during ‍Exhaust Vents and ‍Blazing Crescendo."
+                        "title": "‍Exhaust Vents‍Blazing Crescendo"
                       }
                     ],
                     "children": []
@@ -15528,11 +15528,11 @@
                 "title": "Void Speaker Eirich",
                 "children": [
                   {
-                    "totalText": "[Use your defensive on ‍Entropic Reckoning if you still have ‍Void Corruption.]",
+                    "totalText": "Use your defensive on ‍Entropic Reckoning if you still have ‍Void Corruption.",
                     "spells": [
                       {
                         "id": 427854,
-                        "title": "Use your defensive on ‍Entropic Reckoning if you still have ‍Void Corruption."
+                        "title": "‍Entropic Reckoning‍Void Corruption"
                       }
                     ],
                     "children": []
@@ -15663,11 +15663,11 @@
                 "title": "Speaker Shadowcrown",
                 "children": [
                   {
-                    "totalText": "[You can use ‍Renewal] when [‍Burning Shadows] get dispelled and apply [‍Shadow Shroud].",
+                    "totalText": "You can use [‍Renewal] when [‍Burning Shadows] get dispelled and apply [‍Shadow Shroud].",
                     "spells": [
                       {
                         "id": 108238,
-                        "title": "You can use ‍Renewal"
+                        "title": "‍Renewal"
                       },
                       {
                         "id": 426734,
@@ -15686,11 +15686,11 @@
                 "title": "Anub'ikkaj",
                 "children": [
                   {
-                    "totalText": "[Make sure to AoE down ‍Animate Shadows adds quickly.]",
+                    "totalText": "Make sure to AoE down [‍Animate Shadows] adds quickly.",
                     "spells": [
                       {
                         "id": 452127,
-                        "title": "Make sure to AoE down ‍Animate Shadows adds quickly."
+                        "title": "‍Animate Shadows"
                       }
                     ],
                     "children": []
@@ -16646,15 +16646,15 @@
                 "title": "Avanoxx",
                 "children": [
                   {
-                    "totalText": "[‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into ]Starved Crawler[, who then cast ‍Hunger and fixate on the other players in your group.]",
+                    "totalText": "[‍Alerting Shrill] does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into Starved Crawler, who then cast [‍Hunger] and fixate on the other players in your group.",
                     "spells": [
                       {
                         "id": 438476,
-                        "title": "‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into "
+                        "title": "‍Alerting Shrill"
                       },
                       {
                         "id": 438490,
-                        "title": ", who then cast ‍Hunger and fixate on the other players in your group."
+                        "title": "‍Hunger"
                       }
                     ],
                     "children": [
@@ -21314,40 +21314,40 @@
                 "spells": [],
                 "children": [
                   {
-                    "totalText": "[Ixkreten the Unbreakable - ‍Terrifying Slam and ‍Abyssal Rot]",
+                    "totalText": "Ixkreten the Unbreakable - ‍Terrifying Slam and ‍Abyssal Rot",
                     "spells": [
                       {
                         "id": 451117,
-                        "title": "Ixkreten the Unbreakable - ‍Terrifying Slam and ‍Abyssal Rot"
+                        "title": "‍Terrifying Slam‍Abyssal Rot"
                       }
                     ],
                     "children": []
                   },
                   {
-                    "totalText": "[Nightfall Dark Architect - ‍Usher Reinforcements]",
+                    "totalText": "Nightfall Dark Architect - [‍Usher Reinforcements]",
                     "spells": [
                       {
                         "id": 446615,
-                        "title": "Nightfall Dark Architect - ‍Usher Reinforcements"
+                        "title": "‍Usher Reinforcements"
                       }
                     ],
                     "children": []
                   },
                   {
-                    "totalText": "[Deathscreamer Iken'tak - ‍Dark Orb and ‍Abyssal Rot]",
+                    "totalText": "Deathscreamer Iken'tak - ‍Dark Orb and ‍Abyssal Rot",
                     "spells": [
                       {
                         "id": 450854,
-                        "title": "Deathscreamer Iken'tak - ‍Dark Orb and ‍Abyssal Rot"
+                        "title": "‍Dark Orb‍Abyssal Rot"
                       }
                     ],
                     "children": [
                       {
-                        "totalText": "[Watch out for players with ‍Abyssal Rot  during ‍Dark Orb explosion.]",
+                        "totalText": "Watch out for players with ‍Abyssal Rot  during ‍Dark Orb explosion.",
                         "spells": [
                           {
                             "id": 453345,
-                            "title": "Watch out for players with ‍Abyssal Rot  during ‍Dark Orb explosion."
+                            "title": "‍Abyssal Rot‍Dark Orb"
                           }
                         ],
                         "children": []
@@ -21355,20 +21355,20 @@
                     ]
                   },
                   {
-                    "totalText": "[Ascendant Vis'coxria - ‍Shadowy Decay and ‍Abyssal Rot]",
+                    "totalText": "Ascendant Vis'coxria - ‍Shadowy Decay and ‍Abyssal Rot",
                     "spells": [
                       {
                         "id": 451102,
-                        "title": "Ascendant Vis'coxria - ‍Shadowy Decay and ‍Abyssal Rot"
+                        "title": "‍Shadowy Decay‍Abyssal Rot"
                       }
                     ],
                     "children": [
                       {
-                        "totalText": "[Watch out for players with ‍Abyssal Rot  during ‍Shadowy Decay cast.]",
+                        "totalText": "Watch out for players with ‍Abyssal Rot  during ‍Shadowy Decay cast.",
                         "spells": [
                           {
                             "id": 453345,
-                            "title": "Watch out for players with ‍Abyssal Rot  during ‍Shadowy Decay cast."
+                            "title": "‍Abyssal Rot‍Shadowy Decay"
                           }
                         ],
                         "children": []
@@ -21376,21 +21376,21 @@
                     ]
                   },
                   {
-                    "totalText": "[Watch out for players with ‍Abyssal Rot  during ‍Dark Orb explosion.]",
+                    "totalText": "Watch out for players with ‍Abyssal Rot  during ‍Dark Orb explosion.",
                     "spells": [
                       {
                         "id": 453345,
-                        "title": "Watch out for players with ‍Abyssal Rot  during ‍Dark Orb explosion."
+                        "title": "‍Abyssal Rot‍Dark Orb"
                       }
                     ],
                     "children": []
                   },
                   {
-                    "totalText": "[Watch out for players with ‍Abyssal Rot  during ‍Shadowy Decay cast.]",
+                    "totalText": "Watch out for players with ‍Abyssal Rot  during ‍Shadowy Decay cast.",
                     "spells": [
                       {
                         "id": 453345,
-                        "title": "Watch out for players with ‍Abyssal Rot  during ‍Shadowy Decay cast."
+                        "title": "‍Abyssal Rot‍Shadowy Decay"
                       }
                     ],
                     "children": []
@@ -27641,15 +27641,15 @@
                 "title": "Avanoxx",
                 "children": [
                   {
-                    "totalText": "[‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into ]Starved Crawler[, who then cast ‍Hunger and fixate on the other players in your group.]",
+                    "totalText": "[‍Alerting Shrill] does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into Starved Crawler, who then cast [‍Hunger] and fixate on the other players in your group.",
                     "spells": [
                       {
                         "id": 438476,
-                        "title": "‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into "
+                        "title": "‍Alerting Shrill"
                       },
                       {
                         "id": 438490,
-                        "title": ", who then cast ‍Hunger and fixate on the other players in your group."
+                        "title": "‍Hunger"
                       }
                     ],
                     "children": [
@@ -40244,15 +40244,15 @@
                 "title": "Avanoxx",
                 "children": [
                   {
-                    "totalText": "[‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into ]Starved Crawler[, who then cast ‍Hunger and fixate on the other players in your group.]",
+                    "totalText": "[‍Alerting Shrill] does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into Starved Crawler, who then cast [‍Hunger] and fixate on the other players in your group.",
                     "spells": [
                       {
                         "id": 438476,
-                        "title": "‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into "
+                        "title": "‍Alerting Shrill"
                       },
                       {
                         "id": 438490,
-                        "title": ", who then cast ‍Hunger and fixate on the other players in your group."
+                        "title": "‍Hunger"
                       }
                     ],
                     "children": [
@@ -52906,11 +52906,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "Try to line up your cooldowns with Droman Oulfarran's[ ‍Droman's Wrath to gain a huge DPS boost. This happens when ]Droman Oulfarran reaches 20% health.",
+                    "totalText": "Try to line up your cooldowns with Droman Oulfarran's [‍Droman's Wrath] to gain a huge DPS boost. This happens when Droman Oulfarran reaches 20% health.",
                     "spells": [
                       {
                         "id": 323059,
-                        "title": " ‍Droman's Wrath to gain a huge DPS boost. This happens when "
+                        "title": "‍Droman's Wrath"
                       }
                     ],
                     "children": []
@@ -53134,11 +53134,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "[If any adds are still alive during ‍Final Harvest, try to time a ‍Capacitor Totem. With them crowd-controlled the adds don’t explode and wipe the group despite being alive.]",
+                    "totalText": "If any adds are still alive during ‍Final Harvest, try to time a ‍Capacitor Totem. With them crowd-controlled the adds don’t explode and wipe the group despite being alive.",
                     "spells": [
                       {
                         "id": 321247,
-                        "title": "If any adds are still alive during ‍Final Harvest, try to time a ‍Capacitor Totem. With them crowd-controlled the adds don’t explode and wipe the group despite being alive."
+                        "title": "‍Final Harvest‍Capacitor Totem"
                       }
                     ],
                     "children": []
@@ -54637,11 +54637,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "Try to line up your cooldowns with Droman Oulfarran's[ ‍Droman's Wrath to gain a huge DPS boost. This happens when ]Droman Oulfarran reaches 20% health.",
+                    "totalText": "Try to line up your cooldowns with Droman Oulfarran's [‍Droman's Wrath] to gain a huge DPS boost. This happens when Droman Oulfarran reaches 20% health.",
                     "spells": [
                       {
                         "id": 323059,
-                        "title": " ‍Droman's Wrath to gain a huge DPS boost. This happens when "
+                        "title": "‍Droman's Wrath"
                       }
                     ],
                     "children": []
@@ -54883,11 +54883,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "[If any adds are still alive during ‍Final Harvest, try to time a ‍Capacitor Totem. With them crowd-controlled the adds don’t explode and wipe the group despite being alive.]",
+                    "totalText": "If any adds are still alive during ‍Final Harvest, try to time a ‍Capacitor Totem. With them crowd-controlled the adds don’t explode and wipe the group despite being alive.",
                     "spells": [
                       {
                         "id": 321247,
-                        "title": "If any adds are still alive during ‍Final Harvest, try to time a ‍Capacitor Totem. With them crowd-controlled the adds don’t explode and wipe the group despite being alive."
+                        "title": "‍Final Harvest‍Capacitor Totem"
                       }
                     ],
                     "children": []
@@ -60492,11 +60492,11 @@
                     ]
                   },
                   {
-                    "totalText": "[Utilize ‍Demonic Gateway or ‍Demonic Circle to bait ‍Gossamer Onslaught on the edge of the platform or a pre-determined stack up location.]",
+                    "totalText": "Utilize ‍Demonic Gateway or ‍Demonic Circle to bait ‍Gossamer Onslaught on the edge of the platform or a pre-determined stack up location.",
                     "spells": [
                       {
                         "id": 91466,
-                        "title": "Utilize ‍Demonic Gateway or ‍Demonic Circle to bait ‍Gossamer Onslaught on the edge of the platform or a pre-determined stack up location."
+                        "title": "‍Demonic Gateway‍Demonic Circle‍Gossamer Onslaught"
                       }
                     ],
                     "children": []
@@ -61112,11 +61112,11 @@
                 "title": "Master Machinists Brokk and Dorlita",
                 "children": [
                   {
-                    "totalText": "If you have no other range kick you should pet attack on Speaker Brokk[ to quickly interrupt ‍Molten Metal with ‍Axe Toss whenever he jumps away.]",
+                    "totalText": "If you have no other range kick you should pet attack on Speaker Brokk to quickly interrupt ‍Molten Metal with ‍Axe Toss whenever he jumps away.",
                     "spells": [
                       {
                         "id": 428161,
-                        "title": " to quickly interrupt ‍Molten Metal with ‍Axe Toss whenever he jumps away."
+                        "title": "‍Molten Metal‍Axe Toss"
                       }
                     ],
                     "children": []
@@ -68996,15 +68996,15 @@
                 "title": "Avanoxx",
                 "children": [
                   {
-                    "totalText": "[‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into ]Starved Crawler[, who then cast ‍Hunger and fixate on the other players in your group.]",
+                    "totalText": "[‍Alerting Shrill] does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into Starved Crawler, who then cast [‍Hunger] and fixate on the other players in your group.",
                     "spells": [
                       {
                         "id": 438476,
-                        "title": "‍Alerting Shrill does a good amount of AoE damage and summons 4 eggs stacked in a corner of the room. These eggs hatch into "
+                        "title": "‍Alerting Shrill"
                       },
                       {
                         "id": 438490,
-                        "title": ", who then cast ‍Hunger and fixate on the other players in your group."
+                        "title": "‍Hunger"
                       }
                     ],
                     "children": [
@@ -73367,11 +73367,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "Try to line up your cooldowns with [‍Droman's Wrath to gain a huge DPS increase. This happens when ]Droman Oulfarran reaches 20% health.",
+                    "totalText": "Try to line up your cooldowns with [‍Droman's Wrath] to gain a huge DPS increase. This happens when Droman Oulfarran reaches 20% health.",
                     "spells": [
                       {
                         "id": 323059,
-                        "title": "‍Droman's Wrath to gain a huge DPS increase. This happens when "
+                        "title": "‍Droman's Wrath"
                       }
                     ],
                     "children": []
@@ -73556,11 +73556,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "[If any adds are still alive during ‍Final Harvest and you have a ‍Deep Breath] ready, you can stun them with [‍Terror of the Skies]. Crowd-controlled adds do not explode and wipe the group despite being alive.",
+                    "totalText": "If any adds are still alive during ‍Final Harvest and you have a ‍Deep Breath ready, you can stun them with [‍Terror of the Skies]. Crowd-controlled adds do not explode and wipe the group despite being alive.",
                     "spells": [
                       {
                         "id": 321247,
-                        "title": "If any adds are still alive during ‍Final Harvest and you have a ‍Deep Breath"
+                        "title": "‍Final Harvest‍Deep Breath"
                       },
                       {
                         "id": 371032,
@@ -73760,7 +73760,7 @@
                     "children": []
                   },
                   {
-                    "totalText": "If the boss is slowed or rooted she cannot cast [‍Evasive]. You provide a slow automatically through [Permeating Chill] but this cannot be relied on for 100% uptime.",
+                    "totalText": "[]If the boss is slowed or rooted she cannot cast [‍Evasive]. You provide a slow automatically through Permeating Chill but this cannot be relied on for 100% uptime.",
                     "spells": [
                       {
                         "id": 272471,
@@ -73768,7 +73768,7 @@
                       },
                       {
                         "id": 115612,
-                        "title": "Permeating Chill"
+                        "title": ""
                       }
                     ],
                     "children": []
@@ -85381,41 +85381,41 @@
                 "spells": [],
                 "children": [
                   {
-                    "totalText": "[Eye of the Queen - ‍Void Rush]",
+                    "totalText": "Eye of the Queen - [‍Void Rush]",
                     "spells": [
                       {
                         "id": 451222,
-                        "title": "Eye of the Queen - ‍Void Rush"
+                        "title": "‍Void Rush"
                       }
                     ],
                     "children": []
                   },
                   {
-                    "totalText": "[Royal Venomshell - ‍Venomous Spray]",
+                    "totalText": "Royal Venomshell - [‍Venomous Spray]",
                     "spells": [
                       {
                         "id": 434137,
-                        "title": "Royal Venomshell - ‍Venomous Spray"
+                        "title": "‍Venomous Spray"
                       }
                     ],
                     "children": []
                   },
                   {
-                    "totalText": "[Hulking Warshell - ‍Tremor Slam]",
+                    "totalText": "Hulking Warshell - [‍Tremor Slam]",
                     "spells": [
                       {
                         "id": 437700,
-                        "title": "Hulking Warshell - ‍Tremor Slam"
+                        "title": "‍Tremor Slam"
                       }
                     ],
                     "children": []
                   },
                   {
-                    "totalText": "[Elder Shadeweaver - ‍Umbral Weave]",
+                    "totalText": "Elder Shadeweaver - [‍Umbral Weave]",
                     "spells": [
                       {
                         "id": 438860,
-                        "title": "Elder Shadeweaver - ‍Umbral Weave"
+                        "title": "‍Umbral Weave"
                       }
                     ],
                     "children": []
@@ -88274,41 +88274,41 @@
                 "spells": [],
                 "children": [
                   {
-                    "totalText": "[Eye of the Queen - ‍Void Rush]",
+                    "totalText": "Eye of the Queen - [‍Void Rush]",
                     "spells": [
                       {
                         "id": 451222,
-                        "title": "Eye of the Queen - ‍Void Rush"
+                        "title": "‍Void Rush"
                       }
                     ],
                     "children": []
                   },
                   {
-                    "totalText": "[Royal Venomshell - ‍Venomous Spray]",
+                    "totalText": "Royal Venomshell - [‍Venomous Spray]",
                     "spells": [
                       {
                         "id": 434137,
-                        "title": "Royal Venomshell - ‍Venomous Spray"
+                        "title": "‍Venomous Spray"
                       }
                     ],
                     "children": []
                   },
                   {
-                    "totalText": "[Hulking Warshell - ‍Tremor Slam]",
+                    "totalText": "Hulking Warshell - [‍Tremor Slam]",
                     "spells": [
                       {
                         "id": 437700,
-                        "title": "Hulking Warshell - ‍Tremor Slam"
+                        "title": "‍Tremor Slam"
                       }
                     ],
                     "children": []
                   },
                   {
-                    "totalText": "[Elder Shadeweaver - ‍Umbral Weave]",
+                    "totalText": "Elder Shadeweaver - [‍Umbral Weave]",
                     "spells": [
                       {
                         "id": 438860,
-                        "title": "Elder Shadeweaver - ‍Umbral Weave"
+                        "title": "‍Umbral Weave"
                       }
                     ],
                     "children": []
