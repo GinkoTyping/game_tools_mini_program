@@ -24,8 +24,13 @@ const specs = {
   hunter: ['beast-mastery', 'marksmanship', 'survival'],
   priest: ['discipline', 'holy', 'shadow'],
 };
+let totalCount = 0;
+let currentCount = 0;
 
 async function collectBySpec(roleClass, classSpec) {
+  console.log(
+    `正在获取${classSpec} ${roleClass}的数据...`
+  );
   let browser;
   try {
     let html;
@@ -75,6 +80,10 @@ async function collectBySpec(roleClass, classSpec) {
   } catch (error) {
     console.error(error);
   } finally {
+    currentCount++;
+    console.log(
+      `成功获取${classSpec} ${roleClass}的数据(${currentCount}/${totalCount})...`
+    );
     await browser?.close?.();
   }
 }
@@ -84,6 +93,7 @@ const limit = pLimit(5);
 async function crawler() {
   const crawlerPromises = Object.entries(specs).reduce(
     (pre, [roleClass, classSpecs]) => {
+      totalCount += classSpecs.length;
       pre.push(
         ...classSpecs.map((spec) => limit(() => collectBySpec(roleClass, spec)))
       );
@@ -97,10 +107,13 @@ async function crawler() {
   const __dirname = path.dirname(__filename);
   fs.writeFileSync(
     path.resolve(__dirname, './output/output.json'),
-    JSON.stringify(data, null, 2),
+    JSON.stringify(
+      data.map((item) => item.value),
+      null,
+      2
+    ),
     'utf-8'
   );
-  console.log(data);
 }
 
 async function getStatsPriority(context) {
