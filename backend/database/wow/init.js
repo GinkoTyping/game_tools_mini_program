@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const jsonData = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, './spec-data.json'))
+  fs.readFileSync(path.resolve(__dirname, './data/spec-data.json'))
 );
 
 export function getDB() {

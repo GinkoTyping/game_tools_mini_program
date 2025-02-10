@@ -11,18 +11,18 @@ import { translate } from '../api/index.js';
 
 const specs = {
   'death-knight': ['blood', 'frost', 'unholy'],
-  'demon-hunter': ['havoc', 'vengeance'],
-  druid: ['balance', 'feral', 'guardian', 'restoration'],
-  mage: ['arcane', 'fire', 'frost'],
-  monk: ['brewmaster', 'mistweaver', 'windwalker'],
-  paladin: ['holy', 'protection', 'retribution'],
-  rogue: ['assassination', 'outlaw', 'subtlety'],
-  shaman: ['elemental', 'enhancement', 'restoration'],
-  warlock: ['affliction', 'demonology', 'destruction'],
-  warrior: ['arms', 'fury', 'protection'],
-  evoker: ['devastation', 'preservation', 'augmentation'],
-  hunter: ['beast-mastery', 'marksmanship', 'survival'],
-  priest: ['discipline', 'holy', 'shadow'],
+  // 'demon-hunter': ['havoc', 'vengeance'],
+  // druid: ['balance', 'feral', 'guardian', 'restoration'],
+  // mage: ['arcane', 'fire', 'frost'],
+  // monk: ['brewmaster', 'mistweaver', 'windwalker'],
+  // paladin: ['holy', 'protection', 'retribution'],
+  // rogue: ['assassination', 'outlaw', 'subtlety'],
+  // shaman: ['elemental', 'enhancement', 'restoration'],
+  // warlock: ['affliction', 'demonology', 'destruction'],
+  // warrior: ['arms', 'fury', 'protection'],
+  // evoker: ['devastation', 'preservation', 'augmentation'],
+  // hunter: ['beast-mastery', 'marksmanship', 'survival'],
+  // priest: ['discipline', 'holy', 'shadow'],
 };
 let totalCount = 0;
 let currentCount = 0;
@@ -111,6 +111,8 @@ async function crawler() {
   saveFile(data.map((item) => item.value));
 }
 
+const OUTPUT_FILE_PATH = './output/output.json';
+const BACKEND_OUTPUT_FILE_PATH = '../../backend/database/wow/data/maxroll.json';
 function saveFile(data, isOverrideAll = false) {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
@@ -133,12 +135,13 @@ function saveFile(data, isOverrideAll = false) {
       }
     });
   }
-
-  fs.writeFileSync(
-    path.resolve(__dirname, './output/output.json'),
-    JSON.stringify(dataToWrite, null, 2),
-    'utf-8'
-  );
+  [OUTPUT_FILE_PATH, BACKEND_OUTPUT_FILE_PATH].forEach((filePath) => {
+    fs.writeFileSync(
+      path.resolve(__dirname, filePath),
+      JSON.stringify(dataToWrite, null, 2),
+      'utf-8'
+    );
+  });
 }
 
 async function getStatsPriority(context) {
