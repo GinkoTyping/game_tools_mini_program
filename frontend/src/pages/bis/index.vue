@@ -36,10 +36,10 @@
         <text
           v-for="bis in currentData?.bisItems"
           :key="bis.title"
-          @click="() => switchBisTable('overall')"
+          @click="() => switchBisTable(bis.title)"
           :class="[
             classKey,
-            currentTableName === 'overall' ? 'menu_active' : '',
+            currentTableName === bis.title ? 'menu_active' : '',
           ]"
           >{{ bis.title }}</text
         >
