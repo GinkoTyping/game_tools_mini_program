@@ -7,6 +7,16 @@ async function insertDungeon(id, nameZH, nameEN) {
   );
 }
 
+async function getDungeonByCondition(params) {
+  const { name_zh, name_en } = params;
+  return db.get(
+    `
+    SELECT * FROM wow_dungeon WHERE name_zh LIKE ?1 OR name_en LIKE ?2
+  `,
+    [name_zh, name_en]
+  );
+}
+
 export function useDungeonMapper(database) {
   if (database) {
     db = database;
@@ -17,5 +27,6 @@ export function useDungeonMapper(database) {
 
   return {
     insertDungeon,
+    getDungeonByCondition,
   };
 }

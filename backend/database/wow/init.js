@@ -8,6 +8,7 @@ import useBlizzAPI from '../../util/blizz.js';
 import { useBisMapper } from './mapper/bisMapper.js';
 import { useDungeonMapper } from './mapper/dungeonMapper.js';
 import { useItemMapper } from './mapper/itemMapper.js';
+import { useDungeonTipMapper } from './mapper/dungeonTipMapper.js';
 
 const blizzAPI = useBlizzAPI();
 
@@ -26,6 +27,7 @@ const database = await getDB();
 const bisMapper = useBisMapper(database);
 const dungeonMapper = useDungeonMapper(database);
 const itemMapper = useItemMapper(database);
+const dungeonTipMapper = useDungeonTipMapper(database);
 export async function getDB() {
   return open({
     filename: path.resolve(__dirname, './database.db'),
@@ -237,7 +239,11 @@ async function updateDungeonData() {
     );
     async function insertDungeon(dungeon) {
       try {
-        await dungeonMapper.insertDungeon(dungeon.id, dungeon.name.zh_CN, dungeon.name.en_US);
+        await dungeonMapper.insertDungeon(
+          dungeon.id,
+          dungeon.name.zh_CN,
+          dungeon.name.en_US
+        );
         return { id: dungeon.id, message: 'Insert succeed.' };
       } catch (error) {
         return Promise.reject({ id: dungeon.id, message: error.message });
@@ -262,18 +268,109 @@ async function updateDungeonData() {
 }
 //#endregion
 
+//#region 地下城tip
+async function createDungeonTipTable(db) {
+  if (!db) {
+    throw new Error('DB missing.');
+  }
+
+  await db.run(`CREATE TABLE IF NOT EXISTS wow_dungeon_tip(
+    id INTEGER PRIMARY KEY NOT NULL,
+    role_class TEXT NOT NULL,
+    class_spec TEXT NOT NULL,
+    dungeon_id INTEGER NOT NULL,
+    tips TEXT NOT NULL,
+    tips_en TEXT NOT NULL,
+    FOREIGN KEY(dungeon_id) REFERENCES wow_dungeon(id)
+  )`);
+}
+// TODO 是否在存入数据库前，就先把汉化做了
+async function updateDungeonTipData() {
+  const dungeonNameIdMap = {};
+  async function insertTip(roleClass, classSpec, tip) {
+    let currentDungeon;
+    try {
+      if (dungeonNameIdMap[tip.dungeonTitle]) {
+        currentDungeon = dungeonNameIdMap[tip.dungeonTitle];
+      } else {
+        const dungeon = await dungeonMapper.getDungeonByCondition({
+          name_en: tip.dungeonTitle,
+        });
+        currentDungeon = dungeon;
+        dungeonNameIdMap[tip.dungeonTitle] = dungeon;
+      }
+
+      const existedDungeonTip = await dungeonTipMapper.getDungeonTipByCondition(
+        roleClass,
+        classSpec,
+        currentDungeon.id
+      );
+      const params = {
+        roleClass,
+        classSpec,
+        dungeonId: currentDungeon.id,
+        tips_en: JSON.stringify({
+          ...tip,
+          dungeonTitle: currentDungeon.name_zh,
+        }),
+      };
+      if (existedDungeonTip) {
+        await dungeonTipMapper.updateDungeonTip(params);
+      } else {
+        await dungeonTipMapper.insertDungeonTip(params);
+      }
+
+      return {
+        roleClass,
+        classSpec,
+        dungeon: currentDungeon.name_zh,
+        message: 'Insert succeed',
+      };
+    } catch (error) {
+      throw new Error({
+        roleClass,
+        classSpec,
+        dungeon: currentDungeon.name_zh,
+        message: error.message,
+      });
+    }
+  }
+  async function insertSpec(spec) {
+    const tipPromises = spec.dungeonTips.map((tip) =>
+      insertTip(spec.roleClass, spec.classSpec, tip)
+    );
+    const insertTipResults = await Promise.allSettled(tipPromises);
+    const errors = insertTipResults.filter((res) => res.status !== 'fulfilled');
+    if (errors.length) {
+      errors.forEach((error) => {
+        console.log(`插入 地下城TIPS 失败：${JSON.stringify(error.value)}`);
+      });
+    } else {
+      console.log(`插入 地下城TIPS 成功：${spec.classSpec} ${spec.roleClass}`);
+    }
+  }
+
+  const insertSpecPromises = maxrollData.map((spec) => insertSpec(spec));
+  await Promise.allSettled(insertSpecPromises);
+}
+
+//#endregion
+
 export async function init() {
   try {
     await createBisTable(database);
     await createItemTable(database);
     await createDungeonTable(database);
+    await createDungeonTipTable(database);
 
-    updateDungeonData();
+    await updateDungeonData();
+
+    await updateDungeonTipData();
+
     await updateWowheadData();
     await updateMaxrollData();
 
     await updateItemData();
-
   } catch (error) {
     console.log(error.message);
   } finally {
