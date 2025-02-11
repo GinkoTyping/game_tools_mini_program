@@ -52,6 +52,7 @@ async function createBisTable(db) {
       bis_items TEXT NOT NULL,
       bis_trinkets TEXT NOT NULL
     )`);
+  console.log('创建 wow_bis表 完成。');
 }
 async function updateWowheadData() {
   function mapItems(items) {
@@ -149,10 +150,9 @@ async function createItemTable(db) {
       image TEXT,
       preview TEXT
     )`);
+  console.log('创建 wow_item表 完成。');
 }
-// TODO: mapper
 async function updateItemData() {
-  const db = await getDB();
   function searchItems(output, items) {
     items.forEach((item) => {
       if (item.item === 'Item') {
@@ -188,13 +188,27 @@ async function updateItemData() {
       try {
         await itemMapper.insertItem(item);
       } catch (error) {
-        console.log(item);
+        throw new Error({
+          id: item.id,
+          name: item.name,
+          message: error.message,
+        });
       }
     }
   }
 
   const updatePromises = slotItems.map((item) => updateItem(item));
-  await Promise.all(updatePromises);
+  const result = await Promise.allSettled(updatePromises);
+  const errors = result.filter((res) => res.status !== 'fulfilled');
+  if (errors.length) {
+    errors.forEach((errorItem) => {
+      console.log(
+        `插入 装备数据 失败：${errorItem.value.name}, ${errorItem.value.message}`
+      );
+    });
+  } else {
+    console.log('插入 装备数据 成功。');
+  }
 }
 //#endregion
 
@@ -209,6 +223,7 @@ async function createDungeonTable(db) {
     name_en TEXT NOT NULL,
     booses TEXT
   )`);
+  console.log('创建 wow_dungeon表 完成。');
 }
 async function updateDungeonData() {
   try {
