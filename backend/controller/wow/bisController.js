@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 
 import { getDB } from '../../database/wow/init.js';
 
+import useBisMapper from '../../database/wow/mapper/bisMapper.js';
+
 let api;
 function setBlizzAPI() {
   const __filename = fileURLToPath(import.meta.url);

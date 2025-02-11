@@ -66,11 +66,24 @@ async function insertBis(data) {
   );
 }
 
-export default async function () {
-  db = await getDB();
+// 如果是内部建立的DB连接时，才会调用；正常使用，db连接都是在外部维护
+async function closeDB() {
+  await db.close();
+}
+
+export default async function (database) {
+  if (database) {
+    db = database;
+    // 仅仅处理异常场景，正常使用 database都应该来源于外部
+  } else {
+    db = await getDB();
+  }
+
   return {
     getBisByClassAndSpec,
     updateBisByClassAndSpec,
     insertBis,
+
+    closeDB,
   };
 }

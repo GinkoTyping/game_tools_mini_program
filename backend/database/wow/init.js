@@ -20,23 +20,19 @@ const maxrollData = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, './data/maxroll.json'))
 );
 
-let sqliteDB;
-const bisMapper = await useBisMapper();
+const database = await getDB();
+const bisMapper = await useBisMapper(database);
 export async function getDB() {
-  if (!sqliteDB) {
-    sqliteDB = await open({
-      filename: path.resolve(__dirname, './database.db'),
-      driver: sqlite3.verbose().Database,
-    });
-  }
-
-  return sqliteDB;
+  return open({
+    filename: path.resolve(__dirname, './database.db'),
+    driver: sqlite3.verbose().Database,
+  });
 }
 
 //#region BIS
 async function createBisTable(db) {
   if (!db) {
-    db = await getDB();
+    throw new Error('DB missing.');
   }
   // bis_type 0：overall 1：raid 2：mythic
   await db.run(`
@@ -53,10 +49,7 @@ async function createBisTable(db) {
       bis_trinkets TEXT NOT NULL
     )`);
 }
-async function updateWowheadData(db) {
-  if (!db) {
-    db = await getDB();
-  }
+async function updateWowheadData() {
   function mapItems(items) {
     return items
       .filter((item) => item.item.toLowerCase() !== 'item')
@@ -96,10 +89,7 @@ async function updateWowheadData(db) {
   const result = await Promise.allSettled(promises);
   handleBisItemRes(result, 'wowhead');
 }
-async function updateMaxrollData(db) {
-  if (!db) {
-    db = await getDB();
-  }
+async function updateMaxrollData() {
   const promises = maxrollData.map((item) => updateBisItem(item));
   const result = await Promise.allSettled(promises);
   handleBisItemRes(result, 'maxroll');
@@ -144,7 +134,7 @@ function handleBisItemRes(result, tag) {
 //#region 装备物品
 async function createItemTable(db) {
   if (!db) {
-    db = await getDB();
+    throw new Error('DB missing.');
   }
   await db.run(`
     CREATE TABLE IF NOT EXISTS wow_item (
@@ -156,6 +146,7 @@ async function createItemTable(db) {
       preview TEXT
     )`);
 }
+// TODO: mapper
 async function updateItemData() {
   const db = await getDB();
   function searchItems(output, items) {
@@ -232,7 +223,7 @@ async function updateItemData() {
 //#region 地下城
 async function createDungeonTable(db) {
   if (!db) {
-    db = await getDB();
+    throw new Error('DB missing.');
   }
   await db.run(`CREATE TABLE IF NOT EXISTS wow_dungeon (
     id INTEGER PRIMARY KEY NOT NULL,
@@ -241,6 +232,7 @@ async function createDungeonTable(db) {
     booses TEXT
   )`);
 }
+// TODO: mapper
 async function updateDungeonData() {
   try {
     const data = await blizzAPI.query(
@@ -283,19 +275,18 @@ async function updateDungeonData() {
 
 export async function init() {
   try {
-    sqliteDB = await getDB();
-    createBisTable();
+    createBisTable(database);
     updateWowheadData();
     updateMaxrollData();
 
-    createItemTable();
+    createItemTable(database);
     updateItemData();
 
-    createDungeonTable();
+    createDungeonTable(database);
     updateDungeonData();
   } catch (error) {
     console.log(error.message);
   } finally {
-    sqliteDB.close();
+    database.close();
   }
 }
