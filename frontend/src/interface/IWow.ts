@@ -3,10 +3,9 @@ export interface IBisItem {
   name: string;
   slot: string;
   item: string;
-  source: string;
+  source: { source: string; isLoot: boolean };
   image: string;
   wrap?: boolean;
-  isLoot?: boolean;
 }
 
 export interface ITrinks {
@@ -18,10 +17,8 @@ export interface ISpceBIS {
   classSpec: string;
   updatedAt: string;
   statsPriority: IStatPriority[];
-  overall: IBisItem[];
-  bisItemRaid: IBisItem[];
-  bisItemMythic: IBisItem[];
   trinkets: ITrinks[];
+  bisItems: { items: Array<IBisItem>; title: string }[];
 }
 
 export interface IWowBIS {

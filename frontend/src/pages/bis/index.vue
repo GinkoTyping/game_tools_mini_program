@@ -34,28 +34,14 @@
     <uni-card class="section-card">
       <view class="menu">
         <text
+          v-for="bis in currentData?.bisItems"
+          :key="bis.title"
           @click="() => switchBisTable('overall')"
           :class="[
             classKey,
             currentTableName === 'overall' ? 'menu_active' : '',
           ]"
-          >汇总</text
-        >
-        <text
-          @click="() => switchBisTable('bisItemMythic')"
-          :class="[
-            classKey,
-            currentTableName === 'bisItemMythic' ? 'menu_active' : '',
-          ]"
-          >大秘境</text
-        >
-        <text
-          @click="() => switchBisTable('bisItemRaid')"
-          :class="[
-            classKey,
-            currentTableName === 'bisItemRaid' ? 'menu_active' : '',
-          ]"
-          >团本</text
+          >{{ bis.title }}</text
         >
       </view>
 
@@ -94,10 +80,10 @@
               class="ellipsis"
               :class="[
                 item.wrap ? 'disale-ellipsis' : '',
-                item.isLoot ? 'is-loot' : '',
+                item.source.isLoot ? 'is-loot' : '',
               ]"
               @click="() => switchWrap(item)"
-              >{{ item.source }}</view
+              >{{ item.source.source }}</view
             >
           </uni-td>
         </uni-tr>
@@ -245,6 +231,7 @@ onLoad(async (options: any) => {
   classKey.value = options.classKey ?? 'death-knight';
   specKey.value = options.specKey ?? 'blood';
   currentData.value = await queryBis(classKey.value, specKey.value);
+  currentTableName.value = currentData.value.bisItems[0]?.title;
   console.log(currentData.value);
 
   setNaviTitle(options.title);
@@ -274,15 +261,9 @@ const relationIcon = computed(() => {
   };
 });
 
-const currentTableName = ref('overall');
+const currentTableName = ref('');
 const tableData = computed(() => {
-  if (currentTableName.value === 'overall') {
-    return currentData.value?.overall ?? [];
-  }
-  if (currentTableName.value === 'bisItemMythic') {
-    return currentData.value?.bisItemMythic ?? [];
-  }
-  return currentData.value?.bisItemRaid ?? [];
+  return currentData.value?.bisItems.find(item => item.title === currentTableName.value)?.items;
 });
 function switchBisTable(tableName: string) {
   if (currentTableName.value !== tableName) {
