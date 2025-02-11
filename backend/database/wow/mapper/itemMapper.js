@@ -19,6 +19,15 @@ async function getItemById(id) {
   );
 }
 
+async function getItemByName(name) {
+  return db.get(
+    `
+    SELECT * FROM wow_item WHERE name=?1
+    `,
+    [name]
+  );
+}
+
 async function updateItemById(itemData) {
   const { id, slot, item, source, itemIcon } = itemData;
   return db.run(
@@ -39,6 +48,7 @@ export function useItemMapper(database) {
   return {
     insertItem,
     getItemById,
+    getItemByName,
     updateItemById,
   };
 }

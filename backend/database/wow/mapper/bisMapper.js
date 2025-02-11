@@ -2,7 +2,7 @@ let db;
 
 async function getBisByClassAndSpec(roleClass, classSpec) {
   return db.get(
-    `SELECT id FROM wow_bis WHERE role_class=?1 AND class_spec=?2`,
+    `SELECT * FROM wow_bis WHERE role_class=?1 AND class_spec=?2`,
     [roleClass, classSpec]
   );
 }

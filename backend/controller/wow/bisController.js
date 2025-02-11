@@ -6,9 +6,13 @@ import { fileURLToPath } from 'url';
 
 import { getDB } from '../../database/wow/init.js';
 
-import useBisMapper from '../../database/wow/mapper/bisMapper.js';
+import { useBisMapper } from '../../database/wow/mapper/bisMapper.js';
+import { useItemMapper } from '../../database/wow/mapper/itemMapper.js';
 
 let api;
+const database = await getDB();
+const bisMapper = useBisMapper(database);
+const itemMapper = useItemMapper(database);
 function setBlizzAPI() {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
@@ -66,33 +70,35 @@ export async function getBisBySpec(req, res) {
   const roleClass = req.params.roleClass;
   const classSpec = req.params.classSpec;
 
-  const db = await getDB();
+  const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
 
-  const data = await db.all(
-    `
-    SELECT * FROM wow_bis WHERE role_class=?1 and class_spec=?2`,
-    [roleClass, classSpec]
-  );
-  async function mapBisItem(item) {
-    const bisItemNames = item.bis_items.split('@');
-    async function queryItem(name) {
-      return db.get(
-        `
-        SELECT * FROM wow_item WHERE name=?1`,
-        [name]
-      );
-    }
-    const bisItemPromise = bisItemNames.map((item) => queryItem(item));
-    const promisesData = await Promise.allSettled(bisItemPromise);
+  const bis_items = await mapBisItems(JSON.parse(bisData.bis_items));
+  res.json({
+    ...bisData,
+    bis_items,
+    stats_priority: JSON.parse(bisData.stats_priority),
+    ratings: JSON.parse(bisData.ratings),
+    bis_trinkets: JSON.parse(bisData.bis_trinkets),
+  });
+}
+
+async function mapBisItems(bisItems) {
+  async function queryItem(name) {
+    const data = await itemMapper.getItemByName(name);
     return {
-      ...item,
-      bis_items: promisesData.map((res) => res.value),
-      bis_trinkets: JSON.parse(item.bis_trinkets),
+      ...data,
+      source: JSON.parse(data.source),
+    }
+  }
+  async function mapBisItemsByType(bisItemsByType) {
+    const promises = bisItemsByType.items.split('@').map((item) => queryItem(item));
+    const data = await Promise.allSettled(promises);
+    return {
+      title: bisItemsByType.title,
+      items: data.map(item => item.value),
     };
   }
-  const outputPromises = data.map((item) => mapBisItem(item));
-  const outputReses = await Promise.allSettled(outputPromises);
-  const output = outputReses.map((res) => res.value);
-
-  res.json(output);
+  const promises = bisItems.map((item) => mapBisItemsByType(item));
+  const bisItemResult = await Promise.allSettled(promises);
+  return bisItemResult.map((item) => item.value);
 }

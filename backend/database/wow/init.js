@@ -23,7 +23,7 @@ const maxrollData = JSON.parse(
 );
 
 const database = await getDB();
-const bisMapper = await useBisMapper(database);
+const bisMapper = useBisMapper(database);
 const dungeonMapper = useDungeonMapper(database);
 const itemMapper = useItemMapper(database);
 export async function getDB() {
