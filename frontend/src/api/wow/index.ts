@@ -12,7 +12,7 @@ enum BisType {
 
 interface IBisDataDTO {
   bis_trinkets: Array<ITrinks>;
-  bis_items: {items: Array<IBisItem>, title: string}[];
+  bis_items: { items: Array<IBisItem>; title: string }[];
   bis_type: BisType;
   stats_priority: IStatPriority[];
   updated_at: string;
@@ -64,5 +64,21 @@ export async function queryItemPreview(id: number) {
   } catch (error) {
     console.log(error);
     return null;
+  }
+}
+
+export interface IDungeonDTO {
+  id: number;
+  name_zh: string;
+  name_en: string;
+}
+export async function querySeaonDungeons() {
+  try {
+    const res = await uni.request({
+      url: `${BASE_URL}/wow/dungeon/list`,
+    });
+    return res.data as IDungeonDTO[];
+  } catch (error) {
+    return [];
   }
 }

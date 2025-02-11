@@ -113,6 +113,23 @@
       </view>
     </uni-card>
   </uni-section>
+  <uni-section class="dungeon" :class="[classKey]" title="大秘境">
+    <uni-card class="section-card">
+      <view class="menu">
+        <text
+          v-for="dungeon in dungeons"
+          :key="dungeon.id"
+          @click="() => switchDungeon(dungeon.id)"
+          :class="[
+            'ellipsis',
+            classKey,
+            currentDungeonId === dungeon.id ? 'menu_active' : '',
+          ]"
+          >{{ dungeon.name_zh }}</text
+        >
+      </view>
+    </uni-card>
+  </uni-section>
   <uni-popup ref="popup">
     <uni-load-more
       v-show="status === 'loading'"
@@ -218,8 +235,13 @@ import { onLoad } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
-import { ISpceBIS, IBisItem, ITrinks, Relation } from '@/interface/IWow';
-import { queryBis, queryItemPreview } from '@/api/wow';
+import { ISpceBIS, IBisItem, Relation } from '@/interface/IWow';
+import {
+  queryBis,
+  queryItemPreview,
+  querySeaonDungeons,
+  IDungeonDTO,
+} from '@/api/wow';
 
 const classKey = ref('');
 const specKey = ref('');
@@ -233,6 +255,9 @@ onLoad(async (options: any) => {
   currentData.value = await queryBis(classKey.value, specKey.value);
   currentTableName.value = currentData.value.bisItems[0]?.title;
   console.log(currentData.value);
+
+  dungeons.value = await querySeaonDungeons();
+  currentDungeonId.value = dungeons.value[0]?.id;
 
   setNaviTitle(options.title);
 });
@@ -263,7 +288,9 @@ const relationIcon = computed(() => {
 
 const currentTableName = ref('');
 const tableData = computed(() => {
-  return currentData.value?.bisItems.find(item => item.title === currentTableName.value)?.items;
+  return currentData.value?.bisItems.find(
+    item => item.title === currentTableName.value
+  )?.items;
 });
 function switchBisTable(tableName: string) {
   if (currentTableName.value !== tableName) {
@@ -306,6 +333,16 @@ async function switchDetail(
     }
   }
 }
+
+//#region 大秘境TIPS
+const dungeons = ref<IDungeonDTO[]>([]);
+const currentDungeonId = ref(-1);
+function switchDungeon(id: number) {
+  if (currentDungeonId.value !== id) {
+    currentDungeonId.value = id;
+  }
+}
+//#endregion
 </script>
 
 <style lang="scss" scoped>
@@ -464,21 +501,20 @@ $light-border: rgb(68, 68, 68);
   .is-loot {
     color: $uni-text-color-inverse !important;
   }
-  .disale-ellipsis {
-    white-space: normal !important;
-  }
-  .ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+}
+.disale-ellipsis {
+  white-space: normal !important;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .bis .menu {
   margin-bottom: 10px;
   .menu_active {
     color: #ffffff;
-    border-bottom: 4px red sol;
     &::before {
       content: '';
       width: calc(100% - 10px);
@@ -500,6 +536,44 @@ $light-border: rgb(68, 68, 68);
       // padding-left: 6px;
     }
     &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 2px;
+      height: 10px;
+      background-color: $light-border;
+    }
+  }
+}
+
+.dungeon .menu {
+  display: flex;
+  flex-wrap: wrap;
+  .menu_active {
+    color: #ffffff;
+    // border-bottom: 4px red solid;
+    &::before {
+      content: '';
+      width: calc(100% - 10px);
+      height: 4px;
+      background-color: red;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  text {
+    width: 19%;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    font-weight: 800;
+    line-height: 30px;
+    height: 30px;
+    position: relative;
+    &:not(:last-child):not(:nth-child(4))::after {
       content: '';
       position: absolute;
       right: 0;
