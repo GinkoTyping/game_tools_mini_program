@@ -235,9 +235,9 @@ async function updateDungeonData() {
         },
       }
     );
-    async function insertDungeon(db, dungeon) {
+    async function insertDungeon(dungeon) {
       try {
-        await dungeonMapper(dungeon.id, dungeon.name.zh_CN, dungeon.name.en_US);
+        await dungeonMapper.insertDungeon(dungeon.id, dungeon.name.zh_CN, dungeon.name.en_US);
         return { id: dungeon.id, message: 'Insert succeed.' };
       } catch (error) {
         return Promise.reject({ id: dungeon.id, message: error.message });
@@ -245,7 +245,7 @@ async function updateDungeonData() {
     }
 
     const dungeonPromises = data.dungeons.map((dungeon) =>
-      insertDungeon(db, dungeon)
+      insertDungeon(dungeon)
     );
     const res = await Promise.allSettled(dungeonPromises);
     const hasError = res.filter((item) => item.status !== 'fulfilled');
@@ -264,15 +264,16 @@ async function updateDungeonData() {
 
 export async function init() {
   try {
-    createBisTable(database);
-    updateWowheadData();
-    updateMaxrollData();
+    await createBisTable(database);
+    await createItemTable(database);
+    await createDungeonTable(database);
 
-    createItemTable(database);
-    updateItemData();
-
-    createDungeonTable(database);
     updateDungeonData();
+    await updateWowheadData();
+    await updateMaxrollData();
+
+    await updateItemData();
+
   } catch (error) {
     console.log(error.message);
   } finally {
