@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url'; // 导入 fileURLToPath
 
 import useBlizzAPI from '../../util/blizz.js';
+import useBisMapper from './mapper/bisMapper.js';
 
 const blizzAPI = useBlizzAPI();
 
@@ -15,12 +16,21 @@ const __dirname = path.dirname(__filename);
 const wowheadData = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, './data/wowhead.json'))
 );
+const maxrollData = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, './data/maxroll.json'))
+);
 
-export function getDB() {
-  return open({
-    filename: path.resolve(__dirname, './database.db'),
-    driver: sqlite3.verbose().Database,
-  });
+let sqliteDB;
+const bisMapper = await useBisMapper();
+export async function getDB() {
+  if (!sqliteDB) {
+    sqliteDB = await open({
+      filename: path.resolve(__dirname, './database.db'),
+      driver: sqlite3.verbose().Database,
+    });
+  }
+
+  return sqliteDB;
 }
 
 async function createTables() {
@@ -53,7 +63,7 @@ async function initBisTable(db) {
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       origin_updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       stats_priority TEXT NOT NULL,
-      bis_type INTEGER NOT NULL DEFAULT 0,
+      ratings TEXT NOT NULL,
       bis_items TEXT NOT NULL,
       bis_trinkets TEXT NOT NULL
     )`);
@@ -100,7 +110,7 @@ async function initDungeonTable(db) {
           `INSERT INTO wow_dungeon(id, name_zh, name_en) VALUES(?1, ?2, ?3)`,
           [dungeon.id, dungeon.name.zh_CN, dungeon.name.en_US]
         );
-        return { id: dungeon.id, message: 'Insert succeed.' }
+        return { id: dungeon.id, message: 'Insert succeed.' };
       } catch (error) {
         return Promise.reject({ id: dungeon.id, message: error.message });
       }
@@ -200,34 +210,132 @@ async function updateSpecData() {
 
   Object.entries(wowheadData).forEach(([roleClass, specs]) => {
     specs.forEach((spec) => {
-      ['overall', 'bisItemRaid', 'bisItemMythic'].forEach((typeName) => {
-        let type = 0;
-        if (typeName === 'bisItemRaid') {
-          type = 1;
-        } else if (typeName === 'bisItemMythic') {
-          type = 2;
-        } else {
-          type = 0;
-        }
+      function mapItems(items) {
+        return items
+          .filter((item) => item.item.toLowerCase() !== 'item')
+          .map((item) => item.item.trim())
+          .join('@');
+      }
+      const bisItems = [
+        {
+          title: '汇总',
+          items: mapItems(spec.overall),
+        },
+        {
+          title: '大秘境',
+          items: mapItems(spec.bisItemMythic),
+        },
+        {
+          title: '团本',
+          items: mapItems(spec.bisItemRaid),
+        },
+      ];
 
-        db.run(
-          `
-          INSERT INTO wow_bis(role_class, class_spec, stats_priority, bis_type, bis_items, bis_trinkets) VALUES(?1, ?2, ?3, ?4, ?5, ?6)`,
-          [
-            roleClass,
-            spec.spec,
-            spec.statsPriority,
-            type,
-            spec[typeName]
-              .filter((item) => item.item.toLowerCase() !== 'item')
-              .map((item) => item.item.trim())
-              .join('@'),
-            JSON.stringify(spec.trinkets),
-          ]
-        );
-      });
+      const maxrollItem = maxrollData.find(
+        (item) => item.roleClass === roleClass && item.classSpec === spec.spec
+      );
+
+      db.run(
+        `
+        INSERT INTO wow_bis(role_class, class_spec, stats_priority, ratings, bis_items, bis_trinkets) VALUES(?1, ?2, ?3, ?4, ?5, ?6)`,
+        [
+          roleClass,
+          spec.spec,
+          JSON.stringify(maxrollItem.stats),
+          JSON.stringify(maxrollItem.ratings),
+          JSON.stringify(bisItems),
+          JSON.stringify(spec.trinkets),
+        ]
+      );
     });
   });
+}
+
+async function updateWowheadData(db) {
+  if (!db) {
+    db = await getDB();
+  }
+  function mapItems(items) {
+    return items
+      .filter((item) => item.item.toLowerCase() !== 'item')
+      .map((item) => item.item.trim())
+      .join('@');
+  }
+  const formattedData = Object.entries(wowheadData).reduce(
+    (pre, [roleClass, specs]) => {
+      specs.forEach((spec) => {
+        const bisItems = [
+          {
+            title: '汇总',
+            items: mapItems(spec.overall),
+          },
+          {
+            title: '大秘境',
+            items: mapItems(spec.bisItemMythic),
+          },
+          {
+            title: '团本',
+            items: mapItems(spec.bisItemRaid),
+          },
+        ];
+        pre.push({
+          ...spec,
+          roleClass,
+          classSpec: spec.spec,
+          bisItems,
+          bisTrinkets: spec.trinkets,
+        });
+      });
+      return pre;
+    },
+    []
+  );
+  const promises = formattedData.map((item) => updateBisItem(item));
+  const result = await Promise.allSettled(promises);
+  handleBisItemRes(result, 'wowhead');
+}
+async function updateMaxrollData(db) {
+  if (!db) {
+    db = await getDB();
+  }
+  const promises = maxrollData.map((item) => updateBisItem(item));
+  const result = await Promise.allSettled(promises);
+  handleBisItemRes(result, 'maxroll');
+}
+async function updateBisItem(dataItem) {
+  try {
+    const existedItem = await bisMapper.getBisByClassAndSpec(
+      dataItem.roleClass,
+      dataItem.classSpec
+    );
+    if (existedItem) {
+      await bisMapper.updateBisByClassAndSpec(dataItem);
+    } else {
+      await bisMapper.insertBis(dataItem);
+    }
+  } catch (error) {
+    return Promise.reject({
+      roleClass: dataItem.roleClass,
+      classSpec: dataItem.classSpec,
+      message: error.message,
+    });
+  }
+}
+// 展示 更新数据库的结果 日志
+function handleBisItemRes(result, tag) {
+  const errors = result.filter((item) => item.status !== 'fulfilled');
+  if (errors.length) {
+    console.log(
+      errors
+        .map(
+          (item) =>
+            `插入失败：${item.value.classSpec} ${item.value.roleClass}, ${item.value.message}`
+        )
+        .join(';')
+    );
+  } else {
+    console.log(`插入${tag}的数据成功。`);
+  }
 }
 
 export async function init() {
