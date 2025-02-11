@@ -17,7 +17,7 @@ export interface ITrinks {
 export interface ISpceBIS {
   classSpec: string;
   updatedAt: string;
-  statsPriority: string;
+  statsPriority: IStatPriority[];
   overall: IBisItem[];
   bisItemRaid: IBisItem[];
   bisItemMythic: IBisItem[];
@@ -26,4 +26,18 @@ export interface ISpceBIS {
 
 export interface IWowBIS {
   [key: string]: ISpceBIS[];
+}
+
+export enum Relation {
+  Equal = 0,
+  Greater = 1,
+  Greate_Greater = 2,
+  Greater_Or_Equal = 10,
+}
+export interface IStatPriority {
+  desc: string[];
+  relations: Relation[];
+  stats: string[];
+  talentId: number;
+  talentLabel: string;
 }

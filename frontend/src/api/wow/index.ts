@@ -1,4 +1,4 @@
-import { IBisItem, ITrinks } from '@/interface/IWow';
+import { IBisItem, ITrinks, IStatPriority } from '@/interface/IWow';
 import { mapBisItems, mapTrinks } from '@/data/mapSpecData';
 
 // const BASE_URL = 'https://ginkolearn.cyou';
@@ -12,9 +12,9 @@ enum BisType {
 
 interface IBisDataDTO {
   bis_trinkets: Array<ITrinks>;
-  bis_items: Array<IBisItem>;
+  bis_items: {items: Array<IBisItem>, title: string}[];
   bis_type: BisType;
-  stats_priority: string;
+  stats_priority: IStatPriority[];
   updated_at: string;
 }
 
@@ -23,23 +23,15 @@ export async function queryBis(roleClass: string, classSpec: string) {
     url: `${BASE_URL}/wow/bis/${roleClass}/${classSpec}`,
     method: 'GET',
   });
-  const data = res.data as IBisDataDTO[];
+  const data = res.data as IBisDataDTO;
 
   return {
     roleClass,
     classSpec,
-    statsPriority: data[0].stats_priority,
-    updatedAt: data[0].updated_at,
-    trinkets: mapTrinks(data[0].bis_trinkets),
-    overall: mapBisItems(
-      data.find(item => item.bis_type === BisType.Overall)?.bis_items ?? []
-    ),
-    bisItemRaid: mapBisItems(
-      data.find(item => item.bis_type === BisType.Raid)?.bis_items ?? []
-    ),
-    bisItemMythic: mapBisItems(
-      data.find(item => item.bis_type === BisType.Mythic)?.bis_items ?? []
-    ),
+    statsPriority: data.stats_priority,
+    updatedAt: data.updated_at,
+    trinkets: mapTrinks(data.bis_trinkets),
+    bisItems: data.bis_items,
   };
 }
 

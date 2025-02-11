@@ -1,7 +1,33 @@
 <template>
   <uni-section :class="[classKey]" title="属性优先级">
     <uni-card class="section-card">
-      <text :class="[classKey]">{{ currentData?.statsPriority }}</text>
+      <view class="stats">
+        <text>{{ currentData?.statsPriority[0].stats[0] }}</text>
+        <image
+          :src="`/static/icon/${relationIcon(
+            currentData?.statsPriority[0].relations[0] ?? Relation.Greater
+          )}.svg`"
+        ></image>
+        <text>{{ currentData?.statsPriority[0].stats[1] }}</text>
+        <image
+          :src="`/static/icon/${relationIcon(
+            currentData?.statsPriority[0].relations[1] ?? Relation.Greater
+          )}.svg`"
+        ></image>
+        <text>{{ currentData?.statsPriority[0].stats[2] }}</text>
+        <image
+          :src="`/static/icon/${relationIcon(
+            currentData?.statsPriority[0].relations[2] ?? Relation.Greater
+          )}.svg`"
+        ></image>
+        <text>{{ currentData?.statsPriority[0].stats[3] }}</text>
+        <image
+          :src="`/static/icon/${relationIcon(
+            currentData?.statsPriority[0].relations[3] ?? Relation.Greater
+          )}.svg`"
+        ></image>
+        <text>{{ currentData?.statsPriority[0].stats[4] }}</text>
+      </view>
     </uni-card>
   </uni-section>
   <uni-section class="bis" :class="[classKey]" title="BIS配装">
@@ -206,7 +232,7 @@ import { onLoad } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
-import { ISpceBIS, IBisItem, ITrinks } from '@/interface/IWow';
+import { ISpceBIS, IBisItem, ITrinks, Relation } from '@/interface/IWow';
 import { queryBis, queryItemPreview } from '@/api/wow';
 
 const classKey = ref('');
@@ -230,6 +256,21 @@ onShareAppMessage(() => {
   return {
     title: `BIS - ${title}`,
     path: `pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${title}`,
+  };
+});
+
+// 属性优先级
+const relationIcon = computed(() => {
+  return (relation: Relation) => {
+    if (relation === Relation.Equal) {
+      return 'dengyu';
+    } else if (relation === Relation.Greater) {
+      return 'dayu';
+    } else if (relation === Relation.Greate_Greater) {
+      return 'yuandayu';
+    } else if (relation === Relation.Greater_Or_Equal) {
+      return 'dayudengyu';
+    }
   };
 });
 
@@ -289,6 +330,20 @@ async function switchDetail(
 <style lang="scss" scoped>
 page {
   background-color: red;
+}
+.stats {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  text {
+    font-size: 16px;
+    color: #fff;
+    font-weight: bolder;
+  }
+  image {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 $light-border: rgb(68, 68, 68);
