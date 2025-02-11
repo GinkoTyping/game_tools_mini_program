@@ -5,7 +5,9 @@ import path from 'path';
 import { fileURLToPath } from 'url'; // 导入 fileURLToPath
 
 import useBlizzAPI from '../../util/blizz.js';
-import useBisMapper from './mapper/bisMapper.js';
+import { useBisMapper } from './mapper/bisMapper.js';
+import { useDungeonMapper } from './mapper/dungeonMapper.js';
+import { useItemMapper } from './mapper/itemMapper.js';
 
 const blizzAPI = useBlizzAPI();
 
@@ -22,6 +24,8 @@ const maxrollData = JSON.parse(
 
 const database = await getDB();
 const bisMapper = await useBisMapper(database);
+const dungeonMapper = useDungeonMapper(database);
+const itemMapper = useItemMapper(database);
 export async function getDB() {
   return open({
     filename: path.resolve(__dirname, './database.db'),
@@ -176,39 +180,13 @@ async function updateItemData() {
   }, []);
 
   async function updateItem(item) {
-    const foundItem = await db.get(
-      `
-      SELECT * FROM wow_item WHERE id=?1
-      `,
-      [item.id]
-    );
+    const foundItem = await itemMapper.getItemById(item.id);
 
     if (foundItem) {
-      await db.run(
-        `
-        UPDATE wow_item SET slot=?1,name=?2,source=?3,image=?4 WHERE id=?5`,
-        [
-          item.slot,
-          item.item,
-          JSON.stringify(item.source),
-          item.itemIcon,
-          foundItem.id,
-        ]
-      );
+      await itemMapper.updateItemById(item);
     } else {
       try {
-        await db.run(
-          `
-          INSERT INTO wow_item(id, slot, name, source, image) VALUES(?1, ?2, ?3, ?4, ?5)
-        `,
-          [
-            item.id,
-            item.slot,
-            item.item,
-            JSON.stringify(item.source),
-            item.itemIcon,
-          ]
-        );
+        await itemMapper.insertItem(item);
       } catch (error) {
         console.log(item);
       }
@@ -232,7 +210,6 @@ async function createDungeonTable(db) {
     booses TEXT
   )`);
 }
-// TODO: mapper
 async function updateDungeonData() {
   try {
     const data = await blizzAPI.query(
@@ -245,10 +222,7 @@ async function updateDungeonData() {
     );
     async function insertDungeon(db, dungeon) {
       try {
-        await db.run(
-          `INSERT INTO wow_dungeon(id, name_zh, name_en) VALUES(?1, ?2, ?3)`,
-          [dungeon.id, dungeon.name.zh_CN, dungeon.name.en_US]
-        );
+        await dungeonMapper(dungeon.id, dungeon.name.zh_CN, dungeon.name.en_US);
         return { id: dungeon.id, message: 'Insert succeed.' };
       } catch (error) {
         return Promise.reject({ id: dungeon.id, message: error.message });
