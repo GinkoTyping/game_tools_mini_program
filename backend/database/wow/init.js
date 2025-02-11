@@ -4,6 +4,10 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url'; // 导入 fileURLToPath
 
+import useBlizzAPI from '../../util/blizz.js';
+
+const blizzAPI = useBlizzAPI();
+
 // 获取当前文件的路径和目录
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,39 +28,98 @@ async function createTables() {
     // 打开数据库连接
     const db = await getDB();
 
-    // bis_type 0：overall 1：raid 2：mythic
-    await db.exec(`
-      CREATE TABLE IF NOT EXISTS wow_bis (
-        id INTEGER PRIMARY KEY,
-        role_class TEXT NOT NULL,
-        class_spec TEXT NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        origin_updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        stats_priority TEXT NOT NULL,
-        bis_type INTEGER NOT NULL DEFAULT 0,
-        bis_items TEXT NOT NULL,
-        bis_trinkets TEXT NOT NULL
-      )
-    `);
-    await db.run(`
-      CREATE TABLE IF NOT EXISTS wow_item (
-        id INTEGER PRIMARY KEY NOT NULL,
-        slot TEXT,
-        name TEXT NOT NULL,
-        source TEXT,
-        image TEXT,
-        preview TEXT
-      )
-    `);
-
-    // 查询数据
-    const data = await db.all('SELECT * FROM wow_bis');
+    initBisTable(db);
+    initItemTable(db);
+    initDungeonTable(db);
 
     // 关闭连接
     await db.close();
   } catch (err) {
     console.error('数据库操作失败:', err);
+  }
+}
+
+async function initBisTable(db) {
+  if (!db) {
+    db = await getDB();
+  }
+  // bis_type 0：overall 1：raid 2：mythic
+  await db.run(`
+    CREATE TABLE IF NOT EXISTS wow_bis (
+      id INTEGER PRIMARY KEY,
+      role_class TEXT NOT NULL,
+      class_spec TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      origin_updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      stats_priority TEXT NOT NULL,
+      bis_type INTEGER NOT NULL DEFAULT 0,
+      bis_items TEXT NOT NULL,
+      bis_trinkets TEXT NOT NULL
+    )`);
+}
+
+async function initItemTable(db) {
+  if (!db) {
+    db = await getDB();
+  }
+  await db.run(`
+    CREATE TABLE IF NOT EXISTS wow_item (
+      id INTEGER PRIMARY KEY NOT NULL,
+      slot TEXT,
+      name TEXT NOT NULL,
+      source TEXT,
+      image TEXT,
+      preview TEXT
+    )`);
+}
+
+async function initDungeonTable(db) {
+  if (!db) {
+    db = await getDB();
+  }
+  await db.run(`CREATE TABLE IF NOT EXISTS wow_dungeon (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name_zh TEXT NOT NULL,
+    name_en TEXT NOT NULL,
+    booses TEXT
+  )`);
+
+  try {
+    const data = await blizzAPI.query(
+      '/data/wow/mythic-keystone/dungeon/index',
+      {
+        params: {
+          namespace: 'dynamic-us',
+        },
+      }
+    );
+    async function insertDungeon(db, dungeon) {
+      try {
+        await db.run(
+          `INSERT INTO wow_dungeon(id, name_zh, name_en) VALUES(?1, ?2, ?3)`,
+          [dungeon.id, dungeon.name.zh_CN, dungeon.name.en_US]
+        );
+        return { id: dungeon.id, message: 'Insert succeed.' }
+      } catch (error) {
+        return Promise.reject({ id: dungeon.id, message: error.message });
+      }
+    }
+
+    const dungeonPromises = data.dungeons.map((dungeon) =>
+      insertDungeon(db, dungeon)
+    );
+    const res = await Promise.allSettled(dungeonPromises);
+    const hasError = res.filter((item) => item.status !== 'fulfilled');
+    if (hasError.length) {
+      console.log(
+        `以下地下城插入表失败 :${hasError
+          .map((item) => item.reason.id)
+          .join(',')}`
+      );
+    }
+  } catch (error) {
+    console.log(error);
   }
 }
 
