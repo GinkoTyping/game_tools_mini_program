@@ -7,7 +7,7 @@ async function insertDungeon(id, nameZH, nameEN) {
   );
 }
 
-async function getDungeonByCondition(params) {
+async function getDungeonByName(params) {
   const { name_zh, name_en } = params;
   return db.get(
     `
@@ -15,6 +15,25 @@ async function getDungeonByCondition(params) {
   `,
     [name_zh, name_en]
   );
+}
+
+async function getDungeonsById(params) {
+  let ids = [];
+  if (typeof params === 'object') {
+    ids = params;
+  } else {
+    ids = [params];
+  }
+
+  const sql = ids.reduce((pre, cur, index) => {
+    if (index === 0) {
+      pre += `id=?${index + 1} `;
+    } else {
+      pre += `OR id=?${index + 1} `;
+    }
+    return pre;
+  }, 'SELECT * FROM wow_dungeon WHERE ');
+  return db.all(sql, ids);
 }
 
 export function useDungeonMapper(database) {
@@ -27,6 +46,7 @@ export function useDungeonMapper(database) {
 
   return {
     insertDungeon,
-    getDungeonByCondition,
+    getDungeonsById,
+    getDungeonByName,
   };
 }

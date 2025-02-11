@@ -293,7 +293,7 @@ async function updateDungeonTipData() {
       if (dungeonNameIdMap[tip.dungeonTitle]) {
         currentDungeon = dungeonNameIdMap[tip.dungeonTitle];
       } else {
-        const dungeon = await dungeonMapper.getDungeonByCondition({
+        const dungeon = await dungeonMapper.getDungeonByName({
           name_en: tip.dungeonTitle,
         });
         currentDungeon = dungeon;
