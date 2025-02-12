@@ -72,7 +72,7 @@ export interface IDungeonDTO {
   name_zh: string;
   name_en: string;
 }
-export async function querySeaonDungeons() {
+export async function querySeasonDungeons() {
   try {
     const res = await uni.request({
       url: `${BASE_URL}/wow/dungeon/list`,
@@ -81,4 +81,24 @@ export async function querySeaonDungeons() {
   } catch (error) {
     return [];
   }
+}
+
+export async function queryDungeonTip(params: {
+  roleClass: string;
+  classSpec: string;
+  dungeonId: number;
+}) {
+  const { roleClass, classSpec, dungeonId } = params;
+  try {
+    const res: any = await uni.request({
+      url: `${BASE_URL}/wow/dungeon-tip`,
+      method: 'POST',
+      data: {
+        roleClass,
+        classSpec,
+        dungeonId,
+      },
+    });
+    return JSON.parse(res.data.tips_en);
+  } catch (error) {}
 }

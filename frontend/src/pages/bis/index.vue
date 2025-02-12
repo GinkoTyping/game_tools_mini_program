@@ -128,6 +128,7 @@
           >{{ dungeon.name_zh }}</text
         >
       </view>
+
     </uni-card>
   </uni-section>
   <uni-popup ref="popup">
@@ -239,8 +240,9 @@ import { ISpceBIS, IBisItem, Relation } from '@/interface/IWow';
 import {
   queryBis,
   queryItemPreview,
-  querySeaonDungeons,
+  querySeasonDungeons,
   IDungeonDTO,
+  queryDungeonTip,
 } from '@/api/wow';
 
 const classKey = ref('');
@@ -249,18 +251,20 @@ const currentData = ref<ISpceBIS | null>();
 const query = ref<any>({});
 onLoad(async (options: any) => {
   query.value = options;
-
   classKey.value = options.classKey ?? 'death-knight';
   specKey.value = options.specKey ?? 'blood';
-  currentData.value = await queryBis(classKey.value, specKey.value);
-  currentTableName.value = currentData.value.bisItems[0]?.title;
-  console.log(currentData.value);
 
-  dungeons.value = await querySeaonDungeons();
-  currentDungeonId.value = dungeons.value[0]?.id;
+  await getBasicBisData();
+  await getSeasonDungeons();
+  await getDungeonTip();
 
   setNaviTitle(options.title);
 });
+
+async function getBasicBisData() {
+  currentData.value = await queryBis(classKey.value, specKey.value);
+  currentTableName.value = currentData.value.bisItems[0]?.title;
+}
 
 onShareAppMessage(() => {
   const { title, classKey, specKey } = query.value;
@@ -270,7 +274,6 @@ onShareAppMessage(() => {
     path: `pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${title}`,
   };
 });
-
 // 属性优先级
 const relationIcon = computed(() => {
   return (relation: Relation) => {
@@ -336,7 +339,21 @@ async function switchDetail(
 
 //#region 大秘境TIPS
 const dungeons = ref<IDungeonDTO[]>([]);
+const dungeonTip = ref();
 const currentDungeonId = ref(-1);
+async function getSeasonDungeons() {
+  dungeons.value = await querySeasonDungeons();
+  currentDungeonId.value = dungeons.value[0]?.id;
+}
+async function getDungeonTip() {
+  dungeonTip.value = await queryDungeonTip({
+    roleClass: classKey.value,
+    classSpec: specKey.value,
+    dungeonId: currentDungeonId.value,
+  });
+
+  console.log(dungeonTip.value);
+}
 function switchDungeon(id: number) {
   if (currentDungeonId.value !== id) {
     currentDungeonId.value = id;
