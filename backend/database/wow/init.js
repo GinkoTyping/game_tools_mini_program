@@ -1,5 +1,6 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
+import pLimit from 'p-limit';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url'; // 导入 fileURLToPath
@@ -9,6 +10,7 @@ import { useBisMapper } from './mapper/bisMapper.js';
 import { useDungeonMapper } from './mapper/dungeonMapper.js';
 import { useItemMapper } from './mapper/itemMapper.js';
 import { useDungeonTipMapper } from './mapper/dungeonTipMapper.js';
+import { useSpellMapper } from './mapper/spellMapper.js';
 
 const blizzAPI = useBlizzAPI();
 
@@ -28,6 +30,7 @@ const bisMapper = useBisMapper(database);
 const dungeonMapper = useDungeonMapper(database);
 const itemMapper = useItemMapper(database);
 const dungeonTipMapper = useDungeonTipMapper(database);
+const spellMapper = useSpellMapper(database);
 export async function getDB() {
   return open({
     filename: path.resolve(__dirname, './database.db'),
@@ -353,6 +356,140 @@ async function updateDungeonTipData() {
   const insertSpecPromises = maxrollData.map((spec) => insertSpec(spec));
   await Promise.allSettled(insertSpecPromises);
 }
+//#endregion
+
+//#region 法术
+async function createSpellTable(db) {
+  if (!db) {
+    throw new Error('DB missing.');
+  }
+  await db.run(`CREATE TABLE IF NOT EXISTS wow_spell(
+    id INTEGER PRIMARY KEY NOT NULL,
+    name_en TEXT,
+    name_zh TEXT,
+    range INTEGER,
+    cost TEXT,
+    cast_time REAL,
+    cooldown INTEGER,
+    description TEXT
+  )`);
+}
+async function updateSpellData() {
+  const limit = pLimit(50);
+  function collectAllSpells(data) {
+    const result = [];
+
+    function traverse(node) {
+      if (node.spells) {
+        result.push(...node.spells);
+      }
+      if (node.children) {
+        node.children.forEach((child) => traverse(child));
+      }
+    }
+
+    data.forEach((item) => traverse(item));
+    return result;
+  }
+  async function querySpell(spell) {
+    let err;
+    try {
+      // 先尝试直接通过ID查
+      const spellById = await blizzAPI.query(`/data/wow/spell/${spell.id}`, {
+        params: {
+          namespace: 'static-us',
+        },
+      });
+
+      if (spellById?.name.en_US === spell.title) {
+        return {
+          ...spell,
+          description: spellById.description.zh_CN,
+          nameZH: spellById.name.zh_CN,
+          nameEN: spell.name.en_US,
+        };
+      }
+    } catch (error) {
+      err = error;
+    }
+
+    try {
+      // ID 查询不到的话，用名称的第一个单词匹配能查到数据的ID
+      const slicedName = spell.title.split(' ').shift();
+      let fixedId;
+      const spellByName = await blizzAPI.query(`/data/wow/search/spell`, {
+        params: {
+          namespace: 'static-us',
+          'name.en_US': slicedName,
+          orderby: 'id',
+          _page: 1,
+        },
+      });
+      if (spellByName?.results[0]?.data.name.en_US === spell.title) {
+        fixedId = spellByName.results[0].data.id;
+
+        const spellByFixId = await blizzAPI.query(
+          `/data/wow/spell/${fixedId}`,
+          {
+            params: {
+              namespace: 'static-us',
+            },
+          }
+        );
+        if (spellByFixId?.description) {
+          return {
+            ...spell,
+            description: spellByFixId.description.zh_CN,
+            nameZH: spellByFixId.name.zh_CN,
+            nameEN: spellByFixId.name.en_US,
+          };
+        }
+      }
+    } catch (error) {
+      err = error;
+    }
+
+    console.log(`查询SPELL数据进度: ${currentCount} / ${totalCount}`);
+    // 官方接口查不到数据，只能自行处理
+    return { ...spell, nameEN: spell.title, message: err?.message };
+  }
+  async function insertSpell(spell) {
+    try {
+      const existedSpell = await spellMapper.getSpellById(spell.id);
+      if (existedSpell) {
+        await spellMapper.updateSpellById(spell);
+      } else {
+        await spellMapper.insertSpell(spell);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const allSpells = maxrollData.reduce((pre, cur) => {
+    const spells = collectAllSpells(cur.dungeonTips);
+    spells.forEach((spell) => {
+      if (!pre.some((item) => item.id === spell.id)) {
+        pre.push(spell);
+      }
+    });
+
+    return pre;
+  }, []);
+  let totalCount = allSpells.length;
+  let currentCount = 0;
+  const promises = allSpells.map((spell) => limit(() => querySpell(spell)));
+  const spellResults = await Promise.allSettled(promises);
+
+  const spellHasDesc = spellResults.filter((item) => item.value?.description);
+
+  const insertPromises = spellResults.map((item) => insertSpell(item.value));
+  const insertResults = await Promise.allSettled(insertPromises);
+
+  console.log(spellHasDesc);
+}
+updateSpellData();
+//#endregion
 
 //#endregion
 
