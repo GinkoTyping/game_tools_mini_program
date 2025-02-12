@@ -128,7 +128,53 @@
           >{{ dungeon.name_zh }}</text
         >
       </view>
-
+      <uni-collapse v-model="tipCollapseIndex">
+        <uni-collapse-item
+          :open="index === 0"
+          :title="tipKind.title"
+          v-for="(tipKind, index) in dungeonTip?.children"
+          :key="tipKind.title"
+        >
+          <view
+            class="ul"
+            v-for="(l1Child, l1Index) in tipKind.children"
+            :key="l1Index"
+          >
+            {{ l1Child.title || l1Child.totalText }}
+            <view
+              class="li list-style"
+              v-for="(l2Child, l2Index) in l1Child.children"
+              :key="l2Index"
+            >
+              <rich-text :nodes="renderTip(l2Child.totalText)"></rich-text>
+              <view
+                class="ul list-style-empty"
+                v-show="l2Child.children?.length"
+                v-for="(l3Child, l3Index) in l2Child.children"
+                :key="l3Index"
+              >
+                <rich-text :nodes="renderTip(l3Child.totalText)"></rich-text>
+                <view
+                  class="li list-style-empty"
+                  v-show="l3Child.children?.length"
+                  v-for="(l4Child, l4Index) in l3Child.children"
+                  :key="l4Index"
+                >
+                  <rich-text :nodes="renderTip(l4Child.totalText)"></rich-text>
+                  <view
+                    class="ul list-style-empty"
+                    v-show="l4Child.children?.length"
+                    v-for="(l5Child, l5Index) in l4Child.children"
+                    :key="l5Index"
+                  >
+                    <rich-text :nodes="renderTip(l5Child.totalText)"></rich-text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </uni-collapse-item>
+      </uni-collapse>
     </uni-card>
   </uni-section>
   <uni-popup ref="popup">
@@ -339,8 +385,20 @@ async function switchDetail(
 
 //#region 大秘境TIPS
 const dungeons = ref<IDungeonDTO[]>([]);
-const dungeonTip = ref();
+const dungeonTip = ref<any>();
 const currentDungeonId = ref(-1);
+const tipCollapseIndex = ref(['0']);
+const renderTip = computed(() => {
+  return (text: string) => {
+    const wrappedText = `<p style="font-size: 14px;">${text}</p>`;
+
+    return wrappedText.replace(
+      /\[(.*?)\]/g,
+      (match, p) =>
+        `<b style="font-size: 14px;color: rgb(255, 209, 0); font-weight: bold;">${p}</b>`
+    );
+  };
+});
 async function getSeasonDungeons() {
   dungeons.value = await querySeasonDungeons();
   currentDungeonId.value = dungeons.value[0]?.id;
@@ -354,18 +412,16 @@ async function getDungeonTip() {
 
   console.log(dungeonTip.value);
 }
-function switchDungeon(id: number) {
+async function switchDungeon(id: number) {
   if (currentDungeonId.value !== id) {
     currentDungeonId.value = id;
+    await getDungeonTip();
   }
 }
 //#endregion
 </script>
 
 <style lang="scss" scoped>
-page {
-  background-color: red;
-}
 .stats {
   padding: 0 10px;
   display: flex;
@@ -517,6 +573,65 @@ $light-border: rgb(68, 68, 68);
   }
   .is-loot {
     color: $uni-text-color-inverse !important;
+  }
+}
+::v-deep .uni-collapse {
+  background-color: rgb(40, 40, 40) !important;
+  border-radius: 10px;
+  .uni-collapse-item__title {
+    border-bottom-color: $uni-bg-color !important;
+  }
+  .uni-collapse-item__title-box {
+    border-radius: 10px;
+    background-color: rgb(40, 40, 40) !important;
+    color: $uni-color-primary;
+    font-weight: bold;
+    .uni-collapse-item__title-text {
+      font-size: 16px !important;
+    }
+  }
+
+  .uni-collapse-item__wrap-content {
+    background-color: rgb(40, 40, 40) !important;
+    color: #fff;
+    border-bottom-color: $uni-bg-color-grey-light !important;
+    .list-style,
+    .list-style-empty {
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        top: 10px;
+        left: -12px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+      }
+    }
+    .list-style {
+      &::before {
+        background-color: #fff;
+      }
+    }
+    .ul .li {
+      margin-left: 16px;
+      color: #fff;
+      font-weight: normal;
+      position: relative;
+    }
+    & > .ul {
+      padding: 0 12px;
+      font-size: 14px;
+      font-weight: bold;
+      color: $uni-color-primary;
+      > .li > .ul {
+        margin-left: 16px;
+        & > .li > .ul {
+          margin-left: 16px;
+        }
+      }
+    }
   }
 }
 .disale-ellipsis {
