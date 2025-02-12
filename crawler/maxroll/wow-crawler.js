@@ -358,24 +358,24 @@ function mapDescWithIcon(context, element) {
         .each((index, element) => {
           if ($(element).find('span[data-wow-id]').length) {
             const id = Number(
-              $(element).find('span[data-wow-id]').attr('data-wow-id')
+              $(element).find('span[data-wow-id]').first().attr('data-wow-id')
             );
             spells.push({
               id: isNaN(id) ? null : id,
-              title: $(element).find('.wow-gametip').text(),
+              title: $(element).find('.wow-gametip').first().text(),
             });
           }
         });
       if ($(desc).find('ul').length) {
-        liChildren = mapDescWithIcon($, $(desc).find('ul'));
+        liChildren = mapDescWithIcon($, $(desc).find('ul').first());
       }
 
       // 获取基础的文本字段
       let totalText;
       if ($(element).find('mark').length) {
-        totalText = $(element).find('mark').text();
+        totalText = $(element).find('mark').first().text();
       } else {
-        $(desc).find('ul').remove();
+        $(desc).find('ul').first().remove();
         totalText = $(desc).text();
       }
       if (spells.length) {
