@@ -140,7 +140,13 @@
             v-for="(l1Child, l1Index) in tipKind.children"
             :key="l1Index"
           >
-            {{ l1Child.title || l1Child.totalText }}
+            <text v-if="l1Child.children.length">{{
+              l1Child.title || l1Child.totalText
+            }}</text>
+            <rich-text
+              v-if="!l1Child.children.length"
+              :nodes="renderTip(l1Child.title || l1Child.totalText)"
+            ></rich-text>
             <view
               class="li list-style"
               v-for="(l2Child, l2Index) in l1Child.children"
@@ -167,7 +173,9 @@
                     v-for="(l5Child, l5Index) in l4Child.children"
                     :key="l5Index"
                   >
-                    <rich-text :nodes="renderTip(l5Child.totalText)"></rich-text>
+                    <rich-text
+                      :nodes="renderTip(l5Child.totalText)"
+                    ></rich-text>
                   </view>
                 </view>
               </view>
