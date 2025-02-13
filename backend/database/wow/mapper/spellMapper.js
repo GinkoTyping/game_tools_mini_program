@@ -77,6 +77,12 @@ async function updateSpellById(param) {
   );
 }
 
+async function getBlankSpell() {
+  return db.all(`
+    SELECT id, id_wow_db, name_en FROM wow_spell WHERE cost == ""
+  `);
+}
+
 export function useSpellMapper(database) {
   if (database) {
     db = database;
@@ -85,5 +91,5 @@ export function useSpellMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { insertSpell, getSpellById, updateSpellById };
+  return { insertSpell, getSpellById, updateSpellById, getBlankSpell };
 }
