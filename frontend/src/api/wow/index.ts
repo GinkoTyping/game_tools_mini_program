@@ -1,5 +1,5 @@
 import { IBisItem, ITrinks, IStatPriority } from '@/interface/IWow';
-import { mapBisItems, mapTrinks } from '@/data/mapSpecData';
+import { mapTrinks } from '@/data/mapSpecData';
 
 // const BASE_URL = 'https://ginkolearn.cyou/api';
 const BASE_URL = 'http://localhost:3000/api';
@@ -16,6 +16,8 @@ interface IBisDataDTO {
   bis_type: BisType;
   stats_priority: IStatPriority[];
   updated_at: string;
+  comment: string;
+  ratings: { label: string; rating: number }[];
 }
 
 export async function queryBis(roleClass: string, classSpec: string) {
@@ -25,6 +27,57 @@ export async function queryBis(roleClass: string, classSpec: string) {
   });
   const data = res.data as IBisDataDTO;
 
+  function mapRatings(rating: number) {
+    let count = rating;
+    let index = 0;
+    const array = new Array(5).fill(0);
+    while (count > 0) {
+      array[index] = 1;
+      count--;
+      index++;
+    }
+    return array;
+  }
+
+  function mapRatingComment(label: string, score: number) {
+    switch (score) {
+      case 5:
+        if (['单体', 'AOE'].includes(label)) {
+          return '暴力';
+        } else if (label === '功能性') {
+          return '顶级工具人';
+        } else if (label === '移动性') {
+          return '大长腿';
+        } else if (label === '生存能力') {
+          return '体育生';
+        }
+        return '出色';
+      case 4:
+        if (label === '移动性') {
+          return '小长腿';
+        } else if (label === '生存能力') {
+          return '健壮';
+        }
+        return '强力';
+      case 3:
+      case 2:
+        if (label === '移动性') {
+          return '摇轮椅';
+        } else if (label === '生存能力') {
+          return '脆皮儿';
+        }
+        return '还行';
+      case 1:
+        if (label === '移动性') {
+          return '蠕动';
+        }
+        return '路边一条';
+
+      default:
+        break;
+    }
+  }
+
   return {
     roleClass,
     classSpec,
@@ -32,6 +85,12 @@ export async function queryBis(roleClass: string, classSpec: string) {
     updatedAt: data.updated_at,
     trinkets: mapTrinks(data.bis_trinkets),
     bisItems: data.bis_items,
+    ratings: data.ratings.map(item => ({
+      label: item.label,
+      comment: mapRatingComment(item.label, item.rating),
+      ratingScore: item.rating,
+      rating: mapRatings(item.rating),
+    })),
   };
 }
 

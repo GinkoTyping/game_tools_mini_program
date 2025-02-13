@@ -1,4 +1,27 @@
 <template>
+  <uni-section :class="[classKey]" title="评分">
+    <uni-card class="section-card">
+      <view
+        class="rating-item"
+        v-for="item in currentData?.ratings"
+        :key="item.label"
+      >
+        <view class="label"
+          > 
+          <text>{{ item.label }}</text>
+          <text class="sub-label">({{ item.comment }})</text>
+        </view>
+        <view class="bars">
+          <view
+            :class="['bar', getBarColor(item.ratingScore, bar)]"
+            v-for="(bar, index) in item.rating"
+            :key="index"
+          >
+          </view>
+        </view>
+      </view>
+    </uni-card>
+  </uni-section>
   <uni-section :class="[classKey]" title="属性优先级">
     <uni-card class="section-card">
       <view class="stats">
@@ -318,6 +341,8 @@ onLoad(async (options: any) => {
 async function getBasicBisData() {
   currentData.value = await queryBis(classKey.value, specKey.value);
   currentTableName.value = currentData.value.bisItems[0]?.title;
+
+  console.log(currentData.value);
 }
 
 onShareAppMessage(() => {
@@ -328,6 +353,38 @@ onShareAppMessage(() => {
     path: `pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${title}`,
   };
 });
+
+// 评分
+const getBarColor = computed(() => {
+  return (score: number, cur: number) => {
+    if (cur) {
+      if (score > 3) {
+        return 'green-bar';
+      }
+      if (score > 1) {
+        return 'orange-bar';
+      }
+      return 'red-bar';
+    } else {
+      return '';
+    }
+  };
+});
+const getRatingText = computed(() => {
+  return (score: number) => {
+    if (score === 5) {
+      return '暴力';
+    }
+    if (score === 4) {
+      return '强力';
+    }
+    if (score > 1 ) {
+      return '还行';
+    }
+    return '路边一条';
+  };
+});
+
 // 属性优先级
 const relationIcon = computed(() => {
   return (relation: Relation) => {
@@ -430,6 +487,42 @@ async function switchDungeon(id: number) {
 </script>
 
 <style lang="scss" scoped>
+.rating-item {
+  margin-bottom: 6px;
+  padding: 6px;
+  padding-bottom: 0;
+  .label {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+  }
+  .sub-label {
+    color: rgb(149, 152, 155);
+    font-size: 14px;
+  }
+  .bars {
+    margin: 4px 0;
+    display: flex;
+    justify-content: space-between;
+    .bar {
+      width: 18%;
+      height: 12px;
+      border-radius: 6px;
+      background-color: rgb(43, 44, 44);
+    }
+    .green-bar {
+      background-color: rgb(25, 159, 47);
+    }
+    .orange-bar {
+      background-color: rgb(240, 154, 24);
+    }
+    .red-bar {
+      background-color: #bd2625;
+    }
+  }
+}
 .stats {
   padding: 0 10px;
   display: flex;

@@ -28,4 +28,3 @@ backend/.env
 .vs/Game-Tools-Mini-Program/v17/.wsuo
 **/target
 crawler/.env
-backend/database/wow/database.db

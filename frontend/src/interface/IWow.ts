@@ -19,6 +19,12 @@ export interface ISpceBIS {
   statsPriority: IStatPriority[];
   trinkets: ITrinks[];
   bisItems: { items: Array<IBisItem>; title: string }[];
+  ratings: {
+    label: string;
+    rating: number[];
+    ratingScore: number;
+    comment: string;
+  }[];
 }
 
 export interface IWowBIS {
