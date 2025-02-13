@@ -365,6 +365,7 @@ async function createSpellTable(db) {
   }
   await db.run(`CREATE TABLE IF NOT EXISTS wow_spell(
     id INTEGER PRIMARY KEY NOT NULL,
+    id_wow_db INTEGER,
     name_en TEXT,
     name_zh TEXT,
     range INTEGER,
@@ -375,7 +376,7 @@ async function createSpellTable(db) {
   )`);
 }
 async function updateSpellData() {
-  const limit = pLimit(50);
+  const limit = pLimit(10);
   function collectAllSpells(data) {
     const result = [];
 
@@ -393,41 +394,30 @@ async function updateSpellData() {
   }
   async function querySpell(spell) {
     let err;
-    try {
-      // 先尝试直接通过ID查
-      const spellById = await blizzAPI.query(`/data/wow/spell/${spell.id}`, {
-        params: {
-          namespace: 'static-us',
-        },
-      });
 
-      if (spellById?.name.en_US === spell.title) {
-        return {
-          ...spell,
-          description: spellById.description.zh_CN,
-          nameZH: spellById.name.zh_CN,
-          nameEN: spell.name.en_US,
-        };
-      }
-    } catch (error) {
-      err = error;
-    }
-
+    let hasSearchName = false;
+    let hasSearchFixedId = false;
+    let hasFoundMatchedName = false;
     try {
-      // ID 查询不到的话，用名称的第一个单词匹配能查到数据的ID
-      const slicedName = spell.title.split(' ').shift();
+      // ID 查询不到的话，用名称能查到数据的ID
       let fixedId;
       const spellByName = await blizzAPI.query(`/data/wow/search/spell`, {
         params: {
           namespace: 'static-us',
-          'name.en_US': slicedName,
+          'name.en_US': spell.title,
           orderby: 'id',
           _page: 1,
         },
       });
-      if (spellByName?.results[0]?.data.name.en_US === spell.title) {
-        fixedId = spellByName.results[0].data.id;
+      hasSearchName = true;
+      const matched = spellByName?.results.find(
+        (item) => item.data.name.en_US === spell.title
+      );
+      if (matched) {
+        hasFoundMatchedName = true;
+        fixedId = matched.data.id;
 
+        // TODO id查询失败的spell 需要记录
         const spellByFixId = await blizzAPI.query(
           `/data/wow/spell/${fixedId}`,
           {
@@ -436,22 +426,39 @@ async function updateSpellData() {
             },
           }
         );
+        hasSearchFixedId = true;
         if (spellByFixId?.description) {
+          currentCount++;
+          console.log(
+            `有数据，总进度: ${currentCount} / ${totalCount} ~ ${spellByFixId.name.zh_CN}`
+          );
           return {
             ...spell,
+            idWowDB: spellByFixId.id,
             description: spellByFixId.description.zh_CN,
             nameZH: spellByFixId.name.zh_CN,
             nameEN: spellByFixId.name.en_US,
           };
         }
       }
+
+      // 官方接口查不到数据，只能自行处理
+      currentCount++;
+      console.log(
+        `无数据，查询名称: ${hasSearchName ? '√' : 'x'}, 查询名称成功：${
+          hasFoundMatchedName ? '√' : 'x'
+        }, 查询ID: ${hasSearchFixedId ? '√' : 'x'}, 原因: ${
+          err?.message
+        } ,总进度: ${currentCount} / ${totalCount} ~${spell.title}`
+      );
+      return { ...spell, nameEN: spell.title, error: err };
     } catch (error) {
       err = error;
+      if (error.code === 'ECONNABORTED') {
+        console.log(`${error.message}: ${error.config?.url}`);
+      }
+      return { ...spell, nameEN: spell.title, error: err };
     }
-
-    console.log(`查询SPELL数据进度: ${currentCount} / ${totalCount}`);
-    // 官方接口查不到数据，只能自行处理
-    return { ...spell, nameEN: spell.title, message: err?.message };
   }
   async function insertSpell(spell) {
     try {
@@ -470,7 +477,10 @@ async function updateSpellData() {
     const spells = collectAllSpells(cur.dungeonTips);
     spells.forEach((spell) => {
       if (!pre.some((item) => item.id === spell.id)) {
-        pre.push(spell);
+        pre.push({
+          id: spell.id,
+          title: spell.title.replace(/[\u200B-\u200D\uFEFF]/g, ''),
+        });
       }
     });
 
@@ -478,6 +488,7 @@ async function updateSpellData() {
   }, []);
   let totalCount = allSpells.length;
   let currentCount = 0;
+
   const promises = allSpells.map((spell) => limit(() => querySpell(spell)));
   const spellResults = await Promise.allSettled(promises);
 
@@ -488,6 +499,7 @@ async function updateSpellData() {
 
   console.log(spellHasDesc);
 }
+
 updateSpellData();
 //#endregion
 

@@ -3,6 +3,7 @@ let db;
 async function insertSpell(param) {
   const {
     id,
+    idWowDB = -1,
     nameEN = '',
     nameZH = '',
     range = -1,
@@ -13,9 +14,9 @@ async function insertSpell(param) {
   } = param;
   await db.run(
     `
-    INSERT INTO wow_spell(id, name_en, name_zh, range, cost, cast_time, cooldown, description) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)
+    INSERT INTO wow_spell(id, id_wow_db, name_en, name_zh, range, cost, cast_time, cooldown, description) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
   `,
-    [id, nameEN, nameZH, range, cost, castTime, cooldown, description]
+    [id, idWowDB, nameEN, nameZH, range, cost, castTime, cooldown, description]
   );
 }
 
@@ -24,8 +25,17 @@ async function getSpellById(id) {
 }
 
 async function updateSpellById(param) {
-  const { id, nameEN, nameZH, range, cost, castTime, cooldown, description } =
-    param;
+  const {
+    id,
+    idWowDB,
+    nameEN,
+    nameZH,
+    range,
+    cost,
+    castTime,
+    cooldown,
+    description,
+  } = param;
   return db.run(
     `
     UPDATE wow_spell
@@ -56,10 +66,14 @@ async function updateSpellById(param) {
     description = CASE
       WHEN ?7 IS NOT NULL THEN ?7
       ELSE description
+    END,
+      id_wow_db = CASE
+      WHEN ?8 IS NOT NULL THEN ?8
+      ELSE id_wow_db
     END
-    WHERE id = ?8
+    WHERE id = ?9
   `,
-    [nameEN, nameZH, range, cost, castTime, cooldown, description, id]
+    [nameEN, nameZH, range, cost, castTime, cooldown, description, idWowDB, id]
   );
 }
 
