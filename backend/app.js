@@ -14,10 +14,10 @@ app.use(cors());
 app.use(express.json());
 
 // 挂载用户路由
-app.use('/wow', wowBisRoutes);
-app.use('/wow', dungeonRoutes);
-app.use('/wow', dungeonTipRoutes);
-app.use('/common', commonBisRoutes);
+app.use('/api/wow', wowBisRoutes);
+app.use('/api/wow', dungeonRoutes);
+app.use('/api/wow', dungeonTipRoutes);
+app.use('/api/common', commonBisRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
