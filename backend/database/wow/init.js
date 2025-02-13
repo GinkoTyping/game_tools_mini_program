@@ -500,7 +500,6 @@ async function updateSpellData() {
   console.log(spellHasDesc);
 }
 
-updateSpellData();
 //#endregion
 
 //#endregion
