@@ -1,6 +1,8 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 import pLimit from 'p-limit';
+import axios from 'axios';
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url'; // 导入 fileURLToPath
@@ -290,6 +292,7 @@ async function createDungeonTipTable(db) {
 // TODO 是否在存入数据库前，就先把汉化做了
 async function updateDungeonTipData() {
   const dungeonNameIdMap = {};
+  const trashTipMap = {};
   async function insertTip(roleClass, classSpec, tip) {
     let currentDungeon;
     try {
@@ -308,15 +311,19 @@ async function updateDungeonTipData() {
         classSpec,
         currentDungeon.id
       );
+
+      const translatedTip = await translateDungeonTip(tip.children);
+
       const params = {
         roleClass,
         classSpec,
         dungeonId: currentDungeon.id,
         tips_en: JSON.stringify({
-          ...tip,
           dungeonTitle: currentDungeon.name_zh,
+          children: translatedTip,
         }),
       };
+
       if (existedDungeonTip) {
         await dungeonTipMapper.updateDungeonTip(params);
       } else {
@@ -352,10 +359,91 @@ async function updateDungeonTipData() {
       console.log(`插入 地下城TIPS 成功：${spec.classSpec} ${spec.roleClass}`);
     }
   }
+  async function translateDungeonTip(tips, dungeonTitle) {
+    if (!tips?.length) {
+      return [];
+    }
+    async function getSpellNameById(spell) {
+      const spellData = await spellMapper.getSpellById(spell.id);
+      return { titleOrigin: spell.title, titleZH: spellData.name_zh };
+    }
+    async function recurseTranslate(tip, dungeonTitle) {
+      if (tip.title === 'Trash Tips') {
+        tip.title = '小怪';
+
+        // 不同专精 相同副本的小怪TIPS一致，可以依赖缓存
+        if (trashTipMap[dungeonTitle]) {
+          tip.children = trashTipMap[dungeonTitle];
+        } else {
+          tip.children = await translateDungeonTip(tip.children, dungeonTitle);
+        }
+      } else if (tip.title === 'Boss Tips') {
+        tip.title = 'BOSS';
+        tip.children = await translateDungeonTip(tip.children, dungeonTitle);
+
+        // BOSS 名称不翻译，界面展示时用 X号BOSS 代替
+      } else if (tip.title === 'Pre Dungeon Start') {
+        tip.title = '插钥匙前';
+        tip.children = await translateDungeonTip(tip.children, dungeonTitle);
+      } else if (tip.title) {
+        tip.children = await translateDungeonTip(tip.children, dungeonTitle);
+
+        // 着重需要翻译的 TIPS
+      } else if (tip.totalText) {
+        // 准备好翻译过的spell
+        const validSpells = tip.spells?.filter(
+          (spell) => spell.id && spell.title
+        );
+        let translatedSpells = [];
+        if (validSpells?.length) {
+          const spellPromises = validSpells.map((spell) =>
+            getSpellNameById(spell)
+          );
+          const spellResults = await Promise.allSettled(spellPromises);
+          translatedSpells = spellResults.map((result) => result.value);
+        }
+
+        // 替换原句中的技能名称
+        if (translatedSpells.length) {
+          translatedSpells.forEach((spell) => {
+            tip.totalText = tip.totalText.replaceAll(
+              spell.titleOrigin,
+              spell.titleZH
+            );
+          });
+        }
+
+        // TODO: 待接入deepseek
+        // const data = await translate(tip.totalText);
+        // tip.totalText = data;
+
+        return translateDungeonTip(tip.children, dungeonTitle);
+      }
+    }
+
+    // TODO: 待接入deepseek
+    async function translate(value) {
+      const res = await axios.post(
+        'http://47.109.25.141:3000/api/common/translate',
+        {
+          text: value,
+          useMap: true,
+        }
+      );
+      return res.data;
+    }
+
+    const translatePromise = tips.map((tip) =>
+      recurseTranslate(tip, dungeonTitle)
+    );
+    await Promise.allSettled(translatePromise);
+    return tips;
+  }
 
   const insertSpecPromises = maxrollData.map((spec) => insertSpec(spec));
   await Promise.allSettled(insertSpecPromises);
 }
+
 //#endregion
 
 //#region 法术
@@ -375,6 +463,8 @@ async function createSpellTable(db) {
     description TEXT
   )`);
 }
+
+// 弃用：暴雪接口不稳定，数据不全。 不如直接爬 wowhead
 async function updateSpellData() {
   const limit = pLimit(10);
   function collectAllSpells(data) {
@@ -499,8 +589,6 @@ async function updateSpellData() {
 
   console.log(spellHasDesc);
 }
-
-//#endregion
 
 //#endregion
 
