@@ -126,7 +126,7 @@
           >
             <img
               @click="() => switchDetail(true, trinket)"
-              :src="`/static/images/wow/trinkets/${trinket.image}`"
+              :src="`https://ginkolearn.cyou/api/wow/assets/trinkets/${trinket.image}`"
               alt=""
               srcset=""
             />
