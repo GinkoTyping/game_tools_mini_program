@@ -6,8 +6,7 @@
         v-for="item in currentData?.ratings"
         :key="item.label"
       >
-        <view class="label"
-          > 
+        <view class="label">
           <text>{{ item.label }}</text>
           <text class="sub-label">({{ item.comment }})</text>
         </view>
@@ -136,7 +135,7 @@
       </view>
     </uni-card>
   </uni-section>
-  <uni-section class="dungeon" :class="[classKey]" title="大秘境">
+  <uni-section class="dungeon" :class="[classKey]" title="一句话大秘境">
     <uni-card class="section-card">
       <view class="menu">
         <text
@@ -175,21 +174,27 @@
               v-for="(l2Child, l2Index) in l1Child.children"
               :key="l2Index"
             >
-              <rich-text :nodes="renderTip(l2Child.totalText)"></rich-text>
+              <rich-text
+                :nodes="renderTip(l2Child.totalText)"
+                @click="() => displaySpells(l2Child.spells)"
+              ></rich-text>
               <view
                 class="ul list-style-empty"
                 v-show="l2Child.children?.length"
                 v-for="(l3Child, l3Index) in l2Child.children"
                 :key="l3Index"
               >
-                <rich-text :nodes="renderTip(l3Child.totalText)"></rich-text>
+                <rich-text
+                  :nodes="renderTip(l3Child.totalText)"
+                  @click="() => displaySpells(l3Child.spells)"
+                ></rich-text>
                 <view
                   class="li list-style-empty"
                   v-show="l3Child.children?.length"
                   v-for="(l4Child, l4Index) in l3Child.children"
                   :key="l4Index"
                 >
-                  <rich-text :nodes="renderTip(l4Child.totalText)"></rich-text>
+                  <rich-text :nodes="renderTip(l4Child.totalText)" @click="() => displaySpells(l4Child.spells)"></rich-text>
                   <view
                     class="ul list-style-empty"
                     v-show="l4Child.children?.length"
@@ -198,6 +203,7 @@
                   >
                     <rich-text
                       :nodes="renderTip(l5Child.totalText)"
+                      @click="() => displaySpells(l5Child.spells)"
                     ></rich-text>
                   </view>
                 </view>
@@ -305,6 +311,23 @@
       </view>
     </uni-card>
   </uni-popup>
+
+  <uni-popup ref="spellpopup">
+    <uni-card
+      class="previw-popup"
+      v-for="spell in currentSpells"
+      :key="spell.id"
+    >
+      <text class="spell-name">{{ spell.name_zh }}</text>
+      <view class="spell-prop">
+        <text v-show="spell.range && !spell.range.includes('0码')" style="width: 100%;">{{ spell.range }}</text>
+        <text v-show="spell.cast_time">{{ spell.cast_time }}</text>
+        <text v-show="spell.cooldown && spell.cooldown != 'n/a'">{{ spell.cooldown }}</text>
+        <text v-show="spell.cost && spell.cost != '无'">{{ spell.cost }}</text>
+      </view>
+      <text class="description">{{ spell.description }}</text>
+    </uni-card>
+  </uni-popup>
 </template>
 
 <script lang="ts" setup>
@@ -320,6 +343,7 @@ import {
   querySeasonDungeons,
   IDungeonDTO,
   queryDungeonTip,
+  querySpellsInTip,
 } from '@/api/wow';
 
 const classKey = ref('');
@@ -378,7 +402,7 @@ const getRatingText = computed(() => {
     if (score === 4) {
       return '强力';
     }
-    if (score > 1 ) {
+    if (score > 1) {
       return '还行';
     }
     return '路边一条';
@@ -482,6 +506,14 @@ async function switchDungeon(id: number) {
     currentDungeonId.value = id;
     await getDungeonTip();
   }
+}
+
+const spellpopup = ref<any>('');
+const currentSpells = ref<any>();
+async function displaySpells(params: any) {
+  const ids = params?.map((item: any) => item.id);
+  currentSpells.value = await querySpellsInTip(ids);
+  spellpopup.value?.open();
 }
 //#endregion
 </script>
@@ -596,15 +628,31 @@ $light-border: rgb(68, 68, 68);
   width: 10vw;
   height: 10vw;
 }
+
 ::v-deep .previw-popup .uni-card {
   width: 70vw !important;
   border: 1px solid #ffffff !important;
+  margin-bottom: 10px !important;
   text {
     color: #fff;
   }
   .uni-card__content {
     display: flex;
     flex-direction: column;
+  }
+  .spell-name {
+    font-size: 16px;
+  }
+  .spell-prop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text {
+      width: 45%;
+      &:nth-child(3),&:nth-child(5) {
+        text-align: right;
+      }
+    }
   }
   .name {
     color: $color-mythic;

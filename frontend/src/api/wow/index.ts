@@ -161,3 +161,26 @@ export async function queryDungeonTip(params: {
     return JSON.parse(res.data.tips_en);
   } catch (error) {}
 }
+
+export async function querySpellsInTip(ids: number[]) {
+  try {
+    const res: any = await uni.request({
+      url: `${BASE_URL}/wow/spell`,
+      method: 'POST',
+      data: {
+        ids,
+      },
+    });
+
+    return res.data?.map((spell: any) => {
+      return {
+        ...spell,
+        cost: spell.cost?.replaceAll(' 值', ''),
+        description: spell.description?.replaceAll(' sec', '秒'),
+      };
+    });
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
