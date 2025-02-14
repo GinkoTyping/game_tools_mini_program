@@ -5,6 +5,8 @@ import { configDotenv } from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import translateMap from '../../database/wow/data/translate-map.js';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 configDotenv({ path: path.resolve(__dirname, '../../.env') });
@@ -22,12 +24,18 @@ const BAIDU_CONFIG = {
  * @param {string} from - 源语言（默认auto）
  * @param {string} to - 目标语言（默认zh）
  */
-async function translate(text, from = 'en', to = 'zh') {
+export async function translate(text, useMap = false, from = 'en', to = 'zh') {
   try {
     // 生成签名（按百度要求顺序拼接）
     const salt = Date.now();
     const signStr = BAIDU_CONFIG.appid + text + salt + BAIDU_CONFIG.key;
     const sign = md5(signStr);
+
+    if (useMap) {
+      Object.entries(translateMap).forEach(([key, value]) => {
+        text = text.replaceAll(key, value);
+      });
+    }
 
     // 请求参数
     const params = {
