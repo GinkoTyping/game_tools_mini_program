@@ -1,8 +1,8 @@
 import { IBisItem, ITrinks, IStatPriority } from '@/interface/IWow';
 import { mapTrinks } from '@/data/mapSpecData';
 
-// const BASE_URL = 'https://ginkolearn.cyou/api';
-const BASE_URL = 'http://localhost:3000/api';
+const BASE_URL = 'https://ginkolearn.cyou/api';
+// const BASE_URL = 'http://localhost:3000/api';
 
 enum BisType {
   Overall = 0,
@@ -175,6 +175,7 @@ export async function querySpellsInTip(ids: number[]) {
     return res.data?.map((spell: any) => {
       return {
         ...spell,
+        range: spell.range === -1 ? '' : spell.range,
         cost: spell.cost?.replaceAll(' 值', ''),
         description: spell.description?.replaceAll(' sec', '秒'),
       };

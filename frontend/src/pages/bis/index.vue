@@ -194,7 +194,10 @@
                   v-for="(l4Child, l4Index) in l3Child.children"
                   :key="l4Index"
                 >
-                  <rich-text :nodes="renderTip(l4Child.totalText)" @click="() => displaySpells(l4Child.spells)"></rich-text>
+                  <rich-text
+                    :nodes="renderTip(l4Child.totalText)"
+                    @click="() => displaySpells(l4Child.spells)"
+                  ></rich-text>
                   <view
                     class="ul list-style-empty"
                     v-show="l4Child.children?.length"
@@ -320,9 +323,15 @@
     >
       <text class="spell-name">{{ spell.name_zh }}</text>
       <view class="spell-prop">
-        <text v-show="spell.range && !spell.range.includes('0码')" style="width: 100%;">{{ spell.range }}</text>
-        <text v-show="spell.cast_time">{{ spell.cast_time }}</text>
-        <text v-show="spell.cooldown && spell.cooldown != 'n/a'">{{ spell.cooldown }}</text>
+        <text
+          v-show="spell.range && !spell.range?.includes('0码')"
+          style="width: 100%"
+          >{{ spell.range }}</text
+        >
+        <text v-show="spell.cast_time?.length">{{ spell.cast_time }}</text>
+        <text v-show="spell.cooldown?.length && spell.cooldown != 'n/a'">{{
+          spell.cooldown
+        }}</text>
         <text v-show="spell.cost && spell.cost != '无'">{{ spell.cost }}</text>
       </view>
       <text class="description">{{ spell.description }}</text>
@@ -649,7 +658,8 @@ $light-border: rgb(68, 68, 68);
     justify-content: space-between;
     text {
       width: 45%;
-      &:nth-child(3),&:nth-child(5) {
+      &:nth-child(3),
+      &:nth-child(5) {
         text-align: right;
       }
     }
