@@ -1,6 +1,9 @@
 <template>
   <uni-collapse ref="collapse" accordion>
-    <uni-collapse-item v-for="classKey in Object.keys(allData)" :key="classKey">
+    <uni-collapse-item
+      v-for="(classKey, classIndex) in Object.keys(allData)"
+      :key="classKey"
+    >
       <template v-slot:title>
         <view :class="[classKey]">
           {{ localeLabels.class[classKey] }}
@@ -8,11 +11,19 @@
       </template>
       <view
         class="spec"
-        v-for="specItem in bisData[classKey]"
+        v-for="(specItem, specIndex) in bisData[classKey]"
         :key="specItem.spec"
         @click="() => onClickSpec(classKey, specItem.spec)"
       >
-        <image :src="specIcon(classKey, specItem.spec)"> </image>
+        <view
+          :style="{
+            width: '20px',
+            height: '20px',
+            backgroundImage:
+              'url(https://ginkolearn.cyou/api/wow/assets/sprites/spec-sprite.png)',
+            backgroundPosition: `${-specIndex * 20}px ${-classIndex * 20}px`,
+          }"
+        ></view>
         <text>{{ localeLabels[classKey][specItem.spec] }}</text>
       </view>
     </uni-collapse-item>
@@ -75,6 +86,14 @@ function onClickSpec(classKey: string, specKey: string) {
       border-bottom: 4px solid $uni-bg-color;
       position: relative;
       image {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      view {
         width: 20px;
         height: 20px;
         position: absolute;

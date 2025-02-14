@@ -1,8 +1,8 @@
 import { IBisItem, ITrinks, IStatPriority } from '@/interface/IWow';
 import { mapTrinks } from '@/data/mapSpecData';
 
-const BASE_URL = 'https://ginkolearn.cyou/api';
-// const BASE_URL = 'http://localhost:3000/api';
+// const BASE_URL = 'https://ginkolearn.cyou/api';
+const BASE_URL = 'http://localhost:3000/api';
 
 enum BisType {
   Overall = 0,
