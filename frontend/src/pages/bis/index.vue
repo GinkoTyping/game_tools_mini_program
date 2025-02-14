@@ -78,7 +78,7 @@
           <uni-td>
             <view class="slot-container">
               <img
-                :src="`/static/images/wow/items/${item.image}`"
+                :src="`https://ginkolearn.cyou/api/wow/assets/items/${item.image}`"
                 alt=""
                 srcset=""
                 style="width: 14px; height: 14px"
