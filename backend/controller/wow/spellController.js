@@ -28,3 +28,10 @@ export async function queryUpdateSpell(req, res) {
     res.json({ message: '更新失败' });
   }
 }
+
+export async function querySpellByIds(req, res) {
+  const promises = req.body?.ids?.map((id) => spellMapper.getSpellById(id));
+  const results = await Promise.allSettled(promises);
+
+  res.json(results.map((item) => item.value));
+}
