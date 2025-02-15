@@ -520,9 +520,11 @@ async function switchDungeon(id: number) {
 const spellpopup = ref<any>('');
 const currentSpells = ref<any>();
 async function displaySpells(params: any) {
-  const ids = params?.map((item: any) => item.id);
-  currentSpells.value = await querySpellsInTip(ids);
-  spellpopup.value?.open();
+  if (params?.length) {
+    const ids = params?.map((item: any) => item.id);
+    currentSpells.value = await querySpellsInTip(ids);
+    spellpopup.value?.open();
+  }
 }
 //#endregion
 </script>
