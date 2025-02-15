@@ -1,5 +1,5 @@
 <template>
-  <uni-section :class="[classKey]" title="评分">
+  <uni-section :class="[classKey]" title="总览">
     <uni-card class="section-card">
       <view
         class="rating-item"

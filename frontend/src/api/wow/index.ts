@@ -158,7 +158,7 @@ export async function queryDungeonTip(params: {
         dungeonId,
       },
     });
-    return JSON.parse(res.data.tips_en);
+    return JSON.parse(res.data.tips);
   } catch (error) {}
 }
 

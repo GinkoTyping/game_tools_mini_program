@@ -13,5 +13,8 @@ export async function queryDungeonTipByCondition(req, res) {
     dungeonId
   );
 
-  res.json(data);
+  res.json({
+    ...data,
+    tips: data.tips_en,
+  });
 }

@@ -318,10 +318,11 @@ async function updateDungeonTipData() {
         roleClass,
         classSpec,
         dungeonId: currentDungeon.id,
-        tips_en: JSON.stringify({
+        tips: JSON.stringify({
           dungeonTitle: currentDungeon.name_zh,
           children: translatedTip,
         }),
+        tips_en: JSON.stringify(tip),
       };
 
       if (existedDungeonTip) {

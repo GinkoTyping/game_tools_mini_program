@@ -34,6 +34,10 @@ export async function updateDungeonTip(data) {
   );
 }
 
+export async function getAllDungeonTips() {
+  return db.all(`SELECT * FROM wow_dungeon_tip`);
+}
+
 export function useDungeonTipMapper(database) {
   if (database) {
     db = database;
@@ -46,5 +50,6 @@ export function useDungeonTipMapper(database) {
     getDungeonTipByCondition,
     updateDungeonTip,
     insertDungeonTip,
+    getAllDungeonTips,
   };
 }
