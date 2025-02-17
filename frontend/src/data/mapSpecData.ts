@@ -1,4 +1,3 @@
-// TODO 迁移至插件内处理？
 import rawData from '@/data/spec-data.json';
 import { IWowBIS, IBisItem, ITrinks } from '@/interface/IWow';
 

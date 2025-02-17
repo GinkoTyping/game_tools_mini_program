@@ -340,7 +340,6 @@
 </template>
 
 <script lang="ts" setup>
-// TODO 后端储存图片
 import { onLoad } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';

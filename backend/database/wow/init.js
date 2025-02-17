@@ -289,7 +289,7 @@ async function createDungeonTipTable(db) {
     FOREIGN KEY(dungeon_id) REFERENCES wow_dungeon(id)
   )`);
 }
-// TODO 是否在存入数据库前，就先把汉化做了
+
 async function updateDungeonTipData() {
   const dungeonNameIdMap = {};
   const trashTipMap = {};
@@ -508,7 +508,6 @@ async function updateSpellData() {
         hasFoundMatchedName = true;
         fixedId = matched.data.id;
 
-        // TODO id查询失败的spell 需要记录
         const spellByFixId = await blizzAPI.query(
           `/data/wow/spell/${fixedId}`,
           {
