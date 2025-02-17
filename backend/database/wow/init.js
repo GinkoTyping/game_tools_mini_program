@@ -57,7 +57,9 @@ async function createBisTable(db) {
       stats_priority TEXT NOT NULL,
       ratings TEXT NOT NULL,
       bis_items TEXT NOT NULL,
-      bis_trinkets TEXT NOT NULL
+      bis_trinkets TEXT NOT NULL,
+      sort INTEGER DEFAULT 0,
+      spec_sort INTEGER DEFAULT 0
     )`);
   console.log('创建 wow_bis表 完成。');
 }
@@ -125,6 +127,20 @@ async function updateBisItem(dataItem) {
     });
   }
 }
+async function updateBisSort() {
+  const output = Object.entries(wowheadData).reduce((pre, [key, value], classIndex) => {
+    pre[key] = value.reduce((specPre, cur, specIndex) => {
+      specPre[cur.spec] = specIndex;
+      return specPre;
+    }, {});
+    pre[key].sort = classIndex;
+
+    return pre;
+  }, {});
+
+  console.log(output);
+}
+updateBisSort()
 // 展示 更新数据库的结果 日志
 function handleBisItemRes(result, tag) {
   const errors = result.filter((item) => item.status !== 'fulfilled');

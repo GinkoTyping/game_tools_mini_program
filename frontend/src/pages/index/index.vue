@@ -1,19 +1,20 @@
 <template>
   <uni-collapse ref="collapse" accordion>
     <uni-collapse-item
-      v-for="(classKey, classIndex) in Object.keys(allData)"
-      :key="classKey"
+      v-for="(item) in trendData"
+      :key="item.role_class"
     >
       <template v-slot:title>
-        <view :class="[classKey]">
-          {{ localeLabels.class[classKey] }}
+        <view :class="[item.role_class, 'menu-title']">
+          <text>{{ localeLabels.class[item.role_class] }}</text>
+          <image src="/static/icon/fire.svg"></image>
         </view>
       </template>
       <view
         class="spec"
-        v-for="(specItem, specIndex) in bisData[classKey]"
-        :key="specItem.spec"
-        @click="() => onClickSpec(classKey, specItem.spec)"
+        v-for="(specItem) in item.specs"
+        :key="specItem.class_spec"
+        @click="() => onClickSpec(item.role_class, specItem.class_spec)"
       >
         <view
           :style="{
@@ -21,10 +22,14 @@
             height: '20px',
             backgroundImage:
               'url(https://ginkolearn.cyou/api/wow/assets/sprites/spec-sprite.png)',
-            backgroundPosition: `${-specIndex * 20}px ${-classIndex * 20}px`,
+            backgroundPosition: `${
+              -spriteConfig[item.role_class][specItem.class_spec] * 20
+            }px ${-spriteConfig[item.role_class].sort * 20}px`,
           }"
         ></view>
-        <text>{{ localeLabels[classKey][specItem.spec] }}</text>
+        <text>{{ localeLabels[item.role_class][specItem.class_spec] }}</text>
+        <image src="/static/icon/eye_light.svg"></image>
+        <text class="access-count-spec">12</text>
       </view>
     </uni-collapse-item>
   </uni-collapse>
@@ -53,6 +58,7 @@ import { IWowBIS } from '@/interface/IWow';
 import allData from '@/data/spec-data.json';
 import labels from '@/data/zh.json';
 import { getAccessCount } from '@/api/shared';
+import { queryTrend } from '@/api/wow';
 
 onShareAppMessage(() => ({
   title: 'WOW BIS 查询',
@@ -60,9 +66,14 @@ onShareAppMessage(() => ({
 }));
 
 onLoad(async () => {
+  const data: any = await queryTrend();
+  trendData.value = data.trend;
+  spriteConfig.value = data.sprite;
   accessCount.value = await getAccessCount();
   setAccessPopoverCountdown();
 });
+const trendData = ref<any>([]);
+const spriteConfig = ref<any>({});
 const accessCount = ref<any>();
 const popoverClass = ref(['popup-container', 'animate__animated']);
 function setAccessPopoverCountdown() {
@@ -95,6 +106,18 @@ function onClickSpec(classKey: string, specKey: string) {
 </script>
 
 <style lang="scss" scoped>
+.access-count-spec {
+  color: rgb(97, 97, 97);
+  width: 30px;
+}
+.menu-title {
+  display: flex;
+  align-items: center;
+  image {
+    width: 20px;
+    height: 20px;
+  }
+}
 ::v-deep .uni-collapse {
   background-color: $uni-bg-color !important;
 }
@@ -120,13 +143,12 @@ function onClickSpec(classKey: string, specKey: string) {
       line-height: 40px;
       border-bottom: 4px solid $uni-bg-color;
       position: relative;
+      display: flex;
+      align-items: center;
       image {
         width: 20px;
         height: 20px;
-        position: absolute;
-        left: 8px;
-        top: 50%;
-        transform: translateY(-50%);
+        margin-left: 4px;
       }
       view {
         width: 20px;

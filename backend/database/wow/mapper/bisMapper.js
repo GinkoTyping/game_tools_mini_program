@@ -1,14 +1,23 @@
 let db;
 
 async function getBisByClassAndSpec(roleClass, classSpec) {
-  return db.get(
-    `SELECT * FROM wow_bis WHERE role_class=?1 AND class_spec=?2`,
-    [roleClass, classSpec]
-  );
+  return db.get(`SELECT * FROM wow_bis WHERE role_class=?1 AND class_spec=?2`, [
+    roleClass,
+    classSpec,
+  ]);
 }
 
 async function updateBisByClassAndSpec(data) {
-  const { roleClass, classSpec, stats, ratings, bisItems, bisTrinkets } = data;
+  const {
+    roleClass,
+    classSpec,
+    stats,
+    ratings,
+    bisItems,
+    bisTrinkets,
+    sort,
+    specSort,
+  } = data;
   return db.run(
     `
     UPDATE wow_bis
@@ -27,13 +36,23 @@ async function updateBisByClassAndSpec(data) {
     bis_trinkets = CASE
       WHEN ?4 IS NOT NULL THEN ?4
       ELSE bis_trinkets
+    END,
+    sort = CASE
+      WHEN ?5 IS NOT NULL THEN ?5
+      ELSE sort
+    END,
+    spec_sort = CASE
+      WHEN ?6 IS NOT NULL THEN ?6
+      ELSE spec_sort
     END
-    WHERE role_class = ?5 AND class_spec= ?6`,
+    WHERE role_class = ?7 AND class_spec= ?8`,
     [
       JSON.stringify(stats),
       JSON.stringify(ratings),
       JSON.stringify(bisItems),
       JSON.stringify(bisTrinkets),
+      sort,
+      specSort,
       roleClass,
       classSpec,
     ]
@@ -64,6 +83,12 @@ async function insertBis(data) {
   );
 }
 
+async function getAllBis() {
+  return db.all(`
+    SELECT role_class, class_spec, access_count FROM wow_bis
+  `);
+}
+
 export function useBisMapper(database) {
   if (database) {
     db = database;
@@ -74,6 +99,7 @@ export function useBisMapper(database) {
 
   return {
     getBisByClassAndSpec,
+    getAllBis,
     updateBisByClassAndSpec,
     insertBis,
   };

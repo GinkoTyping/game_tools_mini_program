@@ -183,3 +183,15 @@ export async function querySpellsInTip(ids: number[]) {
     return [];
   }
 }
+
+export async function queryTrend() {
+  try {
+    const res = await uni.request({
+      url: `${BASE_URL}/wow/bis/trend`,
+    });
+
+    return res.data;
+  } catch (error) {
+    return [];
+  }
+}
