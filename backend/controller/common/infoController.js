@@ -5,6 +5,10 @@ const db = await getDB();
 const infoMapper = useInfoMapper(db);
 
 export async function queryAccessCount(req, res) {
+  // TODO: 审核通过前先屏蔽
+  res.json(-1);
+  return;
+
   const date = new Intl.DateTimeFormat('zh-CN', {
     year: 'numeric',
     month: '2-digit',
@@ -16,7 +20,6 @@ export async function queryAccessCount(req, res) {
     res.json(count);
     infoMapper.updateAccessCountByDate(date, count);
   } else {
-    // TODO: 审核通过前先屏蔽
     res.json(1);
     infoMapper.insertAccessCount(date, 1);
   }

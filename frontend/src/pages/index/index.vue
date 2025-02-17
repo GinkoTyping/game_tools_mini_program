@@ -61,11 +61,17 @@ onShareAppMessage(() => ({
 
 onLoad(async () => {
   accessCount.value = await getAccessCount();
-  setAccessPopoverCountDown();
+  setAccessPopoverCountdown();
 });
-const accessCount = ref<any>('');
+const accessCount = ref<any>();
 const popoverClass = ref(['popup-container', 'animate__animated']);
-function setAccessPopoverCountDown() {
+function setAccessPopoverCountdown() {
+  // 数据异常时，避免展示错误界面
+  if (accessCount.value === -1) {
+    popoverClass.value.push('disabled');
+    return;
+  }
+
   if (!popoverClass.value.includes('animate__fadeInUp')) {
     popoverClass.value.push('animate__fadeInUp');
   }
@@ -151,5 +157,8 @@ function onClickSpec(classKey: string, specKey: string) {
     padding: 0 4px;
     color: #3aa239;
   }
+}
+.popup-container.disabled {
+  display: none;
 }
 </style>
