@@ -1,4 +1,4 @@
-import { getDB } from '../../database/wow/init.js';
+import { getDB } from '../../database/utils/index.js';
 import { useDungeonMapper } from '../../database/wow/mapper/dungeonMapper.js';
 
 const db = await getDB();

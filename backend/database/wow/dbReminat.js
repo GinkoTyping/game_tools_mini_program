@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { getDB } from './init.js';
+import { getDB } from '../utils/index.js';
 import { useDungeonTipMapper } from './mapper/dungeonTipMapper.js';
 
 const database = await getDB();

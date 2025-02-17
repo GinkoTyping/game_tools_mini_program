@@ -1,4 +1,4 @@
-import { getDB } from '../../database/wow/init.js';
+import { getDB } from '../../database/utils/index.js';
 import { useSpellMapper } from '../../database/wow/mapper/spellMapper.js';
 
 const database = await getDB();

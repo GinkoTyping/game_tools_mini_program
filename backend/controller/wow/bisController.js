@@ -4,7 +4,7 @@ import { configDotenv } from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { getDB } from '../../database/wow/init.js';
+import { getDB } from '../../database/utils/index.js';
 
 import { useBisMapper } from '../../database/wow/mapper/bisMapper.js';
 import { useItemMapper } from '../../database/wow/mapper/itemMapper.js';

@@ -1,4 +1,4 @@
-// import { getDB } from '../../../database/wow/init.js';
+// import { getDB } from '../../../database/utils/index.js';
 // import clipboardy from 'clipboardy';
 
 // const BASE_IMG_URL = 'https://wow.zamimg.com/images/wow/icons/tiny/';
