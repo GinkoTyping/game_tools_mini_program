@@ -1,0 +1,7 @@
+-- SQLite
+CREATE TABLE
+  IF NOT EXISTS access_count (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time TIMESTAMP CURRENT_TIME,
+    visit_count INTEGER DEFAULT 0
+  );

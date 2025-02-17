@@ -35,7 +35,7 @@ const dungeonTipMapper = useDungeonTipMapper(database);
 const spellMapper = useSpellMapper(database);
 export async function getDB() {
   return open({
-    filename: path.resolve(__dirname, './database.db'),
+    filename: path.resolve(__dirname, '../database.db'),
     driver: sqlite3.verbose().Database,
   });
 }
