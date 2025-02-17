@@ -1,5 +1,4 @@
-import rawData from '@/data/spec-data.json';
-import { IWowBIS, IBisItem, ITrinks } from '@/interface/IWow';
+import { IBisItem, ITrinks } from '@/interface/IWow';
 
 function getSlotLabel(key: string) {
   const lowerCaseKey = key.toLowerCase();
@@ -81,21 +80,4 @@ export function mapTrinks(list: ITrinks[]) {
 
     return pre;
   }, []);
-}
-
-export function mapSpecData() {
-  const data = JSON.parse(JSON.stringify(rawData)) as IWowBIS;
-  Object.entries(data).forEach((item, index) => {
-    let [key, value] = item;
-    value = value.map(specItem => ({
-      ...specItem,
-      overall: mapBisItems(specItem.overall),
-      bisItemRaid: mapBisItems(specItem.bisItemRaid),
-      bisItemMythic: mapBisItems(specItem.bisItemMythic),
-      trinkets: specItem.trinkets,
-    }));
-
-    data[key] = value;
-  });
-  return data;
 }

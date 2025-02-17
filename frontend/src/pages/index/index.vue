@@ -54,8 +54,6 @@ import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
 import '@/static/css/index.scss';
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
-import { IWowBIS } from '@/interface/IWow';
-import allData from '@/data/spec-data.json';
 import labels from '@/data/zh.json';
 import { getAccessCount } from '@/api/shared';
 import { queryTrend } from '@/api/wow';
@@ -96,7 +94,6 @@ function setAccessPopoverCountdown() {
 }
 
 const localeLabels = labels as ILocaleLabels;
-const bisData = allData as IWowBIS;
 
 function onClickSpec(classKey: string, specKey: string) {
   uni.navigateTo({
