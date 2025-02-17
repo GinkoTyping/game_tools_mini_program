@@ -1,4 +1,5 @@
 import "./static/css/index.scss";
+import './static/css/animate.css';
 import { createSSRApp } from "vue";
 import App from "./App.vue";
 

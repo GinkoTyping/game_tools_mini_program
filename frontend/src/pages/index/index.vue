@@ -28,29 +28,58 @@
       </view>
     </uni-collapse-item>
   </uni-collapse>
+
+  <view :class="popoverClass">
+    <image
+      class="popup-icon"
+      src="/static/images/common/a-sahua1.png"
+      style="transform: scaleX(-1)"
+    ></image>
+    <text
+      >银子的搜罗坊，本日已被访问
+      <text style="font-weight: bolder">{{ accessCount }}</text> 次</text
+    >
+    <image class="popup-icon" src="/static/images/common/a-sahua1.png"></image>
+  </view>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { onShareAppMessage } from '@dcloudio/uni-app';
+import { ref } from 'vue';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
 import '@/static/css/index.scss';
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
 import { IWowBIS } from '@/interface/IWow';
 import allData from '@/data/spec-data.json';
 import labels from '@/data/zh.json';
+import { getAccessCount } from '@/api/shared';
 
 onShareAppMessage(() => ({
   title: 'WOW BIS 查询',
   path: 'pages/index/index',
 }));
 
+onLoad(async () => {
+  accessCount.value = await getAccessCount();
+  setAccessPopoverCountDown();
+});
+const accessCount = ref<any>('');
+const popoverClass = ref(['popup-container', 'animate__animated']);
+function setAccessPopoverCountDown() {
+  if (!popoverClass.value.includes('animate__fadeInUp')) {
+    popoverClass.value.push('animate__fadeInUp');
+  }
+  let timer: any = setTimeout(() => {
+    if (popoverClass.value.includes('animate__fadeInUp')) {
+      popoverClass.value.pop();
+      popoverClass.value.push('animate__fadeOut');
+    }
+    timer = null;
+  }, 5000);
+}
+
 const localeLabels = labels as ILocaleLabels;
 const bisData = allData as IWowBIS;
-const specIcon = computed(
-  () => (classKey: string, specKey: string) =>
-    `/static/images/specs/${classKey}_${specKey}.gif`
-);
 
 function onClickSpec(classKey: string, specKey: string) {
   uni.navigateTo({
@@ -102,6 +131,25 @@ function onClickSpec(classKey: string, specKey: string) {
         transform: translateY(-50%);
       }
     }
+  }
+}
+.popup-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.popup-container {
+  width: 100vw;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  bottom: 0 !important;
+  background-color: #a1ffb3;
+  align-items: center;
+  height: 40px;
+  text {
+    padding: 0 4px;
+    color: #3aa239;
   }
 }
 </style>
