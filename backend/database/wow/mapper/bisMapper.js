@@ -17,6 +17,7 @@ async function updateBisByClassAndSpec(data) {
     bisTrinkets,
     sort,
     specSort,
+    accessCount,
   } = data;
   return db.run(
     `
@@ -44,8 +45,12 @@ async function updateBisByClassAndSpec(data) {
     spec_sort = CASE
       WHEN ?6 IS NOT NULL THEN ?6
       ELSE spec_sort
+    END,
+    access_count = CASE
+      WHEN ?7 IS NOT NULL THEN ?7
+      ELSE access_count
     END
-    WHERE role_class = ?7 AND class_spec= ?8`,
+    WHERE role_class = ?8 AND class_spec= ?9`,
     [
       JSON.stringify(stats),
       JSON.stringify(ratings),
@@ -53,6 +58,7 @@ async function updateBisByClassAndSpec(data) {
       JSON.stringify(bisTrinkets),
       sort,
       specSort,
+      accessCount,
       roleClass,
       classSpec,
     ]

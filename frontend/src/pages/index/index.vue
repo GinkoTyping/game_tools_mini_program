@@ -1,9 +1,6 @@
 <template>
   <uni-collapse ref="collapse" accordion>
-    <uni-collapse-item
-      v-for="(item) in trendData"
-      :key="item.role_class"
-    >
+    <uni-collapse-item v-for="item in trendData" :key="item.role_class">
       <template v-slot:title>
         <view :class="[item.role_class, 'menu-title']">
           <text>{{ localeLabels.class[item.role_class] }}</text>
@@ -12,7 +9,7 @@
       </template>
       <view
         class="spec"
-        v-for="(specItem) in item.specs"
+        v-for="specItem in item.specs"
         :key="specItem.class_spec"
         @click="() => onClickSpec(item.role_class, specItem.class_spec)"
       >
@@ -29,7 +26,7 @@
         ></view>
         <text>{{ localeLabels[item.role_class][specItem.class_spec] }}</text>
         <image src="/static/icon/eye_light.svg"></image>
-        <text class="access-count-spec">12</text>
+        <text class="access-count-spec">{{ specItem.access_count }}</text>
       </view>
     </uni-collapse-item>
   </uni-collapse>
@@ -50,7 +47,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
+import { onLoad, onShow, onShareAppMessage } from '@dcloudio/uni-app';
 
 import '@/static/css/index.scss';
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
@@ -64,12 +61,18 @@ onShareAppMessage(() => ({
 }));
 
 onLoad(async () => {
-  const data: any = await queryTrend();
-  trendData.value = data.trend;
-  spriteConfig.value = data.sprite;
   accessCount.value = await getAccessCount();
   setAccessPopoverCountdown();
 });
+
+// 用专精页面返回该页面时，也需要刷新
+onShow(async () => {
+  const data: any = await queryTrend();
+  trendData.value = data.trend;
+  spriteConfig.value = data.sprite;
+});
+
+// TODO: 选择最多的3个; 规避审核时展示图标
 const trendData = ref<any>([]);
 const spriteConfig = ref<any>({});
 const accessCount = ref<any>();
@@ -111,6 +114,7 @@ function onClickSpec(classKey: string, specKey: string) {
   display: flex;
   align-items: center;
   image {
+    margin-left: 4px;
     width: 20px;
     height: 20px;
   }

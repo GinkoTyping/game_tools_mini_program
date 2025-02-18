@@ -71,8 +71,15 @@ export async function getBisBySpec(req, res) {
   const classSpec = req.params.classSpec;
 
   const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
-
   const bis_items = await mapBisItems(JSON.parse(bisData.bis_items));
+
+  // 访问次数 +1
+  await bisMapper.updateBisByClassAndSpec({
+    roleClass,
+    classSpec,
+    accessCount: bisData.access_count + 1,
+  });
+
   res.json({
     ...bisData,
     bis_items,
