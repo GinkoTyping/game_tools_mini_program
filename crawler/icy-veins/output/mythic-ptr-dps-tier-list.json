@@ -1,0 +1,318 @@
+[
+  {
+    "tier": "S",
+    "children": [
+      {
+        "fullNameEN": "Augmentation Evoker",
+        "roleClass": "evoker",
+        "classSpec": "augmentation",
+        "dataChange": "-",
+        "desc": "Augmentation Evoker is going to continue to be one of the best Ranged options in Season 2. Although [Ebon Might] has been redesigned and no longer buffs tanks/healers, the addition to [Close as Clutchmates] will make Augmentation just as useful to your allies, with great utility, good mob control, and further bolstering their DPS/defensive profiles, but this time, you will do more damage yourself. Overall, we are delighted with the spec's current performance and expect it to remain one of the strongest specs.",
+        "spells": [
+          {
+            "spellId": "404269",
+            "spellName": "Ebon Might"
+          },
+          {
+            "spellId": "396043",
+            "spellName": "Close as Clutchmates"
+          }
+        ]
+      },
+      {
+        "fullNameEN": "Fire Mage",
+        "roleClass": "mage",
+        "classSpec": "fire",
+        "dataChange": "up",
+        "desc": "Fire Mage is entering Season 2 as one of the best DPS specs in Mythic+. Their newly introduced tier-set is one of the best designed sets out there and offers an immense power-spike to the spec, allowing you to have higher [Combustion] uptime. Their single target and AoE output is phenomenal and is considered one of the best. Just like every Mage spec so far, they have one of the best group-wide Mythic+ utilities.",
+        "spells": [
+          {
+            "spellId": "190319",
+            "spellName": "Combustion"
+          }
+        ]
+      },
+      {
+        "fullNameEN": "Destruction Warlock",
+        "roleClass": "warlock",
+        "classSpec": "destruction",
+        "dataChange": "up",
+        "desc": "Destruction [Warlock] is starting the Season 2 PTR with an incredible performance, leading to one of the best DPS specs so far. Incredible AoE damage, amazing single-target, and most importantly great sustained damage, are the primary factors why we consider this spec good. In addition, the playstyle went through some needed changes which slightly shifts the rotation (especially if you have talented [Mayhem]/Demonfire Infusion builds). In addition, every [Warlock] spec is quite durable and has a great party-wide utility, which fits perfectly for Mythic+.",
+        "spells": [
+          {
+            "spellId": "387506",
+            "spellName": "Mayhem"
+          },
+          {
+            "spellId": "462481",
+            "spellName": "Warlock"
+          }
+        ]
+      },
+      {
+        "fullNameEN": "Beast Mastery Hunter",
+        "roleClass": "hunter",
+        "classSpec": "beast",
+        "dataChange": "-",
+        "desc": "Beast Mastery Hunter is one of the specs that have seen a lot of changes leading up to Season 2. Sadly (or not?) Beast Mastery Hunter will retain a similar playstyle, which will disappoint some and delight others. After their most recent tuning, the specialization has \"risen through the rankings\", having one of the best AoE damage outputs (both sustained and burst) compared to all other DPS specs. Single-target / priority-target damage has also improved, making them an even more attractive option. At last, [Bestial Wrath] uptime has also increased (thanks to our tier-set) which brings you in \"minor cooldowns\" at all times. A massively improved version of the spec compared to Season 1 and well deserved S-tier for the first time in a long time.",
+        "spells": [
+          {
+            "spellId": "19574",
+            "spellName": "Bestial Wrath"
+          }
+        ]
+      },
+      {
+        "fullNameEN": "Enhancement Shaman",
+        "roleClass": "shaman",
+        "classSpec": "enhancement",
+        "dataChange": "down",
+        "desc": "Enhancement Shaman received a total rework of some of their talents which resulted in a playstyle difference. Fortunately for the spec, they currently are arguably the best DPS (by output) in the game. Great sustain damage, short offensive cooldowns, insane funnel damage, there isn't anything bad to be said about the spec. Just like in Season 1, Enhancement shaman is incredibly strong and at the same time, fun to play, but no longer the best dps spec in the game. Even after the recent nerfs, we believe the spec is among the S-tier contenders.",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Elemental Shaman",
+        "roleClass": "shaman",
+        "classSpec": "elemental",
+        "dataChange": "up",
+        "desc": "Elemental Shaman will continue to be an amazing Ranged option in Season 2 of TWW expansion. Incredible burst, amazing priority-target damage, great damage off-major CDs, and one of the best party-wide utilities, is there anything else to ask for? Overall we are happy with how the spec is playing and we are hopeful that it will remain that strong before the release of the season.",
+        "spells": []
+      }
+    ]
+  },
+  {
+    "tier": "A+",
+    "children": [
+      {
+        "fullNameEN": "Frost Mage",
+        "roleClass": "mage",
+        "classSpec": "frost",
+        "dataChange": "-",
+        "desc": "Frost Mage received quite significant changes leading to the Season 2, with the most notable being less spamming of [Ice Lance] in your rotation and a much beefier [Blizzard] (damage, radius and duration increased). The current power of Frost Mage ranks them among the best ranged options on our DPS tierlist, with great burst and sustained damage (especially on ST), as well as good priority-target cleave in it. In addition, Mage is one of the most most durable DPS specializations, and also have one of the best Mythic+ utilities from a DPS.",
+        "spells": [
+          {
+            "spellId": "30455",
+            "spellName": "Ice Lance"
+          },
+          {
+            "spellId": "190356",
+            "spellName": "Blizzard"
+          }
+        ]
+      },
+      {
+        "fullNameEN": "Arms Warrior",
+        "roleClass": "warrior",
+        "classSpec": "arms",
+        "dataChange": "up",
+        "desc": "Arms Warrior have seen some noticeable damage changes for both single-target and AoE. Furthermore, their executed damage profile (when there is demand) is one of the best in the game. They currently have one of the best damage outputs across all melee specs, which as you might have guessed, is the best asset of the spec. Although their utility will remain mostly the same, they have gained some quality-of-life changes on the general tree, leading to an increase in their durability capabilities.",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Balance Druid",
+        "roleClass": "druid",
+        "classSpec": "balance",
+        "dataChange": "up",
+        "desc": "Balance Druid is currently currently performing as one of the best-rated options in Mythic+ so far into the PTR for Season 2. Although their single target has improved (thanks to the recent buffs), their thorough strength lies in the AoE damage profile, which is among the best in the game. The utility of Druid is heavily desired in a 5-man group due to its offensive and defensive powers. The only downside of the spec is their potential squishiness, having only one active \"major\" defensive cooldown, which can sometimes cause some trouble.",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Havoc Demon Hunter",
+        "roleClass": "demon-hunter",
+        "classSpec": "havoc",
+        "dataChange": "up",
+        "desc": "Havoc Demon Hunter has recently seen several positive damage adjustments for the upcoming Mythic+ season. Their sustained damage (outside of cooldowns) has significantly improved, which was previously one of their weakest points. In addition, their single-target and priority-targe damage has skyrocketed, making them one of the best in that niche. Overall, we believe after the 3rd concesacative buff, the spec finally managed to crack the top 10 (for now, although a few bugs still inflate its damage and will likely get \"fixed\" soon.), well done!",
+        "spells": []
+      }
+    ]
+  },
+  {
+    "tier": "A",
+    "children": [
+      {
+        "fullNameEN": "Feral Druid",
+        "roleClass": "druid",
+        "classSpec": "feral",
+        "dataChange": "up",
+        "desc": "Feral Druid has received its fair share of changes leading to the Season 2. The specialization will retain its signature burst-orientated profile while being significantly weaker during dry periods. Energy starvation, unfortunately, is still present in the spec, resulting in pockets of time of just \"waiting\" for more resources rather than actively engaging with your rotation. Their utility, just like any Druid spec, will retain its power, as [Mark of the Wild] is one of the strongest party-buffs in the group.",
+        "spells": [
+          {
+            "spellId": "1126",
+            "spellName": "Mark of the Wild"
+          }
+        ]
+      },
+      {
+        "fullNameEN": "Shadow Priest",
+        "roleClass": "priest",
+        "classSpec": "shadow",
+        "dataChange": "up",
+        "desc": "Shadow Priest received no significant changes leading to Season 2. Their damage profile is quite rampy which excels much better when targets live longer due to their major cooldown - [Voidform] being such a long duration. When the key level is higher both AoE and single-target/priority-target damage are great, however when things do not last long, it is a dreadful experience (especially when you enter a pack without [Shadow Crash]). Their utility and defensiveness remain strong, which is positive for the spec as both factors are considered valuable. Overall, we expect some adjustments to the spec, to shake up the playstyle or tune-up its power since they haven't seen any (strange..).",
+        "spells": [
+          {
+            "spellId": "228264",
+            "spellName": "Voidform"
+          },
+          {
+            "spellId": "205385",
+            "spellName": "Shadow Crash"
+          }
+        ]
+      },
+      {
+        "fullNameEN": "Retribution Paladin",
+        "roleClass": "paladin",
+        "classSpec": "retribution",
+        "dataChange": "-",
+        "desc": "Retribution Paladin's current AoE burst damage output will remain strong (just like last season), while retaining their signature group-wide utilities for a DPS, which is a valuable asset for anyone who wants to play this spec. Although the specialization is considered way above average in performance, it lacks the output and the priority-target damage to compete for the highest ranks. Due to having short offensive cooldowns and being incredibly bursty, they are likely going to be one of the best specs for low-level keys. Keep in mind that they also possess excellent defensive options in case of danger, and are considered one of the easiest specs to play in the current iteration of World of Warcraft.",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Windwalker Monk",
+        "roleClass": "monk",
+        "classSpec": "windwalker",
+        "dataChange": "-",
+        "desc": "Windwalker Monk recently received positive changes that are focusing on improving their AoE damage output, like the removal of [Mark of the Crane] and beefing up the [Spinning Crane Kick] itself and some further buffs to the Mastery effect. There are some new cool talents added like Slicing Winds (familiar spell?) which does decent damage but increases your mobility options. Unfortunately, Windwalker Monk is one of the few specs that yet remains to have its target cap present, which can result in problems in mass AoE. Regardless of that, their single-target is one of the best, followed by strong AoE output on low-target packs. It is important to note that the utility package is largely unchanged, and it is still going to have immense value for any team.",
+        "spells": [
+          {
+            "spellId": "220357",
+            "spellName": "Mark of the Crane"
+          },
+          {
+            "spellId": "101546",
+            "spellName": "Spinning Crane Kick"
+          }
+        ]
+      },
+      {
+        "fullNameEN": "Subtlety Rogue",
+        "roleClass": "rogue",
+        "classSpec": "subtlety",
+        "dataChange": "up",
+        "desc": "Aside from the impressive Rogue's utility package, Subtlety Rogue tier set still appears to have a few bugs(for some characters it seems to be always present, while others still can't use it), which makes it hard for us to adjust their rankings appropriately. For now, they will be placed on the top half of the spec, with a great burst-orientated damage profile, both for AoE and single-target. Priority-target damage is still one of the best, all together with funnel damage. Utility and durability are largely unchanged, but we all know how strong defensively rogues are!",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Demonology Warlock",
+        "roleClass": "warlock",
+        "classSpec": "demonology",
+        "dataChange": "-",
+        "desc": "Demonology Warlock received one of the most powerful tier sets across all DPS specs, which further supplements their already strong damage output. They will have better-sustained damage when running outside of cooldowns while having a stronger burst (compared to Season 1). In addition to this, the benefit to the additional [Demonic Core]s will allow them to have better mobility, which is always a welcoming change. In terms of utility, they will keep their unique Mythic+ package while being one of the most \"tanky\" Ranged DPS.",
+        "spells": [
+          {
+            "spellId": "267102",
+            "spellName": "Demonic Core"
+          }
+        ]
+      },
+      {
+        "fullNameEN": "Frost Death Knight",
+        "roleClass": "death-knight",
+        "classSpec": "frost",
+        "dataChange": "-",
+        "desc": "Frost Death Knight will continue to be a great melee choice in Mythic+ leading to Season 2 of TWW. They retain their signature burst (both in AoE and single target) while keeping incredible priority-target damage present. Although durability has been nerfed during Season 1, they are also one of the most durable DPS classes in the game (which is a huge advantage). This early into testing, it doesn't seem that the spec dominates the Mythic+ scene like in the days of Season 1 (due to output) but its still one of the better melees out there.",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Assassination Rogue",
+        "roleClass": "rogue",
+        "classSpec": "assassination",
+        "dataChange": "-",
+        "desc": "Assassination Rogue received no significant changes leading to the Season 2. Also, their rotation and spec-specific talents remain mostly unchanged so far. Nevertheless, their AoE outputs remain their strongest asset in Mythic+, especially considering the great priority-target damage while doing the AoE. Single-target is the biggest disadvantage, as unfortunately, Assassination rogues will likely need some tuning around that. Overall, we still believe they will remain a solid melee contender in Season 2, but not as dominant as they were last season.",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Unholy Death Knight",
+        "roleClass": "death-knight",
+        "classSpec": "unholy",
+        "dataChange": "down",
+        "desc": "Unholy Death Knight will continue to be in great shape, retaining its signature strong AoE burst and a good sustained damage profile. The spec offers better sustained damage off major cooldowns in Season 2 and just like its sibling spec, is incredibly durable in any environment. Although it has been recently nerfed (both in AoE and ST), we still believe they are one of the better melee options for the season. Overall a relatively strong pick for a melee spec, suitable to be played in any group composition.",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Devastation Evoker",
+        "roleClass": "evoker",
+        "classSpec": "devastation",
+        "dataChange": "up",
+        "desc": "The performance of Devastation Evoker have received several adjustments, more specifically being able to play both builds (Flameshaper/Scalecommander), allowing you for more flexible gameplay. In addition, the tier set will offer a major power to the Devastation Evoker, making it one of the better ones out there. The spec has retained its unique Evoker utility, while keeping its damage profile will \"bursty\", which will help your performance across different key levels (with a much better-sustained damage profile). Unfortunately for them, their sibling spec, Augmentation Evoker is currently one of the best performing DPS specs which often results in a huge disadvantage for being chosen over. Moreover, furthe damage adjustments must be made to place this spec higher.",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Fury Warrior",
+        "roleClass": "warrior",
+        "classSpec": "fury",
+        "dataChange": "down",
+        "desc": "Fury Warrior will retain their signature burst-orientated profile as well as their general rotation (with a minor changes done to it). The most recent damage changes will now put them in a much higher position than before, further climbing the tierlist rankings. On a good note, they have done a general revamp of the Warrior tree so now more than ever you will enjoy higher durability (+10% Stamina) and extra mobility! In addition, their Mythic+ toolkit remains mostly the same, having the lowest utility options across all DPS specs.",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Affliction Warlock",
+        "roleClass": "warlock",
+        "classSpec": "affliction",
+        "dataChange": "up",
+        "desc": "Affliction Warlock has seen minor changes in the upcoming Season 2. Their gameplay will remain similar, with a slight rotation change coming from their newly introduced tier-set. They will remain with the same issues as Season 1, relying on [[Vile Taint]] to do most of its work in AoE, which becomes a significant problem once it's on cooldown and a pack has been engaged (manual re-applications of the [Agony] is also problematic). Either decreasing its cooldown (of [[Vile Taint]]) or making it have several changes will have a positive impact on the spec. Nonetheless, when managing pulls and such scenarios do not occur, its performance is around A-tier with the current output on both ST and AoE (especially in AoE with its great on-demand burst + priority-target damage).",
+        "spells": [
+          {
+            "spellId": "278350",
+            "spellName": "Vile Taint"
+          },
+          {
+            "spellId": "980",
+            "spellName": "Agony"
+          },
+          {
+            "spellId": "278350",
+            "spellName": "Vile Taint"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tier": "B+",
+    "children": [
+      {
+        "fullNameEN": "Arcane Mage",
+        "roleClass": "mage",
+        "classSpec": "arcane",
+        "dataChange": "-",
+        "desc": "Arcane Mage has received its fair share of changes leading to the Season 2 of TWW. The general playstyle has seen some shifts with the priority of spells, depending on your overall talent choice, and making their minor cooldown - [Touch of the Magi] stronger. This will directly result in improvement in their consistent damage since that was one of the major issues leading up to the patch. In addition to all of that, Arcane has one of the strongest tier-sets with a massive power spike attached to them. They will retain its burst-orientated profile while simultaneously providing priority-target damage when doing so. The rankings of Arcane can fluctuate depending on the key level, as the higher the key goes the better the spec becomes (due to mobs having higher health and enduring your whole burst). Complexity issues / Hybrid builds are still part of the problem, making the barrier to entry one of the highest among all specs, which is never a good thing.",
+        "spells": [
+          {
+            "spellId": "321507",
+            "spellName": "Touch of the Magi"
+          }
+        ]
+      },
+      {
+        "fullNameEN": "Survival Hunter",
+        "roleClass": "hunter",
+        "classSpec": "survival",
+        "dataChange": "-",
+        "desc": "Survival Hunter has received its fair share of changes leading to the second season of Mythic+. There have been numerous attempts to shake up how this spec plays out ultimately keeping its rotation mostly unchanged. Their consistent damage is great since its major cooldowns are relatively short and thanks to their newly redesigned 4-piece, will now be even better. Unfortunately, the output is considered \"mid\", which is the major factor for their placement. If further changes come we will consider their placement and update the rankings.",
+        "spells": []
+      },
+      {
+        "fullNameEN": "Outlaw Rogue",
+        "roleClass": "rogue",
+        "classSpec": "outlaw",
+        "dataChange": "-",
+        "desc": "Outlaw Rogue did not receive any major changes, but luckily for them, their tier-set is amazing. The spec will retain their great consistent damage, but unfortunately will still be target-capped. Their single-target will remain mid, as well as their priority-target damage while doing AoE. The lack of burst is also another issue the spec is suffering from, as that can be quite offsetting on the lower level keys where burst is important to capitalize on the lower health mobs. Their defensive profile will remain unchanged, and so will their amazing group-wide utility and mob control.",
+        "spells": []
+      }
+    ]
+  },
+  {
+    "tier": "B",
+    "children": [
+      {
+        "fullNameEN": "Marksmanship Hunter",
+        "roleClass": "hunter",
+        "classSpec": "marksmanship",
+        "dataChange": "-",
+        "desc": "Marksmanship Hunter received a complete rework and is now in a much better state compared to before. With versatile builds, you can choose what exactly you would like your damage profile to be (going for mostly AoE talents? better single-target or 2-target cleave? etc.) They will retain their burst-orientated profile (thankfully!) which is a prominent feature of MM for a long time now and is incredibly useful against all key levels. Their single-target has improved compared to Season 1 (with Mythic+ builds), which is a welcoming change, but still not nearly enough compared to the majority of the specs (especially without major cds). Overall, the spec will have mediocre damage when dealing damage without any cooldowns and also one of the few \"target-cap ranged specs\", which are the leading reasons for its placement, further positive adjustments will allow them to climb higher.",
+        "spells": []
+      }
+    ]
+  }
+]

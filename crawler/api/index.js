@@ -15,3 +15,8 @@ export async function translate(input) {
   });
   return res.data;
 }
+
+export async function querySpellByIds(ids) {
+  const res = await axios.post(`${BASE_URL}/api/wow/spell`, { ids: [ids] });
+  return res.data;
+}
