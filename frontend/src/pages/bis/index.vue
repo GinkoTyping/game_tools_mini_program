@@ -1,5 +1,8 @@
 <template>
-  <uni-section :class="[classKey]" title="总览">
+  <button open-type="share" @click="onClickShare">
+    <uni-icons color="#fff" type="undo-filled" size="24"></uni-icons>
+  </button>
+  <uni-section id="overview" :class="[classKey]" title="总览">
     <uni-card class="section-card">
       <view
         class="rating-item"
@@ -217,6 +220,7 @@
       </uni-collapse>
     </uni-card>
   </uni-section>
+
   <uni-popup ref="popup">
     <uni-load-more
       v-show="status === 'loading'"
@@ -337,10 +341,31 @@
       <text class="description">{{ spell.description }}</text>
     </uni-card>
   </uni-popup>
+
+  <view
+    ref="fabContainerRef"
+    :class="[
+      'animate__animated',
+      isInitPage ? 'fab-disabled' : '',
+      isShowFab ? 'animate__fadeIn' : 'animate__fadeOut',
+    ]"
+  >
+    <uni-fab
+      ref="uniFabRef"
+      :class="[isOpenFab ? 'fab-active' : '']"
+      :pattern="pattern"
+      :content="fabContent"
+      horizontal="right"
+      vertical="top"
+      direction="vertical"
+      @trigger="onClickFabIcon"
+      @fabClick="onSwitchFabIcon"
+    />
+  </view>
 </template>
 
 <script lang="ts" setup>
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onShow, onPageScroll } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
@@ -369,6 +394,9 @@ onLoad(async (options: any) => {
 
   setNaviTitle(options.title);
 });
+onShow(() => {
+  isOpenFab.value = false;
+});
 
 async function getBasicBisData() {
   currentData.value = await queryBis(classKey.value, specKey.value);
@@ -381,7 +409,7 @@ onShareAppMessage(() => {
   const { title, classKey, specKey } = query.value;
 
   return {
-    title: `BIS - ${title}`,
+    title: `${title}·属性配装和攻略`,
     path: `pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${title}`,
   };
 });
@@ -525,6 +553,79 @@ async function displaySpells(params: any) {
     spellpopup.value?.open();
   }
 }
+//#endregion
+const pattern = ref({
+  color: '#7A7E83',
+  backgroundColor: '#fff',
+  selectedColor: '#007AFF',
+  buttonColor: '#007AFF',
+  iconColor: '#fff',
+});
+const fabContent = ref([
+  {
+    iconPath: '/static/icon/rating.svg',
+    selectedIconPath: '/static/icon/rating.svg',
+    text: '总览',
+    active: false,
+  },
+  {
+    iconPath: '/static/icon/leg-armor.svg',
+    selectedIconPath: '/static/icon/leg-armor.svg',
+    text: '配装',
+    active: false,
+  },
+  {
+    iconPath: '/static/icon/textile-products.svg',
+    selectedIconPath: '/static/icon/textile-products.svg',
+    text: '攻略',
+    active: false,
+  },
+]);
+const isOpenFab = ref(false);
+const isShowFab = ref(false);
+const isInitPage = ref(true);
+const fabContainerRef = ref<any>();
+const uniFabRef = ref<any>();
+function onClickFabIcon(e: { index: number }) {
+  let selector = '';
+
+  switch (e.index) {
+    case 0:
+      selector = '#overview';
+      break;
+    case 1:
+      selector = '.bis';
+      break;
+    case 2:
+      selector = '.dungeon';
+      break;
+    default:
+      break;
+  }
+
+  uni.pageScrollTo({ selector });
+}
+function onSwitchFabIcon() {
+  isOpenFab.value = !isOpenFab.value;
+}
+
+// 避免悬浮的展开的菜单UI异常
+function onClickShare() {
+  if (uniFabRef.value?.isShow) {
+    uniFabRef.value.close?.();
+  }
+}
+
+onPageScroll(e => {
+  if (e.scrollTop > 300 && !isShowFab.value) {
+    isInitPage.value = false;
+    isShowFab.value = true;
+  } else if (e.scrollTop <= 300 && isShowFab.value) {
+    isShowFab.value = false;
+  }
+});
+//#region 悬浮按钮
+
 //#endregion
 </script>
 
@@ -915,6 +1016,57 @@ $light-border: rgb(68, 68, 68);
       border-radius: 50%;
       margin-right: 6px;
     }
+  }
+}
+
+// 悬浮按钮
+::v-deep .uni-fab {
+  transform: scale(0.727) !important;
+  top: -4px;
+}
+.fab-active {
+  ::v-deep .uni-fab {
+    top: -24px !important;
+  }
+}
+::v-deep .uni-fab__circle {
+  transform: scale(0.75) !important;
+  top: -4px;
+  box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%) !important;
+  image {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  text {
+    font-size: 14px !important;
+    line-height: 14px !important;
+  }
+  .uni-icons {
+    font-size: 24px !important;
+    line-height: 24px !important;
+  }
+}
+.fab-disabled {
+  display: none;
+}
+
+button[open-type='share'] {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 99;
+  padding: 0;
+  background-color: #007aff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%);
+  image {
+    width: 50%;
+    height: 50%;
   }
 }
 </style>

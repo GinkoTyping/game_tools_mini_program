@@ -104,7 +104,7 @@ const localeLabels = labels as ILocaleLabels;
 
 function onClickSpec(classKey: string, specKey: string) {
   uni.navigateTo({
-    url: `/pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${localeLabels.class[classKey]} · ${localeLabels[classKey][specKey]}`,
+    url: `/pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${localeLabels[classKey][specKey]}${localeLabels.class[classKey]}`,
   });
 }
 </script>
