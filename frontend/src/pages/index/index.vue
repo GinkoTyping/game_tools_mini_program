@@ -29,8 +29,15 @@
           }"
         ></view>
         <text>{{ localeLabels[item.role_class][specItem.class_spec] }}</text>
-        <uni-icons color="rgb(97, 97, 97)" type="eye-filled" size="24"></uni-icons>
-        <text class="access-count-spec">{{ specItem.access_count }}</text>
+        <uni-icons
+          v-show="specItem.access_count"
+          color="rgb(97, 97, 97)"
+          type="eye-filled"
+          size="24"
+        ></uni-icons>
+        <text v-show="specItem.access_count" class="access-count-spec">{{
+          specItem.access_count
+        }}</text>
       </view>
     </uni-collapse-item>
   </uni-collapse>

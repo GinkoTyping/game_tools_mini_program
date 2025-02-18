@@ -117,6 +117,10 @@ export async function queryBisTrends(req, res) {
   const mappedData = data
     .reduce((pre, cur) => {
       const found = pre.find((item) => item.role_class === cur.role_class);
+
+      // TODO: 审核前，屏蔽
+      cur.access_count = 0;
+
       if (found) {
         found.access_count += cur.access_count;
         found.specs.push({

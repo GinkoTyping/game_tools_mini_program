@@ -189,17 +189,19 @@ export async function queryTrend() {
     const res: any = await uni.request({
       url: `${BASE_URL}/wow/bis/trend`,
     });
-    res.data.trend.forEach((item: any, index: number) => {
-      if (index === 0) {
-        item.fires = new Array(3).fill(1);
-      } else if (index <= 3) {
-        item.fires = new Array(2).fill(1);
-      } else if (index <= 6) {
-        item.fires = new Array(1).fill(1);
-      } else {
-        item.fires = [];
-      }
-    });
+    if (res.data?.trend?.[0]?.access_count > 0) {
+      res.data.trend.forEach((item: any, index: number) => {
+        if (index === 0) {
+          item.fires = new Array(3).fill(1);
+        } else if (index <= 3) {
+          item.fires = new Array(2).fill(1);
+        } else if (index <= 6) {
+          item.fires = new Array(1).fill(1);
+        } else {
+          item.fires = [];
+        }
+      });
+    }
     return res.data;
   } catch (error) {
     return [];
