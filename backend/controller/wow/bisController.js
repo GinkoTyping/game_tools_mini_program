@@ -201,9 +201,9 @@ export async function queryBisTrends(req, res) {
         sort: 9,
       },
       evoker: {
-        devastation: 2,
-        preservation: 3,
-        augmentation: 4,
+        augmentation: 0,
+        devastation: 1,
+        preservation: 2,
         sort: 10,
       },
       hunter: {

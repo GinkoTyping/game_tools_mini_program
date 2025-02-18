@@ -29,7 +29,7 @@
           }"
         ></view>
         <text>{{ localeLabels[item.role_class][specItem.class_spec] }}</text>
-        <image src="/static/icon/eye_light.svg"></image>
+        <uni-icons color="rgb(97, 97, 97)" type="eye-filled" size="24"></uni-icons>
         <text class="access-count-spec">{{ specItem.access_count }}</text>
       </view>
     </uni-collapse-item>
@@ -150,9 +150,8 @@ function onClickSpec(classKey: string, specKey: string) {
       position: relative;
       display: flex;
       align-items: center;
-      image {
-        width: 20px;
-        height: 20px;
+      uni-icons {
+        height: 40px;
         margin-left: 4px;
       }
       view {
