@@ -4,7 +4,11 @@
       <template v-slot:title>
         <view :class="[item.role_class, 'menu-title']">
           <text>{{ localeLabels.class[item.role_class] }}</text>
-          <image src="/static/icon/fire.svg"></image>
+          <image
+            v-for="(fire, index) in item.fires"
+            :key="index"
+            src="/static/icon/fire.svg"
+          ></image>
         </view>
       </template>
       <view

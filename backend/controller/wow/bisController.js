@@ -114,24 +114,29 @@ async function mapBisItems(bisItems) {
 
 export async function queryBisTrends(req, res) {
   const data = await bisMapper.getAllBis();
-  const mappedData = data.reduce((pre, cur) => {
-    const found = pre.find((item) => item.role_class === cur.role_class);
-    if (found) {
-      found.access_count += cur.access_count;
-      found.specs.push({
-        class_spec: cur.class_spec,
-        access_count: cur.access_count,
-      });
-    } else {
-      pre.push({
-        role_class: cur.role_class,
-        access_count: cur.access_count,
-        specs: [{ class_spec: cur.class_spec, access_count: cur.access_count }],
-      });
-    }
+  const mappedData = data
+    .reduce((pre, cur) => {
+      const found = pre.find((item) => item.role_class === cur.role_class);
+      if (found) {
+        found.access_count += cur.access_count;
+        found.specs.push({
+          class_spec: cur.class_spec,
+          access_count: cur.access_count,
+        });
+      } else {
+        pre.push({
+          role_class: cur.role_class,
+          access_count: cur.access_count,
+          specs: [
+            { class_spec: cur.class_spec, access_count: cur.access_count },
+          ],
+        });
+      }
 
-    return pre;
-  }, []);
+      return pre;
+    }, [])
+    .sort((a, b) => b.access_count - a.access_count);
+
   res.json({
     trend: mappedData,
     sprite: {
