@@ -10,11 +10,11 @@
         "desc": "Augmentation Evoker is going to continue to be one of the best Ranged options in Season 2. Although [Ebon Might] has been redesigned and no longer buffs tanks/healers, the addition to [Close as Clutchmates] will make Augmentation just as useful to your allies, with great utility, good mob control, and further bolstering their DPS/defensive profiles, but this time, you will do more damage yourself. Overall, we are delighted with the spec's current performance and expect it to remain one of the strongest specs.",
         "spells": [
           {
-            "spellId": "404269",
+            "spellId": 404269,
             "spellName": "Ebon Might"
           },
           {
-            "spellId": "396043",
+            "spellId": 396043,
             "spellName": "Close as Clutchmates"
           }
         ]
@@ -27,7 +27,7 @@
         "desc": "Fire Mage is entering Season 2 as one of the best DPS specs in Mythic+. Their newly introduced tier-set is one of the best designed sets out there and offers an immense power-spike to the spec, allowing you to have higher [Combustion] uptime. Their single target and AoE output is phenomenal and is considered one of the best. Just like every Mage spec so far, they have one of the best group-wide Mythic+ utilities.",
         "spells": [
           {
-            "spellId": "190319",
+            "spellId": 190319,
             "spellName": "Combustion"
           }
         ]
@@ -40,11 +40,11 @@
         "desc": "Destruction [Warlock] is starting the Season 2 PTR with an incredible performance, leading to one of the best DPS specs so far. Incredible AoE damage, amazing single-target, and most importantly great sustained damage, are the primary factors why we consider this spec good. In addition, the playstyle went through some needed changes which slightly shifts the rotation (especially if you have talented [Mayhem]/Demonfire Infusion builds). In addition, every [Warlock] spec is quite durable and has a great party-wide utility, which fits perfectly for Mythic+.",
         "spells": [
           {
-            "spellId": "387506",
+            "spellId": 387506,
             "spellName": "Mayhem"
           },
           {
-            "spellId": "462481",
+            "spellId": 462481,
             "spellName": "Warlock"
           }
         ]
@@ -57,7 +57,7 @@
         "desc": "Beast Mastery Hunter is one of the specs that have seen a lot of changes leading up to Season 2. Sadly (or not?) Beast Mastery Hunter will retain a similar playstyle, which will disappoint some and delight others. After their most recent tuning, the specialization has \"risen through the rankings\", having one of the best AoE damage outputs (both sustained and burst) compared to all other DPS specs. Single-target / priority-target damage has also improved, making them an even more attractive option. At last, [Bestial Wrath] uptime has also increased (thanks to our tier-set) which brings you in \"minor cooldowns\" at all times. A massively improved version of the spec compared to Season 1 and well deserved S-tier for the first time in a long time.",
         "spells": [
           {
-            "spellId": "19574",
+            "spellId": 19574,
             "spellName": "Bestial Wrath"
           }
         ]
@@ -91,11 +91,11 @@
         "desc": "Frost Mage received quite significant changes leading to the Season 2, with the most notable being less spamming of [Ice Lance] in your rotation and a much beefier [Blizzard] (damage, radius and duration increased). The current power of Frost Mage ranks them among the best ranged options on our DPS tierlist, with great burst and sustained damage (especially on ST), as well as good priority-target cleave in it. In addition, Mage is one of the most most durable DPS specializations, and also have one of the best Mythic+ utilities from a DPS.",
         "spells": [
           {
-            "spellId": "30455",
+            "spellId": 30455,
             "spellName": "Ice Lance"
           },
           {
-            "spellId": "190356",
+            "spellId": 190356,
             "spellName": "Blizzard"
           }
         ]
@@ -137,7 +137,7 @@
         "desc": "Feral Druid has received its fair share of changes leading to the Season 2. The specialization will retain its signature burst-orientated profile while being significantly weaker during dry periods. Energy starvation, unfortunately, is still present in the spec, resulting in pockets of time of just \"waiting\" for more resources rather than actively engaging with your rotation. Their utility, just like any Druid spec, will retain its power, as [Mark of the Wild] is one of the strongest party-buffs in the group.",
         "spells": [
           {
-            "spellId": "1126",
+            "spellId": 1126,
             "spellName": "Mark of the Wild"
           }
         ]
@@ -150,11 +150,11 @@
         "desc": "Shadow Priest received no significant changes leading to Season 2. Their damage profile is quite rampy which excels much better when targets live longer due to their major cooldown - [Voidform] being such a long duration. When the key level is higher both AoE and single-target/priority-target damage are great, however when things do not last long, it is a dreadful experience (especially when you enter a pack without [Shadow Crash]). Their utility and defensiveness remain strong, which is positive for the spec as both factors are considered valuable. Overall, we expect some adjustments to the spec, to shake up the playstyle or tune-up its power since they haven't seen any (strange..).",
         "spells": [
           {
-            "spellId": "228264",
+            "spellId": 228264,
             "spellName": "Voidform"
           },
           {
-            "spellId": "205385",
+            "spellId": 205385,
             "spellName": "Shadow Crash"
           }
         ]
@@ -175,11 +175,11 @@
         "desc": "Windwalker Monk recently received positive changes that are focusing on improving their AoE damage output, like the removal of [Mark of the Crane] and beefing up the [Spinning Crane Kick] itself and some further buffs to the Mastery effect. There are some new cool talents added like Slicing Winds (familiar spell?) which does decent damage but increases your mobility options. Unfortunately, Windwalker Monk is one of the few specs that yet remains to have its target cap present, which can result in problems in mass AoE. Regardless of that, their single-target is one of the best, followed by strong AoE output on low-target packs. It is important to note that the utility package is largely unchanged, and it is still going to have immense value for any team.",
         "spells": [
           {
-            "spellId": "220357",
+            "spellId": 220357,
             "spellName": "Mark of the Crane"
           },
           {
-            "spellId": "101546",
+            "spellId": 101546,
             "spellName": "Spinning Crane Kick"
           }
         ]
@@ -200,7 +200,7 @@
         "desc": "Demonology Warlock received one of the most powerful tier sets across all DPS specs, which further supplements their already strong damage output. They will have better-sustained damage when running outside of cooldowns while having a stronger burst (compared to Season 1). In addition to this, the benefit to the additional [Demonic Core]s will allow them to have better mobility, which is always a welcoming change. In terms of utility, they will keep their unique Mythic+ package while being one of the most \"tanky\" Ranged DPS.",
         "spells": [
           {
-            "spellId": "267102",
+            "spellId": 267102,
             "spellName": "Demonic Core"
           }
         ]
@@ -253,15 +253,15 @@
         "desc": "Affliction Warlock has seen minor changes in the upcoming Season 2. Their gameplay will remain similar, with a slight rotation change coming from their newly introduced tier-set. They will remain with the same issues as Season 1, relying on [[Vile Taint]] to do most of its work in AoE, which becomes a significant problem once it's on cooldown and a pack has been engaged (manual re-applications of the [Agony] is also problematic). Either decreasing its cooldown (of [[Vile Taint]]) or making it have several changes will have a positive impact on the spec. Nonetheless, when managing pulls and such scenarios do not occur, its performance is around A-tier with the current output on both ST and AoE (especially in AoE with its great on-demand burst + priority-target damage).",
         "spells": [
           {
-            "spellId": "278350",
+            "spellId": 278350,
             "spellName": "Vile Taint"
           },
           {
-            "spellId": "980",
+            "spellId": 980,
             "spellName": "Agony"
           },
           {
-            "spellId": "278350",
+            "spellId": 278350,
             "spellName": "Vile Taint"
           }
         ]
@@ -279,7 +279,7 @@
         "desc": "Arcane Mage has received its fair share of changes leading to the Season 2 of TWW. The general playstyle has seen some shifts with the priority of spells, depending on your overall talent choice, and making their minor cooldown - [Touch of the Magi] stronger. This will directly result in improvement in their consistent damage since that was one of the major issues leading up to the patch. In addition to all of that, Arcane has one of the strongest tier-sets with a massive power spike attached to them. They will retain its burst-orientated profile while simultaneously providing priority-target damage when doing so. The rankings of Arcane can fluctuate depending on the key level, as the higher the key goes the better the spec becomes (due to mobs having higher health and enduring your whole burst). Complexity issues / Hybrid builds are still part of the problem, making the barrier to entry one of the highest among all specs, which is never a good thing.",
         "spells": [
           {
-            "spellId": "321507",
+            "spellId": 321507,
             "spellName": "Touch of the Magi"
           }
         ]

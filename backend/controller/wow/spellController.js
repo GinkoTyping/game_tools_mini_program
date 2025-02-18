@@ -36,3 +36,18 @@ export async function querySpellByIds(req, res) {
 
   res.json(results.map((item) => item.value));
 }
+
+export async function queryAddSpell(req, res) {
+  console.log(`add ${req.body.id}`);
+  try {
+    if (req.body.id) {
+      await spellMapper.insertSpell(req.body);
+    }
+    res.statusCode = 200;
+    res.json({ message: '更新成功' });
+  } catch (error) {
+    console.log(error);
+    res.statusCode = 500;
+    res.json({ message: '更新失败' });
+  }
+}

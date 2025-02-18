@@ -6,7 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import '../util/set-env.js';
-import { querySpellByIds } from '../api/index.js';
+import { queryAddSpell, querySpellByIds } from '../api/index.js';
 
 async function collectByTierName(file) {
   let browser;
@@ -103,7 +103,7 @@ function collectTierList(html) {
                   .forEach((query) => {
                     const [key, value] = query.split('=');
                     if (key === 'spell') {
-                      spellId = value;
+                      spellId = Number(value);
                     }
                     // TODO 还有一个 domain=beta 参数，暂时忽略
                   });
@@ -147,22 +147,30 @@ function saveFile(data, fileName) {
 
 async function translate(data) {
   const totalNullSpells = [];
+  const totalIncompleteSpells = [];
   async function translateDesc(specItem) {
     if (specItem.spells?.length) {
       const spells = await querySpellByIds(
-        specItem.spells.map((spell) => spell.spellId)
+        specItem.spells.map((spell) => Number(spell.spellId))
       );
       specItem.spells.forEach((spell) => {
         const spellData = spells.find(
           (spellDataItem) => spellDataItem?.id === spell.spellId
         );
         if (spellData) {
-          specItem.desc = specItem.desc.replaceAll(
-            spell.spellName,
-            spellData.name_zh
-          );
+          if (spellData.name_zh) {
+            specItem.desc = specItem.desc.replaceAll(
+              spell.spellName,
+              spellData.name_zh
+            );
+          } else {
+            totalIncompleteSpells.push({
+              id: spell.spellId,
+              name: spell.spellName,
+            });
+          }
         } else {
-          totalNullSpells.push(spell.spellId);
+          totalNullSpells.push({ id: spell.spellId, name: spell.spellName });
         }
       });
     }
@@ -180,6 +188,15 @@ async function translate(data) {
   const tierPromise = data.map((item) => translateTier(item));
   const tierResults = await Promise.allSettled(tierPromise);
 
+  console.log(
+    `未注册的spell, 注册中: ${JSON.stringify(
+      totalNullSpells.map((item) => item.id)
+    )}`
+  );
+  const addNullSpellPromise = totalNullSpells.map((spell) =>
+    queryAddSpell(spell)
+  );
+  await Promise.allSettled(addNullSpellPromise);
   return tierResults.map((item) => item.value);
 }
 
