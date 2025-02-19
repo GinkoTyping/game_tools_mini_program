@@ -171,7 +171,7 @@ function saveFile(data, fileName) {
 }
 
 const prompt =
-  '翻译每个成员中的desc属性，它是魔兽世界的职业介绍。该属性中已经是中文的部分和"["、"]"符号请保留。翻译后的文本设置为成员的descZH属性，然后重新输出整个数组';
+  '只翻译每个成员中的desc属性，它是魔兽世界的职业介绍。该属性中已经是中文的部分和"["、"]"符号请保留。desc属性保持英文不变，翻译后的文本设置为成员的descZH属性，然后重新输出整个数组';
 
 async function translate(data) {
   const totalNullSpells = [];
