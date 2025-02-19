@@ -46,50 +46,69 @@
       </swiper-item>
     </swiper>
   </uni-swiper-dot>
-  <uni-section title="排行榜" type="line">
-    <view class="narrow-card">
-      <view class="narrow-card_info">
-        <view class="info">
-          <view class="card-name">{{ tier.title }}</view>
-          <view class="card-desc">{{ tier.desc }}</view>
-        </view>
-      </view>
-      <view class="narrow-card_bg"></view>
+
+  <!-- 排行 -->
+  <view class="divide-section">
+    <view class="prefix">
+      <view class="icon"></view>
+      <view class="title">排行榜</view>
     </view>
-  </uni-section>
-  <uni-section title="热门" type="line">
-    <view class="hot-topic">
-      <view class="simple-card" v-for="(item, index) in hotTopics" :key="index">
-        <view class="card-info">
-          <view class="spec-info">
-            <image :src="getClassIconURL(item.roleClass, item.classSpec)" />
-            <view class="labels">
-              <text class="label-spec">{{
-                localeLabels[item.roleClass][item.classSpec]
-              }}</text>
-              <text class="label-class">{{
-                localeLabels.class[item.roleClass]
-              }}</text>
-            </view>
+  </view>
+  <view class="narrow-card">
+    <view class="narrow-card_info">
+      <view class="info">
+        <view class="card-name">{{ tier.title }}</view>
+        <view class="card-desc">{{ tier.desc }}</view>
+      </view>
+    </view>
+    <view class="narrow-card_bg"></view>
+  </view>
+
+  <!-- 热门 -->
+  <view class="divide-section">
+    <view class="prefix">
+      <view class="icon"></view>
+      <view class="title">热门</view>
+    </view>
+    <view class="suffix">更多</view>
+  </view>
+  <view class="hot-topic">
+    <view class="simple-card" v-for="(item, index) in hotTopics" :key="index">
+      <view class="card-info">
+        <view class="spec-info">
+          <image :src="getClassIconURL(item.roleClass, item.classSpec)" />
+          <view class="labels">
+            <text class="label-spec">{{
+              localeLabels[item.roleClass][item.classSpec]
+            }}</text>
+            <text class="label-class">{{
+              localeLabels.class[item.roleClass]
+            }}</text>
           </view>
         </view>
-        <view
-          class="card-bg"
-          :style="{
-            backgroundImage: getSwipperBgURL(item.roleClass, item.classSpec),
-          }"
-        >
-        </view>
+      </view>
+      <view
+        class="card-bg"
+        :style="{
+          backgroundImage: getSwipperBgURL(item.roleClass, item.classSpec),
+        }"
+      >
       </view>
     </view>
-  </uni-section>
+  </view>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
+import { onShareAppMessage } from '@dcloudio/uni-app';
 
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
 import labels from '@/data/zh.json';
+
+onShareAppMessage(() => ({
+  title: '银子的搜罗坊',
+  path: 'pages/home/index',
+}));
 
 const localeLabels = labels as ILocaleLabels;
 const dotsStyles = ref({
@@ -237,6 +256,7 @@ $simple-card-width: 43.5vw;
 
 ::v-deep .uni-section-header {
   padding: 1rem !important;
+  padding-top: 2rem;
   color: #fff !important;
 }
 
@@ -329,7 +349,7 @@ $simple-card-width: 43.5vw;
         font-size: medium;
         color: #fff;
         font-weight: bold;
-        margin-bottom: .6rem;
+        margin-bottom: 0.6rem;
       }
       .card-desc {
         font-size: small;
@@ -346,6 +366,30 @@ $simple-card-width: 43.5vw;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/dungeons-high.webp);
+  }
+}
+
+.divide-section {
+  margin: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 14px;
+  line-height: 14px;
+  .prefix {
+    display: flex;
+    .icon {
+      width: 4px;
+      height: 12px;
+      border-radius: 10px;
+
+      margin-right: 6px;
+      background-color: #2979ff;
+    }
+  }
+  .suffix {
+    color: #2979ff;
   }
 }
 </style>
