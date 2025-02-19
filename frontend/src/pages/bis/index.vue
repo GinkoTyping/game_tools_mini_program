@@ -365,6 +365,7 @@
 </template>
 
 <script lang="ts" setup>
+// TODO 新增对应专精的图片
 import { onLoad, onShow, onPageScroll } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';

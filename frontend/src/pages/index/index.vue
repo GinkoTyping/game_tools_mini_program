@@ -65,6 +65,7 @@ import { ILocaleLabels } from '@/interface/ILocaleLabels';
 import labels from '@/data/zh.json';
 import { getAccessCount } from '@/api/shared';
 import { queryTrend } from '@/api/wow';
+import { useNavigator } from '@/hooks/navigator';
 
 onShareAppMessage(() => ({
   title: 'WOW BIS 查询',
@@ -109,10 +110,9 @@ function setAccessPopoverCountdown() {
 
 const localeLabels = labels as ILocaleLabels;
 
+const navigator = useNavigator();
 function onClickSpec(classKey: string, specKey: string) {
-  uni.navigateTo({
-    url: `/pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${localeLabels[classKey][specKey]}${localeLabels.class[classKey]}`,
-  });
+  navigator.toSpecDetail(classKey, specKey);
 }
 </script>
 

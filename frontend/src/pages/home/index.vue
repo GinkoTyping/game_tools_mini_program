@@ -10,6 +10,7 @@
         class="swiper-item-container"
         v-for="(item, index) in homeViewData?.carousels"
         :key="index"
+        @click="() => navigator.toSpecDetail(item.role_class, item.class_spec)"
       >
         <view class="swiper-item">
           <view class="swiper-item-info">
@@ -71,13 +72,14 @@
       <view class="icon"></view>
       <view class="title">热门</view>
     </view>
-    <view class="suffix">更多</view>
+    <view class="suffix" @click="navigator.toSpecsMenu">更多</view>
   </view>
   <view class="hot-topic">
     <view
       class="simple-card"
       v-for="(item, index) in homeViewData?.hotTopics"
       :key="index"
+      @click="() => navigator.toSpecDetail(item.role_class, item.class_spec)"
     >
       <view class="card-info">
         <view class="spec-info">
@@ -110,6 +112,7 @@ import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
 import { queryHomeView, IHomeViewDTO } from '@/api/wow';
 import labels from '@/data/zh.json';
+import { useNavigator } from '@/hooks/navigator';
 
 onShareAppMessage(() => ({
   title: '银子的搜罗坊',
@@ -146,6 +149,11 @@ const getClassIconURL = computed(() => {
   return (roleClass: string, classSpec: string) =>
     `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`;
 });
+
+const navigator = useNavigator();
+function jumpToSpec(classKey: string, specKey: string) {
+  navigator.toSpecDetail(classKey, specKey);
+}
 </script>
 
 <style lang="scss" scoped>
