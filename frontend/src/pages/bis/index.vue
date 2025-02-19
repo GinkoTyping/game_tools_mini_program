@@ -388,6 +388,7 @@ onLoad(async (options: any) => {
   classKey.value = options.classKey ?? 'death-knight';
   specKey.value = options.specKey ?? 'blood';
 
+  // TODO 加载页面完成前，需要展示loading
   await getBasicBisData();
   await getSeasonDungeons();
   await getDungeonTip();

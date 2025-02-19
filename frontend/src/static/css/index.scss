@@ -101,3 +101,31 @@ $priest: rgb(255, 255, 255);
 .rogue::before {
   background-color: $rogue;
 }
+
+.tag-label {
+  padding: 2px 4px;
+  color: #fff;
+  background-color: $uni-text-color-grey;
+  border: .1rem solid $uni-text-color-grey;
+  border-radius: .2rem;
+  font-size: small;
+  box-sizing: border-box;
+  height: 20px;
+  line-height: 16px;
+}
+
+.uni-section {
+  .uni-section-header {
+    background-color: $uni-bg-color-grey !important;
+    color: inherit !important;
+    .uni-section-header__content {
+      color: inherit !important;
+      .uni-section__content-title {
+        color: inherit !important;
+      }
+    }
+  }
+  .uni-section-content {
+    background-color: $uni-bg-color-grey;
+  }
+}
