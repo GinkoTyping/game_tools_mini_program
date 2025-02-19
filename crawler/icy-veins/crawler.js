@@ -137,13 +137,41 @@ function collectTierList(html) {
 function saveFile(data, fileName) {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
+  const outputPath = path.resolve(__dirname, `./output/${fileName}.json`);
+  let existedData;
+  if (fs.existsSync(outputPath)) {
+    const readFileData = fs.readFileSync(outputPath, 'utf-8');
+    existedData = JSON.parse(readFileData);
+    data.forEach((cur) => {
+      const existedTier = existedData.find((item) => item.tier === cur.tier);
+      if (existedTier) {
+        cur.children.forEach((child) => {
+          let existedChild = existedTier.children.find(
+            (item) => item.classSpec === child.classSpec
+          );
 
-  fs.writeFileSync(
-    path.resolve(__dirname, `./output/${fileName}.json`),
-    JSON.stringify(data, null, 2),
-    'utf-8'
-  );
+          if (existedChild) {
+            // 保护 中文翻译的字段
+            Object.assign(existedChild, {
+              descZH: existedChild.descZH ?? '',
+              ...child,
+            });
+          } else {
+            existedTier.children.push(child);
+          }
+        });
+      } else {
+        existedData.push(cur);
+      }
+    });
+    fs.writeFileSync(outputPath, JSON.stringify(existedData, null, 2), 'utf-8');
+  } else {
+    fs.writeFileSync(outputPath, JSON.stringify(data, null, 2), 'utf-8');
+  }
 }
+
+const prompt =
+  '翻译每个成员中的desc属性，它是魔兽世界的职业介绍。该属性中已经是中文的部分和"["、"]"符号请保留。翻译后的文本设置为成员的descZH属性，然后重新输出整个数组';
 
 async function translate(data) {
   const totalNullSpells = [];
