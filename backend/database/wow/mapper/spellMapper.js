@@ -79,7 +79,7 @@ async function updateSpellById(param) {
 
 async function getBlankSpell() {
   return db.all(`
-    SELECT id, id_wow_db, name_en FROM wow_spell WHERE cost == ""
+    SELECT id, id_wow_db, name_en FROM wow_spell WHERE description == ""
   `);
 }
 

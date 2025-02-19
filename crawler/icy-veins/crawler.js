@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 
 import '../util/set-env.js';
 import { queryAddSpell, querySpellByIds } from '../api/index.js';
+import localeLabels from '../util/class-spec-locales.js';
 
 async function collectByTierName(file) {
   let browser;
@@ -42,10 +43,9 @@ async function collectByTierName(file) {
     }
 
     const data = collectTierList(html);
-    saveFile(data, file);
-
     const translated = await translate(data);
-    console.log(translated);
+
+    saveFile(translated, file);
   } catch (error) {
     console.log(error);
   } finally {
@@ -148,7 +148,13 @@ function saveFile(data, fileName) {
 async function translate(data) {
   const totalNullSpells = [];
   const totalIncompleteSpells = [];
+
+  // TODO 翻译 fullNameEN
   async function translateDesc(specItem) {
+    specItem.fullNameZH = `${
+      localeLabels[specItem.roleClass][specItem.classSpec]
+    } ${localeLabels.class[specItem.roleClass]}`;
+
     if (specItem.spells?.length) {
       const spells = await querySpellByIds(
         specItem.spells.map((spell) => Number(spell.spellId))
