@@ -207,3 +207,17 @@ export async function queryTrend() {
     return [];
   }
 }
+
+export interface IHomeViewDTO {
+  carousels: { role_class: string; class_spec: string; access_count: number }[];
+  hotTopics: { role_class: string; class_spec: string; access_count: number }[];
+  tierLists: { version_id: string }[];
+}
+export async function queryHomeView() {
+  try {
+    const res = await uni.request({ url: `${BASE_URL}/wow/home-view` });
+    return res.data as IHomeViewDTO;
+  } catch (error) {
+    return {} as IHomeViewDTO;
+  }
+}

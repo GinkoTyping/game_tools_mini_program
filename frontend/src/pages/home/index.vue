@@ -1,15 +1,14 @@
 <template>
   <uni-swiper-dot
-    :info="swipperInfo"
-    :current="current"
+    :info="homeViewData?.carousels"
     :dots-styles="dotsStyles"
     field="content"
     mode="round"
   >
-    <swiper class="swiper-box" @change="change">
+    <swiper class="swiper-box">
       <swiper-item
         class="swiper-item-container"
-        v-for="(item, index) in swipperInfo"
+        v-for="(item, index) in homeViewData?.carousels"
         :key="index"
       >
         <view class="swiper-item">
@@ -17,15 +16,15 @@
             <view class="spec-info">
               <image
                 class="class-icon"
-                :src="getClassIconURL(item.roleClass, item.classSpec)"
+                :src="getClassIconURL(item.role_class, item.class_spec)"
               />
               <view class="class-labels">
-                <view :class="[item.roleClass]">
+                <view :class="[item.role_class]">
                   <text class="label-spec">{{
-                    localeLabels[item.roleClass][item.classSpec]
+                    localeLabels[item.role_class][item.class_spec]
                   }}</text>
                   <text class="label-class">{{
-                    localeLabels.class[item.roleClass]
+                    localeLabels.class[item.role_class]
                   }}</text>
                 </view>
                 <view class="info-type">大秘境</view>
@@ -39,7 +38,7 @@
         <view
           class="swiper-item-bg"
           :style="{
-            backgroundImage: getSwipperBgURL(item.roleClass, item.classSpec),
+            backgroundImage: getSwipperBgURL(item.role_class, item.class_spec),
           }"
         >
         </view>
@@ -57,8 +56,10 @@
   <view class="narrow-card">
     <view class="narrow-card_info">
       <view class="info">
-        <view class="card-name">{{ tier.title }}</view>
-        <view class="card-desc">{{ tier.desc }}</view>
+        <view class="card-name">大秘境专精排行</view>
+        <view class="card-desc">{{
+          homeViewData?.tierLists[0]?.version_id
+        }}</view>
       </view>
     </view>
     <view class="narrow-card_bg"></view>
@@ -73,16 +74,20 @@
     <view class="suffix">更多</view>
   </view>
   <view class="hot-topic">
-    <view class="simple-card" v-for="(item, index) in hotTopics" :key="index">
+    <view
+      class="simple-card"
+      v-for="(item, index) in homeViewData?.hotTopics"
+      :key="index"
+    >
       <view class="card-info">
         <view class="spec-info">
-          <image :src="getClassIconURL(item.roleClass, item.classSpec)" />
+          <image :src="getClassIconURL(item.role_class, item.class_spec)" />
           <view class="labels">
             <text class="label-spec">{{
-              localeLabels[item.roleClass][item.classSpec]
+              localeLabels[item.role_class][item.class_spec]
             }}</text>
             <text class="label-class">{{
-              localeLabels.class[item.roleClass]
+              localeLabels.class[item.role_class]
             }}</text>
           </view>
         </view>
@@ -90,7 +95,7 @@
       <view
         class="card-bg"
         :style="{
-          backgroundImage: getSwipperBgURL(item.roleClass, item.classSpec),
+          backgroundImage: getSwipperBgURL(item.role_class, item.class_spec),
         }"
       >
       </view>
@@ -100,15 +105,21 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { onShareAppMessage } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
+import { queryHomeView, IHomeViewDTO } from '@/api/wow';
 import labels from '@/data/zh.json';
 
 onShareAppMessage(() => ({
   title: '银子的搜罗坊',
   path: 'pages/home/index',
 }));
+
+const homeViewData = ref<IHomeViewDTO>();
+onLoad(async () => {
+  homeViewData.value = await queryHomeView();
+});
 
 const localeLabels = labels as ILocaleLabels;
 const dotsStyles = ref({
@@ -118,21 +129,6 @@ const dotsStyles = ref({
   selectedBackgroundColor: 'rgba(83, 200, 249,0.9)',
   selectedBorder: '1px rgba(83, 200, 249,0.9) solid',
 });
-const swipperInfo = ref([
-  {
-    roleClass: 'demon-hunter',
-    classSpec: 'havoc',
-  },
-  {
-    roleClass: 'death-knight',
-    classSpec: 'blood',
-  },
-  {
-    roleClass: 'hunter',
-    classSpec: 'beast-mastery',
-  },
-]);
-const current = ref(0);
 const getSwipperBgURL = computed(() => {
   return (roleClass: string, classSpec: string) => {
     let formatClass;
@@ -150,35 +146,6 @@ const getClassIconURL = computed(() => {
   return (roleClass: string, classSpec: string) =>
     `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`;
 });
-function change(e: any) {
-  current.value = e.detail.current;
-}
-
-// 专精排行
-const tier = ref({
-  title: '大秘境专精排行',
-  desc: '11.1.0 - PTR',
-});
-
-// 热门
-const hotTopics = ref([
-  {
-    roleClass: 'demon-hunter',
-    classSpec: 'havoc',
-  },
-  {
-    roleClass: 'death-knight',
-    classSpec: 'blood',
-  },
-  {
-    roleClass: 'hunter',
-    classSpec: 'beast-mastery',
-  },
-  {
-    roleClass: 'hunter',
-    classSpec: 'beast-mastery',
-  },
-]);
 </script>
 
 <style lang="scss" scoped>

@@ -112,6 +112,39 @@ async function mapBisItems(bisItems) {
   return bisItemResult.map((item) => item.value);
 }
 
+export async function getSortedBisTrend() {
+  const data = await bisMapper.getAllBis();
+  return data
+    .reduce((pre, cur) => {
+      const found = pre.find((item) => item.role_class === cur.role_class);
+
+      if (found) {
+        found.access_count += cur.access_count;
+        found.specs.push({
+          class_spec: cur.class_spec,
+          access_count: cur.access_count,
+        });
+      } else {
+        pre.push({
+          role_class: cur.role_class,
+          access_count: cur.access_count,
+          specs: [
+            { class_spec: cur.class_spec, access_count: cur.access_count },
+          ],
+        });
+      }
+
+      return pre;
+    }, [])
+    .sort((a, b) => b.access_count - a.access_count);
+}
+
+export async function getSortedSpecsTrend() {
+  const data = await bisMapper.getAllBis();
+  return data.sort((a, b) => b.access_count - a.access_count);
+}
+
+// TODO: 替换底部的函数
 export async function queryBisTrends(req, res) {
   const data = await bisMapper.getAllBis();
   const mappedData = data

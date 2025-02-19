@@ -13,3 +13,12 @@ CREATE TABLE
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     tier_data TEXT
   );
+
+CREATE TABLE
+  IF NOT EXISTS wow_home_view (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time TEXT,
+    carousels TEXT,
+    tier_lists TEXT,
+    hot_topics TEXT
+  );

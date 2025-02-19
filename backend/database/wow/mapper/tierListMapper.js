@@ -10,8 +10,12 @@ async function insertTierList(params) {
   );
 }
 
-async function getTierListByVersion(version) {
-  await db.get(`SELECT * FROM wow_tier_list WHERE version_id = ?1`, [version]);
+function getTierListByVersion(version) {
+  return db.get(`SELECT * FROM wow_tier_list WHERE version_id = ?1`, [version]);
+}
+
+function getAllTierList() {
+  return db.all(`SELECT version_id FROM wow_tier_list`);
 }
 
 export function useTierListMapper(database) {
@@ -22,5 +26,5 @@ export function useTierListMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { insertTierList, getTierListByVersion };
+  return { insertTierList, getTierListByVersion, getAllTierList };
 }
