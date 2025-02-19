@@ -46,12 +46,18 @@
       </swiper-item>
     </swiper>
   </uni-swiper-dot>
-  <uni-section title="专精节奏榜" type="line">
+  <uni-section title="排行榜" type="line">
     <view class="narrow-card">
-
+      <view class="narrow-card_info">
+        <view class="info">
+          <view class="card-name">{{ tier.title }}</view>
+          <view class="card-desc">{{ tier.desc }}</view>
+        </view>
+      </view>
+      <view class="narrow-card_bg"></view>
     </view>
   </uni-section>
-  <uni-section title="热门专精" type="line">
+  <uni-section title="热门" type="line">
     <view class="hot-topic">
       <view class="simple-card" v-for="(item, index) in hotTopics" :key="index">
         <view class="card-info">
@@ -128,6 +134,12 @@ const getClassIconURL = computed(() => {
 function change(e: any) {
   current.value = e.detail.current;
 }
+
+// 专精排行
+const tier = ref({
+  title: '大秘境专精排行',
+  desc: '11.1.0 - PTR',
+});
 
 // 热门
 const hotTopics = ref([
@@ -290,6 +302,50 @@ $simple-card-width: 43.5vw;
       scale: -1 1;
       mask-image: linear-gradient(0deg, transparent 20%, rgb(0, 0, 0) 90%);
     }
+  }
+}
+.narrow-card {
+  width: 100vw;
+  height: 10rem;
+  margin: 0 1rem;
+  border-radius: 1rem;
+  position: relative;
+  .narrow-card_bg,
+  .narrow-card_info {
+    border-radius: 1rem;
+    width: calc(100vw - 2.2rem) !important;
+    height: calc(100% - 0.2rem) !important;
+  }
+  .narrow-card_info {
+    border: 0.1rem solid #6d6d6d;
+    background-color: transparent;
+    position: relative;
+    .info {
+      position: absolute;
+      z-index: 2;
+      left: 0.6rem;
+      bottom: 0.6rem;
+      .card-name {
+        font-size: medium;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: .6rem;
+      }
+      .card-desc {
+        font-size: small;
+        color: #999;
+      }
+    }
+  }
+  .narrow-card_bg {
+    top: 0.1rem;
+    left: 0.1rem;
+    z-index: 0;
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/dungeons-high.webp);
   }
 }
 </style>
