@@ -211,11 +211,16 @@ export async function queryTrend() {
 export interface IHomeViewDTO {
   carousels: { role_class: string; class_spec: string; access_count: number }[];
   hotTopics: { role_class: string; class_spec: string; access_count: number }[];
-  tierLists: { version_id: string }[];
+  tierLists: { version_id: string; role: string; activity_type: string }[];
 }
 export async function queryHomeView() {
   try {
-    const res = await uni.request({ url: `${BASE_URL}/wow/home-view` });
+    const res: any = await uni.request({ url: `${BASE_URL}/wow/home-view` });
+    res.data.tierLists = res.data.tierLists.map((item: any) => {
+      if (item.activity_type === 'MYTHIC') {
+        item.activity_type = '大秘境';
+      }
+    });
     return res.data as IHomeViewDTO;
   } catch (error) {
     return {} as IHomeViewDTO;

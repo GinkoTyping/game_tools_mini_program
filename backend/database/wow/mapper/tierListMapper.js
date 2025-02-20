@@ -1,12 +1,12 @@
 let db;
 
 async function insertTierList(params) {
-  const { versionId, tierData } = params;
+  const { versionId, activityType, role, tierData } = params;
   await db.run(
     `
-    INSERT INTO wow_tier_list(version_id, tier_data) VALUES (?1, ?2)
+    INSERT INTO wow_tier_list(version_id, activity_type, role, tier_data) VALUES (?1, ?2, ?3, ?4)
   `,
-    [versionId, tierData]
+    [versionId, activityType, role, tierData]
   );
 }
 
@@ -15,7 +15,7 @@ function getTierListByVersion(version) {
 }
 
 function getAllTierList() {
-  return db.all(`SELECT version_id FROM wow_tier_list`);
+  return db.all(`SELECT version_id, activity_type, role FROM wow_tier_list`);
 }
 
 export function useTierListMapper(database) {

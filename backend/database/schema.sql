@@ -10,6 +10,8 @@ CREATE TABLE
   IF NOT EXISTS wow_tier_list (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     version_id TEXT,
+    activity_type TEXT,
+    role TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     tier_data TEXT
   );

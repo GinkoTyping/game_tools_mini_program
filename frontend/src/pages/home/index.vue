@@ -157,7 +157,7 @@ function jumpToSpec(classKey: string, specKey: string) {
 </script>
 
 <style lang="scss" scoped>
-$heightDividedByWidth: 56.2/ 100;
+$heightDividedByWidth: 56.2 / 100;
 $simple-card-width: 43.5vw;
 .swiper-box {
   width: 100vw !important;

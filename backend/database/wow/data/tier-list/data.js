@@ -16,7 +16,9 @@ const tierListData = JSON.parse(
 
 async function insertData() {
   await tierListMapper.insertTierList({
-    versionId: '11.1.0-PTR',
+    versionId: '11.1.0 - PTR',
+    activityType: 'MYTHIC',
+    role: 'DPS',
     tierData: JSON.stringify(tierListData),
   });
 }
