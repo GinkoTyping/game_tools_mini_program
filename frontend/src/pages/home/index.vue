@@ -2,10 +2,11 @@
   <uni-swiper-dot
     :info="homeViewData?.carousels"
     :dots-styles="dotsStyles"
+    :current="currentSwipper"
     field="content"
     mode="round"
   >
-    <swiper class="swiper-box">
+    <swiper class="swiper-box" @change="onSwipperChange" autoplay>
       <swiper-item
         class="swiper-item-container"
         v-for="(item, index) in homeViewData?.carousels"
@@ -128,9 +129,14 @@ onShareAppMessage(() => ({
 }));
 
 const homeViewData = ref<IHomeViewDTO>();
+const currentSwipper = ref(0);
 onLoad(async () => {
   homeViewData.value = await queryHomeView();
 });
+
+function onSwipperChange(e: any) {
+  currentSwipper.value = e.detail.current;
+}
 
 const localeLabels = labels as ILocaleLabels;
 const dotsStyles = ref({
