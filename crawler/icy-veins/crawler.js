@@ -80,9 +80,12 @@ function collectTierList(html) {
               .find('.details_block__summary-title-wrapper')
               .text()
               .trim();
-            const classSpec = $summarySpanSpan.length
+            let classSpec = $summarySpanSpan.length
               ? $summarySpanSpan.text().trim().split(' ').shift().toLowerCase()
               : null;
+            if (classSpec === 'beast') {
+              classSpec = 'beast-mastery';
+            }
             const $detailsContentP = $spec.find('.details-block__content p');
             let desc = $detailsContentP.length
               ? $detailsContentP
@@ -138,6 +141,10 @@ function saveFile(data, fileName) {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
   const outputPath = path.resolve(__dirname, `./output/${fileName}.json`);
+  const copyPath = path.resolve(
+    __dirname,
+    `../../backend/database/wow/data/tier-list/${fileName}.json`
+  );
   let existedData;
   if (fs.existsSync(outputPath)) {
     const readFileData = fs.readFileSync(outputPath, 'utf-8');
@@ -165,8 +172,10 @@ function saveFile(data, fileName) {
       }
     });
     fs.writeFileSync(outputPath, JSON.stringify(existedData, null, 2), 'utf-8');
+    fs.writeFileSync(copyPath, JSON.stringify(existedData, null, 2), 'utf-8');
   } else {
     fs.writeFileSync(outputPath, JSON.stringify(data, null, 2), 'utf-8');
+    fs.writeFileSync(copyPath, JSON.stringify(data, null, 2), 'utf-8');
   }
 }
 
@@ -177,7 +186,6 @@ async function translate(data) {
   const totalNullSpells = [];
   const totalIncompleteSpells = [];
 
-  // TODO 翻译 fullNameEN
   async function translateDesc(specItem) {
     specItem.fullNameZH = `${
       localeLabels[specItem.roleClass][specItem.classSpec]

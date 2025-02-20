@@ -58,7 +58,7 @@
       {
         "fullNameEN": "Beast Mastery Hunter",
         "roleClass": "hunter",
-        "classSpec": "beast",
+        "classSpec": "beast-mastery",
         "dataChange": "-",
         "desc": "Beast Mastery Hunter is one of the specs that have seen a lot of changes leading up to Season 2. Sadly (or not?) Beast Mastery Hunter will retain a similar playstyle, which will disappoint some and delight others. After their most recent tuning, the specialization has \"risen through the rankings\", having one of the best AoE damage outputs (both sustained and burst) compared to all other DPS specs. Single-target / priority-target damage has also improved, making them an even more attractive option. At last, [狂野怒火] uptime has also increased (thanks to our tier-set) which brings you in \"minor cooldowns\" at all times. A massively improved version of the spec compared to Season 1 and well deserved S-tier for the first time in a long time.",
         "spells": [
@@ -67,7 +67,7 @@
             "spellName": "Bestial Wrath"
           }
         ],
-        "fullNameZH": "undefined 猎人",
+        "fullNameZH": "野兽掌控 猎人",
         "descZH": "兽王猎人是众多在第二季到来前经历了大量变化的专精之一。可悲的是（或不是？），兽王猎人将保留类似的游戏风格，这会让一些人失望，也会让另一些人高兴。在最近的调整之后，该专精在排名中“崛起”，与所有其他DPS专精相比，拥有最佳的范围伤害输出（无论是持续还是爆发）。单体/优先目标伤害也已改进，使其成为更具吸引力的选择。最后，[狂野怒火]的持续时间也已增加（得益于我们的套装），让你始终处于“小型冷却时间”中。与第一季相比，这是一个大幅改进的版本，并且长时间以来首次当之无愧地成为S级。"
       },
       {
@@ -139,7 +139,7 @@
         "roleClass": "demon-hunter",
         "classSpec": "havoc",
         "dataChange": "up",
-        "desc": "Havoc Demon Hunter has recently seen several positive damage adjustments for the upcoming Mythic+ season. Their sustained damage (outside of cooldowns) has significantly improved, which was previously one of their weakest points. In addition, their single-target and priority-target damage has skyrocketed, making them one of the best in that niche. Overall, we believe after the 3rd consecutive buff, the spec finally managed to crack the top 10 (for now, although a few bugs still inflate its damage and will likely get \"fixed\" soon.), well done!",
+        "desc": "Havoc Demon Hunter has recently seen several positive damage adjustments for the upcoming Mythic+ season. Their sustained damage (outside of cooldowns) has significantly improved, which was previously one of their weakest points. In addition, their single-target and priority-targe damage has skyrocketed, making them one of the best in that niche. Overall, we believe after the 3rd concesacative buff, the spec finally managed to crack the top 10 (for now, although a few bugs still inflate its damage and will likely get \"fixed\" soon.), well done!",
         "spells": [],
         "fullNameZH": "浩劫 恶魔猎手",
         "descZH": "浩劫恶魔猎手最近针对即将到来的Mythic+赛季进行了一些积极的伤害调整。他们的持续伤害（冷却时间之外）得到了显著提升，而这之前是他们最弱的环节之一。此外，他们的单体和优先目标伤害也飙升，使他们成为该领域的佼佼者之一。总的来说，我们认为在连续三次增强之后，该专精终于跻身前10（目前而言，尽管还有一些漏洞导致其伤害偏高，并且很快就会得到“修复”。），干得好！"
@@ -272,7 +272,7 @@
         "roleClass": "evoker",
         "classSpec": "devastation",
         "dataChange": "up",
-        "desc": "The performance of Devastation Evoker have received several adjustments, more specifically being able to play both builds (Flameshaper/Scalecommander), allowing you for more flexible gameplay. In addition, the tier set will offer a major power to the Devastation Evoker, making it one of the better ones out there. The spec has retained its unique Evoker utility, while keeping its damage profile will \"bursty\", which will help your performance across different key levels (with a much better-sustained damage profile). Unfortunately for them, their sibling spec, Augmentation Evoker is currently one of the best performing DPS specs which often results in a huge disadvantage for being chosen over. Moreover, further damage adjustments must be made to place this spec higher.",
+        "desc": "The performance of Devastation Evoker have received several adjustments, more specifically being able to play both builds (Flameshaper/Scalecommander), allowing you for more flexible gameplay. In addition, the tier set will offer a major power to the Devastation Evoker, making it one of the better ones out there. The spec has retained its unique Evoker utility, while keeping its damage profile will \"bursty\", which will help your performance across different key levels (with a much better-sustained damage profile). Unfortunately for them, their sibling spec, Augmentation Evoker is currently one of the best performing DPS specs which often results in a huge disadvantage for being chosen over. Moreover, furthe damage adjustments must be made to place this spec higher.",
         "spells": [],
         "fullNameZH": "湮灭 唤魔师",
         "descZH": "湮灭唤魔师的性能已经过多次调整，特别是现在可以选择两种构建（火焰塑形师/鳞甲指挥官），让你的玩法更加灵活。此外，套装将为湮灭唤魔师提供巨大的力量，使其成为那里最好的选择之一。这个专精保留了其独特的唤魔师功能性，同时保持了其爆发性的伤害模式，这将有助于你在不同钥石等级中的表现（具有更好的持续伤害能力）。不幸的是，他们的兄弟专精增强唤魔师目前是表现最好的伤害输出专精之一，这往往导致选择湮灭唤魔师成为一个巨大的劣势。此外，还必须进一步调整伤害才能使这个专精的地位更高。"
