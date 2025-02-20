@@ -1,6 +1,10 @@
 <template>
   <uni-collapse ref="collapse">
-    <uni-collapse-item v-for="item in tierList?.tier_data" :key="item.tier">
+    <uni-collapse-item
+      v-for="(item, index) in tierList?.tier_data"
+      :key="item.tier"
+      :open="index <= 2"
+    >
       <template v-slot:title>
         <view class="collapse-title">
           <text class="collapse-title__tier">{{ item.tier }}</text>
@@ -9,7 +13,7 @@
       </template>
       <view class="collapse-content">
         <view
-          class="collapse-content__card"
+          :class="[spec.roleClass, 'collapse-content__card']"
           v-for="spec in item.children"
           :key="spec.fullNameEn"
           :style="{
@@ -19,6 +23,11 @@
             )})`,
           }"
         >
+          <image
+            v-show="spec.dataChange !== '-'"
+            class="collapse-content__card__change"
+            :src="`/static/icon/${spec.dataChange}.png`"
+          />
         </view>
       </view>
     </uni-collapse-item>
@@ -90,10 +99,36 @@ onLoad(async () => {
     display: block;
   }
 }
-.collapse-content__card {
-  width: 17.5vw;
-  height: 17.5vw;
-  background-repeat: no-repeat;
-  background-size: cover;
+$card-right-margin: 0.4rem;
+$card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
+.collapse-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 1rem;
+  padding: 0.4rem 0;
+  .collapse-content__card {
+    margin-right: $card-right-margin;
+    width: $card-width;
+    height: $card-width;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-width: 0.2rem;
+    border-style: solid;
+    margin-bottom: 0.4rem;
+    position: relative;
+    &:nth-child(5),
+    &:nth-child(10) {
+      margin-right: 0;
+    }
+
+    .collapse-content__card__change {
+      width: 1rem;
+      height: 1rem;
+      position: absolute;
+      top: 0;
+      right: -0.4rem;
+    }
+  }
 }
 </style>
