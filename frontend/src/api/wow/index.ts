@@ -226,3 +226,25 @@ export async function queryHomeView() {
     return {} as IHomeViewDTO;
   }
 }
+
+export async function queryTierList(params: {
+  versionId: string;
+  role: string;
+  activityType: string;
+}) {
+  try {
+    const { versionId, role, activityType } = params;
+    const res = await uni.request({
+      url: `${BASE_URL}/wow/tier-list`,
+      method: 'POST',
+      data: {
+        versionId,
+        role,
+        activityType,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return [];
+  }
+}

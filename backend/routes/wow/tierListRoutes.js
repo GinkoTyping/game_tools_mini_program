@@ -3,6 +3,6 @@ import { queryTierList } from '../../controller/wow/tierListController.js';
 
 const router = express.Router();
 
-router.get('/tier-list/:versionId', queryTierList);
+router.post('/tier-list', queryTierList);
 
 export default router;

@@ -10,8 +10,12 @@ async function insertTierList(params) {
   );
 }
 
-function getTierListByVersion(version) {
-  return db.get(`SELECT * FROM wow_tier_list WHERE version_id = ?1`, [version]);
+function getTierListByVersion(params) {
+  const { versionId, role, activityType } = params;
+  return db.get(
+    `SELECT * FROM wow_tier_list WHERE version_id = ?1 AND role = ?2 AND activity_type = ?3`,
+    [versionId, role, activityType]
+  );
 }
 
 function getAllTierList() {
