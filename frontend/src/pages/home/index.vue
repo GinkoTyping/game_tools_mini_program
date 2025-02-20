@@ -127,8 +127,6 @@ onShareAppMessage(() => ({
 const homeViewData = ref<IHomeViewDTO>();
 onLoad(async () => {
   homeViewData.value = await queryHomeView();
-  console.log(homeViewData.value);
-  
 });
 
 const localeLabels = labels as ILocaleLabels;

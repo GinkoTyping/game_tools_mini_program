@@ -18,18 +18,29 @@
         props.spell.cost
       }}</text>
     </view>
-    <text class="description">{{ props.spell.description }}</text>
+    <text class="description">{{ description }}</text>
   </uni-card>
 </template>
 
 <script lang="ts" setup>
 import { ISpell } from '@/interface/IWow';
+import { computed } from 'vue';
 
 const props = defineProps({
   spell: {
     type: Object as () => ISpell,
     required: true,
   },
+  singleBreakLine: {
+    type: Boolean,
+    default: false,
+  },
+});
+const description = computed(() => {
+  if (props.singleBreakLine) {
+    return props.spell.description.replace(/\n{2,}/g, '\n');
+  }
+  return props.spell.description;
 });
 </script>
 

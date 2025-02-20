@@ -34,7 +34,11 @@
     </uni-collapse-item>
   </uni-collapse>
 
-  <uni-popup class="pupup-container" ref="detailPopup">
+  <uni-popup
+    class="pupup-container"
+    ref="detailPopup"
+    mask-background-color="rgba(0,0,0,0.8)"
+  >
     <image
       :class="[currentSpec?.roleClass ? currentSpec.roleClass : '']"
       v-if="currentSpec?.roleClass"
@@ -51,10 +55,11 @@
       v-for="spell in currentSpells"
       :key="spell.id"
       :spell="spell"
+      single-break-line
     />
   </uni-popup>
 
-  <view class="custom-modal"></view>
+  <view class="custom-modal" v-show="isShowModal"></view>
 </template>
 
 <script lang="ts" setup>
@@ -76,8 +81,6 @@ const currentSpec = ref();
 const currentSpells = ref();
 onLoad(async (options: any) => {
   const { versionId, activityType, role } = options;
-  console.log(options);
-  
   tierList.value = await queryTierList({
     versionId: versionId,
     activityType: activityType,
@@ -86,6 +89,7 @@ onLoad(async (options: any) => {
 });
 
 const detailPopup = ref();
+const isShowModal = ref(false);
 async function onClickSpec(spec: ITierSpecDetail) {
   currentSpec.value = spec;
   currentSpells.value = await querySpellsInTip(
@@ -219,5 +223,16 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
 }
 .spell-card {
   margin-top: 0.2rem;
+}
+
+// 自定义的蒙版
+.custom-modal {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(3px);
 }
 </style>
