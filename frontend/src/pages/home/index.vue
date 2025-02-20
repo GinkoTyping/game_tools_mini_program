@@ -108,6 +108,8 @@
       </view>
     </view>
   </view>
+
+  <ShareIcon />
 </template>
 
 <script setup lang="ts">
@@ -118,6 +120,7 @@ import { ILocaleLabels } from '@/interface/ILocaleLabels';
 import { queryHomeView, IHomeViewDTO } from '@/api/wow';
 import labels from '@/data/zh.json';
 import { useNavigator } from '@/hooks/navigator';
+import ShareIcon from '@/components/ShareIcon.vue';
 
 onShareAppMessage(() => ({
   title: '银子的搜罗坊',

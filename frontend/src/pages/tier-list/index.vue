@@ -1,4 +1,11 @@
 <template>
+  <view class="hint">
+    <uni-icons type="chat-filled" color="#007aff" size="20"></uni-icons>
+    <text
+      ><text style="font-weight: bold">点击专精图标</text> 可以查看
+      <text style="font-weight: bold">专精</text> 的排名讲解哟</text
+    >
+  </view>
   <uni-collapse ref="collapse">
     <uni-collapse-item
       v-for="(item, index) in tierList?.tier_data"
@@ -40,7 +47,10 @@
     mask-background-color="rgba(0,0,0,0.8)"
   >
     <image
-      :class="[currentSpec?.roleClass ? currentSpec.roleClass : '']"
+      :class="[
+        currentSpec?.roleClass ? currentSpec.roleClass : '',
+        'spce-icon',
+      ]"
       v-if="currentSpec?.roleClass"
       :src="getClassIconURL(currentSpec.roleClass, currentSpec.classSpec)"
     />
@@ -50,20 +60,47 @@
       }}</view>
       <rich-text :nodes="renderTip(currentSpec?.descZH)"></rich-text>
     </uni-card>
-    <SpellCard
-      class="spell-card"
-      v-for="spell in currentSpells"
-      :key="spell.id"
-      :spell="spell"
-      single-break-line
-    />
+    <scroll-view
+      v-show="currentSpells?.length"
+      scroll-y="true"
+      class="scroll-y"
+    >
+      <view
+        class="scroll-y__item"
+        v-for="spell in currentSpells"
+        :key="spell.id"
+      >
+        <SpellCard class="spell-card" :spell="spell" />
+      </view>
+    </scroll-view>
+    <view class="pupup-container__btn-container">
+      <button
+        class="pupup-container__close-btn"
+        @click="() => detailPopup?.close?.()"
+      >
+        <image src="/static/icon/left_blue.svg" />
+      </button>
+      <button class="pupup-container__spec-btn" @click="comfirmToSpecDetail">
+        <image src="/static/icon/book.svg" />
+      </button>
+    </view>
   </uni-popup>
-
-  <view class="custom-modal" v-show="isShowModal"></view>
+  <uni-popup ref="alertDialog" type="dialog">
+    <uni-popup-dialog
+      type="info"
+      cancelText="等会儿"
+      confirmText="可以"
+      title="提示"
+      :content="dialogContent"
+      @confirm="dialogConfirm"
+      @close="dialogClose"
+    ></uni-popup-dialog>
+  </uni-popup>
+  <ShareIcon />
 </template>
 
 <script lang="ts" setup>
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { queryTierList } from '@/api/wow/index';
 import { ref } from 'vue';
 
@@ -75,12 +112,20 @@ import {
   ITierSpecDetail,
   querySpellsInTip,
 } from '@/api/wow/index';
+import ShareIcon from '@/components/ShareIcon.vue';
+import { useNavigator } from '@/hooks/navigator';
 
+const navigator = useNavigator();
 const tierList = ref<ITierListDTO>();
 const currentSpec = ref();
 const currentSpells = ref();
+const query = ref();
 onLoad(async (options: any) => {
+  query.value = options;
   const { versionId, activityType, role } = options;
+  uni.setNavigationBarTitle({
+    title: getPageTitle(options),
+  });
   tierList.value = await queryTierList({
     versionId: versionId,
     activityType: activityType,
@@ -88,8 +133,21 @@ onLoad(async (options: any) => {
   });
 });
 
+function getPageTitle(options: any) {
+  const { versionId, activityType, role } = options;
+  const title = activityType === 'MYTHIC' ? '大秘境' : '团本';
+  return `${role}${title}排行 ${versionId}`;
+}
+
+onShareAppMessage(() => {
+  const { versionId, activityType, role } = query.value;
+  return {
+    title: getPageTitle(query.value),
+    path: `/pages/tier-list/index?versionId=${versionId}&activityType=${activityType}&role=${role}`,
+  };
+});
+
 const detailPopup = ref();
-const isShowModal = ref(false);
 async function onClickSpec(spec: ITierSpecDetail) {
   currentSpec.value = spec;
   currentSpells.value = await querySpellsInTip(
@@ -97,9 +155,39 @@ async function onClickSpec(spec: ITierSpecDetail) {
   );
   detailPopup.value?.open?.();
 }
+
+const alertDialog = ref();
+const dialogContent = ref('');
+function comfirmToSpecDetail() {
+  dialogContent.value = `查看关于“${currentSpec.value.fullNameZH}”的更多信息 ~`;
+  alertDialog.value?.open?.();
+}
+
+function dialogConfirm() {
+  navigator.toSpecDetail(
+    currentSpec.value.roleClass,
+    currentSpec.value.classSpec
+  );
+}
+
+function dialogClose() {
+  alertDialog.value?.close?.();
+}
 </script>
 
 <style lang="scss" scoped>
+.hint {
+  font-size: medium;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  .uni-icons {
+    margin-right: 0.5rem;
+  }
+}
+
 // TODO 和 index/index 页面的样式有冗余
 ::v-deep uni-collapse-item {
   &:nth-child(1) {
@@ -200,7 +288,7 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
 
 .uni-popup__wrapper {
   position: relative;
-  image {
+  .spce-icon {
     position: absolute;
     top: 0;
     left: 50%;
@@ -221,18 +309,48 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
     font-weight: bold;
   }
 }
-.spell-card {
-  margin-top: 0.2rem;
+
+// 技能的上下滚动窗口
+.scroll-y {
+  margin-top: 1rem;
+  max-height: 34vh;
+  .scroll-y__item {
+    margin-bottom: 0.4rem;
+  }
 }
 
-// 自定义的蒙版
-.custom-modal {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(3px);
+.pupup-container__spec-btn,
+.pupup-container__close-btn {
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%);
+  image {
+    width: 50%;
+    height: 50%;
+  }
+}
+.pupup-container__spec-btn {
+  background-color: #007aff;
+}
+.pupup-container__close-btn {
+  background-color: #fff;
+}
+
+.pupup-container__btn-container {
+  width: 100%;
+  position: relative;
+  margin-top: 0.4rem;
+  display: flex;
+  justify-content: flex-end !important;
+  .pupup-container__close-btn {
+    margin-right: 0.6rem;
+  }
 }
 </style>

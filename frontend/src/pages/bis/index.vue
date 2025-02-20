@@ -1,7 +1,8 @@
 <template>
-  <button open-type="share" @click="onClickShare">
-    <uni-icons color="#fff" type="undo-filled" size="24"></uni-icons>
-  </button>
+  <view>
+    <ShareIcon />
+  </view>
+
   <uni-section id="overview" :class="[classKey]" title="总览">
     <uni-card class="section-card">
       <view
@@ -366,7 +367,7 @@
 
 <script lang="ts" setup>
 // TODO 新增对应专精的图片
-import { onLoad, onShow, onPageScroll } from '@dcloudio/uni-app';
+import { onLoad, onShow, onPageScroll, onHide } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
@@ -379,6 +380,7 @@ import {
   queryDungeonTip,
   querySpellsInTip,
 } from '@/api/wow';
+import ShareIcon from '@/components/ShareIcon.vue';
 
 const classKey = ref('');
 const specKey = ref('');
@@ -400,11 +402,16 @@ onShow(() => {
   isOpenFab.value = false;
 });
 
+// 避免悬浮的展开的菜单UI异常
+onHide(() => {
+  if (uniFabRef.value?.isShow) {
+    uniFabRef.value.close?.();
+  }
+});
+
 async function getBasicBisData() {
   currentData.value = await queryBis(classKey.value, specKey.value);
   currentTableName.value = currentData.value.bisItems[0]?.title;
-
-  console.log(currentData.value);
 }
 
 onShareAppMessage(() => {
@@ -503,7 +510,6 @@ async function switchDetail(
     currentDetails.value = await queryItemPreview(item.id);
     if (currentDetails.value) {
       status.value = '';
-      console.log(currentDetails.value);
     } else {
       popup.value.open(false);
     }
@@ -538,8 +544,6 @@ async function getDungeonTip() {
     classSpec: specKey.value,
     dungeonId: currentDungeonId.value,
   });
-
-  console.log(dungeonTip.value);
 }
 async function switchDungeon(id: number) {
   if (currentDungeonId.value !== id) {
@@ -611,13 +615,6 @@ function onClickFabIcon(e: { index: number }) {
 }
 function onSwitchFabIcon() {
   isOpenFab.value = !isOpenFab.value;
-}
-
-// 避免悬浮的展开的菜单UI异常
-function onClickShare() {
-  if (uniFabRef.value?.isShow) {
-    uniFabRef.value.close?.();
-  }
 }
 
 onPageScroll(e => {
@@ -1052,25 +1049,5 @@ $light-border: rgb(68, 68, 68);
 }
 .fab-disabled {
   display: none;
-}
-
-button[open-type='share'] {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  position: fixed;
-  bottom: 22px;
-  right: 22px;
-  z-index: 99;
-  padding: 0;
-  background-color: #007aff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%);
-  image {
-    width: 50%;
-    height: 50%;
-  }
 }
 </style>
