@@ -2,7 +2,7 @@ import { computed } from "vue";
 
 export const renderTip = computed(() => {
   return (text: string) => {
-    const wrappedText = `<p style="font-size: 14px;">${text}</p>`;
+    const wrappedText = `<p style="font-size: 14px;color: #fff !important">${text}</p>`;
 
     return wrappedText.replace(
       /\[(.*?)\]/g,

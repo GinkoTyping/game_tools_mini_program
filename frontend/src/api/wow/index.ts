@@ -218,8 +218,9 @@ export async function queryHomeView() {
     const res: any = await uni.request({ url: `${BASE_URL}/wow/home-view` });
     res.data.tierLists = res.data.tierLists.map((item: any) => {
       if (item.activity_type === 'MYTHIC') {
-        item.activity_type = '大秘境';
+        item.activity_name = '大秘境';
       }
+      return item
     });
     return res.data as IHomeViewDTO;
   } catch (error) {
@@ -254,6 +255,8 @@ export async function queryTierList(params: {
 }) {
   try {
     const { versionId, role, activityType } = params;
+    console.log({params});
+    
     const res = await uni.request({
       url: `${BASE_URL}/wow/tier-list`,
       method: 'POST',

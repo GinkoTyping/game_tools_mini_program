@@ -14,6 +14,17 @@ function toSpecsMenu() {
   });
 }
 
+function toTierList(params: {
+  version_id: string;
+  activity_type: string;
+  role: string;
+}) {
+  const { version_id, activity_type, role } = params;
+  uni.navigateTo({
+    url: `/pages/tier-list/index?versionId=${version_id}&activityType=${activity_type}&role=${role}`,
+  });
+}
+
 export function useNavigator() {
-  return { toSpecDetail, toSpecsMenu };
+  return { toSpecDetail, toSpecsMenu, toTierList };
 }

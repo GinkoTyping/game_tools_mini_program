@@ -54,7 +54,12 @@
       <view class="title">排行榜</view>
     </view>
   </view>
-  <view class="narrow-card">
+  <view
+    class="narrow-card"
+    @click="
+      () => homeViewData && navigator.toTierList(homeViewData?.tierLists[0])
+    "
+  >
     <view class="narrow-card_info">
       <view class="info">
         <view class="card-name">大秘境专精排行</view>
@@ -122,6 +127,8 @@ onShareAppMessage(() => ({
 const homeViewData = ref<IHomeViewDTO>();
 onLoad(async () => {
   homeViewData.value = await queryHomeView();
+  console.log(homeViewData.value);
+  
 });
 
 const localeLabels = labels as ILocaleLabels;
@@ -151,9 +158,6 @@ const getClassIconURL = computed(() => {
 });
 
 const navigator = useNavigator();
-function jumpToSpec(classKey: string, specKey: string) {
-  navigator.toSpecDetail(classKey, specKey);
-}
 </script>
 
 <style lang="scss" scoped>

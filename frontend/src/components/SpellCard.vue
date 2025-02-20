@@ -1,5 +1,5 @@
 <template>
-  <uni-card class="previw-popup">
+  <uni-card class="spell-popup">
     <text class="spell-name">{{ props.spell.name_zh }}</text>
     <view class="spell-prop">
       <text
@@ -33,10 +33,17 @@ const props = defineProps({
 });
 </script>
 
+<script lang="ts">
+export default {
+  name: 'SpellCard',
+};
+</script>
+
 <style lang="scss" scoped>
-.previw-popup .uni-card {
+.spell-popup > view {
   width: 70vw !important;
   border: 1px solid #ffffff !important;
+  border-width: 1px;
   margin-bottom: 10px !important;
   text {
     color: #fff;

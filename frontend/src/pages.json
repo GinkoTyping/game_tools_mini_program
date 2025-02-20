@@ -7,15 +7,15 @@
 	},
 	"pages": [
 		{
-			"path": "pages/tier-list/index",
-			"style": {
-				"navigationBarTitleText": "专精排行"
-			}
-		},
-		{
 			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "银子的搜罗坊"
+			}
+		},
+		{
+			"path": "pages/tier-list/index",
+			"style": {
+				"navigationBarTitleText": "专精排行"
 			}
 		},
 		{

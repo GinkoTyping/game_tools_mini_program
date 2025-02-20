@@ -53,6 +53,8 @@
       :spell="spell"
     />
   </uni-popup>
+
+  <view class="custom-modal"></view>
 </template>
 
 <script lang="ts" setup>
@@ -72,11 +74,14 @@ import {
 const tierList = ref<ITierListDTO>();
 const currentSpec = ref();
 const currentSpells = ref();
-onLoad(async () => {
+onLoad(async (options: any) => {
+  const { versionId, activityType, role } = options;
+  console.log(options);
+  
   tierList.value = await queryTierList({
-    versionId: '11.1.0 - PTR',
-    activityType: 'MYTHIC',
-    role: 'DPS',
+    versionId: versionId,
+    activityType: activityType,
+    role: role,
   });
 });
 
