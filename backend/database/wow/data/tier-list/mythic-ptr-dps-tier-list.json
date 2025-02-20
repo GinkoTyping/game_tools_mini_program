@@ -292,7 +292,7 @@
         "roleClass": "warlock",
         "classSpec": "affliction",
         "dataChange": "up",
-        "desc": "Affliction Warlock has seen minor changes in the upcoming Season 2. Their gameplay will remain similar, with a slight rotation change coming from their newly introduced tier-set. They will remain with the same issues as Season 1, relying on [[邪恶污染]] to do most of its work in AoE, which becomes a significant problem once it's on cooldown and a pack has been engaged (manual re-applications of the [痛楚] is also problematic). Either decreasing its cooldown (of [[邪恶污染]]) or making it have several changes will have a positive impact on the spec. Nonetheless, when managing pulls and such scenarios do not occur, its performance is around A-tier with the current output on both ST and AoE (especially in AoE with its great on-demand burst + priority-target damage).",
+        "desc": "Affliction Warlock has seen minor changes in the upcoming Season 2. Their gameplay will remain similar, with a slight rotation change coming from their newly introduced tier-set. They will remain with the same issues as Season 1, relying on [邪恶污染] to do most of its work in AoE, which becomes a significant problem once it's on cooldown and a pack has been engaged (manual re-applications of the [痛楚] is also problematic). Either decreasing its cooldown (of [邪恶污染]) or making it have several changes will have a positive impact on the spec. Nonetheless, when managing pulls and such scenarios do not occur, its performance is around A-tier with the current output on both ST and AoE (especially in AoE with its great on-demand burst + priority-target damage).",
         "spells": [
           {
             "spellId": 278350,

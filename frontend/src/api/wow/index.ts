@@ -227,6 +227,26 @@ export async function queryHomeView() {
   }
 }
 
+export interface ITierListDTO {
+  activity_type: string;
+  role: string;
+  version_id: string;
+  tier_data: ITierDataItem[];
+}
+interface ITierDataItem {
+  tier: string;
+  children: ITierSpecDetail[];
+}
+export interface ITierSpecDetail {
+  dataChange: string;
+  classSpec: string;
+  roleClass: string;
+  desc: string;
+  descZH: string;
+  fullNameEN: string;
+  fullNameZH: string;
+  spells: { spellId: number }[];
+}
 export async function queryTierList(params: {
   versionId: string;
   role: string;
@@ -243,8 +263,8 @@ export async function queryTierList(params: {
         activityType,
       },
     });
-    return res.data;
+    return res.data as ITierListDTO;
   } catch (error) {
-    return [];
+    return {} as ITierListDTO;
   }
 }

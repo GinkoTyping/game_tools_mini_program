@@ -53,6 +53,7 @@ async function collectByTierName(file) {
   }
 }
 
+// TODO 收集对应排名更新的时间
 function collectTierList(html) {
   const $ = cheerio.load(html);
   const trs = $('.tier-list tbody tr');

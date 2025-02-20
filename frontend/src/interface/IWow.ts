@@ -44,3 +44,13 @@ export interface IStatPriority {
   talentId: number;
   talentLabel: string;
 }
+
+export interface ISpell {
+  name_zh: string;
+  name_en: string;
+  range: string;
+  cast_time: string;
+  cooldown: string;
+  cost: string;
+  description: string;
+}

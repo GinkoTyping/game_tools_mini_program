@@ -15,7 +15,8 @@
         <view
           :class="[spec.roleClass, 'collapse-content__card']"
           v-for="spec in item.children"
-          :key="spec.fullNameEn"
+          :key="spec.fullNameEN"
+          @click="() => onClickSpec(spec)"
           :style="{
             backgroundImage: `url(${getClassIconURL(
               spec.roleClass,
@@ -24,7 +25,7 @@
           }"
         >
           <image
-            v-show="spec.dataChange !== '-'"
+            v-if="spec.dataChange !== '-'"
             class="collapse-content__card__change"
             :src="`/static/icon/${spec.dataChange}.png`"
           />
@@ -32,6 +33,26 @@
       </view>
     </uni-collapse-item>
   </uni-collapse>
+
+  <uni-popup class="pupup-container" ref="detailPopup">
+    <image
+      :class="[currentSpec?.roleClass ? currentSpec.roleClass : '']"
+      v-if="currentSpec?.roleClass"
+      :src="getClassIconURL(currentSpec.roleClass, currentSpec.classSpec)"
+    />
+    <uni-card class="desc-card">
+      <view :class="['desc-card__title', currentSpec?.roleClass]">{{
+        currentSpec?.fullNameZH
+      }}</view>
+      <rich-text :nodes="renderTip(currentSpec?.descZH)"></rich-text>
+    </uni-card>
+    <SpellCard
+      class="spell-card"
+      v-for="spell in currentSpells"
+      :key="spell.id"
+      :spell="spell"
+    />
+  </uni-popup>
 </template>
 
 <script lang="ts" setup>
@@ -39,9 +60,18 @@ import { onLoad } from '@dcloudio/uni-app';
 import { queryTierList } from '@/api/wow/index';
 import { ref } from 'vue';
 
+import SpellCard from '@/components/SpellCard.vue';
 import { getClassIconURL } from '@/hooks/imageGenerator';
+import { renderTip } from '@/hooks/richTextGenerator';
+import {
+  ITierListDTO,
+  ITierSpecDetail,
+  querySpellsInTip,
+} from '@/api/wow/index';
 
-const tierList = ref();
+const tierList = ref<ITierListDTO>();
+const currentSpec = ref();
+const currentSpells = ref();
 onLoad(async () => {
   tierList.value = await queryTierList({
     versionId: '11.1.0 - PTR',
@@ -49,6 +79,15 @@ onLoad(async () => {
     role: 'DPS',
   });
 });
+
+const detailPopup = ref();
+async function onClickSpec(spec: ITierSpecDetail) {
+  currentSpec.value = spec;
+  currentSpells.value = await querySpellsInTip(
+    spec.spells.map(spell => spell.spellId)
+  );
+  detailPopup.value?.open?.();
+}
 </script>
 
 <style lang="scss" scoped>
@@ -130,5 +169,50 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
       right: -0.4rem;
     }
   }
+}
+
+::v-deep uni-card {
+  .uni-card {
+    width: 96vw;
+    box-sizing: border-box;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    border: none !important;
+    background-color: $uni-bg-color-grey-light !important;
+  }
+}
+
+::v-deep .uni-popup__wrapper {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.uni-popup__wrapper {
+  position: relative;
+  image {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    width: $card-width;
+    height: $card-width;
+    border-radius: 50%;
+    border-width: 0.2rem;
+    border-style: solid;
+    z-index: 99;
+  }
+}
+.desc-card {
+  .desc-card__title {
+    padding-top: 0.5rem;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+  }
+}
+.spell-card {
+  margin-top: 0.2rem;
 }
 </style>

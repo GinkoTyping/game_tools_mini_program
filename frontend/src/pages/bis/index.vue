@@ -515,6 +515,8 @@ const dungeons = ref<IDungeonDTO[]>([]);
 const dungeonTip = ref<any>();
 const currentDungeonId = ref(-1);
 const tipCollapseIndex = ref(['0']);
+
+// TODO: 引入hook替代
 const renderTip = computed(() => {
   return (text: string) => {
     const wrappedText = `<p style="font-size: 14px;">${text}</p>`;
