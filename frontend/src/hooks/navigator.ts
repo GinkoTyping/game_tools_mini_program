@@ -10,7 +10,7 @@ function toSpecDetail(classKey: string, specKey: string) {
 
 function toSpecsMenu() {
   uni.navigateTo({
-    url: '/pages/index/index',
+    url: '/pages/spec-list/index',
   });
 }
 

@@ -7,7 +7,7 @@
 	},
 	"pages": [
 		{
-			"path": "pages/home/index",
+			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "银子的搜罗坊"
 			}
@@ -19,9 +19,9 @@
 			}
 		},
 		{
-			"path": "pages/index/index",
+			"path": "pages/spec-list/index",
 			"style": {
-				"navigationBarTitleText": "银子的搜罗坊"
+				"navigationBarTitleText": "专精列表"
 			}
 		},
 		{

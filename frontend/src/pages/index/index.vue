@@ -1,197 +1,381 @@
 <template>
-  <uni-collapse ref="collapse" accordion>
-    <uni-collapse-item v-for="item in trendData" :key="item.role_class">
-      <template v-slot:title>
-        <view :class="[item.role_class, 'menu-title']">
-          <text>{{ localeLabels.class[item.role_class] }}</text>
-          <image
-            v-for="(fire, index) in item.fires"
-            :key="index"
-            src="/static/icon/fire.svg"
-          ></image>
-        </view>
-      </template>
-      <view
-        class="spec"
-        v-for="specItem in item.specs"
-        :key="specItem.class_spec"
-        @click="() => onClickSpec(item.role_class, specItem.class_spec)"
+  <uni-swiper-dot
+    :info="homeViewData?.carousels"
+    :dots-styles="dotsStyles"
+    :current="currentSwipper"
+    field="content"
+    mode="round"
+  >
+    <swiper class="swiper-box" @change="onSwipperChange" autoplay>
+      <swiper-item
+        class="swiper-item-container"
+        v-for="(item, index) in homeViewData?.carousels"
+        :key="index"
+        @click="() => navigator.toSpecDetail(item.role_class, item.class_spec)"
       >
+        <view class="swiper-item">
+          <view class="swiper-item-info">
+            <view class="spec-info">
+              <image
+                class="class-icon"
+                :src="getClassIconURL(item.role_class, item.class_spec)"
+              />
+              <view class="class-labels">
+                <view :class="[item.role_class]">
+                  <text class="label-spec">{{
+                    localeLabels[item.role_class][item.class_spec]
+                  }}</text>
+                  <text class="label-class">{{
+                    localeLabels.class[item.role_class]
+                  }}</text>
+                </view>
+                <view class="info-type">大秘境</view>
+              </view>
+            </view>
+            <view class="tags">
+              <text class="tag-label">11.0.7 地心之战</text>
+            </view>
+          </view>
+        </view>
         <view
+          class="swiper-item-bg"
           :style="{
-            width: '20px',
-            height: '20px',
-            backgroundImage:
-              'url(https://ginkolearn.cyou/api/wow/assets/sprites/spec-sprite.png)',
-            backgroundPosition: `${
-              -spriteConfig[item.role_class][specItem.class_spec] * 20
-            }px ${-spriteConfig[item.role_class].sort * 20}px`,
+            backgroundImage: getSwipperBgURL(item.role_class, item.class_spec),
           }"
-        ></view>
-        <text>{{ localeLabels[item.role_class][specItem.class_spec] }}</text>
-        <uni-icons
-          v-show="specItem.access_count"
-          color="rgb(97, 97, 97)"
-          type="eye-filled"
-          size="24"
-        ></uni-icons>
-        <text v-show="specItem.access_count" class="access-count-spec">{{
-          specItem.access_count
-        }}</text>
-      </view>
-    </uni-collapse-item>
-  </uni-collapse>
+        >
+        </view>
+      </swiper-item>
+    </swiper>
+  </uni-swiper-dot>
 
-  <view :class="popoverClass">
-    <image
-      class="popup-icon"
-      src="/static/images/common/a-sahua1.png"
-      style="transform: scaleX(-1)"
-    ></image>
-    <text
-      >银子的搜罗坊，本日已被访问
-      <text style="font-weight: bolder">{{ accessCount }}</text> 次</text
-    >
-    <image class="popup-icon" src="/static/images/common/a-sahua1.png"></image>
+  <!-- 排行 -->
+  <view class="divide-section">
+    <view class="prefix">
+      <view class="icon"></view>
+      <view class="title">排行榜</view>
+    </view>
   </view>
+  <view
+    class="narrow-card"
+    @click="
+      () => homeViewData && navigator.toTierList(homeViewData?.tierLists[0])
+    "
+  >
+    <view class="narrow-card_info">
+      <view class="info">
+        <view class="card-name">大秘境专精排行</view>
+        <view class="card-desc">{{
+          homeViewData?.tierLists[0]?.version_id
+        }}</view>
+      </view>
+    </view>
+    <view class="narrow-card_bg"></view>
+  </view>
+
+  <!-- 热门 -->
+  <view class="divide-section">
+    <view class="prefix">
+      <view class="icon"></view>
+      <view class="title">热门</view>
+    </view>
+    <view class="suffix" @click="navigator.toSpecsMenu">更多</view>
+  </view>
+  <view class="hot-topic">
+    <view
+      class="simple-card"
+      v-for="(item, index) in homeViewData?.hotTopics"
+      :key="index"
+      @click="() => navigator.toSpecDetail(item.role_class, item.class_spec)"
+    >
+      <view class="card-info">
+        <view class="spec-info">
+          <image :src="getClassIconURL(item.role_class, item.class_spec)" />
+          <view class="labels">
+            <text class="label-spec">{{
+              localeLabels[item.role_class][item.class_spec]
+            }}</text>
+            <text class="label-class">{{
+              localeLabels.class[item.role_class]
+            }}</text>
+          </view>
+        </view>
+      </view>
+      <view
+        class="card-bg"
+        :style="{
+          backgroundImage: getSwipperBgURL(item.role_class, item.class_spec),
+        }"
+      >
+      </view>
+    </view>
+  </view>
+
+  <ShareIcon />
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { onLoad, onShow, onShareAppMessage } from '@dcloudio/uni-app';
+import { computed, ref } from 'vue';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
-import '@/static/css/index.scss';
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
+import { queryHomeView, IHomeViewDTO } from '@/api/wow';
 import labels from '@/data/zh.json';
-import { getAccessCount } from '@/api/shared';
-import { queryTrend } from '@/api/wow';
 import { useNavigator } from '@/hooks/navigator';
+import ShareIcon from '@/components/ShareIcon.vue';
 
 onShareAppMessage(() => ({
-  title: 'WOW BIS 查询',
+  title: '银子的搜罗坊',
   path: 'pages/index/index',
 }));
 
+const homeViewData = ref<IHomeViewDTO>();
+const currentSwipper = ref(0);
 onLoad(async () => {
-  accessCount.value = await getAccessCount();
-  setAccessPopoverCountdown();
+  homeViewData.value = await queryHomeView();
 });
 
-// 用专精页面返回该页面时，也需要刷新
-onShow(async () => {
-  const data: any = await queryTrend();
-  trendData.value = data.trend;
-  spriteConfig.value = data.sprite;
-});
-
-// TODO: 选择最多的3个; 规避审核时展示图标
-const trendData = ref<any>([]);
-const spriteConfig = ref<any>({});
-const accessCount = ref<any>();
-const popoverClass = ref(['popup-container', 'animate__animated']);
-function setAccessPopoverCountdown() {
-  // 数据异常时，避免展示错误界面
-  if (accessCount.value === -1) {
-    popoverClass.value.push('disabled');
-    return;
-  }
-
-  if (!popoverClass.value.includes('animate__fadeInUp')) {
-    popoverClass.value.push('animate__fadeInUp');
-  }
-  let timer: any = setTimeout(() => {
-    if (popoverClass.value.includes('animate__fadeInUp')) {
-      popoverClass.value.pop();
-      popoverClass.value.push('animate__fadeOut');
-    }
-    timer = null;
-  }, 5000);
+function onSwipperChange(e: any) {
+  currentSwipper.value = e.detail.current;
 }
 
 const localeLabels = labels as ILocaleLabels;
+const dotsStyles = ref({
+  backgroundColor: 'rgba(83, 200, 249,0.3)',
+  border: '1px rgba(83, 200, 249,0.3) solid',
+  color: '#fff',
+  selectedBackgroundColor: 'rgba(83, 200, 249,0.9)',
+  selectedBorder: '1px rgba(83, 200, 249,0.9) solid',
+});
+const getSwipperBgURL = computed(() => {
+  return (roleClass: string, classSpec: string) => {
+    let formatClass;
+    if (roleClass === 'demon-hunter') {
+      formatClass = 'dh';
+    } else if (roleClass === 'death-knight') {
+      formatClass = 'dk';
+    } else {
+      formatClass = roleClass;
+    }
+    return `url(https://ginkolearn.cyou/api/wow/assets/class-bgs/${formatClass}-${classSpec}-spec-background.webp)`;
+  };
+});
+const getClassIconURL = computed(() => {
+  return (roleClass: string, classSpec: string) =>
+    `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`;
+});
 
 const navigator = useNavigator();
-function onClickSpec(classKey: string, specKey: string) {
-  navigator.toSpecDetail(classKey, specKey);
-}
 </script>
 
 <style lang="scss" scoped>
-.access-count-spec {
-  color: rgb(97, 97, 97);
-  width: 30px;
-}
-.menu-title {
-  display: flex;
-  align-items: center;
-  image {
-    margin-left: 4px;
-    width: 20px;
-    height: 20px;
-  }
-}
-::v-deep .uni-collapse {
-  background-color: $uni-bg-color !important;
-}
-::v-deep uni-collapse-item {
-  width: 100vw;
-  .uni-collapse-item__title.uni-collapse-item-border {
-    line-height: 40px;
-    border-bottom: 4px solid $uni-bg-color-grey;
-    padding-left: 32px;
-    box-sizing: border-box;
-    font-size: 16px;
-  }
-  .uni-collapse-item__wrap {
-    background-color: $uni-bg-color-grey !important;
-    .uni-collapse-item__wrap-content {
-      border: none !important;
+$heightDividedByWidth: 56.2 / 100;
+$simple-card-width: 43.5vw;
+.swiper-box {
+  width: 100vw !important;
+  height: calc(100vw * $heightDividedByWidth) !important;
+  .swiper-item-container {
+    height: 100%;
+    position: relative;
+    .swiper-item,
+    .swiper-item-bg {
+      margin: 1rem;
+      margin-bottom: 0;
+      width: calc(100% - 2.2rem);
+      height: calc(100% - 1.2rem);
+      border-radius: 1rem;
     }
-    .spec {
-      padding-left: 32px;
-      box-sizing: border-box;
-      font-size: 16px;
-      color: $uni-text-color-inverse;
-      line-height: 40px;
-      border-bottom: 4px solid $uni-bg-color;
+    .swiper-item {
+      border: 0.1rem solid #999;
       position: relative;
-      display: flex;
-      align-items: center;
-      uni-icons {
-        height: 40px;
-        margin-left: 4px;
-      }
-      view {
-        width: 20px;
-        height: 20px;
+      .swiper-item-info {
         position: absolute;
-        left: 8px;
-        top: 50%;
-        transform: translateY(-50%);
+        right: 1rem;
+        top: 1rem;
+        .spec-info {
+          display: flex;
+          align-items: center;
+          .class-icon {
+            height: 2.4rem;
+            width: 2.4rem;
+            border-radius: 0.2rem;
+            border: 0.1rem solid #999;
+          }
+          .class-labels {
+            margin-left: 0.2rem;
+            font-weight: bolder;
+            font-size: medium;
+            height: 2.4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .label-spec {
+              font-size: large;
+              margin-right: 0.2rem;
+            }
+            .info-type {
+              font-size: small;
+              color: $uni-text-color-grey;
+              font-weight: normal;
+            }
+          }
+        }
+      }
+      .tags {
+        margin-top: 10px;
       }
     }
+    .swiper-item-bg {
+      position: absolute;
+      background-size: cover;
+      background-repeat: no-repeat;
+      mask-image: linear-gradient(
+        90deg,
+        rgb(255, 255, 255) 50%,
+        transparent 90%
+      );
+      border: 0.1rem solid #99999900;
+      top: 0;
+      z-index: -1;
+    }
   }
-}
-.popup-icon {
-  height: 20px;
-  width: 20px;
 }
 
-.popup-container {
-  width: 100vw;
-  position: fixed;
+::v-deep .uni-section-header {
+  padding: 1rem !important;
+  padding-top: 2rem;
+  color: #fff !important;
+}
+
+.hot-topic {
   display: flex;
-  justify-content: center;
-  bottom: 0 !important;
-  background-color: #a1ffb3;
-  align-items: center;
-  height: 40px;
-  text {
-    padding: 0 4px;
-    color: #3aa239;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 1rem;
+  .simple-card {
+    width: $simple-card-width;
+    height: calc($simple-card-width * $heightDividedByWidth);
+    margin-bottom: calc(100vw - 2rem - $simple-card-width * 2);
+    position: relative;
+
+    border-radius: 1rem;
+    border: 0.1rem solid #6d6d6d;
+    &:nth-child(3),
+    &:nth-child(4) {
+      margin-bottom: 0 !important;
+    }
+    .card-bg,
+    .card-info {
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 1rem;
+    }
+    .card-info {
+      position: relative;
+      background: transparent;
+      .spec-info {
+        position: absolute;
+        z-index: 2;
+        left: 0.2rem;
+        bottom: 0.2rem;
+        display: flex;
+        align-items: center;
+        .labels {
+          margin-left: 0.5rem;
+          font-size: smaller;
+          .label-spec {
+            font-size: small;
+            display: flex;
+            flex-direction: column;
+            font-weight: bolder;
+          }
+          text {
+            color: #fff;
+          }
+        }
+        image {
+          border-radius: 0.2rem;
+          width: 2rem;
+          height: 2rem;
+        }
+      }
+    }
+    .card-bg {
+      top: 0;
+      position: absolute;
+      background-position: centers;
+      background-size: cover;
+      background-repeat: no-repeat;
+      scale: -1 1;
+      mask-image: linear-gradient(0deg, transparent 20%, rgb(0, 0, 0) 90%);
+    }
   }
 }
-.popup-container.disabled {
-  display: none;
+.narrow-card {
+  width: 100vw;
+  height: 10rem;
+  margin: 0 1rem;
+  border-radius: 1rem;
+  position: relative;
+  .narrow-card_bg,
+  .narrow-card_info {
+    border-radius: 1rem;
+    width: calc(100vw - 2.2rem) !important;
+    height: calc(100% - 0.2rem) !important;
+  }
+  .narrow-card_info {
+    border: 0.1rem solid #6d6d6d;
+    background-color: transparent;
+    position: relative;
+    .info {
+      position: absolute;
+      z-index: 2;
+      left: 0.6rem;
+      bottom: 0.6rem;
+      .card-name {
+        font-size: medium;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: 0.6rem;
+      }
+      .card-desc {
+        font-size: small;
+        color: #999;
+      }
+    }
+  }
+  .narrow-card_bg {
+    top: 0.1rem;
+    left: 0.1rem;
+    z-index: 0;
+    position: absolute;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/dungeons-high.webp);
+  }
+}
+
+.divide-section {
+  margin: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 14px;
+  line-height: 14px;
+  .prefix {
+    display: flex;
+    .icon {
+      width: 4px;
+      height: 12px;
+      border-radius: 10px;
+
+      margin-right: 6px;
+      background-color: #2979ff;
+    }
+  }
+  .suffix {
+    color: #2979ff;
+  }
 }
 </style>
