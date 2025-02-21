@@ -13,10 +13,14 @@ export async function queryTierList(req, res) {
       role,
       activityType,
     });
-    res.json({
-      ...data,
-      tier_data: JSON.parse(data.tier_data),
-    });
+    if (data) {
+      res.json({
+        ...data,
+        tier_data: JSON.parse(data.tier_data),
+      });
+    } else {
+      res.json(null);
+    }
   } else {
     res.json(null);
   }

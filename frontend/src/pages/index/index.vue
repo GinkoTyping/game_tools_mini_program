@@ -123,6 +123,7 @@ import labels from '@/data/zh.json';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 
+const navigator = useNavigator();
 onShareAppMessage(() => ({
   title: '银子的搜罗坊',
   path: 'pages/index/index',
@@ -137,7 +138,6 @@ onLoad(async () => {
 function onSwipperChange(e: any) {
   currentSwipper.value = e.detail.current;
 }
-
 const localeLabels = labels as ILocaleLabels;
 const dotsStyles = ref({
   backgroundColor: 'rgba(83, 200, 249,0.3)',
@@ -163,8 +163,6 @@ const getClassIconURL = computed(() => {
   return (roleClass: string, classSpec: string) =>
     `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`;
 });
-
-const navigator = useNavigator();
 </script>
 
 <style lang="scss" scoped>

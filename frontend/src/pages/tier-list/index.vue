@@ -2,15 +2,15 @@
   <view class="hint">
     <uni-icons type="chat-filled" color="#007aff" size="20"></uni-icons>
     <text
-      ><text style="font-weight: bold">点击专精图标</text> 可以查看
-      <text style="font-weight: bold">专精</text> 的排名讲解哟</text
-    >
+      >更新<text style="font-weight: bold">{{ tierList?.created_at }}</text>
+      点击专精图标查看详解
+    </text>
   </view>
   <uni-collapse ref="collapse">
     <uni-collapse-item
       v-for="(item, index) in tierList?.tier_data"
       :key="item.tier"
-      :open="index <= 2"
+      :open="index <= 2 || query.role.toUpperCase() !== 'DPS'"
     >
       <template v-slot:title>
         <view class="collapse-title">
@@ -96,7 +96,7 @@
       @close="dialogClose"
     ></uni-popup-dialog>
   </uni-popup>
-  <ShareIcon />
+  <ShareIcon :tier-list-icons="tierListIcons" />
 </template>
 
 <script lang="ts" setup>
@@ -120,9 +120,11 @@ const tierList = ref<ITierListDTO>();
 const currentSpec = ref();
 const currentSpells = ref();
 const query = ref();
+const tierListIcons = ref<any>([]);
 onLoad(async (options: any) => {
-  query.value = options;
   const { versionId, activityType, role } = options;
+  query.value = options;
+  tierListIcons.value = getTierListIcons(options);
   uni.setNavigationBarTitle({
     title: getPageTitle(options),
   });
@@ -133,10 +135,33 @@ onLoad(async (options: any) => {
   });
 });
 
+function getTierListIcons(options: any) {
+  const params = JSON.parse(JSON.stringify(options));
+  return ['dps', 'tank', 'healer']
+    .filter(role => role != params.role.toLocaleLowerCase())
+    .map(item => ({
+      role: item,
+      onClick: () =>
+        navigator.toTierList({
+          version_id: '11.1 - PTR',
+          activity_type: query.value.activityType,
+          role: item,
+        }),
+    }));
+}
+
 function getPageTitle(options: any) {
   const { versionId, activityType, role } = options;
   const title = activityType === 'MYTHIC' ? '大秘境' : '团本';
-  return `${role}${title}排行 ${versionId}`;
+  let roleText;
+  if (role.toUpperCase() === 'DPS') {
+    roleText = '输出专精';
+  } else if (role.toUpperCase() === 'HEALER') {
+    roleText = '治疗专精';
+  } else {
+    roleText = '坦克专精';
+  }
+  return `${roleText}${title}排行 ${versionId}`;
 }
 
 onShareAppMessage(() => {

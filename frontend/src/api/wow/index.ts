@@ -220,7 +220,7 @@ export async function queryHomeView() {
       if (item.activity_type === 'MYTHIC') {
         item.activity_name = '大秘境';
       }
-      return item
+      return item;
     });
     return res.data as IHomeViewDTO;
   } catch (error) {
@@ -232,6 +232,7 @@ export interface ITierListDTO {
   activity_type: string;
   role: string;
   version_id: string;
+  created_at: string;
   tier_data: ITierDataItem[];
 }
 interface ITierDataItem {
@@ -255,17 +256,19 @@ export async function queryTierList(params: {
 }) {
   try {
     const { versionId, role, activityType } = params;
-    console.log({params});
-    
-    const res = await uni.request({
+
+    const res: any = await uni.request({
       url: `${BASE_URL}/wow/tier-list`,
       method: 'POST',
       data: {
         versionId,
-        role,
-        activityType,
+        role: role?.toUpperCase(),
+        activityType: activityType?.toUpperCase(),
       },
     });
+    if (res.data) {
+      res.data.created_at = res.data.created_at.slice(0, 10);
+    }
     return res.data as ITierListDTO;
   } catch (error) {
     return {} as ITierListDTO;
