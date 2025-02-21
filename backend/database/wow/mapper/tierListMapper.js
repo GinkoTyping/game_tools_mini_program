@@ -1,12 +1,12 @@
 let db;
 
 async function insertTierList(params) {
-  const { versionId, activityType, role, tierData } = params;
+  const { versionId, activityType, role, tierData, createdAt } = params;
   await db.run(
     `
-    INSERT INTO wow_tier_list(version_id, activity_type, role, tier_data) VALUES (?1, ?2, ?3, ?4)
+    INSERT INTO wow_tier_list(version_id, activity_type, role, tier_data, created_at) VALUES (?1, ?2, ?3, ?4, ?5)
   `,
-    [versionId, activityType, role, tierData]
+    [versionId, activityType, role, tierData, createdAt]
   );
 }
 

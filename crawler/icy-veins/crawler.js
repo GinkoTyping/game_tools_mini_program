@@ -9,6 +9,10 @@ import '../util/set-env.js';
 import { queryAddSpell, querySpellByIds } from '../api/index.js';
 import localeLabels from '../util/class-spec-locales.js';
 
+
+const prompt =
+  '只翻译每个成员中的desc属性，它是魔兽世界的职业介绍。该属性中已经是中文的部分和"["、"]"符号请保留。desc属性保持英文不变，翻译后的文本设置为成员的descZH属性，然后重新输出整个数组';
+
 async function collectByTierName(file) {
   let browser;
   try {
@@ -42,10 +46,11 @@ async function collectByTierName(file) {
       fs.writeFileSync(path.resolve(__dirname, staticFilePath), html, 'utf-8');
     }
 
-    const data = collectTierList(html);
-    const translated = await translate(data);
-
-    saveFile(translated, file);
+    const $ = cheerio.load(html);
+    const baseInfo = collectBaseInfo($, file);
+    const data = collectTierList($);
+    baseInfo.data = await translate(data);
+    saveFile(baseInfo, file);
   } catch (error) {
     console.log(error);
   } finally {
@@ -54,10 +59,9 @@ async function collectByTierName(file) {
 }
 
 // TODO 收集对应排名更新的时间
-function collectTierList(html) {
-  const $ = cheerio.load(html);
+function collectTierList(context) {
+  const $ = context;
   const trs = $('.tier-list tbody tr');
-
   return trs
     .map((_, tr) => {
       const $tr = $(tr);
@@ -138,6 +142,64 @@ function collectTierList(html) {
     .filter(Boolean);
 }
 
+function collectBaseInfo(context, fileName) {
+  const $ = context;
+  const dataString = $('.local_date_date').text();
+  const updatedAt = convertDateFormat(dataString);
+  const splitArray = fileName.split('-');
+  const output = { updatedAt, activityType: '', role: '', versionId: '' };
+
+  if (splitArray[0] === 'mythic') {
+    output.activityType = 'MYTHIC';
+    splitArray.shift();
+  } else {
+    output.activityType = 'RAID';
+  }
+
+  if (splitArray[0] === 'ptr') {
+    output.versionId = '11.1 - PTR';
+    splitArray.shift();
+  } else {
+    output.versionId = '11.0';
+  }
+  output.role = splitArray[0].toUpperCase();
+
+  return output;
+}
+
+function convertDateFormat(dateStr) {
+  // 定义一个月份名称到数字的映射
+  const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  // 提取月份和日期部分
+  const [monthName, day, year] = dateStr.split(' ').map((part) => part.trim());
+
+  // 获取月份的数字表示
+  const monthIndex = monthNames.indexOf(monthName);
+  const month = String(monthIndex + 1).padStart(2, '0'); // 月份从0开始，所以要加1，并且确保是两位数
+  const dayPadded = String(day).padStart(2, '0'); // 确保日期是两位数
+
+  // 拼接成新的日期格式
+  const newDateStr = `${year}/${month}/${dayPadded.slice(
+    0,
+    dayPadded.length - 1
+  )}`;
+  return newDateStr;
+}
+
 function saveFile(data, fileName) {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
@@ -150,38 +212,48 @@ function saveFile(data, fileName) {
   if (fs.existsSync(outputPath)) {
     const readFileData = fs.readFileSync(outputPath, 'utf-8');
     existedData = JSON.parse(readFileData);
-    data.forEach((cur) => {
-      const existedTier = existedData.find((item) => item.tier === cur.tier);
-      if (existedTier) {
-        cur.children.forEach((child) => {
-          let existedChild = existedTier.children.find(
-            (item) => item.classSpec === child.classSpec
-          );
 
-          if (existedChild) {
-            // 保护 中文翻译的字段
-            Object.assign(existedChild, {
-              descZH: existedChild.descZH ?? '',
-              ...child,
-            });
-          } else {
-            existedTier.children.push(child);
-          }
-        });
-      } else {
-        existedData.push(cur);
-      }
-    });
-    fs.writeFileSync(outputPath, JSON.stringify(existedData, null, 2), 'utf-8');
-    fs.writeFileSync(copyPath, JSON.stringify(existedData, null, 2), 'utf-8');
+    // 排名未更新时，保留中文翻译字段
+    if (existedData.updatedAt === data.updatedAt) {
+      data.data.forEach((cur) => {
+        const existedTier = existedData.data.find(
+          (item) => item.tier === cur.tier
+        );
+        if (existedTier) {
+          cur.children.forEach((child) => {
+            let existedChild = existedTier.children.find(
+              (item) => item.classSpec === child.classSpec
+            );
+
+            if (existedChild) {
+              // 保护 中文翻译的字段
+              Object.assign(existedChild, {
+                descZH: existedChild.descZH ?? '',
+                ...child,
+              });
+            } else {
+              existedTier.children.push(child);
+            }
+          });
+        } else {
+          existedData.data.push(cur);
+        }
+      });
+      fs.writeFileSync(
+        outputPath,
+        JSON.stringify(existedData, null, 2),
+        'utf-8'
+      );
+      fs.writeFileSync(copyPath, JSON.stringify(existedData, null, 2), 'utf-8');
+    } else {
+      fs.writeFileSync(outputPath, JSON.stringify(data, null, 2), 'utf-8');
+      fs.writeFileSync(copyPath, JSON.stringify(data, null, 2), 'utf-8');
+    }
   } else {
     fs.writeFileSync(outputPath, JSON.stringify(data, null, 2), 'utf-8');
     fs.writeFileSync(copyPath, JSON.stringify(data, null, 2), 'utf-8');
   }
 }
-
-const prompt =
-  '只翻译每个成员中的desc属性，它是魔兽世界的职业介绍。该属性中已经是中文的部分和"["、"]"符号请保留。desc属性保持英文不变，翻译后的文本设置为成员的descZH属性，然后重新输出整个数组';
 
 async function translate(data) {
   const totalNullSpells = [];
@@ -243,4 +315,13 @@ async function translate(data) {
   return tierResults.map((item) => item.value);
 }
 
-collectByTierName('mythic-ptr-dps-tier-list');
+// collectByTierName('mythic-ptr-dps-tier-list');
+
+const promises = [
+  'mythic-ptr-dps-tier-list',
+  'mythic-ptr-tank-tier-list',
+  'mythic-ptr-healer-tier-list',
+].map((fileName) => collectByTierName(fileName));
+
+const results = await Promise.allSettled(promises);
+console.log(results);
