@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import puppeteer from 'puppeteer';
+import axios from 'axios';
 
 import fs from 'fs';
 import path from 'path';
@@ -9,27 +9,14 @@ import '../util/set-env.js';
 import { queryAddSpell, querySpellByIds } from '../api/index.js';
 import localeLabels from '../util/class-spec-locales.js';
 
-
 const prompt =
   '按照中文的阅读习惯，把每个成员中的desc属性翻译到属性descZH，它是魔兽世界的职业介绍。该属性中已经是中文的部分和"["、"]"符号请保留。desc属性需要保持英文不变，翻译后的文本设置为成员的descZH属性，然后重新输出整个数组 。';
 
 async function collectByTierName(file) {
-  let browser;
   try {
     let html;
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
-
-    browser = await puppeteer.launch({
-      headless: true,
-      args: [
-        '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36',
-
-        // TODO 其他爬取方法中，可以加速html文件加载
-        '--disable-gpu',
-      ],
-    });
-    const page = await browser.newPage();
 
     const staticFilePath = `./cache/${file}.html`;
     if (fs.existsSync(path.resolve(__dirname, staticFilePath))) {
@@ -38,11 +25,14 @@ async function collectByTierName(file) {
 
         // TODO 其他爬取方法中，删除script 和 iframe 标签，可以加速html文件加载
         .replace(/<\s*(script|iframe)\b[\s\S]*?<\/\1>/gi, '');
-      await page.setContent(html);
     } else {
-      await page.goto(`https://www.icy-veins.com/wow/${file}`);
-
-      html = await page.content();
+      const res = await axios.get(`https://www.icy-veins.com/wow/${file}`, {
+        headers: {
+          'User-Agent':
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        },
+      });
+      html = res.data;
       fs.writeFileSync(path.resolve(__dirname, staticFilePath), html, 'utf-8');
     }
 
@@ -53,8 +43,6 @@ async function collectByTierName(file) {
     saveFile(baseInfo, file);
   } catch (error) {
     console.log(error);
-  } finally {
-    await browser.close();
   }
 }
 
