@@ -66,7 +66,7 @@ async function createBisTable(db) {
 async function updateWowheadData() {
   function mapItems(items) {
     return items
-      .filter((item) => item.item.toLowerCase() !== 'item')
+      .filter((item) => item?.item && item.item.toLowerCase() !== 'item')
       .map((item) => item.item.trim())
       .join('@');
   }
@@ -143,7 +143,7 @@ async function updateBisSort() {
 
   console.log(output);
 }
-updateBisSort();
+updateWowheadData();
 // 展示 更新数据库的结果 日志
 function handleBisItemRes(result, tag) {
   const errors = result.filter((item) => item.status !== 'fulfilled');
