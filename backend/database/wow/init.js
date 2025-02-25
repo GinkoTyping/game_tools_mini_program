@@ -128,19 +128,22 @@ async function updateBisItem(dataItem) {
   }
 }
 async function updateBisSort() {
-  const output = Object.entries(wowheadData).reduce((pre, [key, value], classIndex) => {
-    pre[key] = value.reduce((specPre, cur, specIndex) => {
-      specPre[cur.spec] = specIndex;
-      return specPre;
-    }, {});
-    pre[key].sort = classIndex;
+  const output = Object.entries(wowheadData).reduce(
+    (pre, [key, value], classIndex) => {
+      pre[key] = value.reduce((specPre, cur, specIndex) => {
+        specPre[cur.spec] = specIndex;
+        return specPre;
+      }, {});
+      pre[key].sort = classIndex;
 
-    return pre;
-  }, {});
+      return pre;
+    },
+    {}
+  );
 
   console.log(output);
 }
-updateBisSort()
+updateBisSort();
 // 展示 更新数据库的结果 日志
 function handleBisItemRes(result, tag) {
   const errors = result.filter((item) => item.status !== 'fulfilled');
@@ -178,7 +181,7 @@ async function createItemTable(db) {
 async function updateItemData() {
   function searchItems(output, items) {
     items.forEach((item) => {
-      if (item.item === 'Item') {
+      if (!item || item.item === 'Item') {
         return;
       }
       const hasFound = output.some(

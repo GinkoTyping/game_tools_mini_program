@@ -9,3 +9,12 @@ export async function getDungeonList(req, res) {
   const dungeons = await dungeonMapper.getDungeonsById(SEASON_DUNGEONS);
   res.json(dungeons);
 }
+
+export async function getDungeonByName(req, res) {
+  const { nameZH, nameEN } = req.body;
+  const data = await dungeonMapper.getDungeonByName({
+    name_zh: nameZH,
+    name_en: nameEN,
+  });
+  res.json(data);
+}

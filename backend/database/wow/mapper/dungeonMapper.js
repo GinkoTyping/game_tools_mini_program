@@ -9,12 +9,20 @@ async function insertDungeon(id, nameZH, nameEN) {
 
 async function getDungeonByName(params) {
   const { name_zh, name_en } = params;
-  return db.get(
-    `
-    SELECT * FROM wow_dungeon WHERE name_zh LIKE ?1 OR name_en LIKE ?2
-  `,
-    [name_zh, name_en]
-  );
+  if (name_zh?.length) {
+    return db.get(
+      `
+      SELECT * FROM wow_dungeon WHERE name_zh LIKE ?1`,
+      [name_zh]
+    );
+  } else if (name_en?.length) {
+    return db.get(
+      `
+      SELECT * FROM wow_dungeon WHERE name_en LIKE ?1`,
+      [name_en]
+    );
+  }
+  return null;
 }
 
 async function getDungeonsById(params) {
