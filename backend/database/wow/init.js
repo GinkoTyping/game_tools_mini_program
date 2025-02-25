@@ -67,7 +67,7 @@ async function updateWowheadData() {
   function mapItems(items) {
     return items
       .filter((item) => item?.item && item.item.toLowerCase() !== 'item')
-      .map((item) => item.item.trim())
+      .map((item) => item.id)
       .join('@');
   }
   const formattedData = Object.entries(wowheadData).reduce(
@@ -206,20 +206,27 @@ async function updateItemData() {
   }, []);
 
   async function updateItem(item) {
-    const foundItem = await itemMapper.getItemById(item.id);
-
-    if (foundItem) {
-      await itemMapper.updateItemById(item);
-    } else {
-      try {
-        await itemMapper.insertItem(item);
-      } catch (error) {
-        throw new Error({
-          id: item.id,
-          name: item.name,
-          message: error.message,
-        });
+    if (item.id) {
+      const foundItem = await itemMapper.getItemById(item.id);
+      if (foundItem) {
+        await itemMapper.updateItemById(item);
+      } else {
+        try {
+          await itemMapper.insertItem(item);
+        } catch (error) {
+          throw new Error({
+            id: item.id,
+            name: item.name,
+            message: error.message,
+          });
+        }
       }
+    } else {
+      return Promise.reject({
+        id: null,
+        name: item.name,
+        message: '该物品无ID字段',
+      });
     }
   }
 
@@ -229,7 +236,7 @@ async function updateItemData() {
   if (errors.length) {
     errors.forEach((errorItem) => {
       console.log(
-        `插入 装备数据 失败：${errorItem.value.name}, ${errorItem.value.message}`
+        `插入 装备数据 失败：${errorItem.reason.name}, ${errorItem.reason.message}`
       );
     });
   } else {
