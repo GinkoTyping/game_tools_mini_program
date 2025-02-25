@@ -57,7 +57,7 @@
   </uni-section>
 
   <!-- TODO: 11.1 TAG -->
-  <uni-section class="bis" :class="[classKey]" title="BIS配装">
+  <uni-section class="bis" :class="[classKey]" title="BIS配装(11.1)">
     <uni-card class="section-card">
       <view class="menu">
         <text
