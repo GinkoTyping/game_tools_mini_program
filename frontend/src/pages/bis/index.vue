@@ -2,7 +2,6 @@
   <view>
     <ShareIcon />
   </view>
-
   <uni-section id="overview" :class="[classKey]" title="总览">
     <uni-card class="section-card">
       <view
@@ -56,6 +55,8 @@
       </view>
     </uni-card>
   </uni-section>
+
+  <!-- TODO: 11.1 TAG -->
   <uni-section class="bis" :class="[classKey]" title="BIS配装">
     <uni-card class="section-card">
       <view class="menu">
@@ -394,7 +395,7 @@ import TopMessage from '@/components/TopMessage.vue';
 
 const classKey = ref('');
 const specKey = ref('');
-const currentData = ref<ISpceBIS | null>();
+const currentData = ref<any>();
 const query = ref<any>({});
 onLoad(async (options: any) => {
   query.value = options;
@@ -406,7 +407,7 @@ onLoad(async (options: any) => {
   await getSeasonDungeons();
   await getDungeonTip();
 
-  setNaviTitle(options.title);
+  setNaviTitle(`${options.title} ${currentData.value.version}`);
 });
 onShow(() => {
   isOpenFab.value = false;
