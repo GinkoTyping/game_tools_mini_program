@@ -512,7 +512,7 @@ const currentItem = ref<
 const messagePopup = ref();
 const messageType = ref('success');
 const messageText = ref('默认文本');
-const isRerenderMessage = ref(false);
+
 async function switchDetail(
   isShow: boolean,
   item: IBisItem | { image: string; id: number }
@@ -530,7 +530,6 @@ async function switchDetail(
     } else {
       messageType.value = 'error';
       messageText.value = data.message;
-      isRerenderMessage.value = true;
       messagePopup.value.open();
       popup.value.close();
     }
@@ -587,7 +586,13 @@ async function displaySpells(params: any) {
   if (params?.length) {
     const ids = params?.map((item: any) => item.id);
     currentSpells.value = await querySpellsInTip(ids);
-    spellpopup.value?.open();
+    if (currentSpells.value.filter((item: any) => item !== null).length) {
+      spellpopup.value?.open();
+    } else {
+      messageType.value = 'error';
+      messageText.value = '获取技能数据失败';
+      messagePopup.value?.open?.();
+    }
   }
 }
 //#endregion

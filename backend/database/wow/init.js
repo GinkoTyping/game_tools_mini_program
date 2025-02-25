@@ -622,7 +622,6 @@ async function updateSpellData() {
 
   console.log(spellHasDesc);
 }
-
 //#endregion
 
 export async function init() {
