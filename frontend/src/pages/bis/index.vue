@@ -236,7 +236,10 @@
       }`"
       alt=""
     />
-    <uni-card v-show="status !== 'loading'" class="previw-popup">
+    <uni-card
+      v-show="status !== 'loading' && currentDetails"
+      class="previw-popup"
+    >
       <text class="name">{{ currentDetails.name }}</text>
       <text class="qulity">{{ currentDetails.quality?.name }}</text>
       <text class="item-level">物品等级：{{ currentDetails.level }}</text>
@@ -343,6 +346,12 @@
     </uni-card>
   </uni-popup>
 
+  <TopMessage
+    ref="messagePopup"
+    v-model:type="messageType"
+    v-model:message="messageText"
+  />
+
   <view
     ref="fabContainerRef"
     :class="[
@@ -381,6 +390,7 @@ import {
   querySpellsInTip,
 } from '@/api/wow';
 import ShareIcon from '@/components/ShareIcon.vue';
+import TopMessage from '@/components/TopMessage.vue';
 
 const classKey = ref('');
 const specKey = ref('');
@@ -497,6 +507,10 @@ const status = ref('loading');
 const currentItem = ref<
   IBisItem | { image: string; id: number; source?: string }
 >();
+const messagePopup = ref();
+const messageType = ref('success');
+const messageText = ref('默认文本');
+const isRerenderMessage = ref(false);
 async function switchDetail(
   isShow: boolean,
   item: IBisItem | { image: string; id: number }
@@ -504,14 +518,18 @@ async function switchDetail(
   currentDetails.value = {};
   if (isShow) {
     status.value = 'loading';
-    popup.value.open(true);
+    popup.value.open();
 
     currentItem.value = item;
-    currentDetails.value = await queryItemPreview(item.id);
-    if (currentDetails.value) {
+    currentDetails.value = (await queryItemPreview(item.id)) ?? {};
+    if (currentDetails.value?.name) {
       status.value = '';
     } else {
-      popup.value.open(false);
+      messageType.value = 'error';
+      messageText.value = '未查询到该装备的信息';
+      isRerenderMessage.value = true;
+      messagePopup.value.open();
+      popup.value.close();
     }
   }
 }

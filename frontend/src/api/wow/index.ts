@@ -76,13 +76,28 @@ export async function queryBis(roleClass: string, classSpec: string) {
     }
   }
 
+  // 个别装备栏位的介绍 仍然为英语
+  function mapBisItem(data: IBisDataDTO) {
+    data.bis_items.forEach(
+      (bisType: { items: Array<IBisItem>; title: string }) => {
+        bisType.items = bisType.items.map(item => {
+          if (item.slot.toLowerCase().includes('weapon')) {
+            item.slot = '武器';
+          }
+          return item;
+        });
+      }
+    );
+    return data.bis_items;
+  }
+
   return {
     roleClass,
     classSpec,
     statsPriority: data.stats_priority,
     updatedAt: data.updated_at,
     trinkets: mapTrinks(data.bis_trinkets),
-    bisItems: data.bis_items,
+    bisItems: mapBisItem(data),
     ratings: data.ratings.map(item => ({
       label: item.label,
       comment: mapRatingComment(item.label, item.rating),
