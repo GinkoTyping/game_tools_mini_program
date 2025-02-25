@@ -155,6 +155,7 @@
           >{{ dungeon.name_zh }}</text
         >
       </view>
+      <view class="dungeon_empty">{{ emptyTipMessage }}</view>
       <uni-collapse v-model="tipCollapseIndex">
         <uni-collapse-item
           :open="index === 0"
@@ -558,12 +559,20 @@ async function getSeasonDungeons() {
   dungeons.value = await querySeasonDungeons();
   currentDungeonId.value = dungeons.value[0]?.id;
 }
+const emptyTipMessage = ref('');
 async function getDungeonTip() {
-  dungeonTip.value = await queryDungeonTip({
+  const { isSuccess, data } = await queryDungeonTip({
     roleClass: classKey.value,
     classSpec: specKey.value,
     dungeonId: currentDungeonId.value,
   });
+  if (isSuccess) {
+    dungeonTip.value = data;
+  } else {
+    emptyTipMessage.value = data;
+  }
+
+  console.log(dungeonTip.value);
 }
 async function switchDungeon(id: number) {
   if (currentDungeonId.value !== id) {
@@ -961,7 +970,6 @@ $light-border: rgb(68, 68, 68);
     }
   }
 }
-
 .dungeon .menu {
   display: flex;
   flex-wrap: wrap;
@@ -1069,5 +1077,10 @@ $light-border: rgb(68, 68, 68);
 }
 .fab-disabled {
   display: none;
+}
+
+.dungeon_empty {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 </style>

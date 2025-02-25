@@ -12,9 +12,13 @@ export async function queryDungeonTipByCondition(req, res) {
     classSpec,
     dungeonId
   );
-
-  res.json({
-    ...data,
-    tips: data.tips_en,
-  });
+  if (data) {
+    res.json({
+      ...data,
+      tips: data.tips_en,
+    });
+  } else {
+    res.statusCode = 404;
+    res.json({ message: '抱歉，暂无攻略，尽快更新中。' });
+  }
 }

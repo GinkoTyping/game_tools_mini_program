@@ -4,7 +4,7 @@ import { useDungeonMapper } from '../../database/wow/mapper/dungeonMapper.js';
 const db = await getDB();
 const dungeonMapper = useDungeonMapper(db);
 
-const SEASON_DUNGEONS = [503, 501, 502, 353, 376, 375, 505, 507];
+const SEASON_DUNGEONS = [506, 504, 370, 525, 499, 500, 247, 382];
 export async function getDungeonList(req, res) {
   const dungeons = await dungeonMapper.getDungeonsById(SEASON_DUNGEONS);
   res.json(dungeons);

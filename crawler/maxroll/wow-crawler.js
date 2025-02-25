@@ -297,6 +297,27 @@ function getSpecRating(context) {
   return ratings;
 }
 
+function handleAsyncDungeonTitle(title) {
+  const lowerCaseTitle = title.toLowerCase();
+  if (
+    lowerCaseTitle.includes('mechagon') &&
+    lowerCaseTitle.includes('junkyard')
+  ) {
+    title = 'Operation: Mechagon - Junkyard';
+  } else if (lowerCaseTitle.includes('mechagon')) {
+    title = 'Operation: Mechagon - Workshop';
+  } else if (lowerCaseTitle.includes('the motherlode')) {
+    title = 'The MOTHERLODE!!';
+  } else if (lowerCaseTitle.includes('rookery')) {
+    title = 'The Rookery';
+  } else if (lowerCaseTitle.includes('cinderbrew')) {
+    title = 'Cinderbrew Meadery';
+  } else if (lowerCaseTitle.includes('sacred flame')) {
+    title = 'Priory of the Sacred Flame';
+  }
+  return title;
+}
+
 async function getDungeonTips(context) {
   const $ = context;
   const data = [];
@@ -314,7 +335,9 @@ async function getDungeonTips(context) {
     .first()
     .children()
     .each((index, dungeonTab) => {
-      data.push({ dungeonTitle: $(dungeonTab).text(), children: [] });
+      let dungeonTitle = handleAsyncDungeonTitle($(dungeonTab).text());
+
+      data.push({ dungeonTitle, children: [] });
     });
 
   // 获取各个地下城的tips

@@ -478,7 +478,6 @@ async function updateDungeonTipData() {
   const insertSpecPromises = maxrollData.map((spec) => insertSpec(spec));
   await Promise.allSettled(insertSpecPromises);
 }
-
 //#endregion
 
 //#region 法术

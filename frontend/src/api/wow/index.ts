@@ -173,8 +173,14 @@ export async function queryDungeonTip(params: {
         dungeonId,
       },
     });
-    return JSON.parse(res.data.tips);
-  } catch (error) {}
+    console.log({ res });
+    if (res.statusCode === 200) {
+      return { isSuccess: true, data: JSON.parse(res.data.tips) };
+    }
+    return { isSuccess: false, data: res.data.message };
+  } catch (error: any) {
+    return { isSuccess: false, data: error?.message };
+  }
 }
 
 export async function querySpellsInTip(ids: number[]) {
