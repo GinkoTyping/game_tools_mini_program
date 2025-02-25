@@ -1,7 +1,7 @@
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
 import pLimit from 'p-limit';
-import axios from 'axios';
+import OpenAI from 'openai';
 
 import fs from 'fs';
 import path from 'path';
@@ -15,6 +15,10 @@ import { useDungeonTipMapper } from './mapper/dungeonTipMapper.js';
 import { useSpellMapper } from './mapper/spellMapper.js';
 
 const blizzAPI = useBlizzAPI();
+const openai = new OpenAI({
+  baseURL: 'https://api.deepseek.com',
+  apiKey: 'sk-022ab6d4123943ec8cb3be4b5407434c',
+});
 
 // 获取当前文件的路径和目录
 const __filename = fileURLToPath(import.meta.url);
@@ -449,23 +453,28 @@ async function updateDungeonTipData() {
         }
 
         // TODO: 待接入deepseek
-        // const data = await translate(tip.totalText);
-        // tip.totalText = data;
+        const data = await translate(tip.totalText);
+        tip.totalText = data;
 
         return translateDungeonTip(tip.children, dungeonTitle);
       }
     }
 
-    // TODO: 待接入deepseek
+    // TODO: 副本前的步骤攻略文本 获取异常
     async function translate(value) {
-      const res = await axios.post(
-        'http://47.109.25.141:3000/api/common/translate',
-        {
-          text: value,
-          useMap: true,
-        }
-      );
-      return res.data;
+      function buildValue() {
+        return (
+          '按照中文的阅读习惯翻译以下的内容，它是魔兽世界的副本攻略。原文本中已经是中文的部分和"["、"]"符号请保留，给出翻译后的文字：' +
+          value
+        );
+      }
+
+      const completion = await openai.chat.completions.create({
+        messages: [{ role: 'system', content: buildValue(value) }],
+        model: 'deepseek-chat',
+      });
+
+      return completion.choices[0].message.content;
     }
 
     const translatePromise = tips.map((tip) =>
@@ -478,6 +487,7 @@ async function updateDungeonTipData() {
   const insertSpecPromises = maxrollData.map((spec) => insertSpec(spec));
   await Promise.allSettled(insertSpecPromises);
 }
+updateDungeonTipData();
 //#endregion
 
 //#region 法术
