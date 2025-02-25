@@ -143,7 +143,7 @@ async function updateBisSort() {
 
   console.log(output);
 }
-updateWowheadData();
+
 // 展示 更新数据库的结果 日志
 function handleBisItemRes(result, tag) {
   const errors = result.filter((item) => item.status !== 'fulfilled');
