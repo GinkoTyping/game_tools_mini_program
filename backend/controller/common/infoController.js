@@ -20,3 +20,7 @@ export async function queryAccessCount(req, res) {
     infoMapper.insertAccessCount(date, 1);
   }
 }
+
+export async function queryScrollInfo(req, res) {
+  res.json('已更新11.1版本各专精排行及职业配装。(2.25)');
+}

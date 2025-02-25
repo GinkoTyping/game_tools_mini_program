@@ -1,9 +1,9 @@
 <template>
   <uni-notice-bar
-    v-show="isShowNotice"
+    v-if="isShowNotice && scrollText"
     show-icon
     show-close
-    text="已更新11.1PTR的坦克、治疗专精的排行，专精排行界面右下角可以切换职业类型查看！"
+    :text="scrollText"
   />
   <uni-swiper-dot
     :info="homeViewData?.carousels"
@@ -128,6 +128,7 @@ import { queryHomeView, IHomeViewDTO } from '@/api/wow';
 import labels from '@/data/zh.json';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
+import { queryScorllInfo } from '@/api/shared';
 
 const navigator = useNavigator();
 onShareAppMessage(() => ({
@@ -137,9 +138,11 @@ onShareAppMessage(() => ({
 
 const homeViewData = ref<IHomeViewDTO>();
 const currentSwipper = ref(0);
+const scrollText = ref('');
 onLoad(async () => {
   homeViewData.value = await queryHomeView();
   setNoticeBarCountdown();
+  scrollText.value = await queryScorllInfo();
 });
 
 function onSwipperChange(e: any) {
@@ -264,6 +267,7 @@ $simple-card-width: 43.5vw;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 1rem;
+  padding-bottom: 1rem;
   .simple-card {
     width: $simple-card-width;
     height: calc($simple-card-width * $heightDividedByWidth);
