@@ -143,7 +143,7 @@ function getTierListIcons(options: any) {
       role: item,
       onClick: () =>
         navigator.toTierList({
-          version_id: '11.1 - PTR',
+          version_id: '11.1',
           activity_type: query.value.activityType,
           role: item,
         }),
@@ -254,7 +254,7 @@ function dialogClose() {
   display: flex;
   align-items: baseline;
   .collapse-title__tier {
-    width: 20px;
+    min-width: 20px;
     font-size: large;
     margin-right: 0.2rem;
     display: block;

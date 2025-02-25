@@ -39,7 +39,7 @@
               </view>
             </view>
             <view class="tags">
-              <text class="tag-label">11.0.7 地心之战</text>
+              <text class="tag-label">11.1.0 地心之战</text>
             </view>
           </view>
         </view>
