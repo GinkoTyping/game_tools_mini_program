@@ -7,7 +7,7 @@
       @click="item.onClick"
     >
       <image
-        :src="`/static/images/wow/job-icons/role-icon-${item.role}.webp`"
+        :src="`/static/images/wow/job-icons/role-icon-${item.role}.jpg`"
       />
     </button>
     <button open-type="share">
@@ -17,24 +17,10 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-
-interface roleInfo {
-  role: String;
-  onClick: Function;
-}
 const props = defineProps({
   tierListIcons: {
     type: Array<any>,
   },
-});
-const roleIcons = computed(() => {
-  if (props.tierListRole) {
-    return ['dps', 'tank', 'healer'].filter(
-      role => role != props.tierListRole?.toLocaleLowerCase()
-    );
-  }
-  return [];
 });
 </script>
 

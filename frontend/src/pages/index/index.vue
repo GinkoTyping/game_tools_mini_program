@@ -1,4 +1,10 @@
 <template>
+  <uni-notice-bar
+    v-show="isShowNotice"
+    show-icon
+    show-close
+    text="已更新11.1PTR的坦克、治疗专精的排行，专精排行界面右下角可以切换职业类型查看！"
+  />
   <uni-swiper-dot
     :info="homeViewData?.carousels"
     :dots-styles="dotsStyles"
@@ -133,6 +139,7 @@ const homeViewData = ref<IHomeViewDTO>();
 const currentSwipper = ref(0);
 onLoad(async () => {
   homeViewData.value = await queryHomeView();
+  setNoticeBarCountdown();
 });
 
 function onSwipperChange(e: any) {
@@ -163,6 +170,14 @@ const getClassIconURL = computed(() => {
   return (roleClass: string, classSpec: string) =>
     `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`;
 });
+
+const isShowNotice = ref(true);
+function setNoticeBarCountdown() {
+  let timer: any = setTimeout(() => {
+    isShowNotice.value = false;
+    timer = null;
+  }, 10000);
+}
 </script>
 
 <style lang="scss" scoped>
