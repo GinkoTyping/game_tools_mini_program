@@ -306,9 +306,9 @@ async function translate(data) {
 // collectByTierName('mythic-ptr-dps-tier-list');
 
 const promises = [
-  'mythic-ptr-dps-tier-list',
-  'mythic-ptr-tank-tier-list',
-  'mythic-ptr-healer-tier-list',
+  'mythic-dps-tier-list',
+  'mythic-tank-tier-list',
+  'mythic-healer-tier-list',
 ].map((fileName) => collectByTierName(fileName));
 
 const results = await Promise.allSettled(promises);
