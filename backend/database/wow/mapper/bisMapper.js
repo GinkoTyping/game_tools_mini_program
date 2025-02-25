@@ -18,7 +18,7 @@ async function updateBisByClassAndSpec(data) {
     sort,
     specSort,
     accessCount,
-    updatedAt,
+    updatedAt = null,
   } = data;
   return db.run(
     `

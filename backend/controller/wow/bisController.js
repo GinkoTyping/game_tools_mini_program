@@ -61,7 +61,8 @@ export async function getItemPreviewById(req, res) {
       res.json(data);
     } catch (error) {
       console.log(error);
-      res.json(null);
+      res.statusCode = 404;
+      res.json({ message: '抱歉，11.1副本的装备数据暂未更新。' });
     }
   }
 }
@@ -86,12 +87,13 @@ export async function getBisBySpec(req, res) {
     stats_priority: JSON.parse(bisData.stats_priority),
     ratings: JSON.parse(bisData.ratings),
     bis_trinkets: JSON.parse(bisData.bis_trinkets),
+    disallow_check_detail: '11.1 PRT数据未更新，暂不支持查看装备详情',
   });
 }
 
 async function mapBisItems(bisItems) {
-  async function queryItem(name) {
-    const data = await itemMapper.getItemByName(name);
+  async function queryItem(id) {
+    const data = await itemMapper.getItemById(id);
     return {
       ...data,
       source: JSON.parse(data.source),

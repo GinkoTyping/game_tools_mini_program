@@ -8,7 +8,7 @@
       isOpen ? 'animate__fadeInDown' : 'animate__fadeOutUp',
     ]"
   >
-    {{ message }}
+    <text>{{ message }}</text>
   </view>
 </template>
 
@@ -20,7 +20,7 @@ const isInit = ref(true);
 const isOpen = ref(false);
 const type = defineModel('type', { type: String, default: 'success' });
 const message = defineModel('message', { type: String, default: '默认文本' });
-const countdown = 2000;
+const countdown = 5000;
 let timer;
 function open() {
   isInit.value = false;
@@ -57,5 +57,6 @@ defineExpose({ open });
   width: 100vw;
   height: 2rem;
   z-index: 99;
+  font-size: 14px;
 }
 </style>

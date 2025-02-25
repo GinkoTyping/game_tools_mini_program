@@ -53,7 +53,7 @@ async function createBisTable(db) {
       class_spec TEXT NOT NULL,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      origin_updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      version TEXT,
       stats_priority TEXT NOT NULL,
       ratings TEXT NOT NULL,
       bis_items TEXT NOT NULL,
@@ -184,9 +184,17 @@ async function updateItemData() {
       if (!item || item.item === 'Item') {
         return;
       }
-      const hasFound = output.some(
-        (outputItem) => outputItem.item === item.item.trim()
-      );
+      const hasFound = output.some((outputItem) => {
+        if (outputItem.item === item.item.trim()) {
+          if (outputItem.id === item.id) {
+            return true;
+          }
+          console.log(
+            `检测到名称相同的物品, 具体不同的ID，均已录入，请手动核实有效ID。物品名称：${outputItem.item}`
+          );
+          return false;
+        }
+      });
       if (!hasFound) {
         output.push(item);
       }

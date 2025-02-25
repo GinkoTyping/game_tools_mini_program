@@ -231,9 +231,9 @@
     <img
       v-show="currentItem?.image && status !== 'loading'"
       class="preview-image"
-      :src="`/static/images/wow/${currentItem?.source ? 'items' : 'trinkets'}/${
-        currentItem?.image
-      }`"
+      :src="`https://ginkolearn.cyou/api/wow/assets/${
+        currentItem?.source ? 'items' : 'trinkets'
+      }/${currentItem?.image}`"
       alt=""
     />
     <uni-card
@@ -521,12 +521,13 @@ async function switchDetail(
     popup.value.open();
 
     currentItem.value = item;
-    currentDetails.value = (await queryItemPreview(item.id)) ?? {};
-    if (currentDetails.value?.name) {
+    const { data, statusCode } = await queryItemPreview(item.id);
+    if (statusCode === 200) {
+      currentDetails.value = data;
       status.value = '';
     } else {
       messageType.value = 'error';
-      messageText.value = '未查询到该装备的信息';
+      messageText.value = data.message;
       isRerenderMessage.value = true;
       messagePopup.value.open();
       popup.value.close();

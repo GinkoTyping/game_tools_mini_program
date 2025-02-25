@@ -24,3 +24,20 @@ CREATE TABLE
     tier_lists TEXT,
     hot_topics TEXT
   );
+
+CREATE TABLE
+  IF NOT EXISTS wow_bis (
+    id INTEGER PRIMARY KEY,
+    role_class TEXT NOT NULL,
+    class_spec TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    version TEXT,
+    stats_priority TEXT NOT NULL,
+    ratings TEXT NOT NULL,
+    bis_items TEXT NOT NULL,
+    bis_trinkets TEXT NOT NULL,
+    access_count INTEGER DEFAULT 0,
+    sort INTEGER DEFAULT 0,
+    spec_sort INTEGER DEFAULT 0
+  )

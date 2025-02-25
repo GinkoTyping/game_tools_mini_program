@@ -112,7 +112,7 @@ export async function queryItemPreview(id: number) {
     const res: any = await uni.request({
       url: `${BASE_URL}/wow/item/${id}`,
     });
-    if (res.data?.preview_item.stats) {
+    if (res.data?.preview_item?.stats) {
       res.data.preview_item.stats = res.data.preview_item.stats.reduce(
         (pre: any, cur: any) => {
           if (cur.is_equip_bonus || !cur.is_negated) {
@@ -132,10 +132,10 @@ export async function queryItemPreview(id: number) {
       );
     }
 
-    return res.data;
+    return { data: res.data, statusCode: res.statusCode };
   } catch (error) {
-    console.log(error);
-    return null;
+    console.log({ error });
+    return { data: null, statusCode: error };
   }
 }
 
