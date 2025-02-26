@@ -79,6 +79,9 @@ export async function queryBis(roleClass: string, classSpec: string) {
 
   // 个别装备栏位的介绍 仍然为英语
   function mapBisItem(data: IBisDataDTO) {
+    data.bis_items = data.bis_items.filter(
+      item => item.items?.length && item.items[0] !== null
+    );
     data.bis_items.forEach(
       (bisType: { items: Array<IBisItem>; title: string }) => {
         bisType.items = bisType.items.map(item => {
