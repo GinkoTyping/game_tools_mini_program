@@ -2,7 +2,7 @@
   <view>
     <ShareIcon />
   </view>
-  <uni-section id="overview" :class="[classKey]" title="总览" :sub-title="currentData.updatedAt">
+  <uni-section id="overview" :class="[classKey]" title="总览" :sub-title="`已更新：${currentData.updatedAt}`">
     <uni-card class="section-card">
       <view
         class="rating-item"

@@ -54,7 +54,7 @@ async function updateBisByClassAndSpec(data) {
     END,
     updated_at = CASE
       WHEN ?8 IS NOT NULL THEN ?8
-      ELSE access_count
+      ELSE updated_at
     END,
     collected_at = CASE
       WHEN ?9 IS NOT NULL THEN ?9
