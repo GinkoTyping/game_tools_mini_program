@@ -395,17 +395,23 @@ function mapDescWithIcon(context, element) {
           }
         });
       if ($(desc).find('ul').length) {
-        liChildren = mapDescWithIcon($, $(desc).find('ul').first());
+        // 可能有多个UL
+        $(desc)
+          .find('ul')
+          .each((index, ulEle) => {
+            liChildren.push(...mapDescWithIcon($, $(ulEle)));
+          });
       }
 
       // 获取基础的文本字段
       let totalText;
-      if ($(element).find('mark').length) {
-        totalText = $(element).find('mark').first().text();
-      } else {
-        $(desc).find('ul').first().remove();
-        totalText = $(desc).text();
-      }
+      $(desc)
+        .find('ul')
+        .each((index, ulEle) => {
+          $(ulEle).remove();
+        });
+      totalText = $(desc).text();
+
       if (spells.length) {
         spells.forEach((spell) => {
           totalText = totalText.replace(spell.title, `[${spell.title}]`);
