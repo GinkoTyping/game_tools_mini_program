@@ -1742,6 +1742,12 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "Mythic+ Build",
+        "code": "CqPAx-s_ii_mj_N7LYTG0GwJggxMmZGjZmxMDzYmZmmhhZGzYAAAAAwwMzMzwsNzMjBAAwMzMzMAAAAjttBGwCYZYCMsAwMYDA"
+      }
     ]
   },
   {
@@ -5679,6 +5685,20 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍  Deathbringer ‍Shattering Blade",
+        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAAzMjZMGDzYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAYssNwAWALDTgxCmZmxM"
+      },
+      {
+        "talent": "‍ Riders ‍Shattering Blade",
+        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAAzMjZMGDzYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAAsZ2MMwAzGDNshZGjZG"
+      },
+      {
+        "talent": "‍  Deathbringer ‍Breath of Sindragosa",
+        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgMGAzMjZMGDzYmZmZGmZmJzYMjBMzYMjZmZmZmZxMAAAAAAAAAAAAjltBGwCYZYCMWwMMmB"
+      }
     ]
   },
   {
@@ -9598,6 +9618,20 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍  San'laynFull AoE",
+        "code": "CyPAx-s_ii_mj_N7LYTG0GwJgAgZGjZMGDzMzMzMNMmZGzYAAAAAAAAAgZGDjZmZAgZzMMLDzMz8AzMzYgBmxoxyGgtBbAwM"
+      },
+      {
+        "talent": "‍  RidersFull AoE",
+        "code": "CyPAx-s_ii_mj_N7LYTG0GwJgAgZGjZMGDzMzMzMNMmZGzYAAAAAAAAAgZGDzMzMDAMbmhZBzMz8AzMzA2MbGGYgZjhGLAwM"
+      },
+      {
+        "talent": "‍  RidersBalanced",
+        "code": "CyPAx-s_ii_mj_N7LYTG0GwJgAgZGjZMGDzMzMzMNMmZGzYAAAAAAAAAgZGDjZmZAgZzMMLGzMzMjZGwmZzwADMbM0YBAmB"
+      }
     ]
   },
   {
@@ -11077,6 +11111,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Aldrachi Reaver M+ Build",
+        "code": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZmZMzMjxMZmZGAAAAAAwsYmxMYmZbMzGWmZwMDjltZbGMMW2YCz4BmZAL"
       }
     ]
   },
@@ -12832,6 +12872,17 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "High Keys ‍Soulcrush ‍Aldrachi Reaver"
+      },
+      {
+        "talent": "High Keys ‍Last Resort ‍Aldrachi Reaver"
+      },
+      {
+        "talent": "Low Keys ‍Fel-Scarred "
+      }
     ]
   },
   {
@@ -14349,6 +14400,16 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Elune's Chosen",
+        "code": "CaGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmFzyMLzMbzMzMzMLmlxwgNswAMW2mZDjZbAMBAAAYxMjBYzAD"
+      },
+      {
+        "talent": "‍Keeper of the Grove",
+        "code": "CaGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmNzyMLzMLjZmZmZxsMGGjNswAMAbbjFMNzsMAAAAYzMjBYzAD"
+      }
     ]
   },
   {
@@ -14500,6 +14561,16 @@
             "children": []
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Wildstalker",
+        "code": "CeGA6LGMrrHkyvBy43UPp_aXLDAAAAAAmZb2MzCzMzMbzGjlZmZmHYmBAAAAAYJY2MwMjaGzCLzMzyYGDAAAAAAYAAAAAAAz2MbNLzstBzMDgFGM"
+      },
+      {
+        "talent": "‍Druid of the Claw",
+        "code": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZb2MzCzMzMbzGjlZmZmHYmBAAAAAYJY2MwMjaGzCLzMzyYGzAAAAAAADAAAAQzsMLzMbDIwCMzAwCDG"
       }
     ]
   },
@@ -16243,6 +16314,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Elune's Chosen Mythic+",
+        "code": "CiGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAzYmhZWmZMjZMzYhZGmFLDMbGGNRzMzyMLzMjxMAAAAAAghxAW2mZDjZZAMBAAAsBDAbmZY"
       }
     ]
   },
@@ -18450,6 +18527,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "General",
+        "code": "CmGA6LGMrrHkyvBy43UPp_aXLvxMzYjZmZmFz2AMLLjtFbzAAAAAAAAAAAAYZQz2gJDzgZhlZGmxMAAAAAADYAzAAAAAAz2MbNLzsZjZmBmxsYQD"
       }
     ]
   },
@@ -21791,6 +21874,12 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Spellslinger Mythic+ Build",
+        "code": "C6DAqjba-UdlK8weD5clEvnetZGMbzCmxMmFDjZGGTjZZGAAAAAAGAAAYmZbZZZmJWAAAAAAAALjhZmlZZYYmZGmZmZmZMjx"
+      }
     ]
   },
   {
@@ -24997,6 +25086,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Sunfury Flamestrike",
+        "code": "C-DAdtfC4fDh_vCojwUh17fH6OzgZzCmhZmFDPgZmx0YMmZAAAAAAMAgZmplZZZGAgNzMjZGmxMzYxYmh5BsNzsNjFzC"
       }
     ]
   },
@@ -28205,6 +28300,12 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Frostfire",
+        "code": "CCEAqjba-UdlK8weD5clEvnetNzYzsZBzMmZWAmZmGj5BGzMzwwM4BmZmZmZmZmZGzMzYmZZmmZWmFAAAYBAAAAAAzC"
+      }
     ]
   },
   {
@@ -29959,6 +30060,16 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Master of Harmony Build",
+        "code": "CyQA-pJ7Grnr5hyxxdg2eJ6ffCAAAgZMGzAzyM2GzMjBAAAAAAYZBjYmBmhxCw2MmhZbMzYbWmptlHYz2MzwsAAALzy0ysNzyAAAAMmhNA"
+      },
+      {
+        "talent": "‍Shado-Pan Build",
+        "code": "CyQA-pJ7Grnr5hyxxdg2eJ6ffCAAAgZMGzAzyM2GzMjBAAAAAAYZBjYmBmhxCw2MmhZbMzYbWmptlHYz2MzwsAAAbAAAAz2s0MzMLjZYDA"
       }
     ]
   },
@@ -32037,6 +32148,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Master of Harmony",
+        "code": "C6QA-pJ7Grnr5hyxxdg2eJ6ffCAAAAAAAADLWmZZMLmtZmZshtllZb8AY2sMzsswMamZGYGmBw2MmhZjZGmlHYCAAAAwsNtNbzsMbAAAAwG"
       }
     ]
   },
@@ -36444,6 +36561,16 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Shado-Pan",
+        "code": "C2QA-pJ7Grnr5hyxxdg2eJ6ffOzYAMjZ2mZGzMDAAAAAAAAAAAWWGGxMDjZgtFmx2MzMMLMzws8ATAAsMmhZmhtZAAsBAmlZpZmZWAMD"
+      },
+      {
+        "talent": "‍Conduit of the Celestials",
+        "code": "C2QA-pJ7Grnr5hyxxdg2eJ6ffOzYmBjZYMzMmZGAAAAAAAAAAAssMMiZGGzAbLMjtZmZYWYmhZ5BmAAYZMzghZbGAALLzyysMzMBAAMD"
+      }
     ]
   },
   {
@@ -38566,6 +38693,12 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "Default",
+        "code": "CGEAXUWXc0nH7IjwCQtYHbTlVAAAAYAAzAAAMAbjZYmxMziZMLzMjlZAbbz0WMDjZmhBmtMAgBAbAbMzMzMzysNzMbNAAAALAzAMYYG"
+      }
     ]
   },
   {
@@ -40303,6 +40436,16 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "Templar Build",
+        "code": "CKEAXUWXc0nH7IjwCQtYHbTlVsZMYWGLzMzMjZZbmZGzsNmxAAAMAAAAAAA0WmZWMMzwYG2aDAGDMAAbDAAwMTbzysNDAwGDGAGMzGG"
+      },
+      {
+        "talent": "Lightsmith Build",
+        "code": "CKEAXUWXc0nH7IjwCQtYHbTlVsZMYWGLzMzMzMLbzYGzsNzMGAAgBAAAAAAg2yMzihZGGzwWbAADMAAbDAAAAYmZZbplZGLMYAYwMbYA"
       }
     ]
   },
@@ -43315,6 +43458,24 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "Aoe ‍Templar",
+        "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAgRmttZmtltZGLmZ2WMbDAAAAAAjmmhhZGbzgZbY2mlZW2YGMDDLLsBAAAzMtNLz2MAgNgBAMmhB"
+      },
+      {
+        "talent": "ST‍Templar",
+        "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAAamltZmtltxYbMz22MbAAAAAAY00MMMzYbGMbDjZZGGGMjZYZhNAAAYmptZZ2mBAsBMAYMmhZ"
+      },
+      {
+        "talent": "Aoe ‍Herald of the Sun",
+        "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAgRstNzstsNzYzM2WMbDAAAAAAzWTzwwMjtZwsNMmlZW2GzgZYYZhNAwsMbzMzWDAAAsAMAgxMMA"
+      },
+      {
+        "talent": "ST‍Herald of the Sun",
+        "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAAassNzstsNGbjZ22mZDAAAAAAjmmhhZGbzgZbYWmlZYYwMmhlF2AAzysNzMbNAAAwCwAgxYGmBA"
+      }
     ]
   },
   {
@@ -45280,6 +45441,20 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Deathstalker Double Vanish",
+        "code": "COQAdb1wyGO40AKBNMUREAeV7PzMzMzwMAAAAAAAzyMmtZAAAAAAotlZmBzMYmZWmlxYwMzMzgxMbbLjZA2MLDMgFwywEYYZ"
+      },
+      {
+        "talent": "‍Fatebound Variation",
+        "code": "COQAdb1wyGO40AKBNMUREAeV7PjZmZGmBAAAAAAYWmxsNDAAAAAAttMzM8AzMYmZWmlxYwMzMzgZmZbbZMDgBWgZMaMbA2GwGA"
+      },
+      {
+        "talent": "‍Deathstalker Hybrid",
+        "code": "COQAMVe3xrRHPkKTYiUEC_OcZPjZmZGmBAAAAAAYWmxsNDAAAAAAttMzM8AzMYmZWmlxYwMzMzgZmZbbZMDwmZZgBsAWGmADLA"
+      }
     ]
   },
   {
@@ -47212,6 +47387,16 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Fatebound ‍Hidden Opportunity",
+        "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAMwwiZmBzMDzwwMzMzMmZmWmxsMDAAAAAAz2yMzgZmxyYmlZbAAAAYmBYgNYGjGzGgtBWM"
+      },
+      {
+        "talent": "‍Fatebound ‍Keep it Rolling",
+        "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAM2mBLmZmZmZMMDDzMzwMzMTLzY2mBAAAAAgZbZmZwMzYBWmlBAAAgZGgB2gZMaMbA2GYx"
+      }
     ]
   },
   {
@@ -49071,6 +49256,16 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Deathstalker - Dark Brew",
+        "code": "CWQAdb1wyGO40AKBNMUREAeV7DAM2mBAAAAAgZZMWmgFegZmZMzMzYmxMzY2GDzstNzMmZmBMWmtBAAAgZwwmZZgBsAWGmAzCMA"
+      },
+      {
+        "talent": "‍Trickster - The Rotten",
+        "code": "CWQAMVe3xrRHPkKTYiUEC_OcZDAM2mBAAAAAgZZMWmGzYmxMzYMDzMjhxsNLGzstMzMmZmBMWmtBAAAgZwAYMbGGYgZhFaxGMA"
+      }
     ]
   },
   {
@@ -50663,6 +50858,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Stormbringer  ",
+        "code": "CaQASHuZkIHv38g8oMaVB9ZkOCAAAAAYbW2mZmZGzysMzAMDDAAAAAYzMG2gFYGGasBAGTzA2WYmphZmZ2mxyMmxmZZwyMzMzYYmtB"
       }
     ]
   },
@@ -52333,6 +52534,16 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Stormbringer",
+        "code": "CeQASHuZkIHv38g8oMaVB9ZkOOzwCmZmx2MzMD2mZsNbDAAAAAAAAAwGgNzYYDWgZYoBLAYWmMDssMGzMYmZ2GWmZmsxyYZMzAAMGA"
+      },
+      {
+        "talent": "‍Totemic",
+        "code": "CeQASHuZkIHv38g8oMaVB9ZkOOzMjZwMDzMmZmhZsNmBAAAAAAAAAALwCMjFN2GAzA2AwsMZGYZhxMDmZmtxsMzMZhlxyYmBAYG"
       }
     ]
   },
@@ -54411,6 +54622,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "General",
+        "code": "CiQASHuZkIHv38g8oMaVB9ZkOCAAAAAGAAAAAzMzMLzsMzMzMLsNDDYB2gZsoxyAYGYjZGLWMLzMzIz2CzMNmZMDsMjZwsMMLjB"
       }
     ]
   },
@@ -57870,6 +58087,16 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Soul Harvester",
+        "code": "CmQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZY2GAAAwMzMzyMjx2MzMLMzMDAYmxyyADYAzwWghtZAAAAAAAAwMsA"
+      },
+      {
+        "talent": "‍Hellcaller",
+        "code": "CmQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZY2GAAAwMzMzyMjxyMzMLmxMDAYGLwAziRjZAMLglZAAAAAAAAwMsA"
+      }
     ]
   },
   {
@@ -59885,6 +60112,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Diabolist Mythic+ Build",
+        "code": "CqQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZYWGAAAAAAAAAAzAGzYYBGYZYhGWYGmZ2GzsZmZmZMmZGmZGzAzM"
       }
     ]
   },
@@ -63319,6 +63552,16 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Diabolist",
+        "code": "CuQAEfShhvywku87nu5zHE-yxOMMmZmZEzmhxsZmZY2mNjxMzsY2YZxMDAAAAMMz2yMzyMgxMGWgB2G2oxCGAAAAAAAzYYWAMA"
+      },
+      {
+        "talent": "‍Hellcaller Channel Demonfire",
+        "code": "CuQAEfShhvywku87nu5zHE-yxOMMmZmZEzmhxsZmZY2mNjxMzsY2YZxMDAAAAMMz2yMzyMWgBmFjGzAY2wGGAAAAAAAzYYWAMA"
+      }
     ]
   },
   {
@@ -64707,6 +64950,16 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Colossus Talents",
+        "code": "CeEAoKbnaMpm0FjYnlHLlZnHoAGmZmZGzYegZZ2WWGzAAAAwgphxsMmhZWGmZsYmZYGeghBAAAAAAgZMbjxAsFALmxwCMwMsRDYB"
+      },
+      {
+        "talent": "‍Slayer Talents",
+        "code": "CeEAoKbnaMpm0FjYnlHLlZnHoAGmZmZGzYegZZ2WWGzAAAAwgphxsMmhZWGmZsYmZYGeghBAAAAAAgZMLjxAsFGbbDsAGwMMBGYD"
+      }
     ]
   },
   {
@@ -66094,6 +66347,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Mountain Thane Mythic+ Talents",
+        "code": "CiEAoKbnaMpm0FjYnlHLlZnHoAAAAAAAAAA0YYMLjZYsMYmFmZmxMMDzssNzYmZ2wMzMzwMzsMgHYGDAAAEGYDW2MaMDgZBGLA"
       }
     ]
   },
@@ -67942,6 +68201,16 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Mountain Thane Mythic+ Build",
+        "code": "CmEAoKbnaMpm0FjYnlHLlZnHooxAAAAwMzMmZmhZ2mZZmZmNMGjGzyMzwYZghlZmhZmxwAAAAAAAzAAYZbDgB2glFjGzAY2gZD"
+      },
+      {
+        "talent": "‍Colossus Mythic+ Build",
+        "code": "CmEAoKbnaMpm0FjYnlHLlZnHooZGAAAAmZmxMzMMjZWmZmZjZMGNmlZmhxyADLzMDzYMMAAAAAAwMAAW22AA2MjhFYgZYhGmFA"
       }
     ]
   },
@@ -71033,6 +71302,16 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Scalecommander AoE Talents",
+        "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAmZGwYmxMDMMGz0wMTmtZWmhZmZGzsNDYmZmtxMjxMwAjBbwyY0YbAMDC2wA"
+      },
+      {
+        "talent": "‍Scalecommander Single-Target Talents",
+        "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAmZGwYmxMDMMGz0wMTmtZWmhZmZGzsNDYmZmtxMjxMwAjBbwyY0YbAMDC2wA"
+      }
     ]
   },
   {
@@ -73111,6 +73390,12 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Chronowarden",
+        "code": "CybBh8jXR8NbnJbP4P7tuPl9MDAAAAAmZmZ2GDwMzMziZmxAAAgZGzYGjhZiZmBAAAMzMTGbzMGjZAAYMbWYBGYGGawYBGA"
+      }
     ]
   },
   {
@@ -74404,6 +74689,16 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Chronowarden",
+        "code": "CGcBa_dBDR2Sk9CtVQj0riEBqNMLzsNzMzwAzsMjZmxMbAAAAAAAAYmBzwYM1wMzAAAAAjZ2GzMGzMwMbGDWglxoxyAYGEbYMD"
+      },
+      {
+        "talent": "‍Scalecommander",
+        "code": "CGcBa_dBDR2Sk9CtVQj0riEBqNMLzsNzMzwAzsMjZmxMbAAAAAAAAYmBzwYM1wMzAAAAAjZ2GzMGzMwMbGDWglxoxyAYGEbYMD"
       }
     ]
   },
@@ -76145,6 +76440,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Pack Leader",
+        "code": "C2PAgWVPuq-o0KoEvwTpSX5hCDMmxwCsBzwQDbAAAAAAYMzsNjxMDYmxMsYmxMjxMzMZGGzMzMGzMMMGzMDzyMwMDbA"
       }
     ]
   },
@@ -78572,6 +78873,12 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "‍Sentinel Mythic+ Talents",
+        "code": "C6PAgWVPuq-o0KoEvwTpSX5hCzADsMGNWGAzG2AAAAAAAAAAAAAAYGzYGmZGzoZGjhZGGzYGzgtZmx2YZ2MjxgHYmZmZmZmFjBLD"
+      }
     ]
   },
   {
@@ -80232,6 +80539,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Sentinel",
+        "code": "C-PAgWVPuq-o0KoEvwTpSX5hCPGYglxoxyAY2AbzMWmZmZmZMjZmxYMGzMmFAAAAAAAoZYMjZmZMDzwYYmhxMmxMYDAAAAAY"
       }
     ]
   },
@@ -82354,6 +82667,12 @@
           }
         ]
       }
+    ],
+    "talents": [
+      {
+        "talent": "General",
+        "code": "CCQAdDBIBTZArso-1144n4ZMvAA2mZmxYMGzMjZ2MLzMzMzAAAAAAAAAAAYWsMbDmZGjZhxMGjBLsNTzMxCwyMAQAmtZbDM2sB"
+      }
     ]
   },
   {
@@ -84453,6 +84772,12 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "General Talent Build",
+        "code": "CGQAdDBIBTZArso-1144n4ZMvwYAAAAAAAMbGGzyYGmZMzDMDjlZmZGAAAAYML2G2mZGMbMLzwMgF2YmZqZBAYmFLDzmBgMGshxy"
       }
     ]
   },
@@ -87186,6 +87511,16 @@
             ]
           }
         ]
+      }
+    ],
+    "talents": [
+      {
+        "talent": "‍Archon Void Eruption",
+        "code": "CKQAwfz7tLuHeTH7cEfyUU8NRPMYAAAAAAAAAAAAAwYmFzYmZ2GjZmZmtxMLDmNmZmZMbMwYMMLmtpmZwCmBwMbWGmFDAZMW"
+      },
+      {
+        "talent": "‍Voidweaver Dark Ascension",
+        "code": "CKQAwfz7tLuHeTH7cEfyUU8NRPgZGAAAAAAAAAAAAAGzs4BYmZWmtxMzY2mZmlBzCzMzMmNGYMGmFz2UzMYBGLzAABY2mlNwsxG"
       }
     ]
   },

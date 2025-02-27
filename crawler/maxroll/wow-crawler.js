@@ -79,13 +79,18 @@ async function collectBySpec(roleClass, classSpec) {
     const stats = await getStatsPriority($);
     const ratings = getSpecRating($);
     const dungeonTips = await getDungeonTips($);
+    const talents = getTalentCode($);
 
     // 概率性出现 属性优先级数据获取失败
     if (!stats[0]?.stats.length) {
       console.log(`${classSpec} ${roleClass} 的属性优先级数据获取失败。`);
     }
 
-    return { roleClass, classSpec, stats, ratings, dungeonTips };
+    if (!talents?.length) {
+      console.log(`${classSpec} ${roleClass} 的天赋数据获取失败。`);
+    }
+
+    return { roleClass, classSpec, stats, ratings, dungeonTips, talents };
   } catch (error) {
     console.error(error);
   } finally {
@@ -429,6 +434,37 @@ function mapDescWithIcon(context, element) {
       });
     });
   return children;
+}
+
+function getTalentCode(context) {
+  const $ = context;
+  const reference = $('#talents-header').parentsUntil('#main-article').last();
+  let talentContainer;
+  if ($(reference).next().attr('class').includes('clear-both')) {
+    talentContainer = $(reference).next().next();
+  } else {
+    talentContainer = $(reference).next();
+  }
+
+  const talentMenu = $(talentContainer).children()[0];
+  const talentTrees = $(talentContainer).children()[1];
+
+  const talents = $(talentMenu)
+    .find('div>span')
+    .map((index, element) => {
+      return {
+        talent: $(element).text().trim(),
+        code: $(talentTrees)
+          .children()
+          .eq(index)
+          .find('figure div[data-wow-data]')
+          .first()
+          .attr('data-wow-data'),
+      };
+    })
+    .get();
+
+  return talents;
 }
 
 crawler();
