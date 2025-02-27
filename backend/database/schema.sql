@@ -35,6 +35,7 @@ CREATE TABLE
     version TEXT,
     stats_priority TEXT NOT NULL,
     ratings TEXT NOT NULL,
+    talents TEXT,
     bis_items TEXT NOT NULL,
     bis_trinkets TEXT NOT NULL,
     access_count INTEGER DEFAULT 0,

@@ -20,6 +20,7 @@ async function updateBisByClassAndSpec(data) {
     accessCount,
     updatedAt = null,
     collectedAt = null,
+    talents,
   } = data;
   return db.run(
     `
@@ -59,8 +60,12 @@ async function updateBisByClassAndSpec(data) {
     collected_at = CASE
       WHEN ?9 IS NOT NULL THEN ?9
       ELSE collected_at
+    END,
+    talents = CASE
+      WHEN ?10 IS NOT NULL THEN ?10
+      ELSE talents
     END
-    WHERE role_class = ?10 AND class_spec= ?11`,
+    WHERE role_class = ?11 AND class_spec= ?12`,
     [
       JSON.stringify(stats),
       JSON.stringify(ratings),
@@ -71,6 +76,7 @@ async function updateBisByClassAndSpec(data) {
       accessCount,
       updatedAt,
       collectedAt,
+      JSON.stringify(talents),
       roleClass,
       classSpec,
     ]
@@ -85,10 +91,13 @@ async function insertBis(data) {
     ratings = [],
     bisItems = [],
     bisTrinkets = [],
+    talents,
+    updatedAt,
+    collectedAt,
   } = data;
   return db.run(
     `
-    INSERT INTO wow_bis(role_class, class_spec, stats_priority, ratings, bis_items, bis_trinkets) VALUES(?1, ?2, ?3, ?4, ?5, ?6)
+    INSERT INTO wow_bis(role_class, class_spec, stats_priority, ratings, bis_items, bis_trinkets, talents, collected_at, updated_at) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
   `,
     [
       roleClass,
@@ -97,6 +106,9 @@ async function insertBis(data) {
       JSON.stringify(ratings),
       JSON.stringify(bisItems),
       JSON.stringify(bisTrinkets),
+      JSON.stringify(talents),
+      updatedAt,
+      collectedAt,
     ]
   );
 }
