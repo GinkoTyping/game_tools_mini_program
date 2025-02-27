@@ -93,7 +93,12 @@ export async function getBisBySpec(req, res) {
 
 async function mapBisItems(bisItems) {
   async function queryItem(id) {
-    const data = await itemMapper.getItemById(id);
+    // 避免返回的data为null，导致前台报错
+    const data = (await itemMapper.getItemById(id)) ?? {
+      slot: 'N/A',
+      name: 'N/A',
+      source: '{"source": "N/A"}',
+    };
     return {
       ...data,
       source: JSON.parse(data.source),
