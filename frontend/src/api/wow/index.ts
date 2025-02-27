@@ -85,7 +85,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
     data.bis_items.forEach(
       (bisType: { items: Array<IBisItem>; title: string }) => {
         bisType.items = bisType.items.map(item => {
-          if (item.slot.toLowerCase().includes('weapon')) {
+          if (item?.slot.toLowerCase().includes('weapon')) {
             item.slot = '武器';
           }
           return item;

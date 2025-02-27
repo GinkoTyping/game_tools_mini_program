@@ -112,6 +112,7 @@ async function updateMaxrollData() {
   const result = await Promise.allSettled(promises);
   handleBisItemRes(result, 'maxroll');
 }
+updateWowheadData()
 async function updateBisItem(dataItem) {
   try {
     const existedItem = await bisMapper.getBisByClassAndSpec(
@@ -487,7 +488,6 @@ async function updateDungeonTipData() {
   const insertSpecPromises = maxrollData.map((spec) => insertSpec(spec));
   await Promise.allSettled(insertSpecPromises);
 }
-updateDungeonTipData();
 //#endregion
 
 //#region 法术

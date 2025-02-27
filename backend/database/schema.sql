@@ -30,7 +30,7 @@ CREATE TABLE
     id INTEGER PRIMARY KEY,
     role_class TEXT NOT NULL,
     class_spec TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    collected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     version TEXT,
     stats_priority TEXT NOT NULL,

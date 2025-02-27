@@ -2,7 +2,7 @@
   <view>
     <ShareIcon />
   </view>
-  <uni-section id="overview" :class="[classKey]" title="总览">
+  <uni-section id="overview" :class="[classKey]" title="总览" :sub-title="currentData.updatedAt">
     <uni-card class="section-card">
       <view
         class="rating-item"
@@ -570,8 +570,6 @@ async function getDungeonTip() {
   } else {
     emptyTipMessage.value = data;
   }
-
-  console.log(dungeonTip.value);
 }
 async function switchDungeon(id: number) {
   if (currentDungeonId.value !== id) {
@@ -723,6 +721,10 @@ $light-border: rgb(68, 68, 68);
     color: inherit !important;
     .uni-section-header__content {
       color: inherit !important;
+      .uni-section-header__content-sub {
+        color: inherit !important;
+        text-align: center;
+      }
       .uni-section__content-title {
         color: inherit !important;
         text-align: center;
