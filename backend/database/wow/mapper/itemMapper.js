@@ -37,6 +37,14 @@ async function updateItemById(itemData) {
   );
 }
 
+async function updateItemPreivewById(id, preview) {
+  return db.run(`UPDATE wow_item SET preview=?1, name=?2 WHERE id=?3`, [
+    JSON.stringify(preview),
+    preview.name,
+    id,
+  ]);
+}
+
 export function useItemMapper(database) {
   if (database) {
     db = database;
@@ -50,5 +58,6 @@ export function useItemMapper(database) {
     getItemById,
     getItemByName,
     updateItemById,
+    updateItemPreivewById,
   };
 }

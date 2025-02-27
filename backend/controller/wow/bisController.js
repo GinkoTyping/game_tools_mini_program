@@ -46,10 +46,8 @@ export async function getItemPreviewById(req, res) {
       });
 
       if (item) {
-        db.run(`UPDATE wow_item SET preview=?1 WHERE id=?2`, [
-          JSON.stringify(data),
-          data.id,
-        ]);
+        // 如果之前的装备名称是英文，也可以把英文名称更新为中文
+        itemMapper.updateItemPreivewById(req.params.id, data);
       } else {
         db.run(`INSERT INTO wow_item(id, name, preview) VALUES(?1, ?2, ?3)`, [
           data.id,
