@@ -17,6 +17,7 @@ interface IBisDataDTO {
   comment: string;
   ratings: { label: string; rating: number }[];
   version: string;
+  talents: { talent: string; code: string }[];
 }
 
 export async function queryBis(roleClass: string, classSpec: string) {
@@ -109,6 +110,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
       rating: mapRatings(item.rating),
     })),
     version: data.version,
+    talents: data.talents,
   };
 }
 

@@ -85,7 +85,7 @@ export async function getBisBySpec(req, res) {
     stats_priority: JSON.parse(bisData.stats_priority),
     ratings: JSON.parse(bisData.ratings),
     bis_trinkets: JSON.parse(bisData.bis_trinkets),
-    disallow_check_detail: '11.1 PRT数据未更新，暂不支持查看装备详情',
+    talents: JSON.parse(bisData.talents),
   });
 }
 
