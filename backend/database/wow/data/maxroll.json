@@ -1746,6 +1746,11 @@
     "talents": [
       {
         "talent": "Mythic+ Build",
+        "url": [
+          "blood-death-knight-0-class.jpg",
+          "blood-death-knight-0-hero.jpg",
+          "blood-death-knight-0-spec.jpg"
+        ],
         "code": "CqPAx-s_ii_mj_N7LYTG0GwJggxMmZGjZmxMDzYmZmmhhZGzYAAAAAwwMzMzwsNzMjBAAwMzMzMAAAAjttBGwCYZYCMsAwMYDA"
       }
     ]
@@ -5686,20 +5691,7 @@
         ]
       }
     ],
-    "talents": [
-      {
-        "talent": "‍  Deathbringer ‍Shattering Blade",
-        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAAzMjZMGDzYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAYssNwAWALDTgxCmZmxM"
-      },
-      {
-        "talent": "‍ Riders ‍Shattering Blade",
-        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAAzMjZMGDzYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAAsZ2MMwAzGDNshZGjZG"
-      },
-      {
-        "talent": "‍  Deathbringer ‍Breath of Sindragosa",
-        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgMGAzMjZMGDzYmZmZGmZmJzYMjBMzYMjZmZmZmZxMAAAAAAAAAAAAjltBGwCYZYCMWwMMmB"
-      }
-    ]
+    "talents": []
   },
   {
     "roleClass": "death-knight",
@@ -9621,15 +9613,30 @@
     ],
     "talents": [
       {
-        "talent": "‍  San'laynFull AoE",
+        "talent": "San'laynFull AoE",
+        "url": [
+          "unholy-death-knight-0-class.jpg",
+          "unholy-death-knight-0-hero.jpg",
+          "unholy-death-knight-0-spec.jpg"
+        ],
         "code": "CyPAx-s_ii_mj_N7LYTG0GwJgAgZGjZMGDzMzMzMNMmZGzYAAAAAAAAAgZGDjZmZAgZzMMLDzMz8AzMzYgBmxoxyGgtBbAwM"
       },
       {
-        "talent": "‍  RidersFull AoE",
+        "talent": "RidersFull AoE",
+        "url": [
+          "unholy-death-knight-1-class.jpg",
+          "unholy-death-knight-1-hero.jpg",
+          "unholy-death-knight-1-spec.jpg"
+        ],
         "code": "CyPAx-s_ii_mj_N7LYTG0GwJgAgZGjZMGDzMzMzMNMmZGzYAAAAAAAAAgZGDzMzMDAMbmhZBzMz8AzMzA2MbGGYgZjhGLAwM"
       },
       {
-        "talent": "‍  RidersBalanced",
+        "talent": "RidersBalanced",
+        "url": [
+          "unholy-death-knight-2-class.jpg",
+          "unholy-death-knight-2-hero.jpg",
+          "unholy-death-knight-2-spec.jpg"
+        ],
         "code": "CyPAx-s_ii_mj_N7LYTG0GwJgAgZGjZMGDzMzMzMNMmZGzYAAAAAAAAAgZGDjZmZAgZzMMLGzMzMjZGwmZzwADMbM0YBAmB"
       }
     ]
@@ -11115,7 +11122,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Aldrachi Reaver M+ Build",
+        "talent": "Aldrachi Reaver M+ Build",
+        "url": [
+          "havoc-demon-hunter-0-class.jpg",
+          "havoc-demon-hunter-0-hero.jpg",
+          "havoc-demon-hunter-0-spec.jpg"
+        ],
         "code": "CEkAAAAAAAAAAAAAAAAAAAAAAYmZmZmZmZMzMjxMZmZGAAAAAAwsYmxMYmZbMzGWmZwMDjltZbGMMW2YCz4BmZAL"
       }
     ]
@@ -12876,14 +12888,29 @@
     "talents": [
       {
         "talent": "High Keys ‍Soulcrush ‍Aldrachi Reaver",
+        "url": [
+          "vengeance-demon-hunter-0-class.jpg",
+          "vengeance-demon-hunter-0-hero.jpg",
+          "vengeance-demon-hunter-0-spec.jpg"
+        ],
         "code": "CWkA7H9y3xiKN8OoKpcDb7Q1KCAmZMzMjhZkZmhZYmZbwYsNDzMjZMGz2MzwMjZGmBAAAgZbGMMW2YCDmZYs"
       },
       {
         "talent": "High Keys ‍Last Resort ‍Aldrachi Reaver",
+        "url": [
+          "vengeance-demon-hunter-1-class.jpg",
+          "vengeance-demon-hunter-1-hero.jpg",
+          "vengeance-demon-hunter-1-spec.jpg"
+        ],
         "code": "CWkA7H9y3xiKN8OoKpcDb7Q1KCAmZMzMjhZkZmhZYGLDmZsNDzMzMjBz2MzwMjZGmBAAAgZbGMMW2YCDmZYs"
       },
       {
         "talent": "Low Keys ‍Fel-Scarred",
+        "url": [
+          "vengeance-demon-hunter-2-class.jpg",
+          "vengeance-demon-hunter-2-hero.jpg",
+          "vengeance-demon-hunter-2-spec.jpg"
+        ],
         "code": "CWkA7H9y3xiKN8OoKpcDb7Q1KCAGMzMjhZkZmhZYmZbwYsNDzMzMjBz2MzYMjZGmBAAAAYbWMjhZhpBmZMjN"
       }
     ]
@@ -14406,11 +14433,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Elune's Chosen",
+        "talent": "Elune's Chosen",
+        "url": [
+          "balance-druid-0-class.jpg",
+          "balance-druid-0-hero.jpg",
+          "balance-druid-0-spec.jpg"
+        ],
         "code": "CaGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmFzyMLzMbzMzMzMLmlxwgNswAMW2mZDjZbAMBAAAYxMjBYzAD"
       },
       {
-        "talent": "‍Keeper of the Grove",
+        "talent": "Keeper of the Grove",
+        "url": [
+          "balance-druid-1-class.jpg",
+          "balance-druid-1-hero.jpg",
+          "balance-druid-1-spec.jpg"
+        ],
         "code": "CaGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmNzyMLzMLjZmZmZxsMGGjNswAMAbbjFMNzsMAAAAYzMjBYzAD"
       }
     ]
@@ -14568,11 +14605,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Wildstalker",
+        "talent": "Wildstalker",
+        "url": [
+          "feral-druid-0-class.jpg",
+          "feral-druid-0-hero.jpg",
+          "feral-druid-0-spec.jpg"
+        ],
         "code": "CeGA6LGMrrHkyvBy43UPp_aXLDAAAAAAmZb2MzCzMzMbzGjlZmZmHYmBAAAAAYJY2MwMjaGzCLzMzyYGDAAAAAAYAAAAAAAz2MbNLzstBzMDgFGM"
       },
       {
-        "talent": "‍Druid of the Claw",
+        "talent": "Druid of the Claw",
+        "url": [
+          "feral-druid-1-class.jpg",
+          "feral-druid-1-hero.jpg",
+          "feral-druid-1-spec.jpg"
+        ],
         "code": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZb2MzCzMzMbzGjlZmZmHYmBAAAAAYJY2MwMjaGzCLzMzyYGzAAAAAAADAAAAQzsMLzMbDIwCMzAwCDG"
       }
     ]
@@ -16321,7 +16368,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Elune's Chosen Mythic+",
+        "talent": "Elune's Chosen Mythic+",
+        "url": [
+          "guardian-druid-0-class.jpg",
+          "guardian-druid-0-hero.jpg",
+          "guardian-druid-0-spec.jpg"
+        ],
         "code": "CiGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAzYmhZWmZMjZMzYhZGmFLDMbGGNRzMzyMLzMjxMAAAAAAghxAW2mZDjZZAMBAAAsBDAbmZY"
       }
     ]
@@ -18535,6 +18587,11 @@
     "talents": [
       {
         "talent": "General",
+        "url": [
+          "restoration-druid-0-class.jpg",
+          "restoration-druid-0-hero.jpg",
+          "restoration-druid-0-spec.jpg"
+        ],
         "code": "CmGA6LGMrrHkyvBy43UPp_aXLvxMzYjZmZmFz2AMLLjtFbzAAAAAAAAAAAAYZQz2gJDzgZhlZGmxMAAAAAADYAzAAAAAAz2MbNLzsZjZmBmxsYQD"
       }
     ]
@@ -21880,7 +21937,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Spellslinger Mythic+ Build",
+        "talent": "Spellslinger Mythic+ Build",
+        "url": [
+          "arcane-mage-0-class.jpg",
+          "arcane-mage-0-hero.jpg",
+          "arcane-mage-0-spec.jpg"
+        ],
         "code": "C6DAqjba-UdlK8weD5clEvnetZGMbzCmxMmFDjZGGTjZZGAAAAAAGAAAYmZbZZZmJWAAAAAAAALjhZmlZZYYmZGmZmZmZMjx"
       }
     ]
@@ -25093,7 +25155,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Sunfury Flamestrike",
+        "talent": "Sunfury Flamestrike",
+        "url": [
+          "fire-mage-0-class.jpg",
+          "fire-mage-0-hero.jpg",
+          "fire-mage-0-spec.jpg"
+        ],
         "code": "C-DAdtfC4fDh_vCojwUh17fH6OzgZzCmhZmFDPgZmx0YMmZAAAAAAMAgZmplZZZGAgNzMjZGmxMzYxYmh5BsNzsNjFzC"
       }
     ]
@@ -28306,7 +28373,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Frostfire",
+        "talent": "Frostfire",
+        "url": [
+          "frost-mage-0-class.jpg",
+          "frost-mage-0-hero.jpg",
+          "frost-mage-0-spec.jpg"
+        ],
         "code": "CCEAqjba-UdlK8weD5clEvnetNzYzsZBzMmZWAmZmGj5BGzMzwwM4BmZmZmZmZmZGzMzYmZZmmZWmFAAAYBAAAAAAzC"
       }
     ]
@@ -30067,11 +30139,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Master of Harmony Build",
+        "talent": "Master of Harmony Build",
+        "url": [
+          "brewmaster-monk-0-class.jpg",
+          "brewmaster-monk-0-hero.jpg",
+          "brewmaster-monk-0-spec.jpg"
+        ],
         "code": "CyQA-pJ7Grnr5hyxxdg2eJ6ffCAAAgZMGzAzyM2GzMjBAAAAAAYZBjYmBmhxCw2MmhZbMzYbWmptlHYz2MzwsAAALzy0ysNzyAAAAMmhNA"
       },
       {
-        "talent": "‍Shado-Pan Build",
+        "talent": "Shado-Pan Build",
+        "url": [
+          "brewmaster-monk-1-class.jpg",
+          "brewmaster-monk-1-hero.jpg",
+          "brewmaster-monk-1-spec.jpg"
+        ],
         "code": "CyQA-pJ7Grnr5hyxxdg2eJ6ffCAAAgZMGzAzyM2GzMjBAAAAAAYZBjYmBmhxCw2MmhZbMzYbWmptlHYz2MzwsAAAbAAAAz2s0MzMLjZYDA"
       }
     ]
@@ -32155,7 +32237,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Master of Harmony",
+        "talent": "Master of Harmony",
+        "url": [
+          "mistweaver-monk-0-class.jpg",
+          "mistweaver-monk-0-hero.jpg",
+          "mistweaver-monk-0-spec.jpg"
+        ],
         "code": "C6QA-pJ7Grnr5hyxxdg2eJ6ffCAAAAAAAADLWmZZMLmtZmZshtllZb8AY2sMzsswMamZGYGmBw2MmhZjZGmlHYCAAAAwsNtNbzsMbAAAAwG"
       }
     ]
@@ -36567,11 +36654,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Shado-Pan",
+        "talent": "Shado-Pan",
+        "url": [
+          "windwalker-monk-0-class.jpg",
+          "windwalker-monk-0-hero.jpg",
+          "windwalker-monk-0-spec.jpg"
+        ],
         "code": "C2QA-pJ7Grnr5hyxxdg2eJ6ffOzYAMjZ2mZGzMDAAAAAAAAAAAWWGGxMDjZgtFmx2MzMMLMzws8ATAAsMmhZmhtZAAsBAmlZpZmZWAMD"
       },
       {
-        "talent": "‍Conduit of the Celestials",
+        "talent": "Conduit of the Celestials",
+        "url": [
+          "windwalker-monk-1-class.jpg",
+          "windwalker-monk-1-hero.jpg",
+          "windwalker-monk-1-spec.jpg"
+        ],
         "code": "C2QA-pJ7Grnr5hyxxdg2eJ6ffOzYmBjZYMzMmZGAAAAAAAAAAAssMMiZGGzAbLMjtZmZYWYmhZ5BmAAYZMzghZbGAALLzyysMzMBAAMD"
       }
     ]
@@ -38700,6 +38797,11 @@
     "talents": [
       {
         "talent": "Default",
+        "url": [
+          "holy-paladin-0-class.jpg",
+          "holy-paladin-0-hero.jpg",
+          "holy-paladin-0-spec.jpg"
+        ],
         "code": "CGEAXUWXc0nH7IjwCQtYHbTlVAAAAYAAzAAAMAbjZYmxMziZMLzMjlZAbbz0WMDjZmhBmtMAgBAbAbMzMzMzysNzMbNAAAALAzAMYYG"
       }
     ]
@@ -40444,10 +40546,20 @@
     "talents": [
       {
         "talent": "Templar Build",
+        "url": [
+          "protection-paladin-0-class.jpg",
+          "protection-paladin-0-hero.jpg",
+          "protection-paladin-0-spec.jpg"
+        ],
         "code": "CKEAXUWXc0nH7IjwCQtYHbTlVsZMYWGLzMzMjZZbmZGzsNmxAAAMAAAAAAA0WmZWMMzwYG2aDAGDMAAbDAAwMTbzysNDAwGDGAGMzGG"
       },
       {
         "talent": "Lightsmith Build",
+        "url": [
+          "protection-paladin-1-class.jpg",
+          "protection-paladin-1-hero.jpg",
+          "protection-paladin-1-spec.jpg"
+        ],
         "code": "CKEAXUWXc0nH7IjwCQtYHbTlVsZMYWGLzMzMzMLbzYGzsNzMGAAgBAAAAAAg2yMzihZGGzwWbAADMAAbDAAAAYmZZbplZGLMYAYwMbYA"
       }
     ]
@@ -43465,18 +43577,38 @@
     "talents": [
       {
         "talent": "Aoe ‍Templar",
+        "url": [
+          "retribution-paladin-0-class.jpg",
+          "retribution-paladin-0-hero.jpg",
+          "retribution-paladin-0-spec.jpg"
+        ],
         "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAgRmttZmtltZGLmZ2WMbDAAAAAAjmmhhZGbzgZbY2mlZW2YGMDDLLsBAAAzMtNLz2MAgNgBAMmhB"
       },
       {
         "talent": "ST‍Templar",
+        "url": [
+          "retribution-paladin-1-class.jpg",
+          "retribution-paladin-1-hero.jpg",
+          "retribution-paladin-1-spec.jpg"
+        ],
         "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAAamltZmtltxYbMz22MbAAAAAAY00MMMzYbGMbDjZZGGGMjZYZhNAAAYmptZZ2mBAsBMAYMmhZ"
       },
       {
         "talent": "Aoe ‍Herald of the Sun",
+        "url": [
+          "retribution-paladin-2-class.jpg",
+          "retribution-paladin-2-hero.jpg",
+          "retribution-paladin-2-spec.jpg"
+        ],
         "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAgRstNzstsNzYzM2WMbDAAAAAAzWTzwwMjtZwsNMmlZW2GzgZYYZhNAwsMbzMzWDAAAsAMAgxMMA"
       },
       {
         "talent": "ST‍Herald of the Sun",
+        "url": [
+          "retribution-paladin-3-class.jpg",
+          "retribution-paladin-3-hero.jpg",
+          "retribution-paladin-3-spec.jpg"
+        ],
         "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAAassNzstsNGbjZ22mZDAAAAAAjmmhhZGbzgZbYWmlZYYwMmhlF2AAzysNzMbNAAAwCwAgxYGmBA"
       }
     ]
@@ -45447,15 +45579,30 @@
     ],
     "talents": [
       {
-        "talent": "‍Deathstalker Double Vanish",
+        "talent": "Deathstalker Double Vanish",
+        "url": [
+          "assassination-rogue-0-class.jpg",
+          "assassination-rogue-0-hero.jpg",
+          "assassination-rogue-0-spec.jpg"
+        ],
         "code": "COQAdb1wyGO40AKBNMUREAeV7PzMzMzwMAAAAAAAzyMmtZAAAAAAotlZmBzMYmZWmlxYwMzMzgxMbbLjZA2MLDMgFwywEYYZ"
       },
       {
-        "talent": "‍Fatebound Variation",
+        "talent": "Fatebound Variation",
+        "url": [
+          "assassination-rogue-1-class.jpg",
+          "assassination-rogue-1-hero.jpg",
+          "assassination-rogue-1-spec.jpg"
+        ],
         "code": "COQAdb1wyGO40AKBNMUREAeV7PjZmZGmBAAAAAAYWmxsNDAAAAAAttMzM8AzMYmZWmlxYwMzMzgZmZbbZMDgBWgZMaMbA2GwGA"
       },
       {
-        "talent": "‍Deathstalker Hybrid",
+        "talent": "Deathstalker Hybrid",
+        "url": [
+          "assassination-rogue-2-class.jpg",
+          "assassination-rogue-2-hero.jpg",
+          "assassination-rogue-2-spec.jpg"
+        ],
         "code": "COQAMVe3xrRHPkKTYiUEC_OcZPjZmZGmBAAAAAAYWmxsNDAAAAAAttMzM8AzMYmZWmlxYwMzMzgZmZbbZMDwmZZgBsAWGmADLA"
       }
     ]
@@ -47393,11 +47540,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Fatebound ‍Hidden Opportunity",
+        "talent": "Fatebound ‍Hidden Opportunity",
+        "url": [
+          "outlaw-rogue-0-class.jpg",
+          "outlaw-rogue-0-hero.jpg",
+          "outlaw-rogue-0-spec.jpg"
+        ],
         "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAMwwiZmBzMDzwwMzMzMmZmWmxsMDAAAAAAz2yMzgZmxyYmlZbAAAAYmBYgNYGjGzGgtBWM"
       },
       {
-        "talent": "‍Fatebound ‍Keep it Rolling",
+        "talent": "Fatebound ‍Keep it Rolling",
+        "url": [
+          "outlaw-rogue-1-class.jpg",
+          "outlaw-rogue-1-hero.jpg",
+          "outlaw-rogue-1-spec.jpg"
+        ],
         "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAM2mBLmZmZmZMMDDzMzwMzMTLzY2mBAAAAAgZbZmZwMzYBWmlBAAAgZGgB2gZMaMbA2GYx"
       }
     ]
@@ -49262,11 +49419,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Deathstalker - Dark Brew",
+        "talent": "Deathstalker - Dark Brew",
+        "url": [
+          "subtlety-rogue-0-class.jpg",
+          "subtlety-rogue-0-hero.jpg",
+          "subtlety-rogue-0-spec.jpg"
+        ],
         "code": "CWQAdb1wyGO40AKBNMUREAeV7DAM2mBAAAAAgZZMWmgFegZmZMzMzYmxMzY2GDzstNzMmZmBMWmtBAAAgZwwmZZgBsAWGmAzCMA"
       },
       {
-        "talent": "‍Trickster - The Rotten",
+        "talent": "Trickster - The Rotten",
+        "url": [
+          "subtlety-rogue-1-class.jpg",
+          "subtlety-rogue-1-hero.jpg",
+          "subtlety-rogue-1-spec.jpg"
+        ],
         "code": "CWQAMVe3xrRHPkKTYiUEC_OcZDAM2mBAAAAAgZZMWmGzYmxMzYMDzMjhxsNLGzstMzMmZmBMWmtBAAAgZwAYMbGGYgZhFaxGMA"
       }
     ]
@@ -50865,7 +51032,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Stormbringer",
+        "talent": "Stormbringer",
+        "url": [
+          "elemental-shaman-0-class.jpg",
+          "elemental-shaman-0-hero.jpg",
+          "elemental-shaman-0-spec.jpg"
+        ],
         "code": "CaQASHuZkIHv38g8oMaVB9ZkOCAAAAAYbW2mZmZGzysMzAMDDAAAAAYzMG2gFYGGasBAGTzA2WYmphZmZ2mxyMmxmZZwyMzMzYYmtB"
       }
     ]
@@ -52541,11 +52713,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Stormbringer",
+        "talent": "Stormbringer",
+        "url": [
+          "enhancement-shaman-0-class.jpg",
+          "enhancement-shaman-0-hero.jpg",
+          "enhancement-shaman-0-spec.jpg"
+        ],
         "code": "CeQASHuZkIHv38g8oMaVB9ZkOOzwCmZmx2MzMD2mZsNbDAAAAAAAAAwGgNzYYDWgZYoBLAYWmMDssMGzMYmZ2GWmZmsxyYZMzAAMGA"
       },
       {
-        "talent": "‍Totemic",
+        "talent": "Totemic",
+        "url": [
+          "enhancement-shaman-1-class.jpg",
+          "enhancement-shaman-1-hero.jpg",
+          "enhancement-shaman-1-spec.jpg"
+        ],
         "code": "CeQASHuZkIHv38g8oMaVB9ZkOOzMjZwMDzMmZmhZsNmBAAAAAAAAAALwCMjFN2GAzA2AwsMZGYZhxMDmZmtxsMzMZhlxyYmBAYG"
       }
     ]
@@ -54630,6 +54812,11 @@
     "talents": [
       {
         "talent": "General",
+        "url": [
+          "restoration-shaman-0-class.jpg",
+          "restoration-shaman-0-hero.jpg",
+          "restoration-shaman-0-spec.jpg"
+        ],
         "code": "CiQASHuZkIHv38g8oMaVB9ZkOCAAAAAGAAAAAzMzMLzsMzMzMLsNDDYB2gZsoxyAYGYjZGLWMLzMzIz2CzMNmZMDsMjZwsMMLjB"
       }
     ]
@@ -58093,11 +58280,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Soul Harvester",
+        "talent": "Soul Harvester",
+        "url": [
+          "affliction-warlock-0-class.jpg",
+          "affliction-warlock-0-hero.jpg",
+          "affliction-warlock-0-spec.jpg"
+        ],
         "code": "CmQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZY2GAAAwMzMzyMjx2MzMLMzMDAYmxyyADYAzwWghtZAAAAAAAAwMsA"
       },
       {
-        "talent": "‍Hellcaller",
+        "talent": "Hellcaller",
+        "url": [
+          "affliction-warlock-1-class.jpg",
+          "affliction-warlock-1-hero.jpg",
+          "affliction-warlock-1-spec.jpg"
+        ],
         "code": "CmQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZY2GAAAwMzMzyMjxyMzMLmxMDAYGLwAziRjZAMLglZAAAAAAAAwMsA"
       }
     ]
@@ -60119,7 +60316,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Diabolist Mythic+ Build",
+        "talent": "Diabolist Mythic+ Build",
+        "url": [
+          "demonology-warlock-0-class.jpg",
+          "demonology-warlock-0-hero.jpg",
+          "demonology-warlock-0-spec.jpg"
+        ],
         "code": "CqQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZYWGAAAAAAAAAAzAGzYYBGYZYhGWYGmZ2GzsZmZmZMmZGmZGzAzM"
       }
     ]
@@ -63558,11 +63760,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Diabolist",
+        "talent": "Diabolist",
+        "url": [
+          "destruction-warlock-0-class.jpg",
+          "destruction-warlock-0-hero.jpg",
+          "destruction-warlock-0-spec.jpg"
+        ],
         "code": "CuQAEfShhvywku87nu5zHE-yxOMMmZmZEzmhxsZmZY2mNjxMzsY2MLLmZAAAAghZ2WmZWmBMmxwCMw2wGNWwAAAAAAAYGjZA"
       },
       {
-        "talent": "‍Hellcaller Channel Demonfire",
+        "talent": "Hellcaller Channel Demonfire",
+        "url": [
+          "destruction-warlock-1-class.jpg",
+          "destruction-warlock-1-hero.jpg",
+          "destruction-warlock-1-spec.jpg"
+        ],
         "code": "CuQAEfShhvywku87nu5zHE-yxOMMmZmZEzmhxsZmZY2mNjxMzsY2MLLmZAAAAghZ2WmZWmxCMwsY0YGAzG2wAAAAAAAYGjZA"
       }
     ]
@@ -64956,11 +65168,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Colossus Talents",
+        "talent": "Colossus Talents",
+        "url": [
+          "arms-warrior-0-class.jpg",
+          "arms-warrior-0-hero.jpg",
+          "arms-warrior-0-spec.jpg"
+        ],
         "code": "CeEAoKbnaMpm0FjYnlHLlZnHoAGmZmZGzYegZZ2WWGzAAAAwgphxsMmhZWGmZsYmZYGeghBAAAAAAgZMbjxAsFALmxwCMwMsRDYB"
       },
       {
-        "talent": "‍Slayer Talents",
+        "talent": "Slayer Talents",
+        "url": [
+          "arms-warrior-1-class.jpg",
+          "arms-warrior-1-hero.jpg",
+          "arms-warrior-1-spec.jpg"
+        ],
         "code": "CeEAoKbnaMpm0FjYnlHLlZnHoAGmZmZGzYegZZ2WWGzAAAAwgphxsMmhZWGmZsYmZYGeghBAAAAAAgZMLjxAsFGbbDsAGwMMBGYD"
       }
     ]
@@ -66354,7 +66576,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Mountain Thane Mythic+ Talents",
+        "talent": "Mountain Thane Mythic+ Talents",
+        "url": [
+          "fury-warrior-0-class.jpg",
+          "fury-warrior-0-hero.jpg",
+          "fury-warrior-0-spec.jpg"
+        ],
         "code": "CiEAoKbnaMpm0FjYnlHLlZnHoAAAAAAAAAA0YYMLjZYsMYmFmZmxMMDzssNzYmZ2wMzMzwMzsMgHYGDAAAEGYDW2MaMDgZBGLA"
       }
     ]
@@ -68208,11 +68435,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Mountain Thane Mythic+ Build",
+        "talent": "Mountain Thane Mythic+ Build",
+        "url": [
+          "protection-warrior-0-class.jpg",
+          "protection-warrior-0-hero.jpg",
+          "protection-warrior-0-spec.jpg"
+        ],
         "code": "CmEAoKbnaMpm0FjYnlHLlZnHooxAAAAwMzMmZmhZ2mZZmZmNMGjGzyMzwYZghlZmhZmxwAAAAAAAzAAYZbDgB2glFjGzAY2gZD"
       },
       {
-        "talent": "‍Colossus Mythic+ Build",
+        "talent": "Colossus Mythic+ Build",
+        "url": [
+          "protection-warrior-1-class.jpg",
+          "protection-warrior-1-hero.jpg",
+          "protection-warrior-1-spec.jpg"
+        ],
         "code": "CmEAoKbnaMpm0FjYnlHLlZnHooZGAAAAmZmxMzMMjZWmZmZjZMGNmlZmhxyADLzMDzYMMAAAAAAwMAAW22AA2MjhFYgZYhGmFA"
       }
     ]
@@ -71308,11 +71545,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Scalecommander AoE Talents",
+        "talent": "Scalecommander AoE Talents",
+        "url": [
+          "devastation-evoker-0-class.jpg",
+          "devastation-evoker-0-hero.jpg",
+          "devastation-evoker-0-spec.jpg"
+        ],
         "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAmZGwYmxMDMMGz0wMTmtZWmhZmZGzsNDYmZmtxMjxMwAjBbwyY0YbAMDC2wA"
       },
       {
-        "talent": "‍Scalecommander Single-Target Talents",
+        "talent": "Scalecommander Single-Target Talents",
+        "url": [
+          "devastation-evoker-1-class.jpg",
+          "devastation-evoker-1-hero.jpg",
+          "devastation-evoker-1-spec.jpg"
+        ],
         "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAmZGwYmxMDMMGz0wMTmtZWmhZmZGzsNDYmZmtxMjxMwAjBbwyY0YbAMDC2wA"
       }
     ]
@@ -73396,7 +73643,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Chronowarden",
+        "talent": "Chronowarden",
+        "url": [
+          "preservation-evoker-0-class.jpg",
+          "preservation-evoker-0-hero.jpg",
+          "preservation-evoker-0-spec.jpg"
+        ],
         "code": "CybBh8jXR8NbnJbP4P7tuPl9MDAAAAAmZmZ2GDwMzMziZmxAAAgZGzYGjhZiZmBAAAMzMTGbzMGjZAAYMbWYBGYGGawYBGA"
       }
     ]
@@ -74696,11 +74948,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Chronowarden",
+        "talent": "Chronowarden",
+        "url": [
+          "augmentation-evoker-0-class.jpg",
+          "augmentation-evoker-0-hero.jpg",
+          "augmentation-evoker-0-spec.jpg"
+        ],
         "code": "CGcBa_dBDR2Sk9CtVQj0riEBqNMLzsNzMzwAzsMjZmxMbAAAAAAAAYmBzwYM1wMzAAAAAjZ2GzMGzMwMbGDWglxoxyAYGEbYMD"
       },
       {
-        "talent": "‍Scalecommander",
+        "talent": "Scalecommander",
+        "url": [
+          "augmentation-evoker-1-class.jpg",
+          "augmentation-evoker-1-hero.jpg",
+          "augmentation-evoker-1-spec.jpg"
+        ],
         "code": "CGcBa_dBDR2Sk9CtVQj0riEBqNMLzsNzMzwAzsMjZmxMbAAAAAAAAYmBzwYM1wMzAAAAAjZ2GzMGzMwMbGDWglxoxyAYGEbYMD"
       }
     ]
@@ -76447,7 +76709,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Pack Leader",
+        "talent": "Pack Leader",
+        "url": [
+          "beast-mastery-hunter-0-class.jpg",
+          "beast-mastery-hunter-0-hero.jpg",
+          "beast-mastery-hunter-0-spec.jpg"
+        ],
         "code": "C2PAgWVPuq-o0KoEvwTpSX5hCDMmxwCsBzwQDbAAAAAAYMzsNjxMDYmxMsYmxMjxMzMZGGzMzMGzMMMGzMDzyMwMDbA"
       }
     ]
@@ -78879,7 +79146,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Sentinel Mythic+ Talents",
+        "talent": "Sentinel Mythic+ Talents",
+        "url": [
+          "marksmanship-hunter-0-class.jpg",
+          "marksmanship-hunter-0-hero.jpg",
+          "marksmanship-hunter-0-spec.jpg"
+        ],
         "code": "C6PAgWVPuq-o0KoEvwTpSX5hCzADsMGNWGAzG2AAAAAAAAAAAAAAYGzYGmZGzoZGjhZGGzYGzgtZmx2YZ2MjxgHYmZmZmZmFjBLD"
       }
     ]
@@ -80546,7 +80818,12 @@
     ],
     "talents": [
       {
-        "talent": "‍Sentinel",
+        "talent": "Sentinel",
+        "url": [
+          "survival-hunter-0-class.jpg",
+          "survival-hunter-0-hero.jpg",
+          "survival-hunter-0-spec.jpg"
+        ],
         "code": "C-PAgWVPuq-o0KoEvwTpSX5hCPGYglxoxyAY2AbzMWmZmZmZMjZmxYMGzMmFAAAAAAAoZYMjZmZMDzwYYmhxMmxMYDAAAAAY"
       }
     ]
@@ -82674,6 +82951,11 @@
     "talents": [
       {
         "talent": "General",
+        "url": [
+          "discipline-priest-0-class.jpg",
+          "discipline-priest-0-hero.jpg",
+          "discipline-priest-0-spec.jpg"
+        ],
         "code": "CCQAdDBIBTZArso-1144n4ZMvAA2mZmxYMGzMjZ2MLzMzMzAAAAAAAAAAAYWsMbDmZGjZhxMGjBLsNTzMxCwyMAQAmtZbDM2sB"
       }
     ]
@@ -84780,6 +85062,11 @@
     "talents": [
       {
         "talent": "General Talent Build",
+        "url": [
+          "holy-priest-0-class.jpg",
+          "holy-priest-0-hero.jpg",
+          "holy-priest-0-spec.jpg"
+        ],
         "code": "CGQAdDBIBTZArso-1144n4ZMvwYAAAAAAAMbGGzyYGmZMzDMDjlZmZGAAAAYML2G2mZGMbMLzwMgF2YmZqZBAYmFLDzmBgMGshxy"
       }
     ]
@@ -87518,11 +87805,21 @@
     ],
     "talents": [
       {
-        "talent": "‍Archon Void Eruption",
+        "talent": "Archon Void Eruption",
+        "url": [
+          "shadow-priest-0-class.jpg",
+          "shadow-priest-0-hero.jpg",
+          "shadow-priest-0-spec.jpg"
+        ],
         "code": "CKQAwfz7tLuHeTH7cEfyUU8NRPMYAAAAAAAAAAAAAwYmFzYmZ2GjZmZmtxMLDmNmZmZMbMwYMMLmtpmZwCmBwMbWGmFDAZMW"
       },
       {
-        "talent": "‍Voidweaver Dark Ascension",
+        "talent": "Voidweaver Dark Ascension",
+        "url": [
+          "shadow-priest-1-class.jpg",
+          "shadow-priest-1-hero.jpg",
+          "shadow-priest-1-spec.jpg"
+        ],
         "code": "CKQAwfz7tLuHeTH7cEfyUU8NRPgZGAAAAAAAAAAAAAGzs4BYmZWmtxMzY2mZmlBzCzMzMmNGYMGmFz2UzMYBGLzAABY2mlNwsxG"
       }
     ]

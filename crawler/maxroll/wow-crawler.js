@@ -111,7 +111,7 @@ async function collectBySpec(roleClass, classSpec) {
     console.log(
       `成功获取${classSpec} ${roleClass}的数据(${currentCount}/${totalCount})...`
     );
-    await page.close();
+    await page?.close?.();
     await browser?.close?.();
   }
 }
@@ -267,7 +267,6 @@ async function getStatsPriority(context, page) {
     await Promise.allSettled(translationPromises);
   }
 
-  console.log(output);
   return output;
 }
 
@@ -477,7 +476,15 @@ async function getTalentCode(context, page, roleClass, classSpec) {
     .find('div>span')
     .map((index, element) => {
       return {
-        talent: $(element).text().trim(),
+        talent: $(element)
+          .text()
+          .trim()
+          .replace(/^[\s\uFEFF\xA0\u200B\u200C\u200D\u2060]+/u, ''),
+        url: [
+          `${classSpec}-${roleClass}-${index}-class.jpg`,
+          `${classSpec}-${roleClass}-${index}-hero.jpg`,
+          `${classSpec}-${roleClass}-${index}-spec.jpg`,
+        ],
         code: $(talentTrees)
           .children()
           .eq(index)
