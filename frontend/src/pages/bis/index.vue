@@ -88,7 +88,8 @@
             class="talent-image"
             mode="widthFix"
             lazy-load
-            :src="`https://ginkolearn.cyou/api/wow/assets/talent/${url}`"
+            :src="getTalentImage(url)"
+            @click="() => preiviewImage(index)"
           />
         </uni-collapse-item>
       </uni-collapse>
@@ -549,6 +550,20 @@ function exportTalentCode() {
       messageText.value = '已成功复制天赋代码到粘贴板。';
       messagePopup.value.open();
     },
+  });
+}
+function getTalentImage(url: string) {
+  return `https://ginkolearn.cyou/api/wow/assets/talent/${url}`;
+}
+function preiviewImage(imageIndex: number) {
+  const urls = currentData.value.talents[currentTalentIndex.value].url.map(
+    (item: string) => getTalentImage(item)
+  );
+  uni.previewImage({
+    urls: urls,
+    current: imageIndex,
+    indicator: 'number',
+    loop: true,
   });
 }
 
@@ -1051,14 +1066,17 @@ $light-border: rgb(68, 68, 68);
 .talent-menu {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
   .menu_active {
     &::before {
       bottom: 0 !important;
     }
   }
   text {
-    display: block;
+    max-width: 50%;
     flex: 1;
+    display: block;
+    text-align: center;
   }
 }
 .dungeon .menu {
