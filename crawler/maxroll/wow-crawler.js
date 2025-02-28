@@ -10,21 +10,19 @@ import '../util/set-env.js';
 import { translate } from '../api/index.js';
 
 const specs = {
-  'death-knight': ['unholy'],
-
-  // 'death-knight': ['blood', 'frost', 'unholy'],
-  // 'demon-hunter': ['havoc', 'vengeance'],
-  // druid: ['balance', 'feral', 'guardian', 'restoration'],
-  // mage: ['arcane', 'fire', 'frost'],
-  // monk: ['brewmaster', 'mistweaver', 'windwalker'],
-  // paladin: ['holy', 'protection', 'retribution'],
-  // rogue: ['assassination', 'outlaw', 'subtlety'],
-  // shaman: ['elemental', 'enhancement', 'restoration'],
-  // warlock: ['affliction', 'demonology', 'destruction'],
-  // warrior: ['arms', 'fury', 'protection'],
-  // evoker: ['devastation', 'preservation', 'augmentation'],
-  // hunter: ['beast-mastery', 'marksmanship', 'survival'],
-  // priest: ['discipline', 'holy', 'shadow'],
+  'death-knight': ['blood', 'frost', 'unholy'],
+  'demon-hunter': ['havoc', 'vengeance'],
+  druid: ['balance', 'feral', 'guardian', 'restoration'],
+  mage: ['arcane', 'fire', 'frost'],
+  monk: ['brewmaster', 'mistweaver', 'windwalker'],
+  paladin: ['holy', 'protection', 'retribution'],
+  rogue: ['assassination', 'outlaw', 'subtlety'],
+  shaman: ['elemental', 'enhancement', 'restoration'],
+  warlock: ['affliction', 'demonology', 'destruction'],
+  warrior: ['arms', 'fury', 'protection'],
+  evoker: ['devastation', 'preservation', 'augmentation'],
+  hunter: ['beast-mastery', 'marksmanship', 'survival'],
+  priest: ['discipline', 'holy', 'shadow'],
 };
 let totalCount = 0;
 let currentCount = 0;
