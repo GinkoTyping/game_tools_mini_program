@@ -64,14 +64,14 @@
   <view
     class="narrow-card"
     @click="
-      () => homeViewData && navigator.toTierList(homeViewData?.tierLists[0])
+      () => homeViewData && navigator.toTierList(homeViewData?.tierLists?.[0])
     "
   >
     <view class="narrow-card_info">
       <view class="info">
         <view class="card-name">大秘境专精排行</view>
         <view class="card-desc">{{
-          homeViewData?.tierLists[0]?.version_id
+          homeViewData?.tierLists?.[0]?.version_id
         }}</view>
       </view>
     </view>

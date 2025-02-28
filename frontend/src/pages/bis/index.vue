@@ -2,7 +2,12 @@
   <view>
     <ShareIcon />
   </view>
-  <uni-section id="overview" :class="[classKey]" title="总览" :sub-title="`已更新：${currentData.updatedAt}`">
+  <uni-section
+    id="overview"
+    :class="[classKey]"
+    title="总览"
+    :sub-title="`已更新：${currentData?.updatedAt}`"
+  >
     <uni-card class="section-card">
       <view
         class="rating-item"
@@ -53,6 +58,40 @@
         ></image>
         <text>{{ currentData?.statsPriority[0].stats[4] }}</text>
       </view>
+    </uni-card>
+  </uni-section>
+
+  <uni-section class="bis" :class="[classKey]" title="天赋">
+    <uni-card class="section-card">
+      <view class="menu talent-menu">
+        <text
+          v-for="(item, index) in currentData?.talents"
+          :key="item.talent"
+          class="ellipsis"
+          @click="() => switchTalent(index)"
+          :class="[classKey, currentTalentIndex === index ? 'menu_active' : '']"
+          >{{ item.talent }}</text
+        >
+      </view>
+      <view class="talent-export" @click="exportTalentCode">
+        <uni-icons type="download-filled" color="#007aff" size="30"></uni-icons>
+        <text>复制代码</text>
+      </view>
+
+      <uni-collapse ref="collapse">
+        <uni-collapse-item
+          :title="getTalentType(index)"
+          v-for="(url, index) in currentData?.talents[currentTalentIndex]?.url"
+          :key="index"
+        >
+          <image
+            class="talent-image"
+            mode="widthFix"
+            lazy-load
+            :src="`https://ginkolearn.cyou/api/wow/assets/talent/${url}`"
+          />
+        </uni-collapse-item>
+      </uni-collapse>
     </uni-card>
   </uni-section>
 
@@ -480,6 +519,38 @@ const relationIcon = computed(() => {
     }
   };
 });
+
+// 天赋
+const currentTalentIndex = ref(0);
+const getTalentType = computed(() => {
+  return (index: number) => {
+    switch (index) {
+      case 0:
+        return '职业天赋';
+      case 1:
+        return '英雄天赋';
+      case 2:
+        return '专精天赋';
+      default:
+        break;
+    }
+  };
+});
+function switchTalent(index: number) {
+  if (currentTalentIndex.value !== index) {
+    currentTalentIndex.value = index;
+  }
+}
+function exportTalentCode() {
+  uni.setClipboardData({
+    data: currentData.value.talents[currentTalentIndex.value].code,
+    success: function () {
+      messageType.value = 'success';
+      messageText.value = '已成功复制天赋代码到粘贴板。';
+      messagePopup.value.open();
+    },
+  });
+}
 
 const currentTableName = ref('');
 const tableData = computed(() => {
@@ -977,6 +1048,19 @@ $light-border: rgb(68, 68, 68);
     }
   }
 }
+.talent-menu {
+  display: flex;
+  flex-wrap: nowrap;
+  .menu_active {
+    &::before {
+      bottom: 0 !important;
+    }
+  }
+  text {
+    display: block;
+    flex: 1;
+  }
+}
 .dungeon .menu {
   display: flex;
   flex-wrap: wrap;
@@ -1089,5 +1173,30 @@ $light-border: rgb(68, 68, 68);
 .dungeon_empty {
   text-align: center;
   margin-bottom: 2rem;
+}
+.talent-card {
+  margin-top: 1rem;
+  width: 100%; /* 或者你想要的固定宽度 */
+  box-sizing: border-box;
+  view {
+    color: inherit;
+    font-size: medium;
+    text-align: center;
+    margin-bottom: 0.2rem;
+  }
+}
+.talent-image {
+  width: 100%; /* 或者你想要的固定宽度 */
+  object-fit: cover;
+}
+.talent-export {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.8rem 0 0.2rem 0;
+  text {
+    margin-left: 0.4rem;
+    color: $uni-color-primary;
+  }
 }
 </style>
