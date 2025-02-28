@@ -552,9 +552,10 @@ async function updateDungeonTipData() {
     return tips;
   }
 
-  const insertSpecPromises = maxrollData
-    .slice(1, 2)
-    .map((spec) => insertSpec(spec));
+  const limit = pLimit(1);
+  const insertSpecPromises = maxrollData.map((spec) =>
+    limit(() => insertSpec(spec))
+  );
   await Promise.allSettled(insertSpecPromises);
 
   saveTranslationCache(translationCache);
@@ -566,6 +567,7 @@ async function updateDungeonTipData() {
     updateDungeonTipData();
   }
 
+  process.on('exit', saveTranslationCache);
   process.on('SIGINT', () => {
     saveTranslationCache(translationCache).then(() => process.exit());
   });
