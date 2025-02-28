@@ -22,5 +22,5 @@ export async function queryAccessCount(req, res) {
 }
 
 export async function queryScrollInfo(req, res) {
-  res.json('已更新11.1版本各专精排行及职业配装。(2.25)');
+  res.json('已完善11.1版本各专精的大秘境攻略。(2.28)');
 }
