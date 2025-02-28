@@ -10,30 +10,34 @@ import '../util/set-env.js';
 import { translate } from '../api/index.js';
 
 const specs = {
-  'death-knight': ['blood', 'frost', 'unholy'],
-  'demon-hunter': ['havoc', 'vengeance'],
-  druid: ['balance', 'feral', 'guardian', 'restoration'],
-  mage: ['arcane', 'fire', 'frost'],
-  monk: ['brewmaster', 'mistweaver', 'windwalker'],
-  paladin: ['holy', 'protection', 'retribution'],
-  rogue: ['assassination', 'outlaw', 'subtlety'],
-  shaman: ['elemental', 'enhancement', 'restoration'],
-  warlock: ['affliction', 'demonology', 'destruction'],
-  warrior: ['arms', 'fury', 'protection'],
-  evoker: ['devastation', 'preservation', 'augmentation'],
-  hunter: ['beast-mastery', 'marksmanship', 'survival'],
-  priest: ['discipline', 'holy', 'shadow'],
+  'death-knight': ['unholy'],
+
+  // 'death-knight': ['blood', 'frost', 'unholy'],
+  // 'demon-hunter': ['havoc', 'vengeance'],
+  // druid: ['balance', 'feral', 'guardian', 'restoration'],
+  // mage: ['arcane', 'fire', 'frost'],
+  // monk: ['brewmaster', 'mistweaver', 'windwalker'],
+  // paladin: ['holy', 'protection', 'retribution'],
+  // rogue: ['assassination', 'outlaw', 'subtlety'],
+  // shaman: ['elemental', 'enhancement', 'restoration'],
+  // warlock: ['affliction', 'demonology', 'destruction'],
+  // warrior: ['arms', 'fury', 'protection'],
+  // evoker: ['devastation', 'preservation', 'augmentation'],
+  // hunter: ['beast-mastery', 'marksmanship', 'survival'],
+  // priest: ['discipline', 'holy', 'shadow'],
 };
 let totalCount = 0;
 let currentCount = 0;
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 async function collectBySpec(roleClass, classSpec) {
   console.log(`正在获取${classSpec} ${roleClass}的数据...`);
   let browser;
+  let page;
   try {
     let html;
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
 
     // 开发调测时，读取本地的静态文件
     if (process.env.IS_DEV) {
@@ -54,8 +58,13 @@ async function collectBySpec(roleClass, classSpec) {
           args: [
             '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36',
           ],
+          defaultViewport: {
+            width: 1920, // 初始宽度
+            height: 1080, // 初始高度
+            deviceScaleFactor: 1, // 屏幕缩放比例（默认为1）
+          },
         });
-        const page = await browser.newPage();
+        page = await browser.newPage();
 
         //  勿使用代理
         await page.goto(
@@ -76,15 +85,21 @@ async function collectBySpec(roleClass, classSpec) {
 
     const $ = cheerio.load(html);
 
-    const stats = await getStatsPriority($);
+    let stats;
+    try {
+      stats = await getStatsPriority($, page);
+    } catch (error) {
+      // 概率性出现 属性优先级数据获取失败
+      if (!stats[0]?.stats.length) {
+        console.log(
+          `${classSpec} ${roleClass} 的属性优先级数据获取失败: ${error}`
+        );
+      }
+    }
+
     const ratings = getSpecRating($);
     const dungeonTips = await getDungeonTips($);
-    const talents = getTalentCode($);
-
-    // 概率性出现 属性优先级数据获取失败
-    if (!stats[0]?.stats.length) {
-      console.log(`${classSpec} ${roleClass} 的属性优先级数据获取失败。`);
-    }
+    const talents = await getTalentCode($, page, roleClass, classSpec);
 
     if (!talents?.length) {
       console.log(`${classSpec} ${roleClass} 的天赋数据获取失败。`);
@@ -98,6 +113,7 @@ async function collectBySpec(roleClass, classSpec) {
     console.log(
       `成功获取${classSpec} ${roleClass}的数据(${currentCount}/${totalCount})...`
     );
+    await page.close();
     await browser?.close?.();
   }
 }
@@ -154,7 +170,7 @@ function saveFile(data, isOverrideAll = false) {
   });
 }
 
-async function getStatsPriority(context) {
+async function getStatsPriority(context, page) {
   const $ = context;
   // 0:= | 1: > | 2: >> | 10: >=
   const ICON_MAP = {
@@ -173,6 +189,10 @@ async function getStatsPriority(context) {
     agility: '敏捷',
   };
   const output = [];
+
+  if (page) {
+    await page.waitForSelector('div[data-wow-type="priority"]');
+  }
 
   // 获取属性优先级
   $('div[data-wow-type="priority"]').each((index, element) => {
@@ -242,11 +262,14 @@ async function getStatsPriority(context) {
         .split('||');
     }
   }
-  const translationPromises = output.map((item, index) =>
-    translateDesc(item, index)
-  );
+  if (output.filter((item) => item.desc?.length).length) {
+    const translationPromises = output.map((item, index) =>
+      translateDesc(item, index)
+    );
+    await Promise.allSettled(translationPromises);
+  }
 
-  await Promise.allSettled(translationPromises);
+  console.log(output);
   return output;
 }
 
@@ -436,11 +459,14 @@ function mapDescWithIcon(context, element) {
   return children;
 }
 
-function getTalentCode(context) {
+async function getTalentCode(context, page, roleClass, classSpec) {
   const $ = context;
   const reference = $('#talents-header').parentsUntil('#main-article').last();
   let talentContainer;
-  if ($(reference).next().attr('class').includes('clear-both')) {
+  if (
+    $(reference).next().attr('class')?.includes('clear-both') ||
+    $(reference).next().name !== 'div'
+  ) {
     talentContainer = $(reference).next().next();
   } else {
     talentContainer = $(reference).next();
@@ -463,6 +489,100 @@ function getTalentCode(context) {
       };
     })
     .get();
+
+  if (page) {
+    async function screenshotTalentTree(
+      element,
+      talentIndex,
+      page,
+      roleClass,
+      classSpec
+    ) {
+      try {
+        let parentClasses = $(element)
+          .parentsUntil('#main-article')
+          .map((index, elem) => {
+            return $(elem).attr('class');
+          })
+          .get()
+          .reverse();
+        parentClasses.push($(element).attr('class'));
+        parentClasses.push('mxt-content');
+        parentClasses = parentClasses.map((item) => {
+          return item
+            .split(' ')
+            .map((item) => `.${item}`)
+            .join('');
+        });
+        const selector = parentClasses.join(' ');
+
+        // 天赋树加载有延迟，保证dom获取正常
+        await page.waitForSelector(selector);
+
+        const eleHandler = await page.$(selector);
+        const boundingBox = await eleHandler.boundingBox();
+        console.log(`选择器：${classSpec} ${roleClass}:  ${selector}`);
+        async function screenshot(label, index) {
+          let clip;
+          switch (index) {
+            case 0:
+              clip = {
+                ...boundingBox,
+                width: boundingBox.width * 0.4,
+              };
+              break;
+            case 1:
+              clip = {
+                ...boundingBox,
+                x: boundingBox.x + boundingBox.width * 0.4,
+                width: boundingBox.width * 0.2,
+              };
+              break;
+            case 2:
+              clip = {
+                ...boundingBox,
+                x: boundingBox.x + boundingBox.width * 0.6,
+                width: boundingBox.width * 0.4,
+              };
+              break;
+
+            default:
+              break;
+          }
+          try {
+            await page.screenshot({
+              clip,
+              path: path.resolve(
+                __dirname,
+                `../../backend/assets/wow/talent/${classSpec}-${roleClass}-${talentIndex}-${label}.jpg`
+              ),
+              type: 'jpeg',
+              quality: 100, // 质量参数，100为最高质量
+            });
+          } catch (error) {
+            console.log(`获取天赋截图失败：${error.message}`);
+          }
+        }
+
+        const downloadPromises = ['class', 'hero', 'spec'].map((item, index) =>
+          screenshot(item, index)
+        );
+
+        await Promise.allSettled(downloadPromises);
+      } catch (error) {
+        console.log(`${classSpec}-${roleClass}: ${error}`);
+      }
+    }
+
+    const promises = $(talentTrees)
+      .children()
+      .find('figure')
+      .map((index, element) =>
+        screenshotTalentTree(element, index, page, roleClass, classSpec)
+      )
+      .get();
+    await Promise.allSettled(promises);
+  }
 
   return talents;
 }

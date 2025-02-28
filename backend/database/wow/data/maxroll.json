@@ -12875,13 +12875,16 @@
     ],
     "talents": [
       {
-        "talent": "High Keys ‍Soulcrush ‍Aldrachi Reaver"
+        "talent": "High Keys ‍Soulcrush ‍Aldrachi Reaver",
+        "code": "CWkA7H9y3xiKN8OoKpcDb7Q1KCAmZMzMjhZkZmhZYmZbwYsNDzMjZMGz2MzwMjZGmBAAAgZbGMMW2YCDmZYs"
       },
       {
-        "talent": "High Keys ‍Last Resort ‍Aldrachi Reaver"
+        "talent": "High Keys ‍Last Resort ‍Aldrachi Reaver",
+        "code": "CWkA7H9y3xiKN8OoKpcDb7Q1KCAmZMzMjhZkZmhZYGLDmZsNDzMzMjBz2MzwMjZGmBAAAgZbGMMW2YCDmZYs"
       },
       {
-        "talent": "Low Keys ‍Fel-Scarred "
+        "talent": "Low Keys ‍Fel-Scarred",
+        "code": "CWkA7H9y3xiKN8OoKpcDb7Q1KCAGMzMjhZkZmhZYmZbwYsNDzMzMjBz2MzYMjZGmBAAAAYbWMjhZhpBmZMjN"
       }
     ]
   },
@@ -50862,7 +50865,7 @@
     ],
     "talents": [
       {
-        "talent": "‍Stormbringer  ",
+        "talent": "‍Stormbringer",
         "code": "CaQASHuZkIHv38g8oMaVB9ZkOCAAAAAYbW2mZmZGzysMzAMDDAAAAAYzMG2gFYGGasBAGTzA2WYmphZmZ2mxyMmxmZZwyMzMzYYmtB"
       }
     ]
@@ -63556,11 +63559,11 @@
     "talents": [
       {
         "talent": "‍Diabolist",
-        "code": "CuQAEfShhvywku87nu5zHE-yxOMMmZmZEzmhxsZmZY2mNjxMzsY2YZxMDAAAAMMz2yMzyMgxMGWgB2G2oxCGAAAAAAAzYYWAMA"
+        "code": "CuQAEfShhvywku87nu5zHE-yxOMMmZmZEzmhxsZmZY2mNjxMzsY2MLLmZAAAAghZ2WmZWmBMmxwCMw2wGNWwAAAAAAAYGjZA"
       },
       {
         "talent": "‍Hellcaller Channel Demonfire",
-        "code": "CuQAEfShhvywku87nu5zHE-yxOMMmZmZEzmhxsZmZY2mNjxMzsY2YZxMDAAAAMMz2yMzyMWgBmFjGzAY2wGGAAAAAAAzYYWAMA"
+        "code": "CuQAEfShhvywku87nu5zHE-yxOMMmZmZEzmhxsZmZY2mNjxMzsY2MLLmZAAAAghZ2WmZWmxCMwsY0YGAzG2wAAAAAAAYGjZA"
       }
     ]
   },
