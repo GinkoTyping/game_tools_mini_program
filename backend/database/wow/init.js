@@ -499,13 +499,15 @@ async function updateDungeonTipData() {
 
     // TODO: 副本前的步骤攻略文本 获取异常
     async function translate(value) {
+      translatedTotalCount++;
       if (translationCache.has(value)) {
+        translatedSuccessCount++;
         console.log(
           `翻译成功(缓存)：${translatedSuccessCount} / ${translatedTotalCount}`
         );
         return translationCache.get(value);
       }
-      translatedTotalCount++;
+
       function buildValue() {
         return (
           '按照中文的阅读习惯翻译以下的内容，它是魔兽世界的副本攻略。原文本中已经是中文的部分和"["、"]"符号请保留，给出翻译后的文字：' +
@@ -551,11 +553,18 @@ async function updateDungeonTipData() {
   }
 
   const insertSpecPromises = maxrollData
-    .slice(0, 1)
+    .slice(1, 2)
     .map((spec) => insertSpec(spec));
   await Promise.allSettled(insertSpecPromises);
 
   saveTranslationCache(translationCache);
+
+  if (translatedSuccessCount === translatedTotalCount) {
+    console.log('翻译全部完成。');
+  } else {
+    console.log('翻译未全部完成，重试。');
+    updateDungeonTipData();
+  }
 
   process.on('SIGINT', () => {
     saveTranslationCache(translationCache).then(() => process.exit());
