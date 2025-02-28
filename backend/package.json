@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "axios": "^1.7.9",
+    "bottleneck": "^2.19.5",
     "clipboardy": "^4.0.0",
     "openai": "^4.85.4",
     "p-limit": "^6.2.0"
