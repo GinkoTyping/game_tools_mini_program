@@ -567,7 +567,7 @@ async function updateDungeonTipData() {
     updateDungeonTipData();
   }
 
-  process.on('exit', saveTranslationCache);
+  process.on('exit', () => saveTranslationCache(translationCache));
   process.on('SIGINT', () => {
     saveTranslationCache(translationCache).then(() => process.exit());
   });
