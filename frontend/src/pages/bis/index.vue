@@ -74,7 +74,9 @@
         >
       </view>
       <view class="talent-export" @click="exportTalentCode">
-        <text class="talent-export__title">当前：{{ currentData?.talents[currentTalentIndex]?.talent }}</text>
+        <text class="talent-export__title"
+          >当前：{{ currentData?.talents[currentTalentIndex]?.talent }}</text
+        >
         <view>
           <uni-icons
             type="download-filled"
@@ -450,10 +452,17 @@ onLoad(async (options: any) => {
   classKey.value = options.classKey ?? 'death-knight';
   specKey.value = options.specKey ?? 'blood';
 
+  uni.showLoading({
+    title: '银子加载中...',
+    mask: true,
+  });
+
   // TODO 加载页面完成前，需要展示loading
   await getBasicBisData();
   await getSeasonDungeons();
   await getDungeonTip();
+
+  uni.hideLoading();
 
   setNaviTitle(`${options.title} ${currentData.value.version}`);
 });
