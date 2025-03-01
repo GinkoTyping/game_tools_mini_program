@@ -30,6 +30,13 @@ let currentCount = 0;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+let errorSpecs = [];
+function collectError(roleClass, classSpec) {
+  if (!errorSpecs.some((item) => item === `${classSpec}-${roleClass}`)) {
+    errorSpecs.push(`${classSpec}-${roleClass}`);
+  }
+}
+
 async function collectBySpec(roleClass, classSpec) {
   console.log(`正在获取${classSpec} ${roleClass}的数据...`);
   let browser;
@@ -68,7 +75,8 @@ async function collectBySpec(roleClass, classSpec) {
         await page.goto(
           `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-mythic-plus-guide`,
           {
-            timeout: 120000,
+            timeout: 90000,
+            waitUntil: ['domcontentloaded', 'networkidle0'],
           }
         );
 
@@ -89,6 +97,7 @@ async function collectBySpec(roleClass, classSpec) {
     } catch (error) {
       // 概率性出现 属性优先级数据获取失败
       if (!stats[0]?.stats.length) {
+        collectError(roleClass, classSpec);
         console.log(
           `${classSpec} ${roleClass} 的属性优先级数据获取失败: ${error}`
         );
@@ -133,6 +142,8 @@ async function crawler() {
   const data = await Promise.allSettled(crawlerPromises);
 
   saveFile(data.map((item) => item.value));
+
+  console.log(errorSpecs.join(','));
 }
 
 const OUTPUT_FILE_PATH = './output/output.json';
@@ -462,7 +473,7 @@ async function getTalentCode(context, page, roleClass, classSpec) {
   let talentContainer;
   if (
     $(reference).next().attr('class')?.includes('clear-both') ||
-    $(reference).next().name !== 'div'
+    $(reference).next()[0]?.name !== 'div'
   ) {
     talentContainer = $(reference).next().next();
   } else {
@@ -495,7 +506,47 @@ async function getTalentCode(context, page, roleClass, classSpec) {
     })
     .get();
 
+  // boundingBox 每次的位置是固定的，以第一次的为准
+  let activeTreeSelector;
+  let boundingBox;
   if (page) {
+    const containerChildIndex = await page.evaluate(() => {
+      function findParentsUntil(ele, selector, output = []) {
+        if (
+          ele.parentNode?.id === selector.replace('#', '') ||
+          !ele.parentNode
+        ) {
+          return output;
+        }
+        output.push(ele.parentNode);
+        return findParentsUntil(ele.parentNode, selector, output);
+      }
+      function getIndexOfParent(parent, ele) {
+        const children = parent.children; // 获取所有元素子节点
+        for (let i = 0; i < children.length; i++) {
+          if (children[i] === ele) {
+            return i + 1; // 返回当前元素在子元素中的索引
+          }
+        }
+      }
+
+      const referenceEle = findParentsUntil(
+        document.querySelector('#talents-header'),
+        '#main-article'
+      ).pop();
+      const mainArticle = document.querySelector('#main-article');
+      if (
+        referenceEle.nextSibling.className.includes('clear-both') ||
+        referenceEle.nextSibling.nodeName !== 'DIV'
+      ) {
+        return getIndexOfParent(
+          mainArticle,
+          referenceEle.nextSibling.nextSibling
+        );
+      }
+      return getIndexOfParent(mainArticle, referenceEle.nextSibling);
+    });
+
     async function screenshotTalentTree(
       element,
       talentIndex,
@@ -504,29 +555,46 @@ async function getTalentCode(context, page, roleClass, classSpec) {
       classSpec
     ) {
       try {
-        let parentClasses = $(element)
-          .parentsUntil('#main-article')
-          .map((index, elem) => {
-            return $(elem).attr('class');
-          })
-          .get()
-          .reverse();
-        parentClasses.push($(element).attr('class'));
-        parentClasses.push('mxt-content');
-        parentClasses = parentClasses.map((item) => {
-          return item
-            .split(' ')
-            .map((item) => `.${item}`)
-            .join('');
-        });
-        const selector = parentClasses.join(' ');
+        if (!activeTreeSelector) {
+          let parentClasses = $(element)
+            .parentsUntil('#main-article')
+            .map((index, elem) => {
+              return $(elem).attr('class');
+            })
+            .get()
+            .reverse();
+          parentClasses.push($(element).attr('class'));
+          parentClasses.push('mxt-content');
+          parentClasses = parentClasses.map((item) => {
+            return item
+              .split(' ')
+              .map((item) => `.${item}`)
+              .join('');
+          });
+          activeTreeSelector = parentClasses.join(' ');
+        }
 
-        // 天赋树加载有延迟，保证dom获取正常
-        await page.waitForSelector(selector);
+        // 每次截图天赋树界面时，把其他天赋树隐藏；点击按钮切换的方式会导致页面滚动，导致截图位置偏移
+        await page.waitForSelector(activeTreeSelector);
+        await page.evaluate(
+          (containerChildIndex, talentIndex) => {
+            const talentTreesEle = document.querySelector(
+              `#main-article>div:nth-child(${containerChildIndex})`
+            ).children[1];
+            Array.from(talentTreesEle.children).forEach((item, index) => {
+              item.style.display = talentIndex === index ? 'block' : 'none';
+              console.log(index, item.style.display);
+            });
+          },
+          containerChildIndex,
+          talentIndex
+        );
 
-        const eleHandler = await page.$(selector);
-        const boundingBox = await eleHandler.boundingBox();
-        console.log(`选择器：${classSpec} ${roleClass}:  ${selector}`);
+        if (!boundingBox) {
+          const eleHandler = await page.$(activeTreeSelector);
+          boundingBox = await eleHandler.boundingBox();
+        }
+
         async function screenshot(label, index) {
           let clip;
           switch (index) {
@@ -540,6 +608,7 @@ async function getTalentCode(context, page, roleClass, classSpec) {
               clip = {
                 ...boundingBox,
                 x: boundingBox.x + boundingBox.width * 0.4,
+                height: boundingBox.height * 0.775,
                 width: boundingBox.width * 0.2,
               };
               break;
@@ -579,17 +648,19 @@ async function getTalentCode(context, page, roleClass, classSpec) {
       }
     }
 
-    const promises = $(talentTrees)
-      .children()
-      .find('figure')
-      .map((index, element) =>
-        screenshotTalentTree(element, index, page, roleClass, classSpec)
-      )
-      .get();
-    await Promise.allSettled(promises);
+    const treeFigures = $(talentTrees).children().find('figure');
+    for (let i = 0; i < treeFigures.length; i++) {
+      const element = treeFigures[i];
+
+      // 每次截图前 就需要操作dom，所以不能并发
+      await screenshotTalentTree(element, i, page, roleClass, classSpec);
+    }
   }
 
-  return talents;
+  return talents.map((item) => ({
+    ...item,
+    selector: undefined,
+  }));
 }
 
 crawler();

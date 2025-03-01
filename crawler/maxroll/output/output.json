@@ -5691,7 +5691,35 @@
         ]
       }
     ],
-    "talents": []
+    "talents": [
+      {
+        "talent": "Deathbringer ‍Shattering Blade",
+        "url": [
+          "frost-death-knight-0-class.jpg",
+          "frost-death-knight-0-hero.jpg",
+          "frost-death-knight-0-spec.jpg"
+        ],
+        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAAzMjZMGDzYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAYssNwAWALDTgxCmZmxM"
+      },
+      {
+        "talent": "Riders ‍Shattering Blade",
+        "url": [
+          "frost-death-knight-1-class.jpg",
+          "frost-death-knight-1-hero.jpg",
+          "frost-death-knight-1-spec.jpg"
+        ],
+        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAAzMjZMGDzYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAAsZ2MMwAzGDNshZGjZG"
+      },
+      {
+        "talent": "Deathbringer ‍Breath of Sindragosa",
+        "url": [
+          "frost-death-knight-2-class.jpg",
+          "frost-death-knight-2-hero.jpg",
+          "frost-death-knight-2-spec.jpg"
+        ],
+        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgMGAzMjZMGDzYmZmZGmZmJzYMjBMzYMjZmZmZmZxMAAAAAAAAAAAAjltBGwCYZYCMWwMMmB"
+      }
+    ]
   },
   {
     "roleClass": "death-knight",
