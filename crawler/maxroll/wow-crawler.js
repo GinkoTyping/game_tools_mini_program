@@ -73,7 +73,8 @@ async function collectBySpec(roleClass, classSpec) {
 
         //  勿使用代理
         await page.goto(
-          `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-mythic-plus-guide`,
+          `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-mythic-plus-guide` +
+            (classSpec === 'protection' && roleClass === 'paladin' ? '-2' : ''),
           {
             timeout: 90000,
             waitUntil: ['domcontentloaded', 'networkidle0'],
