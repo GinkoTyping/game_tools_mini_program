@@ -16,16 +16,16 @@ import { useItemMapper } from './mapper/itemMapper.js';
 import { useDungeonTipMapper } from './mapper/dungeonTipMapper.js';
 import { useSpellMapper } from './mapper/spellMapper.js';
 
+// 获取当前文件的路径和目录
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const blizzAPI = useBlizzAPI();
 configDotenv({ path: path.resolve(__dirname, '../../.env') });
 const openai = new OpenAI({
   baseURL: 'https://api.deepseek.com',
   apiKey: process.env.DEEPSEEK_KEY,
 });
-
-// 获取当前文件的路径和目录
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const wowheadData = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, './data/wowhead.json'))
