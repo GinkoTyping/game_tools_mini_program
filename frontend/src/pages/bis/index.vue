@@ -97,7 +97,7 @@
   </uni-section>
 
   <!-- TODO: 11.1 TAG -->
-  <uni-section class="bis" :class="[classKey]" title="BIS配装">
+  <uni-section class="talent" :class="[classKey]" title="BIS配装">
     <uni-card class="section-card">
       <view class="menu">
         <text
@@ -695,6 +695,12 @@ const fabContent = ref([
     active: false,
   },
   {
+    iconPath: '/static/icon/tree.svg',
+    selectedIconPath: '/static/icon/tree.svg',
+    text: '天赋',
+    active: false,
+  },
+  {
     iconPath: '/static/icon/leg-armor.svg',
     selectedIconPath: '/static/icon/leg-armor.svg',
     text: '配装',
@@ -720,9 +726,12 @@ function onClickFabIcon(e: { index: number }) {
       selector = '#overview';
       break;
     case 1:
-      selector = '.bis';
+      selector = '.talent';
       break;
     case 2:
+      selector = '.bis';
+      break;
+    case 3:
       selector = '.dungeon';
       break;
     default:
@@ -1027,6 +1036,7 @@ $light-border: rgb(68, 68, 68);
   text-overflow: ellipsis;
 }
 
+.talent .menu,
 .bis .menu {
   margin-bottom: 10px;
   .menu_active {

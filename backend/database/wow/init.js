@@ -3,6 +3,7 @@ import { open } from 'sqlite';
 import pLimit from 'p-limit';
 import OpenAI from 'openai';
 import Bottleneck from 'bottleneck';
+import { configDotenv } from 'dotenv';
 
 import fs from 'fs';
 import path from 'path';
@@ -16,9 +17,10 @@ import { useDungeonTipMapper } from './mapper/dungeonTipMapper.js';
 import { useSpellMapper } from './mapper/spellMapper.js';
 
 const blizzAPI = useBlizzAPI();
+configDotenv({ path: path.resolve(__dirname, '../../.env') });
 const openai = new OpenAI({
   baseURL: 'https://api.deepseek.com',
-  apiKey: 'sk-022ab6d4123943ec8cb3be4b5407434c',
+  apiKey: process.env.DEEPSEEK_KEY,
 });
 
 // 获取当前文件的路径和目录
