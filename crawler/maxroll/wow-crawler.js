@@ -66,20 +66,23 @@ async function collectBySpec(roleClass, classSpec) {
           defaultViewport: {
             width: 1920, // 初始宽度
             height: 1080, // 初始高度
-            deviceScaleFactor: 1, // 屏幕缩放比例（默认为1）
+            deviceScaleFactor: 1.5, // 屏幕缩放比例（默认为1）
           },
         });
         page = await browser.newPage();
 
-        //  勿使用代理
-        await page.goto(
-          `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-mythic-plus-guide` +
-            (classSpec === 'protection' && roleClass === 'paladin' ? '-2' : ''),
-          {
-            timeout: 90000,
-            waitUntil: ['domcontentloaded', 'networkidle0'],
+        function getURL() {
+          if (classSpec === 'protection' && roleClass === 'paladin') {
+            return `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-raid-guide-2`;
           }
-        );
+          return `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-mythic-plus-guide`;
+        }
+
+        //  勿使用代理
+        await page.goto(getURL(), {
+          timeout: 90000,
+          waitUntil: ['domcontentloaded', 'networkidle0'],
+        });
 
         html = await page.content();
         fs.writeFileSync(
@@ -537,15 +540,15 @@ async function getTalentCode(context, page, roleClass, classSpec) {
       ).pop();
       const mainArticle = document.querySelector('#main-article');
       if (
-        referenceEle.nextSibling.className.includes('clear-both') ||
-        referenceEle.nextSibling.nodeName !== 'DIV'
+        referenceEle.nextElementSibling.className.includes('clear-both') ||
+        referenceEle.nextElementSibling.nodeName !== 'DIV'
       ) {
         return getIndexOfParent(
           mainArticle,
-          referenceEle.nextSibling.nextSibling
+          referenceEle.nextElementSibling.nextElementSibling
         );
       }
-      return getIndexOfParent(mainArticle, referenceEle.nextSibling);
+      return getIndexOfParent(mainArticle, referenceEle.nextElementSibling);
     });
 
     async function screenshotTalentTree(
@@ -584,7 +587,6 @@ async function getTalentCode(context, page, roleClass, classSpec) {
             ).children[1];
             Array.from(talentTreesEle.children).forEach((item, index) => {
               item.style.display = talentIndex === index ? 'block' : 'none';
-              console.log(index, item.style.display);
             });
           },
           containerChildIndex,
@@ -624,6 +626,17 @@ async function getTalentCode(context, page, roleClass, classSpec) {
             default:
               break;
           }
+
+          // DH的截图偏上，未定位具体原因
+          function handlerVengeanceDH(inputClip) {
+            if (classSpec === 'vengeance') {
+              inputClip.y += boundingBox.height * 0.1;
+            }
+            return inputClip;
+          }
+
+          clip = handlerVengeanceDH(clip);
+
           try {
             await page.screenshot({
               clip,
