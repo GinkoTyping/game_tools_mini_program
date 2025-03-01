@@ -15,6 +15,7 @@ import { useDungeonMapper } from './mapper/dungeonMapper.js';
 import { useItemMapper } from './mapper/itemMapper.js';
 import { useDungeonTipMapper } from './mapper/dungeonTipMapper.js';
 import { useSpellMapper } from './mapper/spellMapper.js';
+import { queryBlizzItemById } from '../../controller/wow/bisController.js';
 
 // 获取当前文件的路径和目录
 const __filename = fileURLToPath(import.meta.url);
@@ -33,6 +34,8 @@ const wowheadData = JSON.parse(
 const maxrollData = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, './data/maxroll.json'))
 );
+const CACHE_PATH = path.join(__dirname, './data/translationCache.json');
+const translationCacheData = JSON.parse(fs.readFileSync(CACHE_PATH, 'utf-8'));
 
 const database = await getDB();
 const bisMapper = useBisMapper(database);
@@ -122,6 +125,14 @@ async function updateBisItem(dataItem) {
       dataItem.roleClass,
       dataItem.classSpec
     );
+
+    if (dataItem.talents?.length) {
+      dataItem.talents = dataItem.talents.map((item) => ({
+        ...item,
+        talent: translationCacheData[item.talent] ?? item.talent,
+      }));
+    }
+
     if (existedItem) {
       await bisMapper.updateBisByClassAndSpec(dataItem);
     } else {
@@ -259,6 +270,26 @@ async function updateItemData() {
     console.log('插入 装备数据 成功。');
   }
 }
+async function updateItemDataByBlizz() {
+  const data = await itemMapper.getUntranslated();
+  async function updateEachItem(item) {
+    const blizzData = await queryBlizzItemById(item.id);
+    await itemMapper.updateItemById({
+      id: item.id,
+      slot: blizzData.inventory_type.name,
+      item: blizzData.name,
+      preview: JSON.stringify(blizzData),
+    });
+  }
+  const promises = data.map((item) => updateEachItem(item));
+  const results = await Promise.allSettled(promises);
+  const errors = results.filter((result) => result.status !== 'fulfilled');
+  if (errors.length) {
+    console.log(`装备获取失败计数: ${errors.length}`);
+  } else {
+    console.log(`更新装备信息成功计数: ${results.length}`);
+  }
+}
 //#endregion
 
 //#region 地下城
@@ -331,8 +362,6 @@ async function createDungeonTipTable(db) {
     FOREIGN KEY(dungeon_id) REFERENCES wow_dungeon(id)
   )`);
 }
-
-const CACHE_PATH = path.join(__dirname, './data/translationCache.json');
 
 function loadTranslationCache() {
   let translationCache = new Map();

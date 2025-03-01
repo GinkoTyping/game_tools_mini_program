@@ -25,6 +25,15 @@ function setBlizzAPI() {
 }
 setBlizzAPI();
 
+export async function queryBlizzItemById(id) {
+  return api.query(`/data/wow/item/${id}`, {
+    params: {
+      namespace: 'static-us',
+      locale: 'zh_CN',
+    },
+  });
+}
+
 export async function getItemPreviewById(req, res) {
   const db = await getDB();
   const item = await db.get(
@@ -38,12 +47,7 @@ export async function getItemPreviewById(req, res) {
   } else {
     try {
       console.log('fetching data...');
-      const data = await api.query(`/data/wow/item/${req.params.id}`, {
-        params: {
-          namespace: 'static-us',
-          locale: 'zh_CN',
-        },
-      });
+      const data = await queryBlizzItemById(req.params.id)
 
       if (item) {
         // 如果之前的装备名称是英文，也可以把英文名称更新为中文

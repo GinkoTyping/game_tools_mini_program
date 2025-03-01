@@ -74,8 +74,15 @@
         >
       </view>
       <view class="talent-export" @click="exportTalentCode">
-        <uni-icons type="download-filled" color="#007aff" size="30"></uni-icons>
-        <text>复制代码</text>
+        <text class="talent-export__title">当前：{{ currentData?.talents[currentTalentIndex]?.talent }}</text>
+        <view>
+          <uni-icons
+            type="download-filled"
+            color="#007aff"
+            size="30"
+          ></uni-icons>
+          <text>复制代码</text>
+        </view>
       </view>
 
       <uni-collapse ref="collapse">
@@ -1220,8 +1227,13 @@ $light-border: rgb(68, 68, 68);
 .talent-export {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0.8rem 0 0.2rem 0;
+  .talent-export__title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+  }
   text {
     margin-left: 0.4rem;
     color: $uni-color-primary;

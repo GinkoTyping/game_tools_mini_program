@@ -29,11 +29,34 @@ async function getItemByName(name) {
 }
 
 async function updateItemById(itemData) {
-  const { id, slot, item, source, itemIcon } = itemData;
-  return db.run(
+  const { id, slot, item, source, itemIcon, preview } = itemData;
+  return db.get(
     `
-    UPDATE wow_item SET slot=?1,name=?2,source=?3,image=?4 WHERE id=?5`,
-    [slot, item, JSON.stringify(source), itemIcon, id]
+    UPDATE wow_item
+    SET
+      slot = CASE
+        WHEN ?1 IS NOT NULL THEN ?1
+        ELSE slot
+      END,
+      name = CASE
+        WHEN ?2 IS NOT NULL THEN ?2
+        ELSE name
+      END,
+      source = CASE
+        WHEN ?3 IS NOT NULL THEN ?3
+        ELSE source
+      END,
+      image = CASE
+        WHEN ?4 IS NOT NULL THEN ?4
+        ELSE image
+      END,
+      preview = CASE
+        WHEN ?5 IS NOT NULL THEN ?5
+        ELSE preview
+      END
+    WHERE id=?6
+    `,
+    [slot, item, JSON.stringify(source), itemIcon, preview, id]
   );
 }
 
@@ -43,6 +66,12 @@ async function updateItemPreivewById(id, preview) {
     preview.name,
     id,
   ]);
+}
+
+async function getUntranslated() {
+  return db.all(`SELECT *
+  FROM wow_item
+  WHERE name NOT GLOB '*[一-龥]*'`);
 }
 
 export function useItemMapper(database) {
@@ -57,6 +86,7 @@ export function useItemMapper(database) {
     insertItem,
     getItemById,
     getItemByName,
+    getUntranslated,
     updateItemById,
     updateItemPreivewById,
   };
