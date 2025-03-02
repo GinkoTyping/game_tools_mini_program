@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 import wowBisRoutes from './routes/wow/bisRoutes.js';
@@ -24,6 +25,30 @@ app.use(
   '/api/wow/assets',
   express.static(path.resolve(__dirname, 'assets/wow'))
 );
+
+app.use(
+  '/api/common/assets',
+  express.static(path.resolve(__dirname, 'assets/common'))
+);
+// 未匹配到头像时，使用默认头像
+app.use('/api/common/assets', (req, res, next) => {
+  if (req.url.includes('advice')) {
+    const imagePath = path.resolve(__dirname, `assets/common${req.url}`);
+
+    // 设置默认图片的路径
+    const defaultImagePath = path.resolve(
+      __dirname,
+      'assets/common/advice/avatar/default.svg'
+    );
+    fs.access(imagePath, fs.constants.F_OK, (err) => {
+      if (err) {
+        res.sendFile(defaultImagePath);
+      }
+    });
+  } else {
+    next();
+  }
+});
 
 // 挂载用户路由
 app.use('/api/wow', wowBisRoutes);
