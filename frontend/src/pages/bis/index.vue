@@ -204,14 +204,23 @@
           >{{ dungeon.name_zh }}</text
         >
       </view>
-      <view class="dungeon_empty">{{ emptyTipMessage }}</view>
+      <view class="dungeon_empty">{{ tipMessage }}</view>
       <uni-collapse v-model="tipCollapseIndex">
         <uni-collapse-item
           :open="index === 0"
-          :title="tipKind.title"
           v-for="(tipKind, index) in dungeonTip?.children"
           :key="tipKind.title"
         >
+          <template v-slot:title>
+            <uni-list>
+              <uni-list-item
+                class="dungeon_tip-title"
+                :title="tipKind.title"
+                rightText="点击任意位置"
+              >
+              </uni-list-item>
+            </uni-list>
+          </template>
           <view
             class="ul"
             v-for="(l1Child, l1Index) in tipKind.children"
@@ -660,7 +669,7 @@ async function getSeasonDungeons() {
   dungeons.value = await querySeasonDungeons();
   currentDungeonId.value = dungeons.value[0]?.id;
 }
-const emptyTipMessage = ref('');
+const tipMessage = ref('点击');
 async function getDungeonTip() {
   const { isSuccess, data } = await queryDungeonTip({
     roleClass: classKey.value,
@@ -670,7 +679,7 @@ async function getDungeonTip() {
   if (isSuccess) {
     dungeonTip.value = data;
   } else {
-    emptyTipMessage.value = data;
+    tipMessage.value = data;
   }
 }
 async function switchDungeon(id: number) {
@@ -1246,6 +1255,30 @@ $light-border: rgb(68, 68, 68);
   text {
     margin-left: 0.4rem;
     color: $uni-color-primary;
+  }
+}
+
+::v-deep .uni-list {
+  background-color: transparent !important;
+  .uni-list--border-top,
+  .uni-list--border-bottom {
+    height: 0 !important;
+  }
+  .uni-list-item {
+    background-color: transparent !important;
+    .uni-list-item__content {
+      text {
+        color: $uni-color-primary;
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+    .uni-list-item__extra {
+      text {
+        color: #bbb;
+        font-size: 12px;
+      }
+    }
   }
 }
 </style>
