@@ -1,4 +1,13 @@
 <template>
+  <uni-section class="shaman" title="更新日志">
+    <uni-card>
+      <uni-collapse ref="adviceCollapse" title-border="none" :border="false">
+        <uni-collapse-item v-for="(patch, index) in patchNotes" :key="patch.id" :title="patch.date" :open="index === 0">
+          <view class="log-content">{{ patch.text }}</view>
+        </uni-collapse-item>
+      </uni-collapse>
+    </uni-card>
+  </uni-section>
   <uni-section
     class="log"
     :class="[sectionSetting(index).class]"
@@ -30,13 +39,15 @@
 </template>
 
 <script lang="ts" setup>
-import { queryAdviceList } from '@/api/shared';
+import { queryAdviceList, queryPatchList } from '@/api/shared';
 import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
 const undoAdvice = ref();
 const doneAdvice = ref();
+const patchNotes = ref();
 onLoad(async () => {
+  patchNotes.value = await queryPatchList();
   [undoAdvice.value, doneAdvice.value] = await queryAdviceList();
 });
 

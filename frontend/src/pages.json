@@ -31,9 +31,9 @@
 			}
 		},
 		{
-			"path": "pages/advice/index",
+			"path": "pages/patch-log/index",
 			"style": {
-				"navigationBarTitleText": "意见整理"
+				"navigationBarTitleText": "版本信息"
 			}
 		}
 	],

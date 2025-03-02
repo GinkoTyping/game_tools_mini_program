@@ -190,7 +190,7 @@ function setNoticeBarCountdown() {
 }
 
 function onClickNotice() {
-  navigator.toAdvice();
+  navigator.toPatchLog();
 }
 </script>
 

@@ -40,3 +40,15 @@ export async function queryAdviceList() {
     [[], []]
   );
 }
+
+interface IPatch {
+  date: string;
+  text: string;
+  images: string;
+}
+export async function queryPatchList() {
+  const res = await uni.request({
+    url: `${BASE_URL}/common/patch/list`,
+  });
+  return res.data as IPatch;
+}

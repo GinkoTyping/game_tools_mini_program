@@ -14,9 +14,9 @@ function toSpecsMenu() {
   });
 }
 
-function toAdvice() {
+function toPatchLog() {
   uni.navigateTo({
-    url: '/pages/advice/index',
+    url: '/pages/patch-log/index',
   });
 }
 
@@ -32,5 +32,5 @@ function toTierList(params: {
 }
 
 export function useNavigator() {
-  return { toSpecDetail, toSpecsMenu, toTierList, toAdvice };
+  return { toSpecDetail, toSpecsMenu, toTierList, toPatchLog: toPatchLog };
 }
