@@ -41,6 +41,7 @@
       </view>
     </uni-collapse-item>
   </uni-collapse>
+  <ad-custom unit-id="adunit-84c43763a4fcb5e9"></ad-custom>
 
   <view :class="popoverClass">
     <image

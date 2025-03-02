@@ -22,7 +22,7 @@
             <uni-list>
               <uni-list-item
                 class="dungeon_tip-title"
-                :thumb="`http://localhost:3000/api/common/assets/advice/avatar/${item.id}.jpg`"
+                :thumb="`https://ginkolearn.cyou/api/common/assets/advice/avatar/${item.id}.jpg`"
                 thumb-size="lg"
                 :title="item.name"
                 :note="item.note"
