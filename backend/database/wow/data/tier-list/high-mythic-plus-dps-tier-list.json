@@ -1,0 +1,293 @@
+{
+  "updatedAt": "2025/3/2",
+  "activityType": "MYTHIC",
+  "role": "DPS",
+  "versionId": "11.1",
+  "data": [
+    {
+      "tier": "S",
+      "children": [
+        {
+          "fullNameEN": "fire mage",
+          "roleClass": "mage",
+          "classSpec": "fire",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "火焰 法师"
+        },
+        {
+          "fullNameEN": "balance druid",
+          "roleClass": "druid",
+          "classSpec": "balance",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "平衡 德鲁伊"
+        },
+        {
+          "fullNameEN": "elemental shaman",
+          "roleClass": "shaman",
+          "classSpec": "elemental",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "元素 萨满"
+        }
+      ]
+    },
+    {
+      "tier": "A",
+      "children": [
+        {
+          "fullNameEN": "subtlety rogue",
+          "roleClass": "rogue",
+          "classSpec": "subtlety",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "敏锐 盗贼"
+        },
+        {
+          "fullNameEN": "enhancement shaman",
+          "roleClass": "shaman",
+          "classSpec": "enhancement",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "增强 萨满"
+        },
+        {
+          "fullNameEN": "frost mage",
+          "roleClass": "mage",
+          "classSpec": "frost",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "冰霜 法师"
+        },
+        {
+          "fullNameEN": "havoc demon hunter",
+          "roleClass": "demon-hunter",
+          "classSpec": "havoc",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "浩劫 恶魔猎手"
+        },
+        {
+          "fullNameEN": "assassination rogue",
+          "roleClass": "rogue",
+          "classSpec": "assassination",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "刺杀 盗贼"
+        },
+        {
+          "fullNameEN": "retribution paladin",
+          "roleClass": "paladin",
+          "classSpec": "retribution",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "惩戒 圣骑士"
+        },
+        {
+          "fullNameEN": "feral druid",
+          "roleClass": "druid",
+          "classSpec": "feral",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "野性 德鲁伊"
+        },
+        {
+          "fullNameEN": "frost death knight",
+          "roleClass": "death-knight",
+          "classSpec": "frost",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "冰霜 死亡骑士"
+        },
+        {
+          "fullNameEN": "destruction warlock",
+          "roleClass": "warlock",
+          "classSpec": "destruction",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "毁灭 术士"
+        },
+        {
+          "fullNameEN": "fury warrior",
+          "roleClass": "warrior",
+          "classSpec": "fury",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "狂怒 战士"
+        },
+        {
+          "fullNameEN": "shadow priest",
+          "roleClass": "priest",
+          "classSpec": "shadow",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "暗影 牧师"
+        },
+        {
+          "fullNameEN": "affliction warlock",
+          "roleClass": "warlock",
+          "classSpec": "affliction",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "痛苦 术士"
+        },
+        {
+          "fullNameEN": "beast mastery hunter",
+          "roleClass": "hunter",
+          "classSpec": "beast-mastery",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "野兽掌控 猎人"
+        },
+        {
+          "fullNameEN": "arcane mage",
+          "roleClass": "mage",
+          "classSpec": "arcane",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "奥术 法师"
+        },
+        {
+          "fullNameEN": "unholy death knight",
+          "roleClass": "death-knight",
+          "classSpec": "unholy",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "邪恶 死亡骑士"
+        }
+      ]
+    },
+    {
+      "tier": "B",
+      "children": [
+        {
+          "fullNameEN": "arms warrior",
+          "roleClass": "warrior",
+          "classSpec": "arms",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "武器 战士"
+        },
+        {
+          "fullNameEN": "demonology warlock",
+          "roleClass": "warlock",
+          "classSpec": "demonology",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "恶魔 术士"
+        },
+        {
+          "fullNameEN": "windwalker monk",
+          "roleClass": "monk",
+          "classSpec": "windwalker",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "踏风 武僧"
+        },
+        {
+          "fullNameEN": "outlaw rogue",
+          "roleClass": "rogue",
+          "classSpec": "outlaw",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "狂徒 盗贼"
+        },
+        {
+          "fullNameEN": "marksmanship hunter",
+          "roleClass": "hunter",
+          "classSpec": "marksmanship",
+          "dataChange": "up",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "射击 猎人"
+        }
+      ]
+    },
+    {
+      "tier": "C",
+      "children": [
+        {
+          "fullNameEN": "survival hunter",
+          "roleClass": "hunter",
+          "classSpec": "survival",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "生存 猎人"
+        },
+        {
+          "fullNameEN": "devastation evoker",
+          "roleClass": "evoker",
+          "classSpec": "devastation",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "湮灭 唤魔师"
+        }
+      ]
+    },
+    {
+      "tier": "D",
+      "children": [
+        {
+          "fullNameEN": "augmentation evoker",
+          "roleClass": "evoker",
+          "classSpec": "augmentation",
+          "dataChange": "down",
+          "desc": "",
+          "descZH": "暂无排名解析，将尽快更新！",
+          "spells": [],
+          "fullNameZH": "增辉 唤魔师"
+        }
+      ]
+    }
+  ]
+}
