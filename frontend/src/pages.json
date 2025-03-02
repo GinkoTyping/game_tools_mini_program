@@ -29,6 +29,12 @@
 			"style": {
 				"navigationBarTitleText": "职业配装"
 			}
+		},
+		{
+			"path": "pages/advice/index",
+			"style": {
+				"navigationBarTitleText": "意见整理"
+			}
 		}
 	],
 	"globalStyle": {

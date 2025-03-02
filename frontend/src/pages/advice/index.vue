@@ -1,29 +1,55 @@
 <template>
-  <uni-section class="log death-knight" title="意见(待完成)">
+  <uni-section
+    class="log"
+    :class="[sectionSetting(index).class]"
+    :title="sectionSetting(index).title"
+    v-for="(advices, index) in [undoAdvice, doneAdvice]"
+    :key="index"
+  >
     <uni-card class="section-card">
       <uni-collapse ref="adviceCollapse" title-border="none" :border="false">
-        <uni-collapse-item>
+        <uni-collapse-item v-for="item in advices" :key="item.id">
           <template v-slot:title>
             <uni-list>
               <uni-list-item
                 class="dungeon_tip-title"
-                thumb="https://qiniu-web-assets.dcloud.net.cn/unidoc/zh/unicloudlogo.png"
+                :thumb="`http://localhost:3000/api/common/assets/advice/avatar/${item.id}.jpg`"
                 thumb-size="lg"
-                title="名称"
-                note="列表描述信息"
-                rightText="点击任意位置"
+                :title="item.name"
+                :note="item.note"
+                :rightText="item[sectionSetting(index).timeKey]"
               >
               </uni-list-item>
             </uni-list>
           </template>
-          <view>一句话大秘境一句话大秘境一句话大秘境一句话大秘境</view>
+          <view class="log-content">{{ item.completion_text }}</view>
         </uni-collapse-item>
       </uni-collapse>
     </uni-card>
   </uni-section>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { queryAdviceList } from '@/api/shared';
+import { onLoad } from '@dcloudio/uni-app';
+import { computed, ref } from 'vue';
+
+const undoAdvice = ref();
+const doneAdvice = ref();
+onLoad(async () => {
+  [undoAdvice.value, doneAdvice.value] = await queryAdviceList();
+});
+
+const sectionSetting = computed(() => {
+  return (index: number) => {
+    return {
+      class: index === 0 ? 'death-knight' : 'monk',
+      title: index === 0 ? '意见(待完成)' : '意见(已完成)',
+      timeKey: index === 0 ? 'created_at' : 'completed_at',
+    };
+  };
+});
+</script>
 
 <style lang="scss" scoped>
 ::v-deep .uni-section {
@@ -155,9 +181,12 @@
         color: $uni-color-primary;
         font-weight: bold;
       }
-      text {
-      }
     }
   }
+}
+.log-content {
+  word-break: break-all;
+  white-space: pre-line; /* 关键样式 */
+  padding: 10px 15px;
 }
 </style>

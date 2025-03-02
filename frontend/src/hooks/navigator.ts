@@ -14,6 +14,12 @@ function toSpecsMenu() {
   });
 }
 
+function toAdvice() {
+  uni.navigateTo({
+    url: '/pages/advice/index',
+  });
+}
+
 function toTierList(params: {
   version_id: string;
   activity_type: string;
@@ -26,5 +32,5 @@ function toTierList(params: {
 }
 
 export function useNavigator() {
-  return { toSpecDetail, toSpecsMenu, toTierList };
+  return { toSpecDetail, toSpecsMenu, toTierList, toAdvice };
 }

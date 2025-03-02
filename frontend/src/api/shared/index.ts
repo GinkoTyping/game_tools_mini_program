@@ -17,3 +17,26 @@ export async function queryScorllInfo() {
   });
   return res.data as string;
 }
+
+interface IAdvice {
+  id: number;
+  name: string;
+  note: string;
+  status: number;
+  completed_at: string;
+  completion_images: string;
+  completion_text: string;
+  created_at: string;
+}
+export async function queryAdviceList() {
+  const res = await uni.request({
+    url: `${BASE_URL}/common/advice/list`,
+  });
+  return (res.data as IAdvice[]).reduce(
+    (pre: any, cur: IAdvice) => {
+      pre[cur.status].push(cur);
+      return pre;
+    },
+    [[], []]
+  );
+}

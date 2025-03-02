@@ -2,8 +2,12 @@
   <uni-notice-bar
     v-if="isShowNotice && scrollText"
     show-icon
-    show-close
+    show-get-more
+    color="#2979FF"
+    background-color="#EAF2FF"
+    more-text="查看更多"
     :text="scrollText"
+    @click="onClickNotice"
   />
   <uni-swiper-dot
     :info="homeViewData?.carousels"
@@ -121,7 +125,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
+import { onLoad, onShow, onShareAppMessage } from '@dcloudio/uni-app';
 
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
 import { queryHomeView, IHomeViewDTO } from '@/api/wow';
@@ -141,6 +145,9 @@ const currentSwipper = ref(0);
 const scrollText = ref('');
 onLoad(async () => {
   homeViewData.value = await queryHomeView();
+});
+onShow(async () => {
+  isShowNotice.value = true;
   setNoticeBarCountdown();
   scrollText.value = await queryScorllInfo();
 });
@@ -180,6 +187,10 @@ function setNoticeBarCountdown() {
     isShowNotice.value = false;
     timer = null;
   }, 10000);
+}
+
+function onClickNotice() {
+  navigator.toAdvice();
 }
 </script>
 
