@@ -204,12 +204,14 @@
           >{{ dungeon.name_zh }}</text
         >
       </view>
-      <view class="dungeon_empty">{{ tipMessage }}</view>
-      <uni-collapse v-model="tipCollapseIndex">
+      <view class="dungeon_empty" v-show="tipMessage?.length">{{
+        tipMessage
+      }}</view>
+      <uni-collapse ref="dungeonCollapse" v-model="tipCollapseIndex">
         <uni-collapse-item
-          :open="index === 0"
           v-for="(tipKind, index) in dungeonTip?.children"
           :key="tipKind.title"
+          :open="index === 0"
         >
           <template v-slot:title>
             <uni-list>
@@ -438,7 +440,7 @@
 // TODO 新增对应专精的图片
 import { onLoad, onShow, onPageScroll, onHide } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
-import { computed, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 
 import { ISpceBIS, IBisItem, Relation } from '@/interface/IWow';
 import {
@@ -669,7 +671,7 @@ async function getSeasonDungeons() {
   dungeons.value = await querySeasonDungeons();
   currentDungeonId.value = dungeons.value[0]?.id;
 }
-const tipMessage = ref('点击');
+const tipMessage = ref('');
 async function getDungeonTip() {
   const { isSuccess, data } = await queryDungeonTip({
     roleClass: classKey.value,
@@ -682,10 +684,16 @@ async function getDungeonTip() {
     tipMessage.value = data;
   }
 }
+const dungeonCollapse = ref<any>();
 async function switchDungeon(id: number) {
   if (currentDungeonId.value !== id) {
     currentDungeonId.value = id;
     await getDungeonTip();
+
+    // 更新副本数据之后，展开内容的高度有白边
+    nextTick(() => {
+      dungeonCollapse.value?.resize?.();
+    });
   }
 }
 

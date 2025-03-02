@@ -178,7 +178,6 @@ export async function queryDungeonTip(params: {
         dungeonId,
       },
     });
-    console.log({ res });
     if (res.statusCode === 200) {
       return { isSuccess: true, data: JSON.parse(res.data.tips) };
     }
