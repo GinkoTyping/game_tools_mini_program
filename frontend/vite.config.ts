@@ -1,14 +1,16 @@
-import { defineConfig } from "vite";
-import uni from "@dcloudio/vite-plugin-uni";
-import eslintPlugin from 'vite-plugin-eslint';
+import { defineConfig, loadEnv } from 'vite';
+import uni from '@dcloudio/vite-plugin-uni';
 import * as path from 'path';
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    uni(),
-  ],
-  resolve: {
-    alias: { '@': path.resolve(__dirname, 'src') }
-  }
+export default defineConfig(({ mode }) => {
+  //手动导入 .env文件
+  const env = loadEnv(mode, process.cwd(), '');
+
+  return {
+    plugins: [uni()],
+    resolve: {
+      alias: { '@': path.resolve(__dirname, 'src') },
+    },
+    envDir: './',
+  };
 });

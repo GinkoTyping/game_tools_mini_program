@@ -84,7 +84,7 @@
       <view class="icon"></view>
       <view class="title">热门</view>
     </view>
-    <view class="suffix" @click="navigator.toSpecsMenu">更多</view>
+    <view class="suffix" @click="navigator.toSpecsMenu">更多职业</view>
   </view>
   <view class="hot-topic">
     <view
