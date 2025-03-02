@@ -55,3 +55,11 @@ CREATE TABLE
     completion_images TEXT,
     status INTEGER NOT NULL DEFAULT 0
   );
+
+CREATE TABLE
+  IF NOT EXISTS common_patch (
+    id INTEGER PRIMARY KEY,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    text TEXT,
+    images TEXT
+  );

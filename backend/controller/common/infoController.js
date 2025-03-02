@@ -22,5 +22,6 @@ export async function queryAccessCount(req, res) {
 }
 
 export async function queryScrollInfo(req, res) {
-  res.json('已完善11.1版本各专精的大秘境攻略。(2.28)');
+  // TODO 审核通过之后，提示用户点击
+  res.json('更新BIS配装。(3.3)');
 }
