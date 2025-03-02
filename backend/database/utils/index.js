@@ -28,5 +28,5 @@ export async function getCommonDB() {
       driver: sqlite3.verbose().Database,
     });
   }
-  return _db;
+  return _commonDB;
 }
