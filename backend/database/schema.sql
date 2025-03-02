@@ -41,4 +41,17 @@ CREATE TABLE
     access_count INTEGER DEFAULT 0,
     sort INTEGER DEFAULT 0,
     spec_sort INTEGER DEFAULT 0
-  )
+  );
+
+-- common-database.db 
+CREATE TABLE
+  IF NOT EXISTS common_advice (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    avatar TEXT,
+    note TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    completed_at TIMESTAMP,
+    completion_text TEXT,
+    completion_images TEXT
+  );

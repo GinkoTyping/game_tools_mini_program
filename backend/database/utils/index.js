@@ -19,3 +19,14 @@ export async function getDB() {
   }
   return _db;
 }
+
+let _commonDB = null;
+export async function getCommonDB() {
+  if (!_commonDB) {
+    _commonDB = await open({
+      filename: path.resolve(__dirname, '../common-database.db'),
+      driver: sqlite3.verbose().Database,
+    });
+  }
+  return _db;
+}
