@@ -1,4 +1,5 @@
 -- SQLite
+-- access_count
 CREATE TABLE
   IF NOT EXISTS access_count (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -6,6 +7,7 @@ CREATE TABLE
     visit_count INTEGER DEFAULT 0
   );
 
+-- wow_tier_list
 CREATE TABLE
   IF NOT EXISTS wow_tier_list (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,6 +18,7 @@ CREATE TABLE
     tier_data TEXT
   );
 
+-- wow_home_view
 CREATE TABLE
   IF NOT EXISTS wow_home_view (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,6 +28,7 @@ CREATE TABLE
     hot_topics TEXT
   );
 
+-- wow_bis
 CREATE TABLE
   IF NOT EXISTS wow_bis (
     id INTEGER PRIMARY KEY,
@@ -43,7 +47,18 @@ CREATE TABLE
     spec_sort INTEGER DEFAULT 0
   );
 
+-- wow_dungeon
+CREATE TABLE
+  IF NOT EXISTS wow_dungeon (
+    id INTEGER PRIMARY KEY NOT NULL,
+    journal_id INTEGER NOT NULL,
+    name_zh TEXT NOT NULL,
+    name_en TEXT NOT NULL,
+    bosses TEXT
+  );
+
 -- common-database.db 
+-- common_advice
 CREATE TABLE
   IF NOT EXISTS common_advice (
     id INTEGER PRIMARY KEY,
@@ -56,6 +71,7 @@ CREATE TABLE
     status INTEGER NOT NULL DEFAULT 0
   );
 
+-- common_patch
 CREATE TABLE
   IF NOT EXISTS common_patch (
     id INTEGER PRIMARY KEY,

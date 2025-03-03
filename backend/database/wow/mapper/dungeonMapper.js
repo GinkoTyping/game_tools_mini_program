@@ -44,6 +44,19 @@ async function getDungeonsById(params) {
   return db.all(sql, ids);
 }
 
+async function getDungeonList() {
+  return db.all(`SELECT id, journal_id, name_zh, name_en FROM wow_dungeon`);
+}
+
+async function updateDungeonById(params) {
+  const { bosses, journalId, id } = params;
+  return db.run(`UPDATE wow_dungeon SET bosses=?1, journal_id=?2 WHERE id=?3`, [
+    bosses,
+    journalId,
+    id,
+  ]);
+}
+
 export function useDungeonMapper(database) {
   if (database) {
     db = database;
@@ -54,7 +67,9 @@ export function useDungeonMapper(database) {
 
   return {
     insertDungeon,
+    getDungeonList,
     getDungeonsById,
     getDungeonByName,
+    updateDungeonById,
   };
 }
