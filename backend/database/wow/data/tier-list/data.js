@@ -13,9 +13,9 @@ const __dirname = path.dirname(__filename);
 
 async function insertData() {
   const promises = [
-    'high-mythic-plus-dps-tier-list',
-    // 'high-mythic-plus-healer-tier-list',
-    // 'high-mythic-plus-tank-tier-list',
+    'mythic-dps-tier-list',
+    'mythic-healer-tier-list',
+    'mythic-tank-tier-list',
   ].map((filename) => insertTierList(filename));
   const results = await Promise.allSettled(promises);
   const errors = results.filter((result) => result.status !== 'fulfilled');
