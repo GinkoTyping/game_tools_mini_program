@@ -283,6 +283,7 @@
       </uni-collapse>
     </uni-card>
   </uni-section>
+  <view class="footer"></view>
 
   <uni-popup ref="popup">
     <uni-load-more
@@ -1122,6 +1123,10 @@ $light-border: rgb(68, 68, 68);
     text-align: center;
   }
 }
+
+::v-deep .dungeon .uni-card .uni-card__content {
+  padding-bottom: 2rem;
+}
 .dungeon .menu {
   display: flex;
   flex-wrap: wrap;
@@ -1288,5 +1293,10 @@ $light-border: rgb(68, 68, 68);
       }
     }
   }
+}
+
+.footer {
+  height: 4rem;
+  width: 1vw;
 }
 </style>
