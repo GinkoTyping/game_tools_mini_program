@@ -397,6 +397,7 @@ async function updateDungeonTipData() {
   let translatedSuccessCount = 0;
   const dungeonNameIdMap = {};
   const trashTipMap = {};
+  const dungeonBossesCache = {};
   const translationCache = loadTranslationCache();
   async function insertTip(roleClass, classSpec, tip) {
     let currentDungeon;
@@ -417,7 +418,10 @@ async function updateDungeonTipData() {
         currentDungeon.id
       );
 
-      const translatedTip = await translateDungeonTip(tip.children);
+      const translatedTip = await translateDungeonTip(
+        tip.children,
+        tip.dungeonTitle
+      );
 
       const params = {
         roleClass,
@@ -486,12 +490,26 @@ async function updateDungeonTipData() {
       } else if (tip.title === 'Boss Tips') {
         tip.title = 'BOSS';
         tip.children = await translateDungeonTip(tip.children, dungeonTitle);
-
-        // BOSS 名称不翻译，界面展示时用 X号BOSS 代替
       } else if (tip.title === 'Pre Dungeon Start') {
         tip.title = '插钥匙前';
         tip.children = await translateDungeonTip(tip.children, dungeonTitle);
+
+        // BOSS 名称
       } else if (tip.title) {
+        if (!dungeonBossesCache[dungeonTitle]) {
+          const dungeon = await dungeonMapper.getDungeonByName({
+            name_en: dungeonTitle,
+          });
+          if (dungeon) {
+            dungeonBossesCache[dungeonTitle] = JSON.parse(dungeon.bosses);
+          } else {
+            console.log(`未获取到地下城的数据： ${dungeonTitle}。`);
+          }
+        }
+        const boss = dungeonBossesCache[dungeonTitle]?.find(
+          (item) => item.name.en_US === tip.title
+        );
+        tip.title = boss?.name.zh_CN ?? tip.title;
         tip.children = await translateDungeonTip(tip.children, dungeonTitle);
 
         // 着重需要翻译的 TIPS
