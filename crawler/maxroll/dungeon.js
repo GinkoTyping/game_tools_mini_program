@@ -4,7 +4,12 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { queryAddSpell, queryDungeon, querySpellByIds } from '../api/index.js';
+import {
+  queryAddSpell,
+  queryDungeon,
+  queryItemById,
+  querySpellByIds,
+} from '../api/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,7 +40,8 @@ async function collect(url) {
     const $ = cheerio.load(html);
     const { routes, ratings } = getRoutesAndRatings($);
     const utilityNeeds = getUtilityNeeds($);
-    await getBossAndTrash($, url);
+    const enemyData = await getBossAndTrash($, url);
+    await getLootPoll($);
     // saveFile(data, url);
   } catch (error) {
     console.error(error);
@@ -436,6 +442,75 @@ async function getBossAndTrash(context, url) {
 }
 //#endregion
 
+//#region 装备池
+async function getLootByType(context, containerEle, index) {
+  const $ = context;
+  function mapTypeName(type) {
+    switch (type) {
+      case 'trinkets/jewelry':
+        return '饰品/戒指';
+      case 'trinket':
+        return '饰品';
+      case 'weapons':
+        return '武器';
+      case 'armor':
+        return '防具';
+      default:
+        break;
+    }
+  }
+  async function parseItemByRow(row) {
+    const type = mapTypeName($(row).children().first().text());
+    const itemEle = $(row).children().last().find('span[data-wow-item]');
+    const imageSrc = $(itemEle).find('div').attr('style');
+    const itemId = $(itemEle).attr('data-wow-item').split(':').shift();
+    let itemName = $(itemEle).text().trim();
+    try {
+      const data = await queryItemById(itemId);
+      itemName = data.name;
+    } catch (error) {
+      console.log(`更新装备名称失败：${error}`);
+    }
+    return {
+      type,
+      id: itemId,
+      name: itemName,
+      imageSrc,
+    };
+  }
+  const type = mapTypeName(
+    $(containerEle)
+      .children()
+      .first()
+      .find('span span')
+      .eq(index)
+      .text()
+      .trim()
+      .toLowerCase()
+  );
+  const loots = $(containerEle).children().last().find('tbody tr').get();
+  const results = await Promise.allSettled(
+    loots.map((item) => parseItemByRow(item))
+  );
+  return {
+    type,
+    loots: results.map((item) => item.value),
+  };
+}
+
+async function getLootPoll(context) {
+  const $ = context;
+  const reference = $('#lootpool-header').parentsUntil('#main-article').last();
+  const lootPoolEle = reference.next();
+  const typeCount = lootPoolEle.children().first().find('span span').length;
+  const typeArray = new Array(typeCount).fill(1);
+
+  const results = await Promise.allSettled(
+    typeArray.map((item, index) => getLootByType($, lootPoolEle, index))
+  );
+  return results;
+}
+//#endregion
 function saveFile(data, fileName) {
   const outputPath = path.resolve(__dirname, `./output/${fileName}.json`);
   const copyPath = path.resolve(
