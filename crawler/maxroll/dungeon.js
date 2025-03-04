@@ -5,15 +5,21 @@ import Bottleneck from 'bottleneck';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+
 import {
   queryAddSpell,
   queryDungeon,
   queryItemById,
   querySpellByIds,
 } from '../api/index.js';
+import '../util/set-env.js';
+import { useDeepseek } from '../util/deepseek.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const deepseek = useDeepseek(
+  path.resolve(__dirname, './cache/translate/index.json')
+);
 
 async function collect(url) {
   let browser;
@@ -45,7 +51,7 @@ async function collect(url) {
     const lootPool = await getLootPoll($);
 
     const data = { routes, ratings, utilityNeeds, enemyTips, lootPool };
-    // saveFile(data, url);
+    saveFile(data, url);
   } catch (error) {
     console.error(error);
   } finally {
@@ -322,6 +328,19 @@ async function translateSpellsInText(context, liEle) {
     });
   }
 
+  function allowTranslate() {
+    if (!spells.length) {
+      return true;
+    }
+    const unranslatedSpells = spells.filter((spell) => !spell.nameZH);
+    return !unranslatedSpells.length;
+  }
+  if (allowTranslate) {
+    text = await deepseek.translate(text);
+  } else {
+    console.log(`检测到存在未翻译的技能，描述文本暂不翻译: ${text}`);
+  }
+
   return { text, spells, children };
 }
 async function getTrash(context, containerEle) {
@@ -356,6 +375,9 @@ async function getTrash(context, containerEle) {
     } else {
       item.data = ulsOutput[index].value;
     }
+
+    // 不需要存储的数据
+    item.textUl = undefined;
   });
 
   return rowOutput;
@@ -438,9 +460,12 @@ async function getBossAndTrash(context, url) {
     .join(' ');
   const results = await Promise.allSettled(
     titles
-      // TODO 一个一个调测
+      .slice(0, 1)
       .map((selector) => getBossAndTrashDetail($, dungeonName, selector))
   );
+
+  deepseek.saveTranslationCache();
+
   return results;
 }
 //#endregion
@@ -564,8 +589,12 @@ async function getLootPoll(context) {
   return results.map((result) => result.value);
 }
 //#endregion
+
 function saveFile(data, fileName) {
-  const outputPath = path.resolve(__dirname, `./output/${fileName}.json`);
+  const outputPath = path.resolve(
+    __dirname,
+    `./output/mythic/${fileName}.json`
+  );
   const copyPath = path.resolve(
     __dirname,
     `../../backend/database/wow/data/mythic/${fileName}.json`

@@ -1,0 +1,15 @@
+{
+  "Inflicts shadow damage to a random enemy and applies a healing absorb.": "对随机一名敌人造成暗影伤害，并施加一个治疗吸收效果。",
+  "An Enrage buff that makes caster inflict increased damage but also take increased damage.": "一个激怒增益效果，使施法者造成更多伤害，但同时也会受到更多伤害。",
+  "Heals the target each time they inflict damage.": "每次目标造成伤害时，都会为其恢复生命值。",
+  "Charges an enemy and slows its movement speed.": "对一个敌人发起冲锋，并降低其移动速度。",
+  "This is an Enrage effect and can be soothed.": "这是一个激怒效果，可以被安抚。",
+  "[冲锋]": "[冲锋]",
+  "[死亡之愿]": "[死亡之愿]",
+  "[不洁热情]": "[不洁热情]",
+  "Raging Bloodhorn goes into a [暴脾气] inflicting physical damage to all enemies every 2 seconds.": "狂怒血角进入[暴脾气]状态，每2秒对所有敌人造成物理伤害。",
+  "[通灵箭]": "[通灵箭]",
+  "Required Enrage Dispel:": "需要驱散的激怒效果：",
+  "Required Kick:": "所需打断：[Required Kick]",
+  "[暴脾气]": "[暴脾气]"
+}

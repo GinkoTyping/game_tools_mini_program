@@ -1,0 +1,546 @@
+{
+  "routes": [
+    {
+      "title": "Weekly Route",
+      "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Weekly-1-1024x678.webp",
+      "code": "!9v17VTjmq0)DM0wRW)as4JRBQQvAlTASP9nlijMwVWWzGjR5l83(UZM4ytIMWczBU7EV7DNncI47IITQ6A1MHgZrXksIO4Vs5oyMOyqTvu8WFE4DV(LD90Jpjkou1mirF2m01jBnpp00iwrt8BumSUrEq2y9VtvBEQUUxA6bFwHGzGNt2(5H2xK62h3(g8nkyVrk)TQ9fXArrVSrUXO0Tohriah3dW5d1QSPVrGpTIfSOyJUr3jkQRzY6AXkEOHPblGLuC5s)EWAya7Nh6ZIReCm05YtqhcjtA1XiyCuGeg0tGYTGYcXH636mA5yQmX)ZOvV2IgngTSaBqEATHfjx0ls5j8dZKC0pEePiiVWbhPco4iEGRMtjviYO87JWsBeYTUNzDeKjmeGWGBqMOrEenYDP4S6MvGpJKRqtYMXvNPKatRitYXjtzwttNYjtas2(aYIz46eULHIPpwlSXk7Ywq0i2mPjpKfKyWSDdK8zqZVsJgJnRq6kpg7rMy3T5fLCf752bZkdlCLIf2zP2IwMnCH9yROXDtjx0nDzJRlx9Mg027dgns5S92EvXt8CxTnryUOh3hiweRI5)utMRes5x1JuRhEPAkTCDlexppXDaGqNvTD3j4QDS)NyJiKgPP0qU4Zf(Se1PM0eXLhsOXxjgFY1DSLCIaPUS09ax9(g8(NWn)nhff61)cU91FtBXw3S7xYtZwUGY4mkpJNXe13WZWGF)nlZxMYtOKmwcHNLNGFk9mI3HOv8JE5yzv7yPQ9GcNVxJ3XpwUwwR7G1MxHx7Khhl7nvDMBhl)yVZJQgJSRTYOoaw0Vxc)iySSrTdw9CvxvZXEfSX7hl)g8hKXsDnSVsUr(HXYTVowUP6fWsDhazNs2Bgl)QQD7yzHwBXCJEOzlYJXYHEjmZOby2P2FlQoTa)n(YWZvnsJr(yBTgfNQbJ(t4(4VUUBMn4)24wFf)7p"
+    }
+  ],
+  "ratings": [
+    {
+      "label": "高层钥匙",
+      "score": 3,
+      "scoreText": "中等"
+    },
+    {
+      "label": "集合石组队",
+      "score": 4,
+      "scoreText": "困难"
+    },
+    {
+      "label": "能力技、辅助技能需求",
+      "score": 4,
+      "scoreText": "困难"
+    }
+  ],
+  "utilityNeeds": [
+    {
+      "type": {
+        "enrage": "激怒",
+        "bleed": "流血",
+        "disease": "疾病",
+        "curse": "诅咒",
+        "magic dispel": "魔法(防御驱散)",
+        "magic purge": "魔法(进攻驱散)"
+      },
+      "spell": [
+        {
+          "spellId": "333241",
+          "spellName": "‍Raging Tantrum"
+        },
+        {
+          "spellId": "331510",
+          "spellName": "‍Death Wish"
+        }
+      ],
+      "utility": [
+        {
+          "roleClass": "‍hunter",
+          "spellId": "126443:AJwA",
+          "spellName": "‍Tranquilizing Shot"
+        },
+        {
+          "roleClass": "‍rogue",
+          "spellId": "5938",
+          "spellName": "‍Shiv"
+        },
+        {
+          "roleClass": "‍druid",
+          "spellId": "103307",
+          "spellName": "‍Soothe"
+        },
+        {
+          "roleClass": "‍evoker",
+          "spellId": "115607",
+          "spellName": "‍Oppressing Roar"
+        },
+        {
+          "roleClass": "‍monk",
+          "spellId": "124932",
+          "spellName": "‍Paralysis"
+        }
+      ]
+    },
+    {
+      "type": {
+        "enrage": "激怒",
+        "bleed": "流血",
+        "disease": "疾病",
+        "curse": "诅咒",
+        "magic dispel": "魔法(防御驱散)",
+        "magic purge": "魔法(进攻驱散)"
+      },
+      "spell": [
+        {
+          "spellId": "323406",
+          "spellName": "‍Jagged Gash"
+        },
+        {
+          "spellId": "330532",
+          "spellName": "‍Jagged Quarrel"
+        },
+        {
+          "spellId": "333861",
+          "spellName": "‍Ricocheting Blade"
+        }
+      ],
+      "utility": [
+        {
+          "roleClass": "‍evoker",
+          "spellId": "115602",
+          "spellName": "‍Cauterizing Flame"
+        },
+        {
+          "roleClass": "‍paladin",
+          "spellId": "102604:AJgA",
+          "spellName": "‍Blessing of Protection"
+        }
+      ]
+    },
+    {
+      "type": {
+        "enrage": "激怒",
+        "bleed": "流血",
+        "disease": "疾病",
+        "curse": "诅咒",
+        "magic dispel": "魔法(防御驱散)",
+        "magic purge": "魔法(进攻驱散)"
+      },
+      "spell": [
+        {
+          "spellId": "341949",
+          "spellName": "‍Withering Blight"
+        },
+        {
+          "spellId": "330700",
+          "spellName": "‍Decaying Blight"
+        }
+      ],
+      "utility": [
+        {
+          "roleClass": "‍monk",
+          "spellId": "124941",
+          "spellName": "‍Detox"
+        },
+        {
+          "roleClass": "‍paladin",
+          "spellId": "102476",
+          "spellName": "‍Cleanse Toxins"
+        },
+        {
+          "roleClass": "‍priest",
+          "spellId": "103854",
+          "spellName": "‍Purify Disease"
+        },
+        {
+          "roleClass": "‍evoker",
+          "spellId": "115602",
+          "spellName": "‍Cauterizing Flame"
+        }
+      ]
+    },
+    {
+      "type": {
+        "enrage": "激怒",
+        "bleed": "流血",
+        "disease": "疾病",
+        "curse": "诅咒",
+        "magic dispel": "魔法(防御驱散)",
+        "magic purge": "魔法(进攻驱散)"
+      },
+      "spell": [
+        {
+          "spellId": "333299",
+          "spellName": "‍Curse of Desolation"
+        },
+        {
+          "spellId": "330725",
+          "spellName": "‍Shadow Vulnerability"
+        }
+      ],
+      "utility": [
+        {
+          "roleClass": "‍druid",
+          "spellId": "103320",
+          "spellName": "‍Remove Corruption"
+        },
+        {
+          "roleClass": "‍mage",
+          "spellId": "80175",
+          "spellName": "‍Remove Curse"
+        },
+        {
+          "roleClass": "‍shaman",
+          "spellId": "127884",
+          "spellName": "‍Cleanse Spirit"
+        },
+        {
+          "roleClass": "‍evoker",
+          "spellId": "115602",
+          "spellName": "‍Cauterizing Flame"
+        }
+      ]
+    },
+    {
+      "type": {
+        "enrage": "激怒",
+        "bleed": "流血",
+        "disease": "疾病",
+        "curse": "诅咒",
+        "magic dispel": "魔法(防御驱散)",
+        "magic purge": "魔法(进攻驱散)"
+      },
+      "spell": [
+        {
+          "spellId": "1215600",
+          "spellName": "‍Withering Touch"
+        }
+      ],
+      "utility": [
+        {
+          "roleClass": "‍priest",
+          "spellId": "32375",
+          "spellName": "‍Mass Dispel"
+        },
+        {
+          "roleClass": "‍warlock",
+          "spellId": "89808",
+          "spellName": "‍Singe Magic"
+        }
+      ]
+    },
+    {
+      "type": {
+        "enrage": "激怒",
+        "bleed": "流血",
+        "disease": "疾病",
+        "curse": "诅咒",
+        "magic dispel": "魔法(防御驱散)",
+        "magic purge": "魔法(进攻驱散)"
+      },
+      "spell": [
+        {
+          "spellId": "333293",
+          "spellName": "‍Bone Shield"
+        }
+      ],
+      "utility": [
+        {
+          "roleClass": "‍warlock",
+          "spellId": "388215",
+          "spellName": "‍Devour Magic"
+        },
+        {
+          "roleClass": "‍hunter",
+          "spellId": "126443:AJwA",
+          "spellName": "‍Tranquilizing Shot"
+        },
+        {
+          "roleClass": "‍priest",
+          "spellId": "103867",
+          "spellName": "‍Dispel Magic"
+        },
+        {
+          "roleClass": "‍shaman",
+          "spellId": "127905",
+          "spellName": "‍Purge"
+        },
+        {
+          "roleClass": "‍mage",
+          "spellId": "80140",
+          "spellName": "‍Spellsteal"
+        },
+        {
+          "roleClass": "‍demon hunter",
+          "spellId": "112926",
+          "spellName": "‍Consume Magic"
+        }
+      ]
+    }
+  ],
+  "enemyTips": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "title": "\"狭路相逢\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Unyielding Contender",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Unyielding-Contender.webp",
+            "data": [
+              {
+                "text": "需要驱散的激怒效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[死亡之愿]",
+                    "spells": [
+                      {
+                        "name": "‍Death Wish",
+                        "id": "331510",
+                        "nameZH": "死亡之愿"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "一个激怒增益效果，使施法者造成更多伤害，但同时也会受到更多伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[冲锋]",
+                "spells": [
+                  {
+                    "name": "‍Charge",
+                    "id": "320679",
+                    "nameZH": "冲锋"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对一个敌人发起冲锋，并降低其移动速度。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Battlefield Ritualist",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Battlefield-Ritualist-467x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：[Required Kick]",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[通灵箭]",
+                    "spells": [
+                      {
+                        "name": "‍Necrotic Bolt",
+                        "id": "330784",
+                        "nameZH": "通灵箭"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名敌人造成暗影伤害，并施加一个治疗吸收效果。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[不洁热情]",
+                    "spells": [
+                      {
+                        "name": "‍Unholy Fervor",
+                        "id": "341902",
+                        "nameZH": "不洁热情"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "每次目标造成伤害时，都会为其恢复生命值。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Raging Bloodhorn",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Raging-Bloodhorn.webp",
+            "data": [
+              {
+                "text": "需要驱散的激怒效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[暴脾气]",
+                    "spells": [
+                      {
+                        "name": "‍Raging Tantrum",
+                        "id": "333241",
+                        "nameZH": "暴脾气"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "狂怒血角进入[暴脾气]状态，每2秒对所有敌人造成物理伤害。",
+                        "spells": [
+                          {
+                            "name": "‍Raging Tantrum",
+                            "id": "333242",
+                            "nameZH": "暴脾气"
+                          }
+                        ],
+                        "children": [
+                          {
+                            "text": "这是一个激怒效果，可以被安抚。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "lootPool": [
+    {
+      "type": "饰品/戒指",
+      "loots": [
+        {
+          "type": "饰品",
+          "id": 178811,
+          "name": "阴森法典",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/133733.webp"
+        },
+        {
+          "type": "饰品",
+          "id": 178809,
+          "name": "释魂红玉",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/133250.webp"
+        },
+        {
+          "type": "饰品",
+          "id": 178810,
+          "name": "鬼灵精华之瓶",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3536193.webp"
+        },
+        {
+          "type": "饰品",
+          "id": 178808,
+          "name": "凝恨脏器",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/134341.webp"
+        },
+        {
+          "type": "戒指",
+          "id": 178871,
+          "name": "血誓玺戒",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3536108.webp"
+        },
+        {
+          "type": "戒指",
+          "id": 178869,
+          "name": "融肉指环",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/133387.webp"
+        },
+        {
+          "type": "戒指",
+          "id": 178872,
+          "name": "永恒冲突之戒",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3536109.webp"
+        },
+        {
+          "type": "戒指",
+          "id": 178870,
+          "name": "祭仪骨戒",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3536112.webp"
+        }
+      ]
+    },
+    {
+      "type": "武器",
+      "loots": [
+        {
+          "type": "双手斧",
+          "id": 178866,
+          "name": "斩首者德茜雅的斩首斧",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3512936.webp"
+        },
+        {
+          "type": "长柄武器",
+          "id": 178865,
+          "name": "哈夫的权威长矛",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3509616.webp"
+        },
+        {
+          "type": "匕首",
+          "id": 178789,
+          "name": "塑血者的匕首",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3537055.webp"
+        },
+        {
+          "type": "单手锤",
+          "id": 178864,
+          "name": "血缚掠食者的轻锤",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3551577.webp"
+        },
+        {
+          "type": "单手手斧",
+          "id": 178863,
+          "name": "血痕切斧",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3509650.webp"
+        },
+        {
+          "type": "盾牌",
+          "id": 178867,
+          "name": "无尽帝国壁障",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3482400.webp"
+        },
+        {
+          "type": "副手",
+          "id": 178868,
+          "name": "死亡行者的应许",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3502035.webp"
+        }
+      ]
+    },
+    {
+      "type": "防具",
+      "loots": [
+        {
+          "type": "肩膀",
+          "id": 178803,
+          "name": "魔药残迹披肩",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3527525.webp"
+        },
+        {
+          "type": "胸甲",
+          "id": 178792,
+          "name": "缝魂法衣",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3527523.webp"
+        },
+        {
+          "type": "腕部",
+          "id": 178806,
+          "name": "染菌纱布裹腕",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3527510.webp"
+        },
+        {
+          "type": "腰部",
+          "id": 178804,
+          "name": "堕落女皇腰索",
+          "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3527505.webp"
+        }
+      ]
+    }
+  ]
+}
