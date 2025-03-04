@@ -45,25 +45,37 @@ async function collect(url) {
     }
 
     const $ = cheerio.load(html);
+    const dungeonData = await getDungeonData(url);
     const { routes, ratings } = getRoutesAndRatings($);
     const utilityNeeds = getUtilityNeeds($);
-    const enemyTips = await getBossAndTrash($, url);
+    const enemyTips = await getBossAndTrash($, url, dungeonData);
     const lootPool = await getLootPoll($);
 
-    const data = { routes, ratings, utilityNeeds, enemyTips, lootPool };
-    saveFile(data, url);
+    console.log(`获取数据成功：${url}`);
+    return {
+      dungeon: dungeonData.name_zh,
+      routes,
+      ratings,
+      utilityNeeds,
+      enemyTips,
+      lootPool,
+    };
   } catch (error) {
-    console.error(error);
+    console.error(`获取数据失败：${error.message}`);
   } finally {
     await browser?.close?.();
   }
 }
 
-function getMythicDungeon(context) {
-  const $ = context;
+//#region 大秘境路线 和 评分
+async function getDungeonData(url) {
+  const dungeonNameFomatted = url
+    .split('-')
+    .slice(0, url.split('-').length - 1)
+    .join(' ');
+  return queryDungeon(dungeonNameFomatted);
 }
 
-//#region 大秘境路线 和 评分
 function getRoutesAndContainer(context, ele) {
   const $ = context;
   if ($(ele).find('figure')?.length) {
@@ -144,7 +156,7 @@ function getRoutesAndRatings(context) {
 
 //#region 能力技要求
 function getTitle(title) {
-  return {
+  const locales = {
     enrage: '激怒',
     bleed: '流血',
     disease: '疾病',
@@ -152,6 +164,7 @@ function getTitle(title) {
     'magic dispel': '魔法(防御驱散)',
     'magic purge': '魔法(进攻驱散)',
   };
+  return locales[title.toLowerCase()];
 }
 function getUtilityNeeds(context) {
   const $ = context;
@@ -243,15 +256,12 @@ function getBossAndTrashSeletors(context) {
         ].includes(selector)
     );
 }
-async function getBossAndTrashTitle(context, dungeonName, selector) {
+async function getBossAndTrashTitle(context, dungeonData, selector) {
   const $ = context;
   const title = $(selector).text().trim().toLowerCase();
-  const dungeonNameFomatted = dungeonName.replaceAll('-', ' ');
   const type = title.includes('trash area') ? 'trash' : 'boss';
   let translatedTitle = title.includes('trash area') ? '前的小怪' : '';
   const bossName = title.replace('trash area', '').trim();
-
-  const dungeonData = await queryDungeon(dungeonNameFomatted);
 
   const bossNameZH = JSON.parse(dungeonData?.bosses)?.find(
     (item) => item.name.en_US.toLowerCase() === bossName
@@ -423,11 +433,11 @@ async function getBoss(context, containerEle) {
   );
   return results.map((result) => result.value);
 }
-async function getBossAndTrashDetail(context, dungeonName, selector) {
+async function getBossAndTrashDetail(context, dungeonData, selector) {
   const $ = context;
   const { title, type } = await getBossAndTrashTitle(
     context,
-    dungeonName,
+    dungeonData,
     selector
   );
   const reference = $(selector).parentsUntil('#main-article').last();
@@ -451,17 +461,13 @@ async function getBossAndTrashDetail(context, dungeonName, selector) {
   }
   return detailData;
 }
-async function getBossAndTrash(context, url) {
+async function getBossAndTrash(context, url, dungeonData) {
   const $ = context;
   const titles = getBossAndTrashSeletors(context);
-  const dungeonName = url
-    .split('-')
-    .slice(0, url.split('-').length - 1)
-    .join(' ');
   const results = await Promise.allSettled(
     titles
       .slice(0, 1)
-      .map((selector) => getBossAndTrashDetail($, dungeonName, selector))
+      .map((selector) => getBossAndTrashDetail($, dungeonData, selector))
   );
 
   deepseek.saveTranslationCache();
@@ -603,4 +609,18 @@ function saveFile(data, fileName) {
   fs.writeFileSync(copyPath, JSON.stringify(data, null, 2), 'utf-8');
 }
 
-collect('theater-of-pain-guide');
+async function startCrawler() {
+  const mythicDungeons = ['theater-of-pain-guide'];
+  const results = await Promise.allSettled(
+    mythicDungeons.map((item) => collect(item))
+  );
+
+  const errors = results.filter((item) => item.status !== 'fulfilled');
+  if (!errors.length) {
+    console.log(`全部大秘境数据获取成功。`);
+    const data = results.map((item) => item.value);
+    saveFile(data, 'mythic-dungeon');
+  }
+}
+
+startCrawler();
