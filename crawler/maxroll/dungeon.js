@@ -215,7 +215,7 @@ function getBossAndTrashSeletors(context) {
     .first()
     .find('div>a')
     .map((i, ele) => {
-      return $(ele).attr('href');
+      return $(ele).attr('href').replaceAll("'", "\\'").replaceAll(',', '\\,');
     })
     .get()
     .filter(
@@ -287,6 +287,7 @@ async function translateSpellsInText(context, liEle) {
         return {
           name: $(ele).text().trim(),
           id: $(ele).attr('data-wow-id'),
+          nameZH: '',
         };
       })
       .get();
@@ -294,7 +295,15 @@ async function translateSpellsInText(context, liEle) {
     const results = await Promise.allSettled(
       spells.map((spell) => translateSpellName(spell))
     );
-    spells = results.map((result) => result.value);
+
+    results.forEach((result) => {
+      if (result.value) {
+        const spell = spells.find((item) => item.id === result.value.id);
+        spell.nameZH = result.value.nameZH;
+      } else {
+        console.log('部分技能翻译失败。');
+      }
+    });
 
     // 更新描述里出现的 技能
     spells.forEach((spell) => {
@@ -306,7 +315,7 @@ async function translateSpellsInText(context, liEle) {
 
   return { text, spells, children };
 }
-async function getTrashDetail(context, containerEle) {
+async function getTrash(context, containerEle) {
   const $ = context;
   const rowOutput = $(containerEle)
     .children()
@@ -343,6 +352,46 @@ async function getTrashDetail(context, containerEle) {
   return rowOutput;
 }
 
+async function getBossSpell(context, containerEle, index) {
+  const $ = context;
+  const spellEle = $(containerEle)
+    .children()
+    .first()
+    .find('span[data-wow-id]')
+    .eq(index);
+  const spellId = $(spellEle).attr('data-wow-id');
+  const spellsData = await querySpellByIds([spellId]);
+  const spellNameEN = $(spellEle).text().trim();
+  const spellNameZH = spellsData?.[0]?.name_zh;
+
+  const infoEle = $(containerEle).children().last().children().eq(index);
+  const textEle = $(infoEle).find('>div>div').first().find('>ul');
+  const imageEle = $(infoEle).find('>div>div').last();
+
+  const text = await traverseCollectUl(context, textEle);
+  return {
+    spellId,
+    spellNameZH,
+    spellNameEN,
+    image: $(imageEle).find('img').attr('src'),
+    data: text,
+  };
+}
+async function getBoss(context, containerEle) {
+  const $ = context;
+
+  const spellCount = $(containerEle)
+    .children()
+    .first()
+    .find('span[data-wow-id]').length;
+  const spellIndexArray = new Array(spellCount).fill(1);
+  const results = await Promise.allSettled(
+    spellIndexArray.map((item, index) =>
+      getBossSpell(context, containerEle, index)
+    )
+  );
+  return results.map((result) => result.value);
+}
 async function getBossAndTrashDetail(context, dungeonName, selector) {
   const $ = context;
   const { title, type } = await getBossAndTrashTitle(
@@ -351,7 +400,13 @@ async function getBossAndTrashDetail(context, dungeonName, selector) {
     selector
   );
   const reference = $(selector).parentsUntil('#main-article').last();
-  const detailContainer = reference.next();
+  if (!reference.length) {
+    throw new Error(`选择器异常：${selector}`);
+  }
+  let detailContainer = reference.next();
+  while (!detailContainer.attr('class')?.includes('tab')) {
+    detailContainer = detailContainer.next();
+  }
 
   let detailData = {
     title,
@@ -359,11 +414,11 @@ async function getBossAndTrashDetail(context, dungeonName, selector) {
     data: [],
   };
   if (type === 'trash') {
-    detailData.data = await getTrashDetail($, detailContainer);
+    detailData.data = await getTrash($, detailContainer);
   } else {
-    
+    detailData.data = await getBoss($, detailContainer);
   }
-  console.log(detailData);
+  return detailData;
 }
 async function getBossAndTrash(context, url) {
   const $ = context;
@@ -375,7 +430,6 @@ async function getBossAndTrash(context, url) {
   const results = await Promise.allSettled(
     titles
       // TODO 一个一个调测
-      .slice(0, 1)
       .map((selector) => getBossAndTrashDetail($, dungeonName, selector))
   );
   console.log(results);
