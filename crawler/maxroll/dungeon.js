@@ -4,7 +4,7 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { queryDungeon } from '../api/index.js';
+import { queryAddSpell, queryDungeon, querySpellByIds } from '../api/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,7 +35,7 @@ async function collect(url) {
     const $ = cheerio.load(html);
     const { routes, ratings } = getRoutesAndRatings($);
     const utilityNeeds = getUtilityNeeds($);
-    await getBossAndTrashInfo($, url);
+    await getBossAndTrash($, url);
     // saveFile(data, url);
   } catch (error) {
     console.error(error);
@@ -209,7 +209,7 @@ function getUtilityNeeds(context) {
 //#endregion
 
 //#region BOSS 及 小怪处理
-function getBossAndTrashTitles(context) {
+function getBossAndTrashSeletors(context) {
   const $ = context;
   return $('aside')
     .first()
@@ -228,31 +228,155 @@ function getBossAndTrashTitles(context) {
         ].includes(selector)
     );
 }
-async function getBossAndTrashDetail(context, dungeonName, selector) {
+async function getBossAndTrashTitle(context, dungeonName, selector) {
   const $ = context;
   const title = $(selector).text().trim().toLowerCase();
   const dungeonNameFomatted = dungeonName.replaceAll('-', ' ');
+  const type = title.includes('trash area') ? 'trash' : 'boss';
   let translatedTitle = title.includes('trash area') ? '前的小怪' : '';
   const bossName = title.replace('trash area', '').trim();
 
   const dungeonData = await queryDungeon(dungeonNameFomatted);
-  S;
+
   const bossNameZH = JSON.parse(dungeonData?.bosses)?.find(
     (item) => item.name.en_US.toLowerCase() === bossName
   )?.name.zh_CN;
 
   translatedTitle = `"${bossNameZH}"${translatedTitle}`;
-  return { title: translatedTitle };
+  return { title: translatedTitle, type };
 }
-async function getBossAndTrashInfo(context, url) {
+
+async function translateSpellName(spell) {
+  const { id, name } = spell;
+  const data = await querySpellByIds([id]);
+  if (data?.[0]) {
+    return { ...spell, nameZH: data[0].name_zh };
+  }
+  await queryAddSpell({ id, name });
+  console.log(`未找到技能ID: ${id}, 已注册`);
+  return spell;
+}
+
+async function traverseCollectUl(context, ulEle) {
   const $ = context;
-  const titles = getBossAndTrashTitles(context);
+  const liEles = $(ulEle).children('li').get();
+  const results = await Promise.allSettled(
+    liEles.map((liEle) => translateSpellsInText(context, liEle))
+  );
+  return results.map((item) => item.value);
+}
+
+async function translateSpellsInText(context, liEle) {
+  const $ = context;
+
+  let spells = [];
+  let children = [];
+
+  const childUl = $(liEle).find('>ul');
+  if (childUl.length) {
+    children = await traverseCollectUl(context, childUl);
+    $(liEle).find('>ul').remove();
+  }
+
+  let text = $(liEle).text().trim();
+
+  if ($(liEle).find('>span span[data-wow-id]').length) {
+    spells = $(liEle)
+      .find('>span span[data-wow-id]')
+      .map((index, ele) => {
+        return {
+          name: $(ele).text().trim(),
+          id: $(ele).attr('data-wow-id'),
+        };
+      })
+      .get();
+
+    const results = await Promise.allSettled(
+      spells.map((spell) => translateSpellName(spell))
+    );
+    spells = results.map((result) => result.value);
+
+    // 更新描述里出现的 技能
+    spells.forEach((spell) => {
+      if (spell.nameZH) {
+        text = text.replaceAll(spell.name, `[${spell.nameZH}]`);
+      }
+    });
+  }
+
+  return { text, spells, children };
+}
+async function getTrashDetail(context, containerEle) {
+  const $ = context;
+  const rowOutput = $(containerEle)
+    .children()
+    .first()
+    .find('span>span')
+    .map((index, trashEle) => {
+      const trashName = $(trashEle).text().trim();
+      const infoContainers = $(containerEle)
+        .children()
+        .last()
+        .find('>div>div')
+        .eq(index);
+      const textUl = infoContainers.children().first().find('>ul');
+      const imageContainer = infoContainers.children().last();
+      return {
+        trashName,
+        trashImage: $(imageContainer).find('img').attr('src'),
+        textUl,
+      };
+    })
+    .get();
+  const ulsOutput = await Promise.allSettled(
+    rowOutput.map((item) => traverseCollectUl($, item.textUl))
+  );
+
+  rowOutput.forEach((item, index) => {
+    if (ulsOutput[index].status !== 'fulfilled') {
+      console.log(`第${index + 1}个小怪获取技能攻略失败。`);
+    } else {
+      item.data = ulsOutput[index].value;
+    }
+  });
+
+  return rowOutput;
+}
+
+async function getBossAndTrashDetail(context, dungeonName, selector) {
+  const $ = context;
+  const { title, type } = await getBossAndTrashTitle(
+    context,
+    dungeonName,
+    selector
+  );
+  const reference = $(selector).parentsUntil('#main-article').last();
+  const detailContainer = reference.next();
+
+  let detailData = {
+    title,
+    type,
+    data: [],
+  };
+  if (type === 'trash') {
+    detailData.data = await getTrashDetail($, detailContainer);
+  } else {
+    
+  }
+  console.log(detailData);
+}
+async function getBossAndTrash(context, url) {
+  const $ = context;
+  const titles = getBossAndTrashSeletors(context);
   const dungeonName = url
     .split('-')
     .slice(0, url.split('-').length - 1)
     .join(' ');
   const results = await Promise.allSettled(
-    titles.map((selector) => getBossAndTrashDetail($, dungeonName, selector))
+    titles
+      // TODO 一个一个调测
+      .slice(0, 1)
+      .map((selector) => getBossAndTrashDetail($, dungeonName, selector))
   );
   console.log(results);
 }
