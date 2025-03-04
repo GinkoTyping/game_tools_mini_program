@@ -44,5 +44,5 @@ export async function queryItemById(id) {
   const res = await axios.get(
     `${process.env.DEV_URL}/api/wow/item/${Number(id)}`
   );
-  return res;
+  return res.data;
 }

@@ -5,6 +5,7 @@
     "dotenv": "^16.4.7"
   },
   "devDependencies": {
+    "bottleneck": "^2.19.5",
     "cheerio": "^1.0.0",
     "p-limit": "^6.2.0",
     "puppeteer": "^24.2.0"

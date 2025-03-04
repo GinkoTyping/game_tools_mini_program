@@ -1,5 +1,6 @@
 import * as cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
+import Bottleneck from 'bottleneck';
 
 import fs from 'fs';
 import path from 'path';
@@ -40,8 +41,10 @@ async function collect(url) {
     const $ = cheerio.load(html);
     const { routes, ratings } = getRoutesAndRatings($);
     const utilityNeeds = getUtilityNeeds($);
-    const enemyData = await getBossAndTrash($, url);
-    await getLootPoll($);
+    const enemyTips = await getBossAndTrash($, url);
+    const lootPool = await getLootPoll($);
+
+    const data = { routes, ratings, utilityNeeds, enemyTips, lootPool };
     // saveFile(data, url);
   } catch (error) {
     console.error(error);
@@ -438,42 +441,86 @@ async function getBossAndTrash(context, url) {
       // TODO 一个一个调测
       .map((selector) => getBossAndTrashDetail($, dungeonName, selector))
   );
-  console.log(results);
+  return results;
 }
 //#endregion
 
 //#region 装备池
+const limiter = new Bottleneck({
+  maxConcurrent: 20,
+  minTime: 30,
+});
 async function getLootByType(context, containerEle, index) {
   const $ = context;
   function mapTypeName(type) {
-    switch (type) {
+    switch (type.toLowerCase()) {
       case 'trinkets/jewelry':
         return '饰品/戒指';
       case 'trinket':
         return '饰品';
+      case 'ring':
+        return '戒指';
       case 'weapons':
         return '武器';
+      case 'polearm':
+        return '长柄武器';
+      case '2-hand axe':
+        return '双手斧';
+      case '1-hand axe':
+        return '单手手斧';
+      case '1-hand mace':
+        return '单手锤';
+      case 'dagger':
+        return '匕首';
+      case 'shield':
+        return '盾牌';
+      case 'off-hand':
+        return '副手';
       case 'armor':
         return '防具';
+
+      case 'head':
+        return '头部';
+      case 'shoulder':
+        return '肩膀';
+      case 'hands':
+        return '手部';
+      case 'chest':
+        return '胸甲';
+      case 'wrist':
+        return '腕部';
+      case 'waist':
+        return '腰部';
+      case 'legs':
+        return '腿部';
+      case 'feet':
+        return '脚部';
       default:
         break;
     }
+    if (type.toLowerCase().includes('hand')) {
+      return '武器';
+    }
+    return type.toLowerCase();
   }
   async function parseItemByRow(row) {
     const type = mapTypeName($(row).children().first().text());
     const itemEle = $(row).children().last().find('span[data-wow-item]');
-    const imageSrc = $(itemEle).find('div').attr('style');
+    const imageSrc = $(itemEle)
+      .find('div')
+      .attr('style')
+      .match(/url\("([^"]+)"\)/)[1];
     const itemId = $(itemEle).attr('data-wow-item').split(':').shift();
     let itemName = $(itemEle).text().trim();
     try {
-      const data = await queryItemById(itemId);
+      const data = await limiter.schedule(() => queryItemById(itemId));
       itemName = data.name;
     } catch (error) {
       console.log(`更新装备名称失败：${error}`);
     }
     return {
       type,
-      id: itemId,
+      id: Number(itemId),
       name: itemName,
       imageSrc,
     };
@@ -488,7 +535,13 @@ async function getLootByType(context, containerEle, index) {
       .trim()
       .toLowerCase()
   );
-  const loots = $(containerEle).children().last().find('tbody tr').get();
+  const loots = $(containerEle)
+    .children()
+    .last()
+    .find('tbody')
+    .eq(index)
+    .find('tr')
+    .get();
   const results = await Promise.allSettled(
     loots.map((item) => parseItemByRow(item))
   );
@@ -508,7 +561,7 @@ async function getLootPoll(context) {
   const results = await Promise.allSettled(
     typeArray.map((item, index) => getLootByType($, lootPoolEle, index))
   );
-  return results;
+  return results.map((result) => result.value);
 }
 //#endregion
 function saveFile(data, fileName) {
