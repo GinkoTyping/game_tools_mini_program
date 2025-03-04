@@ -12,13 +12,13 @@ async function getDungeonByName(params) {
   if (name_zh?.length) {
     return db.get(
       `
-      SELECT * FROM wow_dungeon WHERE name_zh LIKE ?1`,
+      SELECT * FROM wow_dungeon WHERE name_zh COLLATE NOCASE LIKE ?1`,
       [name_zh]
     );
   } else if (name_en?.length) {
     return db.get(
       `
-      SELECT * FROM wow_dungeon WHERE name_en LIKE ?1`,
+      SELECT * FROM wow_dungeon WHERE name_en COLLATE NOCASE LIKE ?1`,
       [name_en]
     );
   }

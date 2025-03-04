@@ -32,3 +32,10 @@ export async function queryAddSpell({ id, name }) {
 
   return res.data;
 }
+
+export async function queryDungeon(name) {
+  const res = await axios.post(`${process.env.DEV_URL}/api/wow/dungeon/query`, {
+    nameEN: name,
+  });
+  return res.data;
+}

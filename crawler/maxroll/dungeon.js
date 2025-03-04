@@ -4,6 +4,7 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { queryDungeon } from '../api/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,6 +35,7 @@ async function collect(url) {
     const $ = cheerio.load(html);
     const { routes, ratings } = getRoutesAndRatings($);
     const utilityNeeds = getUtilityNeeds($);
+    await getBossAndTrashInfo($, url);
     // saveFile(data, url);
   } catch (error) {
     console.error(error);
@@ -47,19 +49,9 @@ function getMythicDungeon(context) {
 }
 
 //#region 大秘境路线 和 评分
-function getRoutesAndContainer(ele) {
+function getRoutesAndContainer(context, ele) {
+  const $ = context;
   if ($(ele).find('figure')?.length) {
-    function getTitle(title) {
-      return {
-        enrage: '激怒',
-        bleed: '流血',
-        disease: '疾病',
-        curse: '诅咒',
-        'magic dispel': '魔法(防御驱散)',
-        'magic purge': '魔法(进攻驱散)',
-      };
-    }
-
     const routes = $(ele)
       .children()
       .first()
@@ -68,7 +60,7 @@ function getRoutesAndContainer(ele) {
         const currentTab = $(ele).children().eq(1).children().eq(index);
 
         return {
-          title: getTitle($(title).text().trim()),
+          title: $(title).text().trim(),
           imageSrc: $(currentTab).find('figure img').attr('src'),
           code: $(currentTab).find('code').text(),
         };
@@ -77,11 +69,12 @@ function getRoutesAndContainer(ele) {
     return { routes, routeContainer: ele };
   }
   if ($(ele).next()?.length) {
-    return getRoutesAndContainer($(ele).next());
+    return getRoutesAndContainer($, $(ele).next());
   }
   return null;
 }
-function getDungeonRating(ele) {
+function getDungeonRating(context, ele) {
+  const $ = context;
   const ratings = $(ele)
     .find('>div')
     .children()
@@ -127,14 +120,24 @@ function getRoutesAndRatings(context) {
   const headerReference = $('#route-header')
     .parentsUntil('#main-article')
     .last();
-  const { routes, routeContainer } = getRoutesAndContainer(headerReference);
-  const ratings = getDungeonRating(routeContainer.next());
+  const { routes, routeContainer } = getRoutesAndContainer($, headerReference);
+  const ratings = getDungeonRating($, routeContainer.next());
 
   return { routes, ratings };
 }
-
 //#endregion
 
+//#region 能力技要求
+function getTitle(title) {
+  return {
+    enrage: '激怒',
+    bleed: '流血',
+    disease: '疾病',
+    curse: '诅咒',
+    'magic dispel': '魔法(防御驱散)',
+    'magic purge': '魔法(进攻驱散)',
+  };
+}
 function getUtilityNeeds(context) {
   const $ = context;
   const headerReference = $('#utility-needs-header')
@@ -148,7 +151,7 @@ function getUtilityNeeds(context) {
     .find('span>span')
     .map((index, ele) => {
       const output = {
-        type: $(ele).text().trim(),
+        type: getTitle($(ele).text().trim()),
         spell: [],
         utility: [],
       };
@@ -203,6 +206,57 @@ function getUtilityNeeds(context) {
 
   return utilityNeeds;
 }
+//#endregion
+
+//#region BOSS 及 小怪处理
+function getBossAndTrashTitles(context) {
+  const $ = context;
+  return $('aside')
+    .first()
+    .find('div>a')
+    .map((i, ele) => {
+      return $(ele).attr('href');
+    })
+    .get()
+    .filter(
+      (selector) =>
+        ![
+          '#route-header',
+          '#utility-needs-header',
+          '#lootpool-header',
+          '#changelog-header',
+        ].includes(selector)
+    );
+}
+async function getBossAndTrashDetail(context, dungeonName, selector) {
+  const $ = context;
+  const title = $(selector).text().trim().toLowerCase();
+  const dungeonNameFomatted = dungeonName.replaceAll('-', ' ');
+  let translatedTitle = title.includes('trash area') ? '前的小怪' : '';
+  const bossName = title.replace('trash area', '').trim();
+
+  const dungeonData = await queryDungeon(dungeonNameFomatted);
+  S;
+  const bossNameZH = JSON.parse(dungeonData?.bosses)?.find(
+    (item) => item.name.en_US.toLowerCase() === bossName
+  )?.name.zh_CN;
+
+  translatedTitle = `"${bossNameZH}"${translatedTitle}`;
+  return { title: translatedTitle };
+}
+async function getBossAndTrashInfo(context, url) {
+  const $ = context;
+  const titles = getBossAndTrashTitles(context);
+  const dungeonName = url
+    .split('-')
+    .slice(0, url.split('-').length - 1)
+    .join(' ');
+  const results = await Promise.allSettled(
+    titles.map((selector) => getBossAndTrashDetail($, dungeonName, selector))
+  );
+  console.log(results);
+}
+//#endregion
 
 function saveFile(data, fileName) {
   const outputPath = path.resolve(__dirname, `./output/${fileName}.json`);
