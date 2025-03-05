@@ -651,10 +651,22 @@ function saveFile(data, fileName) {
   fs.writeFileSync(copyPath, JSON.stringify(data, null, 2), 'utf-8');
 }
 
+const crawlerLimiter = new Bottleneck({
+  maxConcurrent: 2,
+});
 async function startCrawler() {
-  const mythicDungeons = ['theater-of-pain-guide'];
+  const mythicDungeons = [
+    'theater-of-pain-guide',
+    'the-rookery-guide',
+    'the-motherlode-guide',
+    'priory-of-the-sacred-flame-guide',
+    'operation-mechagon-workshop-guide',
+    'operation-floodgate-guide',
+    'darkflame-cleft-guide',
+    'cinderbrew-meadery-guide',
+  ];
   const results = await Promise.allSettled(
-    mythicDungeons.map((item) => collect(item))
+    mythicDungeons.map((item) => crawlerLimiter.schedule(() => collect(item)))
   );
 
   const errors = results.filter((item) => item.status !== 'fulfilled');
