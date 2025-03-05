@@ -734,13 +734,13 @@ const crawlerLimiter = new Bottleneck({
 });
 async function startCrawler() {
   const mythicDungeons = [
-    // 'theater-of-pain-guide',
-    // 'the-rookery-guide',
-    // 'the-motherlode-guide',
-    // 'priory-of-the-sacred-flame-guide',
-    // 'operation-mechagon-workshop-guide',
-    // 'operation-floodgate-guide',
-    // 'darkflame-cleft-guide',
+    'theater-of-pain-guide',
+    'the-rookery-guide',
+    'the-motherlode-guide',
+    'priory-of-the-sacred-flame-guide',
+    'operation-mechagon-workshop-guide',
+    'operation-floodgate-guide',
+    'darkflame-cleft-guide',
     'cinderbrew-meadery-guide',
   ];
   const results = await Promise.allSettled(

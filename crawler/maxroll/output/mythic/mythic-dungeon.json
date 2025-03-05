@@ -123,8 +123,8 @@
             "roleClassZH": "圣骑士",
             "id": "102604:AJgA",
             "name": "‍Blessing of Protection",
-            "nameZH": "召唤食尸鬼",
-            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+            "nameZH": "保护祝福",
+            "desc": "祝福一名小队或团队成员，使其免疫所有物理伤害和有害效果，持续10秒。"
           }
         ]
       },
@@ -3642,8 +3642,8 @@
             "roleClassZH": "圣骑士",
             "id": "102604:AJgA",
             "name": "‍Blessing of Protection",
-            "nameZH": "召唤食尸鬼",
-            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+            "nameZH": "保护祝福",
+            "desc": "祝福一名小队或团队成员，使其免疫所有物理伤害和有害效果，持续10秒。"
           }
         ]
       },
@@ -5379,8 +5379,8 @@
             "roleClassZH": "圣骑士",
             "id": "102604:AJgA",
             "name": "‍Blessing of Protection",
-            "nameZH": "召唤食尸鬼",
-            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+            "nameZH": "保护祝福",
+            "desc": "祝福一名小队或团队成员，使其免疫所有物理伤害和有害效果，持续10秒。"
           }
         ]
       },
@@ -6896,8 +6896,8 @@
             "roleClassZH": "圣骑士",
             "id": "102604:AJgA",
             "name": "‍Blessing of Protection",
-            "nameZH": "召唤食尸鬼",
-            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+            "nameZH": "保护祝福",
+            "desc": "祝福一名小队或团队成员，使其免疫所有物理伤害和有害效果，持续10秒。"
           }
         ]
       },
@@ -8745,8 +8745,8 @@
             "roleClassZH": "圣骑士",
             "id": "102604:AJgA",
             "name": "‍Blessing of Protection",
-            "nameZH": "召唤食尸鬼",
-            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+            "nameZH": "保护祝福",
+            "desc": "祝福一名小队或团队成员，使其免疫所有物理伤害和有害效果，持续10秒。"
           }
         ]
       },
@@ -10324,8 +10324,8 @@
             "roleClassZH": "圣骑士",
             "id": "102604:AJgA",
             "name": "‍Blessing of Protection",
-            "nameZH": "召唤食尸鬼",
-            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+            "nameZH": "保护祝福",
+            "desc": "祝福一名小队或团队成员，使其免疫所有物理伤害和有害效果，持续10秒。"
           }
         ]
       },
@@ -10776,12 +10776,12 @@
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Metal-Gunk-1024x660.webp",
             "data": [
               {
-                "text": "腐蚀性粘液",
+                "text": "[腐蚀泥胶]",
                 "spells": [
                   {
                     "name": "‍Corrosive Gunk",
                     "id": "1215412",
-                    "nameZH": ""
+                    "nameZH": "腐蚀泥胶"
                   }
                 ],
                 "children": [
@@ -11910,8 +11910,8 @@
             "roleClassZH": "圣骑士",
             "id": "102604:AJgA",
             "name": "‍Blessing of Protection",
-            "nameZH": "召唤食尸鬼",
-            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+            "nameZH": "保护祝福",
+            "desc": "祝福一名小队或团队成员，使其免疫所有物理伤害和有害效果，持续10秒。"
           }
         ]
       },
@@ -11955,12 +11955,12 @@
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Soldier-499x1024.webp",
             "data": [
               {
-                "text": "黑血之伤",
+                "text": "[黑血创伤]",
                 "spells": [
                   {
                     "name": "‍Black Blood Wound",
                     "id": "462737",
-                    "nameZH": ""
+                    "nameZH": "黑血创伤"
                   }
                 ],
                 "children": [
@@ -12001,12 +12001,12 @@
                 ]
               },
               {
-                "text": "狙击",
+                "text": "[狙击]",
                 "spells": [
                   {
                     "name": "‍Snipe",
                     "id": "464655",
-                    "nameZH": ""
+                    "nameZH": "狙击"
                   }
                 ],
                 "children": [
@@ -12047,12 +12047,12 @@
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Demolitionist.webp",
             "data": [
               {
-                "text": "R.P.G.G. 是魔兽世界中的一个副本攻略。以下是对该副本的详细攻略：\n\n1. **副本入口**：副本的入口位于[艾泽拉斯]大陆的[东部王国]地区，具体位置在[燃烧平原]的南部。\n\n2. **副本背景**：R.P.G.G. 是[燃烧军团]的一个重要据点，玩家需要组队进入，击败里面的恶魔首领，阻止他们的邪恶计划。\n\n3. **副本结构**：副本分为三个主要区域：\n   - **区域一：恶魔之门**：这里有许多小怪和陷阱，玩家需要小心应对。\n   - **区域二：熔火之心**：这里是副本的核心区域，玩家将面对强大的火焰恶魔。\n   - **区域三：黑暗祭坛**：最终首领[拉格纳罗斯]就在这里，玩家需要击败他才能完成副本。\n\n4. **首领攻略**：\n   - **首领一：火焰领主**：他会召唤火焰元素，玩家需要优先击杀这些元素。\n   - **首领二：熔岩巨人**：他会释放大范围的熔岩攻击，玩家需要分散站位。\n   - **最终首领：拉格纳罗斯**：他会使用强大的火焰法术，玩家需要躲避他的技能并集中火力输出。\n\n5. **奖励**：完成副本后，玩家可以获得[史诗装备]和[稀有材料]，这些奖励对提升角色实力非常有帮助。\n\n希望这份攻略能帮助你在R.P.G.G.副本中取得胜利！",
+                "text": "[R.P.G.G.]",
                 "spells": [
                   {
                     "name": "‍R.P.G.G.",
                     "id": "1216039",
-                    "nameZH": ""
+                    "nameZH": "R.P.G.G."
                   }
                 ],
                 "children": [
@@ -12232,12 +12232,12 @@
                 ]
               },
               {
-                "text": "[团队战术]",
+                "text": "[兽群战术]",
                 "spells": [
                   {
                     "name": "‍Pack Tactics",
                     "id": "469771",
-                    "nameZH": ""
+                    "nameZH": "兽群战术"
                   }
                 ],
                 "children": [
@@ -12368,7 +12368,7 @@
         "data": [
           {
             "spellId": "471585",
-            "spellNameZH": "",
+            "spellNameZH": "动员无人机",
             "spellNameEN": "‍Mobilize Mechadrones",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-MobilizeMechadrones-ezgif.com-optimize.gif",
             "image": "‍Mobilize Mechadrones.gif",
@@ -12406,12 +12406,12 @@
                     ]
                   },
                   {
-                    "text": "射击",
+                    "text": "[射击]",
                     "spells": [
                       {
                         "name": "‍Shoot",
                         "id": "460393",
-                        "nameZH": ""
+                        "nameZH": "射击"
                       }
                     ],
                     "children": [
@@ -12423,12 +12423,12 @@
                     ]
                   },
                   {
-                    "text": "末日风暴",
+                    "text": "[毁灭风暴]",
                     "spells": [
                       {
                         "name": "‍Doom Storm",
                         "id": "472452",
-                        "nameZH": ""
+                        "nameZH": "毁灭风暴"
                       }
                     ],
                     "children": [
@@ -12456,12 +12456,12 @@
                 "children": []
               },
               {
-                "text": "当它们的能量储备完全恢复后，Big M.O.M.M.A. 会留下[过度电气化]，这是一个地面效果，每秒对站在其中的玩家造成自然伤害。",
+                "text": "当它们的储备完全充能后，Big M.O.M.M.A.会留下[超量电化]，这是一个地面效果，每秒对站在其中的玩家造成自然伤害。",
                 "spells": [
                   {
                     "name": "‍Excessive Electrification",
                     "id": "473287",
-                    "nameZH": ""
+                    "nameZH": "超量电化"
                   }
                 ],
                 "children": []
