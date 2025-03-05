@@ -7,6 +7,12 @@
 	},
 	"pages": [
 		{
+			"path": "pages/mythic-dungeon/index",
+			"style": {
+				"navigationBarTitleText": "银子的搜罗坊"
+			}
+		},
+		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "银子的搜罗坊"

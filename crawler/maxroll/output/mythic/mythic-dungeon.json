@@ -2341,22 +2341,18 @@
     "ratings": [
       {
         "label": "高层钥匙",
-        "score": 5,
-        "scoreText": "困难"
+        "score": 2,
+        "scoreText": "中等"
       },
       {
         "label": "集合石组队",
-        "score": 5,
-        "scoreText": "困难"
+        "score": 2,
+        "scoreText": "中等"
       },
       {
         "label": "能力技、辅助技能需求",
-        "score": 5,
-        "scoreText": "困难"
-      },
-      {
-        "score": 5,
-        "scoreText": "困难"
+        "score": 2,
+        "scoreText": "中等"
       }
     ],
     "utilityNeeds": [],

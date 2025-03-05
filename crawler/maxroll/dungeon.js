@@ -55,7 +55,7 @@ function getRoutesAndContainer(context, ele) {
         };
       })
       .get();
-    return { routes, routeContainer: ele };
+    return { routes, routeContainer: $(tabsEle) };
   }
   if ($(ele).next()?.length) {
     return getRoutesAndContainer($, $(ele).next());
