@@ -20,24 +20,24 @@ interface IBisDataDTO {
   talents: { talent: string; code: string }[];
 }
 
+function mapRatings(rating: number) {
+  let count = rating;
+  let index = 0;
+  const array = new Array(5).fill(0);
+  while (count > 0) {
+    array[index] = 1;
+    count--;
+    index++;
+  }
+  return array;
+}
+
 export async function queryBis(roleClass: string, classSpec: string) {
   const res = await uni.request({
     url: `${BASE_URL}/wow/bis/${roleClass}/${classSpec}`,
     method: 'GET',
   });
   const data = res.data as IBisDataDTO;
-
-  function mapRatings(rating: number) {
-    let count = rating;
-    let index = 0;
-    const array = new Array(5).fill(0);
-    while (count > 0) {
-      array[index] = 1;
-      count--;
-      index++;
-    }
-    return array;
-  }
 
   function mapRatingComment(label: string, score: number) {
     switch (score) {
@@ -300,4 +300,29 @@ export async function queryTierList(params: {
   } catch (error) {
     return {} as ITierListDTO;
   }
+}
+
+export async function queryMythicDungeonById(id: number) {
+  const res: any = await uni.request({
+    url: `${BASE_URL}/wow/mythic-dungeon/${id}`,
+  });
+  function mapUtilityNeeds(data: any) {
+    return data.map((item: any) => {
+      return {
+        ...item,
+        spell: item.spell.filter((childItem: any) => childItem !== null),
+        utility: item.utility.filter((childItem: any) => childItem !== null),
+      };
+    });
+  }
+  return {
+    ...res.data,
+    utilityNeeds: mapUtilityNeeds(res.data.utilityNeeds),
+    ratings: res.data.ratings.map((item: any) => ({
+      ...item,
+      comment: item.scoreText,
+      rating: mapRatings(item.score),
+      ratingScore: item.score,
+    })),
+  };
 }

@@ -141,3 +141,9 @@ $priest: rgb(255, 255, 255);
     background-color: $uni-bg-color-grey;
   }
 }
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

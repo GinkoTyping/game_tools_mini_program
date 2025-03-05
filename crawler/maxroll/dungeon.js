@@ -15,6 +15,7 @@ import {
 import '../util/set-env.js';
 import { useDeepseek } from '../util/deepseek.js';
 import { downloadSingle } from '../util/download.js';
+import roleClassLabel from '../util/class-spec-locales.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,10 +32,17 @@ async function getDungeonData(url) {
   return queryDungeon(dungeonNameFomatted);
 }
 
-function getRoutesAndContainer(context, ele, dungeonName) {
+function getRoutesAndContainer(context, ele) {
   const $ = context;
   if ($(ele).find('figure')?.length) {
-    const routes = $(ele)
+    const reference = $(ele)
+      .find('figure')
+      .first()
+      .parentsUntil('#main-article');
+    const tabsEle = $(reference)
+      .filter((index, ele) => $(ele).attr('class')?.includes('tabs'))
+      .get()?.[0];
+    const routes = $(tabsEle)
       .children()
       .first()
       .find('span>span')
@@ -101,11 +109,7 @@ async function getRoutesAndRatings(context, dungeonName) {
   const headerReference = $('#route-header')
     .parentsUntil('#main-article')
     .last();
-  const { routes, routeContainer } = getRoutesAndContainer(
-    $,
-    headerReference,
-    dungeonName
-  );
+  const { routes, routeContainer } = getRoutesAndContainer($, headerReference);
   const ratings = getDungeonRating($, routeContainer.next());
 
   await Promise.allSettled(
@@ -136,7 +140,7 @@ function getTitle(title) {
   };
   return locales[title.toLowerCase()];
 }
-function getUtilityNeeds(context) {
+async function getUtilityNeeds(context) {
   const $ = context;
   const headerReference = $('#utility-needs-header')
     .parentsUntil('#main-article')
@@ -166,8 +170,8 @@ function getUtilityNeeds(context) {
           .find('>li>span span[data-wow-id]')
           .map((spellIndex, spell) => {
             return {
-              spellId: $(spell).attr('data-wow-id'),
-              spellName: $(spell).text().trim(),
+              id: $(spell).attr('data-wow-id'),
+              name: $(spell).text().trim(),
             };
           })
           .get();
@@ -190,9 +194,17 @@ function getUtilityNeeds(context) {
               .first();
 
             // TODO: spellid 为 126443:AJwA格式时，id是错误的
-            const spellId = $(spellEle).attr('data-wow-id');
-            const spellName = $(spellEle).text().trim();
-            return { roleClass: roleClass, spellId, spellName };
+            const id = $(spellEle).attr('data-wow-id');
+            const name = $(spellEle).text().trim();
+            return {
+              roleClass: roleClass,
+              roleClassZH:
+                roleClassLabel.class[
+                  roleClass.replaceAll(' ', '-').toLowerCase()
+                ],
+              id,
+              name,
+            };
           })
           .get();
       } else {
@@ -202,7 +214,24 @@ function getUtilityNeeds(context) {
     })
     .get();
 
-  return utilityNeeds;
+  async function translateUtilitySpells(utilityTpye) {
+    const { spell, utility } = utilityTpye;
+    const spellResults = await Promise.allSettled(
+      spell.map((item) => translateSpellName(item))
+    );
+    utilityTpye.spell = spellResults.map((item) => item.value);
+
+    const utilityResults = await Promise.allSettled(
+      utility.map((item) => translateSpellName(item))
+    );
+    utilityTpye.utility = utilityResults.map((item) => item.value);
+    return utilityTpye;
+  }
+
+  const results = await Promise.allSettled(
+    utilityNeeds.map((item) => translateUtilitySpells(item))
+  );
+  return results.map((item) => item.value);
 }
 //#endregion
 
@@ -245,7 +274,11 @@ async function translateSpellName(spell) {
   const { id, name } = spell;
   const data = await querySpellByIds([id]);
   if (data?.[0]) {
-    return { ...spell, nameZH: data[0].name_zh };
+    return {
+      ...spell,
+      nameZH: data[0].name_zh,
+      desc: data[0].description,
+    };
   }
   await queryAddSpell({ id, name });
   console.log(`未找到技能ID: ${id}, 已注册`);
@@ -617,12 +650,13 @@ async function collect(url) {
       $,
       dungeonData.name_en
     );
-    const utilityNeeds = getUtilityNeeds($);
+    const utilityNeeds = await getUtilityNeeds($);
     const enemyTips = await getBossAndTrash($, url, dungeonData);
     const lootPool = await getLootPoll($);
 
     console.log(`获取数据成功：${url}`);
     return {
+      dungeonId: dungeonData.id,
       dungeon: dungeonData.name_zh,
       dungeonEN: dungeonData.name_en,
       routes,
@@ -647,8 +681,26 @@ function saveFile(data, fileName) {
     __dirname,
     `../../backend/database/wow/data/mythic/${fileName}.json`
   );
-  fs.writeFileSync(outputPath, JSON.stringify(data, null, 2), 'utf-8');
-  fs.writeFileSync(copyPath, JSON.stringify(data, null, 2), 'utf-8');
+
+  let existedData = [];
+  if (fs.existsSync(outputPath)) {
+    existedData = JSON.parse(fs.readFileSync(outputPath));
+  }
+
+  data.forEach((item) => {
+    let existedIndex = existedData.findIndex(
+      (existedItem) =>
+        existedItem.dungeonEN && existedItem.dungeonEN === item.dungeonEN
+    );
+    if (existedIndex !== -1) {
+      existedData.splice(existedIndex, 1, item);
+    } else {
+      existedData.push(item);
+    }
+  });
+
+  fs.writeFileSync(outputPath, JSON.stringify(existedData, null, 2), 'utf-8');
+  fs.writeFileSync(copyPath, JSON.stringify(existedData, null, 2), 'utf-8');
 }
 
 const crawlerLimiter = new Bottleneck({
@@ -657,13 +709,13 @@ const crawlerLimiter = new Bottleneck({
 async function startCrawler() {
   const mythicDungeons = [
     'theater-of-pain-guide',
-    'the-rookery-guide',
-    'the-motherlode-guide',
-    'priory-of-the-sacred-flame-guide',
-    'operation-mechagon-workshop-guide',
-    'operation-floodgate-guide',
-    'darkflame-cleft-guide',
-    'cinderbrew-meadery-guide',
+    // 'the-rookery-guide',
+    // 'the-motherlode-guide',
+    // 'priory-of-the-sacred-flame-guide',
+    // 'operation-mechagon-workshop-guide',
+    // 'operation-floodgate-guide',
+    // 'darkflame-cleft-guide',
+    // 'cinderbrew-meadery-guide',
   ];
   const results = await Promise.allSettled(
     mythicDungeons.map((item) => crawlerLimiter.schedule(() => collect(item)))
