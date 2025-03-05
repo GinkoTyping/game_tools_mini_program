@@ -2328,12 +2328,14 @@
     ]
   },
   {
+    "dungeonId": 500,
     "dungeon": "驭雷栖巢",
     "dungeonEN": "The Rookery",
     "routes": [
       {
         "title": "Weekly Route",
-        "code": ""
+        "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Weekly-Route-1-1024x674.webp",
+        "code": "!Tvv3oUnlq0xjJ5)B7U3S34UvEL6DiLFG85w34pLG3UBF6lmdGbNQeffgZCMZCMdydX8Mz88KZnDAD2)PzG0zg)T1(ZW)mJRtNnJD)55VDP7JPN(VWwF)W8QnMZP1B3Sx9VUopBgKL1JRhNTVBNH0VBNTN8tlxdjewh2MVSXNxVEXUC9LZFeEerzg9w7VMUEXC0mEBY5)QZD36VJz(wiXqQ)FOyLi5FcF9MH(0cA8Vd8yiAkKacH1EzE5Mz05OwNRKMOIEfG6zqA90AOi9yqbuiAisyx0UkOJaRTrgSrUmaIchRRdPPai(8DKLAJvk3o(n4Pi8myIKzGo2CLciri7akJmwLZPiF56Rq84v45CUJX6NzphWdL6gUWEu614E7qufnSm2xHNrBfkzCPSMAQSq1Ot4CUxItC9o9kob0v5LHrw6HkGrOynWJEMEfkAYDd4O8QBNa6gftdkMUim(TsV5g9GYuljGRSqI(M8uBSu1ywYqrQG6abvxDtrBKtEkT(gIJmaO12iThD7Wso8vbqQbZLawcNDiS2HjmC3FYGqAhme2oga2IU2bnjzFroraFwQXctNiniGVEGWbEfhGXCikmjAklkhHKkWmOsmfQcZHQrazPCzK6zab1dcVOCvoac384HWnLm5YqTKXG(GHQjtancdKXbMgAeEh0iCc2imzdrsduzzYN9zE4HVvfvwmAWyh9rc8gmHc4Hqd8q2b8qcMQbjfhSeGhI27pHRe8ad(hNPldpD9Dp99OHII3HWAeXgDUhD2eDQHu7Ci66IiqhQapjlqLvGkRG2uKw5sKqhpKiBouLT855AHIrh9JxgiHOWzlF6t49zFe(97HxLo)PzC54pcVk8Ev2VEy2692xU6wIT3Hv)YtX4X3b(LD7j(ssC6A(7"
       }
     ],
     "ratings": [
@@ -2365,7 +2367,7 @@
         "data": [
           {
             "trashName": "Quartermaster Koratite",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Quartermaster-Koratite-Reupload.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Quartermaster-Koratite-Reupload.webp",
             "data": [
               {
                 "text": "[束缚虚空]",
@@ -2385,12 +2387,12 @@
                 ]
               },
               {
-                "text": "熵能护盾",
+                "text": "[熵能护盾]",
                 "spells": [
                   {
                     "name": "‍Entropy Shield",
                     "id": "450628",
-                    "nameZH": ""
+                    "nameZH": "熵能护盾"
                   }
                 ],
                 "children": [
@@ -2405,10 +2407,10 @@
           },
           {
             "trashName": "Cursed Thunderer",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Cursed-Thunderer-Reupload.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Cursed-Thunderer-Reupload.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -2457,15 +2459,15 @@
           },
           {
             "trashName": "Voidrider",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Voidrider.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Voidrider.webp",
             "data": [
               {
-                "text": "本地化的风暴",
+                "text": "[局部风暴]",
                 "spells": [
                   {
                     "name": "‍Localized Storm",
                     "id": "427404",
-                    "nameZH": ""
+                    "nameZH": "局部风暴"
                   }
                 ],
                 "children": [
@@ -2477,12 +2479,12 @@
                 ]
               },
               {
-                "text": "狂野闪电",
+                "text": "[狂野闪电]",
                 "spells": [
                   {
                     "name": "‍Wild Lightning",
                     "id": "474018",
-                    "nameZH": ""
+                    "nameZH": "狂野闪电"
                   }
                 ],
                 "children": [
@@ -2497,10 +2499,10 @@
           },
           {
             "trashName": "Cursed Rooktender",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Cursed-Rooktender-Reupload.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Cursed-Rooktender-Reupload.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -2526,7 +2528,7 @@
           },
           {
             "trashName": "Unruly Stormrook",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Unruly-Stormrook.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Unruly-Stormrook.webp",
             "data": [
               {
                 "text": "[能量弹幕]",
@@ -2563,6 +2565,7 @@
             "spellId": "444250",
             "spellNameZH": "闪电涌流",
             "spellNameEN": "‍Lightning Torrent",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1stboss-LightningTorrent-ezgif.com-optimize.gif",
             "image": "‍Lightning Torrent.gif",
             "data": [
               {
@@ -2582,6 +2585,7 @@
             "spellId": "1214325",
             "spellNameZH": "崩解闪电",
             "spellNameEN": "‍Crashing Thunder",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1stboss-CrashingThunder-ezgif.com-optimize.gif",
             "image": "‍Crashing Thunder.gif",
             "data": [
               {
@@ -2601,6 +2605,7 @@
             "spellId": "474017",
             "spellNameZH": "狂野闪电",
             "spellNameEN": "‍Wild Lightning",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1stboss-WildLightning-ezgif.com-optimize.gif",
             "image": "‍Wild Lightning.gif",
             "data": [
               {
@@ -2619,6 +2624,7 @@
           {
             "spellId": "419871",
             "spellNameEN": "‍Lightning Dash",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1stboss-LightningDash-ezgif.com-optimize.gif",
             "image": "‍Lightning Dash.gif",
             "data": [
               {
@@ -2642,7 +2648,7 @@
         "data": [
           {
             "trashName": "Coalescing Void Diffuser",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Coalescing-Void-Diffuser-Reupload.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Coalescing-Void-Diffuser-Reupload.webp",
             "data": [
               {
                 "text": "[诱集暗影]",
@@ -2662,12 +2668,12 @@
                 ]
               },
               {
-                "text": "弧形虚空",
+                "text": "[弧形虚空]",
                 "spells": [
                   {
                     "name": "‍Arcing Void",
                     "id": "430805",
-                    "nameZH": ""
+                    "nameZH": "弧形虚空"
                   }
                 ],
                 "children": [
@@ -2688,15 +2694,15 @@
           },
           {
             "trashName": "Void-Cursed Crusher",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Void-Cursed-Crusher-Reupload.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Void-Cursed-Crusher-Reupload.webp",
             "data": [
               {
-                "text": "虚空粉碎",
+                "text": "[虚空碾压]",
                 "spells": [
                   {
                     "name": "‍Void Crush",
                     "id": "474031",
-                    "nameZH": ""
+                    "nameZH": "虚空碾压"
                   }
                 ],
                 "children": [
@@ -2708,12 +2714,12 @@
                 ]
               },
               {
-                "text": "腐臭虚空",
+                "text": "[溃烂虚空]",
                 "spells": [
                   {
                     "name": "‍Festering Void",
                     "id": "467907",
-                    "nameZH": ""
+                    "nameZH": "溃烂虚空"
                   }
                 ],
                 "children": [
@@ -2728,10 +2734,10 @@
           },
           {
             "trashName": "Corrupted Oracle",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Corrupted-Oracle.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Corrupted-Oracle.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -2788,6 +2794,7 @@
             "spellId": "424958",
             "spellNameZH": "粉碎现实",
             "spellNameEN": "‍Crush Reality",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2ndboss-CrushReality-ezgif.com-optimize.gif",
             "image": "‍Crush Reality.gif",
             "data": [
               {
@@ -2812,6 +2819,7 @@
             "spellId": "425048",
             "spellNameZH": "黑暗引力",
             "spellNameEN": "‍Dark Gravity",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2ndboss-DarkGravity-ezgif.com-optimize.gif",
             "image": "‍Dark Gravity.gif",
             "data": [
               {
@@ -2831,6 +2839,7 @@
             "spellId": "424737",
             "spellNameZH": "混沌腐蚀",
             "spellNameEN": "‍Chaotic Corruption",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2ndboss-ChaoticCorruption-ezgif.com-optimize.gif",
             "image": "‍Chaotic Corruption.gif",
             "data": [
               {
@@ -2860,10 +2869,10 @@
         "data": [
           {
             "trashName": "Void Ascendant",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Void-Ascendant-489x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Void-Ascendant-489x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -2915,12 +2924,12 @@
                 ]
               },
               {
-                "text": "暗影波",
+                "text": "[晦幽波]",
                 "spells": [
                   {
                     "name": "‍Umbral Wave",
                     "id": "1214546",
-                    "nameZH": ""
+                    "nameZH": "晦幽波"
                   }
                 ],
                 "children": [
@@ -2935,7 +2944,7 @@
           },
           {
             "trashName": "Consuming Voidstone",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Consuming-Voidstone-Reupload.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Consuming-Voidstone-Reupload.webp",
             "data": [
               {
                 "text": "[虚空萃取]",
@@ -2981,15 +2990,15 @@
           },
           {
             "trashName": "Void-Cursed Crusher",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Void-Cursed-Crusher-Reupload.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Void-Cursed-Crusher-Reupload.webp",
             "data": [
               {
-                "text": "虚空粉碎",
+                "text": "[虚空碾压]",
                 "spells": [
                   {
                     "name": "‍Void Crush",
                     "id": "474031",
-                    "nameZH": ""
+                    "nameZH": "虚空碾压"
                   }
                 ],
                 "children": [
@@ -3001,12 +3010,12 @@
                 ]
               },
               {
-                "text": "腐臭虚空",
+                "text": "[溃烂虚空]",
                 "spells": [
                   {
                     "name": "‍Festering Void",
                     "id": "467907",
-                    "nameZH": ""
+                    "nameZH": "溃烂虚空"
                   }
                 ],
                 "children": [
@@ -3021,15 +3030,15 @@
           },
           {
             "trashName": "Afflicted Civilian",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Afflicted-Civilian-Reupload.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Afflicted-Civilian-Reupload.webp",
             "data": [
               {
-                "text": "不稳定",
+                "text": "[动荡]",
                 "spells": [
                   {
                     "name": "‍Instability",
                     "id": "443854",
-                    "nameZH": ""
+                    "nameZH": "动荡"
                   }
                 ],
                 "children": [
@@ -3052,6 +3061,7 @@
             "spellId": "423305",
             "spellNameZH": "虚无颠覆",
             "spellNameEN": "‍Null Upheaval",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3rdboss-NullUpheaval-ezgif.com-optimize.gif",
             "image": "‍Null Upheaval.gif",
             "data": [
               {
@@ -3104,6 +3114,7 @@
             "spellId": "445262",
             "spellNameZH": "虚空壳壁",
             "spellNameEN": "‍Void Shell",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3rdboss-VoidShell-ezgif.com-optimize.gif",
             "image": "‍Void Shell.gif",
             "data": [
               {
@@ -3123,6 +3134,7 @@
             "spellId": "429487",
             "spellNameZH": "释放腐蚀",
             "spellNameEN": "‍Unleash Corruption",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3rdboss-UnleashCorruption-ezgif.com-optimize.gif",
             "image": "‍Unleash Corruption.gif",
             "data": [
               {
@@ -3159,6 +3171,7 @@
             "spellId": "445457",
             "spellNameZH": "湮灭波",
             "spellNameEN": "‍Oblivion Wave",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3rdboss-OblivionWave-ezgif.com-optimize.gif",
             "image": "‍Oblivion Wave.gif",
             "data": [
               {

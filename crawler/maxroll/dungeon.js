@@ -47,7 +47,7 @@ function getRoutesAndContainer(context, ele) {
       .first()
       .find('span>span')
       .map((index, title) => {
-        const currentTab = $(ele).children().eq(1).children().eq(index);
+        const currentTab = $(tabsEle).children().eq(1).children().eq(index);
         return {
           title: $(title).text().trim(),
           imageSrc: $(currentTab).find('figure img').attr('src'),
@@ -712,8 +712,8 @@ const crawlerLimiter = new Bottleneck({
 });
 async function startCrawler() {
   const mythicDungeons = [
-    'theater-of-pain-guide',
-    // 'the-rookery-guide',
+    // 'theater-of-pain-guide',
+    'the-rookery-guide',
     // 'the-motherlode-guide',
     // 'priory-of-the-sacred-flame-guide',
     // 'operation-mechagon-workshop-guide',
