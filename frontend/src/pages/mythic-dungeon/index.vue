@@ -69,7 +69,7 @@
       <uni-list>
         <uni-list-item
           class="utility"
-          :class="[item?.roleClass.toLowerCase()]"
+          :class="[item?.roleClass.toLowerCase().replaceAll(' ', '-')]"
           v-for="item in currentUtility?.utility"
           :title="`${item.roleClassZH} - ${item?.nameZH}`"
           :note="item?.showDesc ? item?.desc?.trim() : ''"
