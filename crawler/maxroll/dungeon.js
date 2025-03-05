@@ -391,11 +391,20 @@ async function getBossSpell(context, containerEle, index) {
   const imageEle = $(infoEle).find('>div>div').last();
 
   const text = await traverseCollectUl(context, textEle);
+
+  const imageSrc = $(imageEle).find('img').attr('src');
+  const image = `${spellNameEN}.gif`;
+
+  await downloadSingle(
+    imageSrc,
+    path.resolve(__dirname, `../../backend/assets/wow/spell/${image}`)
+  );
+
   return {
     spellId,
     spellNameZH,
     spellNameEN,
-    image: $(imageEle).find('img').attr('src'),
+    image,
     data: text,
   };
 }
@@ -446,14 +455,16 @@ async function getBossAndTrash(context, url, dungeonData) {
   const $ = context;
   const titles = getBossAndTrashSeletors(context);
   const results = await Promise.allSettled(
-    titles
-      .slice(0, 1)
-      .map((selector) => getBossAndTrashDetail($, dungeonData, selector))
+    titles.map((selector) => getBossAndTrashDetail($, dungeonData, selector))
   );
 
   deepseek.saveTranslationCache();
 
-  return results;
+  process.on('exit', () => deepseek.saveTranslationCache());
+  process.on('SIGINT', () => {
+    deepseek.saveTranslationCache().then(() => process.exit());
+  });
+  return results.map((item) => item.value);
 }
 //#endregion
 

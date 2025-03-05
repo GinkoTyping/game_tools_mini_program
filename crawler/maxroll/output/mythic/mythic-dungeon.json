@@ -231,146 +231,1867 @@
     ],
     "enemyTips": [
       {
-        "status": "fulfilled",
-        "value": {
-          "title": "\"狭路相逢\"前的小怪",
-          "type": "trash",
-          "data": [
-            {
-              "trashName": "Unyielding Contender",
-              "trashImage": "https://assets-ng.maxroll.gg/wordpress/Unyielding-Contender.webp",
-              "data": [
-                {
-                  "text": "需要驱散的激怒效果：",
-                  "spells": [],
-                  "children": [
-                    {
-                      "text": "[死亡之愿]",
-                      "spells": [
-                        {
-                          "name": "‍Death Wish",
-                          "id": "331510",
-                          "nameZH": "死亡之愿"
-                        }
-                      ],
-                      "children": [
-                        {
-                          "text": "一个激怒增益效果，使施法者造成更多伤害，但同时也会受到更多伤害。",
-                          "spells": [],
-                          "children": []
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "text": "[冲锋]",
-                  "spells": [
-                    {
-                      "name": "‍Charge",
-                      "id": "320679",
-                      "nameZH": "冲锋"
-                    }
-                  ],
-                  "children": [
-                    {
-                      "text": "对一个敌人发起冲锋，并降低其移动速度。",
-                      "spells": [],
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "trashName": "Battlefield Ritualist",
-              "trashImage": "https://assets-ng.maxroll.gg/wordpress/Battlefield-Ritualist-467x1024.webp",
-              "data": [
-                {
-                  "text": "所需打断：[Required Kick]",
-                  "spells": [],
-                  "children": [
-                    {
-                      "text": "[通灵箭]",
-                      "spells": [
-                        {
-                          "name": "‍Necrotic Bolt",
-                          "id": "330784",
-                          "nameZH": "通灵箭"
-                        }
-                      ],
-                      "children": [
-                        {
-                          "text": "对随机一名敌人造成暗影伤害，并施加一个治疗吸收效果。",
-                          "spells": [],
-                          "children": []
-                        }
-                      ]
-                    },
-                    {
-                      "text": "[不洁热情]",
-                      "spells": [
-                        {
-                          "name": "‍Unholy Fervor",
-                          "id": "341902",
-                          "nameZH": "不洁热情"
-                        }
-                      ],
-                      "children": [
-                        {
-                          "text": "每次目标造成伤害时，都会为其恢复生命值。",
-                          "spells": [],
-                          "children": []
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "trashName": "Raging Bloodhorn",
-              "trashImage": "https://assets-ng.maxroll.gg/wordpress/Raging-Bloodhorn.webp",
-              "data": [
-                {
-                  "text": "需要驱散的激怒效果：",
-                  "spells": [],
-                  "children": [
-                    {
-                      "text": "[暴脾气]",
-                      "spells": [
-                        {
-                          "name": "‍Raging Tantrum",
-                          "id": "333241",
-                          "nameZH": "暴脾气"
-                        }
-                      ],
-                      "children": [
-                        {
-                          "text": "狂怒血角进入[暴脾气]状态，每2秒对所有敌人造成物理伤害。",
-                          "spells": [
-                            {
-                              "name": "‍Raging Tantrum",
-                              "id": "333242",
-                              "nameZH": "暴脾气"
-                            }
-                          ],
-                          "children": [
-                            {
-                              "text": "这是一个激怒效果，可以被安抚。",
-                              "spells": [],
-                              "children": []
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
+        "title": "\"狭路相逢\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Unyielding Contender",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Unyielding-Contender.webp",
+            "data": [
+              {
+                "text": "需要驱散的激怒效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[死亡之愿]",
+                    "spells": [
+                      {
+                        "name": "‍Death Wish",
+                        "id": "331510",
+                        "nameZH": "死亡之愿"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "一个激怒增益效果，使施法者造成更多伤害，但同时也会受到更多伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[冲锋]",
+                "spells": [
+                  {
+                    "name": "‍Charge",
+                    "id": "320679",
+                    "nameZH": "冲锋"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对一个敌人发起冲锋，并降低其移动速度。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Battlefield Ritualist",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Battlefield-Ritualist-467x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：[Required Kick]",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[通灵箭]",
+                    "spells": [
+                      {
+                        "name": "‍Necrotic Bolt",
+                        "id": "330784",
+                        "nameZH": "通灵箭"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名敌人造成暗影伤害，并施加一个治疗吸收效果。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[不洁热情]",
+                    "spells": [
+                      {
+                        "name": "‍Unholy Fervor",
+                        "id": "341902",
+                        "nameZH": "不洁热情"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "每次目标造成伤害时，都会为其恢复生命值。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Raging Bloodhorn",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Raging-Bloodhorn.webp",
+            "data": [
+              {
+                "text": "需要驱散的激怒效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[暴脾气]",
+                    "spells": [
+                      {
+                        "name": "‍Raging Tantrum",
+                        "id": "333241",
+                        "nameZH": "暴脾气"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "狂怒血角进入[暴脾气]状态，每2秒对所有敌人造成物理伤害。",
+                        "spells": [
+                          {
+                            "name": "‍Raging Tantrum",
+                            "id": "333242",
+                            "nameZH": "暴脾气"
+                          }
+                        ],
+                        "children": [
+                          {
+                            "text": "这是一个激怒效果，可以被安抚。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"狭路相逢\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "320180",
+            "spellNameZH": "剧毒孢子",
+            "spellNameEN": "‍Noxious Spores",
+            "image": "‍Noxious Spores.gif",
+            "data": [
+              {
+                "text": "当能量达到100时，[苦痛剧场]中的帕瑟兰会向玩家投掷邪恶的药剂，对冲击点范围内的所有玩家造成瘟疫伤害，并生成一片持续2.5分钟的[剧毒孢子]区域，每1.5秒对站在其中的所有玩家造成瘟疫伤害。",
+                "spells": [
+                  {
+                    "name": "‍Noxious Spores",
+                    "id": "320180",
+                    "nameZH": "剧毒孢子"
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "1215738",
+            "spellNameZH": "腐朽之息",
+            "spellNameEN": "‍Decaying Breath",
+            "image": "‍Decaying Breath.gif",
+            "data": [
+              {
+                "text": "随机选择一个玩家，对其前方锥形区域内的所有玩家造成瘟疫伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "始终靠近Boss，以便更容易躲避正面攻击。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "333292",
+            "spellNameZH": "灼热之陨",
+            "spellNameEN": "‍Searing Death",
+            "image": "‍Searing Death.gif",
+            "data": [
+              {
+                "text": "当能量达到100时，苦痛剧场的萨瑟尔会给每个玩家施加一个[灼热之陨]的负面效果，每3秒对受害者周围3码内的所有玩家造成暗影伤害，持续9秒。",
+                "spells": [
+                  {
+                    "name": "‍Searing Death",
+                    "id": "333292",
+                    "nameZH": "灼热之陨"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "分散站位，避免因debuff而互相溅射伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "1215600",
+            "spellNameZH": "枯萎之触",
+            "spellNameEN": "‍Withering Touch",
+            "image": "‍Withering Touch.gif",
+            "data": [
+              {
+                "text": "对随机目标施加一个[枯萎之触]魔法减益效果，每2秒造成暗影伤害，持续12秒。",
+                "spells": [
+                  {
+                    "name": "‍Withering Touch",
+                    "id": "1215600",
+                    "nameZH": "枯萎之触"
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "320300",
+            "spellNameZH": "死灵箭",
+            "spellNameEN": "‍Necromantic Bolt",
+            "image": "‍Necromantic Bolt.gif",
+            "data": [
+              {
+                "text": "在苦痛剧场的萨瑟尔会随机对一名玩家施放冲击，造成暗影伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "可打断。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "1215741",
+            "spellNameZH": "强力碾压",
+            "spellNameEN": "‍Mighty Smash",
+            "image": "‍Mighty Smash.gif",
+            "data": [
+              {
+                "text": "当德西亚的能量达到100点时，她会释放一次强力猛击，对所有玩家造成自然伤害，并在10秒内降低他们的移动速度30%。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "title": "\"无堕者哈夫\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Nekthara the Mangler",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Nekthara-the-Mangler.webp",
+            "data": [
+              {
+                "text": "[旋风斩]",
+                "spells": [
+                  {
+                    "name": "‍Whirlwind",
+                    "id": "317605",
+                    "nameZH": "旋风斩"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对13码范围内的玩家造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[打断怒吼]",
+                "spells": [
+                  {
+                    "name": "‍Interrupting Roar",
+                    "id": "342135",
+                    "nameZH": "打断怒吼"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "打断施法并对所有玩家造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[剑刃旋风]",
+                "spells": [
+                  {
+                    "name": "‍Whirling Blade",
+                    "id": "337037",
+                    "nameZH": "剑刃旋风"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "生成一个地面效果，对站在其中的玩家造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Rek the Hardened",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Rek-the-Hardened-574x1024.webp",
+            "data": [
+              {
+                "text": "[旋风斩]",
+                "spells": [
+                  {
+                    "name": "‍Whirlwind",
+                    "id": "317605",
+                    "nameZH": "旋风斩"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对13码范围内的玩家造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[失衡重击]",
+                "spells": [
+                  {
+                    "name": "‍Unbalancing Blow",
+                    "id": "333845",
+                    "nameZH": "失衡重击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对坦克造成物理伤害，并使其躲闪、招架和格挡几率降低100%。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[迅捷打击]",
+                "spells": [
+                  {
+                    "name": "‍Swift Strikes",
+                    "id": "333839",
+                    "nameZH": "迅捷打击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "增加施法者的攻击速度，并使近战攻击对2个次要目标造成45%的伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Harugia the Bloodthirsty",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Harugia-the-Bloodthirsty-507x1024.webp",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[回旋利刃]  \n技能描述：Boss会投掷一把回旋利刃，利刃会在场地内来回弹射，对路径上的玩家造成大量伤害。  \n应对策略：  \n1. 当Boss开始施放[回旋利刃]时，所有玩家应立即分散站位，避免聚集在一起。  \n2. 注意观察利刃的飞行轨迹，提前预判并避开其路径。  \n3. 如果被利刃击中，治疗职业需要迅速为受伤的玩家提供治疗。  \n4. 坦克职业应尽量将Boss拉至场地边缘，以减少利刃的弹射范围。  \n5. 远程职业应保持与Boss和利刃的安全距离，避免被波及。  \n\n通过以上策略，团队可以有效应对[回旋利刃]技能，减少不必要的伤害和减员。",
+                    "spells": [
+                      {
+                        "name": "‍Ricocheting Blade",
+                        "id": "333861",
+                        "nameZH": "回旋利刃"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机目标造成物理伤害并施加流血效果。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "可以弹射到5码内的额外目标。",
+                            "spells": [],
+                            "children": []
+                          },
+                          {
+                            "text": "可以通过卡视野来避免。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Shambling Arbalest",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Shambling-Arbalest-553x1024.webp",
+            "data": [
+              {
+                "text": "[射击]",
+                "spells": [
+                  {
+                    "name": "‍Shoot",
+                    "id": "319997",
+                    "nameZH": "射击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对随机目标造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[锯齿箭]",
+                    "spells": [
+                      {
+                        "name": "‍Jagged Quarrel",
+                        "id": "330532",
+                        "nameZH": "锯齿箭"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机目标造成物理伤害并施加流血效果。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Ancient Captain",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Ancient-Captain-633x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：[Required Kick]",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[挫志怒吼]",
+                    "spells": [
+                      {
+                        "name": "‍Demoralizing Shout",
+                        "id": "330562",
+                        "nameZH": "挫志怒吼"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "减少所有玩家造成的伤害50%。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[指挥若定]",
+                "spells": [
+                  {
+                    "name": "‍Commanding Presence",
+                    "id": "330545",
+                    "nameZH": "指挥若定"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "增加附近盟友造成的伤害25%，并减少受到的群体伤害75%。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[盾击]",
+                "spells": [
+                  {
+                    "name": "‍Shield Bash",
+                    "id": "330565",
+                    "nameZH": "盾击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "造成物理伤害，并打断施法1秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Advent Nevermore",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Advent-Nevermore-521x1024.webp",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[回旋利刃]  \n技能描述：Boss会投掷一把回旋利刃，利刃会在场地内来回弹射，对路径上的玩家造成大量伤害。  \n应对策略：  \n1. 当Boss开始施放[回旋利刃]时，所有玩家应立即分散站位，避免聚集在一起。  \n2. 注意观察利刃的飞行轨迹，提前预判并避开其路径。  \n3. 如果被利刃击中，治疗职业需要迅速为受伤的玩家提供治疗。  \n4. 坦克职业应尽量将Boss拉至场地边缘，以减少利刃的弹射范围。  \n5. 远程职业应保持与Boss和利刃的安全距离，避免被波及。  \n\n通过以上策略，团队可以有效应对[回旋利刃]技能，减少不必要的伤害和减员。",
+                    "spells": [
+                      {
+                        "name": "‍Ricocheting Blade",
+                        "id": "333861",
+                        "nameZH": "回旋利刃"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机目标造成物理伤害并施加流血效果。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "可以弹射到5码内的额外目标。",
+                            "spells": [],
+                            "children": []
+                          },
+                          {
+                            "text": "可以通过卡视野来避免。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[震地践踏]",
+                "spells": [
+                  {
+                    "name": "‍Seismic Stomp",
+                    "id": "333827",
+                    "nameZH": "震地践踏"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对60码范围内的敌人造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Heavin the Breaker",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Heavin-the-Breaker-716x1024.webp",
+            "data": [
+              {
+                "text": "[巨人打击]",
+                "spells": [
+                  {
+                    "name": "‍Colossus Smash",
+                    "id": "331288",
+                    "nameZH": "巨人打击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "造成物理伤害，并使坦克在10秒内受到的物理伤害增加50%。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[打断怒吼]",
+                "spells": [
+                  {
+                    "name": "‍Interrupting Roar",
+                    "id": "342135",
+                    "nameZH": "打断怒吼"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "打断施法并对所有玩家造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[大地猛击]",
+                "spells": [
+                  {
+                    "name": "‍Ground Smash",
+                    "id": "332708",
+                    "nameZH": "大地猛击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "使20码范围内的所有敌人昏迷，并对其造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Dokigg the Brutalizer",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Dokigg-the-Brutalizer.webp",
+            "data": [
+              {
+                "text": "[暴怒乱舞]",
+                "spells": [
+                  {
+                    "name": "‍Savage Flurry",
+                    "id": "331316",
+                    "nameZH": "暴怒乱舞"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每0.5秒对坦克造成一次物理伤害，持续4秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[碾地猛击]",
+                "spells": [
+                  {
+                    "name": "‍Earthcrusher",
+                    "id": "1215850",
+                    "nameZH": "碾地猛击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对所有玩家造成物理伤害，并在地面生成效果，对落点4码范围内的玩家造成自然伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[旋风斩]",
+                "spells": [
+                  {
+                    "name": "‍Whirlwind",
+                    "id": "317605",
+                    "nameZH": "旋风斩"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对13码范围内的敌人造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"无堕者哈夫\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "320102",
+            "spellNameZH": "鲜血与荣耀",
+            "spellNameEN": "‍Blood and Glory",
+            "image": "‍Blood and Glory.gif",
+            "data": [
+              {
+                "text": "当能量达到100时，Xav会强制将2名玩家送入下方的决斗场。决斗的胜利者将获得[赞美洋溢]效果，而失败者则会受到[鲜血淋漓]的影响。",
+                "spells": [
+                  {
+                    "name": "‍Glorified",
+                    "id": "320165",
+                    "nameZH": "赞美洋溢"
+                  },
+                  {
+                    "name": "‍Bloodied",
+                    "id": "320167",
+                    "nameZH": "鲜血淋漓"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "玩家每秒获得一层[辉煌之战]。",
+                    "spells": [
+                      {
+                        "name": "‍Glorious Combat",
+                        "id": "332670",
+                        "nameZH": "辉煌之战"
+                      }
+                    ],
+                    "children": []
+                  },
+                  {
+                    "text": "如果45秒内没有击败任何一名玩家，两名玩家都会受到[怯懦]的影响。",
+                    "spells": [
+                      {
+                        "name": "‍Cowardice",
+                        "id": "320711",
+                        "nameZH": "怯懦"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[赞美洋溢]",
+                "spells": [
+                  {
+                    "name": "‍Glorified",
+                    "id": "320165",
+                    "nameZH": "赞美洋溢"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "伤害提高10%，持续20秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[鲜血淋漓]",
+                "spells": [
+                  {
+                    "name": "‍Bloodied",
+                    "id": "320167",
+                    "nameZH": "鲜血淋漓"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "造成的伤害降低10%，持续20秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[辉煌之战]",
+                "spells": [
+                  {
+                    "name": "‍Glorious Combat",
+                    "id": "332670",
+                    "nameZH": "辉煌之战"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "战斗中的角色每秒受到3%的额外伤害，且该效果会随时间叠加。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[怯懦]",
+                "spells": [
+                  {
+                    "name": "‍Cowardice",
+                    "id": "320711",
+                    "nameZH": "怯懦"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "造成的伤害降低10%，持续20秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "320050",
+            "spellNameZH": "玛卓克萨斯之力",
+            "spellNameEN": "‍Might of Maldraxxus",
+            "image": "‍Might of Maldraxxus.gif",
+            "data": [
+              {
+                "text": "Xav 跃至竞技场中心，对所有玩家造成物理伤害，并随机组合施展一系列攻击。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[雷音贯耳]",
+                    "spells": [
+                      {
+                        "name": "‍Deafening Crash",
+                        "id": "339415",
+                        "nameZH": "雷音贯耳"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "Xav践踏地面，打断55码范围内所有施法，持续2秒，并对12码范围内的玩家造成物理伤害并将其击退。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[群体顺劈]",
+                    "spells": [
+                      {
+                        "name": "‍Massive Cleave",
+                        "id": "320729",
+                        "nameZH": "群体顺劈"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "Xav 会向前方半圆形区域挥砍，对所有被击中的玩家造成物理伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[碾压重击]",
+                    "spells": [
+                      {
+                        "name": "‍Crushing Slam",
+                        "id": "317231",
+                        "nameZH": "碾压重击"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "Xav猛击地面，对前方一条直线上的玩家造成物理伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "331618",
+            "spellNameZH": "压制战旗",
+            "spellNameEN": "‍Oppressive Banner",
+            "image": "‍Oppressive Banner.gif",
+            "data": [
+              {
+                "text": "Xav会放置一面压迫旗帜，持续存在期间每3秒降低所有玩家15%的移动速度。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "这个效果可以叠加，但可以通过任何类型的自由效果（如[自由祝福]）刷新至0层。",
+                    "spells": [
+                      {
+                        "name": "‍Blessing of Freedom",
+                        "id": "1044",
+                        "nameZH": "自由祝福"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "320644",
+            "spellNameZH": "残酷连击",
+            "spellNameEN": "‍Brutal Combo",
+            "image": "‍Brutal Combo.gif",
+            "data": [
+              {
+                "text": "一系列残忍的近战攻击，对坦克造成逐渐增加的物理伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"库尔萨洛克\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Portal Guardian",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Portal-Guardian-1024x1007.webp",
+            "data": [
+              {
+                "text": "所需诅咒驱散：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[暗影易伤]",
+                    "spells": [
+                      {
+                        "name": "‍Shadow Vulnerability",
+                        "id": "330725",
+                        "nameZH": "暗影易伤"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家施加诅咒，造成暗影伤害并使其受到的暗影伤害提高30%。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[灵魂风暴]",
+                "spells": [
+                  {
+                    "name": "‍Soulstorm",
+                    "id": "330716",
+                    "nameZH": "灵魂风暴"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每2秒对所有玩家造成暗影伤害，持续8秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Maniacal Soulbinder",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Maniacal-Soulbinder-500x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：[Required Kick]",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[通灵箭雨]",
+                    "spells": [
+                      {
+                        "name": "‍Necrotic Bolt Volley",
+                        "id": "330868",
+                        "nameZH": "通灵箭雨"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对所有敌人造成暗影伤害，并施加一个治疗吸收效果。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[通灵箭]",
+                    "spells": [
+                      {
+                        "name": "‍Necrotic Bolt",
+                        "id": "330784",
+                        "nameZH": "通灵箭"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对一个随机目标造成暗影伤害，并施加一个治疗吸收效果。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Bone Magus",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Bone-Magus-547x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：[Required Kick]",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[骨矛]",
+                    "spells": [
+                      {
+                        "name": "‍Bone Spear",
+                        "id": "342675",
+                        "nameZH": "骨矛"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家造成物理伤害并施加流血效果。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "这个技能非常致命，应该始终打断。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[墓穴尖刺]",
+                    "spells": [
+                      {
+                        "name": "‍Grave Spike",
+                        "id": "341771",
+                        "nameZH": "墓穴尖刺"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家造成物理伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "所需魔法净化：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[白骨之盾]",
+                    "spells": [
+                      {
+                        "name": "‍Bone Shield",
+                        "id": "333293",
+                        "nameZH": "白骨之盾"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "一个魔法增益效果，可以吸收即将受到的伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Soulforged Bonereaver",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Soulforged-Bonereaver-1024x550.webp",
+            "data": [
+              {
+                "text": "[白骨风暴]",
+                "spells": [
+                  {
+                    "name": "‍Bonestorm",
+                    "id": "331223",
+                    "nameZH": "白骨风暴"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对8码范围内的敌人每秒造成物理伤害，持续4秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[骨刺]",
+                "spells": [
+                  {
+                    "name": "‍Bone Spikes",
+                    "id": "331237",
+                    "nameZH": "骨刺"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每秒在玩家位置生成地面上的水池，对冲击点3码范围内的任何玩家造成暗影伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Nefarious Darkspeaker",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Nefarious-Darkspeaker-500x1024.webp",
+            "data": [
+              {
+                "text": "所需诅咒驱散：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[荒芜诅咒]",
+                    "spells": [
+                      {
+                        "name": "‍Curse of Desolation",
+                        "id": "333299",
+                        "nameZH": "荒芜诅咒"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对一个随机玩家施加诅咒，每3秒在地面上生成一个池子，对池子3码范围内的玩家造成伤害并使其恐惧1秒。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "所需打断：[Required Kick]",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[魂霜之灵]",
+                    "spells": [
+                      {
+                        "name": "‍Spirit Frost",
+                        "id": "330875",
+                        "nameZH": "魂霜之灵"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对坦克造成冰霜伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[死亡之风]",
+                "spells": [
+                  {
+                    "name": "‍Death Winds",
+                    "id": "333294",
+                    "nameZH": "死亡之风"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "正面释放的龙卷风，对路径上的玩家造成暗影伤害并将其击退。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Shackled Soul",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Shackled-Soul-541x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：[Required Kick]",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[束缚灵魂]",
+                    "spells": [
+                      {
+                        "name": "‍Bind Soul",
+                        "id": "330810",
+                        "nameZH": "束缚灵魂"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "降低目标的移动速度，并每1.5秒造成一次暗影伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"库尔萨洛克\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "473959",
+            "spellNameZH": "抽取灵魂",
+            "spellNameEN": "‍Draw Soul",
+            "image": "‍Draw Soul.gif",
+            "data": [
+              {
+                "text": "库尔萨洛克从玩家身上撕裂灵魂，每2秒造成一次暗影伤害，持续8秒。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "迷失的灵魂会朝着库尔萨洛克移动，并在到达他时引发[灵魂腐蚀]，对所有玩家造成暗影伤害。",
+                    "spells": [
+                      {
+                        "name": "‍Soul Corruption",
+                        "id": "474013",
+                        "nameZH": "灵魂腐蚀"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "473540",
+            "spellNameZH": "黑暗之井",
+            "spellNameEN": "‍Well of Darkness",
+            "image": "‍Well of Darkness.gif",
+            "data": [
+              {
+                "text": "库尔萨洛克会对2名随机玩家施加[黑暗之井]debuff，对4码范围内的玩家造成暗影伤害。",
+                "spells": [
+                  {
+                    "name": "‍Well of Darkness",
+                    "id": "473540",
+                    "nameZH": "黑暗之井"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "分散站位，不要互相AOE。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "474087",
+            "spellNameZH": "通灵喷发",
+            "spellNameEN": "‍Necrotic Eruption",
+            "image": "‍Necrotic Eruption.gif",
+            "data": [
+              {
+                "text": "坦克前方的一条直线，对范围内的所有玩家造成暗影伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "1216475",
+            "spellNameZH": "通灵箭",
+            "spellNameEN": "‍Necrotic Bolt",
+            "image": "‍Necrotic Bolt.gif",
+            "data": [
+              {
+                "text": "对随机目标造成暗影伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "可打断。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "1216474",
+            "spellNameEN": "‍Death Spiral",
+            "image": "‍Death Spiral.gif",
+            "data": [
+              {
+                "text": "库尔萨洛克会生成4个球体，这些球体会在竞技场内移动，并对任何触碰它们的玩家每秒造成暗影伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"斩血\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Blighted Sludge-Spewer",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Blighted-Sludge-Spewer.webp",
+            "data": [
+              {
+                "text": "所需打断：[Required Kick]",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[凋零释放]",
+                    "spells": [
+                      {
+                        "name": "‍Withering Discharge",
+                        "id": "341969",
+                        "nameZH": "凋零释放"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对所有玩家造成瘟疫伤害，并使他们感染一种疾病。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[腐烂污秽]",
+                    "spells": [
+                      {
+                        "name": "‍Decaying Filth",
+                        "id": "330703",
+                        "nameZH": "腐烂污秽"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家造成瘟疫伤害，并使其感染疾病，每2秒造成一次瘟疫伤害，并使其最大生命值降低5%。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[腾跃猛击]",
+                "spells": [
+                  {
+                    "name": "‍Leaping Thrash",
+                    "id": "330694",
+                    "nameZH": "腾跃猛击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机跳跃到一名玩家身边，对4码范围内的所有敌人造成物理伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "在与这个怪物战斗时，始终保持分散站位，以减少团队受到的伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[嫌恶爆发]",
+                "spells": [
+                  {
+                    "name": "‍Disgusting Burst",
+                    "id": "321041",
+                    "nameZH": "嫌恶爆发"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "死亡时，对冲击区域4码范围内的所有玩家造成瘟疫伤害，并使他们感染一种疾病。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Putrid Butcher",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Putrid-Butcher-1024x836.webp",
+            "data": [
+              {
+                "text": "[吞噬血肉]",
+                "spells": [
+                  {
+                    "name": "‍Devour Flesh",
+                    "id": "330586",
+                    "nameZH": "吞噬血肉"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对坦克造成物理伤害，并为施法者恢复相当于造成伤害300%的生命值。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Disgusting Refuse",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Disgusting-Refuse.webp",
+            "data": [
+              {
+                "text": "[腾跃猛击]",
+                "spells": [
+                  {
+                    "name": "‍Leaping Thrash",
+                    "id": "330694",
+                    "nameZH": "腾跃猛击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机跳跃到一名玩家身边，对4码范围内的所有敌人造成物理伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "在与这个怪物战斗时，始终保持分散站位，以减少团队受到的伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[嫌恶爆发]",
+                "spells": [
+                  {
+                    "name": "‍Disgusting Burst",
+                    "id": "321041",
+                    "nameZH": "嫌恶爆发"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "死亡时，对冲击区域4码范围内的所有玩家造成瘟疫伤害，并使他们感染一种疾病。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Diseased Horror",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Diseased-Horror-668x1024.webp",
+            "data": [
+              {
+                "text": "[血肉之盾]",
+                "spells": [
+                  {
+                    "name": "‍Meat Shield",
+                    "id": "341977",
+                    "nameZH": "血肉之盾"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在施法者周围形成一个吸收护盾。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[腐烂打击]",
+                "spells": [
+                  {
+                    "name": "‍Decaying Strike",
+                    "id": "330697",
+                    "nameZH": "腐烂打击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对玩家造成物理伤害，并对其施加一个疾病效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Rancid Gasbag",
+            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Rancid-Gasbag-1024x911.webp",
+            "data": [
+              {
+                "text": "[疾病之云]",
+                "spells": [
+                  {
+                    "name": "‍Disease Cloud",
+                    "id": "345245",
+                    "nameZH": "疾病之云"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在战斗中，每2秒对附近的玩家持续造成瘟疫伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[邪恶爆发]",
+                "spells": [
+                  {
+                    "name": "‍Vile Eruption",
+                    "id": "330614",
+                    "nameZH": "邪恶爆发"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在[腐臭气囊]的前后各有一个正面范围技能，会对被击中的玩家造成瘟疫伤害并使其迷失方向。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"斩血\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "322795",
+            "spellNameZH": "肉钩",
+            "spellNameEN": "‍Meat Hooks",
+            "image": "‍Meat Hooks.gif",
+            "data": [
+              {
+                "text": "肉钩从天而降，横扫竞技场。被肉钩击中的玩家会被眩晕，并受到[锯齿创口]的影响，这是一个持续8秒的流血效果，每2秒造成一次物理伤害。",
+                "spells": [
+                  {
+                    "name": "‍Jagged Gash",
+                    "id": "323406",
+                    "nameZH": "锯齿创口"
+                  }
+                ],
+                "children": []
+              },
+              {
+                "text": "一些肉钩上附着着[渗漏的残渣]，它们会分裂并攻击玩家。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[渗漏的残渣]每秒会损失其最大生命值的2%。",
+                    "spells": [],
+                    "children": []
+                  },
+                  {
+                    "text": "它们会随机跳向一名玩家，造成物理伤害，并对着落点4码范围内的所有人造成顺劈伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "尽量在怪物存活时保持分散站位。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "死亡后，他们会留下一滩[凝固淤泥]，每1.5秒对站在其中的玩家造成瘟疫伤害，并使其移动速度降低30%。",
+                    "spells": [
+                      {
+                        "name": "‍Coagulating Ooze",
+                        "id": "321447",
+                        "nameZH": "凝固淤泥"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "318406",
+            "spellNameZH": "软肉碎击",
+            "spellNameEN": "‍Tenderizing Smash",
+            "image": "‍Tenderizing Smash.gif",
+            "data": [
+              {
+                "text": "Gorechop会将所有玩家拉向自己并猛击地面，对命中的玩家造成物理伤害并将其击退。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "如果你在[软肉碎击]即将施放时站在戈尔切普的近战范围内，就不会被拉进去，这对远程玩家来说是一个非常有用的小技巧。",
+                    "spells": [
+                      {
+                        "name": "‍Tenderizing Smash",
+                        "id": "318406",
+                        "nameZH": "软肉碎击"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "323515",
+            "spellNameEN": "‍Hateful Strike",
+            "image": "‍Hateful Strike.gif",
+            "data": [
+              {
+                "text": "Gorechop 会攻击坦克，造成物理伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"无尽女皇莫德蕾莎\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "323685",
+            "spellNameZH": "攫取裂隙",
+            "spellNameEN": "‍Grasping Rift",
+            "image": "‍Grasping Rift.gif",
+            "data": [
+              {
+                "text": "Mordretha撕裂出一个[攫取裂隙]，在6秒内将所有玩家拉向它。",
+                "spells": [
+                  {
+                    "name": "‍Grasping Rift",
+                    "id": "323685",
+                    "nameZH": "攫取裂隙"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "被拉入[攫取裂隙]的玩家会受到[死亡之攫]诅咒的影响，该诅咒会使他们昏迷，并在8秒内每2秒造成一次暗影伤害。",
+                    "spells": [
+                      {
+                        "name": "‍Grasping Rift",
+                        "id": "323685",
+                        "nameZH": "攫取裂隙"
+                      },
+                      {
+                        "name": "‍Death Grasp",
+                        "id": "323831",
+                        "nameZH": "死亡之攫"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "如果受到此影响的玩家在初始攻击中幸存下来，请寻找一个诅咒驱散，因为他仍然有机会通过跑出[攫取裂隙]来存活。",
+                        "spells": [
+                          {
+                            "name": "‍Grasping Rift",
+                            "id": "323685",
+                            "nameZH": "攫取裂隙"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "324449",
+            "spellNameZH": "死亡具象",
+            "spellNameEN": "‍Manifest Death",
+            "image": "‍Manifest Death.gif",
+            "data": [
+              {
+                "text": "莫德蕾莎会纠缠所有玩家，每2秒造成一次暗影伤害，持续6秒。当这个效果结束时，会对玩家及其6码范围内的盟友造成额外伤害。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "当效果结束时，每个玩家会在他们的位置召唤一个死亡行者。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "死亡行者会向随机目标施放[湮灭之箭]，造成暗影伤害。",
+                    "spells": [
+                      {
+                        "name": "‍Death Bolt",
+                        "id": "324589",
+                        "nameZH": "湮灭之箭"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "可打断。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "323681",
+            "spellNameZH": "黑暗毁灭",
+            "spellNameEN": "‍Dark Devastation",
+            "image": "‍Dark Devastation.gif",
+            "data": [
+              {
+                "text": "Mordretha引导一道正面光束，持续4.5秒，每0.5秒造成暗影伤害，并将光束内的玩家击退。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "靠近Boss可以更容易躲避正面攻击，因为Mordretha在施法期间也会自转。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "324079",
+            "spellNameZH": "收割之镰",
+            "spellNameEN": "‍Reaping Scythe",
+            "image": "‍Reaping Scythe.gif",
+            "data": [
+              {
+                "text": "莫德蕾莎强化她的镰刀并攻击坦克，造成暗影和物理伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "339573",
+            "spellNameZH": "屠戮回响",
+            "spellNameEN": "‍Echoes of Carnage",
+            "image": "‍Echoes of Carnage.gif",
+            "data": [
+              {
+                "text": "当莫德蕾莎的生命值降至50%时，她会对所有玩家造成暗影伤害，并开始每2秒对团队持续造成暗影伤害，直到战斗结束。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "除此之外，幽灵战士会开始在竞技场中出现，施放[战斗回响]和[幽灵冲锋]。",
+                "spells": [
+                  {
+                    "name": "‍Echo of Battle",
+                    "id": "339550",
+                    "nameZH": "战斗回响"
+                  },
+                  {
+                    "name": "‍Ghostly Charge",
+                    "id": "339751",
+                    "nameZH": "幽灵冲锋"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "[战斗回响]",
+                    "spells": [
+                      {
+                        "name": "‍Echo of Battle",
+                        "id": "339550",
+                        "nameZH": "战斗回响"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "幽灵战士交战，对8码范围内的玩家造成暗影伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[幽灵冲锋]",
+                    "spells": [
+                      {
+                        "name": "‍Ghostly Charge",
+                        "id": "339751",
+                        "nameZH": "幽灵冲锋"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "幽灵骑士们会冲锋穿过竞技场，对路径上的玩家造成暗影伤害并将其击退。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "小心，因为它们的模型实际上比看起来要大。总是多走一步来避开它们。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "lootPool": [

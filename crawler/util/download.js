@@ -3,7 +3,15 @@ import axios from 'axios';
 import path from 'path';
 import archiver from 'archiver';
 
-export async function downloadSingle(url, savePath = './direct_downloads.jpg') {
+export async function downloadSingle(
+  url,
+  savePath = './direct_downloads.jpg',
+  isOverride = false
+) {
+  if (fs.existsSync(savePath) && !isOverride) {
+    return '图片已缓存';
+  }
+
   try {
     const response = await axios({
       url,
