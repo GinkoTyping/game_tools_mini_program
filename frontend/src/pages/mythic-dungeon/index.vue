@@ -97,11 +97,16 @@
       >
         <template v-slot:title>
           <view :class="['menu-title']">
-            <text>{{ dataItem?.trashName || dataItem?.spellNameZH }}</text>
+            <text>{{
+              dataItem?.trashName ||
+              dataItem?.spellNameZH ||
+              dataItem?.spellNameEN
+            }}</text>
           </view>
         </template>
         <view class="tip-image-container">
           <image
+            v-if="dataItem?.imageSrc"
             :class="[`${tip.type}-image`]"
             :mode="tip.type === 'trash' ? 'heightFix' : 'widthFix'"
             :src="dataItem?.imageSrc"
@@ -134,6 +139,9 @@
       </uni-collapse-item>
     </uni-collapse>
   </uni-section>
+
+  <ad-custom unit-id="adunit-ee147e8714106b66"></ad-custom>
+
   <uni-section id="loot-pool" class="shaman" title="装备掉落">
     <uni-card class="section-card">
       <view class="menu">

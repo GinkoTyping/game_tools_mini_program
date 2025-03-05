@@ -35,6 +35,7 @@
       </template>
     </uni-list-item>
   </uni-list>
+  <ad-custom unit-id="adunit-5496b0b56b3b44c6"></ad-custom>
   <ShareIcon />
 </template>
 

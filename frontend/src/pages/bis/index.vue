@@ -189,6 +189,7 @@
       </view>
     </uni-card>
   </uni-section>
+  <ad-custom unit-id="adunit-43dfd4fbca02d516"></ad-custom>
   <uni-section class="dungeon" :class="[classKey]" title="一句话大秘境">
     <uni-card class="section-card">
       <view class="menu">

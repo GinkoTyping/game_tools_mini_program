@@ -31,12 +31,12 @@ const getBarColor = computed(() => {
   return (score: number, cur: number) => {
     if (cur) {
       if (score > 3) {
-        return 'green-bar';
+        return 'red-bar';
       }
       if (score > 1) {
         return 'orange-bar';
       }
-      return 'red-bar';
+      return 'green-bar';
     } else {
       return '';
     }
