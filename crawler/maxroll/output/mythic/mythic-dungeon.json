@@ -2355,7 +2355,202 @@
         "scoreText": "中等"
       }
     ],
-    "utilityNeeds": [],
+    "utilityNeeds": [
+      {
+        "type": "激怒",
+        "spell": [
+          {
+            "id": "427260",
+            "name": "‍Lightning Surge",
+            "nameZH": "闪电涌动",
+            "desc": "激励附近的一只雷鸫，使其造成的伤害提高20，攻击速度提高20。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍hunter",
+            "roleClassZH": "猎人",
+            "id": "126443:AJwA",
+            "name": "‍Tranquilizing Shot",
+            "nameZH": "宁神射击",
+            "desc": "从一个敌方目标身上移除1个激怒效果和1个魔法效果。"
+          },
+          {
+            "roleClass": "‍rogue",
+            "roleClassZH": "盗贼",
+            "id": "5938",
+            "name": "‍Shiv",
+            "nameZH": "毒刃",
+            "desc": "使用你的[强化毒刃: 淬毒利刃 / 副手]进行攻击，造成(125.4% of Attack power)%点物理伤害，驱散所有激怒效果，并对目标施放浓缩形态的激活的非致命药膏。\n\n奖励1个连击点数。"
+          },
+          {
+            "roleClass": "‍druid",
+            "roleClassZH": "德鲁伊",
+            "id": "103307",
+            "name": "‍Soothe",
+            "nameZH": "安抚",
+            "desc": "安抚目标，驱散所有激怒效果。"
+          },
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115607",
+            "name": "‍Oppressing Roar",
+            "nameZH": "压迫怒吼",
+            "desc": "\n对你前方锥形区域内的敌人发出震耳欲聋的咆哮，在接下来的10秒内使影响他们的群体控制持续时间提高50%。[震魂摄魄: 从每个敌人身上移除1个激怒效果。]"
+          },
+          {
+            "roleClass": "‍monk",
+            "roleClassZH": "武僧",
+            "id": "124932",
+            "name": "‍Paralysis",
+            "nameZH": "分筋错骨",
+            "desc": "使目标瘫痪，持续1分钟。只能对一个目标使用。伤害可能取消该效果。"
+          }
+        ]
+      },
+      {
+        "type": "诅咒",
+        "spell": [
+          {
+            "id": "430179",
+            "name": "‍Seeping Corruption",
+            "nameZH": "渗透腐蚀",
+            "desc": "诅咒一名敌人，每2秒造成972987%的暗影伤害，并使虚空在其位置爆发，对冲击点3码范围内的玩家造成2429581点暗影伤害。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍druid",
+            "roleClassZH": "德鲁伊",
+            "id": "103320",
+            "name": "‍Remove Corruption",
+            "nameZH": "气球车部件",
+            "desc": ""
+          },
+          {
+            "roleClass": "‍mage",
+            "roleClassZH": "法师",
+            "id": "80175",
+            "name": "‍Remove Curse",
+            "nameZH": "解除诅咒",
+            "desc": "从一个友方目标身上移除所有诅咒。"
+          },
+          {
+            "roleClass": "‍shaman",
+            "roleClassZH": "萨满",
+            "id": "127884",
+            "name": "‍Cleanse Spirit",
+            "nameZH": "净化灵魂",
+            "desc": "移除一个友方目标身上所有魔法[强化净化灵魂: 和诅咒]效果。"
+          },
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115602",
+            "name": "‍Cauterizing Flame",
+            "nameZH": "灼烧之焰",
+            "desc": "给盟友的伤口加热，移除所有流血、中毒、诅咒和疾病效果。移除任何效果后恢复19,369点生命值。"
+          }
+        ]
+      },
+      {
+        "type": "魔法(防御驱散)",
+        "spell": [
+          {
+            "id": "1214523",
+            "name": "‍Feasting Void",
+            "nameZH": "饕餮虚空",
+            "desc": "虚空能量侵蚀目标玩家，每1.5秒造成4点暗影伤害，持续18秒，并吸收受到的35点治疗量。"
+          },
+          {
+            "id": "429487",
+            "name": "‍Unleash Corruption",
+            "nameZH": "释放腐蚀",
+            "desc": "虚空石畸体释放不稳定的腐蚀，对附近的2个玩家造成648658点暗影伤害，并每1秒额外造成324329点暗影伤害，持续15秒。\n[移除时会在地面形成渗透腐蚀，每1秒对范围内的玩家造成1621645点暗影伤害。]"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍priest",
+            "roleClassZH": "牧师",
+            "id": "32375",
+            "name": "‍Mass Dispel",
+            "nameZH": "群体驱散",
+            "desc": "驱散半径15码范围内的魔法，从5个友方目标身上移除全部的有害魔法效果，并从5个敌方目标身上移除1个有益魔法效果。这种驱散法术非常强大，可以移除通常无法被驱散的魔法效果。"
+          },
+          {
+            "roleClass": "‍warlock",
+            "roleClassZH": "术士",
+            "id": "89808",
+            "name": "‍Singe Magic",
+            "nameZH": "烧灼驱魔",
+            "desc": "用烈火净化有害魔法，从一个盟友身上移除1个有害的魔法效果。\n\n自动施放：\n在主人受魔法效果影响，无法施法时对其施放。\n\n（点击右键以启用或禁用该技能）"
+          }
+        ]
+      },
+      {
+        "type": "魔法(进攻驱散)",
+        "spell": [
+          {
+            "id": "469956",
+            "name": "‍Lightning-Infused",
+            "nameZH": "闪电灌注",
+            "desc": "被注入了闪电能量，使该单位的攻击速度和施法速度提高25%。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍warlock",
+            "roleClassZH": "术士",
+            "id": "388215",
+            "name": "‍Devour Magic",
+            "nameZH": "吞噬魔法",
+            "desc": "从一名敌人身上移除1个增益魔法效果。每吞噬一个魔法效果，术士就会回复(80% of Spell power)点生命值。"
+          },
+          {
+            "roleClass": "‍hunter",
+            "roleClassZH": "猎人",
+            "id": "126443:AJwA",
+            "name": "‍Tranquilizing Shot",
+            "nameZH": "宁神射击",
+            "desc": "从一个敌方目标身上移除1个激怒效果和1个魔法效果。"
+          },
+          {
+            "roleClass": "‍priest",
+            "roleClassZH": "牧师",
+            "id": "103867",
+            "name": "‍Dispel Magic",
+            "nameZH": "驱散魔法",
+            "desc": "驱散敌方目标身上的魔法，移除1个增益魔法效果。"
+          },
+          {
+            "roleClass": "‍shaman",
+            "roleClassZH": "萨满",
+            "id": "127905",
+            "name": "‍Purge",
+            "nameZH": "巨兽之颌",
+            "desc": "用力撕咬，对敌人造成200%的普通伤害。"
+          },
+          {
+            "roleClass": "‍mage",
+            "roleClassZH": "法师",
+            "id": "80140",
+            "name": "‍Spellsteal",
+            "nameZH": "法术吸取",
+            "desc": "从目标身上窃取一个增益法术效果。此效果最多持续2分钟。"
+          },
+          {
+            "roleClass": "‍demon hunter",
+            "roleClassZH": "恶魔猎手",
+            "id": "112926",
+            "name": "‍Consume Magic",
+            "nameZH": "召唤恐惧卫士",
+            "desc": "召唤一名恐惧卫士。"
+          }
+        ]
+      }
+    ],
     "enemyTips": [
       {
         "title": "\"凯里欧斯\"前的小怪",

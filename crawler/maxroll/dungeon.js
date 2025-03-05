@@ -144,6 +144,7 @@ async function getUtilityNeeds(context) {
   const $ = context;
   const headerReference = $('#utility-needs-header')
     .parentsUntil('#main-article')
+    .filter((index, ele) => $(ele).attr('class')?.includes('TitleV2'))
     .last();
   const utilityNeedsContainer = $(headerReference).next();
 
@@ -274,18 +275,23 @@ async function getBossAndTrashTitle(context, dungeonData, selector) {
 }
 
 async function translateSpellName(spell) {
-  const { id, name } = spell;
-  const data = await querySpellByIds([id]);
-  if (data?.[0]) {
-    return {
-      ...spell,
-      nameZH: data[0].name_zh,
-      desc: data[0].description,
-    };
+  try {
+    const { id, name } = spell;
+    const data = await querySpellByIds([id]);
+    if (data?.[0]) {
+      return {
+        ...spell,
+        nameZH: data[0].name_zh,
+        desc: data[0].description,
+      };
+    }
+    await queryAddSpell({ id, name });
+    console.log(`未找到技能ID: ${id}, 已注册`);
+    return spell;
+  } catch (error) {
+    console.log(`翻译技能失败 ${spell.name}: ${error}`);
+    return spell;
   }
-  await queryAddSpell({ id, name });
-  console.log(`未找到技能ID: ${id}, 已注册`);
-  return spell;
 }
 
 async function traverseCollectUl(context, ulEle) {
