@@ -12,7 +12,7 @@
         <view class="slot-header">
           <image
             class="slot-image"
-            src="https://render.worldofwarcraft.com/us/zones/operation-floodgate-small.jpg"
+            :src="`https://ginkolearn.cyou/api/wow/assets/dungeon/${dungeon.id}.webp`"
             mode="heightFix"
           ></image>
         </view>
@@ -35,20 +35,29 @@
       </template>
     </uni-list-item>
   </uni-list>
+  <ShareIcon />
 </template>
 
 <script lang="ts" setup>
 import { queryMythicDunegonList } from '@/api/wow';
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
 import { useNavigator } from '@/hooks/navigator';
+import ShareIcon from '@/components/ShareIcon.vue';
 
 const dungeonList = ref();
 const navigator = useNavigator();
 
 onLoad(async () => {
   dungeonList.value = await queryMythicDunegonList();
+});
+
+onShareAppMessage(() => {
+  return {
+    title: '大秘境攻略',
+    path: 'pages/mythic-dungeon/list',
+  };
 });
 
 const scoreConfig = computed(() => {
@@ -79,6 +88,7 @@ const scoreConfig = computed(() => {
   margin-right: 4px;
   .slot-image {
     object-fit: cover;
+    max-width: 140px;
     height: 80px;
   }
 }

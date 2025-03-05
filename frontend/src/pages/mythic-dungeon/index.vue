@@ -85,13 +85,13 @@
   <uni-section
     id="utility"
     class="shaman"
-    :title="tip.title"
+    :title="tip?.title"
     v-for="tip in mythicDungeonData?.enemyTips"
-    :ket="tip.title"
+    :key="tip?.title"
   >
     <uni-collapse>
       <uni-collapse-item
-        v-show="tip.data?.length"
+        v-if="tip?.data?.length"
         v-for="(dataItem, index) in tip.data"
         :key="index"
       >
@@ -105,6 +105,7 @@
             :class="[`${tip.type}-image`]"
             :mode="tip.type === 'trash' ? 'heightFix' : 'widthFix'"
             :src="dataItem?.imageSrc"
+            @click="() => preiviewImage(dataItem?.imageSrc)"
           />
         </view>
         <view
@@ -166,24 +167,35 @@
     </uni-card>
   </uni-section>
   <view class="footer"></view>
+  <ShareIcon />
 </template>
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
 import { queryMythicDungeonById } from '@/api/wow';
-import Rating from '@/components/rating.vue';
 import { renderTip } from '@/hooks/richTextGenerator';
+import Rating from '@/components/rating.vue';
+import ShareIcon from '@/components/ShareIcon.vue';
 
 const mythicDungeonData = ref();
+const dungeonId = ref();
 onLoad(async (options: any) => {
+  dungeonId.value = options.id;
   mythicDungeonData.value = await queryMythicDungeonById(options.id ?? 382);
   currentUtilityType.value = mythicDungeonData.value?.utilityNeeds[0].type;
   currentLootType.value = mythicDungeonData.value?.lootPool[0].type;
   uni.setNavigationBarTitle({
     title: `大秘境 —— ${mythicDungeonData.value?.nameZH ?? '未知名称'}`,
   });
+});
+
+onShareAppMessage(() => {
+  return {
+    title: `${mythicDungeonData.value?.nameZH}·大秘境攻略`,
+    path: `pages/mythic-dungeon/index?id=${dungeonId.value}`,
+  };
 });
 
 function exportRouteCode(code: string) {

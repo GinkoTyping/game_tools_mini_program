@@ -86,7 +86,7 @@ function getDungeonRating(context, ele) {
           label = '集合石组队';
           break;
         case 2:
-          label = '能力技、辅助技能需求';
+          label = '驱散需求';
           break;
         default:
           break;

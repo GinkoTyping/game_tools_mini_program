@@ -62,31 +62,43 @@
   <view class="divide-section">
     <view class="prefix">
       <view class="icon"></view>
-      <view class="title">排行榜</view>
+      <view class="title">精选板块</view>
     </view>
   </view>
-  <view
-    class="narrow-card"
-    @click="
-      () => homeViewData && navigator.toTierList(homeViewData?.tierLists?.[0])
-    "
-  >
-    <view class="narrow-card_info">
-      <view class="info">
-        <view class="card-name">大秘境专精排行</view>
-        <view class="card-desc">{{
-          homeViewData?.tierLists?.[0]?.version_id
-        }}</view>
+  <view class="narrow-card-container">
+    <view
+      class="narrow-card"
+      @click="
+        () => homeViewData && navigator.toTierList(homeViewData?.tierLists?.[0])
+      "
+    >
+      <view class="narrow-card_info">
+        <view class="info">
+          <view class="card-name">全专精排行</view>
+          <view class="card-desc">{{
+            homeViewData?.tierLists?.[0]?.version_id
+          }}</view>
+        </view>
       </view>
+      <view class="narrow-card_bg"></view>
     </view>
-    <view class="narrow-card_bg"></view>
+    <view class="narrow-card" @click="() => navigator.toMythicDungeonList()">
+      <view class="narrow-card_info highlight-shadow">
+        <uni-icons class="icon" color="#d32121" type="fire-filled" size="24"></uni-icons>
+        <view class="info">
+          <view class="card-name">大秘境攻略</view>
+          <view class="card-desc">MDT路线 | 动图攻略</view>
+        </view>
+      </view>
+      <view class="narrow-card_bg narrow-card_bg--mythic"></view>
+    </view>
   </view>
 
   <!-- 热门 -->
   <view class="divide-section">
     <view class="prefix">
       <view class="icon"></view>
-      <view class="title">热门</view>
+      <view class="title">热门专精</view>
     </view>
     <view class="suffix" @click="navigator.toSpecsMenu">更多职业</view>
   </view>
@@ -338,22 +350,35 @@ $simple-card-width: 43.5vw;
     }
   }
 }
-.narrow-card {
-  width: 100vw;
-  height: 10rem;
+.narrow-card-container {
+  display: flex;
+  justify-content: space-between;
   margin: 0 1rem;
+}
+.narrow-card {
+  width: 43.5vw;
+  height: 10rem;
   border-radius: 1rem;
   position: relative;
   .narrow-card_bg,
   .narrow-card_info {
     border-radius: 1rem;
-    width: calc(100vw - 2.2rem) !important;
+    width: 100%;
     height: calc(100% - 0.2rem) !important;
+  }
+  .highlight-shadow {
+    box-shadow: 0 0 6px 2px $color-legend;
   }
   .narrow-card_info {
     border: 0.1rem solid #6d6d6d;
     background-color: transparent;
     position: relative;
+    .icon {
+      position: absolute;
+      z-index: 2;
+      top: 0.6rem;
+      right: 0.6rem;
+    }
     .info {
       position: absolute;
       z-index: 2;
@@ -367,7 +392,7 @@ $simple-card-width: 43.5vw;
       }
       .card-desc {
         font-size: small;
-        color: #999;
+        color: #fff;
       }
     }
   }
@@ -380,6 +405,9 @@ $simple-card-width: 43.5vw;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/dungeons-high.webp);
+  }
+  .narrow-card_bg--mythic {
+    background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/bg-undermine.jpg);
   }
 }
 

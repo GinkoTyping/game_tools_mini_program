@@ -31,6 +31,12 @@ function toTierList(params: {
   });
 }
 
+function toMythicDungeonList() {
+  uni.navigateTo({
+    url: `/pages/mythic-dungeon/list`,
+  });
+}
+
 function toMythicDungeon(id: number) {
   uni.navigateTo({
     url: `/pages/mythic-dungeon/index?id=${id}`,
@@ -38,5 +44,12 @@ function toMythicDungeon(id: number) {
 }
 
 export function useNavigator() {
-  return { toSpecDetail, toSpecsMenu, toTierList, toPatchLog, toMythicDungeon };
+  return {
+    toSpecDetail,
+    toSpecsMenu,
+    toTierList,
+    toPatchLog,
+    toMythicDungeon,
+    toMythicDungeonList,
+  };
 }
