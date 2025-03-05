@@ -18,3 +18,13 @@ export async function queryMythicDungeonById(req, res) {
     lootPool: JSON.parse(data.loot_pool),
   });
 }
+
+export async function queryMythicDungeonList(req, res) {
+  const data = await mythicDungeonMapper.getMythicDunegonList();
+  res.json(
+    data.map((item) => ({
+      ...item,
+      ratings: JSON.parse(item.ratings),
+    }))
+  );
+}

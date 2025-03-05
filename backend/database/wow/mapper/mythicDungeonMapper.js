@@ -18,6 +18,29 @@ async function getMythicDungeonById(id) {
   );
 }
 
+async function getMythicDunegonList() {
+  return db.all(
+    `SELECT wow_mythic_dungeon.ratings, wow_mythic_dungeon.id, wow_dungeon.name_zh
+    FROM wow_mythic_dungeon
+    LEFT JOIN wow_dungeon ON wow_mythic_dungeon.id = wow_dungeon.id`
+  );
+}
+
+function updateMythicDungeonById(params) {
+  const { id, routes, ratings, utilityNeeds, enemyTips, lootPool } = params;
+  return db.run(
+    `UPDATE wow_mythic_dungeon
+    SET routes=?1,
+      ratings=?2,
+      utility_needs=?3,
+      enemy_tips=?4,
+      loot_pool=?5
+    WHERE id=?6
+    `,
+    [routes, ratings, utilityNeeds, enemyTips, lootPool, id]
+  );
+}
+
 export function useMythicDungeonMapper(database) {
   if (database) {
     db = database;
@@ -26,5 +49,10 @@ export function useMythicDungeonMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { insertMythicDungeon, getMythicDungeonById };
+  return {
+    insertMythicDungeon,
+    getMythicDungeonById,
+    getMythicDunegonList,
+    updateMythicDungeonById,
+  };
 }
