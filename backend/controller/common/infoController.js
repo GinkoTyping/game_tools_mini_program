@@ -23,5 +23,5 @@ export async function queryAccessCount(req, res) {
 
 export async function queryScrollInfo(req, res) {
   // TODO 审核通过之后，提示用户点击
-  res.json('更新BIS配装、职业排行等，点击查看详情。(3.3)');
+  res.json('已更新详细大秘境攻略。(3.6)');
 }
