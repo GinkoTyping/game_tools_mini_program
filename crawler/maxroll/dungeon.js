@@ -14,58 +14,13 @@ import {
 } from '../api/index.js';
 import '../util/set-env.js';
 import { useDeepseek } from '../util/deepseek.js';
+import { downloadSingle } from '../util/download.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const deepseek = useDeepseek(
   path.resolve(__dirname, './cache/translate/index.json')
 );
-
-async function collect(url) {
-  let browser;
-  try {
-    let html;
-    const staticFilePath = `./cache/mythic/${url}.html`;
-    if (fs.existsSync(path.resolve(__dirname, staticFilePath))) {
-      html = fs.readFileSync(path.resolve(__dirname, staticFilePath), 'utf-8');
-    } else {
-      browser = await puppeteer.launch({
-        headless: true,
-        args: [
-          '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36',
-        ],
-      });
-      const page = await browser.newPage();
-      await page.goto(`https://maxroll.gg/wow/dungeons/${url}`, {
-        timeout: 90000,
-        waitUntil: ['domcontentloaded', 'networkidle0'],
-      });
-      html = await page.content();
-      fs.writeFileSync(path.resolve(__dirname, staticFilePath), html, 'utf-8');
-    }
-
-    const $ = cheerio.load(html);
-    const dungeonData = await getDungeonData(url);
-    const { routes, ratings } = getRoutesAndRatings($);
-    const utilityNeeds = getUtilityNeeds($);
-    const enemyTips = await getBossAndTrash($, url, dungeonData);
-    const lootPool = await getLootPoll($);
-
-    console.log(`获取数据成功：${url}`);
-    return {
-      dungeon: dungeonData.name_zh,
-      routes,
-      ratings,
-      utilityNeeds,
-      enemyTips,
-      lootPool,
-    };
-  } catch (error) {
-    console.error(`获取数据失败：${error.message}`);
-  } finally {
-    await browser?.close?.();
-  }
-}
 
 //#region 大秘境路线 和 评分
 async function getDungeonData(url) {
@@ -76,7 +31,7 @@ async function getDungeonData(url) {
   return queryDungeon(dungeonNameFomatted);
 }
 
-function getRoutesAndContainer(context, ele) {
+function getRoutesAndContainer(context, ele, dungeonName) {
   const $ = context;
   if ($(ele).find('figure')?.length) {
     const routes = $(ele)
@@ -85,7 +40,6 @@ function getRoutesAndContainer(context, ele) {
       .find('span>span')
       .map((index, title) => {
         const currentTab = $(ele).children().eq(1).children().eq(index);
-
         return {
           title: $(title).text().trim(),
           imageSrc: $(currentTab).find('figure img').attr('src'),
@@ -142,13 +96,29 @@ function getDungeonRating(context, ele) {
     .get();
   return ratings;
 }
-function getRoutesAndRatings(context) {
+async function getRoutesAndRatings(context, dungeonName) {
   const $ = context;
   const headerReference = $('#route-header')
     .parentsUntil('#main-article')
     .last();
-  const { routes, routeContainer } = getRoutesAndContainer($, headerReference);
+  const { routes, routeContainer } = getRoutesAndContainer(
+    $,
+    headerReference,
+    dungeonName
+  );
   const ratings = getDungeonRating($, routeContainer.next());
+
+  await Promise.allSettled(
+    routes.map((item) =>
+      downloadSingle(
+        item.imageSrc,
+        path.resolve(
+          __dirname,
+          `../../backend/assets/wow/mythic-route/${dungeonName}-${item.title}.webp`
+        )
+      )
+    )
+  );
 
   return { routes, ratings };
 }
@@ -595,6 +565,56 @@ async function getLootPoll(context) {
   return results.map((result) => result.value);
 }
 //#endregion
+
+async function collect(url) {
+  let browser;
+  try {
+    let html;
+    const staticFilePath = `./cache/mythic/${url}.html`;
+    if (fs.existsSync(path.resolve(__dirname, staticFilePath))) {
+      html = fs.readFileSync(path.resolve(__dirname, staticFilePath), 'utf-8');
+    } else {
+      browser = await puppeteer.launch({
+        headless: true,
+        args: [
+          '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36',
+        ],
+      });
+      const page = await browser.newPage();
+      await page.goto(`https://maxroll.gg/wow/dungeons/${url}`, {
+        timeout: 90000,
+        waitUntil: ['domcontentloaded', 'networkidle0'],
+      });
+      html = await page.content();
+      fs.writeFileSync(path.resolve(__dirname, staticFilePath), html, 'utf-8');
+    }
+
+    const $ = cheerio.load(html);
+    const dungeonData = await getDungeonData(url);
+    const { routes, ratings } = await getRoutesAndRatings(
+      $,
+      dungeonData.name_en
+    );
+    const utilityNeeds = getUtilityNeeds($);
+    const enemyTips = await getBossAndTrash($, url, dungeonData);
+    const lootPool = await getLootPoll($);
+
+    console.log(`获取数据成功：${url}`);
+    return {
+      dungeon: dungeonData.name_zh,
+      dungeonEN: dungeonData.name_en,
+      routes,
+      ratings,
+      utilityNeeds,
+      enemyTips,
+      lootPool,
+    };
+  } catch (error) {
+    console.error(`获取数据失败：${error.message}`);
+  } finally {
+    await browser?.close?.();
+  }
+}
 
 function saveFile(data, fileName) {
   const outputPath = path.resolve(

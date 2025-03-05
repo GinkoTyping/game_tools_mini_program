@@ -5,6 +5,7 @@
     "dotenv": "^16.4.7"
   },
   "devDependencies": {
+    "archiver": "^7.0.1",
     "bottleneck": "^2.19.5",
     "cheerio": "^1.0.0",
     "openai": "^4.86.1",

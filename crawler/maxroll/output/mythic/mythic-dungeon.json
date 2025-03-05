@@ -1,6 +1,7 @@
 [
   {
     "dungeon": "伤逝剧场",
+    "dungeonEN": "Theater of Pain",
     "routes": [
       {
         "title": "Weekly Route",
@@ -244,12 +245,12 @@
                   "spells": [],
                   "children": [
                     {
-                      "text": "[死亡之愿]",
+                      "text": "死亡之愿",
                       "spells": [
                         {
                           "name": "‍Death Wish",
                           "id": "331510",
-                          "nameZH": "死亡之愿"
+                          "nameZH": ""
                         }
                       ],
                       "children": [
