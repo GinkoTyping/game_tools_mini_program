@@ -245,12 +245,12 @@
                   "spells": [],
                   "children": [
                     {
-                      "text": "死亡之愿",
+                      "text": "[死亡之愿]",
                       "spells": [
                         {
                           "name": "‍Death Wish",
                           "id": "331510",
-                          "nameZH": ""
+                          "nameZH": "死亡之愿"
                         }
                       ],
                       "children": [

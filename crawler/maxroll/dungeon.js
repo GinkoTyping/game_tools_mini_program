@@ -345,6 +345,17 @@ async function getTrash(context, containerEle) {
       };
     })
     .get();
+  await Promise.allSettled(
+    rowOutput.map((item) =>
+      downloadSingle(
+        item.trashImage,
+        path.resolve(
+          __dirname,
+          `../../backend/assets/wow/creature/${item.trashName}.webp`
+        )
+      )
+    )
+  );
   const ulsOutput = await Promise.allSettled(
     rowOutput.map((item) => traverseCollectUl($, item.textUl))
   );
