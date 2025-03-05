@@ -1,7 +1,7 @@
 let db;
 
 function getPactchList() {
-  return db.all(`SELECT * FROM common_patch`);
+  return db.all(`SELECT * FROM common_patch ORDER BY date DESC;`);
 }
 
 export function usePatchMapper(database) {

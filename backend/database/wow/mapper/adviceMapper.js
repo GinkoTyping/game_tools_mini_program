@@ -1,7 +1,7 @@
 let db;
 
 function getAdviceList() {
-  return db.all(`SELECT * FROM common_advice`);
+  return db.all(`SELECT * FROM common_advice ORDER BY completed_at DESC;`);
 }
 
 export function useAdviceMapper(database) {
