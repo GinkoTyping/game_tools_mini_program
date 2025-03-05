@@ -10430,5 +10430,1620 @@
         ]
       }
     ]
+  },
+  {
+    "dungeonId": 247,
+    "dungeon": "暴富矿区！！",
+    "dungeonEN": "The MOTHERLODE!!",
+    "routes": [
+      {
+        "title": "Weekly Route",
+        "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Weekly-Route-2-1024x680.webp",
+        "code": "!Tvv2UXnmmWFPvhET9J94LGc4gaVb9nbShYjU1XUyx5C83xrsljkTfjyHTf5mdhrkzeMdM(lJddJNxNCFA6e7m9VBT)X)KPFD8IP)P2x(Y7s9R)4fNP)TJtRwiNZRxVANDpUonz6K64h6xpnzFZoH5FDCW9ZHHBw3nFoDazo)FHy)(68Z2L5hU8HFnPNyN1(648ZMtM(B2j7z34YmLiqHpX)6PlcvNCBnHeEUtOmDk8jn(5k819(NHC9ptrRXquWN0baqrTmTC10pmOSddqEBRvrGRrPtCktRXaMcCphyjdya2wlewI0TS5CRSmUHaQzyLyEpPQAcendeLTflGqOkYDuc0ou7YkC8T9P3qq3ugk0GAB4bwJX1WvxvMfoCYxgBjWRFO4ILqdXwMGQ5gAlPJ6chQL5qvCni4jJ46avEy7NyebfqEOK8fwxJgxQQyVZ7PoqtCX0c1jqvylk2A1Y31es2BUycI7tlcf1LgAH5yKbVktKyNRlISiU3byvNHIMJsA)mG1rbUzfYOC4asmWdvrKTRlQi4FrYqzolm7e2t4HF38IlcBOCe0qUGS2SzL2Iq0gx5WvG6YXfrwxKOPqDUezYGqG(Zo5oYlKHgpj5MYg60OwAVKQF)0hEGK5)nSqkqg6aqxkYfU7jJZoehI9zmhM0jFxPrMvveZIcRDJZgZ9dxjA0zAiDahKzR5q58blZO1qDPOAZaB7qgmMYbkPUiirgxupOSYWgiKH(G0X7bdRONoL4(Se3okvwEGCgxPjfxqMY8JFe314uEbW2WJA3DrMgOWRjD2p8)(l)TXtFA6xo9B)nI3WaiiF84K15SpmpSaA(4QB5BW3HRq)ArmWDS0vyM)n"
+      }
+    ],
+    "ratings": [
+      {
+        "label": "高层钥匙",
+        "score": 3,
+        "scoreText": "中等"
+      },
+      {
+        "label": "集合石组队",
+        "score": 4,
+        "scoreText": "困难"
+      },
+      {
+        "label": "能力技、辅助技能需求",
+        "score": 2,
+        "scoreText": "中等"
+      }
+    ],
+    "utilityNeeds": [
+      {
+        "type": "激怒",
+        "spell": [
+          {
+            "id": "262092",
+            "name": "‍Inhale Vapors",
+            "nameZH": "吸入气雾",
+            "desc": "吸入含有艾泽里特成份的强化剂，近战攻击速度和移动速度提高50%，持续15秒。"
+          },
+          {
+            "id": "1213139",
+            "name": "‍Overtime!",
+            "nameZH": "加班加点！",
+            "desc": "施法者发出威严的怒吼，巧妙地鼓舞周围的盟友提高工作效率，使他们的急速提高30%，持续20秒。此效果可叠加。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍hunter",
+            "roleClassZH": "猎人",
+            "id": "126443:AJwA",
+            "name": "‍Tranquilizing Shot",
+            "nameZH": "宁神射击",
+            "desc": "从一个敌方目标身上移除1个激怒效果和1个魔法效果。"
+          },
+          {
+            "roleClass": "‍rogue",
+            "roleClassZH": "盗贼",
+            "id": "5938",
+            "name": "‍Shiv",
+            "nameZH": "毒刃",
+            "desc": "使用你的[强化毒刃: 淬毒利刃 / 副手]进行攻击，造成(125.4% of Attack power)%点物理伤害，驱散所有激怒效果，并对目标施放浓缩形态的激活的非致命药膏。\n\n奖励1个连击点数。"
+          },
+          {
+            "roleClass": "‍druid",
+            "roleClassZH": "德鲁伊",
+            "id": "103307",
+            "name": "‍Soothe",
+            "nameZH": "安抚",
+            "desc": "安抚目标，驱散所有激怒效果。"
+          },
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115607",
+            "name": "‍Oppressing Roar",
+            "nameZH": "压迫怒吼",
+            "desc": "\n对你前方锥形区域内的敌人发出震耳欲聋的咆哮，在接下来的10秒内使影响他们的群体控制持续时间提高50%。[震魂摄魄: 从每个敌人身上移除1个激怒效果。]"
+          },
+          {
+            "roleClass": "‍monk",
+            "roleClassZH": "武僧",
+            "id": "124932",
+            "name": "‍Paralysis",
+            "nameZH": "分筋错骨",
+            "desc": "使目标瘫痪，持续1分钟。只能对一个目标使用。伤害可能取消该效果。"
+          }
+        ]
+      },
+      {
+        "type": "流血",
+        "spell": [
+          {
+            "id": "1213141",
+            "name": "‍Heavy Slash"
+          },
+          {
+            "id": "257544",
+            "name": "‍Jagged Cut"
+          },
+          {
+            "id": "1215411",
+            "name": "‍Puncture",
+            "nameZH": "刺破",
+            "desc": "对目标敌人造成40点物理伤害并使其流血，每1秒额外造成4点物理伤害，持续6秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115602",
+            "name": "‍Cauterizing Flame",
+            "nameZH": "灼烧之焰",
+            "desc": "给盟友的伤口加热，移除所有流血、中毒、诅咒和疾病效果。移除任何效果后恢复19,369点生命值。"
+          },
+          {
+            "roleClass": "‍paladin",
+            "roleClassZH": "圣骑士",
+            "id": "102604:AJgA",
+            "name": "‍Blessing of Protection",
+            "nameZH": "召唤食尸鬼",
+            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+          }
+        ]
+      },
+      {
+        "spell": [
+          {
+            "id": "262268",
+            "name": "‍Caustic Compound",
+            "nameZH": "腐蚀性化合物",
+            "desc": "向敌人投掷腐蚀性化合物，造成486494点自然伤害，并在随后的6秒内每2秒造成405411点自然伤害。"
+          },
+          {
+            "id": "269302",
+            "name": "‍Toxic Blades",
+            "nameZH": "淬毒之刃",
+            "desc": "为施法者的刀刃施加强烈的寡妇蛛毒素，持续10秒，使施法者的近战攻击和飞镖弹幕技能可在6秒内每2秒造成162164点自然伤害。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍paladin",
+            "roleClassZH": "圣骑士",
+            "id": "102476",
+            "name": "‍Cleanse Toxins",
+            "nameZH": "清毒术",
+            "desc": "净化一个友方目标，移除所有中毒效果和疾病效果。"
+          },
+          {
+            "roleClass": "‍druid",
+            "roleClassZH": "德鲁伊",
+            "id": "103320",
+            "name": "‍Remove Corruption",
+            "nameZH": "气球车部件",
+            "desc": ""
+          },
+          {
+            "roleClass": "‍monk",
+            "roleClassZH": "武僧",
+            "id": "124941",
+            "name": "‍Detox",
+            "nameZH": "清创生血",
+            "desc": "移除目标身上所有魔法效果。"
+          },
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115615",
+            "name": "‍Expunge",
+            "nameZH": "净除",
+            "desc": "净除一名盟友沾染的毒素，移除其所有中毒效果。"
+          },
+          {
+            "roleClass": "‍shaman",
+            "roleClassZH": "萨满",
+            "id": "127885",
+            "name": "‍Poison Cleansing Totem",
+            "nameZH": "清毒图腾",
+            "desc": "在你脚下召唤一个图腾，持续6秒。每1.5秒为附近30码范围内的一名小队或团队成员移除所有中毒效果。"
+          }
+        ]
+      }
+    ],
+    "enemyTips": [
+      {
+        "title": "\"投币式群体打击者\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Mechanized Peacekeeper",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechanized-Peacekeeper-1024x962.webp",
+            "data": [
+              {
+                "text": "催泪瓦斯",
+                "spells": [
+                  {
+                    "name": "‍Tear Gas",
+                    "id": "472041",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "制造多个地面效果，对处于其中的玩家造成自然伤害并使其迷惑。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "在释放后留下一片催泪瓦斯池，每秒对池内的任何玩家造成自然伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "充能护盾",
+                "spells": [
+                  {
+                    "name": "‍Charged Shield",
+                    "id": "263628",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "用带电的盾牌攻击坦克，造成自然伤害并降低其移动速度。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "在接下来的16秒内，后续的攻击将会对团队中的每个成员造成闪电溅射伤害。在此期间，如果需要，请确保按下个人减伤技能。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Addled Thug",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Addled-Thug.webp",
+            "data": [
+              {
+                "text": "需要驱散的激怒效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[吸入气雾]",
+                    "spells": [
+                      {
+                        "name": "‍Inhale Vapors",
+                        "id": "262092",
+                        "nameZH": "吸入气雾"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "增加自身的攻击速度和移动速度。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "Addled Thug对坦克造成相当高的伤害，如果可能的话，尽量安抚他。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[上勾拳]",
+                "spells": [
+                  {
+                    "name": "‍Uppercut",
+                    "id": "1217280",
+                    "nameZH": "上勾拳"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机冲向一名玩家，造成物理伤害，并将冲击点4码范围内的所有玩家击飞到空中。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "确保在成为该法术目标时分散站位。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Mech Jockey",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mech-Jockey-689x1024.webp",
+            "data": [
+              {
+                "text": "所需控制技能：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[激活机甲]",
+                    "spells": [
+                      {
+                        "name": "‍Activate Mech",
+                        "id": "267433",
+                        "nameZH": "激活机甲"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "激活附近的一个机械化维和者。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "不惜一切代价阻止这个施法，使用任何可用的控制技能来打断它。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[油脂枪]",
+                "spells": [
+                  {
+                    "name": "‍Grease Gun",
+                    "id": "262019",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机射击一个目标，造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Hired Assassin",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Hired-Assassin-647x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[淬毒之刃]",
+                    "spells": [
+                      {
+                        "name": "‍Toxic Blades",
+                        "id": "269302",
+                        "nameZH": "淬毒之刃"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "将毒素涂抹在刀刃上，使施法者的近战攻击能够使目标中毒，并造成额外的自然伤害。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "如果你错过了打断技能，注意准备解毒技能。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[刀扇]",
+                "spells": [
+                  {
+                    "name": "‍Fan of Knives",
+                    "id": "267354",
+                    "nameZH": "刀扇"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "这是一个引导施法，会对45码范围内的所有人造成物理伤害。使用任何可用的控制技能来打断它，并减少团队受到的伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "如果[淬毒之刃]被施加，受影响的敌人也会中毒。",
+                        "spells": [
+                          {
+                            "name": "‍Toxic Blades",
+                            "id": "269302",
+                            "nameZH": "淬毒之刃"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Refreshment Vendor",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Refreshment-Vendor.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[冰镇汽水]",
+                    "spells": [
+                      {
+                        "name": "‍Iced Spritzer",
+                        "id": "280604",
+                        "nameZH": "冰镇汽水"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对一个随机目标施放持续性的冰霜伤害，每秒造成一次伤害。在引导施法结束时，目标将被眩晕。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "可以使用任何控制技能来打断，作为替代踢技的手段。确保在施法已经开始后再进行打断，而不是在此之前，否则技能会被重新施放。",
+                            "spells": [],
+                            "children": []
+                          },
+                          {
+                            "text": "眩晕效果也是一个可以驱散的魔法减益效果。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Off-Duty Laborer",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Off-Duty-Laborer-518x1024.webp",
+            "data": [
+              {
+                "text": "扔扳手",
+                "spells": [
+                  {
+                    "name": "‍Throw Wrench",
+                    "id": "258674",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "向坦克投掷一个沉重的扳手，造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"投币式群体打击者\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "271785",
+            "spellNameEN": "‍Throw Coins",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-ThrowCoins-ezgif.com-optimize.gif",
+            "image": "‍Throw Coins.gif",
+            "data": [
+              {
+                "text": "观众将成堆的硬币扔进竞技场，在Boss周围生成多个硬币池，并对2码范围内的玩家造成物理伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "271898",
+            "spellNameEN": "‍Coin Magnet",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-CoinMagnet-ezgif.com-optimize.gif",
+            "image": "‍Coin Magnet.gif",
+            "data": [
+              {
+                "text": "当[Pummeler]的能量达到100时，它会激活一个强大的磁铁，吸引15码范围内的所有金币堆，每消耗一堆金币就会获得一层[Pay to Win]效果。",
+                "spells": [
+                  {
+                    "name": "‍Pay to Win",
+                    "id": "271867",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "[付费即赢]：每层效果使首领造成的伤害提高15%。",
+                    "spells": [
+                      {
+                        "name": "‍Pay to Win",
+                        "id": "271867",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "262347",
+            "spellNameZH": "静电脉冲",
+            "spellNameEN": "‍Static Pulse",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-StaticPulse-ezgif.com-optimize.gif",
+            "image": "‍Static Pulse.gif",
+            "data": [
+              {
+                "text": "击退所有玩家，立即造成自然伤害，并在8秒内每2秒造成一次自然伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "1217294",
+            "spellNameZH": "电击之爪",
+            "spellNameEN": "‍Shocking Claw",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-ShockingClaw-ezgif.com-optimize.gif",
+            "image": "‍Shocking Claw.gif",
+            "data": [
+              {
+                "text": "随机对一个玩家释放一个巨大的正面锥形范围技能，对范围内的所有玩家造成自然伤害，并使其昏迷3秒。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "始终靠近Boss，以避免在躲避这个正面技能时出现问题，因为离Boss越远，这个技能的范围就越大。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "256213",
+            "spellNameZH": "足球炸弹发射器",
+            "spellNameEN": "‍Footbomb Launcher",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-FootbombLauncher-ezgif.com-optimize.gif",
+            "image": "‍Footbomb Launcher.gif",
+            "data": [
+              {
+                "text": "向竞技场发射爆炸性的脚部炸弹。15秒后，脚部炸弹触发[定时爆炸]，对100码范围内的所有玩家造成致命的火焰伤害，并施加一个持续15秒的易伤debuff，使受到的伤害增加25%，该debuff可叠加。",
+                "spells": [
+                  {
+                    "name": "‍Timed Detonation",
+                    "id": "256137",
+                    "nameZH": "定时爆炸"
+                  }
+                ],
+                "children": []
+              },
+              {
+                "text": "靠近脚踢炸弹可以让你[踢飞]它。将它踢入投币式群体打击者会给Boss施加一个[炽燃的艾泽里特]减益效果，而不是引爆群体。",
+                "spells": [
+                  {
+                    "name": "‍Punt",
+                    "id": "255996",
+                    "nameZH": "踢飞"
+                  },
+                  {
+                    "name": "‍Blazing Azerite",
+                    "id": "256163",
+                    "nameZH": "炽燃的艾泽里特"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "[炽燃的艾泽里特] debuff 也会叠加。",
+                    "spells": [
+                      {
+                        "name": "‍Blazing Azerite",
+                        "id": "256163",
+                        "nameZH": "炽燃的艾泽里特"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "立即将所有[footbombs]踢向Boss，除了最后一个，可以延迟踢出以延长[炽燃的艾泽里特]的持续时间。",
+                "spells": [
+                  {
+                    "name": "‍Blazing Azerite",
+                    "id": "256163",
+                    "nameZH": "炽燃的艾泽里特"
+                  }
+                ],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"艾泽洛克\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Taskmaster Askari",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Taskmaster-Askari-740x1024.webp",
+            "data": [
+              {
+                "text": "需要驱散的激怒效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[加班加点！]",
+                    "spells": [
+                      {
+                        "name": "‍Overtime!",
+                        "id": "1213139",
+                        "nameZH": "加班加点！"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "赋予附近盟友激怒效果，使其急速提高30%，持续20秒。此效果可叠加。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "残暴冲锋",
+                "spells": [
+                  {
+                    "name": "‍Brutal Charge",
+                    "id": "1214752",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机向一名玩家冲锋，造成物理伤害并降低其移动速度。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[Massive Slam] 译为 [猛烈重击]",
+                "spells": [
+                  {
+                    "name": "‍Massive Slam",
+                    "id": "1214754",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对12码范围内的所有玩家造成自然伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "绝望的举措",
+                "spells": [
+                  {
+                    "name": "‍Desperate Measures",
+                    "id": "263601",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每当监工阿斯卡里生命值降低时，他的近战攻击伤害会增加10%。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[重劈]",
+                "spells": [
+                  {
+                    "name": "‍Heavy Slash",
+                    "id": "1213141",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在坦克身上叠加流血效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Venture Co. Earthshaper",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Earthshaper-655x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[石枪]",
+                    "spells": [
+                      {
+                        "name": "‍Rock Lance",
+                        "id": "263202",
+                        "nameZH": "石枪"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机目标施放魔法石矛，造成自然伤害，并施加一个每秒造成自然伤害的减益效果。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "地动山摇",
+                "spells": [
+                  {
+                    "name": "‍Earth Shock",
+                    "id": "268722",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对附近的玩家造成自然伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Azerite Extractor",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Azerite-Extractor-1024x671.webp",
+            "data": [
+              {
+                "text": "[迅速萃取]",
+                "spells": [
+                  {
+                    "name": "‍Rapid Extraction",
+                    "id": "473168",
+                    "nameZH": "迅速萃取"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对所有玩家造成物理伤害，并在附近位置生成地面效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[刺破]",
+                "spells": [
+                  {
+                    "name": "‍Puncture",
+                    "id": "1215411",
+                    "nameZH": "刺破"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对坦克造成物理伤害并施加流血效果。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "对坦克造成相当高的伤害，因此每当坦克的防御技能冷却时，尽可能寻找一个流血驱散。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Wanton Sapper",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Wanton-Sapper-587x1024.webp",
+            "data": [
+              {
+                "text": "最终爆炸",
+                "spells": [
+                  {
+                    "name": "‍Final Blast",
+                    "id": "269313",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "当[恣意破坏者]的生命值较低时，他会开始施法并自爆，对8码范围内的所有玩家造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "炸弹包",
+                "spells": [
+                  {
+                    "name": "‍Bag of Bombs",
+                    "id": "268712",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "死亡时在地上留下一堆炸弹。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Stonefury",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stonefury.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[狂怒地震]",
+                    "spells": [
+                      {
+                        "name": "‍Furious Quake",
+                        "id": "268702",
+                        "nameZH": "狂怒地震"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对60码范围内的所有玩家造成自然伤害并降低他们的移动速度。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[地壳屏障]",
+                    "spells": [
+                      {
+                        "name": "‍Tectonic Barrier",
+                        "id": "263215",
+                        "nameZH": "地壳屏障"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "举起一面盾牌，吸收受到的伤害并防止施法者被打断。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "这个吸收护盾是一个可以被驱散的魔法增益效果，但目前它所提供的吸收量非常小，这使得直接用伤害打破它更为容易。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Mine Rat",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mine-Rat-720x1024.webp",
+            "data": [
+              {
+                "text": "扔石头",
+                "spells": [
+                  {
+                    "name": "‍Throw Rock",
+                    "id": "263209",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "向随机玩家投掷一块石头，造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"艾泽洛克\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "257593",
+            "spellNameZH": "召唤地怒者",
+            "spellNameEN": "‍Call Earthrager",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-CallEarthrager-ezgif.com-optimize.gif",
+            "image": "‍Call Earthrager.gif",
+            "data": [
+              {
+                "text": "召唤一个地怒者。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "一个地怒者会随机选择一个玩家作为目标，并对其施放[愤怒凝视]，然后无情地追逐他。",
+                    "spells": [
+                      {
+                        "name": "‍Raging Gaze",
+                        "id": "257582",
+                        "nameZH": "愤怒凝视"
+                      }
+                    ],
+                    "children": []
+                  },
+                  {
+                    "text": "当地震者接近一名玩家时，每次近战攻击都会对该玩家施加一个可叠加的流血效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "地怒者可以被控制，直到受到[艾泽里特灌注]的影响。",
+                "spells": [
+                  {
+                    "name": "‍Azerite Infusion",
+                    "id": "257597",
+                    "nameZH": "艾泽里特灌注"
+                  }
+                ],
+                "children": []
+              },
+              {
+                "text": "击杀它们是没有意义的，因为只要它们全部死亡，Azerokk就会立即重新召唤它们。这意味着你的计划应该是风筝和控制它们，直到它们获得[艾泽里特灌注]的增益效果，并且只有在有这个增益效果时才击杀它们。",
+                "spells": [
+                  {
+                    "name": "‍Azerite Infused",
+                    "id": "257597",
+                    "nameZH": "艾泽里特灌注"
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "257597",
+            "spellNameZH": "艾泽里特灌注",
+            "spellNameEN": "‍Azerite Infusion",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-AzeriteInfusion-ezgif.com-optimize.gif",
+            "image": "‍Azerite Infusion.gif",
+            "data": [
+              {
+                "text": "为一名大地狂怒者注入能量，在施法期间完全治愈它。大地狂怒者将免疫任何形式的控制效果，造成的伤害提高50%，受到的伤害增加150%，同时不再随机锁定一名玩家，而是可以被坦克嘲讽。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "还会使其每2秒脉动一次艾泽里特能量，对所有玩家造成奥术伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "每当一个[地怒者]被[艾泽里特灌注]强化时，交换目标并击杀他。",
+                "spells": [
+                  {
+                    "name": "‍Azerite Infusion",
+                    "id": "257597",
+                    "nameZH": "艾泽里特灌注"
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "258622",
+            "spellNameZH": "地震回荡",
+            "spellNameEN": "‍Resonant Quake",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-ResonantQuake-ezgif.com-optimize.gif",
+            "image": "‍Resonant Quake.gif",
+            "data": [
+              {
+                "text": "阿泽洛克共鸣力量，对所有玩家造成自然伤害，并在6秒内降低他们的移动速度30%。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "此外，存活的[大地暴怒者]会施放[共振余震]，对所有玩家造成额外的自然伤害。",
+                    "spells": [
+                      {
+                        "name": "‍Resonant Aftershock",
+                        "id": "258627",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "275907",
+            "spellNameZH": "地质冲击",
+            "spellNameEN": "‍Tectonic Smash",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-TectonicSmash-ezgif.com-optimize.gif",
+            "image": "‍Tectonic Smash.gif",
+            "data": [
+              {
+                "text": "大范围正面锥形攻击，造成物理伤害并击飞任何被击中的玩家。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "每当这种情况发生时，尽量靠近Boss，以便更容易躲避。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "257481",
+            "spellNameEN": "‍Fracking Totem",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Fracking-Totem.webp",
+            "image": "‍Fracking Totem.gif",
+            "data": [
+              {
+                "text": "在开始与首领战斗之前，你可以在入口处的左侧拾取一个[压裂图腾]。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "这个图腾可以用来控制一个[地怒者]60秒，但如果[地怒者]受到任何伤害，控制效果就会中断。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"瑞克莎·流火\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Venture Co. Alchemist",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Alchemist-706x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[转化：敌人变黏液]",
+                    "spells": [
+                      {
+                        "name": "‍Transmute: Enemy to Goo",
+                        "id": "268797",
+                        "nameZH": "转化：敌人变黏液"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "将一名随机玩家变成一滩黏液，持续10秒。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "这是一个魔法减益效果，所以如果你错过了打断，就要注意使用魔法驱散。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "所需解毒剂：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[腐蚀性化合物]",
+                    "spells": [
+                      {
+                        "name": "‍Caustic Compound",
+                        "id": "262268",
+                        "nameZH": "腐蚀性化合物"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "向随机玩家投掷一个药瓶，使其中毒，造成自然伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Venture Co. Mastermind",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Mastermind-686x1024.webp",
+            "data": [
+              {
+                "text": "[心灵鞭笞]",
+                "spells": [
+                  {
+                    "name": "‍Mind Lash",
+                    "id": "262794",
+                    "nameZH": "心灵鞭笞"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机选择一个玩家作为目标，并在4秒内持续引导，每秒造成一次奥术伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[头脑风暴]",
+                "spells": [
+                  {
+                    "name": "‍Brainstorm",
+                    "id": "473304",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对团队中的每个成员造成一些奥术伤害，并在每个玩家的位置生成几个奥术龙卷风。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "每个龙卷风都会造成奥术伤害，并沉默任何被击中的玩家。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Weapons Tester",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Weapons-Tester-535x1024.webp",
+            "data": [
+              {
+                "text": "回声之刃",
+                "spells": [
+                  {
+                    "name": "‍Echo Blade",
+                    "id": "268846",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机选择一个玩家作为目标，对其造成音波伤害，并对10码范围内的最多3名玩家造成溅射伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "确保每当你被这个法术选中时，要分散站位。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Test Subject",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Test-Subject.webp",
+            "data": [
+              {
+                "text": "不稳定变异",
+                "spells": [
+                  {
+                    "name": "‍Unstable Mutation",
+                    "id": "268810",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每在战斗中停留2秒，物理伤害增加20%。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"瑞克莎·流火\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "275992",
+            "spellNameZH": "催化剂溢出",
+            "spellNameEN": "‍Gushing Catalyst",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-GushingCatalyst-ezgif.com-optimize.gif",
+            "image": "‍Gushing Catalyst.gif",
+            "data": [
+              {
+                "text": "一根管道中溢出了艾泽里特催化剂，将一条有毒物质喷射到竞技场中。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "259022",
+            "spellNameEN": "‍Azerite Catalyst",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-AzeriteCatalyst-ezgif.com-optimize.gif",
+            "image": "‍Azerite Catalyst.gif",
+            "data": [
+              {
+                "text": "随机选择一个玩家为目标，并在其位置生成多个地面火池，对站在其中的任何人造成火焰伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "259940",
+            "spellNameZH": "推进器冲击",
+            "spellNameEN": "‍Propellant Blast",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-PropellantBlast-ezgif.com-optimize.gif",
+            "image": "‍Propellant Blast.gif",
+            "data": [
+              {
+                "text": "随机锁定一名玩家4秒，对其造成自然伤害，并将其以及被击中的其他玩家击退。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[艾泽里特催化剂]的碎片也会被推开。",
+                    "spells": [
+                      {
+                        "name": "‍Azerite Catalyst",
+                        "id": "259022",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "title": "\"商业大亨拉兹敦克\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Venture Co. War Machine",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-War-Machine-1024x946.webp",
+            "data": [
+              {
+                "text": "充能射击",
+                "spells": [
+                  {
+                    "name": "‍Charged Shot",
+                    "id": "269429",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对随机目标造成奥术伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "部署爬行地雷",
+                "spells": [
+                  {
+                    "name": "‍Deploy Crawler Mine",
+                    "id": "262383",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在随机玩家的位置生成一个地雷。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "当一个地雷被触发时，玩家靠近它后，地雷会锁定触发它的玩家，直到地雷距离锁定目标4码以内。当地雷进入4码范围时，它会爆炸并造成火焰伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Ordnance Specialist",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ordnance-Specialist-616x1024.webp",
+            "data": [
+              {
+                "text": "炮火弹幕",
+                "spells": [
+                  {
+                    "name": "‍Artillery Barrage",
+                    "id": "269090",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机向玩家所在位置呼叫炮火轰击，命中时造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Crawler Mine",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Crawler-Mine-800x1024.webp",
+            "data": [
+              {
+                "text": "通常情况下，[爬行地雷]会埋藏在地下，直到有玩家靠近时才会激活。一旦被激活，它会锁定触发它的玩家，并开始向该玩家移动。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "[搜寻并摧毁]",
+                "spells": [
+                  {
+                    "name": "‍Seek and Destroy",
+                    "id": "262377",
+                    "nameZH": "搜寻并摧毁"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "向一名玩家爬行并在靠近时爆炸，造成火焰伤害，并在6秒内每2秒造成一次火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"商业大亨拉兹敦克\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "260279",
+            "spellNameZH": "加特林机枪",
+            "spellNameEN": "‍Gatling Gun",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-GatlingGun-ezgif.com-optimize.gif",
+            "image": "‍Gatling Gun.gif",
+            "data": [
+              {
+                "text": "Mogul Razdunk在原地旋转并发射一连串子弹，对所有前方的玩家造成物理伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "Mogul Razdunk旋转得相当快，所以始终保持在近战范围内，这样更容易躲避它的攻击。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "260811",
+            "spellNameZH": "自控导弹",
+            "spellNameEN": "‍Homing Missile",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-HomingMissile-ezgif.com-optimize.gif",
+            "image": "‍Homing Missile.gif",
+            "data": [
+              {
+                "text": "向随机玩家发射一枚追踪导弹，命中时立即造成火焰伤害，并在6秒内每2秒对爆炸点20码范围内的所有玩家造成火焰伤害。导弹的速度会随着飞行距离的增加而加快。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "也可以锁定坦克玩家为目标。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "276234",
+            "spellNameEN": "‍B.O.O.M.B.A.",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-B.O.O.M.B.A.-ezgif.com-optimize.gif",
+            "image": "‍B.O.O.M.B.A..gif",
+            "data": [
+              {
+                "text": "在第一阶段，B.O.O.M.B.A.无人机将会发射微型导弹，覆盖平台四分之三的区域，并对每枚导弹落点6码范围内的玩家造成火焰伤害。",
+                "spells": [
+                  {
+                    "name": "‍Micro Missiles",
+                    "id": "276234",
+                    "nameZH": ""
+                  }
+                ],
+                "children": []
+              },
+              {
+                "text": "平台上将只有两个B.O.O.M.B.A.无人机在飞行，四分之一的平台区域始终是安全区域。每当无人机开始移动时，务必注意它们的位置，并尽快跑到安全区域。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "260202",
+            "spellNameEN": "‍Drill Smash",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-DrillSmash-ezgif.com-optimize.gif",
+            "image": "‍Drill Smash.gif",
+            "data": [
+              {
+                "text": "飞向空中并撞击玩家的位置，对8码范围内的目标造成物理伤害，并对8码以外的所有目标造成一定的物理伤害。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "任何被[钻头猛击]击中的[大红火箭]都会爆炸，移除Boss身上的一层[配置：钻头]效果。",
+                "spells": [
+                  {
+                    "name": "‍Big Red Rocket",
+                    "id": "270277",
+                    "nameZH": ""
+                  },
+                  {
+                    "name": "‍Drill Smash",
+                    "id": "260202",
+                    "nameZH": ""
+                  },
+                  {
+                    "name": "‍Configuration: Drill",
+                    "id": "260189",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "当Boss身上的三层[配置：钻头]被全部移除后，第二阶段将结束，第一阶段将再次开始。",
+                    "spells": [
+                      {
+                        "name": "‍Configuration: Drill",
+                        "id": "260189",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "270277",
+            "spellNameEN": "‍Big Red Rocket",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-BigRedRocket-ezgif.com-optimize.gif",
+            "image": "‍Big Red Rocket.gif",
+            "data": [
+              {
+                "text": "召唤数枚[大红火箭]从天而降，对撞击点造成火焰伤害，并在接下来的6秒内每2秒造成一次火焰伤害。",
+                "spells": [
+                  {
+                    "name": "‍Big Red Rocket",
+                    "id": "270277",
+                    "nameZH": ""
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          null
+        ]
+      }
+    ],
+    "lootPool": [
+      {
+        "type": "饰品/戒指",
+        "loots": [
+          {
+            "type": "饰品",
+            "id": 159612,
+            "name": "艾泽洛克的共鸣之心",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/340336.webp"
+          },
+          {
+            "type": "饰品",
+            "id": 159611,
+            "name": "拉兹敦克的大红按钮",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/237290.webp"
+          },
+          {
+            "type": "戒指",
+            "id": 159462,
+            "name": "足球炸弹冠军戒指",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/2000829.webp"
+          }
+        ]
+      },
+      {
+        "type": "武器",
+        "loots": [
+          {
+            "type": "武器",
+            "id": 159638,
+            "name": "电臂大棒",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/1887733.webp"
+          },
+          {
+            "type": "单手锤",
+            "id": 159641,
+            "name": "G3T-00t",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/1934753.webp"
+          },
+          {
+            "type": "gun",
+            "id": 159639,
+            "name": "和平主义者Mk7型",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/1934251.webp"
+          },
+          {
+            "type": "盾牌",
+            "id": 159663,
+            "name": "G0-4W4Y型人群驱逐器",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/1875403.webp"
+          }
+        ]
+      },
+      {
+        "type": "防具",
+        "loots": [
+          {
+            "type": "back",
+            "id": 159287,
+            "name": "可疑意图斗篷",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/2021378.webp"
+          }
+        ]
+      }
+    ]
   }
 ]
