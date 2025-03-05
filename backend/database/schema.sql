@@ -57,6 +57,17 @@ CREATE TABLE
     bosses TEXT
   );
 
+CREATE TABLE
+  IF NOT EXISTS wow_mythic_dungeon (
+    id INTEGER PRIMARY KEY NOT NULL,
+    routes TEXT NOT NULL,
+    ratings TEXT NOT NULL,
+    utility_needs TEXT NOT NULL,
+    enemy_tips TEXT NOT NULL,
+    loot_pool TEXT NOT NULL,
+    FOREIGN KEY (id) REFERENCES wow_dungeon (id)
+  );
+
 -- common-database.db 
 -- common_advice
 CREATE TABLE

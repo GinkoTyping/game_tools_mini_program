@@ -200,7 +200,10 @@ async function getUtilityNeeds(context) {
               roleClass: roleClass,
               roleClassZH:
                 roleClassLabel.class[
-                  roleClass.replaceAll(' ', '-').toLowerCase()
+                  roleClass
+                    .replaceAll(' ', '-')
+                    .replace(/[\u00A0\u200D]/g, '')
+                    .toLowerCase()
                 ],
               id,
               name,
@@ -373,7 +376,7 @@ async function getTrash(context, containerEle) {
       const imageContainer = infoContainers.children().last();
       return {
         trashName,
-        trashImage: $(imageContainer).find('img').attr('src'),
+        imageSrc: $(imageContainer).find('img').attr('src'),
         textUl,
       };
     })
@@ -437,6 +440,7 @@ async function getBossSpell(context, containerEle, index) {
     spellId,
     spellNameZH,
     spellNameEN,
+    imageSrc,
     image,
     data: text,
   };

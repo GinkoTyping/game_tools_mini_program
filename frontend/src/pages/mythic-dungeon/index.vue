@@ -81,6 +81,90 @@
       </uni-list>
     </uni-card>
   </uni-section>
+  <uni-section
+    id="utility"
+    class="shaman"
+    :title="tip.title"
+    v-for="tip in mythicDungeonData?.enemyTips"
+    :ket="tip.title"
+  >
+    <uni-collapse>
+      <uni-collapse-item
+        v-show="tip.data?.length"
+        v-for="(dataItem, index) in tip.data"
+        :key="index"
+      >
+        <template v-slot:title>
+          <view :class="['menu-title']">
+            <text>{{ dataItem?.trashName || dataItem?.spellNameZH }}</text>
+          </view>
+        </template>
+        <view class="tip-image-container">
+          <image
+            :class="[`${tip.type}-image`]"
+            :mode="tip.type === 'trash' ? 'heightFix' : 'widthFix'"
+            :src="dataItem?.imageSrc"
+          />
+        </view>
+        <view
+          class="ul-l1 list-style"
+          v-for="(spellTip, spellTipIndex) in dataItem?.data"
+          :key="spellTipIndex"
+        >
+          <rich-text :nodes="renderTip(spellTip.text)"></rich-text>
+          <view
+            class="ul-l2 list-style-empty"
+            v-if="spellTip.children?.length"
+            v-for="(child1Tip, child1Index) in spellTip.children"
+            :key="child1Index"
+          >
+            <rich-text :nodes="renderTip(child1Tip.text)"></rich-text>
+            <view
+              class="ul-l3 list-style-empty"
+              v-if="child1Tip.children?.length"
+              v-for="(child2Tip, child2Index) in child1Tip.children"
+              :key="child2Index"
+            >
+              <rich-text :nodes="renderTip(child2Tip.text)"></rich-text>
+            </view>
+          </view>
+        </view>
+      </uni-collapse-item>
+    </uni-collapse>
+  </uni-section>
+  <uni-section id="loot-pool" class="shaman" title="装备掉落">
+    <uni-card class="section-card">
+      <view class="menu">
+        <text
+          v-for="loot in mythicDungeonData?.lootPool"
+          :key="loot.type"
+          @click="() => switchLootType(loot.type)"
+          :class="[
+            'ellipsis',
+            currentLootType === loot.type ? 'menu_active' : '',
+          ]"
+          >{{ loot.type }}</text
+        >
+      </view>
+
+      <uni-table ref="table" stripe emptyText="暂无更多数据">
+        <uni-tr>
+          <uni-th width="45" align="left">部位</uni-th>
+          <uni-th width="160" align="left">装备</uni-th>
+        </uni-tr>
+        <uni-tr v-for="(item, index) in currentLootTable" :key="index">
+          <uni-td>{{ item.type }}</uni-td>
+          <uni-td>
+            <view class="slot-container">
+              <img :src="item.imageSrc" style="width: 14px; height: 14px" />
+              <view class="ellipsis" style="flex: 1">{{ item.name }}</view>
+            </view>
+          </uni-td>
+        </uni-tr>
+      </uni-table>
+    </uni-card>
+  </uni-section>
+  <view class="footer"></view>
 </template>
 
 <script lang="ts" setup>
@@ -89,11 +173,13 @@ import { onLoad } from '@dcloudio/uni-app';
 
 import { queryMythicDungeonById } from '@/api/wow';
 import Rating from '@/components/rating.vue';
+import { renderTip } from '@/hooks/richTextGenerator';
 
 const mythicDungeonData = ref();
 onLoad(async () => {
   mythicDungeonData.value = await queryMythicDungeonById(382);
   currentUtilityType.value = mythicDungeonData.value?.utilityNeeds[0].type;
+  currentLootType.value = mythicDungeonData.value?.lootPool[0].type;
   uni.setNavigationBarTitle({
     title: `大秘境 —— ${mythicDungeonData.value?.nameZH ?? '未知名称'}`,
   });
@@ -126,9 +212,88 @@ function switchUtilityType(type: string) {
 function swicthShowSpellDesc(item: any) {
   item.showDesc = !item.showDesc;
 }
+
+const currentLootType = ref('');
+const currentLootTable = computed(
+  () =>
+    mythicDungeonData.value?.lootPool.find(
+      (item: any) => item.type === currentLootType.value
+    )?.loots ?? []
+);
+function switchLootType(type: string) {
+  if (currentLootType.value !== type) {
+    currentLootType.value = type;
+  }
+}
 </script>
 
 <style lang="scss" scoped>
+.slot-container {
+  display: flex;
+}
+.ul-l1 {
+  padding-right: 1rem;
+  line-height: 20px;
+  font-size: 14px;
+  margin-left: 30px;
+  color: #fff;
+  .ul-l2 {
+    margin-left: 16px;
+    .ul-l3 {
+      margin-left: 16px;
+    }
+  }
+}
+.list-style,
+.list-style-empty {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    top: 8px;
+    left: -12px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+  }
+}
+.list-style {
+  &::before {
+    background-color: #fff;
+  }
+}
+::v-deep .uni-collapse {
+  background-color: $uni-bg-color-grey-light !important;
+  .uni-collapse-item__title-box {
+    background-color: $uni-bg-color-grey-light !important;
+  }
+}
+::v-deep uni-collapse-item {
+  width: 100vw;
+  .uni-collapse-item__title.uni-collapse-item-border {
+    line-height: 40px;
+    border-bottom: 4px solid $uni-bg-color-grey;
+    padding-left: 18px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  .uni-collapse-item__wrap {
+    background-color: $uni-bg-color-grey !important;
+
+    .uni-collapse-item__wrap-content {
+      border: none !important;
+      padding: 0.4rem 0;
+      background-color: rgb(43, 44, 44) !important;
+    }
+  }
+}
+.menu-title {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
 ::v-deep .uni-section {
   .uni-section-header {
     background-color: $uni-bg-color-grey !important;
@@ -151,7 +316,7 @@ function swicthShowSpellDesc(item: any) {
           content: '';
           position: absolute;
           transform: translateY(-50%);
-          width: 30%;
+          width: 20%;
           height: 2px;
           background-color: rgb(68, 68, 68);
         }
@@ -181,11 +346,16 @@ function swicthShowSpellDesc(item: any) {
     background-color: $uni-bg-color-grey-light !important;
   }
 }
-
-.route-image {
+.route-image,
+.trash-image {
   border-radius: 10px;
-  width: 100%; /* 或者你想要的固定宽度 */
   object-fit: cover;
+}
+.route-image {
+  width: 100%;
+}
+.trash-image {
+  height: 20vh;
 }
 .route-download {
   display: flex;
@@ -194,6 +364,11 @@ function swicthShowSpellDesc(item: any) {
   text {
     color: #007aff;
   }
+}
+.tip-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.6rem;
 }
 
 .uni-section .divide-section:first-child {
@@ -285,6 +460,55 @@ $light-border: rgb(68, 68, 68);
         color: inherit !important;
       }
     }
+  }
+}
+
+.footer {
+  height: 4rem;
+  width: 1vw;
+}
+
+::v-deep .uni-table {
+  background-color: rgb(40, 40, 40) !important;
+  border: 2px $light-border solid;
+  .uni-table-th,
+  .uni-table-td {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+    border-bottom: 1px $uni-bg-color solid !important;
+    .slot-container {
+      display: flex;
+      align-items: center;
+      image {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .uni-table-th {
+    font-weight: 800;
+    color: #ffffff;
+  }
+  .uni-table-td {
+    font-weight: 400;
+    &:first-child {
+      color: rgb(221, 221, 221);
+    }
+    &:nth-child(2) {
+      color: rgb(163, 53, 238);
+      view {
+        width: 160px !important;
+      }
+    }
+    &:nth-child(3) {
+      color: rgb(221, 221, 221);
+      view {
+        width: 100px !important;
+      }
+    }
+  }
+  .is-loot {
+    color: $uni-text-color-inverse !important;
   }
 }
 </style>

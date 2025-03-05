@@ -32,39 +32,51 @@
         "type": "激怒",
         "spell": [
           {
-            "spellId": "333241",
-            "spellName": "‍Raging Tantrum"
+            "id": "333241",
+            "name": "‍Raging Tantrum",
+            "nameZH": "暴脾气",
+            "desc": "施法者陷入发怒状态，每2秒对所有敌人造成1621645点物理伤害，持续4秒。"
           },
           {
-            "spellId": "331510",
-            "spellName": "‍Death Wish"
+            "id": "331510",
+            "name": "‍Death Wish",
+            "nameZH": "死亡之愿",
+            "desc": "消耗你10%的生命值，使你造成的伤害和受到的伤害提高10%，持续15秒。最多叠加5次。"
           }
         ],
         "utility": [
-          {
-            "roleClass": "‍hunter",
-            "spellId": "126443:AJwA",
-            "spellName": "‍Tranquilizing Shot"
-          },
+          null,
           {
             "roleClass": "‍rogue",
-            "spellId": "5938",
-            "spellName": "‍Shiv"
+            "roleClassZH": "盗贼",
+            "id": "5938",
+            "name": "‍Shiv",
+            "nameZH": "毒刃",
+            "desc": "使用你的[强化毒刃: 淬毒利刃 / 副手]进行攻击，造成(125.4% of Attack power)%点物理伤害，驱散所有激怒效果，并对目标施放浓缩形态的激活的非致命药膏。\n\n奖励1个连击点数。"
           },
           {
             "roleClass": "‍druid",
-            "spellId": "103307",
-            "spellName": "‍Soothe"
+            "roleClassZH": "德鲁伊",
+            "id": "103307",
+            "name": "‍Soothe",
+            "nameZH": "安抚",
+            "desc": "安抚目标，驱散所有激怒效果。"
           },
           {
             "roleClass": "‍evoker",
-            "spellId": "115607",
-            "spellName": "‍Oppressing Roar"
+            "roleClassZH": "唤魔师",
+            "id": "115607",
+            "name": "‍Oppressing Roar",
+            "nameZH": "压迫怒吼",
+            "desc": "\n对你前方锥形区域内的敌人发出震耳欲聋的咆哮，在接下来的10秒内使影响他们的群体控制持续时间提高50%。[震魂摄魄: 从每个敌人身上移除1个激怒效果。]"
           },
           {
             "roleClass": "‍monk",
-            "spellId": "124932",
-            "spellName": "‍Paralysis"
+            "roleClassZH": "武僧",
+            "id": "124932",
+            "name": "‍Paralysis",
+            "nameZH": "分筋错骨",
+            "desc": "使目标瘫痪，持续1分钟。只能对一个目标使用。伤害可能取消该效果。"
           }
         ]
       },
@@ -72,28 +84,40 @@
         "type": "流血",
         "spell": [
           {
-            "spellId": "323406",
-            "spellName": "‍Jagged Gash"
+            "id": "323406",
+            "name": "‍Jagged Gash",
+            "nameZH": "锯齿创口",
+            "desc": "Inflicts 1779625 Physical damage to an enemy every 2秒 for 8秒."
           },
           {
-            "spellId": "330532",
-            "spellName": "‍Jagged Quarrel"
+            "id": "330532",
+            "name": "‍Jagged Quarrel",
+            "nameZH": "锯齿箭",
+            "desc": "对一名敌人造成2432467点物理伤害，并且每2秒额外造成891905点物理伤害，持续8秒。"
           },
           {
-            "spellId": "333861",
-            "spellName": "‍Ricocheting Blade"
+            "id": "333861",
+            "name": "‍Ricocheting Blade",
+            "nameZH": "回旋利刃",
+            "desc": "对一名敌人造成2918961点物理伤害，并且每2秒额外造成972987点物理伤害，持续6秒。\n\n能够在5码范围内的额外目标间弹射。"
           }
         ],
         "utility": [
           {
             "roleClass": "‍evoker",
-            "spellId": "115602",
-            "spellName": "‍Cauterizing Flame"
+            "roleClassZH": "唤魔师",
+            "id": "115602",
+            "name": "‍Cauterizing Flame",
+            "nameZH": "灼烧之焰",
+            "desc": "给盟友的伤口加热，移除所有流血、中毒、诅咒和疾病效果。移除任何效果后恢复19,369点生命值。"
           },
           {
             "roleClass": "‍paladin",
-            "spellId": "102604:AJgA",
-            "spellName": "‍Blessing of Protection"
+            "roleClassZH": "圣骑士",
+            "id": "102604:AJgA",
+            "name": "‍Blessing of Protection",
+            "nameZH": "召唤食尸鬼",
+            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
           }
         ]
       },
@@ -101,34 +125,50 @@
         "type": "疾病",
         "spell": [
           {
-            "spellId": "341949",
-            "spellName": "‍Withering Blight"
+            "id": "341949",
+            "name": "‍Withering Blight",
+            "nameZH": "枯萎凋零",
+            "desc": "每2秒造成1点瘟疫伤害，造成的伤害和治疗效果降低20%，持续30秒。此效果可叠加。"
           },
           {
-            "spellId": "330700",
-            "spellName": "‍Decaying Blight"
+            "id": "330700",
+            "name": "‍Decaying Blight",
+            "nameZH": "腐烂凋零",
+            "desc": "每2秒对一名敌人造成81082点瘟疫伤害，并使其最大生命值降低5%，持续20秒。"
           }
         ],
         "utility": [
           {
             "roleClass": "‍monk",
-            "spellId": "124941",
-            "spellName": "‍Detox"
+            "roleClassZH": "武僧",
+            "id": "124941",
+            "name": "‍Detox",
+            "nameZH": "清创生血",
+            "desc": "移除目标身上所有魔法效果。"
           },
           {
             "roleClass": "‍paladin",
-            "spellId": "102476",
-            "spellName": "‍Cleanse Toxins"
+            "roleClassZH": "圣骑士",
+            "id": "102476",
+            "name": "‍Cleanse Toxins",
+            "nameZH": "清毒术",
+            "desc": "净化一个友方目标，移除所有中毒效果和疾病效果。"
           },
           {
             "roleClass": "‍priest",
-            "spellId": "103854",
-            "spellName": "‍Purify Disease"
+            "roleClassZH": "牧师",
+            "id": "103854",
+            "name": "‍Purify Disease",
+            "nameZH": "净化疾病",
+            "desc": "移除一个友方目标身上所有的疾病效果。"
           },
           {
             "roleClass": "‍evoker",
-            "spellId": "115602",
-            "spellName": "‍Cauterizing Flame"
+            "roleClassZH": "唤魔师",
+            "id": "115602",
+            "name": "‍Cauterizing Flame",
+            "nameZH": "灼烧之焰",
+            "desc": "给盟友的伤口加热，移除所有流血、中毒、诅咒和疾病效果。移除任何效果后恢复19,369点生命值。"
           }
         ]
       },
@@ -136,34 +176,50 @@
         "type": "诅咒",
         "spell": [
           {
-            "spellId": "333299",
-            "spellName": "‍Curse of Desolation"
+            "id": "333299",
+            "name": "‍Curse of Desolation",
+            "nameZH": "荒芜诅咒",
+            "desc": "诅咒一名敌人，每3秒就会有暗影在其位置爆发，对冲击点3码范围内的玩家造成1624596点伤害并使其陷入恐惧，持续1秒。"
           },
           {
-            "spellId": "330725",
-            "spellName": "‍Shadow Vulnerability"
+            "id": "330725",
+            "name": "‍Shadow Vulnerability",
+            "nameZH": "暗影易伤",
+            "desc": "对一名玩家造成810822点暗影伤害，并使其受到的暗影伤害提高30%。"
           }
         ],
         "utility": [
           {
             "roleClass": "‍druid",
-            "spellId": "103320",
-            "spellName": "‍Remove Corruption"
+            "roleClassZH": "德鲁伊",
+            "id": "103320",
+            "name": "‍Remove Corruption",
+            "nameZH": "气球车部件",
+            "desc": ""
           },
           {
             "roleClass": "‍mage",
-            "spellId": "80175",
-            "spellName": "‍Remove Curse"
+            "roleClassZH": "法师",
+            "id": "80175",
+            "name": "‍Remove Curse",
+            "nameZH": "解除诅咒",
+            "desc": "从一个友方目标身上移除所有诅咒。"
           },
           {
             "roleClass": "‍shaman",
-            "spellId": "127884",
-            "spellName": "‍Cleanse Spirit"
+            "roleClassZH": "萨满",
+            "id": "127884",
+            "name": "‍Cleanse Spirit",
+            "nameZH": "",
+            "desc": ""
           },
           {
             "roleClass": "‍evoker",
-            "spellId": "115602",
-            "spellName": "‍Cauterizing Flame"
+            "roleClassZH": "唤魔师",
+            "id": "115602",
+            "name": "‍Cauterizing Flame",
+            "nameZH": "灼烧之焰",
+            "desc": "给盟友的伤口加热，移除所有流血、中毒、诅咒和疾病效果。移除任何效果后恢复19,369点生命值。"
           }
         ]
       },
@@ -171,20 +227,28 @@
         "type": "魔法(防御驱散)",
         "spell": [
           {
-            "spellId": "1215600",
-            "spellName": "‍Withering Touch"
+            "id": "1215600",
+            "name": "‍Withering Touch",
+            "nameZH": "枯萎之触",
+            "desc": "使目标枯萎，每2秒造成567576点暗影伤害，持续12秒。"
           }
         ],
         "utility": [
           {
             "roleClass": "‍priest",
-            "spellId": "32375",
-            "spellName": "‍Mass Dispel"
+            "roleClassZH": "牧师",
+            "id": "32375",
+            "name": "‍Mass Dispel",
+            "nameZH": "群体驱散",
+            "desc": "驱散半径15码范围内的魔法，从5个友方目标身上移除全部的有害魔法效果，并从5个敌方目标身上移除1个有益魔法效果。这种驱散法术非常强大，可以移除通常无法被驱散的魔法效果。"
           },
           {
             "roleClass": "‍warlock",
-            "spellId": "89808",
-            "spellName": "‍Singe Magic"
+            "roleClassZH": "术士",
+            "id": "89808",
+            "name": "‍Singe Magic",
+            "nameZH": "烧灼驱魔",
+            "desc": "用烈火净化有害魔法，从一个盟友身上移除1个有害的魔法效果。\n\n自动施放：\n在主人受魔法效果影响，无法施法时对其施放。\n\n（点击右键以启用或禁用该技能）"
           }
         ]
       },
@@ -192,40 +256,53 @@
         "type": "魔法(进攻驱散)",
         "spell": [
           {
-            "spellId": "333293",
-            "spellName": "‍Bone Shield"
+            "id": "333293",
+            "name": "‍Bone Shield",
+            "nameZH": "白骨之盾",
+            "desc": "吸收接下来受到的伤害。"
           }
         ],
         "utility": [
           {
             "roleClass": "‍warlock",
-            "spellId": "388215",
-            "spellName": "‍Devour Magic"
+            "roleClassZH": "术士",
+            "id": "388215",
+            "name": "‍Devour Magic",
+            "nameZH": "吞噬魔法",
+            "desc": "从一名敌人身上移除1个增益魔法效果。每吞噬一个魔法效果，术士就会回复(80% of Spell power)点生命值。"
           },
-          {
-            "roleClass": "‍hunter",
-            "spellId": "126443:AJwA",
-            "spellName": "‍Tranquilizing Shot"
-          },
+          null,
           {
             "roleClass": "‍priest",
-            "spellId": "103867",
-            "spellName": "‍Dispel Magic"
+            "roleClassZH": "牧师",
+            "id": "103867",
+            "name": "‍Dispel Magic",
+            "nameZH": "驱散魔法",
+            "desc": "驱散敌方目标身上的魔法，移除1个增益魔法效果。"
           },
           {
             "roleClass": "‍shaman",
-            "spellId": "127905",
-            "spellName": "‍Purge"
+            "roleClassZH": "萨满",
+            "id": "127905",
+            "name": "‍Purge",
+            "nameZH": "巨兽之颌",
+            "desc": "用力撕咬，对敌人造成200%的普通伤害。"
           },
           {
             "roleClass": "‍mage",
-            "spellId": "80140",
-            "spellName": "‍Spellsteal"
+            "roleClassZH": "法师",
+            "id": "80140",
+            "name": "‍Spellsteal",
+            "nameZH": "法术吸取",
+            "desc": "从目标身上窃取一个增益法术效果。此效果最多持续2分钟。"
           },
           {
             "roleClass": "‍demon hunter",
-            "spellId": "112926",
-            "spellName": "‍Consume Magic"
+            "roleClassZH": "恶魔猎手",
+            "id": "112926",
+            "name": "‍Consume Magic",
+            "nameZH": "召唤恐惧卫士",
+            "desc": "召唤一名恐惧卫士。"
           }
         ]
       }
@@ -237,7 +314,7 @@
         "data": [
           {
             "trashName": "Unyielding Contender",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Unyielding-Contender.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Unyielding-Contender.webp",
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -283,10 +360,10 @@
           },
           {
             "trashName": "Battlefield Ritualist",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Battlefield-Ritualist-467x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Battlefield-Ritualist-467x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -329,7 +406,7 @@
           },
           {
             "trashName": "Raging Bloodhorn",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Raging-Bloodhorn.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Raging-Bloodhorn.webp",
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -378,6 +455,7 @@
             "spellId": "320180",
             "spellNameZH": "剧毒孢子",
             "spellNameEN": "‍Noxious Spores",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-NoxiousSpores-ezgif.com-optimize.gif",
             "image": "‍Noxious Spores.gif",
             "data": [
               {
@@ -397,6 +475,7 @@
             "spellId": "1215738",
             "spellNameZH": "腐朽之息",
             "spellNameEN": "‍Decaying Breath",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-DecayingBreath-ezgif.com-optimize.gif",
             "image": "‍Decaying Breath.gif",
             "data": [
               {
@@ -416,6 +495,7 @@
             "spellId": "333292",
             "spellNameZH": "灼热之陨",
             "spellNameEN": "‍Searing Death",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-SearingDeath-ezgif.com-optimize.gif",
             "image": "‍Searing Death.gif",
             "data": [
               {
@@ -441,6 +521,7 @@
             "spellId": "1215600",
             "spellNameZH": "枯萎之触",
             "spellNameEN": "‍Withering Touch",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-WitheringTouch-ezgif.com-optimize.gif",
             "image": "‍Withering Touch.gif",
             "data": [
               {
@@ -460,6 +541,7 @@
             "spellId": "320300",
             "spellNameZH": "死灵箭",
             "spellNameEN": "‍Necromantic Bolt",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-NecromanticBolt-ezgif.com-optimize.gif",
             "image": "‍Necromantic Bolt.gif",
             "data": [
               {
@@ -479,6 +561,7 @@
             "spellId": "1215741",
             "spellNameZH": "强力碾压",
             "spellNameEN": "‍Mighty Smash",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-MightySmash-ezgif.com-optimize.gif",
             "image": "‍Mighty Smash.gif",
             "data": [
               {
@@ -497,7 +580,7 @@
         "data": [
           {
             "trashName": "Nekthara the Mangler",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Nekthara-the-Mangler.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nekthara-the-Mangler.webp",
             "data": [
               {
                 "text": "[旋风斩]",
@@ -554,7 +637,7 @@
           },
           {
             "trashName": "Rek the Hardened",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Rek-the-Hardened-574x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rek-the-Hardened-574x1024.webp",
             "data": [
               {
                 "text": "[旋风斩]",
@@ -611,7 +694,7 @@
           },
           {
             "trashName": "Harugia the Bloodthirsty",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Harugia-the-Bloodthirsty-507x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Harugia-the-Bloodthirsty-507x1024.webp",
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -651,7 +734,7 @@
           },
           {
             "trashName": "Shambling Arbalest",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Shambling-Arbalest-553x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shambling-Arbalest-553x1024.webp",
             "data": [
               {
                 "text": "[射击]",
@@ -697,10 +780,10 @@
           },
           {
             "trashName": "Ancient Captain",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Ancient-Captain-633x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ancient-Captain-633x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -760,7 +843,7 @@
           },
           {
             "trashName": "Advent Nevermore",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Advent-Nevermore-521x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Advent-Nevermore-521x1024.webp",
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -817,7 +900,7 @@
           },
           {
             "trashName": "Heavin the Breaker",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Heavin-the-Breaker-716x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Heavin-the-Breaker-716x1024.webp",
             "data": [
               {
                 "text": "[巨人打击]",
@@ -874,7 +957,7 @@
           },
           {
             "trashName": "Dokigg the Brutalizer",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Dokigg-the-Brutalizer.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Dokigg-the-Brutalizer.webp",
             "data": [
               {
                 "text": "[暴怒乱舞]",
@@ -939,6 +1022,7 @@
             "spellId": "320102",
             "spellNameZH": "鲜血与荣耀",
             "spellNameEN": "‍Blood and Glory",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BloodandGlory-ezgif.com-optimize.gif",
             "image": "‍Blood and Glory.gif",
             "data": [
               {
@@ -1054,6 +1138,7 @@
             "spellId": "320050",
             "spellNameZH": "玛卓克萨斯之力",
             "spellNameEN": "‍Might of Maldraxxus",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-MightofMaldraxxus-ezgif.com-optimize.gif",
             "image": "‍Might of Maldraxxus.gif",
             "data": [
               {
@@ -1119,6 +1204,7 @@
             "spellId": "331618",
             "spellNameZH": "压制战旗",
             "spellNameEN": "‍Oppressive Banner",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-OppressiveBanner-ezgif.com-optimize.gif",
             "image": "‍Oppressive Banner.gif",
             "data": [
               {
@@ -1144,6 +1230,7 @@
             "spellId": "320644",
             "spellNameZH": "残酷连击",
             "spellNameEN": "‍Brutal Combo",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BrutalCombo-ezgif.com-optimize.gif",
             "image": "‍Brutal Combo.gif",
             "data": [
               {
@@ -1161,7 +1248,7 @@
         "data": [
           {
             "trashName": "Portal Guardian",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Portal-Guardian-1024x1007.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Portal-Guardian-1024x1007.webp",
             "data": [
               {
                 "text": "所需诅咒驱散：",
@@ -1207,10 +1294,10 @@
           },
           {
             "trashName": "Maniacal Soulbinder",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Maniacal-Soulbinder-500x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Maniacal-Soulbinder-500x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -1253,10 +1340,10 @@
           },
           {
             "trashName": "Bone Magus",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Bone-Magus-547x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bone-Magus-547x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -1328,7 +1415,7 @@
           },
           {
             "trashName": "Soulforged Bonereaver",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Soulforged-Bonereaver-1024x550.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Soulforged-Bonereaver-1024x550.webp",
             "data": [
               {
                 "text": "[白骨风暴]",
@@ -1368,7 +1455,7 @@
           },
           {
             "trashName": "Nefarious Darkspeaker",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Nefarious-Darkspeaker-500x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nefarious-Darkspeaker-500x1024.webp",
             "data": [
               {
                 "text": "所需诅咒驱散：",
@@ -1394,7 +1481,7 @@
                 ]
               },
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -1437,10 +1524,10 @@
           },
           {
             "trashName": "Shackled Soul",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Shackled-Soul-541x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shackled-Soul-541x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -1474,6 +1561,7 @@
             "spellId": "473959",
             "spellNameZH": "抽取灵魂",
             "spellNameEN": "‍Draw Soul",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-DrawSoul-ezgif.com-optimize.gif",
             "image": "‍Draw Soul.gif",
             "data": [
               {
@@ -1499,6 +1587,7 @@
             "spellId": "473540",
             "spellNameZH": "黑暗之井",
             "spellNameEN": "‍Well of Darkness",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-WellofDarkness-ezgif.com-optimize.gif",
             "image": "‍Well of Darkness.gif",
             "data": [
               {
@@ -1524,6 +1613,7 @@
             "spellId": "474087",
             "spellNameZH": "通灵喷发",
             "spellNameEN": "‍Necrotic Eruption",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-NecroticEruption-ezgif.com-optimize.gif",
             "image": "‍Necrotic Eruption.gif",
             "data": [
               {
@@ -1537,6 +1627,7 @@
             "spellId": "1216475",
             "spellNameZH": "通灵箭",
             "spellNameEN": "‍Necrotic Bolt",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-NecroticBolt-ezgif.com-optimize.gif",
             "image": "‍Necrotic Bolt.gif",
             "data": [
               {
@@ -1555,6 +1646,7 @@
           {
             "spellId": "1216474",
             "spellNameEN": "‍Death Spiral",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-DeathSpiral-ezgif.com-optimize.gif",
             "image": "‍Death Spiral.gif",
             "data": [
               {
@@ -1572,10 +1664,10 @@
         "data": [
           {
             "trashName": "Blighted Sludge-Spewer",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Blighted-Sludge-Spewer.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Blighted-Sludge-Spewer.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -1658,7 +1750,7 @@
           },
           {
             "trashName": "Putrid Butcher",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Putrid-Butcher-1024x836.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Putrid-Butcher-1024x836.webp",
             "data": [
               {
                 "text": "[吞噬血肉]",
@@ -1681,7 +1773,7 @@
           },
           {
             "trashName": "Disgusting Refuse",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Disgusting-Refuse.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Disgusting-Refuse.webp",
             "data": [
               {
                 "text": "[腾跃猛击]",
@@ -1727,7 +1819,7 @@
           },
           {
             "trashName": "Diseased Horror",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Diseased-Horror-668x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Diseased-Horror-668x1024.webp",
             "data": [
               {
                 "text": "[血肉之盾]",
@@ -1767,7 +1859,7 @@
           },
           {
             "trashName": "Rancid Gasbag",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Rancid-Gasbag-1024x911.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rancid-Gasbag-1024x911.webp",
             "data": [
               {
                 "text": "[疾病之云]",
@@ -1815,6 +1907,7 @@
             "spellId": "322795",
             "spellNameZH": "肉钩",
             "spellNameEN": "‍Meat Hooks",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-MeatHooks-ezgif.com-optimize.gif",
             "image": "‍Meat Hooks.gif",
             "data": [
               {
@@ -1867,6 +1960,7 @@
             "spellId": "318406",
             "spellNameZH": "软肉碎击",
             "spellNameEN": "‍Tenderizing Smash",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-TenderizingSmash-ezgif.com-optimize.gif",
             "image": "‍Tenderizing Smash.gif",
             "data": [
               {
@@ -1891,6 +1985,7 @@
           {
             "spellId": "323515",
             "spellNameEN": "‍Hateful Strike",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-HatefulStrike-ezgif.com-optimize.gif",
             "image": "‍Hateful Strike.gif",
             "data": [
               {
@@ -1910,6 +2005,7 @@
             "spellId": "323685",
             "spellNameZH": "攫取裂隙",
             "spellNameEN": "‍Grasping Rift",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/5-GraspingRift-ezgif.com-optimize.gif",
             "image": "‍Grasping Rift.gif",
             "data": [
               {
@@ -1958,6 +2054,7 @@
             "spellId": "324449",
             "spellNameZH": "死亡具象",
             "spellNameEN": "‍Manifest Death",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/5-ManifestDeath-ezgif.com-optimize.gif",
             "image": "‍Manifest Death.gif",
             "data": [
               {
@@ -1994,6 +2091,7 @@
             "spellId": "323681",
             "spellNameZH": "黑暗毁灭",
             "spellNameEN": "‍Dark Devastation",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/5-DarkDevastation-ezgif.com-optimize.gif",
             "image": "‍Dark Devastation.gif",
             "data": [
               {
@@ -2013,6 +2111,7 @@
             "spellId": "324079",
             "spellNameZH": "收割之镰",
             "spellNameEN": "‍Reaping Scythe",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/5-ReapingScythe-ezgif.com-optimize.gif",
             "image": "‍Reaping Scythe.gif",
             "data": [
               {
@@ -2026,6 +2125,7 @@
             "spellId": "339573",
             "spellNameZH": "屠戮回响",
             "spellNameEN": "‍Echoes of Carnage",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/5-EchoesofCarnage-ezgif.com-optimize.gif",
             "image": "‍Echoes of Carnage.gif",
             "data": [
               {

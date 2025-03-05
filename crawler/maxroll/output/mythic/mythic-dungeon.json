@@ -314,7 +314,7 @@
         "data": [
           {
             "trashName": "Unyielding Contender",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Unyielding-Contender.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Unyielding-Contender.webp",
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -360,10 +360,10 @@
           },
           {
             "trashName": "Battlefield Ritualist",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Battlefield-Ritualist-467x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Battlefield-Ritualist-467x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -406,7 +406,7 @@
           },
           {
             "trashName": "Raging Bloodhorn",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Raging-Bloodhorn.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Raging-Bloodhorn.webp",
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -455,6 +455,7 @@
             "spellId": "320180",
             "spellNameZH": "剧毒孢子",
             "spellNameEN": "‍Noxious Spores",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-NoxiousSpores-ezgif.com-optimize.gif",
             "image": "‍Noxious Spores.gif",
             "data": [
               {
@@ -474,6 +475,7 @@
             "spellId": "1215738",
             "spellNameZH": "腐朽之息",
             "spellNameEN": "‍Decaying Breath",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-DecayingBreath-ezgif.com-optimize.gif",
             "image": "‍Decaying Breath.gif",
             "data": [
               {
@@ -493,6 +495,7 @@
             "spellId": "333292",
             "spellNameZH": "灼热之陨",
             "spellNameEN": "‍Searing Death",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-SearingDeath-ezgif.com-optimize.gif",
             "image": "‍Searing Death.gif",
             "data": [
               {
@@ -518,6 +521,7 @@
             "spellId": "1215600",
             "spellNameZH": "枯萎之触",
             "spellNameEN": "‍Withering Touch",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-WitheringTouch-ezgif.com-optimize.gif",
             "image": "‍Withering Touch.gif",
             "data": [
               {
@@ -537,6 +541,7 @@
             "spellId": "320300",
             "spellNameZH": "死灵箭",
             "spellNameEN": "‍Necromantic Bolt",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-NecromanticBolt-ezgif.com-optimize.gif",
             "image": "‍Necromantic Bolt.gif",
             "data": [
               {
@@ -556,6 +561,7 @@
             "spellId": "1215741",
             "spellNameZH": "强力碾压",
             "spellNameEN": "‍Mighty Smash",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-MightySmash-ezgif.com-optimize.gif",
             "image": "‍Mighty Smash.gif",
             "data": [
               {
@@ -574,7 +580,7 @@
         "data": [
           {
             "trashName": "Nekthara the Mangler",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Nekthara-the-Mangler.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nekthara-the-Mangler.webp",
             "data": [
               {
                 "text": "[旋风斩]",
@@ -631,7 +637,7 @@
           },
           {
             "trashName": "Rek the Hardened",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Rek-the-Hardened-574x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rek-the-Hardened-574x1024.webp",
             "data": [
               {
                 "text": "[旋风斩]",
@@ -688,7 +694,7 @@
           },
           {
             "trashName": "Harugia the Bloodthirsty",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Harugia-the-Bloodthirsty-507x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Harugia-the-Bloodthirsty-507x1024.webp",
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -728,7 +734,7 @@
           },
           {
             "trashName": "Shambling Arbalest",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Shambling-Arbalest-553x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shambling-Arbalest-553x1024.webp",
             "data": [
               {
                 "text": "[射击]",
@@ -774,10 +780,10 @@
           },
           {
             "trashName": "Ancient Captain",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Ancient-Captain-633x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ancient-Captain-633x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -837,7 +843,7 @@
           },
           {
             "trashName": "Advent Nevermore",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Advent-Nevermore-521x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Advent-Nevermore-521x1024.webp",
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -894,7 +900,7 @@
           },
           {
             "trashName": "Heavin the Breaker",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Heavin-the-Breaker-716x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Heavin-the-Breaker-716x1024.webp",
             "data": [
               {
                 "text": "[巨人打击]",
@@ -951,7 +957,7 @@
           },
           {
             "trashName": "Dokigg the Brutalizer",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Dokigg-the-Brutalizer.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Dokigg-the-Brutalizer.webp",
             "data": [
               {
                 "text": "[暴怒乱舞]",
@@ -1016,6 +1022,7 @@
             "spellId": "320102",
             "spellNameZH": "鲜血与荣耀",
             "spellNameEN": "‍Blood and Glory",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BloodandGlory-ezgif.com-optimize.gif",
             "image": "‍Blood and Glory.gif",
             "data": [
               {
@@ -1131,6 +1138,7 @@
             "spellId": "320050",
             "spellNameZH": "玛卓克萨斯之力",
             "spellNameEN": "‍Might of Maldraxxus",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-MightofMaldraxxus-ezgif.com-optimize.gif",
             "image": "‍Might of Maldraxxus.gif",
             "data": [
               {
@@ -1196,6 +1204,7 @@
             "spellId": "331618",
             "spellNameZH": "压制战旗",
             "spellNameEN": "‍Oppressive Banner",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-OppressiveBanner-ezgif.com-optimize.gif",
             "image": "‍Oppressive Banner.gif",
             "data": [
               {
@@ -1221,6 +1230,7 @@
             "spellId": "320644",
             "spellNameZH": "残酷连击",
             "spellNameEN": "‍Brutal Combo",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BrutalCombo-ezgif.com-optimize.gif",
             "image": "‍Brutal Combo.gif",
             "data": [
               {
@@ -1238,7 +1248,7 @@
         "data": [
           {
             "trashName": "Portal Guardian",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Portal-Guardian-1024x1007.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Portal-Guardian-1024x1007.webp",
             "data": [
               {
                 "text": "所需诅咒驱散：",
@@ -1284,10 +1294,10 @@
           },
           {
             "trashName": "Maniacal Soulbinder",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Maniacal-Soulbinder-500x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Maniacal-Soulbinder-500x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -1330,10 +1340,10 @@
           },
           {
             "trashName": "Bone Magus",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Bone-Magus-547x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bone-Magus-547x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -1405,7 +1415,7 @@
           },
           {
             "trashName": "Soulforged Bonereaver",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Soulforged-Bonereaver-1024x550.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Soulforged-Bonereaver-1024x550.webp",
             "data": [
               {
                 "text": "[白骨风暴]",
@@ -1445,7 +1455,7 @@
           },
           {
             "trashName": "Nefarious Darkspeaker",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Nefarious-Darkspeaker-500x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nefarious-Darkspeaker-500x1024.webp",
             "data": [
               {
                 "text": "所需诅咒驱散：",
@@ -1471,7 +1481,7 @@
                 ]
               },
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -1514,10 +1524,10 @@
           },
           {
             "trashName": "Shackled Soul",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Shackled-Soul-541x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shackled-Soul-541x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -1551,6 +1561,7 @@
             "spellId": "473959",
             "spellNameZH": "抽取灵魂",
             "spellNameEN": "‍Draw Soul",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-DrawSoul-ezgif.com-optimize.gif",
             "image": "‍Draw Soul.gif",
             "data": [
               {
@@ -1576,6 +1587,7 @@
             "spellId": "473540",
             "spellNameZH": "黑暗之井",
             "spellNameEN": "‍Well of Darkness",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-WellofDarkness-ezgif.com-optimize.gif",
             "image": "‍Well of Darkness.gif",
             "data": [
               {
@@ -1601,6 +1613,7 @@
             "spellId": "474087",
             "spellNameZH": "通灵喷发",
             "spellNameEN": "‍Necrotic Eruption",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-NecroticEruption-ezgif.com-optimize.gif",
             "image": "‍Necrotic Eruption.gif",
             "data": [
               {
@@ -1614,6 +1627,7 @@
             "spellId": "1216475",
             "spellNameZH": "通灵箭",
             "spellNameEN": "‍Necrotic Bolt",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-NecroticBolt-ezgif.com-optimize.gif",
             "image": "‍Necrotic Bolt.gif",
             "data": [
               {
@@ -1632,6 +1646,7 @@
           {
             "spellId": "1216474",
             "spellNameEN": "‍Death Spiral",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-DeathSpiral-ezgif.com-optimize.gif",
             "image": "‍Death Spiral.gif",
             "data": [
               {
@@ -1649,10 +1664,10 @@
         "data": [
           {
             "trashName": "Blighted Sludge-Spewer",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Blighted-Sludge-Spewer.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Blighted-Sludge-Spewer.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -1735,7 +1750,7 @@
           },
           {
             "trashName": "Putrid Butcher",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Putrid-Butcher-1024x836.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Putrid-Butcher-1024x836.webp",
             "data": [
               {
                 "text": "[吞噬血肉]",
@@ -1758,7 +1773,7 @@
           },
           {
             "trashName": "Disgusting Refuse",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Disgusting-Refuse.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Disgusting-Refuse.webp",
             "data": [
               {
                 "text": "[腾跃猛击]",
@@ -1804,7 +1819,7 @@
           },
           {
             "trashName": "Diseased Horror",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Diseased-Horror-668x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Diseased-Horror-668x1024.webp",
             "data": [
               {
                 "text": "[血肉之盾]",
@@ -1844,7 +1859,7 @@
           },
           {
             "trashName": "Rancid Gasbag",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Rancid-Gasbag-1024x911.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rancid-Gasbag-1024x911.webp",
             "data": [
               {
                 "text": "[疾病之云]",
@@ -1892,6 +1907,7 @@
             "spellId": "322795",
             "spellNameZH": "肉钩",
             "spellNameEN": "‍Meat Hooks",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-MeatHooks-ezgif.com-optimize.gif",
             "image": "‍Meat Hooks.gif",
             "data": [
               {
@@ -1944,6 +1960,7 @@
             "spellId": "318406",
             "spellNameZH": "软肉碎击",
             "spellNameEN": "‍Tenderizing Smash",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-TenderizingSmash-ezgif.com-optimize.gif",
             "image": "‍Tenderizing Smash.gif",
             "data": [
               {
@@ -1968,6 +1985,7 @@
           {
             "spellId": "323515",
             "spellNameEN": "‍Hateful Strike",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-HatefulStrike-ezgif.com-optimize.gif",
             "image": "‍Hateful Strike.gif",
             "data": [
               {
@@ -1987,6 +2005,7 @@
             "spellId": "323685",
             "spellNameZH": "攫取裂隙",
             "spellNameEN": "‍Grasping Rift",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/5-GraspingRift-ezgif.com-optimize.gif",
             "image": "‍Grasping Rift.gif",
             "data": [
               {
@@ -2035,6 +2054,7 @@
             "spellId": "324449",
             "spellNameZH": "死亡具象",
             "spellNameEN": "‍Manifest Death",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/5-ManifestDeath-ezgif.com-optimize.gif",
             "image": "‍Manifest Death.gif",
             "data": [
               {
@@ -2071,6 +2091,7 @@
             "spellId": "323681",
             "spellNameZH": "黑暗毁灭",
             "spellNameEN": "‍Dark Devastation",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/5-DarkDevastation-ezgif.com-optimize.gif",
             "image": "‍Dark Devastation.gif",
             "data": [
               {
@@ -2090,6 +2111,7 @@
             "spellId": "324079",
             "spellNameZH": "收割之镰",
             "spellNameEN": "‍Reaping Scythe",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/5-ReapingScythe-ezgif.com-optimize.gif",
             "image": "‍Reaping Scythe.gif",
             "data": [
               {
@@ -2103,6 +2125,7 @@
             "spellId": "339573",
             "spellNameZH": "屠戮回响",
             "spellNameEN": "‍Echoes of Carnage",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/5-EchoesofCarnage-ezgif.com-optimize.gif",
             "image": "‍Echoes of Carnage.gif",
             "data": [
               {

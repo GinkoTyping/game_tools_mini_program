@@ -10,6 +10,7 @@ import dungeonTipRoutes from './routes/wow/dungeonTipRoutes.js';
 import spellRoutes from './routes/wow/spellRoutes.js';
 import tierListRoutes from './routes/wow/tierListRoutes.js';
 import homeViewRoutes from './routes/wow/homeViewRoutes.js';
+import mythicDungeonRoutes from './routes/wow/mythicDungeonRoutes.js';
 import commonBisRoutes from './routes/common/commonRoutes.js';
 
 const app = express();
@@ -57,6 +58,7 @@ app.use('/api/wow', spellRoutes);
 app.use('/api/wow', dungeonRoutes);
 app.use('/api/wow', homeViewRoutes);
 app.use('/api/wow', dungeonTipRoutes);
+app.use('/api/wow', mythicDungeonRoutes);
 app.use('/api/common', commonBisRoutes);
 
 app.listen(port, () => {
