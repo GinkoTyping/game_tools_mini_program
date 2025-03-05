@@ -246,7 +246,11 @@ function getBossAndTrashSeletors(context) {
     .first()
     .find('div>a')
     .map((i, ele) => {
-      return $(ele).attr('href').replaceAll("'", "\\'").replaceAll(',', '\\,');
+      return $(ele)
+        .attr('href')
+        .replaceAll("'", "\\'")
+        .replaceAll(',', '\\,')
+        .replaceAll('.', '\\.');
     })
     .get()
     .filter(
@@ -424,9 +428,14 @@ async function getBossSpell(context, containerEle, index) {
     .find('span[data-wow-id]')
     .eq(index);
   const spellId = $(spellEle).attr('data-wow-id');
-  const spellsData = await querySpellByIds([spellId]);
   const spellNameEN = $(spellEle).text().trim();
-  const spellNameZH = spellsData?.[0]?.name_zh;
+
+  const spellsData = await translateSpellName({
+    id: spellId,
+    name: spellNameEN,
+  });
+
+  const spellNameZH = spellsData?.nameZH;
 
   const infoEle = $(containerEle).children().last().children().eq(index);
   const textEle = $(infoEle).find('>div>div').first().find('>ul');
@@ -434,13 +443,15 @@ async function getBossSpell(context, containerEle, index) {
 
   const text = await traverseCollectUl(context, textEle);
 
-  const imageSrc = $(imageEle).find('img').attr('src');
+  const imageSrc = $(imageEle).find('img')?.attr('src');
   const image = `${spellNameEN}.gif`;
 
-  await downloadSingle(
-    imageSrc,
-    path.resolve(__dirname, `../../backend/assets/wow/spell/${image}`)
-  );
+  if (imageSrc) {
+    await downloadSingle(
+      imageSrc,
+      path.resolve(__dirname, `../../backend/assets/wow/spell/${image}`)
+    );
+  }
 
   return {
     spellId,

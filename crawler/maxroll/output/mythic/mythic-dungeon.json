@@ -585,7 +585,19 @@
               }
             ]
           },
-          null
+          {
+            "spellId": "320069",
+            "spellNameZH": "致死打击",
+            "spellNameEN": "‍Mortal Strike",
+            "image": "‍Mortal Strike.gif",
+            "data": [
+              {
+                "text": "在苦痛剧场的德西亚会攻击坦克，造成物理伤害，并在5秒内使坦克受到的治疗效果降低50%。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
         ]
       },
       {
@@ -1659,6 +1671,7 @@
           },
           {
             "spellId": "1216474",
+            "spellNameZH": "死亡螺旋",
             "spellNameEN": "‍Death Spiral",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-DeathSpiral-ezgif.com-optimize.gif",
             "image": "‍Death Spiral.gif",
@@ -1998,6 +2011,7 @@
           },
           {
             "spellId": "323515",
+            "spellNameZH": "仇恨打击",
             "spellNameEN": "‍Hateful Strike",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-HatefulStrike-ezgif.com-optimize.gif",
             "image": "‍Hateful Strike.gif",
@@ -2828,6 +2842,7 @@
           },
           {
             "spellId": "419871",
+            "spellNameZH": "闪电疾冲",
             "spellNameEN": "‍Lightning Dash",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1stboss-LightningDash-ezgif.com-optimize.gif",
             "image": "‍Lightning Dash.gif",
@@ -3403,7 +3418,19 @@
               }
             ]
           },
-          null
+          {
+            "spellId": "423393",
+            "spellNameZH": "熵灭",
+            "spellNameEN": "‍Entropy",
+            "image": "‍Entropy.gif",
+            "data": [
+              {
+                "text": "如果近战范围内没有玩家，[虚空石巨怪]会对所有玩家造成暗影伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
         ]
       }
     ],
@@ -4378,6 +4405,7 @@
           },
           {
             "spellId": "447272",
+            "spellNameZH": "掷矛",
             "spellNameEN": "‍Hurl Spear",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-HurlSpear-ezgif.com-optimize.gif",
             "image": "‍Hurl Spear.gif",
@@ -4403,8 +4431,49 @@
               }
             ]
           },
-          null,
-          null
+          {
+            "spellId": "424628",
+            "spellNameZH": "人多势众",
+            "spellNameEN": "‍Strength in Numbers",
+            "image": "‍Strength in Numbers.gif",
+            "data": [
+              {
+                "text": "达伊克里船长的忠诚卫士每有一名附近的信赖守卫，造成的伤害就会增加200%。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "确保每次只与一名守卫和[Captain Dailcry]交战。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "448385",
+            "spellNameZH": "命运与共",
+            "spellNameEN": "‍Bound by Fate",
+            "image": "‍Bound by Fate.gif",
+            "data": [
+              {
+                "text": "达伊克瑞船长和他信任的守卫们被圣光所束缚，使得四人在彼此靠近时会共享生命值。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "这使得在这场战斗中使用顺劈斩极为有效。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "戴尔克里上尉的存在使他附近信任的守卫的生命值提高1000%。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
         ]
       },
       {
@@ -5644,6 +5713,7 @@
           },
           {
             "spellId": "422245",
+            "spellNameZH": "穿岩凿",
             "spellNameEN": "‍Rock Buster",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-RockBuster-ezgif.com-cut.gif",
             "image": "‍Rock Buster.gif",
@@ -5845,6 +5915,7 @@
           },
           {
             "spellId": "422700",
+            "spellNameZH": "灭火强风",
             "spellNameEN": "‍Extinguishing Gust",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-ExtinguishingGust-ezgif.com-optimize.gif",
             "image": "‍Extinguishing Gust.gif",
@@ -7240,6 +7311,7 @@
         "data": [
           {
             "spellId": "432229",
+            "spellNameZH": "醉酿投",
             "spellNameEN": "‍Keg Smash",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Keg-Smash-gif-1.gif",
             "image": "‍Keg Smash.gif",
@@ -7923,6 +7995,7 @@
         "data": [
           {
             "spellId": "435560",
+            "spellNameZH": "有酿同享！",
             "spellNameEN": "‍Spread the Love!",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/SpreadtheLove-gif.gif",
             "image": "‍Spread the Love!.gif",
@@ -8710,6 +8783,7 @@
         "data": [
           {
             "spellId": "271785",
+            "spellNameZH": "抛硬币",
             "spellNameEN": "‍Throw Coins",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-ThrowCoins-ezgif.com-optimize.gif",
             "image": "‍Throw Coins.gif",
@@ -8723,6 +8797,7 @@
           },
           {
             "spellId": "271898",
+            "spellNameZH": "硬币磁铁",
             "spellNameEN": "‍Coin Magnet",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-CoinMagnet-ezgif.com-optimize.gif",
             "image": "‍Coin Magnet.gif",
@@ -9293,6 +9368,7 @@
           },
           {
             "spellId": "257481",
+            "spellNameZH": "水力压裂图腾",
             "spellNameEN": "‍Fracking Totem",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Fracking-Totem.webp",
             "image": "‍Fracking Totem.gif",
@@ -9531,7 +9607,19 @@
               }
             ]
           },
-          null
+          {
+            "spellId": "259474",
+            "spellNameZH": "灼烧试剂",
+            "spellNameEN": "‍Searing Reagent",
+            "image": "‍Searing Reagent.gif",
+            "data": [
+              {
+                "text": "向坦克射击，造成火焰伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
         ]
       },
       {
@@ -9773,7 +9861,19 @@
               }
             ]
           },
-          null
+          {
+            "spellId": "260318",
+            "spellNameZH": "阿尔法炮",
+            "spellNameEN": "‍Alpha Cannon",
+            "image": "‍Alpha Cannon.gif",
+            "data": [
+              {
+                "text": "对坦克造成火焰伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
         ]
       }
     ],
@@ -10112,6 +10212,7 @@
           },
           {
             "spellId": "282945",
+            "spellNameZH": "电锯",
             "spellNameEN": "‍Buzz Saw",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-BuzzSaw-ezgif.com-optimize.gif",
             "image": "‍Buzz Saw.gif",
@@ -10253,11 +10354,306 @@
               }
             ]
           },
-          null
+          {
+            "spellId": "1216443",
+            "spellNameZH": "电能风暴",
+            "spellNameEN": "‍Electrical Storm",
+            "image": "‍Electrical Storm.gif",
+            "data": [
+              {
+                "text": "被击败的战士会释放其剩余的能量，形成一场雷电风暴，每2秒对所有玩家造成自然伤害，并使他们受到的自然伤害提高20%。此效果可叠加。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "同时击杀两个首领，以避免死于[电能风暴]。",
+                    "spells": [
+                      {
+                        "name": "‍Electrical Storm",
+                        "id": "1216443",
+                        "nameZH": "电能风暴"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
         ]
       },
-      null,
-      null,
+      {
+        "title": "\"狂犬K.U.-J.0.\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Waste Processing Unit",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Waste-Processing-Unit-1024x897.webp",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[刺破]",
+                    "spells": [
+                      {
+                        "name": "‍Puncture",
+                        "id": "1215411",
+                        "nameZH": "刺破"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对目标造成物理伤害并使其流血。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "每当你的坦克处于危险中或没有防御技能冷却时，移除流血效果会非常有帮助。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[超级电钻]",
+                "spells": [
+                  {
+                    "name": "‍Mega Drill",
+                    "id": "1215409",
+                    "nameZH": "超级电钻"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "持续施法，在其持续时间内造成自然伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "确保集中站位以便治疗，并开启一些防御技能。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Metal Gunk",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Metal-Gunk-1024x660.webp",
+            "data": [
+              {
+                "text": "腐蚀性粘液",
+                "spells": [
+                  {
+                    "name": "‍Corrosive Gunk",
+                    "id": "1215412",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "范围攻击法术，对60码内的所有玩家造成自然伤害，并吸收受到的治疗效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Junkyard D.0.G.",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Junkyard-D.0.G-834x1024.webp",
+            "data": [
+              {
+                "text": "需要魔法驱散：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[灼热巨颚]",
+                    "spells": [
+                      {
+                        "name": "‍Fiery Jaws",
+                        "id": "1217819",
+                        "nameZH": "灼热巨颚"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "随机跳跃到一个目标身上，并施加一个魔法减益效果，在10秒内造成火焰伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"狂犬K.U.-J.0.\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "291930",
+            "spellNameZH": "空投",
+            "spellNameEN": "‍Air Drop",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-AirDrop-ezgif.com-optimize.gif",
+            "image": "‍Air Drop.gif",
+            "data": [
+              {
+                "text": "垃圾方块会从上方掉落，对生成地点6码范围内的所有玩家造成物理伤害并将其击退。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "当[垃圾方块]被[爆燃之跃]或[喷射烈焰]击中时，它会变成一个[垃圾炸弹]。如果这些法术再次击中[垃圾炸弹]，将会引发爆炸，对炸弹周围6码内的所有玩家造成火焰伤害并将其击退。",
+                "spells": [
+                  {
+                    "name": "‍Junk Bomb",
+                    "id": "291953",
+                    "nameZH": "垃圾炸弹"
+                  },
+                  {
+                    "name": "‍Explosive Leap",
+                    "id": "292022",
+                    "nameZH": "爆燃之跃"
+                  },
+                  {
+                    "name": "‍Venting Flames",
+                    "id": "291946",
+                    "nameZH": "喷射烈焰"
+                  },
+                  {
+                    "name": "‍Junk Bomb",
+                    "id": "291953",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "始终将[爆燃之跃]的目标对准远离盒子的方向。",
+                    "spells": [
+                      {
+                        "name": "‍Explosive Leap",
+                        "id": "292022",
+                        "nameZH": "爆燃之跃"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "Junk Cube的生成位置是根据玩家的站位来决定的，这意味着你们需要分散站位，让它们彼此分开生成，以避免在第二次施放[喷射烈焰]时被[垃圾炸弹]的爆炸波及。",
+                "spells": [
+                  {
+                    "name": "‍Junk Bomb",
+                    "id": "291953",
+                    "nameZH": "垃圾炸弹"
+                  },
+                  {
+                    "name": "‍Venting Flames",
+                    "id": "291946",
+                    "nameZH": "喷射烈焰"
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "292022",
+            "spellNameZH": "爆燃之跃",
+            "spellNameEN": "‍Explosive Leap",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-ExplosiveLeap-ezgif.com-optimize.gif",
+            "image": "‍Explosive Leap.gif",
+            "data": [
+              {
+                "text": "K.U.-J.0. 会向3名随机玩家跳跃，加热废料方块并对冲击点8码范围内的所有单位造成火焰伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "一旦他选择了跳跃的目标，第一个被跳跃的目标是距离K.U.-J.0最远的那个。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "291946",
+            "spellNameZH": "喷射烈焰",
+            "spellNameEN": "‍Venting Flames",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-VentingFlames-ezgif.com-optimize.gif",
+            "image": "‍Venting Flames.gif",
+            "data": [
+              {
+                "text": "K.U.-J.0. 从其核心喷发出巨大的火焰，每秒对所有玩家造成火焰伤害，持续3秒。这会使[废料方块]升温。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "躲在[垃圾方块]后面，避免受到[喷射烈焰]的伤害。",
+                    "spells": [
+                      {
+                        "name": "‍Venting Flames",
+                        "id": "291946",
+                        "nameZH": "喷射烈焰"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "当你站在垃圾方块后面时，你会获得一个[垃圾掩体]的增益效果，这表示你现在是安全的。",
+                        "spells": [
+                          {
+                            "name": "‍Hiding Behind Junk",
+                            "id": "291937",
+                            "nameZH": "垃圾掩体"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "294929",
+            "spellNameZH": "烈焰撕咬",
+            "spellNameEN": "‍Blazing Chomp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BlazingChomp-ezgif.com-optimize.gif",
+            "image": "‍Blazing Chomp.gif",
+            "data": [
+              {
+                "text": "坦克身上的一个魔法减益效果，每秒造成火焰伤害，持续3分钟。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "驱散时爆炸，对所有玩家造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  },
+                  {
+                    "text": "尽快驱散它，因为它对坦克造成非常严重的伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       {
         "title": "\"机械师的花园\"前的小怪",
         "type": "trash",
@@ -10575,6 +10971,7 @@
         "data": [
           {
             "spellId": "285460",
+            "spellNameZH": "脉冲榴弹",
             "spellNameEN": "‍Discom-BOMB-ulator",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-Discom-BOMB-ulator-ezgif.com-optimize.gif",
             "image": "‍Discom-BOMB-ulator.gif",
@@ -10595,6 +10992,7 @@
           null,
           {
             "spellId": "294954",
+            "spellNameZH": "自我修剪措施",
             "spellNameEN": "‍Self-Trimming Hedge",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-Self-TrimmingHedge-ezgif.com-optimize.gif",
             "image": "‍Self-Trimming Hedge.gif",
@@ -10932,6 +11330,7 @@
           },
           {
             "spellId": "291878",
+            "spellNameZH": "脉冲爆炸",
             "spellNameEN": "‍Pulse Blast",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-PulseBlast-ezgif.com-optimize.gif",
             "image": "‍Pulse Blast.gif",
@@ -10971,6 +11370,7 @@
           },
           {
             "spellId": "283534",
+            "spellNameZH": "万磁臂",
             "spellNameEN": "‍Magneto-Arm",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-Magneto-Arm-ezgif.com-optimize.gif",
             "image": "‍Magneto-Arm.gif",
@@ -10988,7 +11388,19 @@
               }
             ]
           },
-          null
+          {
+            "spellId": "292290",
+            "spellNameZH": "第九十九号协议",
+            "spellNameEN": "‍Protocol: Ninety-Nine",
+            "image": "‍Protocol: Ninety-Nine.gif",
+            "data": [
+              {
+                "text": "当没有玩家进行近战战斗时，麦卡贡国王会对所有玩家造成致命的自然伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
         ]
       }
     ],
@@ -11206,8 +11618,595 @@
       }
     ],
     "enemyTips": [
-      null,
-      null,
+      {
+        "title": "\"老大娘\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Darkfuse Soldier",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Soldier-499x1024.webp",
+            "data": [
+              {
+                "text": "黑血之伤",
+                "spells": [
+                  {
+                    "name": "‍Black Blood Wound",
+                    "id": "462737",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "近战攻击有一定几率施加一个可叠加的魔法减益效果，每2秒造成一次暗影伤害，持续20秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Mechadrone Sniper",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechadrone-Sniper.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[特技射击]",
+                    "spells": [
+                      {
+                        "name": "‍Trickshot",
+                        "id": "1214468",
+                        "nameZH": "特技射击"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家造成暗影伤害，并对团队中的其他成员造成溅射伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "狙击",
+                "spells": [
+                  {
+                    "name": "‍Snipe",
+                    "id": "464655",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对随机目标造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Loaderbot",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Loaderbot-Fixed.webp",
+            "data": [
+              {
+                "text": "[上紧发条]  \n在魔兽世界的副本中，[上紧发条]是一个需要玩家注意的机制或任务。通常，这可能涉及到与机械装置或时间相关的挑战。玩家需要按照特定的顺序或时机进行操作，以确保副本的顺利进行。具体步骤可能包括激活某些机关、击败特定的敌人，或者在规定的时间内完成任务。建议玩家在进入副本前详细了解相关机制，并与队友密切配合，以确保成功完成[上紧发条]的任务。",
+                "spells": [
+                  {
+                    "name": "‍Wind Up",
+                    "id": "465120",
+                    "nameZH": "上紧发条"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "蓄力并锁定一名玩家，在6秒内每0.3秒对3.5码范围内的玩家造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Darkfuse Demolitionist",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Demolitionist.webp",
+            "data": [
+              {
+                "text": "R.P.G.G. 是魔兽世界中的一个副本攻略。以下是对该副本的详细攻略：\n\n1. **副本入口**：副本的入口位于[艾泽拉斯]大陆的[东部王国]地区，具体位置在[燃烧平原]的南部。\n\n2. **副本背景**：R.P.G.G. 是[燃烧军团]的一个重要据点，玩家需要组队进入，击败里面的恶魔首领，阻止他们的邪恶计划。\n\n3. **副本结构**：副本分为三个主要区域：\n   - **区域一：恶魔之门**：这里有许多小怪和陷阱，玩家需要小心应对。\n   - **区域二：熔火之心**：这里是副本的核心区域，玩家将面对强大的火焰恶魔。\n   - **区域三：黑暗祭坛**：最终首领[拉格纳罗斯]就在这里，玩家需要击败他才能完成副本。\n\n4. **首领攻略**：\n   - **首领一：火焰领主**：他会召唤火焰元素，玩家需要优先击杀这些元素。\n   - **首领二：熔岩巨人**：他会释放大范围的熔岩攻击，玩家需要分散站位。\n   - **最终首领：拉格纳罗斯**：他会使用强大的火焰法术，玩家需要躲避他的技能并集中火力输出。\n\n5. **奖励**：完成副本后，玩家可以获得[史诗装备]和[稀有材料]，这些奖励对提升角色实力非常有帮助。\n\n希望这份攻略能帮助你在R.P.G.G.副本中取得胜利！",
+                "spells": [
+                  {
+                    "name": "‍R.P.G.G.",
+                    "id": "1216039",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "发射一连串火箭，对8码范围内的玩家造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Venture Co. Surveyor",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Surveyor-Fixed-745x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[勘测光束]",
+                    "spells": [
+                      {
+                        "name": "‍Surveying Beam",
+                        "id": "462771",
+                        "nameZH": "勘测光束"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "风险投资公司勘测员会随机对一名玩家聚焦一道过热光束，每0.2秒造成一次火焰伤害，持续5秒。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "光束会在原地留下一个[勘探之地]，对站在其中的玩家每秒造成火焰伤害。",
+                            "spells": [
+                              {
+                                "name": "‍Surveyed Ground",
+                                "id": "472338",
+                                "nameZH": "勘探之地"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[“易投”炸弹 III]",
+                "spells": [
+                  {
+                    "name": "‍EZ-Thro Dynamite III",
+                    "id": "463169",
+                    "nameZH": "“易投”炸弹 III"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对随机一名玩家造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Shreddinator 3000",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shreddinator-3000-1024x998.webp",
+            "data": [
+              {
+                "text": "[碎切]",
+                "spells": [
+                  {
+                    "name": "‍Shreddation",
+                    "id": "474337",
+                    "nameZH": "碎切"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在每个玩家的位置召唤多个旋转的锯刃，每0.3秒对范围内的玩家造成物理伤害。此伤害会随着连续命中而增加。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "在[碎切]施法结束时立即开始跑动，这样你就可以避免受到该技能的所有伤害。",
+                        "spells": [
+                          {
+                            "name": "‍Shreddation",
+                            "id": "474337",
+                            "nameZH": "碎切"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[火焰喷射器]",
+                "spells": [
+                  {
+                    "name": "‍Flamethrower",
+                    "id": "465754",
+                    "nameZH": "火焰喷射器"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "一个正面锥形范围，每0.2秒对位于粉碎者前方的所有玩家造成火焰伤害，持续5秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Darkfuse Inspector",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Inspector-682x1024.webp",
+            "data": [
+              {
+                "text": "[突击调查]",
+                "spells": [
+                  {
+                    "name": "‍Surprise Inspection",
+                    "id": "465682",
+                    "nameZH": "突击调查"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机传送到一名玩家身后，并准备进行一次恶毒的检查，对施法者前方的所有玩家造成暗影伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Darkfuse Hyena",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Hyena.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[嗜血狞笑]",
+                    "spells": [
+                      {
+                        "name": "‍Bloodthirsty Cackle",
+                        "id": "463058",
+                        "nameZH": "嗜血狞笑"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "使20码范围内的暗熔鬣狗的近战攻击在8秒内具有治疗效果。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "这是一个激怒效果，因此如果错过了打断，仍然可以通过安抚来解除。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[团队战术]",
+                "spells": [
+                  {
+                    "name": "‍Pack Tactics",
+                    "id": "469771",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "增加20码范围内[黑暗融合鬣狗]的急速10%。此效果可叠加。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Darkfuse Bloodwarper",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Bloodwarper.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[鲜血冲击]",
+                    "spells": [
+                      {
+                        "name": "‍Blood Blast",
+                        "id": "465871",
+                        "nameZH": "鲜血冲击"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对坦克造成暗影伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[扭曲鲜血]",
+                "spells": [
+                  {
+                    "name": "‍Warp Blood",
+                    "id": "465827",
+                    "nameZH": "扭曲鲜血"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对60码范围内的所有玩家造成暗影伤害，并在6秒内每秒施加一个治疗吸收效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Venture Co. Architect",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Architect.webp",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[射钉枪]",
+                    "spells": [
+                      {
+                        "name": "‍Nailgun",
+                        "id": "1213805",
+                        "nameZH": "射钉枪"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "向随机玩家发射钉枪，造成物理伤害，使其流血并被定身。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[快速建造]",
+                "spells": [
+                  {
+                    "name": "‍Rapid Construction",
+                    "id": "465408",
+                    "nameZH": "快速建造"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "Venture Co. Architect 迅速建造一座塔并跃至塔顶，获得 [雄踞高地]。",
+                    "spells": [
+                      {
+                        "name": "‍High Ground",
+                        "id": "465420",
+                        "nameZH": "雄踞高地"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "在[雄踞高地]阶段，建筑师受到的伤害减少了90%。",
+                        "spells": [
+                          {
+                            "name": "‍High Ground",
+                            "id": "465420",
+                            "nameZH": "雄踞高地"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"老大娘\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "471585",
+            "spellNameZH": "",
+            "spellNameEN": "‍Mobilize Mechadrones",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-MobilizeMechadrones-ezgif.com-optimize.gif",
+            "image": "‍Mobilize Mechadrones.gif",
+            "data": [
+              {
+                "text": "在[Operation: Floodgate]中，Big M.O.M.M.A.会召唤4个Darkfuse Mechadrones来协助战斗。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "暗炉机械傀儡在战斗中会使用一系列自己的技能。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[终极失真]",
+                    "spells": [
+                      {
+                        "name": "‍Maximum Distortion",
+                        "id": "1214780",
+                        "nameZH": "终极失真"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "机械超载者过载其通讯阵列，对60码范围内的所有玩家造成音波伤害，并在14秒内每2秒将他们击退一次。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "可打断。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "text": "射击",
+                    "spells": [
+                      {
+                        "name": "‍Shoot",
+                        "id": "460393",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "机械无人机会随机向一名玩家快速射击，造成物理伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "末日风暴",
+                    "spells": [
+                      {
+                        "name": "‍Doom Storm",
+                        "id": "472452",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "机械无人机向随机玩家释放扫射，沿直线轰炸目标，并对每个冲击点3码范围内的玩家造成自然伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "460156",
+            "spellNameZH": "快速启动",
+            "spellNameEN": "‍Jumpstart",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-Jumpstart-ezgif.com-optimize.gif",
+            "image": "‍Jumpstart.gif",
+            "data": [
+              {
+                "text": "当所有[暗炉机甲]被击败后，[大妈妈]试图为它们耗尽的电池重新充能。这一过程会导致它在12秒内受到的伤害提高200%，并且每1.5秒释放一次能量冲击。每次能量冲击会对所有玩家造成自然伤害。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "当它们的能量储备完全恢复后，Big M.O.M.M.A. 会留下[过度电气化]，这是一个地面效果，每秒对站在其中的玩家造成自然伤害。",
+                "spells": [
+                  {
+                    "name": "‍Excessive Electrification",
+                    "id": "473287",
+                    "nameZH": ""
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "473351",
+            "spellNameZH": "电气重碾",
+            "spellNameEN": "‍Electrocrush",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-Electrocrush-ezgif.com-optimize.gif",
+            "image": "‍Electrocrush.gif",
+            "data": [
+              {
+                "text": "大M.O.M.M.A.会用带电的爪子碾压坦克，立即造成自然伤害，并在接下来的10秒内每秒造成自然伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "473220",
+            "spellNameZH": "音爆",
+            "spellNameEN": "‍Sonic Boom",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-SonicBoom-ezgif.com-cut.gif",
+            "image": "‍Sonic Boom.gif",
+            "data": [
+              {
+                "text": "在[行动：水闸]中，Big M.O.M.M.A.会向随机玩家发射一股声波能量，每0.5秒造成一次声波伤害，同时将范围内的玩家拖拽并使其沉默。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "脉冲在碰撞到障碍物时会爆炸，对7码范围内的玩家造成音波伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "与Boss保持一定距离，以避免被正面技能沉默和拖拽，同时也不要太靠近墙壁，以免被第二次爆炸击中。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "469981",
+            "spellNameZH": "夺命封锁屏障",
+            "spellNameEN": "‍Kill-o-Block Barrier",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-Kill-o-BlockBarrier-ezgif.com-optimize.gif",
+            "image": "‍Kill-o-Block Barrier.gif",
+            "data": [
+              {
+                "text": "Big M.O.M.M.A. 会用一个电屏障包围自己，使受到的伤害减少80%。当护盾激活时，每2.5秒会对所有玩家造成自然伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[夺命封锁屏障] 通过击杀所有暗熔机甲无人机来移除。",
+                    "spells": [
+                      {
+                        "name": "‍Kill-o-Block Barrier",
+                        "id": "469981",
+                        "nameZH": "夺命封锁屏障"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       {
         "title": "\"破拆双人组\"前的小怪",
         "type": "trash",
@@ -11468,6 +12467,7 @@
           },
           {
             "spellId": "460602",
+            "spellNameZH": "快速射击",
             "spellNameEN": "‍Quick Shot",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-QuickShot-ezgif.com-cut.gif",
             "image": "‍Quick Shot.gif",
@@ -11555,7 +12555,31 @@
               }
             ]
           },
-          null
+          {
+            "spellId": "470090",
+            "spellNameZH": "天人永隔",
+            "spellNameEN": "‍Divided Duo",
+            "image": "‍Divided Duo.gif",
+            "data": [
+              {
+                "text": "击败基扎或布隆特中的任意一个，都会导致另一个每4秒增加20%的伤害。此外，布隆特还会开始频繁地对敌人使用[重击]。",
+                "spells": [
+                  {
+                    "name": "‍Walloping",
+                    "id": "459799",
+                    "nameZH": "重击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "确保同时击杀两个首领。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
         ]
       },
       {
@@ -12133,6 +13157,7 @@
           },
           {
             "spellId": "468276",
+            "spellNameZH": "水坝！",
             "spellNameEN": "‍Dam!",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-Dam-ezgif.com-optimize.gif",
             "image": "‍Dam!.gif",
@@ -12252,6 +13277,7 @@
           },
           {
             "spellId": "466197",
+            "spellNameZH": "雷霆重拳",
             "spellNameEN": "‍Thunder Punch",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-ThunderPunch-ezgif.com-optimize.gif",
             "image": "‍Thunder Punch.gif",
