@@ -7880,9 +7880,290 @@
         ]
       },
       {
-        "title": "\"undefined\"",
-        "type": "boss",
-        "data": []
+        "title": "\"本克·鸣蜂\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Venture Co. Honey Harvester",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Honey-Harvester-680x1024.webp",
+            "data": [
+              {
+                "text": "[蜂拥惊喜]",
+                "spells": [
+                  {
+                    "name": "‍Swarming Surprise",
+                    "id": "442995",
+                    "nameZH": "蜂拥惊喜"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "一个范围攻击技能，对附近玩家造成物理伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "施加一个叠加的减益效果，增加受到[蜂拥惊喜]的伤害。",
+                        "spells": [
+                          {
+                            "name": "‍Swarming Surprise",
+                            "id": "442995",
+                            "nameZH": "蜂拥惊喜"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[蜂蜡]",
+                "spells": [
+                  {
+                    "name": "‍Beeswax",
+                    "id": "442589",
+                    "nameZH": "蜂蜡"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "Venture Co. 蜂蜜采集者会击晕周围的玩家并对他们造成物理伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "这是一个魔法眩晕效果，可以被驱散。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Bee Wrangler",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bee-Wrangler-566x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[狂蜂怒火]",
+                    "spells": [
+                      {
+                        "name": "‍Bee-stial Wrath",
+                        "id": "441351",
+                        "nameZH": "狂蜂怒火"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "激怒施法者和附近的蜜蜂，增加它们的伤害。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "[狂蜂怒火] 是一个激怒增益效果。如果你错过了打断，尝试使用安抚技能来消除它。",
+                            "spells": [
+                              {
+                                "name": "‍Bee-stial Wrath",
+                                "id": "441353",
+                                "nameZH": "狂蜂怒火"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[射击]",
+                "spells": [
+                  {
+                    "name": "‍Shoot",
+                    "id": "456891",
+                    "nameZH": "射击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对目标射击，造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[蜂爆弹]",
+                "spells": [
+                  {
+                    "name": "‍Bee-Zooka",
+                    "id": "441119",
+                    "nameZH": "蜂爆弹"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对随机玩家施放一个长时间的固定施法，向前方直线发射一只蜜蜂，对直线上的任何人造成火焰伤害并将其击退。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "可以拉开距离，完全避免被击中并被击退。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Royal Jelly Purveyor",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Royal-Jelly-Purveyor-565x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[蜂蜜齐射]",
+                    "spells": [
+                      {
+                        "name": "‍Honey Volley",
+                        "id": "440687",
+                        "nameZH": "蜂蜜齐射"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "一个范围性技能，对60码内的所有玩家造成自然伤害并减速。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[蜜雨如注]",
+                "spells": [
+                  {
+                    "name": "‍Rain of Honey",
+                    "id": "440876",
+                    "nameZH": "蜜雨如注"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在地面上生成水池，对范围内的目标造成自然伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Worker Bee",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Worker-Bee-Reupload.webp",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[碎肉针刺]",
+                    "spells": [
+                      {
+                        "name": "‍Shredding Sting",
+                        "id": "441410",
+                        "nameZH": "碎肉针刺"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机玩家施加一个可叠加的流血减益效果。",
+                        "spells": [],
+                        "children": []
+                      },
+                      {
+                        "text": "每当玩家身上有多层该效果时，请驱散它。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[绝命之刺]",
+                "spells": [
+                  {
+                    "name": "‍Final Sting",
+                    "id": "443487",
+                    "nameZH": "绝命之刺"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "一个需要长时间施法的技能，成功命中目标后会造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  },
+                  {
+                    "text": "工蜂在施放技能后会立即死亡。",
+                    "spells": [],
+                    "children": []
+                  },
+                  {
+                    "text": "当工蜂的生命值低于28%时，开始施放该技能。",
+                    "spells": [],
+                    "children": []
+                  },
+                  {
+                    "text": "对目标造成相当高的伤害，确保你的坦克不会同时承受太多这种伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Bee-let",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bee-let-Reupload.webp",
+            "data": [
+              {
+                "text": "需要魔法驱散：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[蜂毒]",
+                    "spells": [
+                      {
+                        "name": "‍Bee Venom",
+                        "id": "441397",
+                        "nameZH": "蜂毒"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对坦克施加一个叠加的魔法减益效果，使其减速并造成自然伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         "title": "\"本克·鸣蜂\"",
@@ -7985,9 +8266,56 @@
         ]
       },
       {
-        "title": "\"undefined\"",
-        "type": "boss",
-        "data": []
+        "title": "\"戈尔迪·底爵\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Yes Man",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Yes-Man.webp",
+            "data": [
+              {
+                "text": "[现场提拔]",
+                "spells": [
+                  {
+                    "name": "‍Field Promotion",
+                    "id": "439403",
+                    "nameZH": "现场提拔"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每当一个[Yes Man]死亡时，增加所有附近[Yes Man]造成的伤害并完全治愈它们。此效果可叠加。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "这使得在这个小怪群中使用范围攻击变得毫无意义，确保与团队一起逐个集火同一个[Yes Man]。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[风向逆转]",
+                "spells": [
+                  {
+                    "name": "‍Downward Trend",
+                    "id": "439467",
+                    "nameZH": "风向逆转"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "[Yes Man]会随机跳向一名玩家，落地时对周围的所有玩家造成物理伤害，并使他们[流血]。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         "title": "\"戈尔迪·底爵\"",

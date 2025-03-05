@@ -266,9 +266,14 @@ function getBossAndTrashSeletors(context) {
 async function getBossAndTrashTitle(context, dungeonData, selector) {
   const $ = context;
   const title = $(selector).text().trim().toLowerCase();
-  const type = title.includes('trash area') ? 'trash' : 'boss';
-  let translatedTitle = title.includes('trash area') ? '前的小怪' : '';
-  const bossName = title.replace('trash area', '').trim();
+
+  // TODO: 适配 cinderbrew-meadery-guide 错误单词 Thrash Area
+  const type = title.includes('rash area') ? 'trash' : 'boss';
+  let translatedTitle = title.includes('rash area') ? '前的小怪' : '';
+  const bossName = title
+    .replace('thrash area', '')
+    .replace('trash area', '')
+    .trim();
 
   const bossNameZH = JSON.parse(dungeonData?.bosses)?.find(
     (item) => item.name.en_US.toLowerCase() === bossName
@@ -729,13 +734,13 @@ const crawlerLimiter = new Bottleneck({
 });
 async function startCrawler() {
   const mythicDungeons = [
-    'theater-of-pain-guide',
-    'the-rookery-guide',
-    'the-motherlode-guide',
-    'priory-of-the-sacred-flame-guide',
-    'operation-mechagon-workshop-guide',
-    'operation-floodgate-guide',
-    'darkflame-cleft-guide',
+    // 'theater-of-pain-guide',
+    // 'the-rookery-guide',
+    // 'the-motherlode-guide',
+    // 'priory-of-the-sacred-flame-guide',
+    // 'operation-mechagon-workshop-guide',
+    // 'operation-floodgate-guide',
+    // 'darkflame-cleft-guide',
     'cinderbrew-meadery-guide',
   ];
   const results = await Promise.allSettled(
