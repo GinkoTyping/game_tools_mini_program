@@ -5,6 +5,8 @@
       :key="dungeon.name_zh"
       showArrow
       rightText="查看"
+      clickable
+      @click="() => navigator.toMythicDungeon(dungeon.id)"
     >
       <template v-slot:header>
         <view class="slot-header">
@@ -40,7 +42,10 @@ import { queryMythicDunegonList } from '@/api/wow';
 import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
+import { useNavigator } from '@/hooks/navigator';
+
 const dungeonList = ref();
+const navigator = useNavigator();
 
 onLoad(async () => {
   dungeonList.value = await queryMythicDunegonList();

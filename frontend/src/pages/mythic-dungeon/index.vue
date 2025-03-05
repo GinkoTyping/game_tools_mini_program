@@ -177,14 +177,13 @@ import Rating from '@/components/rating.vue';
 import { renderTip } from '@/hooks/richTextGenerator';
 
 const mythicDungeonData = ref();
-onLoad(async () => {
-  mythicDungeonData.value = await queryMythicDungeonById(382);
+onLoad(async (options: any) => {
+  mythicDungeonData.value = await queryMythicDungeonById(options.id ?? 382);
   currentUtilityType.value = mythicDungeonData.value?.utilityNeeds[0].type;
   currentLootType.value = mythicDungeonData.value?.lootPool[0].type;
   uni.setNavigationBarTitle({
     title: `大秘境 —— ${mythicDungeonData.value?.nameZH ?? '未知名称'}`,
   });
-  console.log(mythicDungeonData.value);
 });
 
 function exportRouteCode(code: string) {

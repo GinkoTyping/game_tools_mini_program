@@ -7,15 +7,21 @@
 	},
 	"pages": [
 		{
-			"path": "pages/mythic-dungeon/index",
+			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "银子的搜罗坊"
 			}
 		},
 		{
-			"path": "pages/index/index",
+			"path": "pages/mythic-dungeon/list",
 			"style": {
-				"navigationBarTitleText": "银子的搜罗坊"
+				"navigationBarTitleText": "大秘境"
+			}
+		},
+		{
+			"path": "pages/mythic-dungeon/index",
+			"style": {
+				"navigationBarTitleText": "大秘境"
 			}
 		},
 		{
