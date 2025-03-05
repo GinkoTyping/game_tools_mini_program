@@ -19,6 +19,7 @@
         mode="widthFix"
         lazy-load
         :src="mythicDungeonData?.routes[0]?.imageSrc"
+        @click="() => preiviewImage(mythicDungeonData?.routes[0]?.imageSrc)"
       />
     </uni-card>
     <view class="divide-section">
@@ -195,6 +196,13 @@ function exportRouteCode(code: string) {
         icon: 'none',
       });
     },
+  });
+}
+function preiviewImage(url: string) {
+  uni.previewImage({
+    urls: [url],
+    indicator: 'number',
+    loop: true,
   });
 }
 

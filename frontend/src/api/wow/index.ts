@@ -326,3 +326,10 @@ export async function queryMythicDungeonById(id: number) {
     })),
   };
 }
+
+export async function queryMythicDunegonList() {
+  const res: any = await uni.request({
+    url: `${BASE_URL}/wow/mythic-dungeon/list`,
+  });
+  return res.data;
+}

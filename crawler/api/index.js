@@ -35,6 +35,13 @@ export async function queryAddSpell({ id, name }) {
 }
 
 export async function queryDungeon(name) {
+  // 单独适配几个名次包含特殊符号的副本
+  if (name === 'operation mechagon workshop') {
+    name = 'Operation: Mechagon - Workshop';
+  } else if (name === 'operation floodgate') {
+    name = 'Operation: Floodgate';
+  }
+
   const res = await axios.post(`${process.env.DEV_URL}/api/wow/dungeon/query`, {
     nameEN: name,
   });

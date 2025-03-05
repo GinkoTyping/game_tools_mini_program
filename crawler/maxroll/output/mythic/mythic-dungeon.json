@@ -3484,532 +3484,221 @@
     ]
   },
   {
+    "dungeonId": 499,
     "dungeon": "圣焰隐修院",
     "dungeonEN": "Priory of the Sacred Flame",
     "routes": [
       {
         "title": "Weekly Route",
-        "code": ""
-      },
-      {
-        "title": "Enrage",
-        "code": ""
-      },
-      {
-        "title": "Bleed",
-        "code": ""
-      },
-      {
-        "title": "Magic Dispel",
-        "code": ""
-      },
-      {
-        "title": "Magic Purge",
-        "code": ""
-      },
-      {
-        "title": "‍Battle Cry",
-        "code": ""
-      },
-      {
-        "title": "‍Battle Cry",
-        "code": ""
-      },
-      {
-        "title": "Battle Cry",
-        "code": ""
-      },
-      {
-        "title": "‍Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Hunter",
-        "code": ""
-      },
-      {
-        "title": "Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "‍Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "‍Rogue",
-        "code": ""
-      },
-      {
-        "title": "‍Rogue",
-        "code": ""
-      },
-      {
-        "title": "Rogue",
-        "code": ""
-      },
-      {
-        "title": "‍Shiv",
-        "code": ""
-      },
-      {
-        "title": "‍Shiv",
-        "code": ""
-      },
-      {
-        "title": "Shiv",
-        "code": ""
-      },
-      {
-        "title": "‍Druid",
-        "code": ""
-      },
-      {
-        "title": "‍Druid",
-        "code": ""
-      },
-      {
-        "title": "Druid",
-        "code": ""
-      },
-      {
-        "title": "‍Soothe",
-        "code": ""
-      },
-      {
-        "title": "‍Soothe",
-        "code": ""
-      },
-      {
-        "title": "Soothe",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Oppressing Roar",
-        "code": ""
-      },
-      {
-        "title": "‍Oppressing Roar",
-        "code": ""
-      },
-      {
-        "title": "Oppressing Roar",
-        "code": ""
-      },
-      {
-        "title": "‍Overawe",
-        "code": ""
-      },
-      {
-        "title": "‍Overawe",
-        "code": ""
-      },
-      {
-        "title": "Overawe",
-        "code": ""
-      },
-      {
-        "title": "‍Monk",
-        "code": ""
-      },
-      {
-        "title": "‍Monk",
-        "code": ""
-      },
-      {
-        "title": "Monk",
-        "code": ""
-      },
-      {
-        "title": "‍Paralysis",
-        "code": ""
-      },
-      {
-        "title": "‍Paralysis",
-        "code": ""
-      },
-      {
-        "title": "Paralysis",
-        "code": ""
-      },
-      {
-        "title": "‍Pressure Points",
-        "code": ""
-      },
-      {
-        "title": "‍Pressure Points",
-        "code": ""
-      },
-      {
-        "title": "Pressure Points",
-        "code": ""
-      },
-      {
-        "title": "‍Grievous Rip",
-        "code": ""
-      },
-      {
-        "title": "‍Grievous Rip",
-        "code": ""
-      },
-      {
-        "title": "Grievous Rip",
-        "code": ""
-      },
-      {
-        "title": "‍Lunging Strike",
-        "code": ""
-      },
-      {
-        "title": "‍Lunging Strike",
-        "code": ""
-      },
-      {
-        "title": "Lunging Strike",
-        "code": ""
-      },
-      {
-        "title": "‍Pierce Armor",
-        "code": ""
-      },
-      {
-        "title": "‍Pierce Armor",
-        "code": ""
-      },
-      {
-        "title": "Pierce Armor",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Cauterizing Flame",
-        "code": ""
-      },
-      {
-        "title": "‍Cauterizing Flame",
-        "code": ""
-      },
-      {
-        "title": "Cauterizing Flame",
-        "code": ""
-      },
-      {
-        "title": "‍Paladin",
-        "code": ""
-      },
-      {
-        "title": "‍Paladin",
-        "code": ""
-      },
-      {
-        "title": "Paladin",
-        "code": ""
-      },
-      {
-        "title": "‍Blessing of Protection",
-        "code": ""
-      },
-      {
-        "title": "‍Blessing of Protection",
-        "code": ""
-      },
-      {
-        "title": "Blessing of Protection",
-        "code": ""
-      },
-      {
-        "title": "‍Heat Wave",
-        "code": ""
-      },
-      {
-        "title": "‍Heat Wave",
-        "code": ""
-      },
-      {
-        "title": "Heat Wave",
-        "code": ""
-      },
-      {
-        "title": "‍Priest",
-        "code": ""
-      },
-      {
-        "title": "‍Priest",
-        "code": ""
-      },
-      {
-        "title": "Priest",
-        "code": ""
-      },
-      {
-        "title": "‍Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Warlock",
-        "code": ""
-      },
-      {
-        "title": "‍Warlock",
-        "code": ""
-      },
-      {
-        "title": "Warlock",
-        "code": ""
-      },
-      {
-        "title": "‍Singe Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Singe Magic",
-        "code": ""
-      },
-      {
-        "title": "Singe Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Inner Fire",
-        "code": ""
-      },
-      {
-        "title": "‍Inner Fire",
-        "code": ""
-      },
-      {
-        "title": "Inner Fire",
-        "code": ""
-      },
-      {
-        "title": "‍Templar's Wrath",
-        "code": ""
-      },
-      {
-        "title": "‍Templar's Wrath",
-        "code": ""
-      },
-      {
-        "title": "Templar's Wrath",
-        "code": ""
-      },
-      {
-        "title": "‍Warlock",
-        "code": ""
-      },
-      {
-        "title": "‍Warlock",
-        "code": ""
-      },
-      {
-        "title": "Warlock",
-        "code": ""
-      },
-      {
-        "title": "‍Devour Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Devour Magic",
-        "code": ""
-      },
-      {
-        "title": "Devour Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Hunter",
-        "code": ""
-      },
-      {
-        "title": "Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "‍Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "‍Priest",
-        "code": ""
-      },
-      {
-        "title": "‍Priest",
-        "code": ""
-      },
-      {
-        "title": "Priest",
-        "code": ""
-      },
-      {
-        "title": "‍Dispel Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Dispel Magic",
-        "code": ""
-      },
-      {
-        "title": "Dispel Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Shaman",
-        "code": ""
-      },
-      {
-        "title": "‍Shaman",
-        "code": ""
-      },
-      {
-        "title": "Shaman",
-        "code": ""
-      },
-      {
-        "title": "‍Purge",
-        "code": ""
-      },
-      {
-        "title": "‍Purge",
-        "code": ""
-      },
-      {
-        "title": "Purge",
-        "code": ""
-      },
-      {
-        "title": "‍Mage",
-        "code": ""
-      },
-      {
-        "title": "‍Mage",
-        "code": ""
-      },
-      {
-        "title": "Mage",
-        "code": ""
-      },
-      {
-        "title": "‍Spellsteal",
-        "code": ""
-      },
-      {
-        "title": "‍Spellsteal",
-        "code": ""
-      },
-      {
-        "title": "Spellsteal",
-        "code": ""
-      },
-      {
-        "title": "‍Demon Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Demon Hunter",
-        "code": ""
-      },
-      {
-        "title": "Demon Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Consume Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Consume Magic",
-        "code": ""
-      },
-      {
-        "title": "Consume Magic",
-        "code": ""
+        "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Weekly-2-1024x678.webp",
+        "code": "!TvvtpYjoq0Fo7Lnr4paSVMm7eThwMOLOeLlw4UBthsOnJOnzc7b(TVUSnGnzuJaJPQx9QQELBbs8jr9LU22UZt9Mzrfktup1DruZ(35VE9ZZFh9HCrT8YLb9NvJ37g0IQCI1OxuQFynxuFEOFy8JYELXO(BD7aGOCYm8Ey)o9vX7oyZLFjQOcJO2O(L9(xSa1plQho9D1zZDR7vEw5x9yofZ44SYmoNYlYYeTVHsevyXJVHvKtyLmwrjLGZYiWNYfveWpBiENLQI6N0NvlnZdtln)ORVFP5dtYXllnVx(Sr2PxAQN6vZ3K6)0UunEvj1g7QVjN1QBYoRdV4CBCYARz4fRZ3D492LMhg0)H14Rk7T7tJpp2DxzH(08stNDlP(s4JJk5LzW9LM2URFZaF)TqnqBzPbYMOmMYzf2FmAEbllVioJlP2DiCAbNAVNJF1m(lsi4TdJln)vVuPL2N3oPg7L6)BPz4y94XbBsV08pY7gL1LhK36K6iYzx8tz)KcO45PXrL28XP(EBizBBupDQx9tvVtrm21AEQT9UAVB6qjy7dt6RQbTthGq5GoqDdekNe13v9wraOYCocHW64Z2WTb16TkxjbUiqQdx5UlK9BfoLCvPBfdwekYXoAcctrDBlr1268b4Afc7FIjbUV6RhaMdaUVUN7cnIgbhagxfGdCWZtQhksmuipzq(0av4bR0NiSduKeJjzJOoC8ytJXgt9roKYogaPumr575DGoqYU(A(gVboLeP8KiXsCRaERmPy5Aa7HXdCsrRTT9eKG8iqmWJpLuxD1aukxk3Lzv(oxCvBRteS0aCkXFwshXNZ5Xkg0HMBsnJesM4KoampI8wjXPKgOTCfApX1oEOCbTmMhfNh7H3lvXh68UAYQrsKVqviI1FKifcebSB6Ge6XqJYFusHJfL7BACS8iuRYVJdrfBriUGWtqPytuaOqo0J5rupscUHvzcwHXkKlZkeVIeeXsCix87Jv8yEcOLNWjEsMTo)B29Z2)IcO7naLIK6JxGJjh6CoV2yNxa4y8A8qELckrIHdnJ4ZXcdigxkhvn2pLjga6wI6S54bIU5gACZeTRN8mNNeKKMe234WfjbHiELbj6wznoger0zMHXdAuLB3sKy)eM8K9qzj5KBaCxjeFkWoV9dgywctDkBJWp1DCkBlOhND3aLeA1yI43Nx2mkljd8hEVor6D3L)4KQaE1E)ifoeCWDI)FrCFI64v(2FgEyCZe(j()"
       }
     ],
     "ratings": [
       {
         "label": "高层钥匙",
-        "score": 5,
-        "scoreText": "困难"
+        "score": 3,
+        "scoreText": "中等"
       },
       {
         "label": "集合石组队",
-        "score": 5,
+        "score": 4,
         "scoreText": "困难"
       },
       {
         "label": "能力技、辅助技能需求",
-        "score": 5,
-        "scoreText": "困难"
-      },
-      {
-        "score": 5,
-        "scoreText": "困难"
+        "score": 3,
+        "scoreText": "中等"
       }
     ],
-    "utilityNeeds": [],
+    "utilityNeeds": [
+      {
+        "type": "激怒",
+        "spell": [
+          {
+            "id": "424419",
+            "name": "‍Battle Cry",
+            "nameZH": "战斗狂啸",
+            "desc": "戴尔克莱上尉发出令人丧胆的战斗狂啸，对所有玩家造成2918961点物理伤害。无视护甲。\n\n戴尔克莱上尉的战斗狂啸鼓舞了他的盟友，使每个盟友获得50点能量，并使其造成的伤害提高50%，持续30秒。\n\n该效果可叠加。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍hunter",
+            "roleClassZH": "猎人",
+            "id": "126443:AJwA",
+            "name": "‍Tranquilizing Shot",
+            "nameZH": "宁神射击",
+            "desc": "从一个敌方目标身上移除1个激怒效果和1个魔法效果。"
+          },
+          {
+            "roleClass": "‍rogue",
+            "roleClassZH": "盗贼",
+            "id": "5938",
+            "name": "‍Shiv",
+            "nameZH": "毒刃",
+            "desc": "使用你的[强化毒刃: 淬毒利刃 / 副手]进行攻击，造成(125.4% of Attack power)%点物理伤害，驱散所有激怒效果，并对目标施放浓缩形态的激活的非致命药膏。\n\n奖励1个连击点数。"
+          },
+          {
+            "roleClass": "‍druid",
+            "roleClassZH": "德鲁伊",
+            "id": "103307",
+            "name": "‍Soothe",
+            "nameZH": "安抚",
+            "desc": "安抚目标，驱散所有激怒效果。"
+          },
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115607",
+            "name": "‍Oppressing Roar",
+            "nameZH": "压迫怒吼",
+            "desc": "\n对你前方锥形区域内的敌人发出震耳欲聋的咆哮，在接下来的10秒内使影响他们的群体控制持续时间提高50%。[震魂摄魄: 从每个敌人身上移除1个激怒效果。]"
+          },
+          {
+            "roleClass": "‍monk",
+            "roleClassZH": "武僧",
+            "id": "124932",
+            "name": "‍Paralysis",
+            "nameZH": "分筋错骨",
+            "desc": "使目标瘫痪，持续1分钟。只能对一个目标使用。伤害可能取消该效果。"
+          }
+        ]
+      },
+      {
+        "type": "流血",
+        "spell": [
+          {
+            "id": "427635",
+            "name": "‍Grievous Rip"
+          },
+          {
+            "id": "424426",
+            "name": "‍Lunging Strike"
+          },
+          {
+            "id": "424414",
+            "name": "‍Pierce Armor",
+            "nameZH": "贯穿护甲",
+            "desc": "戴尔克莱上尉斩向目标，造成6486579点物理伤害并使目标流血，每1秒造成972987点物理伤害，持续10秒。\n\n该效果可叠加。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115602",
+            "name": "‍Cauterizing Flame",
+            "nameZH": "灼烧之焰",
+            "desc": "给盟友的伤口加热，移除所有流血、中毒、诅咒和疾病效果。移除任何效果后恢复19,369点生命值。"
+          },
+          {
+            "roleClass": "‍paladin",
+            "roleClassZH": "圣骑士",
+            "id": "102604:AJgA",
+            "name": "‍Blessing of Protection",
+            "nameZH": "召唤食尸鬼",
+            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+          }
+        ]
+      },
+      {
+        "type": "魔法(防御驱散)",
+        "spell": [
+          {
+            "id": "427897",
+            "name": "‍Heat Wave",
+            "nameZH": "热浪来袭",
+            "desc": "火焰吐息造成的伤害提高20%。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍priest",
+            "roleClassZH": "牧师",
+            "id": "32375",
+            "name": "‍Mass Dispel",
+            "nameZH": "群体驱散",
+            "desc": "驱散半径15码范围内的魔法，从5个友方目标身上移除全部的有害魔法效果，并从5个敌方目标身上移除1个有益魔法效果。这种驱散法术非常强大，可以移除通常无法被驱散的魔法效果。"
+          },
+          {
+            "roleClass": "‍warlock",
+            "roleClassZH": "术士",
+            "id": "89808",
+            "name": "‍Singe Magic",
+            "nameZH": "烧灼驱魔",
+            "desc": "用烈火净化有害魔法，从一个盟友身上移除1个有害的魔法效果。\n\n自动施放：\n在主人受魔法效果影响，无法施法时对其施放。\n\n（点击右键以启用或禁用该技能）"
+          }
+        ]
+      },
+      {
+        "type": "魔法(进攻驱散)",
+        "spell": [
+          {
+            "id": "427346",
+            "name": "‍Inner Fire",
+            "nameZH": "心灵之火",
+            "desc": "被圣光强化，使造成的所有伤害提高50%。\n\n移除心灵之火会使目标不堪重压，昏迷4秒。"
+          },
+          {
+            "id": "444728",
+            "name": "‍Templar's Wrath",
+            "nameZH": "圣殿骑士之怒",
+            "desc": "呼求神圣烈焰，成为愤怒的化身，造成的所有伤害提高30%，持续10秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍warlock",
+            "roleClassZH": "术士",
+            "id": "388215",
+            "name": "‍Devour Magic",
+            "nameZH": "吞噬魔法",
+            "desc": "从一名敌人身上移除1个增益魔法效果。每吞噬一个魔法效果，术士就会回复(80% of Spell power)点生命值。"
+          },
+          {
+            "roleClass": "‍hunter",
+            "roleClassZH": "猎人",
+            "id": "126443:AJwA",
+            "name": "‍Tranquilizing Shot",
+            "nameZH": "宁神射击",
+            "desc": "从一个敌方目标身上移除1个激怒效果和1个魔法效果。"
+          },
+          {
+            "roleClass": "‍priest",
+            "roleClassZH": "牧师",
+            "id": "103867",
+            "name": "‍Dispel Magic",
+            "nameZH": "驱散魔法",
+            "desc": "驱散敌方目标身上的魔法，移除1个增益魔法效果。"
+          },
+          {
+            "roleClass": "‍shaman",
+            "roleClassZH": "萨满",
+            "id": "127905",
+            "name": "‍Purge",
+            "nameZH": "巨兽之颌",
+            "desc": "用力撕咬，对敌人造成200%的普通伤害。"
+          },
+          {
+            "roleClass": "‍mage",
+            "roleClassZH": "法师",
+            "id": "80140",
+            "name": "‍Spellsteal",
+            "nameZH": "法术吸取",
+            "desc": "从目标身上窃取一个增益法术效果。此效果最多持续2分钟。"
+          },
+          {
+            "roleClass": "‍demon hunter",
+            "roleClassZH": "恶魔猎手",
+            "id": "112926",
+            "name": "‍Consume Magic",
+            "nameZH": "召唤恐惧卫士",
+            "desc": "召唤一名恐惧卫士。"
+          }
+        ]
+      }
+    ],
     "enemyTips": [
       {
         "title": "\"戴尔克莱上尉\"前的小怪",
@@ -4017,7 +3706,7 @@
         "data": [
           {
             "trashName": "Arathi Footman",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Arathi-Footman-492x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Arathi-Footman-492x1024.webp",
             "data": [
               {
                 "text": "[防御]",
@@ -4052,15 +3741,15 @@
           },
           {
             "trashName": "Fervent Sharpshooter",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Fervent-Sharpshooter-462x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Fervent-Sharpshooter-462x1024.webp",
             "data": [
               {
-                "text": "射击",
+                "text": "[射击]",
                 "spells": [
                   {
                     "name": "‍Shoot",
                     "id": "427629",
-                    "nameZH": ""
+                    "nameZH": "射击"
                   }
                 ],
                 "children": [
@@ -4089,12 +3778,12 @@
                 ]
               },
               {
-                "text": "铁蒺藜",
+                "text": "[铁蒺藜]",
                 "spells": [
                   {
                     "name": "‍Caltrops",
                     "id": "453458",
-                    "nameZH": ""
+                    "nameZH": "铁蒺藜"
                   }
                 ],
                 "children": [
@@ -4109,7 +3798,7 @@
           },
           {
             "trashName": "War Lynx",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/War-Lynx.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/War-Lynx.webp",
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -4144,7 +3833,7 @@
           },
           {
             "trashName": "Arathi Knight",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Arathi-Knight-385x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Arathi-Knight-385x1024.webp",
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -4190,15 +3879,15 @@
           },
           {
             "trashName": "Forge Master Damian",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Forge-Master-Damian-447x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Forge-Master-Damian-447x1024.webp",
             "data": [
               {
-                "text": "火焰之印",
+                "text": "[烈焰圣印]",
                 "spells": [
                   {
                     "name": "‍Seal of Flame",
                     "id": "427950",
-                    "nameZH": ""
+                    "nameZH": "烈焰圣印"
                   }
                 ],
                 "children": [
@@ -4265,7 +3954,7 @@
           },
           {
             "trashName": "Elaena Emberlanz",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Elaena-Emberlanz-501x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Elaena-Emberlanz-501x1024.webp",
             "data": [
               {
                 "text": "[神圣审判]",
@@ -4305,10 +3994,10 @@
           },
           {
             "trashName": "High Priest Aemya",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Aemya-341x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Aemya-341x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -4335,12 +4024,12 @@
                 "spells": [],
                 "children": [
                   {
-                    "text": "反射护盾",
+                    "text": "[反射护盾]",
                     "spells": [
                       {
                         "name": "‍Reflective Shield",
                         "id": "464240",
-                        "nameZH": ""
+                        "nameZH": "反射护盾"
                       }
                     ],
                     "children": [
@@ -4362,10 +4051,10 @@
           },
           {
             "trashName": "Taener Duelmal",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Taener-Duelmal-497x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Taener-Duelmal-497x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -4405,12 +4094,12 @@
                 ]
               },
               {
-                "text": "[Ember Storm] 余烬风暴",
+                "text": "[余烬风暴]",
                 "spells": [
                   {
                     "name": "‍Ember Storm",
                     "id": "424462",
-                    "nameZH": ""
+                    "nameZH": "余烬风暴"
                   }
                 ],
                 "children": [
@@ -4425,15 +4114,15 @@
           },
           {
             "trashName": "Guard Captain Suleyman",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Guard-Captain-Suleyman-541x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Guard-Captain-Suleyman-541x1024.webp",
             "data": [
               {
-                "text": "雷霆一击",
+                "text": "[雷霆一击]",
                 "spells": [
                   {
                     "name": "‍Thunderclap",
                     "id": "448492",
-                    "nameZH": ""
+                    "nameZH": "雷霆一击"
                   }
                 ],
                 "children": [
@@ -4470,7 +4159,7 @@
           },
           {
             "trashName": "Sergeant Shaynemail",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Sergeant-Shaynemail-388x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Sergeant-Shaynemail-388x1024.webp",
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -4522,10 +4211,10 @@
           },
           {
             "trashName": "Lightspawn",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Lightspawn-REAL.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Lightspawn-REAL.webp",
             "data": [
               {
-                "text": "[纯净御罪]",
+                "text": "[纯净御罪]  \n在魔兽世界的副本中，[纯净御罪]是一个重要的机制或技能。玩家需要特别注意以下几点：  \n\n1. **技能效果**：该技能会对目标施加一个持续性的负面效果，例如持续伤害或减益效果。  \n2. **应对策略**：  \n   - 治疗职业需要及时驱散或治疗受到影响的队友。  \n   - 坦克职业需要确保BOSS的仇恨稳定，避免技能影响过多队友。  \n   - 输出职业需要保持高输出，同时注意躲避技能范围。  \n3. **团队协作**：团队成员需要密切配合，确保在技能释放时迅速反应，避免团灭。  \n\n通过合理的战术安排和团队协作，玩家可以成功应对[纯净御罪]的挑战，顺利通关副本。",
                 "spells": [
                   {
                     "name": "‍Purification",
@@ -4562,10 +4251,10 @@
           },
           {
             "trashName": "Devout Priest",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Devout-Priest.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Devout-Priest.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -4616,6 +4305,7 @@
             "spellId": "447439",
             "spellNameZH": "野蛮重殴",
             "spellNameEN": "‍Savage Mauling",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-SavageMauling-ezgif.com-optimize.gif",
             "image": "‍Savage Mauling.gif",
             "data": [
               {
@@ -4646,6 +4336,7 @@
             "spellId": "424419",
             "spellNameZH": "战斗狂啸",
             "spellNameEN": "‍Battle Cry",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-BattleCry-ezgif.com-optimize.gif",
             "image": "‍Battle Cry.gif",
             "data": [
               {
@@ -4670,6 +4361,7 @@
           {
             "spellId": "447272",
             "spellNameEN": "‍Hurl Spear",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-HurlSpear-ezgif.com-optimize.gif",
             "image": "‍Hurl Spear.gif",
             "data": [
               {
@@ -4683,6 +4375,7 @@
             "spellId": "424414",
             "spellNameZH": "贯穿护甲",
             "spellNameEN": "‍Pierce Armor",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-PierceArmor-ezgif.com-optimize.gif",
             "image": "‍Pierce Armor.gif",
             "data": [
               {
@@ -4702,7 +4395,7 @@
         "data": [
           {
             "trashName": "Ardent Paladin",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Ardent-Paladin-521x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ardent-Paladin-521x1024.webp",
             "data": [
               {
                 "text": "[奉献]",
@@ -4742,7 +4435,7 @@
           },
           {
             "trashName": "Zealous Templar",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Zealous-Templar-359x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Zealous-Templar-359x1024.webp",
             "data": [
               {
                 "text": "所需魔法净化：",
@@ -4768,17 +4461,17 @@
                 ]
               },
               {
-                "text": "[光明之怒的封印]",
+                "text": "[圣光狂怒圣印]",
                 "spells": [
                   {
                     "name": "‍Seal of Light's Fury",
                     "id": "427596",
-                    "nameZH": ""
+                    "nameZH": "圣光狂怒圣印"
                   }
                 ],
                 "children": [
                   {
-                    "text": "提升施法者的近战攻击速度，并使近战攻击造成额外的神圣伤害。",
+                    "text": "提高施法者的近战攻击速度，并使近战攻击造成额外的神圣伤害。",
                     "spells": [],
                     "children": []
                   }
@@ -4788,10 +4481,10 @@
           },
           {
             "trashName": "Fanatical Conjuror",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Fanatical-Conjuror-314x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Fanatical-Conjuror-314x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -4842,6 +4535,7 @@
             "spellId": "422969",
             "spellNameZH": "报偿之怒",
             "spellNameEN": "‍Vindictive Wrath",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-VindictiveWrath-ezgif.com-optimize.gif",
             "image": "‍Vindictive Wrath.gif",
             "data": [
               {
@@ -4855,6 +4549,7 @@
             "spellId": "423015",
             "spellNameZH": "谴罚者之盾",
             "spellNameEN": "‍Castigator's Shield",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-CastigatorsShield-ezgif.com-optimize.gif",
             "image": "‍Castigator's Shield.gif",
             "data": [
               {
@@ -4885,6 +4580,7 @@
             "spellId": "423051",
             "spellNameZH": "灼烧之光",
             "spellNameEN": "‍Burning Light",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BurningLight-ezgif.com-optimize.gif",
             "image": "‍Burning Light.gif",
             "data": [
               {
@@ -4915,6 +4611,7 @@
             "spellId": "423062",
             "spellNameZH": "纯洁之锤",
             "spellNameEN": "‍Hammer of Purity",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-HammerofPurity-ezgif.com-optimize.gif",
             "image": "‍Hammer of Purity.gif",
             "data": [
               {
@@ -4945,15 +4642,16 @@
             "spellId": "446368",
             "spellNameZH": "献祭葬火",
             "spellNameEN": "‍Sacrificial Pyre",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-SacrificialPyre-ezgif.com-cut.gif",
             "image": "‍Sacrificial Pyre.gif",
             "data": [
               {
-                "text": "布劳恩派克会创造一个燃烧的火堆，其中包含3个持续30秒的充能。每当有玩家接触到火堆时，会消耗一个充能，该玩家将受到‍献祭之焰的影响，这是一个叠加的持续伤害效果，造成神圣伤害，并导致火堆对所有玩家造成神圣伤害。",
+                "text": "布劳恩派克会创造一个燃烧的火堆，其中包含3个持续30秒的充能。每当有玩家接触到火堆时，会消耗一个充能，该玩家会受到[牺牲烈焰]的影响，这是一个叠加的持续伤害效果，造成神圣伤害，并使火堆对所有玩家造成神圣伤害。",
                 "spells": [
                   {
                     "name": "‍Sacrificial Flame",
                     "id": "446403",
-                    "nameZH": ""
+                    "nameZH": "牺牲烈焰"
                   }
                 ],
                 "children": [
@@ -4985,15 +4683,15 @@
         "data": [
           {
             "trashName": "Sir Braunpyke",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Sir-Braunpyke-411x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Sir-Braunpyke-411x1024.webp",
             "data": [
               {
-                "text": "炽热之焰",
+                "text": "[辉耀烈焰]",
                 "spells": [
                   {
                     "name": "‍Radiant Flame",
                     "id": "451764",
-                    "nameZH": ""
+                    "nameZH": "辉耀烈焰"
                   }
                 ],
                 "children": [
@@ -5005,12 +4703,12 @@
                 ]
               },
               {
-                "text": "炽热打击",
+                "text": "[炽热打击]",
                 "spells": [
                   {
                     "name": "‍Blazing Strike",
                     "id": "435165",
-                    "nameZH": ""
+                    "nameZH": "炽热打击"
                   }
                 ],
                 "children": [
@@ -5022,12 +4720,12 @@
                 ]
               },
               {
-                "text": "光之驱逐",
+                "text": "[圣光逐斥]",
                 "spells": [
                   {
                     "name": "‍Light Expulsion",
                     "id": "435156",
-                    "nameZH": ""
+                    "nameZH": "圣光逐斥"
                   }
                 ],
                 "children": [
@@ -5042,7 +4740,7 @@
           },
           {
             "trashName": "Zealous Templar",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Zealous-Templar-359x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Zealous-Templar-359x1024.webp",
             "data": [
               {
                 "text": "所需魔法净化：",
@@ -5068,12 +4766,12 @@
                 ]
               },
               {
-                "text": "[光明之怒的封印]",
+                "text": "[圣光狂怒圣印]",
                 "spells": [
                   {
                     "name": "‍Seal of Light's Fury",
                     "id": "427596",
-                    "nameZH": ""
+                    "nameZH": "圣光狂怒圣印"
                   }
                 ],
                 "children": [
@@ -5088,7 +4786,7 @@
           },
           {
             "trashName": "Ardent Paladin",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Ardent-Paladin-521x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ardent-Paladin-521x1024.webp",
             "data": [
               {
                 "text": "[奉献]",
@@ -5128,10 +4826,10 @@
           },
           {
             "trashName": "Risen Mage",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Risen-Mage.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Risen-Mage.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -5171,12 +4869,12 @@
                 ]
               },
               {
-                "text": "光之驱逐",
+                "text": "[圣光逐斥]",
                 "spells": [
                   {
                     "name": "‍Light Expulsion",
                     "id": "435156",
-                    "nameZH": ""
+                    "nameZH": "圣光逐斥"
                   }
                 ],
                 "children": [
@@ -5191,7 +4889,7 @@
           },
           {
             "trashName": "Lightspawn",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Lightspawn-REAL.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Lightspawn-REAL.webp",
             "data": [
               {
                 "text": "[纯净御罪]  \n在魔兽世界的副本中，[纯净御罪]是一个重要的机制或技能。玩家需要特别注意以下几点：  \n\n1. **技能效果**：该技能会对目标施加一个持续性的负面效果，例如持续伤害或减益效果。  \n2. **应对策略**：  \n   - 治疗职业需要及时驱散或治疗受到影响的队友。  \n   - 坦克职业需要确保BOSS的仇恨稳定，避免技能影响过多队友。  \n   - 输出职业需要保持高输出，同时注意躲避技能范围。  \n3. **团队协作**：团队成员需要密切配合，确保在技能释放时迅速反应，避免团灭。  \n\n通过合理的战术安排和团队协作，玩家可以成功应对[纯净御罪]的挑战，顺利通关副本。",
@@ -5231,15 +4929,15 @@
           },
           {
             "trashName": "Risen Footman",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Risen-Footman-396x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Risen-Footman-396x1024.webp",
             "data": [
               {
-                "text": "光之驱逐",
+                "text": "[圣光逐斥]",
                 "spells": [
                   {
                     "name": "‍Light Expulsion",
                     "id": "435156",
-                    "nameZH": ""
+                    "nameZH": "圣光逐斥"
                   }
                 ],
                 "children": [
@@ -5262,6 +4960,7 @@
             "spellId": "423588",
             "spellNameZH": "圣光屏障",
             "spellNameEN": "‍Barrier of Light",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-BarrierofLight-ezgif.com-cut.gif",
             "image": "‍Barrier of Light.gif",
             "data": [
               {
@@ -5293,15 +4992,16 @@
             "spellId": "425544",
             "spellNameZH": "神圣烈焰",
             "spellNameEN": "‍The Sacred Flame",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-TheSacredFlame-ezgif.com-optimize.gif",
             "image": "‍The Sacred Flame.gif",
             "data": [
               {
-                "text": "穆尔普雷召唤一道灼热的火焰射线，锁定一名随机玩家，每秒对路径上的玩家造成神圣伤害，并在路径上留下一片圣化之地，对范围内的玩家造成神圣伤害。",
+                "text": "穆尔普雷召唤一道灼热的火焰射线，随机锁定一名玩家，并对路径上的玩家每秒造成神圣伤害。射线消失后，会在路径上留下一片[神圣之地]，对站在其中的玩家造成神圣伤害。",
                 "spells": [
                   {
                     "name": "‍Sanctified Ground",
                     "id": "425556",
-                    "nameZH": ""
+                    "nameZH": "神圣之地"
                   }
                 ],
                 "children": []
@@ -5312,6 +5012,7 @@
             "spellId": "428169",
             "spellNameZH": "盲目之光",
             "spellNameEN": "‍Blinding Light",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-BlindingLight-ezgif.com-optimize.gif",
             "image": "‍Blinding Light.gif",
             "data": [
               {
@@ -5331,6 +5032,7 @@
             "spellId": "423539",
             "spellNameZH": "心灵之火",
             "spellNameEN": "‍Inner Fire",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-InnerFire-ezgif.com-cut.gif",
             "image": "‍Inner Fire.gif",
             "data": [
               {
@@ -5350,6 +5052,7 @@
             "spellId": "451606",
             "spellNameZH": "神圣烈焰",
             "spellNameEN": "‍Holy Flame",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-HolyFlame-ezgif.com-optimize.gif",
             "image": "‍Holy Flame.gif",
             "data": [
               {
@@ -5363,6 +5066,7 @@
             "spellId": "423536",
             "spellNameZH": "神圣惩击",
             "spellNameEN": "‍Holy Smite",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-HolySmite-ezgif.com-crop.gif",
             "image": "‍Holy Smite.gif",
             "data": [
               {
@@ -5477,336 +5181,152 @@
     ]
   },
   {
+    "dungeonId": 504,
     "dungeon": "暗焰裂口",
     "dungeonEN": "Darkflame Cleft",
     "routes": [
       {
         "title": "Weekly Route",
-        "code": ""
-      },
-      {
-        "title": "Enrage",
-        "code": ""
-      },
-      {
-        "title": "Bleed",
-        "code": ""
-      },
-      {
-        "title": "Magic Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Panicked!",
-        "code": ""
-      },
-      {
-        "title": "‍Panicked!",
-        "code": ""
-      },
-      {
-        "title": "Panicked!",
-        "code": ""
-      },
-      {
-        "title": "‍Enrage",
-        "code": ""
-      },
-      {
-        "title": "‍Enrage",
-        "code": ""
-      },
-      {
-        "title": "Enrage",
-        "code": ""
-      },
-      {
-        "title": "‍Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Hunter",
-        "code": ""
-      },
-      {
-        "title": "Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "‍Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "‍Rogue",
-        "code": ""
-      },
-      {
-        "title": "‍Rogue",
-        "code": ""
-      },
-      {
-        "title": "Rogue",
-        "code": ""
-      },
-      {
-        "title": "‍Shiv",
-        "code": ""
-      },
-      {
-        "title": "‍Shiv",
-        "code": ""
-      },
-      {
-        "title": "Shiv",
-        "code": ""
-      },
-      {
-        "title": "‍Druid",
-        "code": ""
-      },
-      {
-        "title": "‍Druid",
-        "code": ""
-      },
-      {
-        "title": "Druid",
-        "code": ""
-      },
-      {
-        "title": "‍Soothe",
-        "code": ""
-      },
-      {
-        "title": "‍Soothe",
-        "code": ""
-      },
-      {
-        "title": "Soothe",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Oppressing Roar",
-        "code": ""
-      },
-      {
-        "title": "‍Oppressing Roar",
-        "code": ""
-      },
-      {
-        "title": "Oppressing Roar",
-        "code": ""
-      },
-      {
-        "title": "‍Overawe",
-        "code": ""
-      },
-      {
-        "title": "‍Overawe",
-        "code": ""
-      },
-      {
-        "title": "Overawe",
-        "code": ""
-      },
-      {
-        "title": "‍Monk",
-        "code": ""
-      },
-      {
-        "title": "‍Monk",
-        "code": ""
-      },
-      {
-        "title": "Monk",
-        "code": ""
-      },
-      {
-        "title": "‍Paralysis",
-        "code": ""
-      },
-      {
-        "title": "‍Paralysis",
-        "code": ""
-      },
-      {
-        "title": "Paralysis",
-        "code": ""
-      },
-      {
-        "title": "‍Pressure Points",
-        "code": ""
-      },
-      {
-        "title": "‍Pressure Points",
-        "code": ""
-      },
-      {
-        "title": "Pressure Points",
-        "code": ""
-      },
-      {
-        "title": "‍Crude Weapons",
-        "code": ""
-      },
-      {
-        "title": "‍Crude Weapons",
-        "code": ""
-      },
-      {
-        "title": "Crude Weapons",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Cauterizing Flame",
-        "code": ""
-      },
-      {
-        "title": "‍Cauterizing Flame",
-        "code": ""
-      },
-      {
-        "title": "Cauterizing Flame",
-        "code": ""
-      },
-      {
-        "title": "‍Paladin",
-        "code": ""
-      },
-      {
-        "title": "‍Paladin",
-        "code": ""
-      },
-      {
-        "title": "Paladin",
-        "code": ""
-      },
-      {
-        "title": "‍Blessing of Protection",
-        "code": ""
-      },
-      {
-        "title": "‍Blessing of Protection",
-        "code": ""
-      },
-      {
-        "title": "Blessing of Protection",
-        "code": ""
-      },
-      {
-        "title": "‍Flashpoint",
-        "code": ""
-      },
-      {
-        "title": "‍Flashpoint",
-        "code": ""
-      },
-      {
-        "title": "Flashpoint",
-        "code": ""
-      },
-      {
-        "title": "‍Priest",
-        "code": ""
-      },
-      {
-        "title": "‍Priest",
-        "code": ""
-      },
-      {
-        "title": "Priest",
-        "code": ""
-      },
-      {
-        "title": "‍Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Warlock",
-        "code": ""
-      },
-      {
-        "title": "‍Warlock",
-        "code": ""
-      },
-      {
-        "title": "Warlock",
-        "code": ""
-      },
-      {
-        "title": "‍Singe Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Singe Magic",
-        "code": ""
-      },
-      {
-        "title": "Singe Magic",
-        "code": ""
+        "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Weekly-Updated-1024x676.webp",
+        "code": "!1vvYUTnmq0FjZnjQRT9sVWeaf0CJao2ubUv1QWwkn5VVCMhPePckSSL4Oz79Mf7f(N89NVmmC50Y48hEN4GVF5YzF)7AZZV(G7M9sJV)45Ztx)r429ltx9oJkQ0FdHFfv33FAAC62JhhdZZHVFDyI84XL5PVsYVC9v)x2PZ539oTF23phEp(7Zrhn(HVF6LFgonFpAEu4BhhxcKNoTC7w468JlJJiA4C)YlJH3cq2TldZpmmCpWw7eSlMx19BlxFnmDLJRq0sXn8BkXEX3FpmgdkHk2W4v0U)ed2QNY)4esVlEj0ENkERHaHteF0eVf)gf05DTmf6SuOybnqqleyHFuWYK70WbMySJIq0K0bfJK475Bgqnmx67hguHHHctEk)CYWvVOthqar01zhcTG0nNtUUlu4PKIhGYjkOLtDPauGLXQucS2XyvQyoi2VWKGscwqPs0zh4bLaeHSfmH0ccw2usjQDOxf2GGbKjx3bGLRVPGpGA6swPLfzRaFxIznChyoIdVqrmMB1SgtfmtO5aGYOQOHIWz(emJtZgsOTaCqcABYmftCZuA(ukm1vjvi)2sQjw7w9CIuSfQqggriX1f9j2Iqq0FXReTvNSvN6kpfBrkpjQov2CptWSmR7a9QRtBXHQ8M75DR0j6hBZ92R1aBX4ioQkhgfj2vKds1GUsJkBdQUMcg)OGzCKvRL310zBKUydHPmcRWsURIrWsA2PKAxnJkRIQzBrMsT1nKfDJeOByMOLvRJVeh(evGNBaoOHBci0ynnsYavSV4O3HcvzcQQsqbyvrAGXK8GPcI8G3MhmvEqcpibiLQKhA8FEiDZMgytQfXY0cTgYW0nVXcTjkS1wvd0CF186uWUHVTKTPkzZnrQTMOTjh9QjoKkkkfknxJoBnsbfAL0OKQqJSMnYPTCERLytB6)FuLl0sBeYZQFAlqoD6QsbdqGb0THRMYY9a5P99JWR(ZwdjSvZCa(taiHwuDlGutvqsDz8sK9RaKnfkrfVCE9)xkN)4)3"
       }
     ],
     "ratings": [
       {
         "label": "高层钥匙",
-        "score": 5,
-        "scoreText": "困难"
+        "score": 3,
+        "scoreText": "中等"
       },
       {
         "label": "集合石组队",
-        "score": 5,
-        "scoreText": "困难"
+        "score": 3,
+        "scoreText": "中等"
       },
       {
         "label": "能力技、辅助技能需求",
-        "score": 5,
-        "scoreText": "困难"
-      },
-      {
-        "score": 5,
-        "scoreText": "困难"
+        "score": 2,
+        "scoreText": "中等"
       }
     ],
-    "utilityNeeds": [],
+    "utilityNeeds": [
+      {
+        "type": "激怒",
+        "spell": [
+          {
+            "id": "424650",
+            "name": "‍Panicked!",
+            "nameZH": "惊慌失措！",
+            "desc": "施法者在绝望中爆发出一股力量，急速提高50%但伤害降低25%。"
+          },
+          {
+            "id": "425704",
+            "name": "‍Enrage",
+            "nameZH": "激怒",
+            "desc": "进入激怒状态后，你造成的伤害提高26%，持续4秒。\r\n\r\n嗜血有30%的几率使你激怒"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍hunter",
+            "roleClassZH": "猎人",
+            "id": "126443:AJwA",
+            "name": "‍Tranquilizing Shot",
+            "nameZH": "宁神射击",
+            "desc": "从一个敌方目标身上移除1个激怒效果和1个魔法效果。"
+          },
+          {
+            "roleClass": "‍rogue",
+            "roleClassZH": "盗贼",
+            "id": "5938",
+            "name": "‍Shiv",
+            "nameZH": "毒刃",
+            "desc": "使用你的[强化毒刃: 淬毒利刃 / 副手]进行攻击，造成(125.4% of Attack power)%点物理伤害，驱散所有激怒效果，并对目标施放浓缩形态的激活的非致命药膏。\n\n奖励1个连击点数。"
+          },
+          {
+            "roleClass": "‍druid",
+            "roleClassZH": "德鲁伊",
+            "id": "103307",
+            "name": "‍Soothe",
+            "nameZH": "安抚",
+            "desc": "安抚目标，驱散所有激怒效果。"
+          },
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115607",
+            "name": "‍Oppressing Roar",
+            "nameZH": "压迫怒吼",
+            "desc": "\n对你前方锥形区域内的敌人发出震耳欲聋的咆哮，在接下来的10秒内使影响他们的群体控制持续时间提高50%。[震魂摄魄: 从每个敌人身上移除1个激怒效果。]"
+          },
+          {
+            "roleClass": "‍monk",
+            "roleClassZH": "武僧",
+            "id": "124932",
+            "name": "‍Paralysis",
+            "nameZH": "分筋错骨",
+            "desc": "使目标瘫痪，持续1分钟。只能对一个目标使用。伤害可能取消该效果。"
+          }
+        ]
+      },
+      {
+        "type": "流血",
+        "spell": [
+          {
+            "id": "425565",
+            "name": "‍Crude Weapons",
+            "nameZH": "粗制武器",
+            "desc": "施法者的攻击命中时施加粗制武器。\n\n每1秒造成25946点物理伤害，持续5秒。该效果可叠加。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115602",
+            "name": "‍Cauterizing Flame",
+            "nameZH": "灼烧之焰",
+            "desc": "给盟友的伤口加热，移除所有流血、中毒、诅咒和疾病效果。移除任何效果后恢复19,369点生命值。"
+          },
+          {
+            "roleClass": "‍paladin",
+            "roleClassZH": "圣骑士",
+            "id": "102604:AJgA",
+            "name": "‍Blessing of Protection",
+            "nameZH": "召唤食尸鬼",
+            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+          }
+        ]
+      },
+      {
+        "type": "魔法(防御驱散)",
+        "spell": [
+          {
+            "id": "428019",
+            "name": "‍Flashpoint",
+            "nameZH": "闪点",
+            "desc": "当你的献祭对生命值在80%以上的目标造成周期性伤害时，获得2%急速，持续10秒。\r\n\r\n该效果最多可叠加3次。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍priest",
+            "roleClassZH": "牧师",
+            "id": "32375",
+            "name": "‍Mass Dispel",
+            "nameZH": "群体驱散",
+            "desc": "驱散半径15码范围内的魔法，从5个友方目标身上移除全部的有害魔法效果，并从5个敌方目标身上移除1个有益魔法效果。这种驱散法术非常强大，可以移除通常无法被驱散的魔法效果。"
+          },
+          {
+            "roleClass": "‍warlock",
+            "roleClassZH": "术士",
+            "id": "89808",
+            "name": "‍Singe Magic",
+            "nameZH": "烧灼驱魔",
+            "desc": "用烈火净化有害魔法，从一个盟友身上移除1个有害的魔法效果。\n\n自动施放：\n在主人受魔法效果影响，无法施法时对其施放。\n\n（点击右键以启用或禁用该技能）"
+          }
+        ]
+      }
+    ],
     "enemyTips": [
       {
         "title": "\"老蜡须\"前的小怪",
@@ -5814,7 +5334,7 @@
         "data": [
           {
             "trashName": "Rank Overseer",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Rank-Overseer.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rank-Overseer.webp",
             "data": [
               {
                 "text": "[压制咆哮]",
@@ -5854,10 +5374,10 @@
           },
           {
             "trashName": "Royal Wicklighter",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Royal-Wicklighter.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Royal-Wicklighter.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -5906,10 +5426,10 @@
           },
           {
             "trashName": "Lowly Moleherd",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Lowly-Moleherd-693x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Lowly-Moleherd-693x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -5975,7 +5495,7 @@
           },
           {
             "trashName": "Pack Mole",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Pack-Mole.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Pack-Mole.webp",
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -6004,7 +5524,7 @@
           },
           {
             "trashName": "Menial Laborer",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Menial-Laborer.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Menial-Laborer.webp",
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -6048,6 +5568,7 @@
             "spellId": "428268",
             "spellNameZH": "卑鄙“轨”术",
             "spellNameEN": "‍Underhanded Track-tics",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-UnderhandedTrack-tics-ezgif.com-optimize.gif",
             "image": "‍Underhanded Track-tics.gif",
             "data": [
               {
@@ -6067,6 +5588,7 @@
             "spellId": "422150",
             "spellNameZH": "鲁莽冲锋",
             "spellNameEN": "‍Reckless Charge",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-RecklessCharge-ezgif.com-optimize.gif",
             "image": "‍Reckless Charge.gif",
             "data": [
               {
@@ -6092,6 +5614,7 @@
             "spellId": "422162",
             "spellNameZH": "诱引烛焰",
             "spellNameEN": "‍Luring Candleflame",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-LuringCandleflame-ezgif.com-optimize.gif",
             "image": "‍Luring Candleflame.gif",
             "data": [
               {
@@ -6104,6 +5627,7 @@
           {
             "spellId": "422245",
             "spellNameEN": "‍Rock Buster",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-RockBuster-ezgif.com-cut.gif",
             "image": "‍Rock Buster.gif",
             "data": [
               {
@@ -6121,15 +5645,15 @@
         "data": [
           {
             "trashName": "Wandering Candle",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Wandering-Candle.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Wandering-Candle.webp",
             "data": [
               {
-                "text": "[熄灭冲击]",
+                "text": "[镇火冲击]",
                 "spells": [
                   {
                     "name": "‍Quenching Blast",
                     "id": "430171",
-                    "nameZH": ""
+                    "nameZH": "镇火冲击"
                   }
                 ],
                 "children": [
@@ -6141,17 +5665,17 @@
                 ]
               },
               {
-                "text": "汹涌烈焰",
+                "text": "[激涌烈焰]",
                 "spells": [
                   {
                     "name": "‍Surging Flame",
                     "id": "440652",
-                    "nameZH": ""
+                    "nameZH": "激涌烈焰"
                   }
                 ],
                 "children": [
                   {
-                    "text": "对10码范围内的玩家造成火焰伤害，并在地面上留下一片火焰池，站在其中的玩家每秒都会受到火焰伤害。",
+                    "text": "对10码范围内的玩家造成火焰伤害，并在地面上留下一片火池，任何站在火池中的玩家每秒都会受到火焰伤害。",
                     "spells": [],
                     "children": []
                   }
@@ -6161,15 +5685,15 @@
           },
           {
             "trashName": "Kobold Taskworker",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Kobold-Taskworker.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Kobold-Taskworker.webp",
             "data": [
               {
-                "text": "砰！",
+                "text": "[梆！]",
                 "spells": [
                   {
                     "name": "‍Bonk!",
                     "id": "426883",
-                    "nameZH": ""
+                    "nameZH": "梆！"
                   }
                 ],
                 "children": [
@@ -6184,7 +5708,7 @@
           },
           {
             "trashName": "Pack Mole",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Pack-Mole.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Pack-Mole.webp",
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -6201,7 +5725,7 @@
                     ],
                     "children": [
                       {
-                        "text": "施法者获得一个激怒增益效果，提升攻击速度和造成的物理伤害。",
+                        "text": "赋予施法者一个狂暴增益效果，提升攻击速度和造成的物理伤害。",
                         "spells": [],
                         "children": []
                       }
@@ -6213,10 +5737,10 @@
           },
           {
             "trashName": "Blazing Fiend",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Blazing-Fiend.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Blazing-Fiend.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -6250,6 +5774,7 @@
             "spellId": "423099",
             "spellNameZH": "燃焰地狱火",
             "spellNameEN": "‍Enkindling Inferno",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-EnkindlingInferno-ezgif.com-optimize.gif",
             "image": "‍Enkindling Inferno.gif",
             "data": [
               {
@@ -6290,6 +5815,7 @@
             "spellId": "421638",
             "spellNameZH": "点芯弹幕",
             "spellNameEN": "‍Wicklighter Barrage",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-WicklighterBarrage-ezgif.com-optimize.gif",
             "image": "‍Wicklighter Barrage.gif",
             "data": [
               {
@@ -6302,6 +5828,7 @@
           {
             "spellId": "422700",
             "spellNameEN": "‍Extinguishing Gust",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-ExtinguishingGust-ezgif.com-optimize.gif",
             "image": "‍Extinguishing Gust.gif",
             "data": [
               {
@@ -6316,12 +5843,12 @@
                 ]
               },
               {
-                "text": "确保在施放[煽动火焰]时，至少有一个蜡烛被龙卷风击中，以便在施法期间有一个安全的位置。",
+                "text": "确保在[点燃]施法期间，至少有一个蜡烛被龙卷风击中，以便有一个安全的位置。",
                 "spells": [
                   {
                     "name": "‍Incite Flames",
                     "id": "424223",
-                    "nameZH": ""
+                    "nameZH": "点燃"
                   }
                 ],
                 "children": []
@@ -6330,7 +5857,9 @@
           },
           {
             "spellId": "424223",
+            "spellNameZH": "点燃",
             "spellNameEN": "‍Incite Flames",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-InciteFlames-ezgif.com-optimize.gif",
             "image": "‍Incite Flames.gif",
             "data": [
               {
@@ -6344,6 +5873,7 @@
             "spellId": "425394",
             "spellNameZH": "吹灭之息",
             "spellNameEN": "‍Dousing Breath",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-DousingBreath-ezgif.com-optimize.gif",
             "image": "‍Dousing Breath.gif",
             "data": [
               {
@@ -6357,6 +5887,7 @@
             "spellId": "443835",
             "spellNameZH": "炽烈风暴",
             "spellNameEN": "‍Blazing Storms",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BlazingStorms-ezgif.com-optimize.gif",
             "image": "‍Blazing Storms.gif",
             "data": [
               {
@@ -6374,7 +5905,7 @@
         "data": [
           {
             "trashName": "Torchsnarl",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Torchsnarl.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Torchsnarl.webp",
             "data": [
               {
                 "text": "[强力践踏]",
@@ -6394,12 +5925,12 @@
                 ]
               },
               {
-                "text": "单手锁头",
+                "text": "[只手擒拿]",
                 "spells": [
                   {
                     "name": "‍One-Hand Headlock",
                     "id": "426619",
-                    "nameZH": ""
+                    "nameZH": "只手擒拿"
                   }
                 ],
                 "children": [
@@ -6411,12 +5942,12 @@
                 ]
               },
               {
-                "text": "火拳猛击",
+                "text": "[炎拳]",
                 "spells": [
                   {
                     "name": "‍Pyro-pummel",
                     "id": "426260",
-                    "nameZH": ""
+                    "nameZH": "炎拳"
                   }
                 ],
                 "children": [
@@ -6431,15 +5962,15 @@
           },
           {
             "trashName": "Wandering Candle",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Wandering-Candle.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Wandering-Candle.webp",
             "data": [
               {
-                "text": "[淬火冲击]",
+                "text": "[镇火冲击]",
                 "spells": [
                   {
                     "name": "‍Quenching Blast",
                     "id": "430171",
-                    "nameZH": ""
+                    "nameZH": "镇火冲击"
                   }
                 ],
                 "children": [
@@ -6451,12 +5982,12 @@
                 ]
               },
               {
-                "text": "汹涌烈焰",
+                "text": "[激涌烈焰]",
                 "spells": [
                   {
                     "name": "‍Surging Flame",
                     "id": "440652",
-                    "nameZH": ""
+                    "nameZH": "激涌烈焰"
                   }
                 ],
                 "children": [
@@ -6471,10 +6002,10 @@
           },
           {
             "trashName": "Sootsnout",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Sootsnout.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Sootsnout.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -6537,12 +6068,12 @@
                 ]
               },
               {
-                "text": "燃烧的蜡烛",
+                "text": "[燃烧的蜡烛]",
                 "spells": [
                   {
                     "name": "‍Burning Candles",
                     "id": "1218131",
-                    "nameZH": ""
+                    "nameZH": "燃烧的蜡烛"
                   }
                 ],
                 "children": [
@@ -6557,10 +6088,10 @@
           },
           {
             "trashName": "Kobold Flametender",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Kobold-Flametender.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Kobold-Flametender.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -6586,7 +6117,7 @@
           },
           {
             "trashName": "Menial Laborer",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Menial-Laborer.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Menial-Laborer.webp",
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -6603,11 +6134,11 @@
                     ],
                     "children": [
                       {
-                        "text": "对坦克施加一个可叠加的流血效果，每秒造成物理伤害，持续5秒。",
+                        "text": "对坦克施加一个叠加的流血效果，每秒造成物理伤害，持续5秒。",
                         "spells": [],
                         "children": [
                           {
-                            "text": "在叠加到很多层之前（比如15层以上），它不会造成太大影响。",
+                            "text": "在叠加到很多层之前，比如15层以上，它不会造成太大影响。",
                             "spells": [],
                             "children": []
                           }
@@ -6629,6 +6160,7 @@
             "spellId": "420659",
             "spellNameZH": "诡谀铸模",
             "spellNameEN": "‍Eerie Molds",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-EerieMolds-ezgif.com-optimize.gif",
             "image": "‍Eerie Molds.gif",
             "data": [
               {
@@ -6664,6 +6196,7 @@
             "spellId": "421277",
             "spellNameZH": "暗焰之锄",
             "spellNameEN": "‍Darkflame Pickaxe",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-DarkflamePickaxe-ezgif.com-optimize.gif",
             "image": "‍Darkflame Pickaxe.gif",
             "data": [
               {
@@ -6694,6 +6227,7 @@
             "spellId": "426145",
             "spellNameZH": "偏执失心",
             "spellNameEN": "‍Paranoid Mind",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-ParanoidMind-ezgif.com-cut.gif",
             "image": "‍Paranoid Mind.gif",
             "data": [
               {
@@ -6713,6 +6247,7 @@
             "spellId": "420696",
             "spellNameZH": "投掷暗焰",
             "spellNameEN": "‍Throw Darkflame",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-ThrowDarkflame-ezgif.com-optimize.gif",
             "image": "‍Throw Darkflame.gif",
             "data": [
               {
@@ -6765,7 +6300,7 @@
         "data": [
           {
             "trashName": "Corridor Creeper",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Corridor-Creeper.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Corridor-Creeper.webp",
             "data": [
               {
                 "text": "[食尸者]",
@@ -6785,12 +6320,12 @@
                 ]
               },
               {
-                "text": "潜行的暗影",
+                "text": "[蠕行暗影]",
                 "spells": [
                   {
                     "name": "‍Creeping Shadow",
                     "id": "469620",
-                    "nameZH": ""
+                    "nameZH": "蠕行暗影"
                   }
                 ],
                 "children": [
@@ -6805,10 +6340,10 @@
           },
           {
             "trashName": "Shuffling Horror",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Shuffling-Horror-1024x530.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shuffling-Horror-1024x530.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -6834,15 +6369,15 @@
           },
           {
             "trashName": "Skittering Darkness",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Skittering-Darkness.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Skittering-Darkness.webp",
             "data": [
               {
-                "text": "窒息黑暗",
+                "text": "[窒息黑暗]",
                 "spells": [
                   {
                     "name": "‍Suffocating Darkness",
                     "id": "422393",
-                    "nameZH": ""
+                    "nameZH": "窒息黑暗"
                   }
                 ],
                 "children": [
@@ -6863,7 +6398,9 @@
         "data": [
           {
             "spellId": "422806",
+            "spellNameZH": "扼息暗影",
             "spellNameEN": "‍Smothering Shadows",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-SmotheringShadows-ezgif.com-optimize.gif",
             "image": "‍Smothering Shadows.gif",
             "data": [
               {
@@ -6872,12 +6409,12 @@
                 "children": []
               },
               {
-                "text": "在烛光范围内可以保护玩家免受[窒息暗影]的影响，但随着时间的推移，蜡烛的热度会逐渐降低。玩家可以拾取并移动烛光源。",
+                "text": "待在烛光范围内可以保护玩家免受[扼息暗影]的影响，但会逐渐降低蜡烛的热度。玩家可以拾取并移动烛光光源。",
                 "spells": [
                   {
                     "name": "‍Smothering Shadows",
                     "id": "422806",
-                    "nameZH": ""
+                    "nameZH": "扼息暗影"
                   }
                 ],
                 "children": [
@@ -6920,6 +6457,7 @@
             "spellId": "428266",
             "spellNameZH": "永恒黑暗",
             "spellNameEN": "‍Eternal Darkness",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-EternalDarkness-ezgif.com-optimize.gif",
             "image": "‍Eternal Darkness.gif",
             "data": [
               {
@@ -6956,6 +6494,7 @@
             "spellId": "427157",
             "spellNameZH": "召唤暗嗣",
             "spellNameEN": "‍Call Darkspawn",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-CallDarkspawn-ezgif.com-optimize.gif",
             "image": "‍Call Darkspawn.gif",
             "data": [
               {
@@ -6970,12 +6509,12 @@
                 ]
               },
               {
-                "text": "进入范围后，扭动的暗影生物会开始对蜡烛施放[吸取光明]，降低蜡烛的热度，并在10秒内每秒对所有玩家造成暗影伤害。",
+                "text": "进入范围后，[扭动的暗影生物]会开始对蜡烛施放[吸取光明]，降低蜡烛的热度，并在10秒内每秒对所有玩家造成暗影伤害。",
                 "spells": [
                   {
                     "name": "‍Drain Light",
                     "id": "427176",
-                    "nameZH": ""
+                    "nameZH": "吸取光明"
                   }
                 ],
                 "children": [
@@ -6992,6 +6531,7 @@
             "spellId": "427100",
             "spellNameZH": "幽影斩击",
             "spellNameEN": "‍Umbral Slash",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-UmbralSlash-ezgif.com-optimize.gif",
             "image": "‍Umbral Slash.gif",
             "data": [
               {
@@ -7028,6 +6568,7 @@
             "spellId": "427011",
             "spellNameZH": "暗影冲击",
             "spellNameEN": "‍Shadowblast",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-Shadowblast-ezgif.com-optimize.gif",
             "image": "‍Shadowblast.gif",
             "data": [
               {
@@ -7143,556 +6684,231 @@
     ]
   },
   {
+    "dungeonId": 506,
     "dungeon": "燧酿酒庄",
     "dungeonEN": "Cinderbrew Meadery",
     "routes": [
       {
         "title": "Weekly Route",
-        "code": ""
-      },
-      {
-        "title": "Enrage",
-        "code": ""
-      },
-      {
-        "title": "Bleed",
-        "code": ""
-      },
-      {
-        "title": "Magic Dispel",
-        "code": ""
-      },
-      {
-        "title": "Magic Purge",
-        "code": ""
-      },
-      {
-        "title": "‍Thirsty",
-        "code": ""
-      },
-      {
-        "title": "‍Thirsty",
-        "code": ""
-      },
-      {
-        "title": "Thirsty",
-        "code": ""
-      },
-      {
-        "title": "‍Spill Drink",
-        "code": ""
-      },
-      {
-        "title": "‍Spill Drink",
-        "code": ""
-      },
-      {
-        "title": "Spill Drink",
-        "code": ""
-      },
-      {
-        "title": "‍Bee-stial Wrath",
-        "code": ""
-      },
-      {
-        "title": "‍Bee-stial Wrath",
-        "code": ""
-      },
-      {
-        "title": "Bee-stial Wrath",
-        "code": ""
-      },
-      {
-        "title": "‍Shredding Sting",
-        "code": ""
-      },
-      {
-        "title": "‍Shredding Sting",
-        "code": ""
-      },
-      {
-        "title": "Shredding Sting",
-        "code": ""
-      },
-      {
-        "title": "‍Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Hunter",
-        "code": ""
-      },
-      {
-        "title": "Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "‍Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "‍Rogue",
-        "code": ""
-      },
-      {
-        "title": "‍Rogue",
-        "code": ""
-      },
-      {
-        "title": "Rogue",
-        "code": ""
-      },
-      {
-        "title": "‍Shiv",
-        "code": ""
-      },
-      {
-        "title": "‍Shiv",
-        "code": ""
-      },
-      {
-        "title": "Shiv",
-        "code": ""
-      },
-      {
-        "title": "‍Druid",
-        "code": ""
-      },
-      {
-        "title": "‍Druid",
-        "code": ""
-      },
-      {
-        "title": "Druid",
-        "code": ""
-      },
-      {
-        "title": "‍Soothe",
-        "code": ""
-      },
-      {
-        "title": "‍Soothe",
-        "code": ""
-      },
-      {
-        "title": "Soothe",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Oppressing Roar",
-        "code": ""
-      },
-      {
-        "title": "‍Oppressing Roar",
-        "code": ""
-      },
-      {
-        "title": "Oppressing Roar",
-        "code": ""
-      },
-      {
-        "title": "‍Overawe",
-        "code": ""
-      },
-      {
-        "title": "‍Overawe",
-        "code": ""
-      },
-      {
-        "title": "Overawe",
-        "code": ""
-      },
-      {
-        "title": "‍Monk",
-        "code": ""
-      },
-      {
-        "title": "‍Monk",
-        "code": ""
-      },
-      {
-        "title": "Monk",
-        "code": ""
-      },
-      {
-        "title": "‍Paralysis",
-        "code": ""
-      },
-      {
-        "title": "‍Paralysis",
-        "code": ""
-      },
-      {
-        "title": "Paralysis",
-        "code": ""
-      },
-      {
-        "title": "‍Pressure Points",
-        "code": ""
-      },
-      {
-        "title": "‍Pressure Points",
-        "code": ""
-      },
-      {
-        "title": "Pressure Points",
-        "code": ""
-      },
-      {
-        "title": "‍Mean Mug",
-        "code": ""
-      },
-      {
-        "title": "‍Mean Mug",
-        "code": ""
-      },
-      {
-        "title": "Mean Mug",
-        "code": ""
-      },
-      {
-        "title": "‍Shredding Sting",
-        "code": ""
-      },
-      {
-        "title": "‍Shredding Sting",
-        "code": ""
-      },
-      {
-        "title": "Shredding Sting",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Evoker",
-        "code": ""
-      },
-      {
-        "title": "Evoker",
-        "code": ""
-      },
-      {
-        "title": "‍Cauterizing Flame",
-        "code": ""
-      },
-      {
-        "title": "‍Cauterizing Flame",
-        "code": ""
-      },
-      {
-        "title": "Cauterizing Flame",
-        "code": ""
-      },
-      {
-        "title": "‍Paladin",
-        "code": ""
-      },
-      {
-        "title": "‍Paladin",
-        "code": ""
-      },
-      {
-        "title": "Paladin",
-        "code": ""
-      },
-      {
-        "title": "‍Blessing of Protection",
-        "code": ""
-      },
-      {
-        "title": "‍Blessing of Protection",
-        "code": ""
-      },
-      {
-        "title": "Blessing of Protection",
-        "code": ""
-      },
-      {
-        "title": "‍Erupting Inferno",
-        "code": ""
-      },
-      {
-        "title": "‍Erupting Inferno",
-        "code": ""
-      },
-      {
-        "title": "Erupting Inferno",
-        "code": ""
-      },
-      {
-        "title": "‍Burning Fermentation",
-        "code": ""
-      },
-      {
-        "title": "‍Burning Fermentation",
-        "code": ""
-      },
-      {
-        "title": "Burning Fermentation",
-        "code": ""
-      },
-      {
-        "title": "‍Priest",
-        "code": ""
-      },
-      {
-        "title": "‍Priest",
-        "code": ""
-      },
-      {
-        "title": "Priest",
-        "code": ""
-      },
-      {
-        "title": "‍Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Warlock",
-        "code": ""
-      },
-      {
-        "title": "‍Warlock",
-        "code": ""
-      },
-      {
-        "title": "Warlock",
-        "code": ""
-      },
-      {
-        "title": "‍Singe Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Singe Magic",
-        "code": ""
-      },
-      {
-        "title": "Singe Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Rejuvenating Honey",
-        "code": ""
-      },
-      {
-        "title": "‍Rejuvenating Honey",
-        "code": ""
-      },
-      {
-        "title": "Rejuvenating Honey",
-        "code": ""
-      },
-      {
-        "title": "‍Warlock",
-        "code": ""
-      },
-      {
-        "title": "‍Warlock",
-        "code": ""
-      },
-      {
-        "title": "Warlock",
-        "code": ""
-      },
-      {
-        "title": "‍Devour Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Devour Magic",
-        "code": ""
-      },
-      {
-        "title": "Devour Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Hunter",
-        "code": ""
-      },
-      {
-        "title": "Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "‍Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "Tranquilizing Shot",
-        "code": ""
-      },
-      {
-        "title": "‍Priest",
-        "code": ""
-      },
-      {
-        "title": "‍Priest",
-        "code": ""
-      },
-      {
-        "title": "Priest",
-        "code": ""
-      },
-      {
-        "title": "‍Dispel Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Dispel Magic",
-        "code": ""
-      },
-      {
-        "title": "Dispel Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "Mass Dispel",
-        "code": ""
-      },
-      {
-        "title": "‍Shaman",
-        "code": ""
-      },
-      {
-        "title": "‍Shaman",
-        "code": ""
-      },
-      {
-        "title": "Shaman",
-        "code": ""
-      },
-      {
-        "title": "‍Purge",
-        "code": ""
-      },
-      {
-        "title": "‍Purge",
-        "code": ""
-      },
-      {
-        "title": "Purge",
-        "code": ""
-      },
-      {
-        "title": "‍Mage",
-        "code": ""
-      },
-      {
-        "title": "‍Mage",
-        "code": ""
-      },
-      {
-        "title": "Mage",
-        "code": ""
-      },
-      {
-        "title": "‍Spellsteal",
-        "code": ""
-      },
-      {
-        "title": "‍Spellsteal",
-        "code": ""
-      },
-      {
-        "title": "Spellsteal",
-        "code": ""
-      },
-      {
-        "title": "‍Demon Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Demon Hunter",
-        "code": ""
-      },
-      {
-        "title": "Demon Hunter",
-        "code": ""
-      },
-      {
-        "title": "‍Consume Magic",
-        "code": ""
-      },
-      {
-        "title": "‍Consume Magic",
-        "code": ""
-      },
-      {
-        "title": "Consume Magic",
-        "code": ""
+        "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Weekly-Route-1024x679.webp",
+        "code": "!Tz12UTnmm0FN9O1fll962EPyaEfWfyd7bbK0kxKvp7He5U2)(jskRl2fninwI8WdPoKYwM9b7WtxghV846K)DBpRXo8pN7LWVSdRxEYoiErk(2p7B)05FzhE900Qd85X1RxDZ(7xNMS98M0cdRNNCV6Mq)V5MCp6VSmh8i8myNpz5xxNF2TmF3tVf2JPSdEN7pxMF2E2oC9YO)7JJ3C(BKRpeCm46FdHlTY2x9YaY2(2GbH)tlzWLuWsI4smAngdwcYtWVqCdo2Z6aJ7zAWbz0bbs2LPLR2HXrHBCmfHeMCctbHzlHPSKjDOf6cSaKmUcQflo4hrPVY8Qu6j2LXWgQdp2vMfSDzHWL2LJL1eOAeftPZ8kABGsqimzG90Jz8hphWhQQv2OkSbYEWMTCKrPodKgqHePeJvqapKrpuLegx02nBGtIdLXekccf9oAazdpFswIISY)SaZdfOsUyOewKIeyzT3kYVqgwgEupLdp5ijDsSOnPI3WBZ)tmQkMkyjGAqF6qQOrQBQytxen0bEZUQgkJX97iG5S9bG2w(bokXpT4hvwjMkoT2pQHI2obpLZmL9qdtoO6kyv18lkzqJ3j8ZrH06mtTRkA12ubJqQT6GJ6cW6ZMeNQs0tufHCuzp2BO(GcNQQ2f1yjPT2w1lqrwLoo7XXlamgA8tdnsdjwN9qxHUK4SMkP2XJs2UZbif2yxSTIPlj0MsMxgEzvSuhKOroBOPW7hzzkIPmgt8zEAixPQNvmquIiQXTm4pOWeVbqvsY2DPkCmRls1ehYTLBQK(4OuU4GoGKxiPPUTTWzkpmQlq5Aisuz1vvuZLiE23rZT10vEgkTenvvqAgLPiUzjBLAGZ3rFsnusnbD4jI7rsfbPvee1KyJFVK0Lsjjm3UZTUkNUvfI8HHBTPQtwzYJktFQEVBKsuBeZj6VW7w8w47FeEXMP3TdlN)D49sUHNlK33FAY59U7MhxaepT6x(cSo8(iFENnWlSqYq7))"
       }
     ],
     "ratings": [
       {
         "label": "高层钥匙",
-        "score": 5,
-        "scoreText": "困难"
+        "score": 3,
+        "scoreText": "中等"
       },
       {
         "label": "集合石组队",
-        "score": 5,
+        "score": 4,
         "scoreText": "困难"
       },
       {
         "label": "能力技、辅助技能需求",
-        "score": 5,
-        "scoreText": "困难"
-      },
-      {
-        "score": 5,
-        "scoreText": "困难"
+        "score": 3,
+        "scoreText": "中等"
       }
     ],
-    "utilityNeeds": [],
+    "utilityNeeds": [
+      {
+        "type": "激怒",
+        "spell": [
+          {
+            "id": "441408",
+            "name": "‍Thirsty",
+            "nameZH": "口渴",
+            "desc": "主顾苦等饮料而不得，终于火冒三丈，攻击和施法速度提高50%，持续20秒。"
+          },
+          {
+            "id": "441214",
+            "name": "‍Spill Drink",
+            "nameZH": "豪气畅饮",
+            "desc": "美味测试员畅饮美酒，使造成的伤害提高100%，持续12秒。"
+          },
+          {
+            "id": "441351",
+            "name": "‍Bee-stial Wrath",
+            "nameZH": "狂蜂怒火",
+            "desc": "施法者令自身和周围的蜜蜂陷入狂怒，造成的伤害提高25%，持续15秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍hunter",
+            "roleClassZH": "猎人",
+            "id": "126443:AJwA",
+            "name": "‍Tranquilizing Shot",
+            "nameZH": "宁神射击",
+            "desc": "从一个敌方目标身上移除1个激怒效果和1个魔法效果。"
+          },
+          {
+            "roleClass": "‍rogue",
+            "roleClassZH": "盗贼",
+            "id": "5938",
+            "name": "‍Shiv",
+            "nameZH": "毒刃",
+            "desc": "使用你的[强化毒刃: 淬毒利刃 / 副手]进行攻击，造成(125.4% of Attack power)%点物理伤害，驱散所有激怒效果，并对目标施放浓缩形态的激活的非致命药膏。\n\n奖励1个连击点数。"
+          },
+          {
+            "roleClass": "‍druid",
+            "roleClassZH": "德鲁伊",
+            "id": "103307",
+            "name": "‍Soothe",
+            "nameZH": "安抚",
+            "desc": "安抚目标，驱散所有激怒效果。"
+          },
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115607",
+            "name": "‍Oppressing Roar",
+            "nameZH": "压迫怒吼",
+            "desc": "\n对你前方锥形区域内的敌人发出震耳欲聋的咆哮，在接下来的10秒内使影响他们的群体控制持续时间提高50%。[震魂摄魄: 从每个敌人身上移除1个激怒效果。]"
+          },
+          {
+            "roleClass": "‍monk",
+            "roleClassZH": "武僧",
+            "id": "124932",
+            "name": "‍Paralysis",
+            "nameZH": "分筋错骨",
+            "desc": "使目标瘫痪，持续1分钟。只能对一个目标使用。伤害可能取消该效果。"
+          }
+        ]
+      },
+      {
+        "type": "流血",
+        "spell": [
+          {
+            "id": "434773",
+            "name": "‍Mean Mug",
+            "nameZH": "杯卑磕砸",
+            "desc": "酒客抡起酒杯狠磕目标的脑壳，造成1621645点物理伤害并使其流血，每1秒造成129732点物理伤害，持续10秒。"
+          },
+          {
+            "id": "441410",
+            "name": "‍Shredding Sting",
+            "nameZH": "碎肉针刺",
+            "desc": "燧烬蜂飞向一个敌人，将毒刺扎入其体内。穿刺创伤血流不止，每2秒造成486493点物理伤害，持续10秒。该效果可叠加。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115602",
+            "name": "‍Cauterizing Flame",
+            "nameZH": "灼烧之焰",
+            "desc": "给盟友的伤口加热，移除所有流血、中毒、诅咒和疾病效果。移除任何效果后恢复19,369点生命值。"
+          },
+          {
+            "roleClass": "‍paladin",
+            "roleClassZH": "圣骑士",
+            "id": "102604:AJgA",
+            "name": "‍Blessing of Protection",
+            "nameZH": "召唤食尸鬼",
+            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+          }
+        ]
+      },
+      {
+        "type": "魔法(防御驱散)",
+        "spell": [
+          {
+            "id": "437956",
+            "name": "‍Erupting Inferno",
+            "nameZH": "迸发地狱火",
+            "desc": "法师点燃随机一名玩家，每1.5秒造成810822点火焰伤害，持续9秒。\n\n玩家还会辐射出脉动烈焰。"
+          },
+          {
+            "id": "439202",
+            "name": "‍Burning Fermentation",
+            "nameZH": "燃烧发酵",
+            "desc": "艾帕让多个玩家沾满滚烫的蜜酒，每2秒造成1783809点火焰伤害，持续16秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍priest",
+            "roleClassZH": "牧师",
+            "id": "32375",
+            "name": "‍Mass Dispel",
+            "nameZH": "群体驱散",
+            "desc": "驱散半径15码范围内的魔法，从5个友方目标身上移除全部的有害魔法效果，并从5个敌方目标身上移除1个有益魔法效果。这种驱散法术非常强大，可以移除通常无法被驱散的魔法效果。"
+          },
+          {
+            "roleClass": "‍warlock",
+            "roleClassZH": "术士",
+            "id": "89808",
+            "name": "‍Singe Magic",
+            "nameZH": "烧灼驱魔",
+            "desc": "用烈火净化有害魔法，从一个盟友身上移除1个有害的魔法效果。\n\n自动施放：\n在主人受魔法效果影响，无法施法时对其施放。\n\n（点击右键以启用或禁用该技能）"
+          }
+        ]
+      },
+      {
+        "type": "魔法(进攻驱散)",
+        "spell": [
+          {
+            "id": "441627",
+            "name": "‍Rejuvenating Honey",
+            "nameZH": "疗愈蜂蜜",
+            "desc": "每2秒为一位盟友恢复其最大生命值的5%，持续18秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍warlock",
+            "roleClassZH": "术士",
+            "id": "388215",
+            "name": "‍Devour Magic",
+            "nameZH": "吞噬魔法",
+            "desc": "从一名敌人身上移除1个增益魔法效果。每吞噬一个魔法效果，术士就会回复(80% of Spell power)点生命值。"
+          },
+          {
+            "roleClass": "‍hunter",
+            "roleClassZH": "猎人",
+            "id": "126443:AJwA",
+            "name": "‍Tranquilizing Shot",
+            "nameZH": "宁神射击",
+            "desc": "从一个敌方目标身上移除1个激怒效果和1个魔法效果。"
+          },
+          {
+            "roleClass": "‍priest",
+            "roleClassZH": "牧师",
+            "id": "103867",
+            "name": "‍Dispel Magic",
+            "nameZH": "驱散魔法",
+            "desc": "驱散敌方目标身上的魔法，移除1个增益魔法效果。"
+          },
+          {
+            "roleClass": "‍shaman",
+            "roleClassZH": "萨满",
+            "id": "127905",
+            "name": "‍Purge",
+            "nameZH": "巨兽之颌",
+            "desc": "用力撕咬，对敌人造成200%的普通伤害。"
+          },
+          {
+            "roleClass": "‍mage",
+            "roleClassZH": "法师",
+            "id": "80140",
+            "name": "‍Spellsteal",
+            "nameZH": "法术吸取",
+            "desc": "从目标身上窃取一个增益法术效果。此效果最多持续2分钟。"
+          },
+          {
+            "roleClass": "‍demon hunter",
+            "roleClassZH": "恶魔猎手",
+            "id": "112926",
+            "name": "‍Consume Magic",
+            "nameZH": "召唤恐惧卫士",
+            "desc": "召唤一名恐惧卫士。"
+          }
+        ]
+      }
+    ],
     "enemyTips": [
       {
         "title": "\"酿造大师阿德里尔\"前的小怪",
@@ -7700,15 +6916,15 @@
         "data": [
           {
             "trashName": "Chef Chewie",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Chef-Chewie-2.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Chef-Chewie-2.webp",
             "data": [
               {
-                "text": "厨师的赞美",
+                "text": "[主厨的称赞]",
                 "spells": [
                   {
                     "name": "‍Compliments of the Chef",
                     "id": "434743",
-                    "nameZH": ""
+                    "nameZH": "主厨的称赞"
                   }
                 ],
                 "children": [
@@ -7737,12 +6953,12 @@
                 ]
               },
               {
-                "text": "High Steaks 翻译为中文是“高风险”。以下是翻译后的副本攻略内容：\n\n高风险\n\n[副本简介]\n高风险是一个充满挑战的副本，适合高等级玩家组队挑战。副本中有多个强大的首领和复杂的机制，需要团队成员之间的紧密配合。\n\n[首领攻略]\n1. **首领A**：这个首领拥有高攻击力和强大的范围技能。建议坦克保持仇恨，治疗注意团队血量，DPS集中输出。\n2. **首领B**：这个首领会召唤小怪，需要优先清理小怪，然后再集中攻击首领。注意躲避首领的AOE技能。\n3. **首领C**：这个首领会进入狂暴状态，攻击速度和伤害大幅提升。建议在狂暴前尽量削减其血量，并在狂暴时使用控制技能。\n\n[掉落物品]\n- 稀有装备\n- 高级材料\n- 金币\n\n[注意事项]\n- 副本中有多个陷阱和机关，需要小心应对。\n- 建议携带足够的药水和食物，以备不时之需。\n- 团队成员之间的沟通和配合至关重要。\n\n希望这份攻略能帮助你在高风险副本中取得胜利！",
+                "text": "[飞肉直下]",
                 "spells": [
                   {
                     "name": "‍High Steaks",
                     "id": "434998",
-                    "nameZH": ""
+                    "nameZH": "飞肉直下"
                   }
                 ],
                 "children": [
@@ -7757,7 +6973,7 @@
           },
           {
             "trashName": "Venture Co. Pyromaniac",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Pyromaniac-2.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Pyromaniac-2.webp",
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -7774,7 +6990,7 @@
                     ],
                     "children": [
                       {
-                        "text": "对随机一名玩家施加魔法减益效果，在9秒内造成火焰伤害。",
+                        "text": "对随机玩家施加一个魔法减益效果，在9秒内造成火焰伤害。",
                         "spells": [],
                         "children": [
                           {
@@ -7803,11 +7019,11 @@
                     ],
                     "children": [
                       {
-                        "text": "在与怪物交战一段时间后，它会获得一个激怒增益效果，增加其攻击速度和施法速度。",
+                        "text": "在与怪物交战一段时间后，它会获得一个激怒增益效果，提升其攻击和施法速度。",
                         "spells": [],
                         "children": [
                           {
-                            "text": "安抚它能够大大降低怪物的危险性。",
+                            "text": "安抚它大大降低了怪物的危险性。",
                             "spells": [],
                             "children": []
                           }
@@ -7818,7 +7034,7 @@
                 ]
               },
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -7832,7 +7048,7 @@
                     ],
                     "children": [
                       {
-                        "text": "一个引导施法，会锁定一个随机玩家。",
+                        "text": "一个引导施法，会锁定随机玩家。",
                         "spells": [],
                         "children": []
                       }
@@ -7844,7 +7060,7 @@
           },
           {
             "trashName": "Venture Co. Patron",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Patron.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Patron.webp",
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -7890,11 +7106,11 @@
                     ],
                     "children": [
                       {
-                        "text": "在与小怪交战一段时间后，它会获得一个激怒增益效果，提升其攻击速度和施法速度。",
+                        "text": "在与怪物交战一段时间后，它会获得一个激怒增益效果，提升其攻击和施法速度。",
                         "spells": [],
                         "children": [
                           {
-                            "text": "安抚它能够大大降低怪物的危险性。",
+                            "text": "安抚它大大降低了怪物的危险性。",
                             "spells": [],
                             "children": []
                           }
@@ -7908,15 +7124,15 @@
           },
           {
             "trashName": "Hired Muscle",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Hired-Muscle-549x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Hired-Muscle-549x1024.webp",
             "data": [
               {
-                "text": "[不稳定的酒桶]",
+                "text": "[烈性酒桶]",
                 "spells": [
                   {
                     "name": "‍Volatile Keg",
                     "id": "463218",
-                    "nameZH": ""
+                    "nameZH": "烈性酒桶"
                   }
                 ],
                 "children": [
@@ -7963,7 +7179,7 @@
                         "spells": [],
                         "children": [
                           {
-                            "text": "安抚它能够大大降低怪物的危险性。",
+                            "text": "安抚它大大降低了怪物的危险性。",
                             "spells": [],
                             "children": []
                           }
@@ -7977,15 +7193,15 @@
           },
           {
             "trashName": "Tasting Room Attendant",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Tasting-Room-Attendant-1.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Tasting-Room-Attendant-1.webp",
             "data": [
               {
-                "text": "Cinderbrew Toss 翻译为“灰烬酿造投掷”。",
+                "text": "[燧酿飞掷]",
                 "spells": [
                   {
                     "name": "‍Cinderbrew Toss",
                     "id": "434706",
-                    "nameZH": ""
+                    "nameZH": "燧酿飞掷"
                   }
                 ],
                 "children": [
@@ -8007,6 +7223,7 @@
           {
             "spellId": "432229",
             "spellNameEN": "‍Keg Smash",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Keg-Smash-gif-1.gif",
             "image": "‍Keg Smash.gif",
             "data": [
               {
@@ -8014,12 +7231,12 @@
                 "spells": [],
                 "children": [
                   {
-                    "text": "在击退期间会生成几滩[热蜂蜜]。这些蜂蜜会持续存在很长时间，请确保不要将它们生成在尴尬的位置，以免在[欢乐时光]阶段对你造成困扰。最好将它们生成在房间的两侧。",
+                    "text": "在击退时，会生成几滩[滚烫蜜糖]。这些蜜糖池会持续很长时间，确保不要在[欢乐时光]阶段可能对你造成麻烦的尴尬位置生成。最好在房间的两侧生成。",
                     "spells": [
                       {
                         "name": "‍Hot Honey",
                         "id": "432196",
-                        "nameZH": ""
+                        "nameZH": "滚烫蜜糖"
                       },
                       {
                         "name": "‍Happy Hour",
@@ -8037,6 +7254,7 @@
             "spellId": "432198",
             "spellNameZH": "炽热响嗝",
             "spellNameEN": "‍Blazing Belch",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Blazing-Belch-gif.gif",
             "image": "‍Blazing Belch.gif",
             "data": [
               {
@@ -8062,6 +7280,7 @@
             "spellId": "432179",
             "spellNameZH": "投掷燧酿",
             "spellNameEN": "‍Throw Cinderbrew",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Throw-Cinderbrew.gif",
             "image": "‍Throw Cinderbrew.gif",
             "data": [
               {
@@ -8069,12 +7288,12 @@
                 "spells": [],
                 "children": [
                   {
-                    "text": "在受到影响的玩家脚下生成[热蜂蜜]。",
+                    "text": "在受到影响的玩家脚下生成[滚烫蜜糖]。",
                     "spells": [
                       {
                         "name": "‍Hot Honey",
                         "id": "432196",
-                        "nameZH": ""
+                        "nameZH": "滚烫蜜糖"
                       }
                     ],
                     "children": []
@@ -8098,6 +7317,7 @@
             "spellId": "442525",
             "spellNameZH": "欢乐时光",
             "spellNameEN": "‍Happy Hour",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Happy-Hour-gif.gif",
             "image": "‍Happy Hour.gif",
             "data": [
               {
@@ -8106,22 +7326,22 @@
                 "children": []
               },
               {
-                "text": "在这个阶段，由于[无视]buff的存在，Boss几乎不会受到伤害。玩家需要完成一个小游戏，将[灰烬啤酒]送给[口渴的顾客]。",
+                "text": "在此阶段，由于[不屑一顾]增益效果的存在，Boss几乎不会受到任何伤害。玩家需要完成一个小游戏，即为口渴的顾客们递送灰烬啤酒。",
                 "spells": [
                   {
                     "name": "‍Disregard",
                     "id": "442611",
-                    "nameZH": ""
+                    "nameZH": "不屑一顾"
                   }
                 ],
                 "children": [
                   {
-                    "text": "在未被喂食之前，口渴的顾客会施放[喧闹怒吼]，对团队造成伤害并降低他们的急速。",
+                    "text": "在未被喂食之前，口渴的顾客会施放[吵闹喧哗]，对团队造成伤害，同时降低他们的急速。",
                     "spells": [
                       {
                         "name": "‍Rowdy Yell",
                         "id": "431897",
-                        "nameZH": ""
+                        "nameZH": "吵闹喧哗"
                       }
                     ],
                     "children": []
@@ -8149,7 +7369,7 @@
         "data": [
           {
             "trashName": "Careless Hopgoblin",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Careless-Hopgoblin-674x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Careless-Hopgoblin-674x1024.webp",
             "data": [
               {
                 "text": "[鲁莽搬运]",
@@ -8166,12 +7386,12 @@
                     "spells": [],
                     "children": [
                       {
-                        "text": "粗心的地精在冲锋撞墙后会[昏迷]，并生成几滴[酒滴]。",
+                        "text": "粗心的地精在冲锋后撞到墙壁时会[昏迷]，并掉落几瓶酒。",
                         "spells": [
                           {
                             "name": "‍Stunned",
                             "id": "448977",
-                            "nameZH": ""
+                            "nameZH": "昏迷"
                           }
                         ],
                         "children": []
@@ -8189,10 +7409,10 @@
           },
           {
             "trashName": "Taste Tester",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Taste-Tester.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Taste-Tester.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -8253,7 +7473,7 @@
           },
           {
             "trashName": "Venture Co. Pyromaniac",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Pyromaniac-2.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Pyromaniac-2.webp",
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -8299,7 +7519,7 @@
                     ],
                     "children": [
                       {
-                        "text": "在与小怪交战一段时间后，它会获得一个激怒增益效果，提升其攻击和施法速度。",
+                        "text": "在与怪物交战一段时间后，它会获得一个激怒增益效果，提升其攻击和施法速度。",
                         "spells": [],
                         "children": [
                           {
@@ -8314,7 +7534,7 @@
                 ]
               },
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -8340,10 +7560,10 @@
           },
           {
             "trashName": "Flavor Scientist",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Flavor-Scientist-469x1024.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Flavor-Scientist-469x1024.webp",
             "data": [
               {
-                "text": "所需打断：[Required Kick]",
+                "text": "所需打断：",
                 "spells": [],
                 "children": [
                   {
@@ -8402,15 +7622,15 @@
           },
           {
             "trashName": "Brew Drop",
-            "trashImage": "https://assets-ng.maxroll.gg/wordpress/Brew-Drop.webp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Brew-Drop.webp",
             "data": [
               {
-                "text": "渗出的蜂蜜",
+                "text": "[泛涌蜂蜜]",
                 "spells": [
                   {
                     "name": "‍Oozing Honey",
                     "id": "441179",
-                    "nameZH": ""
+                    "nameZH": "泛涌蜂蜜"
                   }
                 ],
                 "children": [
@@ -8433,6 +7653,7 @@
             "spellId": "439365",
             "spellNameZH": "喷涌佳酿",
             "spellNameEN": "‍Spouting Stout",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Spouting-Stout-gif.gif",
             "image": "‍Spouting Stout.gif",
             "data": [
               {
@@ -8473,22 +7694,22 @@
                     "children": []
                   },
                   {
-                    "text": "死亡时在地面上生成[渗出的蜂蜜]。",
+                    "text": "死亡后在地面上生成[泛涌蜂蜜]。",
                     "spells": [
                       {
                         "name": "‍Oozing Honey",
                         "id": "441171",
-                        "nameZH": ""
+                        "nameZH": "泛涌蜂蜜"
                       }
                     ],
                     "children": [
                       {
-                        "text": "[渗出的蜂蜜]会随着时间的推移逐渐缩小，并在池子完全溶解时重新生成[酒滴]。",
+                        "text": "[泛涌蜂蜜]会随着时间的推移逐渐缩小，当池子完全溶解时，会重新生成[酒滴]。",
                         "spells": [
                           {
                             "name": "‍Oozing Honey",
                             "id": "441171",
-                            "nameZH": ""
+                            "nameZH": "泛涌蜂蜜"
                           }
                         ],
                         "children": []
@@ -8503,6 +7724,7 @@
             "spellId": "439031",
             "spellNameZH": "干杯勾拳",
             "spellNameEN": "‍Bottoms Uppercut",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/BottomsUppercut-gif.gif",
             "image": "‍Bottoms Uppercut.gif",
             "data": [
               {
@@ -8528,6 +7750,7 @@
             "spellId": "439202",
             "spellNameZH": "燃烧发酵",
             "spellNameEN": "‍Burning Fermentation",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/BurningFermentation-gif.gif",
             "image": "‍Burning Fermentation.gif",
             "data": [
               {
@@ -8579,6 +7802,7 @@
             "spellId": "438025",
             "spellNameZH": "点心时间",
             "spellNameEN": "‍Snack Time",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/SnackTimep1-gif.gif",
             "image": "‍Snack Time.gif",
             "data": [
               {
@@ -8626,6 +7850,7 @@
             "spellId": "440134",
             "spellNameZH": "蜂蜜料汁",
             "spellNameEN": "‍Honey Marinade",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/HoneyMarinade-gif.gif",
             "image": "‍Honey Marinade.gif",
             "data": [
               {
@@ -8645,6 +7870,7 @@
             "spellId": "439524",
             "spellNameZH": "振翼之风",
             "spellNameEN": "‍Fluttering Wing",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/FlutteringWing-gif.gif",
             "image": "‍Fluttering Wing.gif",
             "data": [
               {
@@ -8680,6 +7906,7 @@
           {
             "spellId": "435560",
             "spellNameEN": "‍Spread the Love!",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/SpreadtheLove-gif.gif",
             "image": "‍Spread the Love!.gif",
             "data": [
               {
@@ -8787,6 +8014,7 @@
             "spellId": "435622",
             "spellNameZH": "遮天蔽日！",
             "spellNameEN": "‍Let It Hail!",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/LetItHail-gif.gif",
             "image": "‍Let It Hail!.gif",
             "data": [
               {
@@ -8806,6 +8034,7 @@
             "spellId": "436644",
             "spellNameZH": "燃焰弹射",
             "spellNameEN": "‍Burning Ricochet",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/BurningRicochet-gif.gif",
             "image": "‍Burning Ricochet.gif",
             "data": [
               {
@@ -8848,6 +8077,7 @@
             "spellId": "436592",
             "spellNameZH": "点钞大炮",
             "spellNameEN": "‍Cash Cannon",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/CashCannon-gif.gif",
             "image": "‍Cash Cannon.gif",
             "data": [
               {
@@ -10582,6 +9812,2494 @@
             "id": 159287,
             "name": "可疑意图斗篷",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/2021378.webp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dungeonId": 370,
+    "dungeon": "麦卡贡行动 - 车间",
+    "dungeonEN": "Operation: Mechagon - Workshop",
+    "routes": [
+      {
+        "title": "Weekly Route",
+        "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Weekly-1024x678.webp",
+        "code": "!9r1YUnooqWVN9Gn4BsDnZIaeGfAcG2fZnbjhtLOmAKcSPSNCrF7l7MuVdM4ydk2nRU6QlQCA()MN1D6D7lUR(LP4ZNdRsP(VmCfh)vKFkpvMNvH)LNQYtpyYD5zUWbE8GsWumIjrr0uPGiYRoiPqgnHmYKA9re1mFa(rfaDMwkpQb4Zoiue)sN)JpNzQ8OszOgMw6rMy8F8al4qopEqNq1ePMZ4kvcrXGqIzk)as5Vv2ouC9N1Fmu8JYRo7qXZx6EXE9AD7Rdf)xBTBOOUAO4TYB(yLdfV21DEO4Js3LUMJdfF39M9Y96R(GV3F1N8Rw)pVv)RHI71U38z230muOocnBRVOoGblAadLQzknHOeeJHlbwQInGut4AdNOmmjtH9MCBdKHCpulOxQBVHS5JoxDN)5UlbAx6S3l)Cjne)5r6dF9iDCGrfKJ8WaJrsoIhmJsjhtcdmgHHdSzpGwR5gQYps8nmxQapGehP(SUBT)eXTV(CEwYjPH)xp9p3F)wE2TYMElW1x6VCX26E2ROyHJpN1FQXEZ2Gh)sDL77vvxTZ2we)yU)DF7R2U2No)BFmMhdN1(l)O2BGZUAB8UDVOfLegCoy8nHukveJHDEk6s9Dl8p0jPu1Q4ACHbJNGXLtXbo110DbKyU1lXJo74UWEj2fqggqmes1CvJfwor65X4(SeBYYnAhtPMPYajQx80sEYTJohWXS4em6gAcOWwTx4UNexWi4QLYa3MeLb5k4zRGNhHAj8gCVKf9SgrNkxX(Qtb2R2OYCBSAROSiirKWfc8gbefXnuNWa2pFac4vmGbut4m0KvSwgZg1B9I6dvhNYKVykZd5B2Wx464u(Yf9ouyrqCCWElltYj(yzWO4QzurhiW65rQBCgW3pzzBPB0uml3LuuyNK0v2l2UtV)Uanw29(W4nJj)8iAIOU5MPSA2TglTCvPv5FL9gVmTXwMQw1aB7GW7bcIMALWJUUu9UoE6w2OYW2tFXMUgqsSp9ftvZx4TelfdZ0dlCKX5(4Da(Ywffd3odyYQCurcGVQ1z)T)3F4FHEZNXZ9CzJ15Sp1w1beSS319nyF4nVpSjh4vZyJFUUQQ(L(g3Nyl6YZ))"
+      }
+    ],
+    "ratings": [
+      {
+        "label": "高层钥匙",
+        "score": 4,
+        "scoreText": "困难"
+      },
+      {
+        "label": "集合石组队",
+        "score": 2,
+        "scoreText": "中等"
+      },
+      {
+        "label": "能力技、辅助技能需求",
+        "score": 1,
+        "scoreText": "简单"
+      }
+    ],
+    "utilityNeeds": [
+      {
+        "type": "流血",
+        "spell": [
+          {
+            "id": "1215411",
+            "name": "‍Puncture",
+            "nameZH": "刺破",
+            "desc": "对目标敌人造成40点物理伤害并使其流血，每1秒额外造成4点物理伤害，持续6秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115602",
+            "name": "‍Cauterizing Flame",
+            "nameZH": "灼烧之焰",
+            "desc": "给盟友的伤口加热，移除所有流血、中毒、诅咒和疾病效果。移除任何效果后恢复19,369点生命值。"
+          },
+          {
+            "roleClass": "‍paladin",
+            "roleClassZH": "圣骑士",
+            "id": "102604:AJgA",
+            "name": "‍Blessing of Protection",
+            "nameZH": "召唤食尸鬼",
+            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+          }
+        ]
+      },
+      {
+        "type": "魔法(防御驱散)",
+        "spell": [
+          {
+            "id": "294195",
+            "name": "‍Arcing Zap",
+            "nameZH": "电弧波动炮",
+            "desc": "造成972987点自然伤害，并在接下来的20秒内每2秒造成额外的972987点自然伤害。"
+          },
+          {
+            "id": "1217819",
+            "name": "‍Fiery Jaws",
+            "nameZH": "灼热巨颚",
+            "desc": "向一名玩家跃击并用灼热巨颚咬击他们，造成7点火焰伤害，并每1秒额外造成2点火焰伤害，持续10秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍priest",
+            "roleClassZH": "牧师",
+            "id": "32375",
+            "name": "‍Mass Dispel",
+            "nameZH": "群体驱散",
+            "desc": "驱散半径15码范围内的魔法，从5个友方目标身上移除全部的有害魔法效果，并从5个敌方目标身上移除1个有益魔法效果。这种驱散法术非常强大，可以移除通常无法被驱散的魔法效果。"
+          },
+          {
+            "roleClass": "‍warlock",
+            "roleClassZH": "术士",
+            "id": "89808",
+            "name": "‍Singe Magic",
+            "nameZH": "烧灼驱魔",
+            "desc": "用烈火净化有害魔法，从一个盟友身上移除1个有害的魔法效果。\n\n自动施放：\n在主人受魔法效果影响，无法施法时对其施放。\n\n（点击右键以启用或禁用该技能）"
+          }
+        ]
+      },
+      {
+        "type": "魔法(进攻驱散)",
+        "spell": [
+          {
+            "id": "293930",
+            "name": "‍Overclock",
+            "nameZH": "超频",
+            "desc": "使50码内所有机械单位的急速提高20%，持续8秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍warlock",
+            "roleClassZH": "术士",
+            "id": "388215",
+            "name": "‍Devour Magic",
+            "nameZH": "吞噬魔法",
+            "desc": "从一名敌人身上移除1个增益魔法效果。每吞噬一个魔法效果，术士就会回复(80% of Spell power)点生命值。"
+          },
+          {
+            "roleClass": "‍hunter",
+            "roleClassZH": "猎人",
+            "id": "126443:AJwA",
+            "name": "‍Tranquilizing Shot",
+            "nameZH": "宁神射击",
+            "desc": "从一个敌方目标身上移除1个激怒效果和1个魔法效果。"
+          },
+          {
+            "roleClass": "‍priest",
+            "roleClassZH": "牧师",
+            "id": "103867",
+            "name": "‍Dispel Magic",
+            "nameZH": "驱散魔法",
+            "desc": "驱散敌方目标身上的魔法，移除1个增益魔法效果。"
+          },
+          {
+            "roleClass": "‍shaman",
+            "roleClassZH": "萨满",
+            "id": "127905",
+            "name": "‍Purge",
+            "nameZH": "巨兽之颌",
+            "desc": "用力撕咬，对敌人造成200%的普通伤害。"
+          },
+          {
+            "roleClass": "‍mage",
+            "roleClassZH": "法师",
+            "id": "80140",
+            "name": "‍Spellsteal",
+            "nameZH": "法术吸取",
+            "desc": "从目标身上窃取一个增益法术效果。此效果最多持续2分钟。"
+          },
+          {
+            "roleClass": "‍demon hunter",
+            "roleClassZH": "恶魔猎手",
+            "id": "112926",
+            "name": "‍Consume Magic",
+            "nameZH": "召唤恐惧卫士",
+            "desc": "召唤一名恐惧卫士。"
+          }
+        ]
+      }
+    ],
+    "enemyTips": [
+      {
+        "title": "\"坦克大战\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Bomb Tonk",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bomb-Tonk.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[引爆]",
+                    "spells": [
+                      {
+                        "name": "‍Detonate",
+                        "id": "301088",
+                        "nameZH": "引爆"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "如果未被打断，会施放一个长时间的法术，对团队造成范围性的火焰伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Rocket Tonk",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rocket-Tonk.webp",
+            "data": [
+              {
+                "text": "火箭弹幕",
+                "spells": [
+                  {
+                    "name": "‍Rocket Barrage",
+                    "id": "294103",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "立即生成多个地面效果，造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Strider Tonk",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Strider-Tonk-549x1024.webp",
+            "data": [
+              {
+                "text": "飞啄",
+                "spells": [
+                  {
+                    "name": "‍Flying Peck",
+                    "id": "294061",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每8秒对坦克造成少量即时伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"坦克大战\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "282943",
+            "spellNameZH": "液压碾锤",
+            "spellNameEN": "‍Piston Smasher",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-PistonSmasher-ezgif.com-optimize.gif",
+            "image": "‍Piston Smasher.gif",
+            "data": [
+              {
+                "text": "巨大的锤子会对4码范围内的任何人造成物理伤害并使其昏迷。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "在[白金外壳]状态下撞击白金粉碎者会击碎其外壳，使其眩晕直到效果被取消，并导致活塞粉碎者失效1.5分钟。",
+                    "spells": [
+                      {
+                        "name": "‍Platinum Plating",
+                        "id": "282801",
+                        "nameZH": "白金外壳"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "282945",
+            "spellNameEN": "‍Buzz Saw",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-BuzzSaw-ezgif.com-optimize.gif",
+            "image": "‍Buzz Saw.gif",
+            "data": [
+              {
+                "text": "旋转的锯片会以两种模式在平台上旋转，对任何接触到它们的玩家造成物理伤害并将其击退。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "电锯总是沿着自己的线路围绕平台旋转，或者从外环移动到平台的中心。",
+                    "spells": [],
+                    "children": []
+                  },
+                  {
+                    "text": "尽量始终站在圆盘的中心，而不是在圆盘之间，尤其是在锯片激活时。",
+                    "spells": [],
+                    "children": []
+                  },
+                  {
+                    "text": "不要站在竞技场的中心，因为在那里很容易被多个锯子击中而死亡，而且站在那里通常也没有什么好处。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "283565",
+            "spellNameZH": "全速前进",
+            "spellNameEN": "‍Maximum Thrust",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-MaximumThrust-ezgif.com-optimize.gif",
+            "image": "‍Maximum Thrust.gif",
+            "data": [
+              {
+                "text": "当能量达到100时，[Gnomercy 4.U.]会随机选择一个玩家的方向冲锋，对其路径上的所有玩家造成物理伤害并将其击退。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "当[Gnomercy 4.U.]撞击竞技场墙壁时，它会眩晕5秒，并生成少量[B.4.T.T.L.3.地雷]。",
+                    "spells": [
+                      {
+                        "name": "‍B.4.T.T.L.3. Mines",
+                        "id": "1216431",
+                        "nameZH": "B.4.T.T.L.3.地雷"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "285153",
+            "spellNameZH": "索敌击飞",
+            "spellNameEN": "‍Foe Flipper",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-FoeFlipper-ezgif.com-optimize.gif",
+            "image": "‍Foe Flipper.gif",
+            "data": [
+              {
+                "text": "Gnomercy 4.U.会冲向随机一名玩家的位置，造成物理伤害并将6码范围内的所有玩家击飞到空中，同时降低他们的移动速度，持续6秒。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "1216431",
+            "spellNameZH": "B.4.T.T.L.3.地雷",
+            "spellNameEN": "‍B.4.T.T.L.3. Mine",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-B.4.T.T.L.3.Mine-ezgif.com-optimize.gif",
+            "image": "‍B.4.T.T.L.3. Mine.gif",
+            "data": [
+              {
+                "text": "Gnomercy 4.U. 会在随机玩家的位置生成一些地雷，对站在其中的玩家造成火焰伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "只有当队伍中没有远程玩家时，才会对近战玩家施放此技能。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "282801",
+            "spellNameZH": "白金外壳",
+            "spellNameEN": "‍Platinum Plating",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-PlatinumPlating-ezgif.com-optimize.gif",
+            "image": "‍Platinum Plating.gif",
+            "data": [
+              {
+                "text": "当能量达到100时，[白金粉碎者]会给自己覆盖一层厚厚的白金装甲，使受到的所有伤害降低33%。这个效果可以叠加。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "当[白金外壳]激活时，将Boss拉到其中一个锤子下方，以打破外壳。",
+                    "spells": [
+                      {
+                        "name": "‍Platinum Plating",
+                        "id": "282801",
+                        "nameZH": "白金外壳"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "1215065",
+            "spellNameZH": "白金拳击",
+            "spellNameEN": "‍Platinum Pummel",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-PlatinumPummel-ezgif.com-optimize.gif",
+            "image": "‍Platinum Pummel.gif",
+            "data": [
+              {
+                "text": "铂金粉碎者会猛击坦克，对冲击点6码范围内的所有玩家造成物理伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "1215103",
+            "spellNameZH": "震地",
+            "spellNameEN": "‍Ground Pound",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-GroundPound-ezgif.com-optimize.gif",
+            "image": "‍Ground Pound.gif",
+            "data": [
+              {
+                "text": "铂金粉碎者猛击地面，每0.5秒对所有玩家造成物理伤害，持续4秒。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          null
+        ]
+      },
+      null,
+      null,
+      {
+        "title": "\"机械师的花园\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Defense Bot Mk I",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Defense-Bot-Mk-I-788x1024.webp",
+            "data": [
+              {
+                "text": "需要魔法驱散：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[电弧波动炮]",
+                    "spells": [
+                      {
+                        "name": "‍Arcing Zap",
+                        "id": "294195",
+                        "nameZH": "电弧波动炮"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "施加一个魔法持续伤害效果，每2秒造成一次自然伤害，持续20秒。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "帮助驱散这个效果将大大降低团队的整体承受伤害。",
+                            "spells": [],
+                            "children": []
+                          },
+                          {
+                            "text": "如果你没有被驱散，请确保按下防御技能，特别是当它与其他小怪的其他技能重叠时。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Mechagon Tinkerer",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechagon-Tinkerer-561x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[超荷冲击波]",
+                    "spells": [
+                      {
+                        "name": "‍Giga-Wallop",
+                        "id": "293827",
+                        "nameZH": "超荷冲击波"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家造成自然伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "激活反人员松鼠",
+                "spells": [
+                  {
+                    "name": "‍Activate Anti-Personnel Squirrel",
+                    "id": "293854",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "召唤一只反人员松鼠，它会随机跑向一名玩家并开始施放[反人员松鼠]，这是一个范围技能，会对松鼠周围10码内的所有玩家造成自然伤害。",
+                    "spells": [
+                      {
+                        "name": "‍Anti-Personnel Squirrel",
+                        "id": "293861",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Blastatron X-80",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Blastatron-X-80-1024x602.webp",
+            "data": [
+              {
+                "text": "高爆火箭",
+                "spells": [
+                  {
+                    "name": "‍High-Explosive Rockets",
+                    "id": "473436",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每4秒对团队造成一次持续的范围伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "在Blastatron X-80存活期间，这种情况会一直发生。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "音波脉冲",
+                "spells": [
+                  {
+                    "name": "‍Sonic Pulse",
+                    "id": "293986",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机对一名玩家施放的正面法术，造成自然伤害并使其沉默。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "确保在它开始施放正面技能时及时躲避并远离。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "电容器放电",
+                "spells": [
+                  {
+                    "name": "‍Capacitor Discharge",
+                    "id": "295169",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在施法期间，Blastatron X-80 会覆盖整个房间，除了一个扇形区域，这个区域将是安全点。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "确保尽快跑到安全点，否则你会受到自然伤害，并被沉默和安抚。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Mechagon Mechanic",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechagon-Mechanic-699x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[调校]",
+                    "spells": [
+                      {
+                        "name": "‍Tune Up",
+                        "id": "293729",
+                        "nameZH": "调校"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "随机选择一个目标进行治疗。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "也可以用控制技能来阻止。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "所需魔法净化：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[超频]",
+                    "spells": [
+                      {
+                        "name": "‍Overclock",
+                        "id": "293930",
+                        "nameZH": "超频"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "魔法增益效果，增加机械冈机械师周围所有机械单位的急速。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Defense Bot Mk III",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Defense-Bot-Mk-III-809x1024.webp",
+            "data": [
+              {
+                "text": "需要魔法驱散：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[电弧波动炮]",
+                    "spells": [
+                      {
+                        "name": "‍Arcing Zap",
+                        "id": "294195",
+                        "nameZH": "电弧波动炮"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "施加一个魔法持续伤害效果，每2秒造成一次自然伤害，持续20秒。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "帮助驱散这个效果将大大降低团队的整体承受伤害。",
+                            "spells": [],
+                            "children": []
+                          },
+                          {
+                            "text": "如果你没有被驱散，请确保按下防御技能，特别是当它与其他小怪的技能重叠时。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "防御性对策",
+                "spells": [
+                  {
+                    "name": "‍Defensive Countermeasure",
+                    "id": "297133",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "给自己施加一个魔法吸收护盾。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "可以被驱散，但吸收值相当低，这使得直接用伤害打破比驱散更容易。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[短路]",
+                "spells": [
+                  {
+                    "name": "‍Short Out",
+                    "id": "297128",
+                    "nameZH": "短路"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "持续3秒的引导型范围伤害技能，每0.5秒造成一次自然伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"机械师的花园\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "285460",
+            "spellNameEN": "‍Discom-BOMB-ulator",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-Discom-BOMB-ulator-ezgif.com-optimize.gif",
+            "image": "‍Discom-BOMB-ulator.gif",
+            "data": [
+              {
+                "text": "地面上的水池，会在随机目标的位置生成，对范围内的任何人造成自然伤害并使其迷惑9秒。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[迷惑]是一个魔法减益效果，可以被驱散。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          null,
+          {
+            "spellId": "294954",
+            "spellNameEN": "‍Self-Trimming Hedge",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-Self-TrimmingHedge-ezgif.com-optimize.gif",
+            "image": "‍Self-Trimming Hedge.gif",
+            "data": [
+              {
+                "text": "向花园中发射一把弹射的刀刃，对路径上的敌人造成物理伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "战斗中，刀刃永远不会消失，因此随着战斗时间的延长，会有越来越多的刀刃在周围飞舞。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "294853",
+            "spellNameZH": "激活盆栽",
+            "spellNameEN": "‍Inconspicuous Plant",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-InconspicuousPlant-ezgif.com-optimize.gif",
+            "image": "‍Inconspicuous Plant.gif",
+            "data": [
+              {
+                "text": "[不显眼的植物]是由[首席机械师火花通量]召唤的小怪。它只有一个主动技能和一个死亡效果。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "[Blossom Blast]  \n[技能]  \n- [Blossom Blast]：对前方锥形区域造成自然伤害，并施加[Blossom Sap]效果。  \n- [Blossom Sap]：每2秒造成自然伤害，持续12秒。  \n\n[应对策略]  \n- 坦克应将Boss背对团队，避免团队成员受到[Blossom Blast]的伤害。  \n- 治疗者需要密切关注受到[Blossom Sap]影响的玩家，及时进行治疗。  \n- 输出职业应尽量站在Boss的侧面或背面，避免被[Blossom Blast]击中。",
+                "spells": [
+                  {
+                    "name": "‍Blossom Blast",
+                    "id": "294860",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对最近的目标释放闪电箭，每0.5秒造成一次自然伤害，持续6秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "油泉",
+                "spells": [
+                  {
+                    "name": "‍Oil Fountain",
+                    "id": "294863",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "死亡时，[不显眼的植物]开始向空中喷出易燃液体。当被[隐藏的火焰炮]击中时，液体会爆发成[咆哮的火焰]，对冲击点4码范围内的所有人造成火焰伤害。",
+                    "spells": [
+                      {
+                        "name": "‍\"Hidden\" Flame Cannon",
+                        "id": "285443",
+                        "nameZH": ""
+                      },
+                      {
+                        "name": "‍Roaring Flame",
+                        "id": "294869",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"麦卡贡国王\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Defense Bot Mk III",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Defense-Bot-Mk-III-809x1024.webp",
+            "data": [
+              {
+                "text": "需要魔法驱散：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[电弧波动炮]",
+                    "spells": [
+                      {
+                        "name": "‍Arcing Zap",
+                        "id": "294195",
+                        "nameZH": "电弧波动炮"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "施加一个魔法持续伤害效果，每2秒造成一次自然伤害，持续20秒。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "帮助驱散这个效果将大大降低团队的整体承受伤害。",
+                            "spells": [],
+                            "children": []
+                          },
+                          {
+                            "text": "如果你没有被驱散，请确保按下防御技能，特别是当它与其他小怪的技能重叠时。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "防御性对策",
+                "spells": [
+                  {
+                    "name": "‍Defensive Countermeasure",
+                    "id": "297133",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "给自己施加一个魔法吸收护盾。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "可以被驱散，但吸收值相当低，这使得用伤害打破它比驱散更容易。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[短路]",
+                "spells": [
+                  {
+                    "name": "‍Short Out",
+                    "id": "297128",
+                    "nameZH": "短路"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "这是一个持续3秒的引导型范围伤害技能，每0.5秒造成一次自然伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Spider Tank",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Spider-Tank-1024x600.webp",
+            "data": [
+              {
+                "text": "高爆火箭",
+                "spells": [
+                  {
+                    "name": "‍High-Explosive Rockets",
+                    "id": "473436",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每4秒对团队造成一次持续的范围伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "当蜘蛛坦克存活时，这种情况会一直发生。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "音波脉冲",
+                "spells": [
+                  {
+                    "name": "‍Sonic Pulse",
+                    "id": "293986",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机选择一个玩家施放的正面法术，造成自然伤害并使其沉默。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "确保在它开始施放正面技能时及时躲避并远离。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Mechagon Tinkerer",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechagon-Tinkerer-561x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[超荷冲击波]",
+                    "spells": [
+                      {
+                        "name": "‍Giga-Wallop",
+                        "id": "293827",
+                        "nameZH": "超荷冲击波"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家造成自然伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "激活反人员松鼠",
+                "spells": [
+                  {
+                    "name": "‍Activate Anti-Personnel Squirrel",
+                    "id": "293854",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "召唤一只反人员松鼠，它会随机跑向一名玩家并开始施放[反人员松鼠]，这是一个范围技能，会对松鼠周围10码内的所有玩家造成自然伤害。",
+                    "spells": [
+                      {
+                        "name": "‍Anti-Personnel Squirrel",
+                        "id": "293861",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"麦卡贡国王\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "291915",
+            "spellNameZH": "等离子球",
+            "spellNameEN": "‍Plasma Orb",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-PlasmaOrb-ezgif.com-optimize.gif",
+            "image": "‍Plasma Orb.gif",
+            "data": [
+              {
+                "text": "在整个战斗过程中，始终会有4个球体存在。触碰球体会造成自然伤害并将玩家击退。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "时不时地，[球体]会重新校准，调整它们的位置并向随机玩家冲锋。到达新位置后，每个[球体]会释放一次能量冲击，对6码范围内的所有玩家造成自然伤害。",
+                    "spells": [
+                      {
+                        "name": "‍Recalibrate",
+                        "id": "291865",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "291928",
+            "spellNameZH": "巨力震击",
+            "spellNameEN": "‍Mega-Zap",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-Mega-Zap-ezgif.com-optimize.gif",
+            "image": "‍Mega-Zap.gif",
+            "data": [
+              {
+                "text": "[巨力震击]是一项在阶段1和阶段2都会持续存在的技能。它会向随机一名玩家释放一道能量箭，对施法者前方直线上的所有玩家造成自然伤害，立即生效，并在接下来的12秒内每2秒造成一次额外伤害。",
+                "spells": [
+                  {
+                    "name": "‍Mega-Zap",
+                    "id": "291928",
+                    "nameZH": "巨力震击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "目标在12秒内受到来自[巨力震击]的伤害增加100%。",
+                    "spells": [
+                      {
+                        "name": "‍Mega-Zap",
+                        "id": "291928",
+                        "nameZH": "巨力震击"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "在第二阶段的不同之处在于，该技能造成的伤害将会增加，并且现在会随机作用于3名玩家，而不是1名。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          null,
+          {
+            "spellId": "291613",
+            "spellNameZH": "发射升空！",
+            "spellNameEN": "‍Take Off!",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-TakeOff-ezgif.com-cut.gif",
+            "image": "‍Take Off!.gif",
+            "data": [
+              {
+                "text": "在驾驶空中单位R-21/X时，麦卡贡国王会升空，对8码范围内的所有玩家造成火焰伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "在空中时，他会释放一道闪电光束，每1.5秒对位于[麦卡贡国王]下方的任何人造成自然伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "此外，每0.5秒会释放一次闪电脉冲，持续6秒，对所有玩家造成自然伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "283534",
+            "spellNameEN": "‍Magneto-Arm",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-Magneto-Arm-ezgif.com-optimize.gif",
+            "image": "‍Magneto-Arm.gif",
+            "data": [
+              {
+                "text": "释放一个强大的电磁铁，将所有玩家拉向它，并在9秒内每秒对所有玩家造成自然伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "远离电磁铁的玩家受到的伤害较少。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          null
+        ]
+      }
+    ],
+    "lootPool": [
+      {
+        "type": "饰品/戒指",
+        "loots": [
+          {
+            "type": "饰品",
+            "id": 169344,
+            "name": "新颖的法力电池",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/1405815.webp"
+          },
+          {
+            "type": "饰品",
+            "id": 232546,
+            "name": "K.U.-J.0.的烈焰排气口",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/629054.webp"
+          },
+          {
+            "type": "饰品",
+            "id": 168965,
+            "name": "模块化的白金外壳",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/304710.webp"
+          }
+        ]
+      },
+      {
+        "type": "武器",
+        "loots": [
+          {
+            "type": "staff",
+            "id": 168973,
+            "name": "神经突触强化器",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/2618150.webp"
+          },
+          {
+            "type": "匕首",
+            "id": 168962,
+            "name": "顶尖穿孔器",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/460715.webp"
+          },
+          {
+            "type": "单手锤",
+            "id": 168955,
+            "name": "电化认知强化器",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/1992345.webp"
+          },
+          {
+            "type": "武器",
+            "id": 169608,
+            "name": "撕裂锯刃",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/2618146.webp"
+          }
+        ]
+      },
+      {
+        "type": "防具",
+        "loots": [
+          {
+            "type": "back",
+            "id": 199921,
+            "name": "垃圾大师的斗篷",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/1780201.webp"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dungeonId": 525,
+    "dungeon": "水闸行动",
+    "dungeonEN": "Operation: Floodgate",
+    "routes": [
+      {
+        "title": "Weekly Route",
+        "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Weekly-Updated-1-1024x679.webp",
+        "code": "!LwvtZrQnq0Fo5KNc9fGoghxBYEiKTcojvUOAygeJzxg0uGWR9f(TNULeFoUsoexJzqI(96x)6wdkI6zvU50x1NT9WTzU1L(7YiW)u3Dm3vU6rvMqLx5(tLfRYEivzv5nEa5IeYboIj)bwA0HeeyECs0HiemSzs6HyeG1d4tpKerfujpIsssKXuPQ6bbbIWIS8)rkXXum)Oui8yuaOu4jO(qPqOKdKnsHlKjsAkJki8eAmdLc1lf2kP8jrQiser4mglMkePqCCgMjGIyHGtttfcMuWLy1Wf7L8tM2FWoESQ(YlWxpoC6uJUF8OPD8O9f94XtD1Lx0hgp(uxXLXJVuFf2R483GhBcHyUPHO7VvCgJFaO5CrhCBRX6J62qtZ4XFMNa7Pl6o9oq3pIBDRP49XJ1a6R6gnaPOTePVEwk43D369b5YwFXv86nKCx4DgBHfX2zgW1Z1aM6xkE1r74rDrpKlBnIU0uEPU9sGXQotRTO5a6)TGTyr35FTBF6)QBZpWcDBgo4T0yZIC9qyJH6sv(Fx9D(WV81F93)JtQ8IYst7FQ76RnTqcyrGeQRQQpp0yFhadRFTOzqJA78qxNU1(fWzDPmSoFak9x1(96QRS)wvvVE5WKlZHyFAO9I20(5Y3WsucsuRVcUcuD59q74Sf1rWcqCyBCMPPlGBegjd2Mf9MaQuVXjXnb5)8KjsXpw05E2jitJPd9tMg8ZWHTWdZibUNXlws4eseNuFx(P(ghnYHNVcFGH7jNVtpSaRzbQWvyfW2uNX(6mXZSB4zwzsSMYswlEPpPSDWdNn5EwCKNo7ztUcXvpl2QCJRUv(vNa5hSzSzS0lZOZjFQUyUsJ7Z1AJ1ZHRaMvGxXux1KUQ0wBDydro)mm(4P6YoJBwgPlw4sAcIJUueRDRTY0p54s4KzhVwE81w(AlCrZs0VwYo3NDMxUUrKLe6gv9Zp7gQNh0IxpJqPBzZD8z(HE)HYvRNf9fAYgotwj4cYuZHe08DMnv9bhWwYq6gfgAQHPyxPT)agrUzikA1QjvU)0ZSfXdYc9kHBzQ7gPBZPSku3F4Hi(akMpkkCFwrr8gvu5BQKDsnzx15KA8UG8ZoB(LohW7h0NuiZpYYIuRoB6EZpwNmVLBNnsYMisxdIegrjQpAoNgTPi9tUKn)kZm5spr(384DI7MJNqUmhBDZSpVFAZV5Ij5EJIv)gC9V06V18EaWxkA0wR(ZTvgKKIbR5NW9XxW84UyW3a5(LRVdm4jw9p)"
+      }
+    ],
+    "ratings": [
+      {
+        "label": "高层钥匙",
+        "score": 3,
+        "scoreText": "中等"
+      },
+      {
+        "label": "集合石组队",
+        "score": 3,
+        "scoreText": "中等"
+      },
+      {
+        "label": "能力技、辅助技能需求",
+        "score": 1,
+        "scoreText": "简单"
+      }
+    ],
+    "utilityNeeds": [
+      {
+        "type": "激怒",
+        "spell": [
+          {
+            "id": "463058",
+            "name": "‍Bloodthirsty Cackle",
+            "nameZH": "嗜血狞笑",
+            "desc": "向20码内的暗索土狼发出咆哮，使他们的近战攻击能够恢复5点生命值，持续8秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍hunter",
+            "roleClassZH": "猎人",
+            "id": "126443:AJwA",
+            "name": "‍Tranquilizing Shot",
+            "nameZH": "宁神射击",
+            "desc": "从一个敌方目标身上移除1个激怒效果和1个魔法效果。"
+          },
+          {
+            "roleClass": "‍rogue",
+            "roleClassZH": "盗贼",
+            "id": "5938",
+            "name": "‍Shiv",
+            "nameZH": "毒刃",
+            "desc": "使用你的[强化毒刃: 淬毒利刃 / 副手]进行攻击，造成(125.4% of Attack power)%点物理伤害，驱散所有激怒效果，并对目标施放浓缩形态的激活的非致命药膏。\n\n奖励1个连击点数。"
+          },
+          {
+            "roleClass": "‍druid",
+            "roleClassZH": "德鲁伊",
+            "id": "103307",
+            "name": "‍Soothe",
+            "nameZH": "安抚",
+            "desc": "安抚目标，驱散所有激怒效果。"
+          },
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115607",
+            "name": "‍Oppressing Roar",
+            "nameZH": "压迫怒吼",
+            "desc": "\n对你前方锥形区域内的敌人发出震耳欲聋的咆哮，在接下来的10秒内使影响他们的群体控制持续时间提高50%。[震魂摄魄: 从每个敌人身上移除1个激怒效果。]"
+          },
+          {
+            "roleClass": "‍monk",
+            "roleClassZH": "武僧",
+            "id": "124932",
+            "name": "‍Paralysis",
+            "nameZH": "分筋错骨",
+            "desc": "使目标瘫痪，持续1分钟。只能对一个目标使用。伤害可能取消该效果。"
+          }
+        ]
+      },
+      {
+        "type": "流血",
+        "spell": [
+          {
+            "id": "468631",
+            "name": "‍Harpoon",
+            "nameZH": "鱼叉猛刺",
+            "desc": "向敌人投掷一柄鱼叉，使其定身在原地，持续3秒，并将你自己拉向敌人所在的位置。"
+          },
+          {
+            "id": "1213805",
+            "name": "‍Nailgun",
+            "nameZH": "射钉枪",
+            "desc": "建筑师用射钉枪向一名玩家开火，造成8点物理伤害并使其流血，每1秒造成2点物理伤害，持续3秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍evoker",
+            "roleClassZH": "唤魔师",
+            "id": "115602",
+            "name": "‍Cauterizing Flame",
+            "nameZH": "灼烧之焰",
+            "desc": "给盟友的伤口加热，移除所有流血、中毒、诅咒和疾病效果。移除任何效果后恢复19,369点生命值。"
+          },
+          {
+            "roleClass": "‍paladin",
+            "roleClassZH": "圣骑士",
+            "id": "102604:AJgA",
+            "name": "‍Blessing of Protection",
+            "nameZH": "召唤食尸鬼",
+            "desc": "周期性地发射虚空箭矢，当其着地爆炸时造成147点伤害。"
+          }
+        ]
+      },
+      {
+        "type": "魔法(防御驱散)",
+        "spell": [
+          {
+            "id": "469799",
+            "name": "‍Overcharge",
+            "nameZH": "过载",
+            "desc": "用一股能量冲击目标，每1.5秒造成6点自然伤害，持续12秒。如果该效果未被驱散，玩家会昏迷5秒。"
+          }
+        ],
+        "utility": [
+          {
+            "roleClass": "‍priest",
+            "roleClassZH": "牧师",
+            "id": "32375",
+            "name": "‍Mass Dispel",
+            "nameZH": "群体驱散",
+            "desc": "驱散半径15码范围内的魔法，从5个友方目标身上移除全部的有害魔法效果，并从5个敌方目标身上移除1个有益魔法效果。这种驱散法术非常强大，可以移除通常无法被驱散的魔法效果。"
+          },
+          {
+            "roleClass": "‍warlock",
+            "roleClassZH": "术士",
+            "id": "89808",
+            "name": "‍Singe Magic",
+            "nameZH": "烧灼驱魔",
+            "desc": "用烈火净化有害魔法，从一个盟友身上移除1个有害的魔法效果。\n\n自动施放：\n在主人受魔法效果影响，无法施法时对其施放。\n\n（点击右键以启用或禁用该技能）"
+          }
+        ]
+      }
+    ],
+    "enemyTips": [
+      null,
+      null,
+      {
+        "title": "\"破拆双人组\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Venture Co. Surveyor",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Surveyor-Fixed-745x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[勘测光束]",
+                    "spells": [
+                      {
+                        "name": "‍Surveying Beam",
+                        "id": "462771",
+                        "nameZH": "勘测光束"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "风险投资公司勘测员会随机对一名玩家聚焦一道过热光束，每0.2秒造成一次火焰伤害，持续5秒。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "光束会留下一个[已勘测区域]，每秒对站在其中的玩家造成火焰伤害。",
+                            "spells": [
+                              {
+                                "name": "‍Surveyed Ground",
+                                "id": "472338",
+                                "nameZH": ""
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "EZ-Thro Dynamite III 翻译为中文是“EZ投掷炸药 III”。",
+                "spells": [
+                  {
+                    "name": "‍EZ-Thro Dynamite III",
+                    "id": "463169",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对随机一名玩家造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Shreddinator 3000",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shreddinator-3000-1024x998.webp",
+            "data": [
+              {
+                "text": "[碎切]",
+                "spells": [
+                  {
+                    "name": "‍Shreddation",
+                    "id": "474337",
+                    "nameZH": "碎切"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在每个玩家的位置召唤多个旋转的锯刃，每0.3秒对范围内的玩家造成物理伤害。此伤害会随着连续命中而增加。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "在[碎切]施法结束时立即开始跑动，这样你就可以避免受到该技能的所有伤害。",
+                        "spells": [
+                          {
+                            "name": "‍Shreddation",
+                            "id": "474337",
+                            "nameZH": "碎切"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "火焰喷射器",
+                "spells": [
+                  {
+                    "name": "‍Flamethrower",
+                    "id": "465754",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "一个正面锥形范围，每0.2秒对位于粉碎者前方的所有玩家造成火焰伤害，持续5秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Venture Co. Architect",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Architect.webp",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[射钉枪]",
+                    "spells": [
+                      {
+                        "name": "‍Nailgun",
+                        "id": "1213805",
+                        "nameZH": "射钉枪"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "向随机玩家发射钉枪，造成物理伤害，使其流血并被定身。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "快速建造",
+                "spells": [
+                  {
+                    "name": "‍Rapid Construction",
+                    "id": "465408",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "风险投资公司建筑师迅速建造一座塔并跃至塔顶，获得[雄踞高地]效果。",
+                    "spells": [
+                      {
+                        "name": "‍High Ground",
+                        "id": "465420",
+                        "nameZH": "雄踞高地"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "在[雄踞高地]期间，建筑师受到的伤害减少了90%。",
+                        "spells": [
+                          {
+                            "name": "‍High Ground",
+                            "id": "465420",
+                            "nameZH": "雄踞高地"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"破拆双人组\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "460867",
+            "spellNameZH": "天降神雷！",
+            "spellNameEN": "‍Big Bada BOOM!",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BigBadaBOOM-ezgif.com-optimize.gif",
+            "image": "‍Big Bada BOOM!.gif",
+            "data": [
+              {
+                "text": "在[行动：水闸]中，基扎会召唤多个[滴答作响的定时炸弹]。这些[滴答作响的定时炸弹]持续30秒，并在到期时引发[爆燃]。",
+                "spells": [
+                  {
+                    "name": "‍Deflagration",
+                    "id": "460787",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "爆燃是一种爆炸效果，会立即对所有玩家造成致命的火焰伤害，并且在接下来的10秒内，每2秒额外造成一次火焰伤害。这个效果可以叠加。",
+                    "spells": [
+                      {
+                        "name": "‍Deflagration",
+                        "id": "460787",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[定时炸弹]在被击飞时爆炸，向四周洒下弹片，对4码范围内的玩家造成火焰伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "炸弹可以通过使用[动能胶质炸药]劈砍或瞄准[滚桶冲锋]来将其击飞到空中。",
+                    "spells": [
+                      {
+                        "name": "‍Kinetic Explosive Gel",
+                        "id": "473690",
+                        "nameZH": "动能胶质炸药"
+                      },
+                      {
+                        "name": "‍Barreling Charge",
+                        "id": "459779",
+                        "nameZH": "滚桶冲锋"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "1217653",
+            "spellNameEN": "‍B.B.B.F.G.",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-B.B.B.F.G.-ezgif.com-optimize.gif",
+            "image": "‍B.B.B.F.G..gif",
+            "data": [
+              {
+                "text": "在“水闸行动”中，基扎释放她的炽热弹道冲击枪，生成多条正面直线，对处于其中的玩家造成火焰伤害并将其击飞。",
+                "spells": [
+                  {
+                    "name": "Blazing Ballistic Blunt Force Gun",
+                    "id": "1217653",
+                    "nameZH": ""
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "460602",
+            "spellNameEN": "‍Quick Shot",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-QuickShot-ezgif.com-cut.gif",
+            "image": "‍Quick Shot.gif",
+            "data": [
+              {
+                "text": "在“行动：水闸”中，基扎会向随机玩家快速射击，造成物理伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "473690",
+            "spellNameZH": "动能胶质炸药",
+            "spellNameEN": "‍Kinetic Explosive Gel",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-KineticExplosiveGel-ezgif.com-optimize.gif",
+            "image": "‍Kinetic Explosive Gel.gif",
+            "data": [
+              {
+                "text": "基扎对随机一名玩家施加一个魔法减益效果，每秒造成火焰伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "移除凝胶会导致其爆发，对玩家造成火焰伤害，并将5码范围内的所有[滴答作响的定时炸弹]击飞。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "不要急于驱散，务必确保目标玩家在驱散debuff时能够同时清除几颗炸弹。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "459779",
+            "spellNameZH": "滚桶冲锋",
+            "spellNameEN": "‍Barreling Charge",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BarrelingCharge-ezgif.com-optimize.gif",
+            "image": "‍Barreling Charge.gif",
+            "data": [
+              {
+                "text": "布隆特会随机冲向一名玩家，对路径上的所有玩家造成物理伤害并使其昏迷2秒。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "布隆特还会击飞他路径上的任何[滴答作响的定时炸弹]。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "每当[滚桶冲锋]发生时，布隆特会连续重复两次，坦克总是冲锋的最后一个目标。",
+                "spells": [
+                  {
+                    "name": "‍Barreling Charge",
+                    "id": "459779",
+                    "nameZH": "滚桶冲锋"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "这意味着你应该优先使用充能瞄准远处的炸弹，而近战范围内的炸弹应该由坦克使用最后一次充能来处理。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "459799",
+            "spellNameZH": "重击",
+            "spellNameEN": "‍Wallop",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-Wallop-ezgif.com-optimize.gif",
+            "image": "‍Wallop.gif",
+            "data": [
+              {
+                "text": "布隆特猛击坦克，对其造成物理伤害，并对5码范围内的玩家造成物理伤害，同时将他们击飞。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          null
+        ]
+      },
+      {
+        "title": "\"沼面\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Disturbed Kelp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Disturbed-Kelp-1024x651.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[回春水藻]",
+                    "spells": [
+                      {
+                        "name": "‍Restorative Algae",
+                        "id": "471733",
+                        "nameZH": "回春水藻"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "施加一个治疗魔法增益效果，每秒恢复生命值，持续15秒。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "丢弃海藻",
+                "spells": [
+                  {
+                    "name": "‍Jettison Kelp",
+                    "id": "471736",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机选择一个玩家，每0.5秒造成一次自然伤害，持续5秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Venture Co. Diver",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Diver.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[鱼叉猛刺]",
+                    "spells": [
+                      {
+                        "name": "‍Harpoon",
+                        "id": "468631",
+                        "nameZH": "鱼叉猛刺"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "随机抓住一名玩家并将其拉向施法者，造成物理伤害并施加流血效果。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "尽管一组中可能有多个风险投资公司潜水员，但同一时间只有一个潜水员能施放[鱼叉猛刺]。",
+                            "spells": [
+                              {
+                                "name": "‍Harpoon",
+                                "id": "468631",
+                                "nameZH": "鱼叉猛刺"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "种植海佛瑞姆炸药",
+                "spells": [
+                  {
+                    "name": "‍Plant Seaforium Charge",
+                    "id": "468726",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在地面上生成一个地雷，对6码范围内的任何玩家造成火焰伤害并将其击飞。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Bombshell Crab",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bombshell-Crab-848x1024.webp",
+            "data": [
+              {
+                "text": "[挤压]",
+                "spells": [
+                  {
+                    "name": "‍Pinch",
+                    "id": "468672",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "[挤压]：对坦克造成物理伤害，并使其移动速度降低10%，持续10秒。此效果可叠加。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "螃蟹爆炸",
+                "spells": [
+                  {
+                    "name": "‍Crabsplosion",
+                    "id": "468680",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "死亡时，对50码范围内的玩家造成火焰伤害，并施加一个可叠加的火焰持续伤害效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"沼面\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "470039",
+            "spellNameZH": "割喉藤蔓",
+            "spellNameEN": "‍Razorchoke Vines",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-RazorchokeVines-ezgif.com-optimize.gif",
+            "image": "‍Razorchoke Vines.gif",
+            "data": [
+              {
+                "text": "在副本“行动：水闸”中，沼泽脸（Swampface）会将玩家两两缠绕在一起。这些藤蔓每秒造成自然伤害，持续24秒。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "保持14码的距离会将玩家拉回一起。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "在开始战斗之前，团队应共同决定如何处理这个机制。推荐的处理方式是所有玩家集中站位，并始终向左躲避。这样可以避免混乱，使Boss战变得相对简单。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "473070",
+            "spellNameZH": "唤醒沼泽",
+            "spellNameEN": "‍Awaken the Swamp",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-AwakentheSwamp-ezgif.com-optimize.gif",
+            "image": "‍Awaken the Swamp.gif",
+            "data": [
+              {
+                "text": "在“水闸行动”中，[沼泽脸]每秒都会猛烈地砸击地面，持续4秒，对所有玩家造成自然伤害，并导致[穿刺之根]从河床中爆发。",
+                "spells": [
+                  {
+                    "name": "‍Skewering Root",
+                    "id": "473047",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "[穿刺之根]从地下爆发，对5码范围内的玩家造成自然伤害，同时[奔涌之潮]向外扩散。",
+                    "spells": [
+                      {
+                        "name": "‍Skewering Roots",
+                        "id": "473047",
+                        "nameZH": ""
+                      },
+                      {
+                        "name": "‍Rushing Tide",
+                        "id": "473052",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "激流是一股河水波浪，每秒对范围内的玩家造成冰霜伤害，并将他们推向波浪的方向。",
+                        "spells": [
+                          {
+                            "name": "‍Rushing Tide",
+                            "id": "473052",
+                            "nameZH": ""
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "这是战斗中最难的部分。在此期间，务必全神贯注地躲避，不要惊慌。即使你和你的伙伴最终朝不同方向躲避波浪，也有足够的距离让你们在躲避过程中不被拉扯，并能够重新汇合。保持冷静，注意观察两个粘液怪和你的[割喉藤蔓]伙伴。",
+                "spells": [
+                  {
+                    "name": "‍Vines",
+                    "id": "470039",
+                    "nameZH": "割喉藤蔓"
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "473112",
+            "spellNameZH": "泥石流",
+            "spellNameEN": "‍Mudslide",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-Mudslide-ezgif.com-optimize.gif",
+            "image": "‍Mudslide.gif",
+            "data": [
+              {
+                "text": "Swampface 在他面前掀起大量泥浆，对任何被击中的玩家造成自然伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "469478",
+            "spellNameZH": "淤泥之爪",
+            "spellNameEN": "‍Sludge Claws",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-SludgeClaws-ezgif.com-optimize.gif",
+            "image": "‍Sludge Claws.gif",
+            "data": [
+              {
+                "text": "沼泽脸用可怕的爪子猛烈攻击坦克，造成物理伤害和自然伤害。泥泞的伤口还会施加一个治疗吸收效果。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"吉泽尔·超震\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "Bubbles",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bubbles.webp",
+            "data": [
+              {
+                "text": "回流",
+                "spells": [
+                  {
+                    "name": "‍Backwash",
+                    "id": "469721",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每秒对所有玩家造成冰霜伤害，持续6秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "水花四溅",
+                "spells": [
+                  {
+                    "name": "‍Splish Splash",
+                    "id": "1217496",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "正面锥形范围，对范围内的玩家造成冰霜伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "气泡打嗝",
+                "spells": [
+                  {
+                    "name": "‍Bubble Burp",
+                    "id": "469818",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在每个玩家的位置生成泡泡，任何玩家触碰到这些泡泡都会受到冰霜伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "所有人都应该站在[泡泡]的近战范围内，并且作为一个团队在同一个位置生成[泡泡嗝]。这样你可以轻松地围绕[泡泡]移动，并且毫无问题地躲避[溅水]的正面攻击。",
+                "spells": [
+                  {
+                    "name": "‍Bubble Burp",
+                    "id": "469818",
+                    "nameZH": ""
+                  },
+                  {
+                    "name": "‍Splish Splash",
+                    "id": "1217496",
+                    "nameZH": ""
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "trashName": "Darkfuse Jumpstarter",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Jumpstarter.webp",
+            "data": [
+              {
+                "text": "火花猛击",
+                "spells": [
+                  {
+                    "name": "‍Sparkslam",
+                    "id": "465666",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "猛击坦克，造成自然伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[电池释能]",
+                "spells": [
+                  {
+                    "name": "‍Battery Discharge",
+                    "id": "1216607",
+                    "nameZH": "电池释能"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每4秒在地面上生成电池，对站在其中的玩家造成自然伤害。此外，对60码范围内的所有玩家造成自然伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Venture Co. Architect",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Architect.webp",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[射钉枪]",
+                    "spells": [
+                      {
+                        "name": "‍Nailgun",
+                        "id": "1213805",
+                        "nameZH": "射钉枪"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "向随机玩家发射钉枪，造成物理伤害，使其流血并被定身。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "快速建造",
+                "spells": [
+                  {
+                    "name": "‍Rapid Construction",
+                    "id": "465408",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "Venture Co. Architect 迅速建造一座塔并跃至塔顶，获得 [雄踞高地]。",
+                    "spells": [
+                      {
+                        "name": "‍High Ground",
+                        "id": "465420",
+                        "nameZH": "雄踞高地"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "在[雄踞高地]阶段，建筑师受到的伤害减少了90%。",
+                        "spells": [
+                          {
+                            "name": "‍High Ground",
+                            "id": "465420",
+                            "nameZH": "雄踞高地"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Venture Co. Electrician",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Electrician.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[闪电箭]",
+                    "spells": [
+                      {
+                        "name": "‍Lightning Bolt",
+                        "id": "465595",
+                        "nameZH": "闪电箭"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家造成自然伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "需要魔法驱散：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[过载]",
+                    "spells": [
+                      {
+                        "name": "‍Overcharge",
+                        "id": "469799",
+                        "nameZH": "过载"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "施加一个魔法减益效果，每1.5秒造成自然伤害，持续12秒。如果该效果未被驱散而持续存在，则玩家将被眩晕5秒。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Darkfuse Inspector",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Inspector-682x1024.webp",
+            "data": [
+              {
+                "text": "[突击检查]",
+                "spells": [
+                  {
+                    "name": "‍Surprise Inspection",
+                    "id": "465682",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机传送到一名玩家身后，并准备进行一次恶毒的检查，对施法者前方的所有玩家造成暗影伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Waterworks Bottomfeeder",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Waterworks-Bottomfeeder.webp",
+            "data": [
+              {
+                "text": "[恶毒撕咬]",
+                "spells": [
+                  {
+                    "name": "‍Vicious Bite",
+                    "id": "470004",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对坦克造成物理伤害，并对其施加一个可叠加的流血效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "\"吉泽尔·超震\"",
+        "type": "boss",
+        "data": [
+          {
+            "spellId": "465456",
+            "spellNameZH": "涡轮增压",
+            "spellNameEN": "‍Turbo Charge",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-TurboCharge-ezgif.com-optimize.gif",
+            "image": "‍Turbo Charge.gif",
+            "data": [
+              {
+                "text": "吉兹尔从发电机中汲取能量到他的电池组中，获得10点电力，并在10秒内每秒对所有玩家造成自然伤害。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "在此期间，吉兹尔会释放超死亡闪电光束，对命中的玩家造成自然伤害并使其昏迷1秒。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "468276",
+            "spellNameEN": "‍Dam!",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-Dam-ezgif.com-optimize.gif",
+            "image": "‍Dam!.gif",
+            "data": [
+              {
+                "text": "大坝结构因巨大的能量转移而震动，导致水泄漏，碎石从上方坠落。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "从上方裂缝中渗出的水形成了水坑。当水坑接触到电流时，会变成[电击之水]。",
+                "spells": [
+                  {
+                    "name": "‍Shock Water",
+                    "id": "468661",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "[震击之水]会对范围内的玩家造成自然伤害，并使范围内的玩家昏迷4秒。此外，处于效果范围内的玩家每秒都会受到自然伤害。",
+                    "spells": [
+                      {
+                        "name": "‍Shock Water",
+                        "id": "468661",
+                        "nameZH": ""
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "从天花板上掉落的岩石碎片会对每个落点周围3码范围内的目标造成物理伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "468846",
+            "spellNameZH": "跃动火花",
+            "spellNameEN": "‍Leaping Sparks",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-LeapingSparks-ezgif.com-optimize.gif",
+            "image": "‍Leaping Sparks.gif",
+            "data": [
+              {
+                "text": "Geezle消耗40点电能来激活数个[跃动火花]，这些火花会锁定玩家。",
+                "spells": [
+                  {
+                    "name": "‍Leaping Sparks",
+                    "id": "468846",
+                    "nameZH": "跃动火花"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "接触时，火花会造成自然伤害并使目标昏迷8秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "始终留意[跃动火花]即将出现的时间，并提前靠近[水坝渗流]的水池。一旦火花出现，只需将其引导至水池中，水池会将其消耗。",
+                "spells": [
+                  {
+                    "name": "‍Leaping Sparks",
+                    "id": "468846",
+                    "nameZH": "跃动火花"
+                  },
+                  {
+                    "name": "‍Dam Water",
+                    "id": "468261",
+                    "nameZH": "水坝渗流"
+                  },
+                  {
+                    "name": "‍Spark",
+                    "id": "468846",
+                    "nameZH": ""
+                  },
+                  {
+                    "name": "‍Water",
+                    "id": "468261",
+                    "nameZH": ""
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "请记住，[水坝渗流]的水池本身不会造成任何影响，你可以自由地穿过它们，但一定要确保在水池被通电时不要站在里面。",
+                    "spells": [
+                      {
+                        "name": "‍Dam Water",
+                        "id": "468261",
+                        "nameZH": "水坝渗流"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "468812",
+            "spellNameZH": "超力震击",
+            "spellNameEN": "‍Gigazap",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-Gigazap-ezgif.com-optimize.gif",
+            "image": "‍Gigazap.gif",
+            "data": [
+              {
+                "text": "在[行动：水闸]中，吉兹尔消耗20点电力，以无限能量随机电击玩家，立即造成自然伤害，并在8秒内每秒额外造成自然伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "466197",
+            "spellNameEN": "‍Thunder Punch",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-ThunderPunch-ezgif.com-optimize.gif",
+            "image": "‍Thunder Punch.gif",
+            "data": [
+              {
+                "text": "吉兹尔消耗10点电能，用带电的拳头猛击坦克，将其击退并立即造成物理伤害，同时在4秒内每秒造成自然伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "lootPool": [
+      {
+        "type": "饰品/戒指",
+        "loots": [
+          {
+            "type": "饰品",
+            "id": 232542,
+            "name": "暗索医疗机",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/6383494.webp"
+          },
+          {
+            "type": "饰品",
+            "id": 232545,
+            "name": "超震的震击帽",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/3610508.webp"
+          },
+          {
+            "type": "饰品",
+            "id": 232541,
+            "name": "临时制作的爆盐起搏器",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/1029717.webp"
+          },
+          {
+            "type": "饰品",
+            "id": 232543,
+            "name": "共鸣仪式泥浆",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/1500928.webp"
+          }
+        ]
+      },
+      {
+        "type": "武器",
+        "loots": [
+          {
+            "type": "武器",
+            "id": 234490,
+            "name": "断路器",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/5922098.webp"
+          },
+          {
+            "type": "长柄武器",
+            "id": 234494,
+            "name": "加里科技涡轮耕种器",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/5901601.webp"
+          },
+          {
+            "type": "匕首",
+            "id": 234493,
+            "name": "吉泽尔的强制性伏特电阻表",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/5900789.webp"
+          },
+          {
+            "type": "warglaives",
+            "id": 234491,
+            "name": "音波轰爆回旋镖",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/5793973.webp"
+          },
+          {
+            "type": "gun",
+            "id": 234492,
+            "name": "齐扎的“B.”B.B.B.F.G.",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/5792383.webp"
+          }
+        ]
+      },
+      {
+        "type": "防具",
+        "loots": [
+          {
+            "type": "back",
+            "id": 234507,
+            "name": "电工的虹吸滤罩",
+            "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/6326868.webp"
           }
         ]
       }
