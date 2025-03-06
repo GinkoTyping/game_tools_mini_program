@@ -11,7 +11,7 @@ async function addMythicDungeonCountById(id) {
   if (dungeonCountItem) {
     await db.run(
       `UPDATE wow_dynamic_mythic_dungeon_count SET count=?1 WHERE id=?2`,
-      [dungeonCountItem.count++, id]
+      [dungeonCountItem.count + 1, id]
     );
   }
 }

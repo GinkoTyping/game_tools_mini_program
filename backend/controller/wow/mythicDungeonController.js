@@ -11,6 +11,10 @@ export async function queryMythicDungeonById(req, res) {
   const id = req.params.id;
 
   const data = await mythicDungeonMapper.getMythicDungeonById(id);
+
+  // 访问计数 +1
+  mythicDungeonCountMapper.addMythicDungeonCountById(id);
+
   res.json({
     nameZH: data.name_zh,
     nameEN: data.name_en,
