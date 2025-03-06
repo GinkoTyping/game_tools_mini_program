@@ -43,7 +43,7 @@
   </uni-collapse>
   <ad-custom unit-id="adunit-84c43763a4fcb5e9"></ad-custom>
 
-  <view :class="popoverClass">
+  <!-- <view :class="popoverClass">
     <image
       class="popup-icon"
       src="/static/images/common/a-sahua1.png"
@@ -54,7 +54,7 @@
       <text style="font-weight: bolder">{{ accessCount }}</text> 次</text
     >
     <image class="popup-icon" src="/static/images/common/a-sahua1.png"></image>
-  </view>
+  </view> -->
 </template>
 
 <script setup lang="ts">
@@ -75,7 +75,9 @@ onShareAppMessage(() => ({
 
 onLoad(async () => {
   accessCount.value = await getAccessCount();
-  setAccessPopoverCountdown();
+
+  // TODO: 访问次数的功能 准备迁移
+  // setAccessPopoverCountdown();
 });
 
 // 用专精页面返回该页面时，也需要刷新

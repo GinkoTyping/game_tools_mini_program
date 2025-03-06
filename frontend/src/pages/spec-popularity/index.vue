@@ -1,5 +1,11 @@
 <template>
   <uni-card>
+    <uni-title
+      type="h3"
+      title="每日更新"
+      align="center"
+      color="#fff"
+    ></uni-title>
     <view class="filter-container">
       <text> 职业： </text>
       <button
@@ -21,12 +27,17 @@
       <LEchart ref="chart" @finished="init"></LEchart>
     </view>
   </uni-card>
+
+  <ShareIcon />
 </template>
 
 <script setup>
+import { computed, onMounted, reactive, ref } from 'vue';
+import { onShareAppMessage } from '@dcloudio/uni-app';
+
 import { querySpecPopularity } from '@/api/wow/index';
 import LEchart from '@/components/l-echart/l-echart.vue';
-import { computed, onMounted, reactive, ref } from 'vue';
+import ShareIcon from '@/components/ShareIcon.vue';
 
 const echarts = require('../../static/echarts.min.js');
 
@@ -34,6 +45,12 @@ let chart = ref(); // 获取dom
 const state = reactive({
   option: {},
 });
+
+onShareAppMessage(() => ({
+  title: '热门专精排行（每日更新）',
+  path: 'pages/spec-popularity/index',
+}));
+
 state.option = {
   grid: {
     left: '0%',
@@ -180,6 +197,7 @@ function switchJob(job) {
 }
 
 .filter-container {
+  margin-top: 0.4rem;
   display: flex;
   font-size: 12px;
   align-items: center;

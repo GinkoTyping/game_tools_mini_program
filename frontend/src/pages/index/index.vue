@@ -90,15 +90,10 @@
     </view>
   </view>
   <view class="narrow-card-container">
-    <view
-      class="narrow-card"
-      @click="
-        () => homeViewData && navigator.toTierList(homeViewData?.tierLists?.[0])
-      "
-    >
-      <view class="narrow-card_info">
+    <view class="narrow-card" @click="() => navigator.toSpecPopularity()">
+      <view class="narrow-card_info highlight-shadow">
         <view class="info">
-          <view class="card-name">全专精排行</view>
+          <view class="card-name">大秘境全专精热度</view>
           <view class="card-desc">{{
             homeViewData?.tierLists?.[0]?.version_id
           }}</view>
@@ -107,7 +102,7 @@
       <view class="narrow-card_bg"></view>
     </view>
     <view class="narrow-card" @click="() => navigator.toMythicDungeonList()">
-      <view class="narrow-card_info highlight-shadow">
+      <view class="narrow-card_info">
         <uni-icons
           class="icon"
           color="#d32121"
@@ -449,7 +444,7 @@ $simple-card-width: 43.5vw;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/dungeons-high.webp);
+    background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/wow-generic-news-image-10.webp);
   }
   .narrow-card_bg--mythic {
     background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/bg-undermine.jpg);
