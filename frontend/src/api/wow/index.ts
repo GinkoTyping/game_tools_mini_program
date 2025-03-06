@@ -331,5 +331,22 @@ export async function queryMythicDunegonList() {
   const res: any = await uni.request({
     url: `${BASE_URL}/wow/mythic-dungeon/list`,
   });
-  return res.data;
+  function mapTierText(tier: string) {
+    switch (tier) {
+      case 'S':
+        return '游龙';
+      case 'A':
+        return '简单';
+      case 'B':
+        return '出汗';
+      case 'C':
+        return '坐牢';
+      default:
+        break;
+    }
+  }
+  return res.data.map((item: any) => ({
+    ...item,
+    tierText: mapTierText(item.tier),
+  }));
 }

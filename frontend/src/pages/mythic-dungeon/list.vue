@@ -15,6 +15,14 @@
             :src="`https://ginkolearn.cyou/api/wow/assets/dungeon/${dungeon.id}.webp`"
             mode="heightFix"
           ></image>
+          <view class="slot-header__tier">
+            <text
+              class="slot-header__tier-main"
+              :class="[`tier-${dungeon.tier?.toLowerCase()}`]"
+              >{{ dungeon.tier }}</text
+            >
+            <text class="slot-header__tier-sub">({{ dungeon.tierText }})</text>
+          </view>
         </view>
       </template>
       <template v-slot:body>
@@ -93,10 +101,42 @@ const scoreConfig = computed(() => {
   display: flex;
   align-items: center;
   margin-right: 4px;
+  position: relative;
   .slot-image {
     object-fit: cover;
     max-width: 140px;
     height: 80px;
+  }
+  .slot-header__tier {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    font-size: 12px;
+    height: 20px;
+    padding: 0 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background-color: #999;
+    .slot-header__tier-main {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      margin-right: 4px;
+    }
+  }
+  .tier-s {
+    color: $color-c-tier;
+  }
+  .tier-a {
+    color: $color-b-tier;
+  }
+  .tier-b {
+    color: $color-a-tier;
+  }
+  .tier-c {
+    color: $color-s-tier;
   }
 }
 
