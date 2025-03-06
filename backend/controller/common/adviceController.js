@@ -1,5 +1,5 @@
 import { getCommonDB } from '../../database/utils/index.js';
-import { useAdviceMapper } from '../../database/wow/mapper/adviceMapper.js';
+import { useAdviceMapper } from '../../database/common/mapper/adviceMapper.js';
 
 let db = await getCommonDB();
 const adviceMapper = useAdviceMapper(db);

@@ -1,5 +1,5 @@
 import { getCommonDB } from '../../database/utils/index.js';
-import { usePatchMapper } from '../../database/wow/mapper/patchMapper.js';
+import { usePatchMapper } from '../../database/common/mapper/patchMapper.js';
 
 let db = await getCommonDB();
 const patchMapper = usePatchMapper(db);

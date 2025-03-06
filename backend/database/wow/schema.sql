@@ -68,3 +68,19 @@ CREATE TABLE
     loot_pool TEXT NOT NULL,
     FOREIGN KEY (id) REFERENCES wow_dungeon (id)
   );
+
+CREATE TABLE
+  IF NOT EXISTS wow_mythic_dungeon_tier (
+    id INTEGER PRIMARY KEY NOT NULL,
+    tier TEXT NOT NULL,
+    FOREIGN KEY (id) REFERENCES wow_dungeon (id)
+  );
+
+
+-- dynamic tables
+CREATE TABLE
+  IF NOT EXISTS wow_dynamic_mythic_dungeon_count (
+    id INTEGER PRIMARY KEY NOT NULL,
+    count INTEGER,
+    FOREIGN KEY (id) REFERENCES wow_dungeon (id)
+  );
