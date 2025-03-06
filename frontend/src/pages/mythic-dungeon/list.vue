@@ -33,6 +33,12 @@
           </view>
         </view>
       </template>
+      <template v-slot:footer>
+        <view class="slot-footer">
+          <uni-icons type="eye" color="#fff" size="20"></uni-icons>
+          <view>{{ dungeon.count }}</view>
+        </view>
+      </template>
     </uni-list-item>
   </uni-list>
   <ad-custom unit-id="adunit-5496b0b56b3b44c6"></ad-custom>
@@ -93,6 +99,7 @@ const scoreConfig = computed(() => {
     height: 80px;
   }
 }
+
 .slot-body {
   flex: 1;
   display: flex;
@@ -131,6 +138,14 @@ const scoreConfig = computed(() => {
     }
   }
 }
+
+.slot-footer {
+  color: #bbb;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+
 ::v-deep .uni-list {
   .uni-list--border-top,
   .uni-list--border-bottom {
