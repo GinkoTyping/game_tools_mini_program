@@ -20,9 +20,14 @@ async function getMythicDungeonById(id) {
 
 async function getMythicDunegonList() {
   return db.all(
-    `SELECT wow_mythic_dungeon.ratings, wow_mythic_dungeon.id, wow_dungeon.name_zh
-    FROM wow_mythic_dungeon
-    LEFT JOIN wow_dungeon ON wow_mythic_dungeon.id = wow_dungeon.id`
+    `SELECT 
+      wow_mythic_dungeon.ratings, wow_mythic_dungeon.id, wow_dungeon.name_zh, wow_mythic_dungeon_tier.tier
+    FROM 
+      wow_mythic_dungeon
+    LEFT JOIN 
+      wow_dungeon ON wow_mythic_dungeon.id = wow_dungeon.id
+    LEFT JOIN
+      wow_mythic_dungeon_tier on wow_mythic_dungeon.id = wow_mythic_dungeon_tier.id`
   );
 }
 

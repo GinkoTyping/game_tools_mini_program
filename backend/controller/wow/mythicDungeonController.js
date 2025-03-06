@@ -30,10 +30,13 @@ export async function queryMythicDungeonList(req, res) {
   const data = await mythicDungeonMapper.getMythicDunegonList();
   const counts = await mythicDungeonCountMapper.getMythicDungeonCountList();
   res.json(
-    data.map((item) => ({
-      ...item,
-      count: counts?.find((countItem) => countItem.id === item.id)?.count ?? 0,
-      ratings: JSON.parse(item.ratings),
-    }))
+    data
+      .map((item) => ({
+        ...item,
+        count:
+          counts?.find((countItem) => countItem.id === item.id)?.count ?? 0,
+        ratings: JSON.parse(item.ratings),
+      }))
+      .sort((a, b) => b.count - a.count)
   );
 }
