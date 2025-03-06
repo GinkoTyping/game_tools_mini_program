@@ -28,7 +28,6 @@ import { querySpecPopularity } from '@/api/wow/index';
 import LEchart from '@/components/l-echart/l-echart.vue';
 import { computed, onMounted, reactive, ref } from 'vue';
 
-// TODO: 可以使用官网的定制压缩版本
 const echarts = require('../../static/echarts.min.js');
 
 let chart = ref(); // 获取dom
@@ -61,7 +60,7 @@ state.option = {
   },
   grid: {
     left: '0%',
-    right: '0%',
+    right: '4%',
     top: '1%',
     containLabel: true,
   },
@@ -71,6 +70,11 @@ state.option = {
     splitLine: {
       lineStyle: {
         color: '#bbb',
+      },
+    },
+    axisLabel: {
+      formatter(value) {
+        return `${value}%`;
       },
     },
   },
@@ -143,7 +147,7 @@ function updateChart() {
     state.option.series[0].data = [];
     filterData.forEach(item => {
       state.option.yAxis.data.unshift(`${item.name_zh}|${item.color}`);
-      state.option.series[0].data.unshift(item.percent);
+      state.option.series[0].data.unshift((item.percent * 100).toFixed(2));
     });
 
     chart.value?.setOption(state.option);

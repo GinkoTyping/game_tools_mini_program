@@ -43,6 +43,12 @@ function toMythicDungeon(id: number) {
   });
 }
 
+function toSpecPopularity() {
+  uni.navigateTo({
+    url: `/pages/spec-popularity/index`,
+  });
+}
+
 export function useNavigator() {
   return {
     toSpecDetail,
@@ -51,5 +57,6 @@ export function useNavigator() {
     toPatchLog,
     toMythicDungeon,
     toMythicDungeonList,
+    toSpecPopularity,
   };
 }

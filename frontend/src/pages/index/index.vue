@@ -58,7 +58,31 @@
     </swiper>
   </uni-swiper-dot>
 
-  <!-- 排行 -->
+  <view class="entries">
+    <view
+      class="entries-item"
+      @click="
+        () => homeViewData && navigator.toTierList(homeViewData?.tierLists?.[0])
+      "
+    >
+      <uni-icons type="auth-filled" size="36" color="#bbb"></uni-icons>
+      <view>专精排行</view>
+    </view>
+    <view class="entries-item" @click="navigator.toSpecPopularity()">
+      <uni-icons type="fire-filled" size="36" color="#bbb"></uni-icons>
+      <view>专精热度</view>
+    </view>
+    <view class="entries-item" @click="navigator.toSpecsMenu()">
+      <uni-icons type="map-filled" size="36" color="#bbb"></uni-icons>
+      <view>专精攻略</view>
+    </view>
+    <view class="entries-item" @click="navigator.toMythicDungeonList()">
+      <uni-icons type="pyq" size="36" color="#bbb"></uni-icons>
+      <view>大秘境</view>
+    </view>
+  </view>
+
+  <!-- 精选板块 -->
   <view class="divide-section">
     <view class="prefix">
       <view class="icon"></view>
@@ -84,7 +108,12 @@
     </view>
     <view class="narrow-card" @click="() => navigator.toMythicDungeonList()">
       <view class="narrow-card_info highlight-shadow">
-        <uni-icons class="icon" color="#d32121" type="fire-filled" size="24"></uni-icons>
+        <uni-icons
+          class="icon"
+          color="#d32121"
+          type="fire-filled"
+          size="24"
+        ></uni-icons>
         <view class="info">
           <view class="card-name">大秘境攻略</view>
           <view class="card-desc">MDT路线 | 动图攻略</view>
@@ -278,6 +307,22 @@ $simple-card-width: 43.5vw;
     }
   }
 }
+.entries {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.6rem 1rem 0 1rem;
+  .entries-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 28vw;
+    view {
+      font-size: 14px;
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+}
 
 ::v-deep .uni-section-header {
   padding: 1rem !important;
@@ -413,7 +458,7 @@ $simple-card-width: 43.5vw;
 
 .divide-section {
   margin: 1rem;
-  margin-top: 2rem;
+  margin-top: 1.2rem;
   display: flex;
   justify-content: space-between;
   color: #fff;
