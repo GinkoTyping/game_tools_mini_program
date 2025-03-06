@@ -20,6 +20,10 @@ async function getSpecById(id) {
   return db.get(`SELECT * FROM wow_playable_spec WHERE id = ?1`, [id]);
 }
 
+async function getClassById(id) {
+  return db.get(`SELECT * FROM wow_playable_class WHERE id = ?1`, [id]);
+}
+
 export function useClassSpecMapper(database) {
   if (database) {
     db = database;
@@ -32,5 +36,6 @@ export function useClassSpecMapper(database) {
     insertClass,
     insertSpec,
     getSpecById,
+    getClassById,
   };
 }

@@ -1,6 +1,7 @@
 import { IBisItem, ITrinks, IStatPriority } from '@/interface/IWow';
 import { mapTrinks } from '@/data/mapSpecData';
 import { BASE_URL } from '../config';
+import colorMap from '@/utils/color-map';
 
 enum BisType {
   Overall = 0,
@@ -151,7 +152,22 @@ export async function querySpecPopularity() {
     url: `${BASE_URL}/wow/bis/popularity`,
   });
 
-  return res.data;
+  function handleLongerSpecName(name: string) {
+    if (name === '野兽控制') {
+      return '兽王';
+    } else if (name === '恶魔学识') {
+      return '恶魔';
+    }
+    return name;
+  }
+
+  return res.data.map((item: any) => ({
+    ...item,
+    name_zh: handleLongerSpecName(item.name_zh),
+    color: (colorMap as any)[
+      item.class_name_en.toLowerCase().replaceAll(' ', '-')
+    ],
+  }));
 }
 
 export interface IDungeonDTO {

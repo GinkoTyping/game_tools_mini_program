@@ -34,8 +34,11 @@ function getDate(dateString) {
 
 async function mapDataItem(dataItem) {
   const specItem = await classSpecMapper.getSpecById(dataItem.spec_id);
+  const classItem = await classSpecMapper.getClassById(dataItem.class_id);
   return {
     ...dataItem,
+    class_name_zh: classItem.name_zh,
+    class_name_en: classItem.name_en,
     name_zh: specItem.name_zh,
     name_en: specItem.name_en,
   };
@@ -45,8 +48,15 @@ async function mapPopularityData(data) {
   const results = await Promise.allSettled(
     data.map((item) => mapDataItem(item))
   );
+  const total = results.reduce((pre, cur) => {
+    pre += cur.value.quantity;
+    return pre;
+  }, 0);
   return results
-    .map((item) => item.value)
+    .map((item) => ({
+      ...item.value,
+      percent: Number((item.value.quantity / total).toFixed(4)),
+    }))
     .sort((a, b) => b.quantity - a.quantity);
 }
 
@@ -71,7 +81,6 @@ export async function queryPolularity(req, res) {
       if (response?.data) {
         cacheDate = getDate(response.data.aggregated_at);
         cacheData = await mapPopularityData(response.data.data);
-
         fs.writeFileSync(
           path.resolve(
             __dirname,
