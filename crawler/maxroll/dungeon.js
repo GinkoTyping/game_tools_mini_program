@@ -260,6 +260,7 @@ function getBossAndTrashSeletors(context) {
           '#utility-needs-header',
           '#lootpool-header',
           '#changelog-header',
+          '#dungeon-extras-specials-header'
         ].includes(selector)
     );
 }
