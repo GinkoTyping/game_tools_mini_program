@@ -146,6 +146,14 @@ export async function queryItemPreview(id: number) {
   }
 }
 
+export async function querySpecPopularity() {
+  const res: any = await uni.request({
+    url: `${BASE_URL}/wow/bis/popularity`,
+  });
+
+  return res.data;
+}
+
 export interface IDungeonDTO {
   id: number;
   name_zh: string;

@@ -9,8 +9,17 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [uni()],
     resolve: {
-      alias: { '@': path.resolve(__dirname, 'src') },
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+        '@qiun/uni-ucharts': path.resolve(
+          __dirname,
+          'node_modules/@qiun/uni-ucharts'
+        ),
+      },
     },
     envDir: './',
+    optimizeDeps: {
+      include: ['@qiun/ucharts'],
+    },
   };
 });

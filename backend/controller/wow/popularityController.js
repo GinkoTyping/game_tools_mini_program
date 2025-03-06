@@ -47,7 +47,7 @@ async function mapPopularityData(data) {
   );
   return results
     .map((item) => item.value)
-    .sort((a, b) => a.quantity - b.quantity);
+    .sort((a, b) => b.quantity - a.quantity);
 }
 
 export async function queryPolularity(req, res) {
@@ -65,12 +65,12 @@ export async function queryPolularity(req, res) {
       cacheData = JSON.parse(fs.readFileSync(staticFilePath));
       res.json(cacheData);
     } else {
-      res = await axios.get(
+      const response = await axios.get(
         'https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=2&maxMythicLevel=99&seasonWeekStart=1&seasonWeekEnd=1&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity'
       );
-      if (res?.data) {
-        cacheDate = getDate(res.data.aggregated_at);
-        cacheData = await mapPopularityData(res.data.data);
+      if (response?.data) {
+        cacheDate = getDate(response.data.aggregated_at);
+        cacheData = await mapPopularityData(response.data.data);
 
         fs.writeFileSync(
           path.resolve(
@@ -86,5 +86,3 @@ export async function queryPolularity(req, res) {
     }
   }
 }
-
-queryPolularity();
