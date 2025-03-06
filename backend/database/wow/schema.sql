@@ -76,11 +76,11 @@ CREATE TABLE
     FOREIGN KEY (id) REFERENCES wow_dungeon (id)
   );
 
-
 -- dynamic tables
 CREATE TABLE
   IF NOT EXISTS wow_dynamic_mythic_dungeon_count (
     id INTEGER PRIMARY KEY NOT NULL,
-    count INTEGER,
+    name TEXT NOT NULL,
+    count INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (id) REFERENCES wow_dungeon (id)
   );

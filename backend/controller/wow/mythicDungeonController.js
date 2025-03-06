@@ -1,8 +1,11 @@
-import { getDB } from '../../database/utils/index.js';
+import { getDB, getDynamicDB } from '../../database/utils/index.js';
 import { useMythicDungeonMapper } from '../../database/wow/mapper/mythicDungeonMapper.js';
+import { useMythicDungeonCountMapper } from '../../database/wow/mapper/mythicDungeonCountMapper.js';
 
 const db = await getDB();
+const dynamicDB = await getDynamicDB();
 const mythicDungeonMapper = useMythicDungeonMapper(db);
+const mythicDungeonCountMapper = useMythicDungeonCountMapper(dynamicDB);
 
 export async function queryMythicDungeonById(req, res) {
   const id = req.params.id;
@@ -21,9 +24,11 @@ export async function queryMythicDungeonById(req, res) {
 
 export async function queryMythicDungeonList(req, res) {
   const data = await mythicDungeonMapper.getMythicDunegonList();
+  const counts = await mythicDungeonCountMapper.getMythicDungeonCountList();
   res.json(
     data.map((item) => ({
       ...item,
+      count: counts?.find((countItem) => countItem.id === item.id)?.count ?? 0,
       ratings: JSON.parse(item.ratings),
     }))
   );

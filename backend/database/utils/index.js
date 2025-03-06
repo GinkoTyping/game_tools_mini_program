@@ -20,6 +20,18 @@ export async function getDB() {
   return _db;
 }
 
+
+let _dynamicDB = null;
+export async function getDynamicDB() {
+  if (!_commonDB) {
+    _commonDB = await open({
+      filename: path.resolve(__dirname, '../wow/dynamic-database.db'),
+      driver: sqlite3.verbose().Database,
+    });
+  }
+  return _commonDB;
+}
+
 let _commonDB = null;
 export async function getCommonDB() {
   if (!_commonDB) {
