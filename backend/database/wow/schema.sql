@@ -76,6 +76,22 @@ CREATE TABLE
     FOREIGN KEY (id) REFERENCES wow_dungeon (id)
   );
 
+CREATE TABLE
+  IF NOT EXISTS wow_playable_class (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name_zh TEXT NOT NULL,
+    name_en TEXT NOT NULL
+  );
+
+CREATE TABLE
+  IF NOT EXISTS wow_playable_spec (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name_zh TEXT NOT NULL,
+    name_en TEXT NOT NULL,
+    class_id INTEGER NOT NULL DEFAULT 1,
+    FOREIGN KEY (class_id) REFERENCES wow_playable_class (id)
+  );
+
 -- dynamic tables
 CREATE TABLE
   IF NOT EXISTS wow_dynamic_mythic_dungeon_count (
