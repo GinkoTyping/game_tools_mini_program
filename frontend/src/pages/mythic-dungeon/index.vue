@@ -83,10 +83,10 @@
     </uni-card>
   </uni-section>
   <uni-section
-    id="utility"
+    :id="getEnemySectionId(tipIndex)"
     class="shaman"
     :title="tip?.title"
-    v-for="tip in mythicDungeonData?.enemyTips"
+    v-for="(tip, tipIndex) in mythicDungeonData?.enemyTips"
     :key="tip?.title"
   >
     <uni-collapse>
@@ -176,10 +176,50 @@
   </uni-section>
   <view class="footer"></view>
   <ShareIcon />
+
+  <uni-popup ref="menuPopup" type="left" background-color="rgb(43, 44, 44)">
+    <uni-title
+      type="h3"
+      title="点击前往"
+      align="center"
+      color="#fff"
+    ></uni-title>
+    <uni-list class="menu-list">
+      <uni-list-item
+        title="1. 总览"
+        clickable
+        showArrow
+        @click="() => scrollTo('#overview')"
+      ></uni-list-item>
+      <uni-list-item
+        title="2. 相关驱散技能"
+        clickable
+        showArrow
+        @click="() => scrollTo('#utility')"
+      ></uni-list-item>
+      <uni-list-item
+        v-for="(item, index) in mythicDungeonData?.enemyTips"
+        :title="`${index + 3}. ${item.title}`"
+        clickable
+        showArrow
+        @click="() => scrollTo(`#${getEnemySectionId(index)}`)"
+      >
+      </uni-list-item>
+      <uni-list-item
+        :title="`${mythicDungeonData?.enemyTips?.length + 3}. 装备掉落`"
+        clickable
+        showArrow
+        @click="() => scrollTo('#loot-pool')"
+      ></uni-list-item>
+    </uni-list>
+  </uni-popup>
+  <view class="meun-switch" @click="() => switchMenuPopup(true)">
+    <uni-icons type="list" color="#fff" size="22"></uni-icons>
+  </view>
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
 import { queryMythicDungeonById } from '@/api/wow';
@@ -251,6 +291,27 @@ function switchLootType(type: string) {
   if (currentLootType.value !== type) {
     currentLootType.value = type;
   }
+}
+
+const menuPopup = ref();
+function switchMenuPopup(isOpen: boolean) {
+  if (isOpen) {
+    menuPopup.value?.open?.();
+  }
+}
+
+const getEnemySectionId = computed(() => {
+  return (index: number) => {
+    return `enemy-section-${index}`;
+  };
+});
+function scrollTo(selector: string) {
+  uni.pageScrollTo({
+    selector,
+  });
+  nextTick(() => {
+    menuPopup.value?.close?.();
+  });
 }
 </script>
 
@@ -537,5 +598,26 @@ $light-border: rgb(68, 68, 68);
   .is-loot {
     color: $uni-text-color-inverse !important;
   }
+}
+
+::v-deep .menu-list {
+  .uni-list-item__content-title {
+    color: #bbb !important;
+  }
+}
+
+.meun-switch {
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  background-color: #007aff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.21);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
 }
 </style>
