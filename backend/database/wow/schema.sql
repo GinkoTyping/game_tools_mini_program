@@ -57,6 +57,7 @@ CREATE TABLE
     bosses TEXT
   );
 
+-- wow_mythic_dungeon
 CREATE TABLE
   IF NOT EXISTS wow_mythic_dungeon (
     id INTEGER PRIMARY KEY NOT NULL,
@@ -66,27 +67,4 @@ CREATE TABLE
     enemy_tips TEXT NOT NULL,
     loot_pool TEXT NOT NULL,
     FOREIGN KEY (id) REFERENCES wow_dungeon (id)
-  );
-
--- common-database.db 
--- common_advice
-CREATE TABLE
-  IF NOT EXISTS common_advice (
-    id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL,
-    note TEXT NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    completed_at TIMESTAMP,
-    completion_text TEXT,
-    completion_images TEXT,
-    status INTEGER NOT NULL DEFAULT 0
-  );
-
--- common_patch
-CREATE TABLE
-  IF NOT EXISTS common_patch (
-    id INTEGER PRIMARY KEY,
-    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    text TEXT,
-    images TEXT
   );

@@ -13,7 +13,7 @@ let _db = null;
 export async function getDB() {
   if (!_db) {
     _db = await open({
-      filename: path.resolve(__dirname, '../database.db'),
+      filename: path.resolve(__dirname, '../wow/database.db'),
       driver: sqlite3.verbose().Database,
     });
   }
@@ -24,7 +24,7 @@ let _commonDB = null;
 export async function getCommonDB() {
   if (!_commonDB) {
     _commonDB = await open({
-      filename: path.resolve(__dirname, '../common-database.db'),
+      filename: path.resolve(__dirname, '../common/database.db'),
       driver: sqlite3.verbose().Database,
     });
   }

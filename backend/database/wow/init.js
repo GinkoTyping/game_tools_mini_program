@@ -16,6 +16,7 @@ import { useItemMapper } from './mapper/itemMapper.js';
 import { useDungeonTipMapper } from './mapper/dungeonTipMapper.js';
 import { useSpellMapper } from './mapper/spellMapper.js';
 import { queryBlizzItemById } from '../../controller/wow/bisController.js';
+import { getDB } from '../utils/index.js';
 
 // 获取当前文件的路径和目录
 const __filename = fileURLToPath(import.meta.url);
@@ -43,12 +44,6 @@ const dungeonMapper = useDungeonMapper(database);
 const itemMapper = useItemMapper(database);
 const dungeonTipMapper = useDungeonTipMapper(database);
 const spellMapper = useSpellMapper(database);
-export async function getDB() {
-  return open({
-    filename: path.resolve(__dirname, '../database.db'),
-    driver: sqlite3.verbose().Database,
-  });
-}
 
 //#region BIS
 async function createBisTable(db) {
