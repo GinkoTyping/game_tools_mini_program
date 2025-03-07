@@ -10,7 +10,7 @@ import { queryAddSpell, querySpellByIds } from '../api/index.js';
 import localeLabels from '../util/class-spec-locales.js';
 
 const prompt =
-  '按照中文的阅读习惯，把每个成员中的desc属性翻译到属性descZH，它是魔兽世界的职业介绍。该属性中已经是中文的部分和"["、"]"符号请保留。desc属性需要保持英文不变，翻译后的文本设置为成员的descZH属性，然后重新输出整个数组 。';
+  '按照中文的阅读习惯，把每个成员中的desc属性翻译到属性descZH，它是魔兽世界的职业介绍。该属性中已经是中文的部分和"["、"]"符号请保留。desc属性需要保持英文不变，翻译后的文本设置为成员的descZH属性，然后按照JSON格式重新输出整个数组 。';
 
 async function collectByTierName(file) {
   try {
@@ -148,7 +148,7 @@ function collectBaseInfo(context, fileName) {
     output.versionId = '11.1 - PTR';
     splitArray.shift();
   } else {
-    output.versionId = '11.0';
+    output.versionId = '11.1';
   }
   output.role = splitArray[0].toUpperCase();
 

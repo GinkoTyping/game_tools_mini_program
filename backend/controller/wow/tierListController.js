@@ -13,10 +13,10 @@ export async function queryTierList(req, res) {
       role,
       activityType,
     });
-    if (data) {
+    if (data?.[0]) {
       res.json({
-        ...data,
-        tier_data: JSON.parse(data.tier_data),
+        ...data?.[0],
+        tier_data: JSON.parse(data?.[0].tier_data),
       });
     } else {
       res.json(null);

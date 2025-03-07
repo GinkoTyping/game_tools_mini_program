@@ -19,7 +19,7 @@ export async function translate(input) {
 export async function querySpellByIds(ids) {
   const res = await axios.post(`${process.env.DEV_URL}/api/wow/spell`, {
     // 处理 126443:AJwA 类型的数据
-    ids: ids.map((item) => item.split(':').shift()),
+    ids: ids.map((item) => item.split?.(':').shift() ?? item),
   });
   return res.data;
 }
