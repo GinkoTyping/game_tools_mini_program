@@ -1,32 +1,39 @@
 <template>
-  <uni-card>
-    <uni-title
-      type="h3"
-      title="每日更新"
-      align="center"
-      color="#fff"
-    ></uni-title>
-    <view class="filter-container">
-      <text> 职业： </text>
-      <button
-        class="filter-container__button"
-        :class="[
-          currentJob?.value === item.value
-            ? 'filter-container__button--active'
-            : '',
-        ]"
-        v-for="item in jobFilters"
-        :key="item.value"
-        @click="() => switchJob(item)"
-      >
-        {{ item.label }}
-      </button>
-    </view>
+  <view class="main-container">
+    <uni-card>
+      <uni-title
+        type="h3"
+        title="每日更新"
+        align="center"
+        color="#fff"
+      ></uni-title>
 
-    <view :style="chartStyle">
-      <LEchart ref="chart" @finished="init"></LEchart>
-    </view>
-  </uni-card>
+      <view class="filter-container">
+        <text> 职业： </text>
+        <button
+          class="filter-container__button"
+          :class="[
+            currentJob?.value === item.value
+              ? 'filter-container__button--active'
+              : '',
+          ]"
+          v-for="item in jobFilters"
+          :key="item.value"
+          @click="() => switchJob(item)"
+        >
+          {{ item.label }}
+        </button>
+      </view>
+
+      <view class="chart-container" :style="chartStyle">
+        <LEchart ref="chart" @finished="init"></LEchart>
+      </view>
+    </uni-card>
+
+    <uni-card>
+      <ad-custom unit-id="adunit-79a3e360c99b34ab"></ad-custom>
+    </uni-card>
+  </view>
 
   <ShareIcon />
 </template>
@@ -56,6 +63,8 @@ state.option = {
     left: '0%',
     right: '4%',
     top: '1%',
+    // charts超高时，需要预留广告位的空间，否则广告会覆盖chart
+    bottom: 140,
     containLabel: true,
   },
   xAxis: {
@@ -119,34 +128,48 @@ const init = () => {
   console.log('渲染完成');
 };
 
+function filterDataByJob() {
+  let filterData = popularityData.all;
+  if (currentJob.value.value !== 'all') {
+    if (popularityData[currentJob.value.value]?.length) {
+      filterData = popularityData[currentJob.value.value];
+    } else {
+      const temp = popularityData.all.filter(
+        item => item.role === currentJob.value.value
+      );
+      const tempTotal = temp.reduce((pre, cur) => {
+        pre += cur.quantity;
+        return pre;
+      }, 0);
+      popularityData[currentJob.value.value] = temp.map(item => ({
+        ...item,
+        percent: (item.quantity / tempTotal).toFixed(4),
+      }));
+      filterData = popularityData[currentJob.value.value];
+    }
+  }
+  return filterData;
+}
+function setGridBottom() {
+  if (['all', 'dps'].includes(currentJob.value.value)) {
+    state.option.grid.bottom = 140;
+  } else {
+    state.option.grid.bottom = 20;
+  }
+}
+function setData(data) {
+  state.option.yAxis.data = [];
+  state.option.series[0].data = [];
+  data.forEach(item => {
+    state.option.yAxis.data.unshift(`${item.name_zh}|${item.color}`);
+    state.option.series[0].data.unshift((item.percent * 100).toFixed(2));
+  });
+}
 function updateChart() {
   if (popularityData.all?.length) {
-    let filterData = popularityData.all;
-    if (currentJob.value.value !== 'all') {
-      if (popularityData[currentJob.value.value]?.length) {
-        filterData = popularityData[currentJob.value.value];
-      } else {
-        const temp = popularityData.all.filter(
-          item => item.role === currentJob.value.value
-        );
-        const tempTotal = temp.reduce((pre, cur) => {
-          pre += cur.quantity;
-          return pre;
-        }, 0);
-        popularityData[currentJob.value.value] = temp.map(item => ({
-          ...item,
-          percent: (item.quantity / tempTotal).toFixed(4),
-        }));
-        filterData = popularityData[currentJob.value.value];
-      }
-    }
-
-    state.option.yAxis.data = [];
-    state.option.series[0].data = [];
-    filterData.forEach(item => {
-      state.option.yAxis.data.unshift(`${item.name_zh}|${item.color}`);
-      state.option.series[0].data.unshift((item.percent * 100).toFixed(2));
-    });
+    const filterData = filterDataByJob();
+    setGridBottom();
+    setData(filterData);
 
     chart.value?.setOption(state.option);
     chart.value?.resize();
@@ -173,10 +196,15 @@ const jobFilters = ref([
 ]);
 const currentJob = ref(jobFilters.value[0]);
 const chartStyle = computed(() => {
-  if (['all', 'dps'].includes(currentJob.value.value)) {
-    return { height: '1200px' };
+  switch (currentJob.value.value) {
+    case 'all':
+      return { height: '1400px' };
+    case 'dps':
+      return { height: '1000px' };
+
+    default:
+      return { height: '300px' };
   }
-  return { height: '400px' };
 });
 function switchJob(job) {
   if (currentJob.value.value !== job.value) {
@@ -187,6 +215,10 @@ function switchJob(job) {
 </script>
 
 <style lang="scss" scoped>
+.main-container {
+  padding-top: 1rem;
+}
+
 ::v-deep .uni-card {
   width: 96vw;
   box-sizing: border-box;
@@ -198,6 +230,7 @@ function switchJob(job) {
 
 .filter-container {
   margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
   display: flex;
   font-size: 12px;
   align-items: center;
