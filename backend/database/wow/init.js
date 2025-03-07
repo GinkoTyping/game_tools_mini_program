@@ -200,6 +200,15 @@ async function updateItemData() {
       const hasFound = output.some((outputItem) => {
         if (outputItem.item === item.item.trim()) {
           if (outputItem.id === item.id) {
+            
+            // 寻找了 source 翻译好的 装备， 更新之
+            if (
+              outputItem.source.source !== item.source.source &&
+              outputItem.source.source.includes('团本')
+            ) {
+              outputItem.source = item.source;
+            }
+
             return true;
           }
           console.log(

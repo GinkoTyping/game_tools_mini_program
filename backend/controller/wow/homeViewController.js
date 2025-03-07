@@ -37,7 +37,7 @@ export async function queryHomeView(req, res) {
         value: 'rating',
         icon: 'map-filled',
         page: '/pages/spec-list/index',
-        feature: false,
+        feature: true,
       },
       {
         label: '大秘境',
