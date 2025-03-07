@@ -29,3 +29,9 @@ export async function queryNpcToTranslate(req, res) {
   const data = await npcMapper.getNpcWithNoNameZh();
   res.json(data);
 }
+
+export async function queryNpcByNameEn(req, res) {
+  const name = req.body.name;
+  const data = await npcMapper.getNpcByNameEn(name);
+  res.json(data);
+}

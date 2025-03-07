@@ -92,6 +92,15 @@ CREATE TABLE
     FOREIGN KEY (class_id) REFERENCES wow_playable_class (id)
   );
 
+CREATE TABLE
+  IF NOT EXISTS wow_npc (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name_en TEXT,
+    name_zh TEXT,
+    location TEXT,
+    type TEXT
+  );
+
 -- dynamic tables
 CREATE TABLE
   IF NOT EXISTS wow_dynamic_mythic_dungeon_count (

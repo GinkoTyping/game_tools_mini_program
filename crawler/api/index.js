@@ -54,3 +54,11 @@ export async function queryItemById(id) {
   );
   return res.data;
 }
+
+export async function queryNpcByName(name) {
+  const res = await axios.post(`${process.env.DEV_URL}/api/wow/npc/name-en`, {
+    name: name,
+  });
+
+  return res.data;
+}

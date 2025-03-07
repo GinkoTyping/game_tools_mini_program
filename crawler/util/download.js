@@ -8,6 +8,10 @@ export async function downloadSingle(
   savePath = './direct_downloads.jpg',
   isOverride = false
 ) {
+  if (!url) {
+    return 'URL为空。';
+  }
+
   if (fs.existsSync(savePath) && !isOverride) {
     return '图片已缓存';
   }

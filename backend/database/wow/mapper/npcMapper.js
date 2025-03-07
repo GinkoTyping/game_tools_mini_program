@@ -42,6 +42,12 @@ async function getNpcWithNoNameZh() {
   return db.all(`SELECT * FROM wow_npc WHERE name_zh IS NULL`);
 }
 
+async function getNpcByNameEn(nameEn) {
+  return db.get(`SELECT * FROM wow_npc WHERE name_en COLLATE NOCASE =?1`, [
+    nameEn,
+  ]);
+}
+
 export function useNpcMapper(database) {
   if (database) {
     db = database;
@@ -50,5 +56,11 @@ export function useNpcMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { insertNpc, getNpcById, updateNpc, getNpcWithNoNameZh };
+  return {
+    insertNpc,
+    getNpcById,
+    updateNpc,
+    getNpcWithNoNameZh,
+    getNpcByNameEn,
+  };
 }

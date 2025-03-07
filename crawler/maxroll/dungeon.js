@@ -10,6 +10,7 @@ import {
   queryAddSpell,
   queryDungeon,
   queryItemById,
+  queryNpcByName,
   querySpellByIds,
 } from '../api/index.js';
 import '../util/set-env.js';
@@ -260,7 +261,7 @@ function getBossAndTrashSeletors(context) {
           '#utility-needs-header',
           '#lootpool-header',
           '#changelog-header',
-          '#dungeon-extras-specials-header'
+          '#dungeon-extras-specials-header',
         ].includes(selector)
     );
 }
@@ -375,9 +376,23 @@ async function translateSpellsInText(context, liEle) {
 
   return { text, spells, children };
 }
+async function translateTrash(trash) {
+  try {
+    const data = await queryNpcByName(trash.trashName);
+    if (data) {
+      return {
+        ...trash,
+        trashName: data.name_zh,
+      };
+    }
+  } catch (error) {
+    console.log(error);
+    return trash;
+  }
+}
 async function getTrash(context, containerEle) {
   const $ = context;
-  const rowOutput = $(containerEle)
+  let rowOutput = $(containerEle)
     .children()
     .first()
     .find('span>span')
@@ -397,6 +412,12 @@ async function getTrash(context, containerEle) {
       };
     })
     .get();
+
+  const translatedTrashResults = await Promise.allSettled(
+    rowOutput.map((item) => translateTrash(item))
+  );
+  rowOutput = translatedTrashResults.map((item) => item.value);
+
   await Promise.allSettled(
     rowOutput.map((item) =>
       downloadSingle(
