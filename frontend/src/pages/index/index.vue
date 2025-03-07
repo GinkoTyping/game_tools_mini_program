@@ -61,24 +61,17 @@
   <view class="entries">
     <view
       class="entries-item"
-      @click="
-        () => homeViewData && navigator.toTierList(homeViewData?.tierLists?.[0])
-      "
+      v-for="entry in homeViewData?.entries"
+      :key="entry.value"
+      @click="navigator.toPage(entry.page)"
     >
-      <uni-icons type="auth-filled" size="36" color="#bbb"></uni-icons>
-      <view>专精排行</view>
-    </view>
-    <view class="entries-item" @click="navigator.toSpecPopularity()">
-      <uni-icons type="fire-filled" size="36" color="#bbb"></uni-icons>
-      <view>专精热度</view>
-    </view>
-    <view class="entries-item" @click="navigator.toSpecsMenu()">
-      <uni-icons type="map-filled" size="36" color="#bbb"></uni-icons>
-      <view>专精攻略</view>
-    </view>
-    <view class="entries-item" @click="navigator.toMythicDungeonList()">
-      <uni-icons type="pyq" size="36" color="#bbb"></uni-icons>
-      <view>大秘境</view>
+      <uni-icons
+        :class="[entry.feature ? 'entries-item--feature' : '']"
+        :type="entry.icon"
+        size="36"
+        color="#bbb"
+      ></uni-icons>
+      <view>{{ entry.label }}</view>
     </view>
   </view>
 
@@ -315,6 +308,19 @@ $simple-card-width: 43.5vw;
       font-size: 14px;
       color: #fff;
       font-weight: bold;
+    }
+  }
+  .entries-item--feature {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 8px;
+      height: 8px;
+      background-color: $color-s-tier;
+      border-radius: 50%;
     }
   }
 }

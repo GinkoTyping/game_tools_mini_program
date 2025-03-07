@@ -263,6 +263,13 @@ export interface IHomeViewDTO {
   carousels: { role_class: string; class_spec: string; access_count: number }[];
   hotTopics: { role_class: string; class_spec: string; access_count: number }[];
   tierLists: { version_id: string; role: string; activity_type: string }[];
+  entries: {
+    feature: boolean;
+    label: string;
+    page: string;
+    value: string;
+    icon: string;
+  }[];
 }
 export async function queryHomeView() {
   try {

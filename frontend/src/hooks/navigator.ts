@@ -49,6 +49,12 @@ function toSpecPopularity() {
   });
 }
 
+function toPage(page: string) {
+  uni.navigateTo({
+    url: page,
+  });
+}
+
 export function useNavigator() {
   return {
     toSpecDetail,
@@ -58,5 +64,6 @@ export function useNavigator() {
     toMythicDungeon,
     toMythicDungeonList,
     toSpecPopularity,
+    toPage,
   };
 }
