@@ -78,7 +78,7 @@
           "classSpec": "shadow",
           "dataChange": "-",
           "desc": "Shadow Priest received no significant changes leading to Season 2. Their damage profile is quite rampy which excels much better when targets live longer due to their major cooldown - [虚空形态] being such a long duration. When the key level is higher both AoE and single-target/priority-target damage are great, however when things do not last long, it is a dreadful experience (especially when you enter a pack without [暗影冲撞]). Their utility and defensiveness remain strong, which is positive for the spec as both factors are considered valuable. Overall, we expect to be extremely good on the higher level keys, especially if magical orientated meta persists, and likely move rankings depending on the key level. Further improvement can be achieved if neither of the Priest healers end up being S-tier, due to their overlapping Mythic+ utility.",
-          "descZH": "暗影牧师在第二赛季前未经历重大改动。由于其大招[虚空形态]持续时间较长，该专精的伤害曲线较为缓慢，在目标存活时间较长时表现更佳。在高等级钥石中，其AOE和单体/优先级目标伤害都很出色，但在目标存活时间较短时体验较差（尤其是没有[暗影冲撞]进入战斗时）。其功能性和防御能力依然强大，这两点对该专精来说非常宝贵。总体而言，我们预计其在高层钥石中表现极佳，尤其是在魔法导向的版本环境中，其排名可能会根据钥石等级有所波动。如果牧师治疗专精未达到S级，其表现可能会进一步提升，因为两者的史诗钥石功能性有所重叠。",
+          "descZH": "暗影牧师在第二赛季前未经历重大改动。由于其大招[虚空形态]持续时间较长，该专精的伤害曲线较为缓慢，在目标存活时间较长时表现更佳。在高等级钥石中，其AOE和单体/优先级目标伤害都很出色，但在目标存活时间较短时体验较差（尤其是没有[暗影冲撞]进入战斗时）。其功能性和防御能力依然强大，这两点对该专精来说非常宝贵。总体而言，我们预计其在高层钥石中表现极佳，尤其是法伤队伍中。其排名可能会根据钥石等级有所波动。如果队伍里没有牧师治疗，暗牧的地位会进一步提升。",
           "spells": [
             {
               "spellId": 228264,
@@ -97,7 +97,7 @@
           "classSpec": "frost",
           "dataChange": "-",
           "desc": "Frost Death Knight will continue to be a great melee choice in Mythic+ leading to Season 2 of TWW. They retain their signature burst (both in AoE and single target) while keeping incredible priority-target damage present. Although durability has been nerfed during Season 1, they are also one of the most durable DPS classes in the game (which is a huge advantage). Overall, one of the better melees to main in Season 2!",
-          "descZH": "冰霜死亡骑士在TWW扩展包第二赛季中将继续成为史诗钥石中的优秀近战选择。他们保留了标志性的爆发能力（无论是AOE还是单体），同时保持了出色的优先级目标伤害。尽管在第一赛季中耐久性被削弱，他们仍然是游戏中最耐打的DPS职业之一（这是一个巨大的优势）。总体而言，是第二赛季中值得主玩的近战之一！",
+          "descZH": "冰霜死亡骑士在第二赛季中将继续成为史诗钥石中的优秀近战选择。他们保留了标志性的爆发能力（无论是AOE还是单体），同时保持了出色的优先级目标伤害。尽管在第一赛季中耐久性被削弱，他们仍然是游戏中最耐打的DPS职业之一（这是一个巨大的优势）。总体而言，是第二赛季中值得主玩的近战之一！",
           "spells": [],
           "fullNameZH": "冰霜 死亡骑士"
         },

@@ -28,13 +28,27 @@ async function insertTierList(filename) {
   const tierListData = JSON.parse(
     fs.readFileSync(path.resolve(__dirname, `./${filename}.json`))
   );
-  await tierListMapper.insertTierList({
+
+  const tierLists = await tierListMapper.getTierListByVersion({
+    versionId: tierListData.versionId,
+    role: tierListData.role,
+    activityType: tierListData.activityType,
+  });
+  const existed = tierLists.find(
+    (item) => item.created_at === tierListData.updatedAt
+  );
+  const params = {
     versionId: tierListData.versionId,
     activityType: tierListData.activityType,
     role: tierListData.role,
     createdAt: tierListData.updatedAt,
     tierData: JSON.stringify(tierListData.data),
-  });
+  };
+  if (existed) {
+    await tierListMapper.updateTierList(params);
+  } else {
+    await tierListMapper.insertTierList(params);
+  }
 }
 
 insertData();
