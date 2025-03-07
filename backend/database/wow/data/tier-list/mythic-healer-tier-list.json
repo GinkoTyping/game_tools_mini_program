@@ -13,7 +13,7 @@
           "classSpec": "discipline",
           "dataChange": "-",
           "desc": "Discipline Priest is likely the healer with the most amount of changes coming into Season 2, from removal of [全神贯注] cooldown, to redesigning how [虚空召唤师] plays out (degenerate [惩击] playstyle is now no more) getting a passive CDR rather than having it interact with any spells. Their healing/damage output still appears to be great, which is the most important factor when rankings specs. In addition, they will retain their strong external utility packages such as 2x [痛苦压制] and [真言术：障]. Further tuning will tell how they turn out, but as of now, they remain as one of the best healers.",
-          "descZH": "戒律牧师可能是第二赛季中变化最多的治疗职业，从移除[全神贯注]的移除，到重新设计[虚空召唤师]的玩法（退化的[惩击]玩法已不复存在），现在它获得了一个被动的冷却缩减效果，而不是与任何法术互动。他们的治疗/伤害输出仍然非常出色，这是排名专精时最重要的因素。此外，他们将保留其强大的外部辅助能力，例如双[痛苦压制]和[真言术：障]。进一步的调整将决定他们的最终表现，但目前他们仍然是最佳治疗者之一。",
+          "descZH": "戒律牧师可能是第二赛季中变化最多的治疗职业，从[全神贯注]的移除，到重新设计[虚空召唤师]的玩法（退化的[惩击]玩法已不复存在），现在它获得了一个被动的冷却缩减效果，而不是与任何法术互动。他们的治疗/伤害输出仍然非常出色，这是排名专精时最重要的因素。此外，他们将保留其强大的外部辅助能力，例如双[痛苦压制]和[真言术：障]。进一步的调整将决定他们的最终表现，但目前他们仍然是最佳治疗者之一。",
           "spells": [
             {
               "spellId": 47536,
