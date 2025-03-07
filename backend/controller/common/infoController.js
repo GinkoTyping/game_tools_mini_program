@@ -22,6 +22,5 @@ export async function queryAccessCount(req, res) {
 }
 
 export async function queryScrollInfo(req, res) {
-  // TODO 审核通过之后，提示用户点击
-  res.json('已更新详细大秘境攻略。(3.6)');
+  res.json('更新专精BIS配装、DPS排行等。(3.7)');
 }
