@@ -59,6 +59,30 @@ onShareAppMessage(() => ({
 }));
 
 state.option = {
+  tooltip: {
+    trigger: 'axis',
+    formatter(value) {
+      if (value[0]?.axisValue) {
+        const name_zh = value[0].axisValue.split('|').shift();
+        const quantity = popularityData[currentJob.value.value].find(
+          item => item.name_zh === name_zh
+        )?.quantity;
+        return `${name_zh}: ${(value[0].value * 100).toFixed(
+          1
+        )}% (样本数:${quantity})`;
+      }
+      return null;
+    },
+    axisPointer: {
+      type: 'shadow',
+      label: {
+        formatter(params) {
+          return params.value?.split('|').shift();
+        },
+      },
+    },
+  },
+
   grid: {
     left: '0%',
     right: '4%',
