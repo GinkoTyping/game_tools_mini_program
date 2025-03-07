@@ -101,6 +101,11 @@ state.option = {
       barWidth: '50%',
       barCategoryGap: '50%',
       data: [],
+      itemStyle: {
+        color(params) {
+          return params.name.split('|').pop();
+        },
+      },
     },
   ],
 };
