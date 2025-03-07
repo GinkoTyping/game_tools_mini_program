@@ -11821,7 +11821,422 @@
       }
     ],
     "enemyTips": [
-      null,
+      {
+        "title": "\"老大娘\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "暗索士兵",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Soldier-499x1024.webp",
+            "data": [
+              {
+                "text": "[黑血创伤]",
+                "spells": [
+                  {
+                    "name": "‍Black Blood Wound",
+                    "id": "462737",
+                    "nameZH": "黑血创伤"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "近战攻击有一定几率施加一个可叠加的魔法减益效果，每2秒造成一次暗影伤害，持续20秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "无人机狙击手",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechadrone-Sniper.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[特技射击]",
+                    "spells": [
+                      {
+                        "name": "‍Trickshot",
+                        "id": "1214468",
+                        "nameZH": "特技射击"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家造成暗影伤害，并对团队中的其他成员造成溅射伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[狙击]",
+                "spells": [
+                  {
+                    "name": "‍Snipe",
+                    "id": "464655",
+                    "nameZH": "狙击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对随机目标造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "载货机器人",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Loaderbot-Fixed.webp",
+            "data": [
+              {
+                "text": "[上紧发条]  \n在魔兽世界的副本中，[上紧发条]是一个需要玩家注意的机制或任务。通常，这可能涉及到与机械装置或时间相关的挑战。玩家需要按照特定的顺序或时机进行操作，以确保副本的顺利进行。具体步骤可能包括激活某些机关、击败特定的敌人，或者在规定的时间内完成任务。建议玩家在进入副本前详细了解相关机制，并与队友密切配合，以确保成功完成[上紧发条]的任务。",
+                "spells": [
+                  {
+                    "name": "‍Wind Up",
+                    "id": "465120",
+                    "nameZH": "上紧发条"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "蓄力并锁定一名玩家，在6秒内每0.3秒对3.5码范围内的玩家造成物理伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "暗索爆破手",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Demolitionist.webp",
+            "data": [
+              {
+                "text": "[R.P.G.G.]",
+                "spells": [
+                  {
+                    "name": "‍R.P.G.G.",
+                    "id": "1216039",
+                    "nameZH": "R.P.G.G."
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "发射一连串火箭，对8码范围内的玩家造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "风险投资公司勘探员",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Surveyor-Fixed-745x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[勘测光束]",
+                    "spells": [
+                      {
+                        "name": "‍Surveying Beam",
+                        "id": "462771",
+                        "nameZH": "勘测光束"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "风险投资公司勘测员会随机对一名玩家聚焦一道过热光束，每0.2秒造成一次火焰伤害，持续5秒。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "光束会在原地留下一个[勘探之地]，对站在其中的玩家每秒造成火焰伤害。",
+                            "spells": [
+                              {
+                                "name": "‍Surveyed Ground",
+                                "id": "472338",
+                                "nameZH": "勘探之地"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[“易投”炸弹 III]",
+                "spells": [
+                  {
+                    "name": "‍EZ-Thro Dynamite III",
+                    "id": "463169",
+                    "nameZH": "“易投”炸弹 III"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对随机一名玩家造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "撕碎王3000型",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shreddinator-3000-1024x998.webp",
+            "data": [
+              {
+                "text": "[碎切]",
+                "spells": [
+                  {
+                    "name": "‍Shreddation",
+                    "id": "474337",
+                    "nameZH": "碎切"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在每个玩家的位置召唤多个旋转的锯刃，每0.3秒对范围内的玩家造成物理伤害。此伤害会随着连续命中而增加。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "在[碎切]施法结束时立即开始跑动，这样你就可以避免受到该技能的所有伤害。",
+                        "spells": [
+                          {
+                            "name": "‍Shreddation",
+                            "id": "474337",
+                            "nameZH": "碎切"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[火焰喷射器]",
+                "spells": [
+                  {
+                    "name": "‍Flamethrower",
+                    "id": "465754",
+                    "nameZH": "火焰喷射器"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "一个正面锥形范围，每0.2秒对位于粉碎者前方的所有玩家造成火焰伤害，持续5秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "暗索调查员",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Inspector-682x1024.webp",
+            "data": [
+              {
+                "text": "[突击调查]",
+                "spells": [
+                  {
+                    "name": "‍Surprise Inspection",
+                    "id": "465682",
+                    "nameZH": "突击调查"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机传送到一名玩家身后，并准备进行一次恶毒的检查，对施法者前方的所有玩家造成暗影伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "暗索土狼",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Hyena.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[嗜血狞笑]",
+                    "spells": [
+                      {
+                        "name": "‍Bloodthirsty Cackle",
+                        "id": "463058",
+                        "nameZH": "嗜血狞笑"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "使20码范围内的暗熔鬣狗的近战攻击在8秒内具有治疗效果。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "这是一个激怒效果，因此如果错过了打断，仍然可以通过安抚来解除。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[兽群战术]",
+                "spells": [
+                  {
+                    "name": "‍Pack Tactics",
+                    "id": "469771",
+                    "nameZH": "兽群战术"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "增加20码范围内[黑暗融合鬣狗]的急速10%。此效果可叠加。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "暗索扭血者",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Bloodwarper.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[鲜血冲击]",
+                    "spells": [
+                      {
+                        "name": "‍Blood Blast",
+                        "id": "465871",
+                        "nameZH": "鲜血冲击"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对坦克造成暗影伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[扭曲鲜血]",
+                "spells": [
+                  {
+                    "name": "‍Warp Blood",
+                    "id": "465827",
+                    "nameZH": "扭曲鲜血"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对60码范围内的所有玩家造成暗影伤害，并在6秒内每秒施加一个治疗吸收效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "风险投资公司建筑师",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Architect.webp",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[射钉枪]",
+                    "spells": [
+                      {
+                        "name": "‍Nailgun",
+                        "id": "1213805",
+                        "nameZH": "射钉枪"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "向随机玩家发射钉枪，造成物理伤害，使其流血并被定身。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[快速建造]",
+                "spells": [
+                  {
+                    "name": "‍Rapid Construction",
+                    "id": "465408",
+                    "nameZH": "快速建造"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "Venture Co. Architect 迅速建造一座塔并跃至塔顶，获得 [雄踞高地]。",
+                    "spells": [
+                      {
+                        "name": "‍High Ground",
+                        "id": "465420",
+                        "nameZH": "雄踞高地"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "在[雄踞高地]阶段，建筑师受到的伤害减少了90%。",
+                        "spells": [
+                          {
+                            "name": "‍High Ground",
+                            "id": "465420",
+                            "nameZH": "雄踞高地"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       {
         "title": "\"老大娘\"",
         "type": "boss",
@@ -11995,7 +12410,186 @@
           }
         ]
       },
-      null,
+      {
+        "title": "\"破拆双人组\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "风险投资公司勘探员",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Surveyor-Fixed-745x1024.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[勘测光束]",
+                    "spells": [
+                      {
+                        "name": "‍Surveying Beam",
+                        "id": "462771",
+                        "nameZH": "勘测光束"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "风险投资公司勘测员会随机对一名玩家聚焦一道过热光束，每0.2秒造成一次火焰伤害，持续5秒。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "光束会在原地留下一个[勘探之地]，对站在其中的玩家每秒造成火焰伤害。",
+                            "spells": [
+                              {
+                                "name": "‍Surveyed Ground",
+                                "id": "472338",
+                                "nameZH": "勘探之地"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[“易投”炸弹 III]",
+                "spells": [
+                  {
+                    "name": "‍EZ-Thro Dynamite III",
+                    "id": "463169",
+                    "nameZH": "“易投”炸弹 III"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对随机一名玩家造成火焰伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "撕碎王3000型",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shreddinator-3000-1024x998.webp",
+            "data": [
+              {
+                "text": "[碎切]",
+                "spells": [
+                  {
+                    "name": "‍Shreddation",
+                    "id": "474337",
+                    "nameZH": "碎切"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在每个玩家的位置召唤多个旋转的锯刃，每0.3秒对范围内的玩家造成物理伤害。此伤害会随着连续命中而增加。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "在[碎切]施法结束时立即开始跑动，这样你就可以避免受到该技能的所有伤害。",
+                        "spells": [
+                          {
+                            "name": "‍Shreddation",
+                            "id": "474337",
+                            "nameZH": "碎切"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[火焰喷射器]",
+                "spells": [
+                  {
+                    "name": "‍Flamethrower",
+                    "id": "465754",
+                    "nameZH": "火焰喷射器"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "一个正面锥形范围，每0.2秒对位于粉碎者前方的所有玩家造成火焰伤害，持续5秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "风险投资公司建筑师",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Architect.webp",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[射钉枪]",
+                    "spells": [
+                      {
+                        "name": "‍Nailgun",
+                        "id": "1213805",
+                        "nameZH": "射钉枪"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "向随机玩家发射钉枪，造成物理伤害，使其流血并被定身。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[快速建造]",
+                "spells": [
+                  {
+                    "name": "‍Rapid Construction",
+                    "id": "465408",
+                    "nameZH": "快速建造"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "Venture Co. Architect 迅速建造一座塔并跃至塔顶，获得 [雄踞高地]。",
+                    "spells": [
+                      {
+                        "name": "‍High Ground",
+                        "id": "465420",
+                        "nameZH": "雄踞高地"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "在[雄踞高地]阶段，建筑师受到的伤害减少了90%。",
+                        "spells": [
+                          {
+                            "name": "‍High Ground",
+                            "id": "465420",
+                            "nameZH": "雄踞高地"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       {
         "title": "\"破拆双人组\"",
         "type": "boss",
@@ -12191,7 +12785,156 @@
           }
         ]
       },
-      null,
+      {
+        "title": "\"沼面\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "被惊扰的海藻",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Disturbed-Kelp-1024x651.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[回春水藻]",
+                    "spells": [
+                      {
+                        "name": "‍Restorative Algae",
+                        "id": "471733",
+                        "nameZH": "回春水藻"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "施加一个治疗魔法增益效果，每秒恢复生命值，持续15秒。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[投弃海藻]",
+                "spells": [
+                  {
+                    "name": "‍Jettison Kelp",
+                    "id": "471736",
+                    "nameZH": "投弃海藻"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机选择一个玩家，每0.5秒造成一次自然伤害，持续5秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "风险管理公司潜水员",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Diver.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[鱼叉猛刺]",
+                    "spells": [
+                      {
+                        "name": "‍Harpoon",
+                        "id": "468631",
+                        "nameZH": "鱼叉猛刺"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "随机抓住一名玩家并将其拉向施法者，造成物理伤害并施加流血效果。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "尽管一组中可能有多个风险投资公司潜水员，但同一时间只有一个潜水员能施放[鱼叉猛刺]。",
+                            "spells": [
+                              {
+                                "name": "‍Harpoon",
+                                "id": "468631",
+                                "nameZH": "鱼叉猛刺"
+                              }
+                            ],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[安放爆盐炸弹]  \n在副本中，玩家需要完成安放爆盐炸弹的任务。具体步骤如下：  \n1. 找到指定的炸弹安放点，通常会有明显的标记或提示。  \n2. 确保周围没有敌对怪物干扰，必要时清理小怪。  \n3. 使用背包中的爆盐炸弹，点击安放点进行安放。  \n4. 安放后，迅速远离爆炸区域，避免受到伤害。  \n5. 等待炸弹引爆，完成任务目标。  \n\n注意：安放过程中可能会有敌人巡逻或刷新，建议团队协作完成。",
+                "spells": [
+                  {
+                    "name": "‍Plant Seaforium Charge",
+                    "id": "468726",
+                    "nameZH": "安放爆盐炸弹"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在地面上生成一个地雷，对6码范围内的任何玩家造成火焰伤害并将其击飞。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "爆壳螃蟹",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bombshell-Crab-848x1024.webp",
+            "data": [
+              {
+                "text": "[钳夹]",
+                "spells": [
+                  {
+                    "name": "‍Pinch",
+                    "id": "468672",
+                    "nameZH": "钳夹"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "[挤压]：对坦克造成物理伤害，并使其移动速度降低10%，持续10秒。此效果可叠加。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[炸蟹]",
+                "spells": [
+                  {
+                    "name": "‍Crabsplosion",
+                    "id": "468680",
+                    "nameZH": "炸蟹"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "死亡时，对50码范围内的玩家造成火焰伤害，并施加一个可叠加的火焰持续伤害效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       {
         "title": "\"沼面\"",
         "type": "boss",
@@ -12311,7 +13054,287 @@
           }
         ]
       },
-      null,
+      {
+        "title": "\"吉泽尔·超震\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "泡泡",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bubbles.webp",
+            "data": [
+              {
+                "text": "[逆流]",
+                "spells": [
+                  {
+                    "name": "‍Backwash",
+                    "id": "469721",
+                    "nameZH": "逆流"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每秒对所有玩家造成冰霜伤害，持续6秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[噼啪溅跃]",
+                "spells": [
+                  {
+                    "name": "‍Splish Splash",
+                    "id": "1217496",
+                    "nameZH": "噼啪溅跃"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "正面锥形范围，对范围内的玩家造成冰霜伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[气泡响嗝]",
+                "spells": [
+                  {
+                    "name": "‍Bubble Burp",
+                    "id": "469818",
+                    "nameZH": "气泡响嗝"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在每个玩家的位置生成泡泡，任何玩家触碰到这些泡泡都会受到冰霜伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "所有人都应该站在[气泡]的近战范围内，并且作为一个团队在同一个位置生成[气泡响嗝]。这样你可以轻松地围绕[气泡]移动，并且毫无问题地躲避[噼啪溅跃]的正面攻击。",
+                "spells": [
+                  {
+                    "name": "‍Bubble Burp",
+                    "id": "469818",
+                    "nameZH": "气泡响嗝"
+                  },
+                  {
+                    "name": "‍Splish Splash",
+                    "id": "1217496",
+                    "nameZH": "噼啪溅跃"
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "trashName": "暗索接线者",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Jumpstarter.webp",
+            "data": [
+              {
+                "text": "[火花猛击]",
+                "spells": [
+                  {
+                    "name": "‍Sparkslam",
+                    "id": "465666",
+                    "nameZH": "火花猛击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "猛击坦克，造成自然伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[电池释能]",
+                "spells": [
+                  {
+                    "name": "‍Battery Discharge",
+                    "id": "1216607",
+                    "nameZH": "电池释能"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每4秒在地面上生成电池，对站在其中的玩家造成自然伤害。此外，对60码范围内的所有玩家造成自然伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "风险投资公司建筑师",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Architect.webp",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[射钉枪]",
+                    "spells": [
+                      {
+                        "name": "‍Nailgun",
+                        "id": "1213805",
+                        "nameZH": "射钉枪"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "向随机玩家发射钉枪，造成物理伤害，使其流血并被定身。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[快速建造]",
+                "spells": [
+                  {
+                    "name": "‍Rapid Construction",
+                    "id": "465408",
+                    "nameZH": "快速建造"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "Venture Co. Architect 迅速建造一座塔并跃至塔顶，获得 [雄踞高地]。",
+                    "spells": [
+                      {
+                        "name": "‍High Ground",
+                        "id": "465420",
+                        "nameZH": "雄踞高地"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "在[雄踞高地]阶段，建筑师受到的伤害减少了90%。",
+                        "spells": [
+                          {
+                            "name": "‍High Ground",
+                            "id": "465420",
+                            "nameZH": "雄踞高地"
+                          }
+                        ],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "风险投资公司电工",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Electrician.webp",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[闪电箭]",
+                    "spells": [
+                      {
+                        "name": "‍Lightning Bolt",
+                        "id": "465595",
+                        "nameZH": "闪电箭"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家造成自然伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "需要魔法驱散：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[过载]",
+                    "spells": [
+                      {
+                        "name": "‍Overcharge",
+                        "id": "469799",
+                        "nameZH": "过载"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "施加一个魔法减益效果，每1.5秒造成自然伤害，持续12秒。如果该效果未被驱散而持续存在，则玩家将被眩晕5秒。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "暗索调查员",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Inspector-682x1024.webp",
+            "data": [
+              {
+                "text": "[突击调查]",
+                "spells": [
+                  {
+                    "name": "‍Surprise Inspection",
+                    "id": "465682",
+                    "nameZH": "突击调查"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "随机传送到一名玩家身后，并准备进行一次恶毒的检查，对施法者前方的所有玩家造成暗影伤害。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "水能堡食泥者",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Waterworks-Bottomfeeder.webp",
+            "data": [
+              {
+                "text": "[恶毒之咬]",
+                "spells": [
+                  {
+                    "name": "‍Vicious Bite",
+                    "id": "470004",
+                    "nameZH": "恶毒之咬"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对坦克造成物理伤害，并对其施加一个可叠加的流血效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       {
         "title": "\"吉泽尔·超震\"",
         "type": "boss",

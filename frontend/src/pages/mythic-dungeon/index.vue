@@ -96,7 +96,12 @@
         :key="index"
       >
         <template v-slot:title>
-          <view :class="['menu-title']">
+          <view
+            :class="[
+              'menu-title',
+              tip.type === 'trash' ? '' : 'menu-title--hight',
+            ]"
+          >
             <text>{{
               dataItem?.trashName ||
               dataItem?.spellNameZH ||
@@ -199,7 +204,7 @@
       ></uni-list-item>
       <uni-list-item
         v-for="(item, index) in mythicDungeonData?.enemyTips"
-        :title="`${index + 3}. ${item.title}`"
+        :title="`${index + 3}. ${item?.title}`"
         clickable
         showArrow
         @click="() => scrollTo(`#${getEnemySectionId(index)}`)"
@@ -381,7 +386,9 @@ function scrollTo(selector: string) {
   font-size: 14px;
   font-weight: bold;
 }
-
+.menu-title--hight {
+  color: $color-b-tier;
+}
 ::v-deep .uni-section {
   .uni-section-header {
     background-color: $uni-bg-color-grey !important;

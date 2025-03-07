@@ -385,6 +385,7 @@ async function translateTrash(trash) {
         trashName: data.name_zh,
       };
     }
+    return trash;
   } catch (error) {
     console.log(error);
     return trash;
