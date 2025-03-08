@@ -47,11 +47,11 @@ async function collectBySpec(roleClass, classSpec) {
     // 开发调测时，读取本地的静态文件
     if (process.env.IS_DEV) {
       const staticFilePath = process.env.DEV_FILE
-        ? `./cache/${process.env.DEV_FILE}.html`
-        : './cache/template.html';
+        ? `./cache/spec/${process.env.DEV_FILE}.html`
+        : './cache/spec/template.html';
       html = fs.readFileSync(path.resolve(__dirname, staticFilePath), 'utf-8');
     } else {
-      const staticFilePath = `./cache/${classSpec}-${roleClass}.html`;
+      const staticFilePath = `./cache/spec/${classSpec}-${roleClass}.html`;
       if (fs.existsSync(path.resolve(__dirname, staticFilePath))) {
         html = fs.readFileSync(
           path.resolve(__dirname, staticFilePath),
@@ -72,9 +72,6 @@ async function collectBySpec(roleClass, classSpec) {
         page = await browser.newPage();
 
         function getURL() {
-          if (classSpec === 'protection' && roleClass === 'paladin') {
-            return `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-raid-guide-2`;
-          }
           return `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-mythic-plus-guide`;
         }
 
