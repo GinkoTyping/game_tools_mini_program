@@ -26,8 +26,8 @@ export async function querySpellByIds(ids) {
 
 export async function queryAddSpell({ id, name }) {
   const res = await axios.post(`${process.env.DEV_URL}/api/wow/spell/add`, {
-    id: id.split(':').shift(),
-    idWowDB: id.split(':').shift(),
+    id: id.split?.(':').shift() ?? id,
+    idWowDB: id.split?.(':').shift() ?? id,
     nameEN: name,
   });
 

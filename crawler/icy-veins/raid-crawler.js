@@ -1,4 +1,3 @@
-import * as cheerio from 'cheerio';
 import axios from 'axios';
 
 import fs from 'fs';
@@ -8,6 +7,7 @@ import { fileURLToPath } from 'url';
 import '../util/set-env.js';
 import { useCheerioContext } from '../util/run-browser.js';
 import { useDeepseek } from '../util/deepseek.js';
+import { tryTranslateSpell } from '../api/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,26 +24,8 @@ function mapTranslateCache(key) {
 }
 
 // TODO 分解
-async function getTranslateTip(tipEle) {
-  let text = tipEle.text();
-  let spells = tipEle
-    .children('span')
-    .map((index, spellEle) => {
-      return {
-        name: $(spellEle).text(),
-        id: Number(
-          $(spellEle)
-            .find('a')
-            .attr('href')
-            .split('spell=')
-            .pop()
-            .split('/')
-            .shift()
-        ),
-      };
-    })
-    .get();
-
+async function translateSingleTip(tip) {
+  let { text, spells } = tip;
   if (spells.length) {
     const results = await Promise.allSettled(
       spells.map((spell) => tryTranslateSpell(spell))
@@ -63,10 +45,20 @@ async function getTranslateTip(tipEle) {
       spells.filter((spell) => spell.nameZH)?.length === spells.length
     );
   }
-  if (isTranslateWholeTip) {
+  if (isTranslateWholeTip()) {
     text = await deepseek.translate(text);
   }
   return { text, spells };
+}
+
+async function translateTipsByType(input) {
+  const results = await Promise.allSettled(
+    input.children.map((item) => translateSingleTip(item))
+  );
+  return {
+    ...input,
+    children: results.map((result) => result.value),
+  };
 }
 
 function mapUlElement(context, tipEle) {
@@ -95,25 +87,10 @@ function mapUlElement(context, tipEle) {
     spells,
   };
 }
-
-async function collectByTipId(context, id) {
+function getRawOutput(context, containerEle) {
   const $ = context;
-  function mapButtonName(name) {
-    switch (name) {
-      case 'Quick TLDR Guide':
-        return '一句话攻略';
-      case 'Strategy Guide: Full Guide':
-        return '完整攻略';
-      case 'Mythic Strategy':
-        return 'M 难度';
-      default:
-        return name;
-    }
-  }
-  const typeName = mapButtonName($(`#${id}_button`).text());
-  const tipsContainer = $(`#${id}`);
-
   const output = [];
+
   async function setTipPartOutput(context, ele) {
     const $ = context;
     // 标题已经收集过了
@@ -139,11 +116,41 @@ async function collectByTipId(context, id) {
     }
   }
 
-  tipsContainer.children().each((index, tipPart) => {
+  containerEle.children().each((index, tipPart) => {
     setTipPartOutput($, $(tipPart));
   });
 
-  console.log(results);
+  return output;
+}
+
+async function collectByTipId(context, id) {
+  const $ = context;
+  function mapButtonName(name) {
+    switch (name) {
+      case 'Quick TLDR Guide':
+        return '一句话攻略';
+      case 'Strategy Guide: Full Guide':
+        return '完整攻略';
+      case 'Mythic Strategy':
+        return 'M 难度';
+      default:
+        return name;
+    }
+  }
+  const typeName = mapButtonName($(`#${id}_button`).text());
+  const tipsContainer = $(`#${id}`);
+
+  // 先只完成 数据收集
+  const rowOutput = getRawOutput($, tipsContainer);
+
+  const translatedResults = await Promise.allSettled(
+    rowOutput.map((item) => translateTipsByType(item))
+  );
+
+  return {
+    title: typeName,
+    children: translatedResults.map((item) => item.value),
+  };
 }
 
 async function getBossTips(context) {

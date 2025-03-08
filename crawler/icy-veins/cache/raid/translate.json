@@ -1,1 +1,13 @@
-{}
+{
+  "After The Geargrinder has been destroyed kill Vexie to finish the fight.": "在摧毁齿轮粉碎者之后，击杀维克斯以结束战斗。",
+  "Any remaining Pit Mechanics will disappear when the intermission ends.": "当间歇期结束时，任何剩余的坑道机制都会消失。",
+  "DPS: You don't need to focus any damage into the Pit Mechanics. They will die from passive cleave damage if they are under the boss.": "DPS: 你不需要特别关注对深渊机制的伤害输出。如果它们位于Boss下方，它们会被被动溅射伤害消灭。",
+  "Attack the bikers once they are nearby.": "当骑手靠近时，攻击他们。",
+  "Hop into bikes that are left behind and aim them at the boss to remove stacks of [防御护板].": "跳上被遗弃的自行车，将它们对准首领，以移除[防御护板]的层数。",
+  "Once all stacks of [防御护板] are removed the intermission phase will begin.": "一旦[防御护板]的所有层数被移除，中间阶段就会开始。",
+  "Tanks: Swap after one stack of [坦爆重击].": "坦克：在叠加一层[坦爆重击]后交换仇恨。",
+  "If you are targeted by [爆燃纵火] move away from pools that you spawn and do not run into any [浮油]s.": "如果你被[爆燃纵火]选中，请远离你生成的池子，并且不要跑进任何[浮油]中。",
+  "Avoid [燃烧碎片].": "避开[燃烧碎片]。",
+  "Interrupt or CC the Pit Mechanics and prevent them from casting [维修].": "打断或控制住坑道机械师，防止他们施放[维修]。",
+  "Place [浮油] puddles away from the group.": "将[浮油]水坑放置在远离团队的位置。"
+}
