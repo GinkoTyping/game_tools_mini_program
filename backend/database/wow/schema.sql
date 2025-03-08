@@ -101,6 +101,15 @@ CREATE TABLE
     type TEXT
   );
 
+CREATE TABLE
+  IF NOT EXISTS wow_raid_guide (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name_en TEXT,
+    name_zh TEXT,
+    encounters TEXT,
+    guide TEXT
+  );
+
 -- dynamic tables
 CREATE TABLE
   IF NOT EXISTS wow_dynamic_mythic_dungeon_count (

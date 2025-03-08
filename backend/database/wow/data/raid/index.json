@@ -1,6 +1,7 @@
 [
   {
     "title": "维克茜和磨轮",
+    "title_key": "vexie-fullthrottle",
     "children": [
       {
         "title": "一句话攻略",
@@ -125,6 +126,7 @@
   },
   {
     "title": "血腥大熔炉",
+    "title_key": "cauldron-of-carnage",
     "children": [
       {
         "title": "一句话攻略",
@@ -281,6 +283,7 @@
   },
   {
     "title": "里克·混响",
+    "title_key": "rik-reverb",
     "children": [
       {
         "title": "一句话攻略",
@@ -418,6 +421,7 @@
   },
   {
     "title": "斯提克斯·堆渣",
+    "title_key": "stix-bunkjunker",
     "children": [
       {
         "title": "一句话攻略",
@@ -550,6 +554,7 @@
   },
   {
     "title": "链齿狂人洛肯斯多",
+    "title_key": "sprocketmonger-lockenstock",
     "children": [
       {
         "title": "一句话攻略",
@@ -696,6 +701,7 @@
   },
   {
     "title": "独臂盗匪",
+    "title_key": "one-armed-bandit",
     "children": [
       {
         "title": "一句话攻略",
@@ -840,6 +846,7 @@
   },
   {
     "title": "穆格·兹伊，安保头子",
+    "title_key": "mug-zee",
     "children": [
       {
         "title": "一句话攻略",

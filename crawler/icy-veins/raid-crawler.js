@@ -179,6 +179,7 @@ async function collectRaidBoss(boss) {
 
   return {
     title: mapBossName(boss),
+    title_key: boss,
     children: results.map((result) => result.value),
   };
 }
