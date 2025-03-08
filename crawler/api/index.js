@@ -62,3 +62,23 @@ export async function queryNpcByName(name) {
 
   return res.data;
 }
+
+export async function tryTranslateSpell(spell) {
+  try {
+    const { id, name } = spell;
+    const data = await querySpellByIds([id]);
+    if (data?.[0]) {
+      return {
+        ...spell,
+        nameZH: data[0].name_zh,
+        desc: data[0].description,
+      };
+    }
+    await queryAddSpell({ id, name });
+    console.log(`未找到技能ID: ${id}, 已注册`);
+    return spell;
+  } catch (error) {
+    console.log(`翻译技能失败 ${spell.name}: ${error}`);
+    return spell;
+  }
+}
