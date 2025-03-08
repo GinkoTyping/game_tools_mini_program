@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+function getCookie (name) {
+  var key = name + '='
+  var cookie = decodeURIComponent(document.cookie)
+  var arr = cookie.split(';')
+
+  for (var i = 0; i < arr.length; i++) {
+
+    var c = arr[i]
+
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1)
+    }
+
+    if (c.indexOf(key) == 0) {
+      return c.substring(key.length, c.length)
+    }
+  }
+
+  return null
+}
+
+function writeToLocalStorage(key, content) {
+  try {
+    window.localStorage.setItem(key, content);
+  } catch(e) {
+    for (var i = 0; i < window.localStorage.length; i++) {
+      current_key = window.localStorage.key(i);
+      if (current_key != 'premium_tracking' && current_key != 'premium_origin') {
+        window.localStorage.removeItem(current_key);
+      }
+    }
+    window.localStorage.setItem(key, content);
+  }
+}
+    </script>
+    <meta charset="UTF-8">
+    <title>Mug'Zee Raid Guide in Liberation of Undermine - World of Warcraft - Icy Veins</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" id="viewport-meta"/>
+    <script>
+var icy_veins_disable_minified_menu = false;
+    </script>
+
+    <script type="text/javascript">
+  if (!getCookie("ips4_member_premium")) {
+    !(function(o,_name){o[_name]=o[_name]||function $(){($.q=$.q||
+    []).push(arguments)},o[_name].v=o[_name].v||2;!(function(o,t,e,n,c,a){function f(n,c){(n=(function(t,e){try{if(e=
+    (t=o.localStorage).getItem("_aQS02Mzg3RDEwMjU5NjBGOUQ0REY5Q0YwOTEtNTQ0"))return JSON.parse(e).lgk||
+    [];if((t.getItem(decodeURI(decodeURI('%76%25%33%34%25%361c%25%33%31%25%365%69%5a%25%37%320')))||"").split(",")
+    [4]>0)return[[_name+"-engaged","true"]]}catch(n){}})())&&typeof n.forEach===e&&(c=o[t].pubads())&&n.forEach((function(o)
+    {o&&o[0]&&c.setTargeting(o[0],o[1]||"")}))}try{(a=o[t]=o[t]||{}).cmd=a.cmd||[],typeof a.pubads===e?f():typeof a.cmd.unshift===e?
+    a.cmd.unshift(f):a.cmd.push(f)}catch(i){}})(window,"googletag","function");;})
+    (window,decodeURI(decodeURI('%61%64%6d%2569%2572a%25%36c')));!(function(t,c,i)
+    {i=t.createElement(c),t=t.getElementsByTagName(c)
+    [0],i.async=1,i.src="https://mowgoats.com/bundles/ad00f843fc06c982/9275f2595b4404e4762e9b.js",t.parentNode.insertBefore(i,t)})
+    (document,"script");
+  }
+</script>
+
+<script>
+  if (!getCookie("ips4_member_premium")) {
+    window.ramp = window.ramp || {};
+    window.ramp.que = window.ramp.que || [];
+  }
+</script>
+
+<script>
+  if (!getCookie("ips4_member_premium")) {
+    var rampConfig = document.createElement('script');
+    rampConfig.src = "//cdn.intergient.com/1025267/74951/ramp_config.js";
+    rampConfig.async = true;
+    document.head.insertBefore(rampConfig, document.head.getElementsByTagName('script')[0]);
+  }
+</script>
+<script>
+  if (!getCookie("ips4_member_premium")) {
+    window._pwGA4PageviewId = ''.concat(Date.now());
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function () {
+      dataLayer.push(arguments);
+    };
+    gtag('js', new Date());
+    gtag('config', 'G-Z4NF5J0QZK', { 'send_page_view': false });
+    gtag(
+      'event',
+      'ramp_js',
+      {
+        'send_to': 'G-Z4NF5J0QZK',
+        'pageview_id': window._pwGA4PageviewId
+      }
+    );
+  }
+</script>
+
+    <script>
+  dataLayer = [{
+    'author': 'panthea',
+    'page_type': 'guides',
+    'page_game': 'wow',
+    'page_cat1': '-',
+    'page_cat2': '-',
+    'page_cat3': '-'
+  }];
+</script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      //<![CDATA[
+  if (!getCookie("ips4_member_premium") || getCookie("ips4_member_premium_analytics")) {
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NF9Q7DV');
+
+    var gtagConfig = document.createElement('script');
+    gtagConfig.src = "//www.googletagmanager.com/gtag/js?id=AW-16778687634";
+    gtagConfig.async = true;
+    document.head.insertBefore(gtagConfig, document.head.getElementsByTagName('script')[0]);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'AW-16778687634');
+  }
+      //]]>
+    </script>
+    <!-- End Google Tag Manager -->
+<style type="text/css">
+  html,body,div,span,object,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}html{overflow-y:scroll;font-family:'Open Sans',sans-serif}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}em{font-style:italic;}a{text-decoration:none;color:#78dcff}h2 a{color:white}a:hover{text-decoration:none;color:#bef0ff}a:active{text-decoration:none;color:white}b,strong{font-weight:700}.header,.shadowed_header{font-family:'Open Sans Condensed',sans-serif}.shadowed_header{text-shadow:-1px -1px 1px rgba(0,0,0,0.8);}.relative{position:relative}.text_color{color:#cccccc}body{background-color:black}#main{width:100%}.background{background-color:#162c44}.hide_on_mobile{display:none}#header{width:100%;min-height:50px;position:relative;z-index:2147483645;background-image:url('//static.icy-veins.com/images/common/header-background-mobile.jpg?v=3');background-repeat:no-repeat}#icy_veins_mobile_logo{display:block;position:absolute;left:10px;top:18px}#icy_veins_mobile_logo span{display:inline-block;width:114px;height:17px;background-image:url("//static.icy-veins.com/images/common/logo-mobile.png")}@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-resolution:2dppx){#icy_veins_mobile_logo span{background-image:url("//static.icy-veins.com/images/common/logo-mobile-2x.png");background-size:114px 17px;}}.mobile_menu_button{position:absolute;top:20px;right:16px}#mobile_menu_button_show{display:inline-block;width:16px;height:10px;background-image:url("//static.icy-veins.com/images/common/mobile-menu-button.png?v=3")}#mobile_menu_button_close{display:none;color:white;top:10px;font-size:20px}#footer{display:none}#nav{display:none;background-color:#1d364f;padding-top:10px;padding-bottom:10px}.leaderboard_container{padding-top:20px;width:100%;text-align:center}.bt_container_l>span{padding-top:20px;width:100%;text-align:center}.leaderboard{width:320px;height:auto;;position:relative;margin:0 auto}.bt_container_l{position:relative;margin:0 auto}#news_container .rectangle{margin-top:10px}@media only screen and (min-width:1070px){#div-gpt-ad-1498507813884-10{display:none;}#div-gpt-ad-1498507813884-5{display:none;}#div-gpt-ad-1498507813884-6{display:none;}#div-gpt-ad-1498507813884-7{display:none;}}#top_leaderboard_container{min-height:273px;}#top_rectangle_container{min-height:623px;}#bottom_rectangle_container{min-height:623px;}#bottom_leaderboard_container{min-height:273px;}#top_leaderboard_container,#top_rectangle_container,#bottom_rectangle_container,#bottom_leaderboard_container{display:flex;justify-content:center;align-items:center}#div-gpt-ad-1498507813884-11,#div-gpt-ad-1498507813884-12{width:300px;margin:0 auto;}#center{width:auto;padding-top:20px;padding-bottom:20px}.page_breadcrumbs{display:none}#right{display:none;}#page_top_container{display:none}#user_bar{position:relative;font-size:13px;color:#ccc}#user_bar,#user_bar *{box-sizing:border-box}#user_bar #elUserNav{right:35px;position:absolute;height:42px}#user_bar .ipsList_inline{list-style:none;margin:0;padding:0}#user_bar #elUserNav > li{display:none;height:44px;margin-top:3px;margin-bottom:3px;line-height:44px}#user_bar #elUserNav > li#cUserLink{margin-right:10px}#elUserNav > li > div > a{color:#fff;font-size:13px;vertical-align:middle;line-height:1}#user_bar .ipsList_inline > li{vertical-align:middle;margin-right:8px}#user_bar #elUserNav > li#forums_link,#user_bar #elUserNav > li#search_link{display:inline-block}#user_bar #elUserNav > li#forums_link > div,#user_bar #elUserNav > li#search_link > div{display:flex;align-items:center;height:100%}#user_bar #elUserNav > li#forums_link > div > a{position:relative;top:-3px}#user_bar #elUserNav > li#search_link > div > a{position:relative;top:-1px}.user_bar_img{display:inline-block;margin-right:6px;position:relative}#forums_link .user_bar_img{background-image:url("//static.icy-veins.com/images/common/icon-forums.png?v=2");width:19px;height:18px;top:6px}#masterclass_link .user_bar_img{background-image:url("//static.icy-veins.com/images/common/icon-masterclass.svg");width:18px;height:18px;top:5px}#search_link .user_bar_img{background-image:url("//static.icy-veins.com/images/common/icon-search.png?v=2");width:14px;height:14px;top:3px}@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-resolution:2dppx){#forums_link .user_bar_img{background-image:url("//static.icy-veins.com/images/common/icon-forums-2x.png");background-size:19px 18px;}#search_link .user_bar_img{background-image:url("//static.icy-veins.com/images/common/icon-search-2x.png");background-size:14px 14px;}}.hidden_section_controls>span{display:inline-block;border:1px solid white;color:white;padding:5px 10px;font-size:14px;border-radius:3px;cursor:pointer}.hidden_section_controls>span.hidden_section_controls_hide{display:none}.hidden_section{display:none !important}.page_content_container+.internal_links_block{margin-top:20px}.link_buttons_flex_3,.link_buttons_flex_2{display:flex;flex-wrap:wrap;justify-content:space-evenly}.centered.link_buttons_flex_3,.centered.link_buttons_flex_2{display:flex}.link_buttons_flex_3 .link_button,.link_buttons_flex_2 .link_button{display:block;width:100%}.link_button{display:inline-block;padding-top:5px;padding-bottom:5px;margin-bottom:2px;margin-top:2px}div.centered>span.link_button{display:inline-block}.no_flex .link_button{display:inline-block;width:auto}@media only screen and (min-width:600px){.link_buttons_flex_3 .link_button{width:47%;}.link_buttons_flex_2 .link_button{width:47%;}}@media only screen and (min-width:768px){.link_buttons_flex_3 .link_button{width:31%;}}.link_button a,.link_button .link_button_coming_soon,.link_button .link_button_preset{display:block;height:calc(100% - 12px);border-width:1px;border-style:solid;padding:5px 10px;font-size:16px;border-radius:4px}.link_button .link_button_coming_soon,.link_button .link_button_preset{color:#78dcff;position:relative}.link_button_preset:hover{cursor:pointer;color:white;border-color:white}.link_button .link_button_coming_soon>span:last-of-type{position:absolute;display:block;width:77px;top:-13px;right:-78px;font-size:10px;color:rgb(224,60,15);border:1px solid red;border-radius:2px;white-space:nowrap;background-color:#162c44;padding:1px 3px;z-index:1}.link_button a:hover{color:white !important;border-color:white !important}.link_button.dk a,.link_button.death_knight a{color:#C41F3B;border-color:#C41F3B;}.link_button.dh a,.link_button.demon_hunter a{color:#a330c9;border-color:#a330c9;}.link_button.druid a{color:#FF7D0A;border-color:#FF7D0A;}.link_button.hunter a{color:#ABD473;border-color:#ABD473;}.link_button.mage a{color:#69CCF0;border-color:#69CCF0;}.link_button.monk a{color:#00FF98;border-color:#00FF98;}.link_button.paladin a{color:#F58CBA;border-color:#F58CBA;}.link_button.priest a{color:white;border-color:white;}.link_button.rogue a{color:#FFF569;border-color:#FFF569;}.link_button.shaman a{color:#0070DE;border-color:#0070DE;}.link_button.warlock a{color:#9482C9;border-color:#9482C9;}.link_button.warrior a{color:#C79C6E;border-color:#C79C6E;}ul.classes_list_strengths,ul.classes_list_weaknesses{list-style-type:none;margin-left:10px}.page_content ul.classes_list_strengths,.page_content ul.classes_list_weaknesses{list-style-type:none}.classes_list_strengths li:before{content:"+ ";color:lime;font-weight:bold}.classes_list_weaknesses li:before{content:"- ";color:red;font-weight:bold}span.legend{display:block;font-style:italic}blockquote{margin-left:5px;margin-right:5px;margin-top:15px;margin-bottom:15px;font-style:italic}details{position:relative}details[open],details:not(:last-of-type){margin-bottom:24px}details[open]::after,details:not(:last-of-type,.list-item)::after{background:linear-gradient(90deg,#FFFFFF00 0%,#FFFFFF 50%,#FFFFFF00 100%);bottom:-8px;content:"";display:block;height:1px;mix-blend-mode:overlay;position:absolute;width:100%}details[open]::after{bottom:-12px}details > summary{align-items:center;color:white;display:flex;font-size:18px;font-weight:bold;list-style:none;margin-bottom:12px}details > summary::after{--border-color:#6AD1FF;background-color:#0E243B;background-image:url("//static.icy-veins.com/images/common/remixicon/arrow-drop-down-line-6ad1ff.svg");border:1px solid var(--border-color);border-radius:50%;box-shadow:0px 0px 5px 1px var(--border-color);content:"";display:inline-block;height:25px;margin-left:8px;rotate:-90deg;width:25px}details[open] > summary::after{background-color:unset;box-shadow:unset;rotate:0deg}li details > summary,details.simple > summary,details.list-item > summary{color:unset;display:list-item;font-size:inherit;font-weight:inherit;list-style:revert}li details > summary::after,details.simple > summary::after,details.list-item > summary::after{display:none}details.list-item{display:list-item;margin:0}li > details.list-item{display:block}details[open].list-item{margin:0}details[open].list-item::after{display:none}details.list-item > summary{display:inline}hr.gradient{background:linear-gradient(90deg,transparent 0%,#FFFFFF 50%,transparent 100%);border:none;height:1px;mix-blend-mode:overlay;padding:0}@media screen and (max-width:500){.premium_banners_limited{display:none;}}.page_title{color:white;font-size:32px;font-weight:bold;margin-bottom:40px}.page_content_header{font-size:13px;margin-top:-20px;margin-bottom:20px}.page_content_header>span{display:block}.page_content_header>span>span>span{color:#78dcff}.page_content_header ul{font-size:16px;line-height:27px;max-width:360px;margin-left:20px;list-style-type:disc}.page_content_footer{font-size:13px;padding-top:20px;padding-bottom:20px}.page_content_footer>span{display:block}.page_content{font-size:13px;line-height:19px}.page_content ul.toc_mobile ul{list-style-type:none}.page_content ul.toc_mobile li{margin-top:7px;margin-bottom:7px}.page_content>*:last-child{margin-bottom:0px}div.heading_container.heading_number_2{margin-top:20px;margin-bottom:20px}div.heading_container.heading_number_3{margin-top:15px;margin-bottom:15px}div.heading_container.heading_number_4{margin-top:10px;margin-bottom:10px}div.heading_container>span,.page_content h2,.page_content h3,.page_content h4{color:white;font-weight:bold}div.heading_container h2,div.heading_container h3,div.heading_container h4{display:inline}div.heading_container.heading_number_2>span,.page_content h2{font-size:24px;line-height:26px}div.heading_container.heading_number_3>span,.page_content h3{font-size:20px;line-height:22px}div.heading_container.heading_number_4>span,.page_content h4{font-size:16px;line-height:18px}.page_content p{margin-top:15px;margin-bottom:15px}.page_content ul,.page_content ol{margin-top:10px;margin-bottom:10px;margin-left:10px;padding-left:20px}.page_content ul{list-style-type:disc}.page_content ol{list-style-type:decimal}.page_content ul ul,.page_content ul ol,.page_content ol ul,.page_content ol ol{margin:0px}.page_content ul ul,.page_content ol ul{list-style-type:circle}.page_content ul ul ul,.page_content ul ol ul,.page_content ol ul ul,.page_content ol ol ul{list-style-type:square}.page_content ul ul ul,.page_content ul ol ul,.page_content ol ul ul,.page_content ol ol ul,.page_content ul ul ol,.page_content ul ol ol,.page_content ol ul ol,.page_content ol ol ol{margin:0px}.page_content table{margin-top:15px;margin-bottom:15px;width:100%}.page_content table th{background-color:#3480af;font-family:'Open Sans Condensed',sans-serif;color:white;font-size:18px;padding:5px 5px;font-weight:bold;vertical-align:middle}.page_content table tr:nth-child(odd){background-color:#233b55}.page_content table tr:nth-child(even){background-color:#1d334c}.page_content table td{padding:3px 5px}.page_content table td ul{list-style-type:none;padding:0px;margin:0px}.page_content table td li{margin:5px 0;}.page_content table td li:first-child{margin-top:0px;}.page_content table td li:last-child{margin-bottom:0px;}.page_content table.centered_td td{text-align:center}.page_content .question{color:white}.page_content .answer{font-style:italic}.page_content img{max-width:100%}.page_content img[height][width]{height:auto;max-width:100%}.page_content .code,pre{font-family:Courier;font-size:12px}.page_content p.code,pre{overflow:scroll;border:1px solid #3d75aa;margin:0 auto;padding:10px 5px}.page_content .code.with_background{background:black;color:white}pre{border:none;background-color:white;color:black;font-family:monospace,monospace;overflow:auto}.page_content ul.code{margin-top:10px;margin-bottom:10px;list-style-type:none}.page_content ul.code li{margin:0px}.force_wrap{word-wrap:break-word;overflow-wrap:break-word}.page_content p.code.force_wrap{overflow:auto;}.page_content iframe:not(.pw-sticky > div > iframe){width:100% !important;border:0}.page_content pre.code{white-space:pre-wrap;word-wrap:break-word;background-color:black;color:white}.centered img,table img,.map img{margin:0}.centered{margin-top:10px;margin-bottom:10px;margin-right:0px;margin-left:0px;width:100%;text-align:center;display:block}table.centered{margin-right:auto;margin-left:auto;display:table;text-align:inherit}.image_block{border:2px solid #2f5076}.image_block_header{background-color:#172845;border-bottom:2px solid #2f5076;padding:0px 20px 30px 20px;display:flex;flex-direction:column}.image_block h2{font-size:22px;text-align:center;letter-spacing:0px;color:#BEF0FF;text-transform:uppercase}.image_block .heading_container.heading_number_2{display:block;text-align:center;margin-top:20px;margin-bottom:25px}.image_block .heading_container.heading_number_3{display:block;margin-top:0px;margin-bottom:0px;}.image_block .heading_container>span{display:none;}.image_block_header_buttons{align-items:center;display:flex;flex-direction:row;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px;position:relative}.image_block_header_buttons + .image_block_header_buttons::before{background-image:linear-gradient(90deg,transparent 0,white 50%,transparent 100%);content:"";display:block;height:2px;margin-top:10px;mix-blend-mode:overlay;width:100%}.image_block_header_buttons>span{border:3px solid #204369;background-color:#0f1d2e;cursor:pointer;flex:0 0 100%;font-size:12px;letter-spacing:0px;color:#BEF0FF;text-shadow:0px 2px 2px #000000;line-height:17px;display:block;padding-top:20px;padding-bottom:20px;text-align:center;position:relative;transition:background-color 0.3s ease,border-color 0.3s ease}.image_block_header_buttons> span.recommended,.image_block_header_buttons> span:has(.recommended:not(.hidden_section)){padding-top:26px;padding-bottom:14px}.image_block_header_buttons span.hidden_section{display:none}.image_block_header_buttons> span.recommended::before,.image_block_header_buttons> span:has(.recommended:not(.hidden_section))::before{content:"Recommended";width:fit-content;height:20px;background-color:darkcyan;position:absolute;top:0;left:0;border-bottom-right-radius:10px;color:white;text-shadow:0px 1px 1px #000000;text-align:left;font-weight:bold;padding-left:4px;padding-right:10px}.image_block_header_buttons.selected > span:not(.selected){opacity:0.5}@media only screen and (min-width:500px){.image_block_header_buttons>span{flex:0 0 calc(50% - 12px);}}@media only screen and (min-width:768px){.image_block_header_buttons>span{flex:0 0 calc(33.33% - 18px);}}.image_block_header_buttons>span:last-child{margin-right:0px;}.image_block_header_buttons>span.selected{border:3px solid #4186d4;background-color:#264972;color:white;text-shadow:0px 2px 4px #0000004D}.image_block_header_buttons > span.selected.recommended,.image_block_header_buttons > span.selected:has(.recommended:not(.hidden_section)){border-color:darkcyan}.ffxiv_body .image_block_header_buttons > span.black-mage{--colour:var(--black-mage-colour)}.ffxiv_body .image_block_header_buttons > span.black-mage{--colour:var(--black-mage-colour)}.ffxiv_body .image_block_header_buttons > span.monk{--colour:var(--monk-colour)}.ffxiv_body .image_block_header_buttons > span.dragoon{--colour:var(--dragoon-colour)}.ffxiv_body .image_block_header_buttons > span.ninja{--colour:var(--ninja-colour)}.ffxiv_body .image_block_header_buttons > span.samurai{--colour:var(--samurai-colour)}.ffxiv_body .image_block_header_buttons > span.reaper{--colour:var(--reaper-colour)}.ffxiv_body .image_block_header_buttons > span.machinist{--colour:var(--machinist-colour)}.ffxiv_body .image_block_header_buttons > span.summoner{--colour:var(--summoner-colour)}.ffxiv_body .image_block_header_buttons > span.bard{--colour:var(--bard-colour)}.ffxiv_body .image_block_header_buttons > span.dancer{--colour:var(--dancer-colour)}.ffxiv_body .image_block_header_buttons > span.red-mage{--colour:var(--red-mage-colour)}.ffxiv_body .image_block_header_buttons > span.gunbreaker{--colour:var(--gunbreaker-colour)}.ffxiv_body .image_block_header_buttons > span.warrior{--colour:var(--warrior-colour)}.ffxiv_body .image_block_header_buttons > span.paladin{--colour:var(--paladin-colour)}.ffxiv_body .image_block_header_buttons > span.dark-knight{--colour:var(--dark-knight-colour)}.ffxiv_body .image_block_header_buttons > span.white-mage{--colour:var(--white-mage-colour)}.ffxiv_body .image_block_header_buttons > span.scholar{--colour:var(--scholar-colour)}.ffxiv_body .image_block_header_buttons > span.sage{--colour:var(--sage-colour)}.ffxiv_body .image_block_header_buttons > span.astrologian{--colour:var(--astrologian-colour)}.ffxiv_body .image_block_header_buttons > span.blue-mage{--colour:var(--blue-mage-colour)}.ffxiv_body .image_block_header_buttons > span.viper{--colour:var(--viper-colour)}.ffxiv_body .image_block_header_buttons > span.pictomancer{--colour:var(--pictomancer-colour)}.ffxiv_body .image_block_header_buttons > span.tank{--colour:var(--tank-colour)}.ffxiv_body .image_block_header_buttons > span.healer{--colour:var(--healer-colour)}.ffxiv_body .image_block_header_buttons > span.dps{--colour:var(--dps-colour)}.image_block_header_buttons > span.dk,.image_block_header_buttons > span.death-knight{--colour:var(--death-knight-colour)}.image_block_header_buttons > span.dh,.image_block_header_buttons > span.demon-hunter{--colour:var(--demon-hunter-colour)}.image_block_header_buttons > span.druid{--colour:var(--druid-colour);}.image_block_header_buttons > span.evoker{--colour:var(--evoker-colour);}.image_block_header_buttons > span.hunter{--colour:var(--hunter-colour);}.image_block_header_buttons > span.mage{--colour:var(--mage-colour);}.image_block_header_buttons > span.monk{--colour:var(--monk-colour);}.image_block_header_buttons > span.paladin{--colour:var(--paladin-colour);}.image_block_header_buttons > span.priest{--colour:var(--priest-colour);}.image_block_header_buttons > span.rogue{--colour:var(--rogue-colour);}.image_block_header_buttons > span.shaman{--colour:var(--shaman-colour);}.image_block_header_buttons > span.warlock{--colour:var(--warlock-colour);}.image_block_header_buttons > span.warrior{--colour:var(--warrior-colour);}.ffxiv_body .image_block_header_buttons > span.black-mage,.ffxiv_body .image_block_header_buttons > span.black-mage,.ffxiv_body .image_block_header_buttons > span.monk,.ffxiv_body .image_block_header_buttons > span.dragoon,.ffxiv_body .image_block_header_buttons > span.ninja,.ffxiv_body .image_block_header_buttons > span.samurai,.ffxiv_body .image_block_header_buttons > span.reaper,.ffxiv_body .image_block_header_buttons > span.machinist,.ffxiv_body .image_block_header_buttons > span.summoner,.ffxiv_body .image_block_header_buttons > span.bard,.ffxiv_body .image_block_header_buttons > span.dancer,.ffxiv_body .image_block_header_buttons > span.red-mage,.ffxiv_body .image_block_header_buttons > span.gunbreaker,.ffxiv_body .image_block_header_buttons > span.warrior,.ffxiv_body .image_block_header_buttons > span.paladin,.ffxiv_body .image_block_header_buttons > span.dark-knight,.ffxiv_body .image_block_header_buttons > span.white-mage,.ffxiv_body .image_block_header_buttons > span.scholar,.ffxiv_body .image_block_header_buttons > span.sage,.ffxiv_body .image_block_header_buttons > span.astrologian,.ffxiv_body .image_block_header_buttons > span.blue-mage,.ffxiv_body .image_block_header_buttons > span.viper,.ffxiv_body .image_block_header_buttons > span.pictomancer,.ffxiv_body .image_block_header_buttons > span.tank,.ffxiv_body .image_block_header_buttons > span.healer,.ffxiv_body .image_block_header_buttons > span.dps,.image_block_header_buttons > span.dk,.image_block_header_buttons > span.death-knight,.image_block_header_buttons > span.dh,.image_block_header_buttons > span.demon-hunter,.image_block_header_buttons > span.druid,.image_block_header_buttons > span.evoker,.image_block_header_buttons > span.hunter,.image_block_header_buttons > span.mage,.image_block_header_buttons > span.monk,.image_block_header_buttons > span.paladin,.image_block_header_buttons > span.priest,.image_block_header_buttons > span.rogue,.image_block_header_buttons > span.shaman,.image_block_header_buttons > span.warlock,.image_block_header_buttons > span.warrior{--bg-darken-rate:66%;--text-darken-rate:25%;background-color:color-mix(in srgb,var(--colour),#000 var(--bg-darken-rate));border-color:color-mix(in srgb,var(--colour),#000 50%);color:color-mix(in srgb,var(--colour),#000 var(--text-darken-rate)) !important}.image_block_header_buttons > span.shaman{--bg-darken-rate:72%;--text-darken-rate:0%}.ffxiv_body .image_block_header_buttons > span.selected.black-mage,.ffxiv_body .image_block_header_buttons > span.selected.black-mage,.ffxiv_body .image_block_header_buttons > span.selected.monk,.ffxiv_body .image_block_header_buttons > span.selected.dragoon,.ffxiv_body .image_block_header_buttons > span.selected.ninja,.ffxiv_body .image_block_header_buttons > span.selected.samurai,.ffxiv_body .image_block_header_buttons > span.selected.reaper,.ffxiv_body .image_block_header_buttons > span.selected.machinist,.ffxiv_body .image_block_header_buttons > span.selected.summoner,.ffxiv_body .image_block_header_buttons > span.selected.bard,.ffxiv_body .image_block_header_buttons > span.selected.dancer,.ffxiv_body .image_block_header_buttons > span.selected.red-mage,.ffxiv_body .image_block_header_buttons > span.selected.gunbreaker,.ffxiv_body .image_block_header_buttons > span.selected.warrior,.ffxiv_body .image_block_header_buttons > span.selected.paladin,.ffxiv_body .image_block_header_buttons > span.selected.dark-knight,.ffxiv_body .image_block_header_buttons > span.selected.white-mage,.ffxiv_body .image_block_header_buttons > span.selected.scholar,.ffxiv_body .image_block_header_buttons > span.selected.sage,.ffxiv_body .image_block_header_buttons > span.selected.astrologian,.ffxiv_body .image_block_header_buttons > span.selected.blue-mage,.ffxiv_body .image_block_header_buttons > span.selected.viper,.ffxiv_body .image_block_header_buttons > span.selected.pictomancer,.ffxiv_body .image_block_header_buttons > span.selected.tank,.ffxiv_body .image_block_header_buttons > span.selected.healer,.ffxiv_body .image_block_header_buttons > span.selected.dps,.image_block_header_buttons > span.selected.dk,.image_block_header_buttons > span.selected.death-knight,.image_block_header_buttons > span.selected.dh,.image_block_header_buttons > span.selected.demon-hunter,.image_block_header_buttons > span.selected.druid,.image_block_header_buttons > span.selected.evoker,.image_block_header_buttons > span.selected.hunter,.image_block_header_buttons > span.selected.mage,.image_block_header_buttons > span.selected.monk,.image_block_header_buttons > span.selected.paladin,.image_block_header_buttons > span.selected.priest,.image_block_header_buttons > span.selected.rogue,.image_block_header_buttons > span.selected.shaman,.image_block_header_buttons > span.selected.warlock,.image_block_header_buttons > span.selected.warrior{--bg-darken-rate:45%;border-color:unset;color:var(--colour) !important;filter:unset}.image_block_header_buttons > span.selected.druid{--bg-darken-rate:50%;}.image_block_header_buttons > span.selected.shaman{--bg-darken-rate:55%;}.image_block_content{background-color:#162638;display:none;padding:25px 20px 30px 20px}.image_block_content.selected{display:block}.image_block .image_block_content h3{display:block;color:#BEF0FF;font-size:18px;letter-spacing:0px;text-align:center;text-transform:uppercase}.image_block .image_block_content h4{display:block;color:#BEF0FF;letter-spacing:0px;text-align:center;text-transform:uppercase}.image_block div.spoiler{background-color:#1a3758;border:2px solid #2f5076;margin-left:0px;margin-right:0px;margin-top:25px}div.spoiler>span.spoiler_title{font-family:'Open Sans',sans-serif;font-weight:400;cursor:pointer;letter-spacing:0px;display:block;font-size:15px;color:white;position:relative;border:none;height:50px;margin-top:0px;padding:0px 0px 0px 20px;line-height:50px}div.spoiler.spoiler_on>span.spoiler_title{border-bottom:2px solid #2f5076}.spoiler_title:after{content:'show content \0025BE';position:absolute;right:20px;top:2px;color:#bef0ff;font-size:12px;letter-spacing:0px;font-weight:400}.spoiler_content{display:none;font-size:13px;color:#bef0ff;padding:5px 10px 5px 10px}@media only screen and (min-width:768px){.spoiler_content{padding:15px 20px 15px 20px;}}.spoiler_on .spoiler_content{display:block;}.spoiler.spoiler_on .spoiler_title:after{content:'hide content \0025B4'}.spoiler.spoiler_on .spoiler_content{display:block}.image_block_content .images{margin-right:20px;margin-bottom:30px;margin-top:20px;text-align:center}.image_block_content .images img{border:2px solid #427BBC;margin:10px}.image_block_header_buttons.hidden:not(.selected){display:none}#main.design_new_toc .page_title{--title-padding-bottom:25px;background-image:linear-gradient(to top,rgba(29,54,87,1),rgba(29,54,87,0) 32px,rgba(29,54,87,0));margin-bottom:0px}#main.design_new_toc .page_title h1{font-size:28px;padding-left:15px;padding-bottom:var(--title-padding-bottom)}#main.design_new_toc .page_breadcrumbs_new{margin-bottom:25px}#main.design_new_toc .page_content_header{height:auto}#main.design_new_toc .page_content_footer{border:1px solid #5a718e;height:auto}#main.design_new_toc .page_content_header{margin-top:0px}#main.design_new_toc .page_content_footer{position:relative;margin-top:20px;padding-top:13px;padding-bottom:13px}#main.design_new_toc .page_content_footer .page_comments{bottom:3px;}#main.design_new_toc .page_content_footer .page_forum{padding-left:19px;padding-right:90px}.page_content_header_meta{height:36px;padding-top:13px;padding-bottom:12px;position:relative;border:1px solid #5a718e;background-color:rgba(0,0,0,0.3)}#main.design_new_toc #bottom_leaderboard_container.leaderboard_container,#main.design_new_toc #bottom_bt.bt_container_l{padding-top:0px}.page_content_header_meta .page_author{position:absolute;left:19px;width:calc(100% - 150px)}.page_content_header_meta .page_author .local_date_date,.page_content_header_meta .page_author .local_date_hour{color:white;font-weight:bold}.page_content_header_meta .page_comments,.page_content_footer .page_comments{position:absolute;right:19px;bottom:12px}.page_content_header_intro{border:1px solid #5a718e;border-top:none;padding:29px;background-color:rgba(0,0,0,0.3)}.page_content_header_intro>span{color:white;font-size:20px;font-weight:600;margin-bottom:29px;display:block}.page_content_header_intro>p{font-size:16px;line-height:27px;margin-top:20px}.page_content_header_intro>p:first-child{margin-top:10px}.page_content_container_header_intro_no_right_padding .page_content_header_intro>p{max-width:initial;}.page_content_container_header_intro_no_right_padding .page_content_header_intro>ul{max-width:initial;}#main.design_new_toc .toc{border:1px solid #2f465d}.toc.toc_bottom_of_page{border:1px solid #2f465d;border-bottom:none;margin-bottom:30px;margin-top:30px}.toc_page_list{background-image:url('//static.icy-veins.com/images/common/toc-texture-light.jpg?v=3');border-bottom:1px solid #2f465d;padding:19px;background-position-y:top;padding-bottom:0px}.toc_page_list_header{position:relative}.toc_page_list_header span{display:block;padding-left:45px;font-size:20px;font-weight:600;color:white;padding-bottom:7px;padding-top:8px}.toc_page_list_header .toc_page_list_icon{position:absolute;left:0px;top:0px;display:inline-block;width:35px;height:35px;padding:0px;background-image:url("//static.icy-veins.com/images/common/toc-icon.svg")}.toc_page_center_item{text-align:center}.toc_page_list_items{padding-top:20px;padding-bottom:4px;display:flex;flex-wrap:wrap;justify-content:center;gap:0 12px}.toc_page_list_item{display:block;position:relative;font-weight:600;color:white;margin-bottom:19px;width:100%}.toc_page_center_item .toc_page_list_item{width:auto;display:inline-block;margin-bottom:0px}.toc_page_list_item>a{color:white;display:block}.toc_page_list_item>span{position:absolute;display:inline-block;background-image:url('//static.icy-veins.com/images/common/toc-inactive-page.svg');width:36px;height:41px;top:-4px;left:0px;font-size:20px;text-align:center;line-height:41px}.toc_page_list_item>a>span{display:block;height:31px;border:1px solid #a4d1ef;padding-left:33px;margin-left:15px;background-color:#233d58;font-size:14px;line-height:30px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:10px}.toc_page_center_item .toc_page_list_item>a>span{margin-left:0px;padding-left:15px;padding-right:15px}.toc_page_list_item.toc_page_list_item_padding{display:none;}.toc_page_list_item>a>span>a{color:white}.toc_page_list_item.selected>span{background-image:url('//static.icy-veins.com/images/common/toc-active-page.svg');width:37px;height:42px;top:-5px}.toc_page_list_item.selected>a>span{border-color:#ffff00;background-image:url('//static.icy-veins.com/images/common/toc-texture-active.jpg?v=3')}.toc_page_content{background-image:url('//static.icy-veins.com/images/common/toc-texture-dark.jpg?v=3');padding:19px}.toc_page_content_header{color:white;font-size:16px;font-weight:bold}.toc_page_content_items{padding-top:20px}.toc_two_columns{display:block;justify-content:space-between}.toc_two_columns>div{width:100%;display:block}.toc_two_columns>div:nth-child(2){margin-top:10px}.toc_two_columns li{border:1px solid #385575;border-radius:3px;font-weight:600;font-size:14px;height:27px;line-height:27px;padding-left:10px;padding-right:10px;margin-bottom:10px}.toc_two_columns>div li:last-child{margin-bottom:0px}.toc_two_columns>div:nth-child(1) li:last-child{margin-bottom:0px}.toc_two_columns>div li:last-child{margin-bottom:0px}.toc_two_columns li:hover{border-color:white}.toc_two_columns li>a:hover{color:white}.toc li>a{display:block;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:100%}.internal_links_block{}.internal_links_block h3{padding:11px 19px;font-weight:bold;font-size:18px;background-image:url('//static.icy-veins.com/images/common/toc-texture-light.jpg?v=3');border:1px solid #2f465d;color:white}.internal_links_block>div{margin-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between}.internal_links_block>div>div{display:inline-block;width:160px;height:160px;border:1px solid #5a718e;margin-bottom:20px}.internal_links_block>div{--internal-links-item-size:160px}.internal_links_block>div>div>a{font-family:'Open Sans Condensed',sans-serif;color:white;font-size:18px;font-weight:bold;display:block;width:var(--internal-links-item-size);height:var(--internal-links-item-size);position:relative;background-color:rgba(0,0,0,0.4)}.internal_links_block>div>div>a>span{position:absolute;bottom:10px;left:10px}#main.design_new_toc #bottom_rectangle_container{margin-top:20px;}#main.design_new_toc .changelog_wrapper{background-color:#0d1d32;border-top:1px solid #5a718e;border-bottom:1px solid #2f465e;position:relative}#main.design_new_toc .changelog_wrapper:after,.changelog_wrapper:before{content:"";width:1px;position:absolute;top:-1px;bottom:-1px;background-image:linear-gradient(#5a718e,#2f465e)}#main.design_new_toc .changelog_wrapper:after{right:-1px}#main.design_new_toc .changelog_wrapper:before{left:-1px}#main.design_new_toc .changelog_wrapper ul.changelog{list-style-type:none;padding:0px;margin:0px}#main.design_new_toc .changelog_wrapper ul.changelog>li{padding:8px 20px;border-bottom:1px solid #2f465d}#main.design_new_toc .changelog_wrapper>div{text-align:center;padding-top:10px;padding-bottom:10px;background-color:#13273c}#main.design_new_toc .changelog_wrapper div#changelog_show_all{color:#78dcff;}#main.design_new_toc .changelog_wrapper div#changelog_show_only_2{color:#78dcff;}.toc_top_right_extras{display:none}.internal_links_block_from_spec_to_boss_guide>span{font-size:16px;font-weight:bold}.with_class_icons .nav_content_block{padding-top:10px}.internal_links_block_same_class_guides .internal_link_block_wow a{background-color:rgba(0,0,0,0.3);}.internal_links_block_other_class_guides .internal_link_block_wow a{background-color:rgba(0,0,0,0.3);}.internal_links_block_raid_guides .internal_link_block_wow a{background-color:rgba(0,0,0,0.3);}.internal_links_block_encounter_guides .internal_link_block_wow a{background-color:rgba(0,0,0,0.3);}.internal_links_block_bfa_guides .internal_link_block_wow a{background-color:rgba(0,0,0,0.3);}.internal_links_block_pvp_guides .internal_link_block_wow a{background-color:rgba(0,0,0,0.3);}.internal_links_block_pve_guides .internal_link_block_wow a{background-color:rgba(0,0,0,0.3);}video{width:100%;max-width:100%}.spell_icon_span.inline_hero_talent > img{--size:1.15em;border-radius:50%;height:var(--size);width:var(--size)}span.sprite_wow_class{width:40px;height:40px;background-image:url('//static.icy-veins.com/sprites/wow-classes-4a3bcbab5fc336363e13ca20f4e4c418.png');display:inline-block}span.sprite_wow_class_blizzard{width:30px;height:30px;background-image:url('//static.icy-veins.com/sprites/wow-class-icons-ee1710a1f0c8d9c8c6e9d72df618bd00.webp');display:inline-block}span.sprite_wow_class_halfsize{width:20px;height:20px;background-image:url('//static.icy-veins.com/sprites/wow-classes-4a3bcbab5fc336363e13ca20f4e4c418.png');background-size:cover;display:inline-block}span.sprite_wow_class_inline{width:1em;height:1em;background-size:cover}@media only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-resolution:2dppx){span.sprite_wow_class,span.sprite_wow_class_halfsize{background-image:url('//static.icy-veins.com/sprites/wow-classes-retina-abf9ea985986792cd98a9bbd52997a2e.png');background-size:cover;}span.sprite_wow_class_blizzard{background-image:url('//static.icy-veins.com/sprites/wow-class-icons-2x-ca6a90d9e86ee29ce40371a992445d70.webp');background-size:cover;}}.nav_content_block span.sprite_wow_class,.nav_content_block span.sprite_wow_class_blizzard{position:absolute;bottom:0;left:0px}span.sprite_wow_class_dk{background-position:-0px 0px;}span.sprite_wow_class_death_knight{background-position:-0px 0px;}span.sprite_wow_class_druid{background-position:-40px 0px;}span.sprite_wow_class_hunter{background-position:-80px 0px;}span.sprite_wow_class_mage{background-position:-120px 0px;}span.sprite_wow_class_monk{background-position:-160px 0px;}span.sprite_wow_class_paladin{background-position:-200px 0px;}span.sprite_wow_class_priest{background-position:-240px 0px;}span.sprite_wow_class_rogue{background-position:-280px 0px;}span.sprite_wow_class_shaman{background-position:-320px 0px;}span.sprite_wow_class_warlock{background-position:-360px 0px;}span.sprite_wow_class_warrior{background-position:-400px 0px;}span.sprite_wow_class_dh{background-position:-440px 0px;}span.sprite_wow_class_demon_hunter{background-position:-440px 0px;}span.sprite_wow_class_evoker{background-position:-480px 0px;}span.sprite_wow_class_blizzard.sprite_wow_class_dk,span.sprite_wow_class_blizzard.sprite_wow_class_death_knight,span.sprite_wow_class_blizzard.sprite_wow_class_death-knight{background-position-x:0;}span.sprite_wow_class_blizzard.sprite_wow_class_dh,span.sprite_wow_class_blizzard.sprite_wow_class_demon_hunter,span.sprite_wow_class_blizzard.sprite_wow_class_demon-hunter{background-position-x:calc(1 * (100% / 12));}span.sprite_wow_class_blizzard.sprite_wow_class_druid{background-position-x:calc(2 * (100% / 12));}span.sprite_wow_class_blizzard.sprite_wow_class_evoker{background-position-x:calc(3 * (100% / 12));filter:brightness(1.7) ;}span.sprite_wow_class_blizzard.sprite_wow_class_hunter{background-position-x:calc(4 * (100% / 12));}span.sprite_wow_class_blizzard.sprite_wow_class_mage{background-position-x:calc(5 * (100% / 12));}span.sprite_wow_class_blizzard.sprite_wow_class_monk{background-position-x:calc(6 * (100% / 12));}span.sprite_wow_class_blizzard.sprite_wow_class_paladin{background-position-x:calc(7 * (100% / 12));}span.sprite_wow_class_blizzard.sprite_wow_class_priest{background-position-x:calc(8 * (100% / 12));}span.sprite_wow_class_blizzard.sprite_wow_class_rogue{background-position-x:calc(9 * (100% / 12));}span.sprite_wow_class_blizzard.sprite_wow_class_shaman{background-position-x:calc(10 * (100% / 12));}span.sprite_wow_class_blizzard.sprite_wow_class_warlock{background-position-x:calc(11 * (100% / 12));}span.sprite_wow_class_blizzard.sprite_wow_class_warrior{background-position-x:calc(12 * (100% / 12));}span.sprite_wow_class_halfsize.sprite_wow_class_dk,span.sprite_wow_class_halfsize.sprite_wow_class_death_knight{background-position-x:-0px;}span.sprite_wow_class_halfsize.sprite_wow_class_druid{background-position-x:-20px;translate:2px 0;}span.sprite_wow_class_halfsize.sprite_wow_class_hunter{background-position-x:-40px;translate:6px 0;}span.sprite_wow_class_halfsize.sprite_wow_class_mage{background-position-x:-60px;translate:3px 0;}span.sprite_wow_class_halfsize.sprite_wow_class_monk{background-position-x:-80px;}span.sprite_wow_class_halfsize.sprite_wow_class_paladin{background-position-x:-100px;}span.sprite_wow_class_halfsize.sprite_wow_class_priest{background-position-x:-120px;}span.sprite_wow_class_halfsize.sprite_wow_class_rogue{background-position-x:-140px;translate:1px 0;}span.sprite_wow_class_halfsize.sprite_wow_class_shaman{background-position-x:-160px;}span.sprite_wow_class_halfsize.sprite_wow_class_warlock{background-position-x:-180px;}span.sprite_wow_class_halfsize.sprite_wow_class_warrior{background-position-x:-200px;}span.sprite_wow_class_halfsize.sprite_wow_class_dh,span.sprite_wow_class_halfsize.sprite_wow_class_demon_hunter{background-position-x:-220px;}span.sprite_wow_class_halfsize.sprite_wow_class_evoker{background-position-x:-240px;translate:3px 0;}.nav_content_block_wow_class .nav_content_block_title{position:relative}.nav_content_block_wow_class .nav_content_block_title>span:nth-child(2){padding-left:35px}.nav_content_block_wow_class .nav_content_block_title > .sprite_wow_class_blizzard + span{padding-left:34px}
+</style>
+<link rel="stylesheet" type="text/css" href="//static.icy-veins.com/css/core-603dcbdc1d415cb337e4a8697e2eb9ce.css" />
+<script src="//static.icy-veins.com/javascript/core-190698f7435637c86079dc7f3b6566d6.js"></script>
+
+    <link href="//www.icy-veins.com/feed.atom" type="application/atom+xml" rel="alternate" title="Icy Veins - Feed" />
+    <link rel="icon" type="image/png" href="//static.icy-veins.com/images/common/favicon-high-resolution.png" />
+    <link rel="apple-touch-icon-precomposed" href="//static.icy-veins.com/images/common/favicon-high-resolution.png" />
+    <meta name="description" content="Read our raid guide for Mug&#39;Zee in the Liberation of Undermine raid featuring a comprehensive and also detailed guide." />
+    <meta name="robots" content="ALL" />
+    <meta name="author" content="Icy Veins 2020" />
+    <meta name="google-site-verification" content="vOHqu6UfhHWybU1OIwP8q01iUKojCv-1SGTvrCJ6qtk" />
+    <meta name="msvalidate.01" content="BBA2E69ADD6BD4A76395B2709092CCA6" />
+    <meta property="og:title" content="Mug'Zee Raid Guide in Liberation of Undermine"/>
+    <meta property="og:url" content="//www.icy-veins.com/wow/mug-zee-raid-guide-in-liberation-of-undermine"/>
+    <meta property="og:image" content="//static.icy-veins.com/images/wow/og-images/tww.jpg" />
+    <meta property="og:description" content="Read our raid guide for Mug&#39;Zee in the Liberation of Undermine raid featuring a comprehensive and also detailed guide."/>
+    <meta property="og:site_name" content="Icy Veins"/>
+    <meta property="og:type" content="article"/>
+    <meta property="fb:app_id" content="260815523933555"/>
+<script type="importmap">{"imports":{"@/cataclysm-talent-calculator.js":"//static.icy-veins.com/javascript/cataclysm-talent-calculator-efd557a8e7f5d835c382afbfaa50699f.js","@/d2-attack-speed-calculator-constants.js":"//static.icy-veins.com/javascript/d2-attack-speed-calculator-constants-a16014831a5204e9e26d49126a54424d.js","@/d2-attack-speed-calculator.js":"//static.icy-veins.com/javascript/d2-attack-speed-calculator-d72368dc1b106e1334296c4484d8ec40.js","@/d2-skill-calculator.js":"//static.icy-veins.com/javascript/d2-skill-calculator-a74be49557b360c41dbadc4c7d0a7e91.js","@/d3-rune-tooltips.js":"//static.icy-veins.com/javascript/d3-rune-tooltips-b2b788d0c0649cbc554eae4aa1d1188e.js","@/dragonflight-talent-calculator-ptr.js":"//static.icy-veins.com/javascript/dragonflight-talent-calculator-ptr-58d3e16ecde42b8cc118adfc0228f41b.js","@/dragonflight-talent-calculator.js":"//static.icy-veins.com/javascript/dragonflight-talent-calculator-259f4057e4f791c18df72f8225d79f6a.js","@/ffxiv-crafting.js":"//static.icy-veins.com/javascript/ffxiv-crafting-20a65b7daf4d5d59b111a300c9cd0e89.js","@/ffxiv-rotation.js":"//static.icy-veins.com/javascript/ffxiv-rotation-762ef2f1c915fbb3d8dabacb8eed987c.js","@/genshin-map.js":"//static.icy-veins.com/javascript/genshin-map-7c87c77fcdf88b5ef77782de6e8e45a6.js","@/genshin-team-builder.js":"//static.icy-veins.com/javascript/genshin-team-builder-025989fd46cf3495608e1b0b8c69a9cf.js","@/gig-widget.js":"//static.icy-veins.com/javascript/gig-widget-02c421c4b873ebfe4b2c5c8200d0fdbf.js","@/highcharts.js":"//static.icy-veins.com/javascript/highcharts-3be736da182451e135ccf4893329aa4e.js","@/highslide.js":"//static.icy-veins.com/javascript/highslide-3e1f2b42798a8ec5675760439c8ef9b6.js","@/icy-player.js":"//static.icy-veins.com/javascript/icy-player-bc09d89cd42a64a00efb3a0789e6aa82.js","@/icyveins-bl3.js":"//static.icy-veins.com/javascript/icyveins-bl3-33b4fe7e35d1e23cfb648f0c77cdc457.js","@/icyveins-cataclysm.js":"//static.icy-veins.com/javascript/icyveins-cataclysm-44e76d9d09822f975793b8616f571591.js","@/icyveins-classic.js":"//static.icy-veins.com/javascript/icyveins-classic-de9f6ed83a274cf3295bb648a52bc90d.js","@/icyveins-collapsible-tier-list.js":"//static.icy-veins.com/javascript/icyveins-collapsible-tier-list-26907f12a8fdb11803c17a769c01fd32.js","@/icyveins-common.js":"//static.icy-veins.com/javascript/icyveins-common-4ace8101680e64e91c97e522af99734f.js","@/icyveins-content.js":"//static.icy-veins.com/javascript/icyveins-content-ebca7b9b0935ee0fb796192264797d3d.js","@/icyveins-d2.js":"//static.icy-veins.com/javascript/icyveins-d2-c019cb661e4dd870949cde64e5059d20.js","@/icyveins-d3.js":"//static.icy-veins.com/javascript/icyveins-d3-ad31a7a1a89957317314028f6f6dc3b7.js","@/icyveins-d4.js":"//static.icy-veins.com/javascript/icyveins-d4-b5f8584c51e9adfed9141e7b3089b630.js","@/icyveins-diablo-immortal.js":"//static.icy-veins.com/javascript/icyveins-diablo-immortal-59469a06100137a501f012c46a95a75d.js","@/icyveins-ffxiv.js":"//static.icy-veins.com/javascript/icyveins-ffxiv-0e75b53eff678e4317a299210832c9c6.js","@/icyveins-forums.js":"//static.icy-veins.com/javascript/icyveins-forums-d41d8cd98f00b204e9800998ecf8427e.js","@/icyveins-genshin.js":"//static.icy-veins.com/javascript/icyveins-genshin-62a9a184ea5323ee8bc5b74298907be7.js","@/icyveins-glossary.js":"//static.icy-veins.com/javascript/icyveins-glossary-e7d30e10e7dd73364c7e4cd061d160c6.js","@/icyveins-hearthstone.js":"//static.icy-veins.com/javascript/icyveins-hearthstone-80b674f3f96134e77b89877ba20ed310.js","@/icyveins-heroes.js":"//static.icy-veins.com/javascript/icyveins-heroes-1800f56b318b7ec6d8492c75234b281f.js","@/icyveins-image-block.js":"//static.icy-veins.com/javascript/icyveins-image-block-87d2b2ebfe6a9a914f0b73b15102a268.js","@/icyveins-last-epoch-dungeon-timer.js":"//static.icy-veins.com/javascript/icyveins-last-epoch-dungeon-timer-476e6beb87b5cc3d73aca2df03eb1376.js","@/icyveins-le.js":"//static.icy-veins.com/javascript/icyveins-le-ad513caa1a2ae2535d50e1cea3da5f4a.js","@/icyveins-lost-ark.js":"//static.icy-veins.com/javascript/icyveins-lost-ark-2d51b98fc9f42785f19871277ca5906c.js","@/icyveins-overwatch.js":"//static.icy-veins.com/javascript/icyveins-overwatch-6f0f886433560970d146cfd9aec243c6.js","@/icyveins-sc2.js":"//static.icy-veins.com/javascript/icyveins-sc2-447dd6f8a9a90bbb19b21a6517464b90.js","@/icyveins-tbc.js":"//static.icy-veins.com/javascript/icyveins-tbc-2b68c7895e6b9c85366a0de1c9c0dfdd.js","@/icyveins-video-player.js":"//static.icy-veins.com/javascript/icyveins-video-player-eeba4b3f15bf0bddd0b9c408bd0d9a42.js","@/icyveins-wotlk.js":"//static.icy-veins.com/javascript/icyveins-wotlk-d789b471716d4d3fa74695ee06f6445a.js","@/icyveins-wow.js":"//static.icy-veins.com/javascript/icyveins-wow-bbee1172a5c512527ddec3a3f961ef5a.js","@/jquery-ui.js":"//static.icy-veins.com/javascript/jquery-ui-19d036b444245475ad42b29057a49f44.js","@/jquery.js":"//static.icy-veins.com/javascript/jquery-8101d596b2b8fa35fe3a634ea342d7c3.js","@/lost-ark-map.js":"//static.icy-veins.com/javascript/lost-ark-map-015543ebc5632b4c9e971c0be0720085.js","@/lost-ark-skill-builder-embed.js":"//static.icy-veins.com/javascript/lost-ark-skill-builder-embed-09dd0ac2df1dc8bf604d56facc1e0827.js","@/lost-ark-skill-builder.js":"//static.icy-veins.com/javascript/lost-ark-skill-builder-fd451046947c7a8917c97e0a744b4b31.js","@/premium.js":"//static.icy-veins.com/javascript/premium-557301522403682eb2d9a92a32dc8271.js","@/soulbinds-gig.js":"//static.icy-veins.com/javascript/soulbinds-gig-580723ab486dce3307cd06319b031197.js","@/soulbinds.js":"//static.icy-veins.com/javascript/soulbinds-1b0b0fc98937f8f7933aa85c80feac1d.js","@/tbc-talent-calculator.js":"//static.icy-veins.com/javascript/tbc-talent-calculator-dec605e250884102da27c6bdf8d0a4b2.js","@/twitch.js":"//static.icy-veins.com/javascript/twitch-9ca27fdb7ab3828826d1b3aa1d306913.js","@/tww-talent-calculator.js":"//static.icy-veins.com/javascript/tww-talent-calculator-4ba4311475ac8f9d0349b28ecf509e94.js","@/ugg-interlinking.js":"//static.icy-veins.com/javascript/ugg-interlinking-00c69987c46aaeb1a656c3beb65bcde1.js","@/wotlk-talent-calculator-ptr.js":"//static.icy-veins.com/javascript/wotlk-talent-calculator-ptr-094a417a8d368d990cee4edaac116d20.js","@/wotlk-talent-calculator.js":"//static.icy-veins.com/javascript/wotlk-talent-calculator-8a001f5be9b2af74069befa8897042f6.js"}}</script>
+
+    <script src="//static.icy-veins.com/javascript/./jquery-8101d596b2b8fa35fe3a634ea342d7c3.js"></script>
+    <script src="//static.icy-veins.com/javascript/./icyveins-common-4ace8101680e64e91c97e522af99734f.js"></script>
+    <script src="//static.icy-veins.com/javascript/./icyveins-content-ebca7b9b0935ee0fb796192264797d3d.js"></script>
+    <script src="//static.icy-veins.com/javascript/./icyveins-wow-bbee1172a5c512527ddec3a3f961ef5a.js"></script>
+    <script src="//static.icy-veins.com/javascript/./ugg-interlinking-00c69987c46aaeb1a656c3beb65bcde1.js"></script>
+
+
+<link rel="canonical" href="https://www.icy-veins.com/wow/mug-zee-raid-guide-in-liberation-of-undermine" />
+<script type="application/ld+json">
+  {
+    "@context" : "https://schema.org/",
+    "@type" : "Organization",
+    "name" : "Icy Veins",
+    "url" : "https://www.icy-veins.com/",
+    "sameAs" : [
+      "https://www.facebook.com/icyveinscom",
+      "https://twitter.com/icyveins",
+      "https://www.youtube.com/user/icyveinscom",
+      "https://www.twitch.tv/icyveinscom"
+    ]
+  }
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type":"WebPage",
+    "@id":"https://www.icy-veins.com/wow/mug-zee-raid-guide-in-liberation-of-undermine"
+  },
+  "name":"Icy Veins",
+  "url":"https://www.icy-veins.com/wow/mug-zee-raid-guide-in-liberation-of-undermine",
+  "publisher": {
+    "@type":"Organization",
+    "name":"Logo Icy Veins",
+    "logo": {
+      "@type":"ImageObject",
+      "url":"https://static.icy-veins.com/images/common/icy-veins-icon-social.png",
+      "width":400,
+      "height":400
+    }
+  },
+  "headline":"Mug'Zee Raid Guide in Liberation of Undermine",
+  "dateModified":"2025-03-03T16:23:00+00:00",
+  "datePublished":"2025-03-03T06:23:00+00:00",
+  "author":{
+    "@type":"Person",
+    "name":"Panthea"
+  },
+  "description":"Read our raid guide for Mug'Zee in the Liberation of Undermine raid featuring a comprehensive and also detailed guide.",
+  "image": {
+    "@type":"ImageObject",
+    "url":"//static.icy-veins.com/images/wow/og-images/tww.jpg",
+    "width":999,
+    "height":664
+  }
+}
+</script>
+
+
+<script>
+  window.icyveins = { ...window.icyveins, ...{"layout":{"minifiedNavHeight":36,"navHeight":42}} }
+</script>
+
+<script>
+<!-- Hotjar Tracking Code for icy-veins.com -->
+document.addEventListener("DOMContentLoaded", function(event) {
+  (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:3207955,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+});
+</script>
+  </head>
+  <body class="iv_body">
+    <div id="site-background"></div>
+    <div id="main" class="design_new_toc">
+      <div id="header" class="background">
+        <div id="user_bar">
+          <ul id="elUserNav" class="ipsList_inline cSignedOut ipsClearfix ipsResponsive_hidePhone ipsResponsive_block">
+            <li id="social_media">
+              <div>
+                <a title="Twitch" href="https://www.twitch.tv/icyveinscom"><span class="sprite_social sprite_social_twitch"></span></a>
+                <a title="Discord" href="https://discord.gg/ZaufvyM"><span class="sprite_social sprite_social_discord"></span></a>
+                <a title="Facebook" href="https://www.facebook.com/icyveinscom"><span class="sprite_social sprite_social_facebook"></span></a>
+                <a title="X" href="https://x.com/icyveins"><span class="sprite_social sprite_social_twitter"></span></a>
+                <a title="Youtube" href="https://www.youtube.com/channel/UCTs3du1OXMl0tTXiABbLbdA"><span class="sprite_social sprite_social_youtube"></span></a>
+                <a title="News Feed" href="//www.icy-veins.com/feed.atom"><span class="sprite_social sprite_social_feed"></span></a>
+                <a title="E-mail Us" href="/cdn-cgi/l/email-protection#5c3f3332283d3f281c353f25712a3935322f723f3331"><span class="sprite_social sprite_social_email"></span></a>
+                <a title="TikTok" href="https://www.tiktok.com/@icy.veins"><span class="sprite_social sprite_social_tiktok"></span></a>
+              </div>
+            </li>
+
+            <li class="elUserNav_sep"></li>
+            <li id="go_premium">
+              <div>
+                <a title="Go premium" href="https://www.icy-veins.com/forums/premium"><span></span></a>
+              </div>
+            </li>
+
+            <li class="elUserNav_sep"></li>
+            <li id="forums_link" class="header">
+              <div>
+                <a href="https://www.icy-veins.com/forums/">
+                  <span class="user_bar_img"></span><span>FORUMS</span>
+                </a>
+              </div>
+            </li>
+            <li class="elUserNav_sep"></li>
+            <li id="masterclass_link" class="header">
+              <div>
+                <a href="//www.icy-veins.com/wow/masterclass">
+                  <span class="user_bar_img"></span><span>MASTERCLASS</span>
+                </a>
+              </div>
+            </li>
+            <li class="elUserNav_sep"></li>
+            <li id="search_link" class="header">
+              <div>
+                <a href="//www.icy-veins.com/search" class="header">
+                  <span class="user_bar_img"></span><span>SEARCH</span>
+                </a>
+              </div>
+            </li>
+            <li class="elUserNav_sep"></li>
+
+
+            <li id="elSignInLink">
+              <div>
+                <a href="https://www.icy-veins.com/forums/login/" data-ipsmenu-closeonclick="false" data-ipsmenu="" id="elUserSignIn">
+                  <span></span>
+                </a>
+
+                <div id="elUserSignIn_menu" class="ipsMenu ipsMenu_auto ipsHide">
+                  <form accept-charset="utf-8" method="post" action="https://www.icy-veins.com/forums/login/" data-controller="core.global.core.login">
+                    <input type="hidden" name="csrfKey" value="125985b7359919bd7c0eeba7bde3ad90">
+                    <input type="hidden" name="ref" value="aHR0cHM6Ly93d3ctZGV2LmljeS12ZWlucy5jb20vZm9ydW1zLz9hcHA9aWN5dmVpbnNwcyZtb2R1bGU9dGVzdCZjb250cm9sbGVyPXRvcGJhciZkbz12aWV3">
+                    <div data-role="loginForm">
+
+
+
+                      <div class="ipsColumns ipsColumns_noSpacing">
+                        <div class="ipsColumn ipsColumn_wide" id="elUserSignIn_internal">
+
+                          <div class="ipsPad ipsForm ipsForm_vertical">
+                            <h4 class="ipsType_sectionHead">Sign In</h4>
+                            <br><br>
+                            <ul class="ipsList_reset">
+                              <li class="ipsFieldRow ipsFieldRow_noLabel ipsFieldRow_fullWidth">
+
+
+                                <input type="text" placeholder="Display Name or Email Address" name="auth">
+
+                              </li>
+                              <li class="ipsFieldRow ipsFieldRow_noLabel ipsFieldRow_fullWidth">
+                                <input type="password" placeholder="Password" name="password">
+                              </li>
+                              <li class="ipsFieldRow ipsFieldRow_checkbox ipsClearfix">
+                                <span class="ipsCustomInput">
+                                  <input type="checkbox" name="remember_me" id="remember_me_checkbox" value="1" checked="" aria-checked="true">
+                                  <span></span>
+                                </span>
+                                <div class="ipsFieldRow_content">
+                                  <label class="ipsFieldRow_label" for="remember_me_checkbox">Remember me</label>
+                                  <span class="ipsFieldRow_desc">Not recommended on shared computers</span>
+                                </div>
+                              </li>
+
+                              <li class="ipsFieldRow ipsFieldRow_checkbox ipsClearfix">
+                                <span class="ipsCustomInput">
+                                  <input type="checkbox" name="anonymous" id="anonymous_checkbox" value="1" aria-checked="false">
+                                  <span></span>
+                                </span>
+                                <div class="ipsFieldRow_content">
+                                  <label class="ipsFieldRow_label" for="anonymous_checkbox">Sign in anonymously</label>
+                                </div>
+                              </li>
+
+                              <li class="ipsFieldRow ipsFieldRow_fullWidth">
+                                <br>
+                                <button type="submit" name="_processLogin" value="usernamepassword" class="ipsButton ipsButton_primary ipsButton_small" id="elSignIn_submit">Sign In</button>
+
+                                <br>
+                                <p class="ipsType_right ipsType_small">
+
+                                <a href="https://www.icy-veins.com/forums/lostpassword/" data-ipsdialog="" data-ipsdialog-title="Forgot your password?">
+
+                                  Forgot your password?</a>
+                                </p>
+
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="ipsColumn ipsColumn_wide">
+                          <div class="ipsPad" id="elUserSignIn_external">
+                            <div class="ipsAreaBackground_light ipsPad_half">
+
+
+                              <div class="ipsPad_half ipsType_center">
+
+
+                                <button type="submit" name="_processLogin" value="2" class="ipsButton ipsButton_verySmall ipsButton_fullWidth ipsSocial ipsSocial_facebook" style="background-color: #3a579a">
+
+                                  <span class="ipsSocial_icon">
+
+                                    <i class="fa fa-facebook-official"></i>
+
+                                  </span>
+                                  <span class="ipsSocial_text" style="line-height: 32px;">Sign in with Facebook</span>
+
+                                </button>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </li>
+
+            <li id="elRegisterLink">
+              <div>
+                <span id="new_to_icy_veins"></span>
+
+                <a href="https://www.icy-veins.com/forums/register/" data-ipsdialog="" data-ipsdialog-size="narrow" data-ipsdialog-title="Sign Up" id="elRegisterButton" class="ipsButton ipsButton_normal ipsButton_primary"><span></span></a>
+              </div>
+
+            </li>
+
+          </ul>
+        </div>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/email-decode.min.js-cb/cloudflare-static/email-decode.min.js"></script><script>
+  jQuery.get('https://use.fontawesome.com/6cbc36349f.js', function() {});
+
+  if (window.location.host != "www-new-design.icy-veins.com") {
+    jQuery.get('/forums/?app=icyveinsps&module=test&controller=topbar&do=view', { "_": jQuery.now() }, function (response) {
+      if (typeof response === "object" && response.hasOwnProperty('redirect')) {
+        window.location = response.redirect;
+        return;
+      }
+      // jQuery('#user_bar').replaceWith('<div id="user_bar">' + response + '</div>');
+      jQuery('#user_bar').html(response);
+      document.querySelectorAll("#go_premium a, #go_premium a span").forEach(function(item, index) {
+        item.addEventListener("click", function(event) {
+          writeToLocalStorage('premium_origin', JSON.stringify({'type': 'top-link', 'date': new Date()}));
+        });
+      });
+      jQuery('span.ipsSocial_text').css('line-height', '32px');
+      jQuery('#elUserNav').show();
+      jQuery("#elSignInLink>a").click(function(e) {
+        if (jQuery("#elUserSignIn_menu").is(":visible")) {
+          jQuery("#elUserSignIn_menu").hide();
+        } else {
+          jQuery("#elUserSignIn_menu").show();
+        }
+        e.preventDefault();
+        return false;
+      });
+      jQuery("body").click(function(e) {
+        if (jQuery("#elUserSignIn_menu").is(":visible") && e.target.getAttribute("id") != "elSignInLink") {
+          element = e.target;
+          while (element.getAttribute("id") != "elUserSignIn_menu" && element.nodeName.toLowerCase() != "body") {
+            element = element.parentElement;
+          }
+          if (element.getAttribute("id") != "elUserSignIn_menu") {
+            jQuery("#elUserSignIn_menu").hide();
+          }
+        }
+      });
+
+      var currenturl = btoa(window.location.href);
+      jQuery("#elSignInLink>a").attr('href',jQuery("#elSignInLink>a").attr('href') + '?ref=' + currenturl);
+
+      var _ipsMenuList = ["elUserLink", "elCreateNew", "elFullNotifications", "elFullInbox", "elFullReports"];
+
+      _ipsMenuList.forEach(function(el) {
+        jQuery(document).click( function (e) {
+          if (jQuery("#" + el + "_menu").is(":visible") && e.target.getAttribute("id") != el) {
+            element = e.target;
+            while (element.getAttribute("id") != el + "_menu" && element.nodeName.toLowerCase() != "body") {
+              element = element.parentElement;
+            }
+            if (element.getAttribute("id") != el + "_menu") {
+              jQuery("#" + el + "_menu").hide();
+            }
+          }
+        });
+        jQuery(document).on('click', "#" + el, function () {
+          console.log(jQuery(this).find('.ipsDataList'));
+          if (jQuery("#" + el + "_menu").is(":visible")) {
+            jQuery("#" + el + "_menu").hide();
+          } else {
+            if (jQuery('#user_bar .ipsMenu').is(":visible")) {
+              jQuery('#user_bar .ipsMenu').hide();
+            }
+
+            if (jQuery("#" + el + "_menu").find('.ipsDataList').length && !jQuery("#" + el + "_menu").find('.ipsDataList').hasClass('loaded')) {
+              jQuery("#" + el + "_menu").find('.ipsDataList').addClass('loaded');
+              var url = null;
+              switch (el) {
+                case 'elFullNotifications':
+                  url = '/forums/index.php?app=core&module=system&controller=notifications';
+                  break;
+                case 'elFullInbox':
+                  url = '/forums/index.php?app=core&module=messaging&controller=messenger&overview=1&_fromMenu=1';
+                  break;
+                case 'elFullReports':
+                  url = '/forums/index.php?app=core&module=modcp&controller=modcp&tab=reports&overview=1';
+                  break;
+              }
+              if (url) {
+                jQuery.get(url, function (content) {
+                  console.log(content);
+                  jQuery("#" + el + "_menu").find('.ipsDataList').html(content.data);
+                });
+              }
+            }
+
+            jQuery("#" + el + "_menu").show();
+          }
+          return false;
+        });
+      });
+
+      return false;
+    })
+  }
+        </script>
+        <span class="mobile_menu_button" id="mobile_menu_button_show"></span>
+        <span class="mobile_menu_button" id="mobile_menu_button_close">x</span>
+        <div id="icy_veins_logo">
+          <a href="//www.icy-veins.com/"><span></span></a>
+        </div>
+        <div id="icy_veins_mobile_logo">
+          <a href="//www.icy-veins.com/"><span></span></a>
+        </div>
+        <span id="tagline" class="shadowed_header">NEWS &amp; GUIDES</span>
+        <div id="games" class="shadowed_header">
+          <div id="game_wow" class="selected game-new"><a href="//www.icy-veins.com/wow/" title="Icy Veins - World of Warcraft guides"><span class="sprite_games sprite_games_wow"></span><span class="game_name">WoW</span></a>
+          </div><div id="game_mhw" class="not_selected game-new"><a href="//www.icy-veins.com/monster-hunter-wilds/"  title="Icy Veins - Monster Hunter Wilds guides"><span class="sprite_games sprite_games_mhw"></span><span class="game_name">MH Wilds</span></a>
+          </div><div id="game_wow_classic" class="not_selected"><a href="//www.icy-veins.com/wow-classic/"  title="Icy Veins - WoW Classic guides"><span class="sprite_games sprite_games_wow_classic"></span><span class="game_name">WoW Classic</span></a>
+          </div><div id="game_cataclysm_classic" class="not_selected"><a href="//www.icy-veins.com/cataclysm-classic/"  title="Icy Veins - Cataclysm Classic guides"><span class="sprite_games sprite_games_cataclysm_classic"></span><span class="game_name">Cata Classic</span></a>
+          </div><div id="game_ffxiv" class="not_selected"><a href="//www.icy-veins.com/ffxiv/" title="Icy Veins - Final Fantasy XIV guides"><span class="sprite_games sprite_games_ffxiv"></span><span class="game_name">FFXIV</span></a>
+          </div><div id="game_zzz" class="not_selected"><a href="//www.icy-veins.com/zenless-zone-zero/"  title="Icy Veins - Zenless zone Zero guides"><span class="sprite_games sprite_games_zzz"></span><span class="game_name">ZZZ</span></a>
+          </div><div id="game_d4" class="not_selected"><a href="//www.icy-veins.com/d4/" title="Icy Veins - Diablo IV guides"><span class="sprite_games sprite_games_d4"></span><span class="game_name">Diablo IV</span></a>
+          </div><div id="game_plus"><span class="sprite_games sprite_games_plus"></span><span class="game_name">More Games</span>
+            <div>
+              <div id="game_aoc" class="not_selected"><a href="//www.icy-veins.com/ashes-of-creation/"  title="Icy Veins - Ashes of Creation guides"><span class="sprite_games sprite_games_aoc"></span><span class="game_name">Ashes of Creation</span></a></div>
+              <div id="game_heroes" class="not_selected"><a href="//www.icy-veins.com/heroes/"  title="Icy Veins - Heroes of the Storm guides"><span class="sprite_games sprite_games_heroes"></span><span class="game_name">Heroes</span></a></div>
+              <div id="game_last_epoch" class="not_selected"><a href="//www.icy-veins.com/last-epoch/" title="Icy Veins - Last Epoch guides"><span class="sprite_games sprite_games_last_epoch"></span><span class="game_name">Last Epoch</span></a></div>
+              <div id="game_genshin" class="not_selected"><a href="//www.icy-veins.com/genshin-impact/" title="Icy Veins - Genshin Impact guides"><span class="sprite_games sprite_games_genshin"></span><span class="game_name">Genshin Impact</span></a></div>
+			  <div id="game_new_world" class="not_selected"><a href="//www.icy-veins.com/new-world/"  title="Icy Veins - New World guides"><span class="sprite_games sprite_games_nw"></span><span class="game_name">New World</span></a></div>
+			  <div id="game_d3" class="not_selected"><a href="//www.icy-veins.com/d3/" title="Icy Veins - Diablo 3 guides"><span class="sprite_games sprite_games_d3"></span><span class="game_name">Diablo III</span></a></div>
+              <div id="game_d2" class="not_selected"><a href="//www.icy-veins.com/d2/"  title="Icy Veins - Diablo 2 guides"><span class="sprite_games sprite_games_d2"></span><span class="game_name">Diablo II</span></a></div>
+              <div id="game_poe" class="not_selected"><a href="https://www.poe-vault.com/"  title="PoE Vault - Path of Exile guides"><span class="sprite_games sprite_games_poe"></span><span class="game_name">Path of Exile</span></a></div>
+              <div id="game_tbc_classic" class="not_selected"><a href="//www.icy-veins.com/tbc-classic/"  title="Icy Veins - TBC Classic guides"><span class="sprite_games sprite_games_tbc_classic"></span><span class="game_name">TBC Classic</span></a></div>
+              <div id="game_wotlk_classic" class="not_selected"><a href="//www.icy-veins.com/wotlk-classic/"  title="Icy Veins - WotLK Classic guides"><span class="sprite_games sprite_games_wotlk_classic"></span><span class="game_name">WotLK Classic</span></a></div>
+              <div id="game_brighter_shores" class="not_selected"><a href="//www.icy-veins.com/brighter-shores/"  title="Icy Veins - Brighter Shores guides"><span class="sprite_games sprite_games_bs"></span><span class="game_name">Brighter Shores</span></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div id="nav">
+<div class="nav_entry nav_entry_with_content" id="nav_classes"><a class="header" href="//www.icy-veins.com/wow/class-guides" title="Icy Veins - World of Warcraft Class Guides"><span>CLASSES</span><span class="nav_indicator"></span></a>
+  <div id="nav_classes_section" class="nav_content with_class_icons">
+    <div class="nav_content_block">
+<div class="nav_content_block_title header">
+General
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/how-to-sim-your-wow-character-a-guide-to-raidbots">Simming Your Character</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/healing-guide">Healing Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/tanking-guide">Tanking Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/how-to-set-up-your-ui-in-world-of-warcraft">Set Up your UI</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_dk"></span><span class="dk">Death Knight</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/death-knight-guide">Death Knight Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/blood-death-knight-pve-tank-guide">Blood</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/frost-death-knight-pve-dps-guide">Frost</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/unholy-death-knight-pve-dps-guide">Unholy</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_dh"></span><span class="dh">Demon Hunter</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/demon-hunter-guide">Demon Hunter Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/havoc-demon-hunter-pve-dps-guide">Havoc</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/vengeance-demon-hunter-pve-tank-guide">Vengeance</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_druid"></span><span class="druid">Druid</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/druid-guide">Druid Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/balance-druid-pve-dps-guide">Balance</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/feral-druid-pve-dps-guide">Feral</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/guardian-druid-pve-tank-guide">Guardian</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/restoration-druid-pve-healing-guide">Restoration</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_evoker"></span><span class="evoker">Evoker</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/evoker-guide">Evoker Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/augmentation-evoker-pve-dps-guide">Augmentation</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/devastation-evoker-pve-dps-guide">Devastation</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/preservation-evoker-pve-healing-guide">Preservation</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_hunter"></span><span class="hunter">Hunter</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/hunter-guide">Hunter Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/beast-mastery-hunter-pve-dps-guide">Beast Mastery</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/marksmanship-hunter-pve-dps-guide">Marksmanship</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/survival-hunter-pve-dps-guide">Survival</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_mage"></span><span class="mage">Mage</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/mage-guide">Mage Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/arcane-mage-pve-dps-guide">Arcane</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/fire-mage-pve-dps-guide">Fire</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/frost-mage-pve-dps-guide">Frost</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_monk"></span><span class="monk">Monk</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/monk-guide">Monk Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/brewmaster-monk-pve-tank-guide">Brewmaster</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/mistweaver-monk-pve-healing-guide">Mistweaver</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/windwalker-monk-pve-dps-guide">Windwalker</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_paladin"></span><span class="paladin">Paladin</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/paladin-guide">Paladin Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/holy-paladin-pve-healing-guide">Holy</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/protection-paladin-pve-tank-guide">Protection</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/retribution-paladin-pve-dps-guide">Retribution</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_priest"></span><span class="priest">Priest</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/priest-guide">Priest Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/discipline-priest-pve-healing-guide">Discipline</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/holy-priest-pve-healing-guide">Holy</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/shadow-priest-pve-dps-guide">Shadow</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_rogue"></span><span class="rogue">Rogue</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/rogue-guide">Rogue Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/assassination-rogue-pve-dps-guide">Assassination</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/outlaw-rogue-pve-dps-guide">Outlaw</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/subtlety-rogue-pve-dps-guide">Subtlety</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_shaman"></span><span class="shaman">Shaman</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/shaman-guide">Shaman Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/elemental-shaman-pve-dps-guide">Elemental</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/enhancement-shaman-pve-dps-guide">Enhancement</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/restoration-shaman-pve-healing-guide">Restoration</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_warlock"></span><span class="warlock">Warlock</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/warlock-guide">Warlock Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/affliction-warlock-pve-dps-guide">Affliction</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/demonology-warlock-pve-dps-guide">Demonology</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/destruction-warlock-pve-dps-guide">Destruction</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_warrior"></span><span class="warrior">Warrior</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/warrior-guide">Warrior Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/arms-warrior-pve-dps-guide">Arms</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/fury-warrior-pve-dps-guide">Fury</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/protection-warrior-pve-tank-guide">Protection</a></div>
+</div>
+</div>
+  </div>
+</div><div class="nav_entry nav_entry_with_content" id="nav_tww"><a class="header" href="//www.icy-veins.com/wow/the-war-within-patch-11-0-overview" title="Icy Veins - World of Warcraft: The War Within"><span>THE WAR WITHIN</span><span class="nav_indicator"></span></a>
+  <div id="nav_tww_section" class="nav_content ">
+    <div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+The War Within
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-war-within-patch-11-0-overview">The War Within Overview</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-war-within-to-do-list">To-Do List</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/choose-your-main-guide">Choose Your Main</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/war-within-leveling-guide">Leveling Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/delves-guide">Delves</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/renown-guide">Renown</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/war-within-world-boss-guide">World Bosses</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/warbands-guide">Warbands</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/flying-guide">Flying</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/great-vault-guide">Weekly Chest</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/catalyst-guide">Catalyst Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/world-of-warcraft-gear-upgrading-guide">Gear Upgrading</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/siren-isle-guide">Siren Isle</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/undermine-zone-guide">Undermine Zone Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/drive-guide">D.R.I.V.E. Guide</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+World Events
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/world-events-guide">World Events Overview</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/worldsoul-memory-event-guide">Worldsoul Memory</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/theater-troupe-event-guide">Theater Troupe</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/awakening-the-machine-event-guide">Awakening the Machine</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/spreading-the-light-event-guide">Spreading the Light</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Season 2
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-war-within-mythic-season-2-guide">Mythic+ Season 2</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-war-within-pvp-season-2-guide">PvP Season 2</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Reputation
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/renown-guide">Renown Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/council-of-dornogal-renown-guide">Council of Dornogal Renown Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/assembly-of-the-deeps-renown-guide">The Assembly of the Deeps Renown Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/hallowfall-arathi-renown-guide">Hallowfall Arathi Renown Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/severed-threads-renown-guide">The Severed Threads Renown Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/cartels-of-undermine-renown-guide">Cartels of Undermine</a></div>
+</div>
+</div>
+  </div>
+</div><div class="nav_entry nav_entry_with_content" id="nav_tier-lists"><a class="header" href="//www.icy-veins.com/wow/tier-lists" title="Icy Veins - World of Warcraft Tier Lists"><span>TIER LISTS</span><span class="nav_indicator"></span></a>
+  <div id="nav_tier-lists_section" class="nav_content ">
+    <div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Mythic+ Tier Lists
+</div>
+<div class="nav_content_entries nav_content_buttons">
+<a class="nav_content_block_entry_button nav_wow_tier_list_dps" href="//www.icy-veins.com/wow/mythic-dps-tier-list">DPS Tier List</a>
+<a class="nav_content_block_entry_button nav_wow_tier_list_tank" href="//www.icy-veins.com/wow/mythic-tank-tier-list">Tank Tier List</a>
+<a class="nav_content_block_entry_button nav_wow_tier_list_healer" href="//www.icy-veins.com/wow/mythic-healer-tier-list">Healer Tier List</a>
+
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Raiding Tier Lists
+</div>
+<div class="nav_content_entries nav_content_buttons">
+<a class="nav_content_block_entry_button nav_wow_tier_list_dps" href="//www.icy-veins.com/wow/dps-rankings-tier-list">DPS Tier List</a>
+<a class="nav_content_block_entry_button nav_wow_tier_list_tank" href="//www.icy-veins.com/wow/tank-rankings-tier-list">Tank Tier List</a>
+<a class="nav_content_block_entry_button nav_wow_tier_list_healer" href="//www.icy-veins.com/wow/healer-rankings-tier-list">Healer Tier List</a>
+
+</div>
+</div>
+  </div>
+</div><div class="nav_entry nav_entry_with_content" id="nav_dungeons-raids"><a class="header" href="//www.icy-veins.com/wow/war-within-dungeons-guide" title="Icy Veins - World of Warcraft Raid Guides"><span>MYTHIC+ &amp; RAIDS</span><span class="nav_indicator"></span></a>
+  <div id="nav_dungeons-raids_section" class="nav_content ">
+    <div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+General Mythic+ Guides
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-war-within-mythic-season-2-guide">The War Within Season 2</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/mythic-affix-guide">Mythic+ Affix Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/world-of-warcraft-gear-upgrading-guide">Gear Upgrade System</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Season 2 The War Within Dungeon Guides
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/war-within-dungeons-guide">TWW Dungeon Hub</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/follower-dungeons-guide">Follower Dungeons</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/darkflame-cleft-dungeon-guide">Darkflame Cleft</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-rookery-dungeon-guide">The Rookery</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/priory-of-the-sacred-flame-dungeon-guide">Priory of the Sacred Flame</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/cinderbrew-meadery-dungeon-guide">Cinderbrew Meadery</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-motherlode-dungeon-guide">The MOTHERLODE!!</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/theater-of-pain-dungeon-guide-tww">Theater of Pain TWW</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/operation-mechagon-workshop-dungeon-guide">Operation: Mechagon Workshop</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/operation-floodgate-dungeon-guide">Operation: Floodgate</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+The War Within S2 Raid Guides
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/liberation-of-undermine-raid-guide">Liberation of Undermine</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/liberation-of-undermine-class-sets-guide">Undermine Class Sets</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/very-rare-drops-in-liberation-of-undermine">Undermine Very Rare Drops</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/gallagio-loyalty-rewards-club-guide">Gallagio Loyalty Rewards Club</a></div>
+</div>
+</div>
+  </div>
+</div><div class="nav_entry nav_entry_with_content" id="nav_delves"><a class="header" href="//www.icy-veins.com/wow/delves-guide" title="Icy Veins - World of Warcraft Delve Guides"><span>DELVES</span><span class="nav_indicator"></span></a>
+  <div id="nav_delves_section" class="nav_content ">
+    <div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+General Guides
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/delves-guide">Delves Overview</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/delvers-journey-guide">Delver's Seasonal Journey</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/delvers-dirigible-guide">Delver's Dirigible Mount</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/delvers-headquarters-guide">Delver's Headquarters</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/brann-bronzebeard-delve-companion-guide">Brann's Ultimate Companion Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/delve-rewards-guide">Delve Rewards in Season 2</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Delves
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/deepwalker-hold-delve-guide">Deepwalker Hold</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/earthcrawl-mines-delve-guide">Earthcrawl Mines</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/fungal-folly-delve-guide">Fungal Folly</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/kriegvals-rest-delve-guide">Kriegval's Rest</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/mycomancer-cavern-delve-guide">Mycomancer Cavern</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/nightfall-sanctum-delve-guide">Nightfall Sanctum</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-skittering-breach-delve-guide">Skittering Breach</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/tak-rethan-abyss-delve-guide">Tak-Rethan Abyss</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-dread-pit-delve-guide">The Dread Pit</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-sinkhole-delve-guide">The Sinkhole</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-spiral-weave-delve-guide">The Spiral Weave</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-waterworks-delve-guide">The Waterworks</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-underpin-guide">The Underpin</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/excavation-site-9-guide">Excavation Site 9</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/sidestreet-sluice-guide">Sidestreet Sluice</a></div>
+</div>
+</div>
+  </div>
+</div><div class="nav_entry nav_entry_with_content" id="nav_leveling"><a class="header" href="//www.icy-veins.com/wow/a-guide-to-leveling-in-world-of-warcraft" title="Icy Veins - World of Warcraft Leveling Guides"><span>LEVELING</span><span class="nav_indicator"></span></a>
+  <div id="nav_leveling_section" class="nav_content with_class_icons">
+    <div class="nav_content_block">
+<div class="nav_content_block_title header">
+Leveling in The War Within
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/war-within-leveling-guide">Leveling 70-80</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/a-guide-to-leveling-in-world-of-warcraft">General Leveling Guide</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/heirlooms-guide">Heirlooms</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/leveling-consumables-in-world-of-warcraft">Leveling Consumables</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/how-to-get-mounts-while-leveling-up-in-world-of-warcraft">Leveling Mounts</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/rested-xp-a-detailed-overview">How Rested XP Works</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/recruit-a-friend-guide-for-world-of-warcraft">Recruit-A-Friend</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_dk"></span><span class="dk">Death Knight</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/death-knight-leveling-guide">DK Leveling (8-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/blood-death-knight-leveling-guide">Blood</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/frost-death-knight-leveling-guide">Frost</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/unholy-death-knight-leveling-guide">Unholy</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_dh"></span><span class="dh">Demon Hunter</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/demon-hunter-leveling-guide">DH Leveling (8-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/havoc-demon-hunter-leveling-guide">Havoc</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/vengeance-demon-hunter-leveling-guide">Vengeance</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_druid"></span><span class="druid">Druid</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/druid-leveling-guide">Druid Leveling (1-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/balance-druid-leveling-guide">Balance</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/feral-druid-leveling-guide">Feral</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/guardian-druid-leveling-guide">Guardian</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/restoration-druid-leveling-guide">Restoration</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_evoker"></span><span class="evoker">Evoker</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/evoker-leveling-guide">Evoker Leveling (10-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/devastation-evoker-leveling-guide">Devastation</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/preservation-evoker-leveling-guide">Preservation</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_hunter"></span><span class="hunter">Hunter</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/hunter-leveling-guide">Hunter Leveling (1-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/beast-mastery-hunter-leveling-guide">Beast Mastery</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/marksmanship-hunter-leveling-guide">Marksmanship</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/survival-hunter-leveling-guide">Survival</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_mage"></span><span class="mage">Mage</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/mage-leveling-guide">Mage Leveling (1-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/arcane-mage-leveling-guide">Arcane</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/fire-mage-leveling-guide">Fire</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/frost-mage-leveling-guide">Frost</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_monk"></span><span class="monk">Monk</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/monk-leveling-guide">Monk Leveling (1-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/brewmaster-monk-leveling-guide">Brewmaster</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/mistweaver-monk-leveling-guide">Mistweaver</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/windwalker-monk-leveling-guide">Windwalker</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_paladin"></span><span class="paladin">Paladin</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/paladin-leveling-guide">Paladin Leveling (1-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/holy-paladin-leveling-guide">Holy</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/protection-paladin-leveling-guide">Protection</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/retribution-paladin-leveling-guide">Retribution</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_priest"></span><span class="priest">Priest</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/priest-leveling-guide">Priest Leveling (1-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/discipline-priest-leveling-guide">Discipline</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/holy-priest-leveling-guide">Holy</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/shadow-priest-leveling-guide">Shadow</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_rogue"></span><span class="rogue">Rogue</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/rogue-leveling-guide">Rogue Leveling (1-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/assassination-rogue-leveling-guide">Assassination</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/outlaw-rogue-leveling-guide">Outlaw</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/subtlety-rogue-leveling-guide">Subtlety</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_shaman"></span><span class="shaman">Shaman</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/shaman-leveling-guide">Shaman Leveling (1-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/elemental-shaman-leveling-guide">Elemental</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/enhancement-shaman-leveling-guide">Enhancement</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/restoration-shaman-leveling-guide">Restoration</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_warlock"></span><span class="warlock">Warlock</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/warlock-leveling-guide">Warlock Leveling (1-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/affliction-warlock-leveling-guide">Affliction</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/demonology-warlock-leveling-guide">Demonology</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/destruction-warlock-leveling-guide">Destruction</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_warrior"></span><span class="warrior">Warrior</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/warrior-leveling-guide">Warrior Leveling (1-80)</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/arms-warrior-leveling-guide">Arms</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/fury-warrior-leveling-guide">Fury</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/protection-warrior-leveling-guide">Protection</a></div>
+</div>
+</div>
+  </div>
+</div><div class="nav_entry nav_entry_with_content" id="nav_professions"><a class="header" href="//www.icy-veins.com/wow/professions" title="Icy Veins - World of Warcraft Profession Guides"><span>PROFESSIONS</span><span class="nav_indicator"></span></a>
+  <div id="nav_professions_section" class="nav_content ">
+    <div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+The War Within Professions
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions">Profession Overview</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-crafting-orders-and-recrafting">Crafting Orders/Recrafting</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-artisans-mettle-and-spark-of-ingenuity">Spark of Fortunes</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-making-gold">Making Gold with Crafting</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-stats-and-gear">Stats and Gear</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Profession Leveling and Gold Making Guides
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-alchemy">Alchemy</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-blacksmithing">Blacksmithing</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-cooking">Cooking</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-enchanting">Enchanting</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-engineering">Engineering</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-fishing">Fishing</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-herbalism">Herbalism</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-inscription">Inscription</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-jewelcrafting">Jewelcrafting</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-leatherworking">Leatherworking</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-mining">Mining</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-skinning">Skinning</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/professions-tailoring">Tailoring</a></div>
+</div>
+</div>
+  </div>
+</div><div class="nav_entry nav_entry_with_content" id="nav_pvp"><a class="header" href="//www.icy-veins.com/wow/the-war-within-pvp-season-1-guide" title="Icy Veins - World of Warcraft PvP Class Guides"><span>PVP</span><span class="nav_indicator"></span></a>
+  <div id="nav_pvp_section" class="nav_content with_class_icons">
+    <div class="nav_content_block">
+<div class="nav_content_block_title header">
+PvP Guides
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-war-within-pvp-season-2-guide">The War Within Season 2</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/best-pvp-addons-guide">Top PvP Addons</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/battleground-blitz-guide">Battleground Blitz</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/healer-tier-list-for-pvp">Healer Tier List</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_dk"></span><span class="dk">Death Knight</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/unholy-death-knight-pvp-guide">Unholy PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/frost-death-knight-pvp-guide">Frost PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_dh"></span><span class="dh">Demon Hunter</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/havoc-demon-hunter-pvp-guide">Havoc PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_druid"></span><span class="druid">Druid</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/balance-druid-pvp-guide">Balance PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/feral-druid-pvp-guide">Feral PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/restoration-druid-pvp-guide">Restoration PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_evoker"></span><span class="evoker">Evoker</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/augmentation-evoker-pvp-guide">Augmentation PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/devastation-evoker-pvp-guide">Devastation PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/preservation-evoker-pvp-guide">Preservation PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_hunter"></span><span class="hunter">Hunter</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/beast-mastery-hunter-pvp-guide">Beast Mastery PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/marksmanship-hunter-pvp-guide">Marksmanship PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/survival-hunter-pvp-guide">Survival PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_mage"></span><span class="mage">Mage</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/arcane-mage-pvp-guide">Arcane PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/fire-mage-pvp-guide">Fire PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/frost-mage-pvp-guide">Frost PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_monk"></span><span class="monk">Monk</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/mistweaver-monk-pvp-guide">Mistweaver PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/windwalker-monk-pvp-guide">Windwalker PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_paladin"></span><span class="paladin">Paladin</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/holy-paladin-pvp-guide">Holy PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/retribution-paladin-pvp-guide">Retribution PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_priest"></span><span class="priest">Priest</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/discipline-priest-pvp-guide">Discipline PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/holy-priest-pvp-guide">Holy PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/shadow-priest-pvp-guide">Shadow PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_rogue"></span><span class="rogue">Rogue</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/assassination-rogue-pvp-guide">Assassination PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/outlaw-rogue-pvp-guide">Outlaw PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/subtlety-rogue-pvp-guide">Subtlety PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_shaman"></span><span class="shaman">Shaman</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/elemental-shaman-pvp-guide">Elemental PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/enhancement-shaman-pvp-guide">Enhancement PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/restoration-shaman-pvp-guide">Restoration PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_warlock"></span><span class="warlock">Warlock</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/affliction-warlock-pvp-guide">Affliction PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/demonology-warlock-pvp-guide">Demonology PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/destruction-warlock-pvp-guide">Destruction PvP</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_wow_class">
+<div class="nav_content_block_title header">
+<span class="sprite_wow_class_blizzard sprite_wow_class_warrior"></span><span class="warrior">Warrior</span>
+
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/arms-warrior-pvp-guide">Arms PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/fury-warrior-pvp-guide">Fury PvP</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/protection-warrior-pvp-guide">Protection PvP</a></div>
+</div>
+</div>
+  </div>
+</div><div class="nav_entry nav_entry_with_content" id="nav_misc"><a class="header" href="//www.icy-veins.com/wow/misc-guides-for-world-of-warcraft" title="Icy Veins - World of Warcraft Other Guides"><span>MISC.</span><span class="nav_indicator"></span></a>
+  <div id="nav_misc_section" class="nav_content ">
+    <div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Recurring Events
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/darkmoon-faire-guide">Darkmoon Faire</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/anniversary-event-guide">Anniversary Event</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/brawlers-guild-guide">Brawler's Guild</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/pirates-day-guide">Pirates' Day</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/harvest-festival-guide">Harvest Festival</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/brewfest-guide">Brewfest</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/hallows-end-guide">Hallow's End</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/day-of-the-dead-guide">Day of the Dead</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/pilgrims-bounty-guide">Pilgrim's Bounty</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/feast-of-winter-veil-guide">Feast of Winter Veil</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/lunar-festival-guide">Lunar Festival</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/love-is-in-the-air-guide">Love is in the Air</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/noblegarden-guide">Noblegarden</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/childrens-week-guide">Children's Week</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/midsummer-fire-festival-guide">Midsummer Fire Festival</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/shadowlands-mage-tower-guides">Legion Mage Tower Challenges</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Tools
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/the-war-within-talent-calculator">Talent Calculator</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/completed-quests-checker">Completed Quests Checker</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Transmogrification
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/legendary-weapons-transmogrification-guide">Legendary Weapons</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/transmogrification-guides">Class Transmogrification</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Older Expansions
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/dragonflight-expansion">Dragonflight</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/guides-for-battle-for-azeroth">Battle for Azeroth</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/guides-for-legion">Legion</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/guides-for-warlords-of-draenor">Warlords of Draenor</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/guides-for-mists-of-pandaria">Mists of Pandaria</a></div><div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/guides-for-cataclysm">Cataclysm</a></div>
+</div>
+</div><div class="nav_content_block nav_content_block_whole_width">
+<div class="nav_content_block_title header">
+Lore
+</div>
+<div class="nav_content_entries">
+<div class="nav_content_block_entry"><a  href="//www.icy-veins.com/wow/warcraft-books-and-novels-overview">Books and Novels</a></div>
+</div>
+</div>
+  </div>
+</div>        </div>
+
+      <script>
+      //<![CDATA[
+
+  if (jQuery(".mobile_menu_button").css('display') != 'none') {
+    jQuery(".mobile_menu_button").click(function () {
+      jQuery(this).siblings(".mobile_menu_button").show();
+      jQuery(this).hide();
+      if (jQuery("#games").css("display") == "none") {
+        jQuery("#games").css("display", "flex");
+      } else {
+        jQuery("#games").css("display", "none");
+      }
+      jQuery("#nav").toggle();
+      jQuery("#nav_classes").toggleClass("nav_classes_not_visible");
+      jQuery("#game_plus>div>div").each(function(index, element) {
+        jQuery(element).detach().appendTo('#games');
+      });
+    });
+    jQuery(".nav_entry_with_content>a").click(function(e) {
+      e.preventDefault();
+      jQuery(this).siblings(".nav_content").toggle();
+    });
+  }
+
+  if (jQuery("#mobile_menu_button_show").css('display') == 'none' && !navigator.userAgent.match(/Android.*Chrome/)) {
+    var minified = false;
+    var scroll_distance = 86;
+    jQuery(window).scroll(function (event) {
+      const contentPaddingElement = document.getElementById("padding_for_minified_menu");
+      if (window.icy_veins_disable_minified_menu) {
+        jQuery("#header").removeClass("minified");
+        jQuery("#nav").removeClass("minified");
+        if (window.location.pathname.match(/^\/hearthstone/)) {
+          jQuery("#nav_classes").removeClass("minified");
+        }
+        contentPaddingElement.style.height = "auto";
+        minified = false;
+      } else if (jQuery("#nav").length > 0) {
+        if (jQuery(this).scrollTop() > scroll_distance && minified == false) {
+          jQuery("#header").addClass("minified");
+          jQuery("#nav").addClass("minified");
+          if (window.location.pathname.match(/^\/hearthstone/)) {
+            jQuery("#nav_classes").addClass("minified");
+          }
+          contentPaddingElement.style.height = `${130 + (window.icyveins?.layout?.navHeight ?? 42)}px`; // 130px is the #header height
+          minified = true;
+        } else if (jQuery(this).scrollTop() <= scroll_distance && minified == true) {
+          jQuery("#header").removeClass("minified");
+          jQuery("#nav").removeClass("minified");
+          if (window.location.pathname.match(/^\/hearthstone/)) {
+            jQuery("#nav_classes").removeClass("minified");
+          }
+          contentPaddingElement.style.height = "auto";
+          minified = false;
+        }
+      } else { // There is no #nav, only #header - happens in the :iv section
+        if (jQuery(this).scrollTop() > 80 && minified == false) {
+          jQuery("#header").addClass("minified");
+          jQuery("#nav").addClass("minified");
+          if (window.location.pathname.match(/^\/hearthstone/)) {
+            jQuery("#nav_classes").addClass("minified");
+          }
+          contentPaddingElement.style.height = "130px";
+          minified = true;
+        } else if (jQuery(this).scrollTop() <= 80 && minified == true) {
+          jQuery("#header").removeClass("minified");
+          jQuery("#nav").removeClass("minified");
+          if (window.location.pathname.match(/^\/hearthstone/)) {
+            jQuery("#nav_classes").removeClass("minified");
+          }
+          contentPaddingElement.style.height = "auto";
+          minified = false;
+        }
+      }
+    });
+  }
+      //]]>
+      </script>
+      <div id="padding_for_minified_menu"></div>
+      <div id="content" class="background">
+                <div id="center" class="background">
+
+
+              <div class="page_breadcrumbs text_color">
+      <span class="page_breadcrumbs_item"><a href="//www.icy-veins.com/" title="Home">Home</a></span><span class="page_breadcrumbs_separator">/</span><span class="page_breadcrumbs_item"><a href="//www.icy-veins.com/wow/" title="World of Warcraft">World of Warcraft</a></span><span class="page_breadcrumbs_separator">/</span><span class="page_breadcrumbs_item"><a href="//www.icy-veins.com/wow/patch-111-guide" title="The War Within Season Patch 11.1 Guide">The War Within Season Patch 11.1 Guide</a></span><span class="page_breadcrumbs_separator">/</span><span class="page_breadcrumbs_item last_page_breadcrumbs_item"><a href="//www.icy-veins.com/wow/liberation-of-undermine-raid-guide" title="Liberation of Undermine Raid Guide">Liberation of Undermine Raid Guide</a></span><span class="page_breadcrumbs_separator">/</span><span class="page_breadcrumbs_item page_breadcrumbs_last_item">Mug'Zee Raid Guide<span class="nav_indicator"></span></span>
+<script>
+breadcrumb_last = document.querySelector(".page_breadcrumbs_last_item")
+breadcrumb_toc_loaded = false;
+breadcrumb_toc_data = [
+  {"title": "Liberation of Undermine Raid Guide", "url": "//www.icy-veins.com/wow/liberation-of-undermine-raid-guide"},
+  {"title": "Vexie Fullthrottle Raid Guide", "url": "//www.icy-veins.com/wow/vexie-fullthrottle-raid-guide-in-liberation-of-undermine"},
+  {"title": "Cauldron of Carnage Raid Guide", "url": "//www.icy-veins.com/wow/cauldron-of-carnage-raid-guide-in-liberation-of-undermine"},
+  {"title": "Rik Reverb Raid Guide", "url": "//www.icy-veins.com/wow/rik-reverb-raid-guide-in-liberation-of-undermine"},
+  {"title": "Stix Bunkjunker Raid Guide", "url": "//www.icy-veins.com/wow/stix-bunkjunker-raid-guide-in-liberation-of-undermine"},
+  {"title": "Sprocketmonger Lockenstock Raid Guide", "url": "//www.icy-veins.com/wow/sprocketmonger-lockenstock-raid-guide-in-liberation-of-undermine"},
+  {"title": "One-Armed Bandit Raid Guide", "url": "//www.icy-veins.com/wow/one-armed-bandit-raid-guide-in-liberation-of-undermine"},
+  {"title": "Mug'Zee Raid Guide", "url": "//www.icy-veins.com/wow/mug-zee-raid-guide-in-liberation-of-undermine", "current": true},
+  {"title": "Liberation of Undermine Very Rare Drops", "url": "//www.icy-veins.com/wow/very-rare-drops-in-liberation-of-undermine"}];
+breadcrumb_last.addEventListener("mouseover", function(event) {
+  if (!breadcrumb_toc_loaded) {
+    breadcrumb_toc = document.createElement("div");
+    breadcrumb_toc.classList.add("page_breadcrumbs_toc");
+    breadcrumb_toc_data.forEach(function(item) {
+      element_type = "a";
+      if (item["current"]) {
+        element_type = "span";
+      }
+      breadcrumb_toc_item = document.createElement(element_type);
+      if (!item["current"]) {
+        breadcrumb_toc_item.setAttribute("href", item["url"]);
+      }
+      breadcrumb_toc_item.innerHTML = item["title"];
+      breadcrumb_toc.appendChild(breadcrumb_toc_item);
+    });
+    breadcrumb_last.appendChild(breadcrumb_toc);
+    breadcrumb_toc_loaded = true;
+  }
+  document.querySelector(".page_breadcrumbs_toc").style.display = "inline-block";
+});
+breadcrumb_last.addEventListener("mouseout", function(event) {
+  document.querySelector(".page_breadcrumbs_toc").style.display = "none";
+});
+</script>
+
+    </div>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item":
+      {
+          "@id": "https://www.icy-veins.com/",
+          "name": "Home"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item":
+      {
+          "@id": "https://www.icy-veins.com/wow/",
+          "name": "World of Warcraft"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item":
+      {
+          "@id": "https://www.icy-veins.com/wow/patch-111-guide",
+          "name": "The War Within Season Patch 11.1 Guide"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item":
+      {
+          "@id": "https://www.icy-veins.com/wow/liberation-of-undermine-raid-guide",
+          "name": "Liberation of Undermine Raid Guide"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item":
+      {
+          "@id": "https://www.icy-veins.com/wow/mug-zee-raid-guide-in-liberation-of-undermine",
+          "name": "MugZee Raid Guide"
+      }
+    }
+  ]
+}
+</script>
+
+         <div class="page_title">
+
+      <h1 class="header">Mug'Zee Raid Guide in Liberation of Undermine</h1>
+
+    </div>
+            <div class="page_content_container text_color page_content_container_header_intro_no_right_padding">
+                      <div class="page_content_header " style="background-image:url('//static.icy-veins.com/images/wow/background-images/tww.jpg');">
+              <div class="page_content_header_meta">
+  <span class="page_author"><span>Last updated <span data-time="1741018980" class="local_date">on <span class="local_date_date">Mar 03, 2025</span> at <span class="local_date_hour">16:23</span></span></span><span>&nbsp;by <span style="color:#fff;">Panthea</span></span></span>
+
+<span class="page_comments"><a href="https://www.icy-veins.com/forums/topic/83053-liberation-of-undermine-raid-guides">1 comment</a></span>
+</div>
+
+              <div class="page_content_header_intro">
+                <p>On this page you will find both a short and full written guide
+for the Mug'Zee encounter in the Liberation of Undermine raid. Read on
+to learn everything you need to know to take on Mug'Zee.</p>
+              </div>
+            </div>
+    <div class="toc">
+        <div class="toc_page_list ">
+        <div class="toc_page_list_header">
+          <span class="toc_page_list_icon"></span>
+          <span>Liberation of Undermine Guides</span>
+        </div>
+        <div class="toc_page_list_items">
+          <span class="toc_page_list_item">
+                        <span>1</span>
+            <a href="//www.icy-veins.com/wow/liberation-of-undermine-raid-guide">
+              <span>Liberation of Undermine Raid Guide</span>
+            </a>
+
+          </span>
+
+          <span class="toc_page_list_item">
+                        <span>2</span>
+            <a href="//www.icy-veins.com/wow/vexie-fullthrottle-raid-guide-in-liberation-of-undermine">
+              <span>Vexie Fullthrottle Raid Guide</span>
+            </a>
+
+          </span>
+
+          <span class="toc_page_list_item">
+                        <span>3</span>
+            <a href="//www.icy-veins.com/wow/cauldron-of-carnage-raid-guide-in-liberation-of-undermine">
+              <span>Cauldron of Carnage Raid Guide</span>
+            </a>
+
+          </span>
+
+          <span class="toc_page_list_item">
+                        <span>4</span>
+            <a href="//www.icy-veins.com/wow/rik-reverb-raid-guide-in-liberation-of-undermine">
+              <span>Rik Reverb Raid Guide</span>
+            </a>
+
+          </span>
+
+          <span class="toc_page_list_item">
+                        <span>5</span>
+            <a href="//www.icy-veins.com/wow/stix-bunkjunker-raid-guide-in-liberation-of-undermine">
+              <span>Stix Bunkjunker Raid Guide</span>
+            </a>
+
+          </span>
+
+          <span class="toc_page_list_item">
+                        <span>6</span>
+            <a href="//www.icy-veins.com/wow/sprocketmonger-lockenstock-raid-guide-in-liberation-of-undermine">
+              <span>Sprocketmonger Lockenstock Raid Guide</span>
+            </a>
+
+          </span>
+
+          <span class="toc_page_list_item">
+                        <span>7</span>
+            <a href="//www.icy-veins.com/wow/one-armed-bandit-raid-guide-in-liberation-of-undermine">
+              <span>One-Armed Bandit Raid Guide</span>
+            </a>
+
+          </span>
+
+          <span class="toc_page_list_item selected">
+                        <span>8</span>
+            <a href="//www.icy-veins.com/wow/mug-zee-raid-guide-in-liberation-of-undermine">
+              <span>Mug'Zee Raid Guide</span>
+            </a>
+
+          </span>
+
+          <span class="toc_page_list_item">
+                        <span>9</span>
+            <a href="//www.icy-veins.com/wow/very-rare-drops-in-liberation-of-undermine">
+              <span>Liberation of Undermine Very Rare Drops</span>
+            </a>
+
+          </span>
+
+        </div>
+      </div>
+
+  <div class="toc_page_content">
+    <div class="toc_page_content_header">
+      <span>TABLE OF CONTENTS OF THIS PAGE</span>
+    </div>
+    <div class="toc_page_content_items">
+        <div class="toc_two_columns">
+  <div>
+    <ul>
+      <li><a href="//www.icy-veins.com/wow/mug-zee-raid-guide-in-liberation-of-undermine#bis">1. Mug'Zee Raid Guide</a></li>
+
+    </ul>
+  </div><div>
+    <ul>
+
+    </ul>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+
+             <div class="page_content ">
+           <div class="image_block">
+<div class="image_block_header">
+<div class="heading_container heading_number_2"><span >1.</span> <h2 id="bis">Mug'Zee Raid Guide</h2></div>
+<div class="image_block_header_buttons">
+<span id="area_1_button">Quick TLDR Guide</span>
+<span id="area_2_button">Strategy Guide: Full Guide</span>
+<span id="area_3_button">Mythic Strategy</span>
+</div>
+</div>
+<div class="image_block_content" id="area_1">
+<div class="heading_container heading_number_2"><span class="style_only" >2.</span> <h2 class="style_only" id="quick-tldr-guide">Quick TLDR Guide</h2></div>
+
+<div class="heading_container heading_number_3"><span >1.1.</span> <h3 id="before-the-fight">Before the Fight:</h3></div>
+<ul>
+<li>Where the majority of the raid is determines which boss mechanics you will be playing. Mug mechanics are on the right and Zee
+mechanics are on the left.</li>
+<li>You will want to assign three teams of players for <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_elementalearth2.jpg" alt="Earthshaker Gaol Icon" /> <span data-wowhead="spell=472631" class="spell">Earthshaker Gaol</span></span>. Two teams that will split the damage and fight the
+adds and one team of mobile players, tanks and some healers who will remain outside.</li>
+<li>Mug'Zee gains energy over time. If the raid switches which boss mechanics are active this will reset the energy. Reaching 100
+energy will wipe the raid. A good pattern to follow is 1 set of Zee mechanics and 2 set of Mug mechanics.</li>
+</ul>
+
+<div class="heading_container heading_number_3"><span >1.2.</span> <h3 id="mug-right">Mug (Right):</h3></div>
+
+<ul>
+<li>Place the two <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_elementalearth2.jpg" alt="Earthshaker Gaol Icon" /> <span data-wowhead="spell=472631" class="spell">Earthshaker Gaol</span></span> zones next to each other. <strong>Do not overlap them.</strong></li>
+<li>Soak <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_elementalearth2.jpg" alt="Earthshaker Gaol Icon" /> <span data-wowhead="spell=472631" class="spell">Earthshaker Gaol</span></span> if you are assigned.</li>
+<li>If you are inside the walls, avoid the <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_10_elementalshardfoozles_earth.jpg" alt="Shakedown Icon" /> <span data-wowhead="spell=472659" class="spell">Shakedown</span></span> frontal and interrupt <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/shaman_pvp_rockshield.jpg" alt="Pay Respects Icon" /> <span data-wowhead="spell=472782" class="spell">Pay Respects</span></span>. When the add dies you will be knocked back and
+out of the walls.</li>
+<li><strong>Heroic:</strong> If you are outside be ready to run to the opposite side of the walls when you have <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_frost_iceshard.jpg" alt="Frostshatter Spear Icon" /> <span data-wowhead="spell=466480" class="spell">Frostshatter Spear</span></span> on you to break the walls.</li>
+<li>Avoid the <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_shaman_crashlightning.jpg" alt="Stormfury Finger Gun Icon" /> <span data-wowhead="spell=466509" class="spell">Stormfury Finger Gun</span></span> frontal.</li>
+<li><strong>Tanks:</strong> Face <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_legendary_fistweapon.jpg" alt="Molten Gold Knuckles Icon" /> <span data-wowhead="spell=466518" class="spell">Molten Gold Knuckles</span></span> towards the wall and away from other players. Leave your <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_creature_amber_02.jpg" alt="Molten Gold Pool Icon" /> <span data-wowhead="spell=1218432" class="spell">Molten Gold Pool</span></span>s against the wall.</li>
+</ul>
+
+<div class="heading_container heading_number_3"><span >1.3.</span> <h3 id="zee-left">Zee (Left):</h3></div>
+
+<ul>
+<li>Avoid Unstable Crawler Mines unless you are intending to detonate them.</li>
+<li>Unstable Crawler Mines will explode if a player makes contact with them. The <strong>Tank</strong> that is not tanking the boss
+should run into them one at a time.</li>
+<li>Soak the <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_eng_bombfire.jpg" alt="Unstable Cluster Bomb Icon" /> <span data-wowhead="spell=1220551" class="spell">Unstable Cluster Bomb</span></span> pools after a mine is detonated.</li>
+<li>You can CC the mines, but after 1 minute they become immune to CC.</li>
+<li>Kill the Mk II Electro Shockers when they spawn.</li>
+<li>Soak the <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_gizmo_supersappercharge.jpg" alt="Goblin-guided Rocket Icon" /> <span data-wowhead="spell=467381" class="spell">Goblin-guided Rocket</span></span> and kill the rocketeer that comes out.</li>
+<li>Face <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_markedshot.jpg" alt="Spray and Pray Icon" /> <span data-wowhead="spell=466545" class="spell">Spray and Pray</span></span> away from other players and mines.</li>
+<li>Ensure <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_burstingshot.jpg" alt="Double Whammy Shot Icon" /> <span data-wowhead="spell=469490" class="spell">Double Whammy Shot</span></span> does not hit other players. <strong>The active tank</strong> should soak this beam. The player targeted
+by the beam needs to run away with <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_explosiveshot.jpg" alt="Explosive Payload Icon" /> <span data-wowhead="spell=469375" class="spell">Explosive Payload</span></span> and ensure it does not hit any mines.</li>
+</ul>
+
+<div class="heading_container heading_number_3"><span >1.4.</span> <h3 id="intermission-40">Intermission (40%):</h3></div>
+
+<ul>
+<li>Place <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_warrior_endlessrage.jpg" alt="Static Charge Icon" /> <span data-wowhead="spell=1215953" class="spell">Static Charge</span></span> in a safe location away from the raid. Ideally you want to charge the boss over the central line to make it
+consistent.</li>
+<li>Follow the boss and run around the <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_markedshot.jpg" alt="Bulletstorm Icon" /> <span data-wowhead="spell=471574" class="spell">Bulletstorm</span></span>.</li>
+<li>This repeats three times.</li>
+</ul>
+
+<div class="heading_container heading_number_3"><span >1.5.</span> <h3 id="enrage">Enrage:</h3></div>
+
+<ul>
+<li>The bosses will take turns using their mechanics in a set sequence.</li>
+<li>Kill the boss before they reach 100 Energy.</li>
+</ul>
+
+</div>
+
+<div class="image_block_content" id="area_2">
+<div class="heading_container heading_number_2"><span class="style_only" >2.</span> <h2 class="style_only" id="strategy-guide-full-guide">Strategy Guide: Full Guide</h2></div>
+
+<div class="heading_container heading_number_3"><span >1.6.</span> <h3 id="before-the-fight-1">Before the Fight:</h3></div>
+<ul>
+<li>Where the majority of the raid is determines which boss mechanics you will be playing. Mug mechanics are on the right and Zee
+mechanics are on the left.</li>
+<li>You will want to assign three teams of players for <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_elementalearth2.jpg" alt="Earthshaker Gaol Icon" /> <span data-wowhead="spell=472631" class="spell">Earthshaker Gaol</span></span>. Two teams that will split the damage and fight the
+adds and one team of mobile players, tanks and some healers who will remain outside.</li>
+<li>Mug'Zee gains energy over time. If the raid switches which boss mechanics are active this will reset the energy. Reaching 100
+energy will wipe the raid. A good pattern to follow is 1 set of Zee mechanics and 2 set of Mug mechanics.</li>
+</ul>
+
+<div class="centered">
+<a class="highslide map" href="//static.icy-veins.com/images/wow/tww/raids/liberation-of-undermine/mugzee-p1.jpg" onclick="return hs.expand(this, { anchor: 'top' })">
+<img alt="" src="//static.icy-veins.com/images/wow/tww/raids/liberation-of-undermine/mugzee-p1.jpg" />
+</a>
+</div>
+
+<div class="heading_container heading_number_3"><span >1.7.</span> <h3 id="mug-right-1">Mug (Right):</h3></div>
+
+<p>The mechanic cycle of this phase is: <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_elementalearth2.jpg" alt="Earthshaker Gaol Icon" /> <span data-wowhead="spell=472631" class="spell">Earthshaker Gaol</span></span> > <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_hunter_icetrap.jpg" alt="Frostshatter Boots Icon" /> <span data-wowhead="spell=466476" class="spell">Frostshatter Boots</span></span>/<span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_frost_iceshard.jpg" alt="Frostshatter Spear Icon" /> <span data-wowhead="spell=466480" class="spell">Frostshatter Spear</span></span> > <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_shaman_crashlightning.jpg" alt="Stormfury Finger Gun Icon" /> <span data-wowhead="spell=466509" class="spell">Stormfury Finger Gun</span></span> > <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_legendary_fistweapon.jpg" alt="Molten Gold Knuckles Icon" /> <span data-wowhead="spell=466518" class="spell">Molten Gold Knuckles</span></span>
+> Repeat.</p>
+
+
+<ul>
+<li><span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_elementalearth2.jpg" alt="Earthshaker Gaol Icon" /> <span data-wowhead="spell=472631" class="spell">Earthshaker Gaol</span></span>:
+<ol>
+<li>Two players will be targeted by <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_elementalearth2.jpg" alt="Earthshaker Gaol Icon" /> <span data-wowhead="spell=472631" class="spell">Earthshaker Gaol</span></span>. They will have clear circles of where the walls will appear. Place them next to each other
+but <strong>do not overlap the circles</strong> as this will enrage the adds.</li>
+<li>These areas will deal damage split with players in the area. Have teams pre assigned on who will go in each circle and have set locations for them. The image
+above this section illustrates how to place them with the numbers denoting the sets.</li>
+<li>Avoid the <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_10_elementalshardfoozles_earth.jpg" alt="Shakedown Icon" /> <span data-wowhead="spell=472659" class="spell">Shakedown</span></span> frontal and interrupt <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/shaman_pvp_rockshield.jpg" alt="Pay Respects Icon" /> <span data-wowhead="spell=472782" class="spell">Pay Respects</span></span>.</li>
+<li>When the add dies it will explode and create a permanent pool on the ground. The explosion will knock players away that are inside.</li>
+<li>The walls can be broken with mines but this is only really applicable for the enrage phase.</li>
+</ol></li>
+<li><span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_shaman_crashlightning.jpg" alt="Stormfury Finger Gun Icon" /> <span data-wowhead="spell=466509" class="spell">Stormfury Finger Gun</span></span> will target a random player and hit all players in the area of the attack.</li>
+<li><strong>Tanks:</strong> <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_legendary_fistweapon.jpg" alt="Molten Gold Knuckles Icon" /> <span data-wowhead="spell=466518" class="spell">Molten Gold Knuckles</span></span>
+<ol>
+<li>This will hit all players in front of the boss and apply all mechanics to them. Ensure you are faced away from the raid and ideally towards the wall.</li>
+<li>This attack will knock you back and apply stacks of <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_holy_excorcism_02.jpg" alt="Golden Drip Icon" /> <span data-wowhead="spell=467202" class="spell">Golden Drip</span></span>. Each time you move a stack will be removed and drops a <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_creature_amber_02.jpg" alt="Molten Gold Pool Icon" /> <span data-wowhead="spell=1218432" class="spell">Molten Gold Pool</span></span>.</li>
+<li>You have 12 seconds to remove all of your stacks of <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_holy_excorcism_02.jpg" alt="Golden Drip Icon" /> <span data-wowhead="spell=467202" class="spell">Golden Drip</span></span>, failing to remove the stacks will result in being stunned for 30 seconds!</li>
+</ol>
+</ul>
+
+<div class="centered">
+  <video controls preload="none">
+    <source src="//static.icy-veins.com/images/wow/tww/raids/liberation-of-undermine/mugzee-tank-knock.webm" type="video/mp4" />
+  </video>
+  <span><em>Tank being hit with <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_legendary_fistweapon.jpg" alt="Molten Gold Knuckles Icon" /> <span data-wowhead="spell=466518" class="spell">Molten Gold Knuckles</span></span></em></span>
+</div>
+
+<div class="heading_container heading_number_3"><span >1.8.</span> <h3 id="zee-left-1">Zee (Left):</h3></div>
+
+<p>The mechanic cycle of this phase is: Mines > Mk II Electro Shockers > <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_gizmo_supersappercharge.jpg" alt="Goblin-guided Rocket Icon" /> <span data-wowhead="spell=467381" class="spell">Goblin-guided Rocket</span></span> > <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_explosiveshot.jpg" alt="Explosive Payload Icon" /> <span data-wowhead="spell=469375" class="spell">Explosive Payload</span></span> > <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_burstingshot.jpg" alt="Double Whammy Shot Icon" /> <span data-wowhead="spell=469490" class="spell">Double Whammy Shot</span></span> > <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_markedshot.jpg" alt="Spray and Pray Icon" /> <span data-wowhead="spell=466545" class="spell">Spray and Pray</span></span>
+> Repeat.</p>
+
+<ul>
+<li>Unstable Crawler Mines:
+<ol>
+<li>These will spawn around the boss and fixate on random players.</li>
+<li>These mines can be CC'd with roots, slows and stuns. After 1 minute they will become CC immune.</li>
+<li><strong>The crawler mines are immune to damage.</strong></li>
+<li>Ideally the <strong>Tank</strong> who is not tanking the boss should be the one triggering the mines as it deals a large amount of damage to the player that triggers it.</li>
+<li>If any player makes contact with a mine it will explode and spawn two <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_eng_bombfire.jpg" alt="Unstable Cluster Bomb Icon" /> <span data-wowhead="spell=1220551" class="spell">Unstable Cluster Bomb</span></span> pools. These need to be soaked. Be careful of other mines trying
+to reach players as you could start a chain reaction!</li>
+<li>Players who soak the <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_eng_bombfire.jpg" alt="Unstable Cluster Bomb Icon" /> <span data-wowhead="spell=1220551" class="spell">Unstable Cluster Bomb</span></span> will have the <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_wildfirebomb.jpg" alt="Searing Shrapnel Icon" /> <span data-wowhead="spell=469043" class="spell">Searing Shrapnel</span></span> healing absorb applied to them. This will deal ticking damage while the
+heal absorb remains.</li>
+<li>If you fail to soak any <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_eng_bombfire.jpg" alt="Unstable Cluster Bomb Icon" /> <span data-wowhead="spell=1220551" class="spell">Unstable Cluster Bomb</span></span> pools it will deal raid wide damage.</li>
+</ol></li>
+</ul>
+
+<div class="centered">
+  <video controls preload="none">
+    <source src="//static.icy-veins.com/images/wow/tww/raids/liberation-of-undermine/mugzee-mine-soak.webm" type="video/mp4" />
+  </video>
+  <span><em>Tank triggering Unstable Crawler Mines</em></span>
+</div>
+
+<ul>
+<li>Two Mk II Electro Shocker adds will spawn in set locations. Cleave them down.</li>
+<li><span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_gizmo_supersappercharge.jpg" alt="Goblin-guided Rocket Icon" /> <span data-wowhead="spell=467381" class="spell">Goblin-guided Rocket</span></span> will target a player and the group should soak and split this damage. After the rocket lands it will leave a <strong>permanent</strong> fire pool on the ground
+and the rocketeer that was riding the rocket lands. Kill this ASAP.</li>
+<li>A random player is targeted with <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_markedshot.jpg" alt="Spray and Pray Icon" /> <span data-wowhead="spell=466545" class="spell">Spray and Pray</span></span>. This player should move away from the group. This will deal damage to any player between the player
+and the boss. If any mines are in this area they will detonate (making the <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_eng_bombfire.jpg" alt="Unstable Cluster Bomb Icon" /> <span data-wowhead="spell=1220551" class="spell">Unstable Cluster Bomb</span></span>s quite difficult to soak).</li>
+<li><span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_burstingshot.jpg" alt="Double Whammy Shot Icon" /> <span data-wowhead="spell=469490" class="spell">Double Whammy Shot</span></span>
+<ol>
+<li>This will pick a random player and show a very clear beam animation from the boss to them. This beam will deal full damage to the first player hit and
+other players hit will have <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_artifact_corruptedbloodofzakajz.jpg" alt="Perforating Wound Icon" /> <span data-wowhead="spell=469391" class="spell">Perforating Wound</span></span> applied to them.</li>
+<li>The <strong>tank on the boss</strong> should stand in the beam and become the first player hit in the beam, and the original target should be the <strong>only other player hit</strong></li>
+<li>The player targeted by the beam will then get an <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_explosiveshot.jpg" alt="Explosive Payload Icon" /> <span data-wowhead="spell=469375" class="spell">Explosive Payload</span></span> which is a large AoE circle. This will deal damage to any player in the area of the circle and
+detonate any mines. <strong>Do not detonate mines with this</strong>.</li>
+</ol></li>
+</ul>
+
+<div class="heading_container heading_number_3"><span >1.9.</span> <h3 id="intermission-40-1">Intermission (40%):</h3></div>
+
+<div class="centered">
+<a class="highslide map" href="//static.icy-veins.com/images/wow/tww/raids/liberation-of-undermine/mugzee-intermission.jpg" onclick="return hs.expand(this, { anchor: 'top' })">
+<img alt="" src="//static.icy-veins.com/images/wow/tww/raids/liberation-of-undermine/mugzee-intermission.jpg" />
+</a>
+</div>
+
+<ul>
+<li>The boss will charge at a random players location with <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_warrior_endlessrage.jpg" alt="Static Charge Icon" /> <span data-wowhead="spell=1215953" class="spell">Static Charge</span></span>. This player should move a small distance away from the raid but not too far as when
+the boss reaches their destination they will start to use <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_markedshot.jpg" alt="Bulletstorm Icon" /> <span data-wowhead="spell=471574" class="spell">Bulletstorm</span></span>.</li>
+<li><span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_hunter_markedshot.jpg" alt="Bulletstorm Icon" /> <span data-wowhead="spell=471574" class="spell">Bulletstorm</span></span> will cause the boss to rotate around on the spot dealing damage from their sides, move with the boss to not be hit.</li>
+<li>This repeats three times.</li>
+<li>The image above shows an example of the path to use during the intermission.</li>
+</ul>
+
+<div class="heading_container heading_number_3"><span >1.10.</span> <h3 id="enrage-1">Enrage:</h3></div>
+
+<ul>
+<li>The bosses will take turns using their mechanics in a set sequence.</li>
+<li>Kill the boss before they reach 100 Energy.</li>
+</ul>
+
+
+<div class="heading_container heading_number_3"><span >1.11.</span> <h3 id="heroic-changes">Heroic Changes:</h3></div>
+
+<ul>
+<li>Triggering mines increases your damage taken from mines for 1 minute.</li>
+<li>Two teams of players are required to soak the <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_gizmo_supersappercharge.jpg" alt="Goblin-guided Rocket Icon" /> <span data-wowhead="spell=467381" class="spell">Goblin-guided Rocket</span></span> as it will apply <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_nature_sicklypolymorph.jpg" alt="Radiation Sickness Icon" /> <span data-wowhead="spell=469076" class="spell">Radiation Sickness</span></span> after you soak it. However, if you opt to only do 1 set of Zee mechanics and 2 sets of Mug mechanics this debuff will
+time out before you get back to doing it again. In the enrage phase you may need to split the teams but this will depend on your DPS/Kill time.</li>
+<li>An additional team of players are required outside of the walls while you are dealing with <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_elementalearth2.jpg" alt="Earthshaker Gaol Icon" /> <span data-wowhead="spell=472631" class="spell">Earthshaker Gaol</span></span>s. They will be targeted with <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_frost_iceshard.jpg" alt="Frostshatter Spear Icon" /> <span data-wowhead="spell=466480" class="spell">Frostshatter Spear</span></span>s which are used to break the walls.</li>
+</ul>
+
+</div>
+<div class="image_block_content" id="area_3">
+<div class="heading_container heading_number_2"><span class="style_only" >2.</span> <h2 class="style_only" id="mythic-strategy">Mythic Strategy</h2></div>
+
+<p><strong>Currently, this tab will only contain information on what changes on Mythic. A more robust strategy will be added after the raid goes live.</strong></p>
+
+<div class="heading_container heading_number_3"><span >1.12.</span> <h3 id="mythic-changes">Mythic Changes:</h3></div>
+
+<ul>
+<li>All players are required to be on the side of the room to transition the boss phase instead of a majority.</li>
+<li><span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/inv_elementalearth2.jpg" alt="Earthshaker Gaol Icon" /> <span data-wowhead="spell=472631" class="spell">Earthshaker Gaol</span></span> walls can only be destroyed with mines or spears.</li>
+<li>The effects of <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_hunter_icetrap.jpg" alt="Frostshatter Boots Icon" /> <span data-wowhead="spell=466476" class="spell">Frostshatter Boots</span></span> can only be removed by going into a <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/ability_foundryraid_blastwave.jpg" alt="Hot Mess Icon" /> <span data-wowhead="spell=472057" class="spell">Hot Mess</span></span> pool (Rocket soak).</li>
+<li>Mk II Electro Shockers have a 99% damage reduction shield which is only removed by <span class="spell_icon_span"><img class="spell_icon" src="//static.icy-veins.com/images/wow/large_icons/spell_shaman_crashlightning.jpg" alt="Stormfury Finger Gun Icon" /> <span data-wowhead="spell=466509" class="spell">Stormfury Finger Gun</span></span>.</li>
+</ul>
+</div>
+</div>
+<div class="heading_container heading_number_2"><span >2.</span> <h2 id="changelog">Changelog</h2></div>
+<div class="changelog_wrapper">
+<ul class="changelog">
+<li><strong>03 Mar. 2025:</strong> Guide added.</li>
+</ul>
+
+<div id="changelog_show_all">Show more</div>
+<div id="changelog_show_only_2">Show less</div>
+</div>
+
+
+         </div>
+
+
+<div class="page_content_footer " style="background-image:url('//static.icy-veins.com/images/wow/background-images/tww.jpg');">
+  <span class="page_forum">Need any help? Check out our <a href="https://www.icy-veins.com/forums/forum/2-general-discussion">General Discussion Forum</a>!</span>
+<span class="page_comments"><a href="https://www.icy-veins.com/forums/topic/83053-liberation-of-undermine-raid-guides">1 comment</a></span>
+</div>
+
+        </div>
+
+
+
+        </div><div id="right" class="background">
+          <div id="right_top">
+            <!--  [Desktop/Tablet] Standard IAB - Right Sidebar 1 -->
+<!--<div data-pw-desk="standard_iab_rght1" id="standard_iab_rght1"></div>
+<script type="text/javascript">
+  window.ramp.que.push(function () {
+    window.ramp.addTag("standard_iab_rght1");
+  })
+</script>-->
+
+            <div id="icyveins_twitch_embed">
+</div>
+<script>
+if (window.innerWidth >= 1070 && !getCookie("ips4_member_premium")) {
+  script = document.createElement("script");
+  script.src = "//static.icy-veins.com/javascript/./twitch-9ca27fdb7ab3828826d1b3aa1d306913.js";
+  document.getElementById("icyveins_twitch_embed").appendChild(script);
+}
+</script>
+
+
+
+    <div class="box text_color" id="box_author">
+  <div class="box_title header">
+    <span class="box_img"></span>
+    <span>ABOUT THE AUTHOR</span>
+    <div class="box_title_extra">
+      <a rel="nofollow" href="https://discord.gg/hammerofwrath">
+        <span class="box_title_extra_discord"></span>
+      </a>
+      <a rel="nofollow" href="https://tanknotes.com/">
+        <span class="box_title_extra_website"></span>
+      </a>
+      <a rel="nofollow" href="https://twitter.com/Cetraben_">
+        <span class="box_title_extra_twitter"></span>
+      </a>
+    </div>
+
+  </div>
+<p>This guide has been written by Panthea, who raids in <a href="https://www.wowprogress.com/guild/eu/tarren-mill/Catalyst">Catalyst</a>
+and is the author of <a href="https://tanknotes.com/">TankNotes</a>. He plays all
+tanks and is a Moderator for the <a href="https://discord.gg/hammerofwrath">Hammer of Wrath Paladin Discord</a>.
+You can follow him on <a href="https://twitter.com/Cetraben_">Twitter</a>.</p>
+</div>
+<div class="premium_box" id="premium_box_1">
+  <a href="https://www.icy-veins.com/forums/premium">
+    <span class="premium_box_image"></span>
+    <span class="premium_box_text">SUPPORT OUR WRITERS</span>
+  </a>
+</div>
+<script>
+  document.querySelectorAll("#premium_box_1 a, #premium_box_1 a span").forEach(function(item, index) {
+    item.addEventListener("click", function(event) {
+      writeToLocalStorage('premium_origin', JSON.stringify({'type': 'box', 'value': '1', 'date': new Date()}));
+    });
+  });
+</script>
+
+
+
+
+
+
+            <div class="box text_color" id="box_related_pages">
+  <div class="box_title header">
+    <span class="box_img"></span>
+    <span>IN THE SAME CATEGORY</span>
+  </div>
+  <ul>
+    <li><a href="//www.icy-veins.com/wow/queen-ansurek-raid-guide-in-nerub-ar-palace">Queen Ansurek</a></li>
+<li><a href="//www.icy-veins.com/wow/rik-reverb-raid-guide-in-liberation-of-undermine">Rik Reverb Raid Guide</a></li>
+<li><a href="//www.icy-veins.com/wow/20th-anniversary-event-guide">20th Anniversary Event Guide</a></li>
+<li><a href="//www.icy-veins.com/wow/one-armed-bandit-raid-guide-in-liberation-of-undermine">One-Armed Bandit Raid Guide</a></li>
+<li><a href="//www.icy-veins.com/wow/codex-of-chromie-guide">Codex of Chromie</a></li>
+<li><a href="//www.icy-veins.com/wow/20th-anniversary-event-rewards">20th Anniversary Event Rewards Guide</a></li>
+<li><a href="//www.icy-veins.com/wow/guide-to-party-crashing-world-bosses">Guide to Party-Crashing World Bosses</a></li>
+<li><a href="//www.icy-veins.com/wow/the-silken-court-raid-guide-in-nerub-ar-palace">The Silken Court</a></li>
+<li><a href="//www.icy-veins.com/wow/liberation-of-undermine-raid-guide">Liberation of Undermine Raid Guide</a></li>
+<li><a href="//www.icy-veins.com/wow/rasha-nan-raid-guide-in-nerub-ar-palace">Rasha'nan</a></li>
+  </ul>
+  <span class="box_divider"></span>
+</div>
+
+            <div class="box text_color" id="box_latest_news">
+  <div class="box_title header">
+    <span class="box_img"></span>
+    <span>LATEST NEWS</span>
+  </div>
+  <ul>
+    <li><a href="//www.icy-veins.com/wow/news/liberation-of-undermine-rwf-day-3-the-first-real-day-of-the-race-3-8-world-firsts-liquid-catch-up-and-more/" title="Liberation of Undermine RWF Day 4: The First Real Day of the Race? 3/8, World Firsts, Liquid Catch-Up and More">Liberation of Undermine RWF Day 4: The First Real Day of the Race? 3/8, World Firsts, Liquid Catch-Up and More</a></li>
+    <li><a href="//www.icy-veins.com/wow/news/the-war-within-hotixes-march-7th/" title="The War Within Hotfixes: March 7th">The War Within Hotfixes: March 7th</a></li>
+    <li><a href="//www.icy-veins.com/wow/news/upcoming-class-tuning-for-pvp-march-11th/" title="Upcoming Class Tuning for PvP Specs: March 11th">Upcoming Class Tuning for PvP Specs: March 11th</a></li>
+    <li><a href="//www.icy-veins.com/wow/news/big-mythic-dungeon-tuning-march-7th/" title="Big Mythic+ Dungeon Tuning, March 7th: 10% Nerf for ALL Dungeons">Big Mythic+ Dungeon Tuning, March 7th: 10% Nerf for ALL Dungeons</a></li>
+    <li><a href="//www.icy-veins.com/wow/news/auction-house-items-turning-into-binds-on-pickup-was-unintended-fix-coming/" title="Auction House Items Turning Into Binds on Pickup Was Unintended, Fix Coming">Auction House Items Turning Into Binds on Pickup Was Unintended, Fix Coming</a></li>
+    <li><a href="//www.icy-veins.com/wow/news/early-numbers-the-best-and-worst-dungeons-in-the-war-within-mythic-season-2-so-far/" title="Early Numbers: The Best and Worst Dungeons In The War Within Mythic+ Season 2 So Far!">Early Numbers: The Best and Worst Dungeons In The War Within Mythic+ Season 2 So Far!</a></li>
+    <li><a href="//www.icy-veins.com/wow/news/blizzard-clarifies-how-worldsoul-memory-rewards-work-in-season-2/" title="Blizzard Clarifies How Worldsoul Memory Rewards Work in Season 2">Blizzard Clarifies How Worldsoul Memory Rewards Work in Season 2</a></li>
+    <li><a href="//www.icy-veins.com/wow/news/guild-renaming-feature-coming-in-patch-11-1-5/" title="Guild Renaming Feature Coming in Patch 11.1.5">Guild Renaming Feature Coming in Patch 11.1.5</a></li>
+  </ul>
+  <span class="box_divider"></span>
+</div>
+
+            <!-- RECENT POSTS START -->
+<div class="box text_color" id="box_recent_posts">
+  <div class="box_title header">
+    <span class="box_img"></span>
+    <span>RECENT FORUM POSTS</span>
+  </div>
+  <ul>
+    <li><a href="https://www.icy-veins.com/forums/topic/72479-gear-upgrading-guide/" title="Gear Upgrading Guide">Gear Upgrading Guide</a></li>
+<li><a href="https://www.icy-veins.com/forums/topic/83255-scroll-of-momentum-trinket-not-in-bm-bis-list/" title="Scroll of momentum trinket not in BM BiS list">Scroll of momentum trinket not in BM BiS list</a></li>
+<li><a href="https://www.icy-veins.com/forums/topic/52928-marksmanship-hunter-pve/" title="Marksmanship Hunter PvE">Marksmanship Hunter PvE</a></li>
+<li><a href="https://www.icy-veins.com/forums/topic/81243-the-war-within-to-do-list/" title="The War Within To-Do List">The War Within To-Do List</a></li>
+<li><a href="https://www.icy-veins.com/forums/topic/52924-guardian-druid-pve/" title="Guardian Druid PvE">Guardian Druid PvE</a></li>
+
+  </ul>
+  <span class="header visit_forums"><a href="https://www.icy-veins.com/forums/" title="Visit Forums"><span>VISIT FORUMS</span> <span class="sprite_box_arrow"></span></a></span>
+  <span class="box_divider"></span>
+</div>
+<!-- RECENT POSTS END -->
+
+
+
+
+
+          </div><div id="right_middle"></div><div id="right_bottom">
+          </div>
+        </div>
+
+      </div>
+      <div id="footer">
+        <div id="footer_content_links">
+          <div>
+            <span class="header"><a href="https://www.poe-vault.com">PATH OF EXILE</a></span>
+            <ul>
+              <li><a href="https://www.poe-vault.com/guides/builds-for-path-of-exile">Path of Exile Build Guides</a></li>
+              <li><a href="https://www.poe-vault.com/guides">Path of Exile Guides</a></li>
+              <li><a href="https://www.poe-vault.com/guides/tag/league-starter-builds-for-path-of-exile">Path of Exile League Starters</a></li>
+              <li><a href="https://www.poe-vault.com/guides/quick-reference-leveling-guide-for-path-of-exile">Path of Exile Leveling Guide</a></li>
+              <li><a href="https://www.poe-vault.com/guides/gameplay-guide-hub">Path of Exile Gameplay Hub</a></li>
+              <li><a href="https://www.poe-vault.com/guides/the-forbidden-sanctum-league-patch-3-30">The Forbidden Sanctum Hub</a></li>
+            </ul>
+          </div><div>
+            <span class="header">WOW GUIDES</span>
+            <ul>
+              <li><a href="//www.icy-veins.com/wow/class-guides">Class guides</a></li>
+              <li><a href="//www.icy-veins.com/wow/the-war-within-mythic-season-2-guide">Mythic+ guides</a></li>
+              <li><a href="//www.icy-veins.com/wow/the-war-within-pvp-season-2-guide">PvP guides</a></li>
+              <li><a href="//www.icy-veins.com/wow/patch-111-guide">The War Within guides</a></li>
+              <li><a href="//www.icy-veins.com/wow/war-within-dungeons-guide">Dungeon &amp; Raid guides</a></li>
+              <li><a href="//www.icy-veins.com/wow/war-within-leveling-guide">Leveling guides</a></li>
+            </ul>
+          </div><div>
+            <span class="header">DIABLO IV GUIDES</span>
+            <ul>
+              <li><a href="//www.icy-veins.com/d4/guides/tier-lists/">Tier lists</a></li>
+              <li><a href="//www.icy-veins.com/d4/barbarian/builds/">Barbarian builds</a></li>
+              <li><a href="//www.icy-veins.com/d4/druid/builds/">Druid builds</a></li>
+              <li><a href="//www.icy-veins.com/d4/necromancer/builds/">Necromancer builds</a></li>
+              <li><a href="//www.icy-veins.com/d4/rogue/builds/">Rogue builds</a></li>
+              <li><a href="//www.icy-veins.com/d4/sorcerer/builds/">Sorcerer builds</a></li>
+              <li><a href="//www.icy-veins.com/d4/guides/">Guide hub</a></li>
+            </ul>
+          </div><div>
+            <span class="header">WOW CLASSIC GUIDES</span>
+            <ul>
+              <li><a href="//www.icy-veins.com/wow-classic/leveling-guide">Leveling guides</a></li>
+              <li><a href="//www.icy-veins.com/wow-classic/class-guides">Class guides</a></li>
+              <li><a href="//www.icy-veins.com/wow-classic/raids-and-dungeons-guide">Raids &amp; Dungeon guides</a></li>
+              <li><a href="//www.icy-veins.com/wow-classic/professions-guide">Profession guides</a></li>
+              <li><a href="//www.icy-veins.com/wow-classic/reputation-guides">Reputation guides</a></li>
+            </ul>
+          </div><div>
+            <span class="header">OUR BRANDS</span>
+            <ul>
+              <li><a href="https://u.gg/">U.GG</a></li>
+              <li><a href="https://www.thesimsresource.com/">The Sims Resource</a></li>
+              <li><a href="https://www.addictinggames.com/">Addicting Games</a></li>
+              <li><a href="https://luminosity.gg/">Luminosity</a></li>
+              <li><a href="https://www.pocketgamer.com/">Pocket Gamer</a></li>
+              <li><a href="https://ev.io/">EV.IO</a></li>
+              <li><a href="https://www.fantasyfootballscout.co.uk/">Fantasy Football Scout</a></li>
+            </ul>
+          </div>
+        </div>
+        <div id="footer_divider"></div>
+        <div class="header" id="footer_static_links_social_media">
+          <span><a href="//www.icy-veins.com/about">ABOUT</a></span>
+          <span><a href="//www.icy-veins.com/contact">CONTACT</a></span>
+          <span><a href="//www.icy-veins.com/advertise">ADVERTISE</a></span>
+          <span><a href="//www.icy-veins.com/faq">FAQ</a></span>
+          <span><a href="//www.icy-veins.com/privacy">PRIVACY</a></span>
+          <span><a href="//www.icy-veins.com/terms">TERMS OF USE</a></span>
+          <span><a href="//www.icy-veins.com/acknowledgements">ACKNOWLEDGEMENTS</a></span>
+          <span><a href="//www.icy-veins.com/jobs">JOBS</a></span>
+          <div id="footer_social_media">
+            <a title="Facebook" href="https://www.facebook.com/icyveinscom"><span class="sprite_social sprite_social_facebook"></span></a>
+            <a title="X" href="https://x.com/icyveins"><span class="sprite_social sprite_social_twitter"></span></a>
+            <a title="Youtube" href="https://www.youtube.com/user/icyveinscom"><span class="sprite_social sprite_social_youtube"></span></a>
+            <a title="News Feed" href="//www.icy-veins.com/feed.atom"><span class="sprite_social sprite_social_feed"></span></a>
+            <a title="E-mail Us" href="/cdn-cgi/l/email-protection#0a6965647e6b697e4a636973277c6f63647924696567"><span class="sprite_social sprite_social_email"></span></a>
+          </div>
+        </div>
+        <span class="text_color" id="copyright">&copy; 2011-2025 VEDATIS S.A.S.</span>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <div id="premium_information"></div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/email-decode.min.js-cb/cloudflare-static/email-decode.min.js"></script><script>
+    if (window.innerWidth >= 1070) {
+      if (document.getElementsByClassName("highslide").length > 0) {
+        f = document.getElementsByTagName("script")[0];
+        e = document.createElement("script");
+        e.async = true;
+        e.src = '//static.icy-veins.com/javascript/./highslide-3e1f2b42798a8ec5675760439c8ef9b6.js';
+        f.parentNode.insertBefore(e, f);
+        init_highslide = function(tries) {
+          if (tries < 10) {
+            if (typeof hs === 'undefined') {
+              setTimeout(function() { init_highslide(tries+1) }, 500);
+            } else {
+              // Highslide configuration
+              hs.graphicsDir = '//' + window.location.hostname.replace("www", "static") + "/images/highslide/";
+              hs.outlineStartOffset = 3;
+              hs.outlineType = 'rounded-white';
+              hs.showCredits = false;
+            }
+          }
+        };
+        init_highslide(0);
+      }
+      f = document.getElementsByTagName("script")[0];
+      if (document.querySelectorAll('a[href*="wowdb.com"]').length > 0) {
+        e = document.createElement("script");
+        e.async = true;
+        e.src = '//www.wowdb.com/current/js/syndication/tt.js';
+        f.parentNode.insertBefore(e, f);
+        wowdb_log = []
+        init_wowdb_tooltips = function(tries) {
+          if (tries < 10) {
+            if (typeof CurseTips === 'undefined') {
+              setTimeout(function() { init_wowdb_tooltips(tries+1) }, 500);
+            } else {
+              CurseTips['wowdb-tooltip'].watchElements(jQuery('a[href*="wowdb.com"]'));
+            }
+          }
+        };
+        init_wowdb_tooltips(0);
+      }
+      document.addEventListener("DOMContentLoaded", function(event) {
+        f = document.getElementsByTagName("script")[0];
+        e = document.createElement("script");
+        e.async = true;
+        e.src = '//static.icy-veins.com/javascript/./premium-557301522403682eb2d9a92a32dc8271.js';
+        f.parentNode.insertBefore(e, f);
+      });
+    }
+    if (!getCookie("ips4_member_premium")) {
+      target = document.querySelector(".page_content_header");
+      if (target) {
+        fetch('https://tools.icy-veins.com/country/index.rb.fcgi') .then(response => response.text()) .then(data => {
+          switch(data) {
+            case "BE":
+            case "EL":
+            case "LT":
+            case "PT":
+            case "BG":
+            case "ES":
+            case "LU":
+            case "RO":
+            case "CZ":
+            case "FR":
+            case "HU":
+            case "SI":
+            case "DK":
+            case "HR":
+            case "MT":
+            case "SK":
+            case "DE":
+            case "IT":
+            case "NL":
+            case "FI":
+            case "EE":
+            case "CY":
+            case "AT":
+            case "SE":
+            case "IE":
+            case "LV":
+            case "PL":
+            case "IS":
+            case "NO":
+            case "LI":
+            case "CH":
+            case "ME":
+            case "MK":
+            case "AL":
+            case "RS":
+            case "TR":
+            case "BA":
+            case "XK":
+              currency = "EUR";
+              break;
+            default:
+              currency = "USD";
+          }
+          if (window.devicePixelRatio >= 2) {
+            image_name = "premium-banner-" + currency + "-2x.png";
+          } else {
+            image_name = "premium-banner-" + currency + ".png";
+          }
+          image_url = '//' + window.location.hostname.replace("www", "static") + "/images/common/" + image_name;
+          let i = document.createElement("img");
+          i.src = image_url;
+          i.style.width = "710px";
+          i.style.maxWidth = "100%";
+          a = document.createElement("a");
+          a.href = "https://www.icy-veins.com/forums/premium";
+          a.appendChild(i)
+          d = document.createElement("div");
+          d.classList.add("premium_banners_limited");
+          d.id = "premium_banners_limited_" + currency;
+          d.appendChild(a);
+          d.style.marginBottom = "20px";
+          target.parentNode.insertBefore(d, target.nextSibling);
+        });
+      }
+    }
+    if (getCookie("ips4_member_premium")) {
+      document.querySelectorAll(".leaderboard_container").forEach(function(item, index) {
+        item.style.display = "none";
+      });
+    }
+    </script>
+
+<script>
+  if (!getCookie("ips4_member_premium")) {
+    var rampCore = document.createElement('script');
+    rampCore.src = "//cdn.intergient.com/ramp_core.js";
+    rampCore.async = true;
+    document.body.appendChild(rampCore);
+  }
+</script>
+
+  </body>
+</html>

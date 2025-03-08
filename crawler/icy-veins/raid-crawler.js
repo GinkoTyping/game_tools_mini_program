@@ -104,6 +104,8 @@ function getRawOutput(context, containerEle) {
       output[output.length - 1].children = liElements.map((item) =>
         mapUlElement($, item)
       );
+
+      // TODO: 详细攻略里会出现的，待适配
     } else if (ele[0].name === 'p') {
     }
   }
@@ -161,14 +163,29 @@ async function collectRaidBoss(boss) {
       // 'area_3'
     ].map((id) => collectByTipId($, id))
   );
+
+  function mapBossName(key) {
+    const map = {
+      'vexie-fullthrottle': '维克茜和磨轮',
+      'cauldron-of-carnage': '血腥大熔炉',
+      'rik-reverb': '里克·混响',
+      'stix-bunkjunker': '斯提克斯·堆渣',
+      'sprocketmonger-lockenstock': '链齿狂人洛肯斯多',
+      'one-armed-bandit': '独臂盗匪',
+      'mug-zee': '穆格·兹伊，安保头子',
+    };
+    return map[key] ?? key;
+  }
+
   return {
-    title: boss,
+    title: mapBossName(boss),
     children: results.map((result) => result.value),
   };
 }
 
 async function saveFile(data) {
   const savePath = path.resolve(__dirname, './output/raid/index.json');
+  const backendPath = path.resolve(__dirname, '../../backend/database/wow/data/raid/index.json');
   let exsitedData;
   if (fs.existsSync(savePath)) {
     exsitedData = JSON.parse(fs.readFileSync(savePath));
@@ -186,8 +203,10 @@ async function saveFile(data) {
       }
     });
     fs.writeFileSync(savePath, JSON.stringify(exsitedData, null, 2));
+    fs.writeFileSync(backendPath, JSON.stringify(exsitedData, null, 2));
   } else {
     fs.writeFileSync(savePath, JSON.stringify(data, null, 2));
+    fs.writeFileSync(backendPath, JSON.stringify(data, null, 2));
   }
 }
 
@@ -200,9 +219,12 @@ async function main() {
   const bosses = [
     'vexie-fullthrottle',
     'cauldron-of-carnage',
-    // 'rik-reverb',
+    'rik-reverb',
+    'stix-bunkjunker',
 
-    // 'stix-bunkjunker',
+    'sprocketmonger-lockenstock',
+    'one-armed-bandit',
+    'mug-zee',
   ];
   const data = await Promise.allSettled(
     bosses.map((boss) => collectRaidBoss(boss))
