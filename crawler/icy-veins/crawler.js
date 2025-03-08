@@ -18,7 +18,7 @@ async function collectByTierName(file) {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    const staticFilePath = `./cache/${file}.html`;
+    const staticFilePath = `./cache/tier-list/${file}.html`;
     if (fs.existsSync(path.resolve(__dirname, staticFilePath))) {
       html = fs
         .readFileSync(path.resolve(__dirname, staticFilePath), 'utf-8')
