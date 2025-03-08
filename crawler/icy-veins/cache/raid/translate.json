@@ -9,5 +9,20 @@
   "If you are targeted by [爆燃纵火] move away from pools that you spawn and do not run into any [浮油]s.": "如果你被[爆燃纵火]选中，请远离你生成的池子，并且不要跑进任何[浮油]中。",
   "Avoid [燃烧碎片].": "避开[燃烧碎片]。",
   "Interrupt or CC the Pit Mechanics and prevent them from casting [维修].": "打断或控制住坑道机械师，防止他们施放[维修]。",
-  "Place [浮油] puddles away from the group.": "将[浮油]水坑放置在远离团队的位置。"
+  "Place [浮油] puddles away from the group.": "将[浮油]水坑放置在远离团队的位置。",
+  "Split the raid into two teams. These teams will start on Flarendo (Fire/Left) or Torq (Lightning/Gorilla):": "将团队分成两队。这些队伍将从[Flarendo]（火焰/左边）或[Torq]（闪电/大猩猩）开始。",
+  "Tanks: Keep these bosses on the opposite sides of the room from each other.": "坦克：将这两个首领分别保持在房间的对侧。",
+  "Healers: Increasing amounts of ticking raid damage will happen during this phase. This is reset by changing sides in the intermission.": "治疗者：在这个阶段，团队将承受越来越多的持续伤害。这种伤害会在中场休息时切换位置后重置。",
+  "The teams should be an even split of your raid team.": "团队应该将你的团队平均分成两部分。",
+  "The bosses will now charge at each other in the middle and spawns puddles to avoid.": "Boss们现在会在中间互相冲锋，并生成需要躲避的水坑。",
+  "During this period the damage immunity for the bosses being too close to each other does not apply.": "在此期间，如果两个首领过于接近，它们不会获得伤害免疫效果。",
+  "Swap sides during this phase.": "在这个阶段交换位置。",
+  "Try to not move too much as moving will increase the amount of [静电充能] you have. If this bar gets full you will be stunned.": "尽量保持不动，因为移动会增加你的[静电充能]量。如果这个条满了，你将会被眩晕。",
+  "Move away from the group with [轰焚啸焰炮]. Stay in melee range to make dodging the beam easier.\n": "带着[轰焚啸焰炮]远离团队。保持在近战范围内，以便更容易躲避光束。",
+  "Spread out with [熔岩池] and avoid the [炽焰浪潮]s.": "分散站位，避开[熔岩池]，并躲避[炽焰浪潮]。",
+  "Soak [废物炸弹] and do not get knocked into the beam.": "吸收[废物炸弹]，并且不要被击退到光束中。",
+  "Tanks: Use cooldown(s) to reduce the damage of [闪电重拳].": "坦克：使用减伤技能来降低[闪电重拳]的伤害。",
+  "Tanks: Move away from the group after [喷发重踏] starts to cast. You will shoot fire waves from your location.": "坦克：在[喷发重踏]开始施放后，远离团队。你所在的位置会射出火焰波。",
+  "Avoid [雷鼓齐射] pools.": "避开[雷鼓齐射]的池子。",
+  "Heroic: Keep the [流电镜像]s away from yourself and other players.": "英雄难度：让[流电镜像]远离你自己和其他玩家。"
 }

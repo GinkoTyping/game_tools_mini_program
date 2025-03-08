@@ -91,18 +91,11 @@ function getRawOutput(context, containerEle) {
 
   async function setTipPartOutput(context, ele) {
     const $ = context;
-    // 标题已经收集过了
-    if (ele.attr('class')?.includes('heading_number_2')) {
-      return;
-    }
 
     if (ele.attr('class')?.includes('heading_number_3')) {
       const title = mapTranslateCache(ele.find('h3').text());
       output.push({ title, children: [] });
-      return;
-    }
-
-    if (ele[0].name === 'ul') {
+    } else if (ele[0].name === 'ul') {
       const liElements = ele
         .children('li')
         .map((index, ele) => $(ele))
@@ -111,6 +104,7 @@ function getRawOutput(context, containerEle) {
       output[output.length - 1].children = liElements.map((item) =>
         mapUlElement($, item)
       );
+    } else if (ele[0].name === 'p') {
     }
   }
 
@@ -162,6 +156,7 @@ async function collectRaidBoss(boss) {
   const results = await Promise.allSettled(
     [
       'area_1',
+      // TODO: 后续再是适配
       // 'area_2',
       // 'area_3'
     ].map((id) => collectByTipId($, id))
@@ -174,7 +169,26 @@ async function collectRaidBoss(boss) {
 
 async function saveFile(data) {
   const savePath = path.resolve(__dirname, './output/raid/index.json');
-  fs.writeFileSync(savePath, JSON.stringify(data, null, 2));
+  let exsitedData;
+  if (fs.existsSync(savePath)) {
+    exsitedData = JSON.parse(fs.readFileSync(savePath));
+  }
+
+  if (exsitedData) {
+    data.forEach((newItem) => {
+      const existedItemIndex = exsitedData.findIndex(
+        (oldItem) => oldItem.title === newItem.title
+      );
+      if (existedItemIndex === -1) {
+        exsitedData.push(newItem);
+      } else {
+        exsitedData.splice(existedItemIndex, 1, newItem);
+      }
+    });
+    fs.writeFileSync(savePath, JSON.stringify(exsitedData, null, 2));
+  } else {
+    fs.writeFileSync(savePath, JSON.stringify(data, null, 2));
+  }
 }
 
 async function main() {
@@ -183,7 +197,13 @@ async function main() {
     deepseek.saveTranslationCache().then(() => process.exit());
   });
 
-  const bosses = ['vexie-fullthrottle'];
+  const bosses = [
+    'vexie-fullthrottle',
+    'cauldron-of-carnage',
+    // 'rik-reverb',
+
+    // 'stix-bunkjunker',
+  ];
   const data = await Promise.allSettled(
     bosses.map((boss) => collectRaidBoss(boss))
   );
