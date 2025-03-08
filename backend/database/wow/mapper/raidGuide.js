@@ -8,6 +8,10 @@ async function insertRaidGuild(params) {
   );
 }
 
+function getRaidGuild() {
+  return db.get(`SELECT * FROM wow_raid_guide WHERE id=1296`);
+}
+
 export function useRaidGuideMapper(database) {
   if (database) {
     db = database;
@@ -16,5 +20,5 @@ export function useRaidGuideMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { insertRaidGuild };
+  return { insertRaidGuild, getRaidGuild };
 }
