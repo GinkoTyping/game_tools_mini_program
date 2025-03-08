@@ -6,5 +6,8 @@ const raidGuideMapper = useRaidGuideMapper(db);
 
 export async function queryRaidGuide(req, res) {
   const raidGuide = await raidGuideMapper.getRaidGuild();
-  res.json(raidGuide);
+  res.json({
+    ...raidGuide,
+    guide: JSON.parse(raidGuide.guide),
+  });
 }

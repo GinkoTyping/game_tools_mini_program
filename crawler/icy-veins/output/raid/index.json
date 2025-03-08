@@ -7,7 +7,7 @@
         "title": "一句话攻略",
         "children": [
           {
-            "title": "Phase 1: Fighting The Geargrinder:",
+            "title": "1阶段：对战磨轮",
             "children": [
               {
                 "text": "将[浮油]水坑放置在远离团队的位置。",
@@ -77,7 +77,7 @@
             ]
           },
           {
-            "title": "Intermission:",
+            "title": "转场",
             "children": [
               {
                 "text": "打断或控制住坑道机械师，防止他们施放[维修]。",
@@ -112,7 +112,7 @@
             ]
           },
           {
-            "title": "Finishing the fight:",
+            "title": "最后阶段",
             "children": [
               {
                 "text": "在摧毁齿轮粉碎者之后，击杀维克斯以结束战斗。",
@@ -132,7 +132,7 @@
         "title": "一句话攻略",
         "children": [
           {
-            "title": "Before the pull:",
+            "title": "开始战斗前",
             "children": [
               {
                 "text": "将团队分成两队。这些队伍将从[Flarendo]（火焰/左边）或[Torq]（闪电/大猩猩）开始。",
@@ -149,7 +149,7 @@
             ]
           },
           {
-            "title": "Flarendo (Fire/Left):",
+            "title": "狂龙弗莱兰多（火焰/左边）",
             "children": [
               {
                 "text": "治疗者：在这个阶段，团队将承受越来越多的持续伤害。这种伤害会在中场休息时切换位置后重置。",
@@ -208,7 +208,7 @@
             ]
           },
           {
-            "title": "Torq (Lightning/Gorilla):",
+            "title": "风暴巨猩托克（闪电/右边）",
             "children": [
               {
                 "text": "治疗者：在这个阶段，团队将承受越来越多的持续伤害。这种伤害会在中场休息时切换位置后重置。",
@@ -261,7 +261,7 @@
             ]
           },
           {
-            "title": "Intermission:",
+            "title": "转场",
             "children": [
               {
                 "text": "Boss们现在会在中间互相冲锋，并生成需要躲避的水坑。",
@@ -289,7 +289,7 @@
         "title": "一句话攻略",
         "children": [
           {
-            "title": "Boss Phase:",
+            "title": "BOSS阶段",
             "children": [
               {
                 "text": "坦克：不要将Boss的正面朝向其他玩家。",
@@ -368,7 +368,7 @@
             ]
           },
           {
-            "title": "Intermission:",
+            "title": "转场",
             "children": [
               {
                 "text": "在这个阶段，Boss受到的伤害减少99%。",
@@ -427,7 +427,7 @@
         "title": "一句话攻略",
         "children": [
           {
-            "title": "Boss Mechanics:",
+            "title": "BOSS机制",
             "children": [
               {
                 "text": "坦克：在叠加1层[崩摧]后交换坦克，确保另一名坦克已经变成[滚动的垃圾]。",
@@ -492,7 +492,7 @@
             ]
           },
           {
-            "title": "Rolling The Ball:",
+            "title": "滚动垃圾",
             "children": [
               {
                 "text": "最多5名玩家（根据团队规模）将变成[滚动的垃圾]（头顶有黄色箭头）。",
@@ -512,7 +512,7 @@
             ]
           },
           {
-            "title": "Adds:",
+            "title": "小怪处理",
             "children": [
               {
                 "text": "小型 - 垃圾场鬣狗：在BOSS身上坦克这些怪物，或者用[滚动的垃圾]把它们拉过来。",
@@ -560,7 +560,7 @@
         "title": "一句话攻略",
         "children": [
           {
-            "title": "Boss Phase:",
+            "title": "BOSS阶段",
             "children": [
               {
                 "text": "房间的一半会被[缆线输电]覆盖。这是按照固定的模式进行的。",
@@ -672,7 +672,7 @@
             ]
           },
           {
-            "title": "Intermission (100 Energy):",
+            "title": "转场（100能力）",
             "children": [
               {
                 "text": "Boss会将所有人推到房间入口处，然后飞到对面。",
@@ -707,7 +707,7 @@
         "title": "一句话攻略",
         "children": [
           {
-            "title": "Core Mechanics:",
+            "title": "核心机制",
             "children": [
               {
                 "text": "避开在房间内滚动的硬币。",
@@ -752,7 +752,7 @@
             ]
           },
           {
-            "title": "100 Energy - Add Phase:",
+            "title": "100能量 - 小怪阶段",
             "children": [
               {
                 "text": "打断[超载！]技能，目标为卷轴侍从。",
@@ -810,7 +810,7 @@
             ]
           },
           {
-            "title": "Enrage Phase:",
+            "title": "狂暴阶段",
             "children": [
               {
                 "text": "避开[流电连击]的光束。",
@@ -852,7 +852,7 @@
         "title": "一句话攻略",
         "children": [
           {
-            "title": "Before the Fight:",
+            "title": "开始战斗前",
             "children": [
               {
                 "text": "团队的大部分成员所在的位置决定了你将应对哪个首领的机制。Mug的机制在右边，而Zee的机制在左边。",
@@ -876,7 +876,7 @@
             ]
           },
           {
-            "title": "Mug (Right):",
+            "title": "穆格（右）",
             "children": [
               {
                 "text": "将两个[震地牢狱]区域并排放置，不要重叠。",
@@ -959,7 +959,7 @@
             ]
           },
           {
-            "title": "Zee (Left):",
+            "title": "兹伊（左边）",
             "children": [
               {
                 "text": "除非你打算引爆它们，否则请避开不稳定的爬行地雷。",
@@ -1030,7 +1030,7 @@
             ]
           },
           {
-            "title": "Intermission (40%):",
+            "title": "转场（40%）",
             "children": [
               {
                 "text": "将[静电充能]放置在远离团队的安全位置。理想情况下，你希望让Boss在中心线上充能，以保持一致性。",
@@ -1061,7 +1061,7 @@
             ]
           },
           {
-            "title": "Enrage:",
+            "title": "狂暴阶段",
             "children": [
               {
                 "text": "首领们会按照固定的顺序轮流使用他们的机制。",

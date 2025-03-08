@@ -381,3 +381,10 @@ export async function queryMythicDunegonList() {
     tierText: mapTierText(item.tier),
   }));
 }
+
+export async function queryRaidGuide() {
+  const res: any = await uni.request({
+    url: `${BASE_URL}/wow/raid-guide`,
+  });
+  return res.data;
+}
