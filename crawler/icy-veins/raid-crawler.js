@@ -23,7 +23,6 @@ function mapTranslateCache(key) {
   return tranlateCache?.[key] ?? key;
 }
 
-// TODO 分解
 async function translateSingleTip(tip) {
   let { text, spells } = tip;
   if (spells.length) {
@@ -50,7 +49,6 @@ async function translateSingleTip(tip) {
   }
   return { text, spells };
 }
-
 async function translateTipsByType(input) {
   const results = await Promise.allSettled(
     input.children.map((item) => translateSingleTip(item))
@@ -153,23 +151,6 @@ async function collectByTipId(context, id) {
   };
 }
 
-async function getBossTips(context) {
-  const $ = context;
-
-  [
-    'area_1',
-    // 'area_2',
-    // 'area_3'
-  ].map((id) => collectByTipId($, id));
-
-  deepseek.saveTranslationCache();
-
-  process.on('exit', () => deepseek.saveTranslationCache());
-  process.on('SIGINT', () => {
-    deepseek.saveTranslationCache().then(() => process.exit());
-  });
-}
-
 function getStaticFilePath(boss) {
   return path.resolve(__dirname, `./cache/raid/${boss}.html`);
 }
@@ -178,7 +159,38 @@ function getUrl(boss) {
 }
 async function collectRaidBoss(boss) {
   const $ = await useCheerioContext(getStaticFilePath(boss), getUrl(boss));
-  await getBossTips($);
+  const results = await Promise.allSettled(
+    [
+      'area_1',
+      // 'area_2',
+      // 'area_3'
+    ].map((id) => collectByTipId($, id))
+  );
+  return {
+    title: boss,
+    children: results.map((result) => result.value),
+  };
 }
 
-collectRaidBoss('vexie-fullthrottle');
+async function saveFile(data) {
+  const savePath = path.resolve(__dirname, './output/raid/index.json');
+  fs.writeFileSync(savePath, JSON.stringify(data, null, 2));
+}
+
+async function main() {
+  process.on('exit', () => deepseek.saveTranslationCache());
+  process.on('SIGINT', () => {
+    deepseek.saveTranslationCache().then(() => process.exit());
+  });
+
+  const bosses = ['vexie-fullthrottle'];
+  const data = await Promise.allSettled(
+    bosses.map((boss) => collectRaidBoss(boss))
+  );
+
+  saveFile(data.map((item) => item.value));
+
+  deepseek.saveTranslationCache();
+}
+
+main();
