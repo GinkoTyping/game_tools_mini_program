@@ -386,5 +386,5 @@ export async function queryRaidGuide() {
   const res: any = await uni.request({
     url: `${BASE_URL}/wow/raid-guide`,
   });
-  return res.data;
+  return res?.data?.guide ?? [];
 }

@@ -38,7 +38,7 @@ $priest: rgb(255, 255, 255);
   color: $priest;
   border-color: $priest;
 }
-.priest::before  {
+.priest::before {
   background-color: $priest;
 }
 
@@ -54,7 +54,7 @@ $priest: rgb(255, 255, 255);
   color: $shaman;
   border-color: $shaman;
 }
-.shaman::before  {
+.shaman::before {
   background-color: $shaman;
 }
 
@@ -62,7 +62,7 @@ $priest: rgb(255, 255, 255);
   color: $mage;
   border-color: $mage;
 }
-.mage::before  {
+.mage::before {
   background-color: $mage;
 }
 
@@ -70,7 +70,7 @@ $priest: rgb(255, 255, 255);
   color: $warlock;
   border-color: $warlock;
 }
-.warlock::before  {
+.warlock::before {
   background-color: $warlock;
 }
 
@@ -78,7 +78,7 @@ $priest: rgb(255, 255, 255);
   color: $monk;
   border-color: $monk;
 }
-.monk::before  {
+.monk::before {
   background-color: $monk;
 }
 
@@ -86,7 +86,7 @@ $priest: rgb(255, 255, 255);
   color: $druid;
   border-color: $druid;
 }
-.druid::before  {
+.druid::before {
   background-color: $druid;
 }
 
@@ -118,8 +118,8 @@ $priest: rgb(255, 255, 255);
   padding: 2px 4px;
   color: #fff;
   background-color: $uni-text-color-grey;
-  border: .1rem solid $uni-text-color-grey;
-  border-radius: .2rem;
+  border: 0.1rem solid $uni-text-color-grey;
+  border-radius: 0.2rem;
   font-size: small;
   box-sizing: border-box;
   height: 20px;
@@ -146,4 +146,8 @@ $priest: rgb(255, 255, 255);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.spell-popup .uni-card {
+  background-color: $uni-bg-color-grey-light !important;
 }
