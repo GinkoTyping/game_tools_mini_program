@@ -22,5 +22,5 @@ export async function queryAccessCount(req, res) {
 }
 
 export async function queryScrollInfo(req, res) {
-  res.json('更新专精BIS配装、DPS排行等。(3.7)');
+  res.json('更新团本1句话攻略。(3.9)');
 }

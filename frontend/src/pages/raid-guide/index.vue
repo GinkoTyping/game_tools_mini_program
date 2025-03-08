@@ -1,4 +1,9 @@
 <template>
+  <uni-notice-bar
+    v-show="isShowNotice"
+    show-icon
+    text="点击攻略文本，可查看技能详细描述"
+  />
   <uni-collapse>
     <uni-collapse-item
       :open="bossIndex === 0"
@@ -23,7 +28,7 @@
           type="h4"
           :title="tipKind.title"
           align="center"
-          color="#fff"
+          color="#007aff"
         ></uni-title>
         <view
           class="tip-text"
@@ -37,36 +42,51 @@
     </uni-collapse-item>
   </uni-collapse>
 
+  <ad-custom
+    unit-id="adunit-d7122c0e58cd2bbe"
+    bindload="adLoad"
+    binderror="adError"
+    bindclose="adClose"
+  ></ad-custom>
+
   <uni-popup ref="spellPopup">
-    <SpellCard
-      :spell="spell"
-      v-for="spell in currentSpells"
-      :key="spell.id"
-    />
+    <SpellCard :spell="spell" v-for="spell in currentSpells" :key="spell.id" />
   </uni-popup>
+
+  <ShareIcon />
 </template>
 
 <script lang="ts" setup>
 import { queryRaidGuide, querySpellsInTip } from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { ref } from 'vue';
 
 import SpellCard from '@/components/SpellCard.vue';
+import ShareIcon from '@/components/ShareIcon.vue';
 
 const raidData = ref();
+const isShowNotice = ref(true);
 onLoad(async () => {
   raidData.value = await queryRaidGuide();
 });
+onShareAppMessage(() => ({
+  title: '解放安德麦 一句话攻略',
+  path: `pages/raid-guide/index`,
+}));
 
 const currentSpells = ref();
 const spellPopup = ref();
 async function showSpells(spells: any) {
   if (spells?.length) {
+    isShowNotice.value = false;
+
     currentSpells.value = await querySpellsInTip(
       spells.map((spell: any) => spell.id)
     );
-    spellPopup.value?.open?.();
+    if (currentSpells.value.filter((item: any) => item !== null).length) {
+      spellPopup.value?.open?.();
+    }
   }
 }
 </script>
