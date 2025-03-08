@@ -55,6 +55,12 @@ function toPage(page: string) {
   });
 }
 
+function toRaidGuide() {
+  uni.navigateTo({
+    url: `/pages/raid-guide/index`,
+  });
+}
+
 export function useNavigator() {
   return {
     toSpecDetail,
@@ -65,5 +71,6 @@ export function useNavigator() {
     toMythicDungeonList,
     toSpecPopularity,
     toPage,
+    toRaidGuide
   };
 }

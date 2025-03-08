@@ -83,13 +83,11 @@
     </view>
   </view>
   <view class="narrow-card-container">
-    <view class="narrow-card" @click="() => navigator.toSpecPopularity()">
+    <view class="narrow-card" @click="() => navigator.toRaidGuide()">
       <view class="narrow-card_info highlight-shadow">
         <view class="info">
-          <view class="card-name">大秘境全专精热度</view>
-          <view class="card-desc">{{
-            homeViewData?.tierLists?.[0]?.version_id
-          }}</view>
+          <view class="card-name">解放安德麦</view>
+          <view class="card-desc">一句话攻略</view>
         </view>
       </view>
       <view class="narrow-card_bg"></view>
@@ -450,7 +448,7 @@ $simple-card-width: 43.5vw;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/wow-generic-news-image-10.webp);
+    background-image: url(https://ginkolearn.cyou/api/wow/assets/raid-guide/liberation-of-undermine-small.jpg);
   }
   .narrow-card_bg--mythic {
     background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/bg-undermine.jpg);

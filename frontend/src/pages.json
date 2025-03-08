@@ -7,15 +7,15 @@
 	},
 	"pages": [
 		{
-			"path": "pages/raid-guide/index",
+			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "银子的搜罗坊"
 			}
 		},
 		{
-			"path": "pages/index/index",
+			"path": "pages/raid-guide/index",
 			"style": {
-				"navigationBarTitleText": "银子的搜罗坊"
+				"navigationBarTitleText": "解放安德麦"
 			}
 		},
 		{
