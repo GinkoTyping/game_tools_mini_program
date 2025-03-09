@@ -21,6 +21,7 @@ async function updateBisByClassAndSpec(data) {
     updatedAt = null,
     collectedAt = null,
     talents,
+    detailedStats,
   } = data;
   return db.run(
     `
@@ -64,8 +65,12 @@ async function updateBisByClassAndSpec(data) {
     talents = CASE
       WHEN ?10 IS NOT NULL THEN ?10
       ELSE talents
+    END,
+    detailed_stats_priority = CASE
+      WHEN ?11 IS NOT NULL THEN ?11
+      ELSE detailed_stats_priority
     END
-    WHERE role_class = ?11 AND class_spec= ?12`,
+    WHERE role_class = ?12 AND class_spec= ?13`,
     [
       JSON.stringify(stats),
       JSON.stringify(ratings),
@@ -77,6 +82,7 @@ async function updateBisByClassAndSpec(data) {
       updatedAt,
       collectedAt,
       JSON.stringify(talents),
+      JSON.stringify(detailedStats),
       roleClass,
       classSpec,
     ]

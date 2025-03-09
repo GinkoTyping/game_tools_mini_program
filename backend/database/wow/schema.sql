@@ -38,6 +38,7 @@ CREATE TABLE
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     version TEXT,
     stats_priority TEXT NOT NULL,
+    detailed_stats_priority TEXT,
     ratings TEXT NOT NULL,
     talents TEXT,
     bis_items TEXT NOT NULL,
