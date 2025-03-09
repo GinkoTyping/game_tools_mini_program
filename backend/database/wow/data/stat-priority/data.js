@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import { getDB } from '../../../utils/index.js';
 import { useBisMapper } from '../../mapper/bisMapper.js';
 import { useDeepseek } from '../../../../../crawler/util/deepseek.js';
+import { tryTranslateSpell } from '../../../../../crawler/api/index.js';
 
 const db = await getDB();
 const bisMapper = useBisMapper(db);
@@ -20,6 +21,9 @@ const deepseek = useDeepseek(path.resolve(__dirname, 'translateCache.json'));
 async function translateStatItem(item) {
   async function translate(info) {
     let text = await deepseek.translate(info.text);
+    await Promise.allSettled(
+      info.spells.map((spell) => tryTranslateSpell(spell))
+    );
     return {
       ...info,
       text,
