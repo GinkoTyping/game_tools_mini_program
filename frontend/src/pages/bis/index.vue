@@ -60,7 +60,7 @@
         </template>
       </view>
       <uni-collapse ref="collapse">
-        <uni-collapse-item title="属性说明 (可点击技能)" open>
+        <uni-collapse-item title="属性说明 (可点击技能)" :open="currentData?.detailedStatsPriority">
           <view
             class="stat-info"
             v-for="(info, index) in currentData?.detailedStatsPriority

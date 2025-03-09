@@ -1015,28 +1015,50 @@
     "classSpec": "protection",
     "overview": [
       {
-        "text": "Strength gives parry chance against melee swings, increases the armor gain of [ Shield of the Righteous], and attack power, which scales the power of abilities.",
+        "text": "急速：降低所有技能的公共冷却时间（GCD），减少我们循环技能的冷却时间，从而增加神圣能量的生成。神圣能量生成的增加意味着我们可以更频繁地使用[正义之盾]或[荣耀圣令]，进而提升特定天赋如[正义守护者]或[坚定防御者]的效果。",
         "spells": [
           {
             "id": "53600",
-            "name": " Shield of the Righteous"
+            "name": "正义之盾"
+          },
+          {
+            "id": "85673",
+            "name": "荣耀圣令"
+          },
+          {
+            "id": "204074",
+            "name": "正义守护者"
+          },
+          {
+            "id": "385422",
+            "name": "坚定防御者"
           }
         ]
       },
       {
-        "text": "Armor reduces the damage you take from most physical non-bleed damage sources. Protection Paladin has several armor multipliers that make armor from gear more effective.",
-        "spells": []
+        "text": "精通：提升[精通：神圣壁垒]的效果，该效果在站在[奉献]中时提供减伤并增加格挡几率。此外，当你在[奉献]中时，你有几率格挡周期性魔法伤害。在进攻方面，该属性还增加攻击强度，从而提升职业技能的伤害。但它不会影响来自饰品或触发效果的外部伤害来源。",
+        "spells": [
+          {
+            "id": "76671",
+            "name": "精通：神圣壁垒"
+          },
+          {
+            "id": "226573",
+            "name": "奉献"
+          }
+        ]
       },
       {
-        "text": "Stamina increases your raw health pool.",
-        "spells": []
+        "text": "全能:它增加造成的伤害和治疗效果，同时以一半的数值减少受到的伤害。在进攻方面，它提升所有伤害，包括来自物品或触发效果的伤害。由于[庇护所]在《魔兽世界：地心之战》中的改动，全能在防御方面始终不如精通。",
+        "spells": [
+          {
+            "id": "379021",
+            "name": "庇护所"
+          }
+        ]
       },
       {
-        "text": "Block reduces the damage you take from attacks that you rolled a block event on. The only place to find this stat is the Shield slot.",
-        "spells": []
-      },
-      {
-        "text": "Secondary stats - most items have two secondary stats but there are exceptions.",
+        "text": "暴击：增加我们的伤害和招架近战攻击的几率。该属性在所有情况下都对DPS有益。但在生存方面，它通常在伤害主要来自近战攻击的情况下表现突出，这种情况常见于大秘境（M+）。对于单体BOSS或主要承受魔法伤害的情况，它在防御方面不如精通。",
         "spells": []
       }
     ],
