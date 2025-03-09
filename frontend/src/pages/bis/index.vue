@@ -74,7 +74,10 @@
               ?.overview"
             :key="index"
           >
-            <rich-text :nodes="renderTip(info.text)"></rich-text>
+            <rich-text
+              :nodes="renderTip(info.text)"
+              @click="() => displaySpells(info.spells)"
+            ></rich-text>
           </view>
         </uni-collapse-item>
       </uni-collapse>
