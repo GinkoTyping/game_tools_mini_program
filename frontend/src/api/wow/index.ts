@@ -102,17 +102,20 @@ export async function queryBis(roleClass: string, classSpec: string) {
   }
 
   function mapDetailStats(data: IBisDataDTO['detailed_stats_priority']) {
-    return {
-      ...data,
-      best: data.best.map(item => {
-        return {
-          ...item,
-          priorityList: item.priorityList.map(item =>
-            item.replaceAll('=', '/')
-          ),
-        };
-      }),
-    };
+    if (data) {
+      return {
+        ...data,
+        best: data.best.map(item => {
+          return {
+            ...item,
+            priorityList: item.priorityList.map(item =>
+              item.replaceAll('=', '/')
+            ),
+          };
+        }),
+      };
+    }
+    return {};
   }
 
   return {

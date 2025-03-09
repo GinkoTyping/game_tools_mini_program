@@ -49,19 +49,12 @@
       </view>
       <view class="stats" style="margin: 1rem 0">
         <template
-          v-for="(statText, index) in currentData?.detailedStatsPriority?.best[
-            currentStatType
-          ].priorityList"
+          v-for="(statText, index) in currentStatList"
           :key="statText"
         >
           <text>{{ statText }}</text>
           <image
-            v-show="
-              index !==
-              currentData?.detailedStatsPriority?.best[currentStatType]
-                .priorityList?.length -
-                1
-            "
+            v-show="index !== currentStatList.length - 1"
             src="/static/icon/dayu.svg"
           />
         </template>
