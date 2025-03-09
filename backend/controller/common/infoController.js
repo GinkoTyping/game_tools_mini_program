@@ -22,5 +22,5 @@ export async function queryAccessCount(req, res) {
 }
 
 export async function queryScrollInfo(req, res) {
-  res.json('更新团本1句话攻略。(3.9)');
+  res.json('更新各专精属性优先级及属性收益讲解。(3.10)');
 }
