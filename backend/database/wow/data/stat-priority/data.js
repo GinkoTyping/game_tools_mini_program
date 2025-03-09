@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 
 import { getDB } from '../../../utils/index.js';
 import { useBisMapper } from '../../mapper/bisMapper.js';
+import { useDeepseek } from '../../../../../crawler/util/deepseek.js';
 
 const db = await getDB();
 const bisMapper = useBisMapper(db);
@@ -14,9 +15,40 @@ const statsData = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, 'index.json'))
 );
 
-async function main() {
+const deepseek = useDeepseek(path.resolve(__dirname, 'translateCache.json'));
+
+async function translateStatItem(item) {
+  async function translate(info) {
+    let text = await deepseek.translate(info.text);
+    return {
+      ...info,
+      text,
+    };
+  }
+
   const results = await Promise.allSettled(
-    statsData.map((item) =>
+    item.overview.map((info) => translate(info))
+  );
+  return {
+    ...item,
+    overview: results.map((result) => result.value),
+  };
+}
+
+async function main() {
+  process.on('exit', () => deepseek.saveTranslationCache());
+  process.on('SIGINT', () => {
+    deepseek.saveTranslationCache().then(() => process.exit());
+  });
+
+  const tranlatedResults = await Promise.allSettled(
+    statsData.map((item) => translateStatItem(item))
+  );
+  const translatedData = tranlatedResults.map((item) => item.value);
+  deepseek.saveTranslationCache();
+
+  const results = await Promise.allSettled(
+    translatedData.map((item) =>
       bisMapper.updateBisByClassAndSpec({
         roleClass: item.roleClass,
         classSpec: item.classSpec,
