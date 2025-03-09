@@ -19,6 +19,10 @@ interface IBisDataDTO {
   ratings: { label: string; rating: number }[];
   version: string;
   talents: { talent: string; code: string }[];
+  detailed_stats_priority: {
+    best: { name: string; priorityList: string[] }[];
+    overview: { text: string; spells: { id: string; name: string }[] };
+  };
 }
 
 function mapRatings(rating: number) {
@@ -97,9 +101,24 @@ export async function queryBis(roleClass: string, classSpec: string) {
     return data.bis_items;
   }
 
+  function mapDetailStats(data: IBisDataDTO['detailed_stats_priority']) {
+    return {
+      ...data,
+      best: data.best.map(item => {
+        return {
+          ...item,
+          priorityList: item.priorityList.map(item =>
+            item.replaceAll('=', '/')
+          ),
+        };
+      }),
+    };
+  }
+
   return {
     roleClass,
     classSpec,
+    detailedStatsPriority: mapDetailStats(data.detailed_stats_priority),
     statsPriority: data.stats_priority,
     updatedAt: data.updated_at,
     trinkets: mapTrinks(data.bis_trinkets),

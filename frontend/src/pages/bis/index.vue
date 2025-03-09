@@ -29,8 +29,59 @@
       </view>
     </uni-card>
   </uni-section>
-  <uni-section :class="[classKey]" title="属性优先级">
-    <uni-card class="section-card">
+
+  <uni-section
+    :class="[classKey]"
+    title="属性优先级"
+    @click="switchStatSource"
+    :sub-title="statSourceText"
+  >
+    <uni-card class="section-card" v-show="statSource === 'wowhead'">
+      <view class="menu stat-menu">
+        <text
+          v-for="(type, index) in currentData?.detailedStatsPriority?.best"
+          :key="type.name"
+          class="ellipsis"
+          @click="() => switchStatType(index)"
+          :class="[
+            classKey,
+            currentStatType === index ? 'menu_active' : '',
+          ]"
+          >{{ type.name }}</text
+        >
+      </view>
+      <view class="stats" style="margin: 1rem 0;">
+        <template
+          v-for="(statText, index) in currentData?.detailedStatsPriority?.best[
+            currentStatType
+          ].priorityList"
+          :key="statText"
+        >
+          <text>{{ statText }}</text>
+          <image
+            v-show="
+              index !==
+              currentData?.detailedStatsPriority?.best[currentStatType]
+                .priorityList?.length -
+                1
+            "
+            src="/static/icon/dayu.svg"
+          />
+        </template>
+      </view>
+      <uni-collapse ref="collapse">
+        <uni-collapse-item title="属性说明" open>
+          <rich-text
+            v-for="(info, index) in currentData?.detailedStatsPriority
+              ?.overview"
+            :key="index"
+            :nodes="renderTip(info.text)"
+          ></rich-text>
+        </uni-collapse-item>
+      </uni-collapse>
+    </uni-card>
+
+    <uni-card class="section-card" v-show="statSource === 'maxroll'">
       <view class="stats">
         <text>{{ currentData?.statsPriority[0].stats[0] }}</text>
         <image
@@ -92,6 +143,7 @@
           :title="getTalentType(index)"
           v-for="(url, index) in currentData?.talents[currentTalentIndex]?.url"
           :key="index"
+          :open="index === 2"
         >
           <image
             class="talent-image"
@@ -105,7 +157,8 @@
     </uni-card>
   </uni-section>
 
-  <!-- TODO: 11.1 TAG -->
+  <ad-custom unit-id="adunit-43dfd4fbca02d516"></ad-custom>
+
   <uni-section class="talent" :class="[classKey]" title="BIS配装">
     <uni-card class="section-card">
       <view class="menu">
@@ -189,7 +242,7 @@
       </view>
     </uni-card>
   </uni-section>
-  <ad-custom unit-id="adunit-43dfd4fbca02d516"></ad-custom>
+
   <uni-section class="dungeon" :class="[classKey]" title="一句话大秘境">
     <uni-card class="section-card">
       <view class="menu">
@@ -549,6 +602,27 @@ const relationIcon = computed(() => {
     }
   };
 });
+const statSource = ref('wowhead');
+const statSourceText = computed(() =>
+  statSource.value === 'wowhead' ? '点击查看简略版' : '点击查看详细版'
+);
+function switchStatSource() {
+  if (statSource.value === 'wowhead') {
+    statSource.value = 'maxroll';
+  } else {
+    statSource.value = 'wowhead';
+  }
+}
+
+const currentStatType = ref(0);
+const currentStatList = computed(
+  () =>
+    currentData.value?.detailedStatsPriority?.best[currentStatType.value]
+      .priorityList
+);
+function switchStatType(type: number) {
+  currentStatType.value = type;
+}
 
 // 天赋
 const currentTalentIndex = ref(0);
@@ -1071,6 +1145,7 @@ $light-border: rgb(68, 68, 68);
   text-overflow: ellipsis;
 }
 
+.stat-menu,
 .talent .menu,
 .bis .menu {
   margin-bottom: 10px;

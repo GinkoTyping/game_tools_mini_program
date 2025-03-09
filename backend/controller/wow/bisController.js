@@ -87,6 +87,7 @@ export async function getBisBySpec(req, res) {
     ...bisData,
     bis_items,
     stats_priority: JSON.parse(bisData.stats_priority),
+    detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
     ratings: JSON.parse(bisData.ratings),
     bis_trinkets: JSON.parse(bisData.bis_trinkets),
     talents: JSON.parse(bisData.talents),
