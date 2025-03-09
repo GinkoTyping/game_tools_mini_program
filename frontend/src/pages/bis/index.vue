@@ -43,14 +43,11 @@
           :key="type.name"
           class="ellipsis"
           @click="() => switchStatType(index)"
-          :class="[
-            classKey,
-            currentStatType === index ? 'menu_active' : '',
-          ]"
+          :class="[classKey, currentStatType === index ? 'menu_active' : '']"
           >{{ type.name }}</text
         >
       </view>
-      <view class="stats" style="margin: 1rem 0;">
+      <view class="stats" style="margin: 1rem 0">
         <template
           v-for="(statText, index) in currentData?.detailedStatsPriority?.best[
             currentStatType
@@ -70,13 +67,15 @@
         </template>
       </view>
       <uni-collapse ref="collapse">
-        <uni-collapse-item title="属性说明" open>
-          <rich-text
+        <uni-collapse-item title="属性说明 (可点击技能)" open>
+          <view
+            class="stat-info"
             v-for="(info, index) in currentData?.detailedStatsPriority
               ?.overview"
             :key="index"
-            :nodes="renderTip(info.text)"
-          ></rich-text>
+          >
+            <rich-text :nodes="renderTip(info.text)"></rich-text>
+          </view>
         </uni-collapse-item>
       </uni-collapse>
     </uni-card>
@@ -1374,5 +1373,21 @@ $light-border: rgb(68, 68, 68);
 .footer {
   height: 4rem;
   width: 1vw;
+}
+
+.stat-info {
+  margin-left: 1.6rem;
+  margin-right: 1rem;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: -0.6rem;
+    top: 0.5rem;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: #fff;
+  }
 }
 </style>
