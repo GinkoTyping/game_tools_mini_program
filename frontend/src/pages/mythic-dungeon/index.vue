@@ -96,17 +96,21 @@
         :key="index"
       >
         <template v-slot:title>
-          <view
-            :class="[
-              'menu-title',
-              tip.type === 'trash' ? '' : 'menu-title--hight',
-            ]"
-          >
-            <text>{{
-              dataItem?.trashName ||
-              dataItem?.spellNameZH ||
-              dataItem?.spellNameEN
-            }}</text>
+          <view class="menu-title-slot">
+            <text
+              :class="[
+                'menu-title',
+                tip.type === 'trash' ? '' : 'menu-title--hight',
+              ]"
+              >{{
+                dataItem?.trashName ||
+                dataItem?.spellNameZH ||
+                dataItem?.spellNameEN
+              }}</text
+            >
+            <view class="menu-title-slot__sub">
+              ({{ dataItem.count }} 提醒)
+            </view>
           </view>
         </template>
         <view class="tip-image-container">
@@ -139,6 +143,15 @@
             >
               <rich-text :nodes="renderTip(child2Tip.text)"></rich-text>
             </view>
+          </view>
+        </view>
+        <view class="buttons">
+          <view class="buttons-item">
+            <uni-icons type="hand-up" color="#bbb" size="26"></uni-icons>
+            <text class="buttons-item-count">{{ dataItem.count }}</text>
+            <text class="buttons-item-tip"
+              >(这条攻略重要吗？点赞提醒其他玩家吧)</text
+            >
           </view>
         </view>
       </uni-collapse-item>
@@ -381,6 +394,17 @@ function scrollTo(selector: string) {
     }
   }
 }
+.menu-title-slot {
+  display: flex;
+  align-items: center;
+  .menu-title-slot__sub {
+    margin-left: 0.4rem;
+    display: flex;
+    align-items: center;
+    color: #bbb;
+    font-size: 12px;
+  }
+}
 .menu-title {
   color: #fff;
   font-size: 14px;
@@ -389,6 +413,26 @@ function scrollTo(selector: string) {
 .menu-title--hight {
   color: $color-b-tier;
 }
+
+.buttons {
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  .buttons-item {
+    display: flex;
+    align-items: center;
+    color: #bbb;
+    padding: 0.2rem 0.2rem;
+    text {
+      margin-left: 4px;
+      font-size: 14px;
+    }
+    .buttons-item-tip {
+      font-size: 12px;
+    }
+  }
+}
+
 ::v-deep .uni-section {
   .uni-section-header {
     background-color: $uni-bg-color-grey !important;
