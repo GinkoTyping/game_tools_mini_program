@@ -83,6 +83,10 @@ async function getBlankSpell() {
   `);
 }
 
+async function getAllSpell() {
+  return db.all(`SELECT * FROM wow_spell`);
+}
+
 export function useSpellMapper(database) {
   if (database) {
     db = database;
@@ -91,5 +95,11 @@ export function useSpellMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { insertSpell, getSpellById, updateSpellById, getBlankSpell };
+  return {
+    insertSpell,
+    getSpellById,
+    updateSpellById,
+    getBlankSpell,
+    getAllSpell,
+  };
 }

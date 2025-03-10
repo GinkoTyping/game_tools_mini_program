@@ -31,6 +31,10 @@ async function getMythicDunegonList() {
   );
 }
 
+async function getMythicDungeonAll() {
+  return db.all(`SELECT * FROM wow_mythic_dungeon`);
+}
+
 function updateMythicDungeonById(params) {
   const { id, routes, ratings, utilityNeeds, enemyTips, lootPool } = params;
   return db.run(
@@ -58,6 +62,7 @@ export function useMythicDungeonMapper(database) {
     insertMythicDungeon,
     getMythicDungeonById,
     getMythicDunegonList,
+    getMythicDungeonAll,
     updateMythicDungeonById,
   };
 }

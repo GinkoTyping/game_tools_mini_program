@@ -1,12 +1,8 @@
 import { getDB, getDynamicDB } from '../../../utils/index.js';
-import { useNpcMapper } from '../../mapper/npcMapper.js';
-import { useSpellMapper } from '../../mapper/spellMapper.js';
 import { useTrashAndSpellMapper } from '../../mapper/trashAndSpellMapper.js';
 import { useMythicDungeonMapper } from '../../mapper/mythicDungeonMapper.js';
 
 const db = await getDB();
-const npcMapper = useNpcMapper(db);
-const spellMapper = useSpellMapper(db);
 const mythicDungeonMapper = useMythicDungeonMapper(db);
 
 const dynamicDB = await getDynamicDB();
@@ -24,11 +20,14 @@ async function main() {
     dungeon.forEach((part) => {
       part.data.forEach((item) => {
         if (part.type === 'trash') {
-          if (!npcs.some(npc => npc.trashId === item.trashId)) {
+          if (!npcs.some((npc) => npc.trashId === item.trashId)) {
             npcs.push(item);
           }
         } else {
-          if (item.spellId && !spells.some(spell => spell.spellId === item.spellId)) {
+          if (
+            item.spellId &&
+            !spells.some((spell) => spell.spellId === item.spellId)
+          ) {
             spells.push(item);
           }
         }
@@ -36,7 +35,22 @@ async function main() {
     });
   });
 
-
+  await Promise.allSettled(
+    npcs.map((npc) =>
+      trashAndSpellMapper.insertNpc({
+        id: npc.trashId,
+        name_zh: npc.trashName,
+        content: JSON.stringify(npc),
+      })
+    )
+  );
+  await Promise.allSettled(
+    spells.map((spell) => trashAndSpellMapper.insertSpell({
+      id: spell.spellId,
+      name_zh: spell.spellNameZH,
+      content: JSON.stringify(spell),
+    }))
+  );
 }
 
 main();

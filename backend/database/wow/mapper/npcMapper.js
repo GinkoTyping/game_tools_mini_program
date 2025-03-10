@@ -48,6 +48,10 @@ async function getNpcByNameEn(nameEn) {
   ]);
 }
 
+async function getAllNpc() {
+  return db.all(`SELECT * FROM wow_npc`);
+}
+
 export function useNpcMapper(database) {
   if (database) {
     db = database;
@@ -60,7 +64,8 @@ export function useNpcMapper(database) {
     insertNpc,
     getNpcById,
     updateNpc,
-    getNpcWithNoNameZh,
+    getAllNpc,
     getNpcByNameEn,
+    getNpcWithNoNameZh,
   };
 }

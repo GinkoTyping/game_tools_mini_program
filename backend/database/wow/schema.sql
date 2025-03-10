@@ -127,3 +127,19 @@ CREATE TABLE
     class_spec TEXT,
     count INTEGER DEFAULT 0
   );
+
+CREATE TABLE
+  IF NOT EXISTS wow_dynamic_npc_mark_count (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT,
+    content TEXT,
+    count INTEGER DEFAULT 0
+  );
+
+CREATE TABLE
+  IF NOT EXISTS wow_dynamic_spell_mark_count (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT,
+    content TEXT,
+    count INTEGER DEFAULT 0
+  );
