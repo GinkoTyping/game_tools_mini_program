@@ -5705,7 +5705,53 @@
         "title": "\"老蜡须\"",
         "type": "boss",
         "data": [
-          null,
+          {
+            "spellId": "421875",
+            "spellNameZH": "驱“烛”外敌",
+            "spellNameEN": "‍\"Kol\"-to-Arms",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-Kol-to-Arms-ezgif.com-optimize.gif",
+            "image": "‍\"Kol\"-to-Arms.gif",
+            "data": [
+              {
+                "text": "在暗焰裂谷中，老蜡须会召唤苦工劳工参战，他们可能步行或乘坐矿车前来。",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "矿车会撞击路径上的任何东西，将玩家击退并对其造成物理伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "对普通劳工来说是致命的。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "当[杂务工]加入战斗时，他们会锁定附近随机的玩家。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "杂务工的攻击会施加一个可叠加的流血效果，每2秒造成一次物理伤害，持续5秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "在战斗中，尽量靠近铁轨，以便利用矿车摆脱[杂务工]。否则，你很容易被他们的数量压倒，而[粗制武器]会慢慢消耗你的生命值。",
+                "spells": [
+                  {
+                    "name": "‍Crude Weapons",
+                    "id": "422682",
+                    "nameZH": "粗制武器"
+                  }
+                ],
+                "children": []
+              }
+            ]
+          },
           {
             "spellId": "428268",
             "spellNameZH": "卑鄙“轨”术",
