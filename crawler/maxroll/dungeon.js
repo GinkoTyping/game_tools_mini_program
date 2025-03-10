@@ -474,12 +474,17 @@ async function getBossSpell(context, containerEle, index) {
 
   const imageSrc = $(imageEle).find('img')?.attr('src');
   const image = `${spellNameEN}.gif`;
-
-  if (imageSrc) {
-    await downloadSingle(
-      imageSrc,
-      path.resolve(__dirname, `../../backend/assets/wow/spell/${image}`)
-    );
+  
+  // 避免下载失败 函数终止
+  try {
+    if (imageSrc) {
+      await downloadSingle(
+        imageSrc,
+        path.resolve(__dirname, `../../backend/assets/wow/spell/${image}`)
+      );
+    }
+  } catch (error) {
+    console.log(`下载失败`);
   }
 
   return {
@@ -758,14 +763,14 @@ const crawlerLimiter = new Bottleneck({
 });
 async function startCrawler() {
   const mythicDungeons = [
-    'theater-of-pain-guide',
-    'the-rookery-guide',
-    'the-motherlode-guide',
-    'priory-of-the-sacred-flame-guide',
+    // 'theater-of-pain-guide',
+    // 'the-rookery-guide',
+    // 'the-motherlode-guide',
+    // 'priory-of-the-sacred-flame-guide',
     'operation-mechagon-workshop-guide',
-    'operation-floodgate-guide',
-    'darkflame-cleft-guide',
-    'cinderbrew-meadery-guide',
+    // 'operation-floodgate-guide',
+    // 'darkflame-cleft-guide',
+    // 'cinderbrew-meadery-guide',
   ];
   const results = await Promise.allSettled(
     mythicDungeons.map((item) => crawlerLimiter.schedule(() => collect(item)))

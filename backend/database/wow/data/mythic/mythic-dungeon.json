@@ -10873,8 +10873,9 @@
             ]
           },
           {
-            "trashName": "Metal Gunk",
+            "trashName": "金属黏泥",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Metal-Gunk-1024x660.webp",
+            "trashId": 236033,
             "data": [
               {
                 "text": "[腐蚀泥胶]",
@@ -11424,7 +11425,20 @@
               }
             ]
           },
-          null,
+          {
+            "spellId": "285443",
+            "spellNameZH": "“隐秘”烈焰火炮",
+            "spellNameEN": "‍\"Hidden\" Flame Cannon",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-HiddenFlameCannon-ezgif.com-optimize.gif",
+            "image": "‍\"Hidden\" Flame Cannon.gif",
+            "data": [
+              {
+                "text": "激活位于房间中央的火焰炮，使其在10秒内向多个方向喷吐火焰，对所有被火焰击中的玩家造成火焰伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
           {
             "spellId": "294954",
             "spellNameZH": "自我修剪措施",

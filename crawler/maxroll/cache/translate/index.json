@@ -1005,5 +1005,10 @@
   "[兽群战术]": "[兽群战术]",
   "[狙击]": "[狙击]",
   "Once their reserves are fully recharged, Big M.O.M.M.A. leaves behind [超量电化], a ground effect inflicting nature damage every second to players standing within.": "当它们的储备完全充能后，Big M.O.M.M.A.会留下[超量电化]，这是一个地面效果，每秒对站在其中的玩家造成自然伤害。",
-  "[毁灭风暴]": "[毁灭风暴]"
+  "[毁灭风暴]": "[毁灭风暴]",
+  "‍Giga-Wallop": "巨力重击",
+  "The target also takes 100% increased damage from ‍Mega-Zap for 12 seconds.": "目标在12秒内受到的[超级电击]伤害提高100%。",
+  "Hide behind the Junk Cubes to avoid getting damaged from the ‍Venting Flames.": "躲在[垃圾方块]后面，以避免受到[喷涌烈焰]的伤害。",
+  "Junk Cube becomes a ‍Junk Bomb whenever it's being hit with ‍Explosive Leap or ‍Venting Flames. Hitting a ‍Junk Bomb a second time with those spells will result in an explosion, inflicting fire damage and knocking back all players within 6 yards of the bomb.": "当[垃圾方块]被[爆炸跳跃]或[排气火焰]击中时，它会变成一个[垃圾炸弹]。如果这些法术再次击中[垃圾炸弹]，将会引发爆炸，对炸弹周围6码内的所有玩家造成火焰伤害并将其击退。",
+  "‍Short Out": "短路"
 }
