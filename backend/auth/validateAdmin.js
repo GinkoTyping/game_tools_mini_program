@@ -1,12 +1,15 @@
 import jwt from 'jsonwebtoken';
 
+export function isLocal(req) {
+  const clientIP = req.ip || req.headers['x-forwarded-for'];
+  const allowedIPs = new Set(['127.0.0.1', '::1', 'localhost']);
+  return allowedIPs.has(clientIP);
+}
+
 export const validateAdmin = async (req, res, next) => {
   try {
     // (1) 验证 IP 白名单
-    const clientIP = req.ip || req.headers['x-forwarded-for'];
-    const allowedIPs = new Set(['127.0.0.1', '::1', 'localhost']);
-
-    if (!allowedIPs.has(clientIP)) {
+    if (!isLocal(req)) {
       return res.status(403).json({ message: 'IP not allowed' });
     }
 

@@ -1,6 +1,7 @@
 import { getDB, getDynamicDB } from '../../database/utils/index.js';
 import { useMythicDungeonMapper } from '../../database/wow/mapper/mythicDungeonMapper.js';
 import { useMythicDungeonCountMapper } from '../../database/wow/mapper/mythicDungeonCountMapper.js';
+import { isLocal } from '../../auth/validateAdmin.js';
 
 const db = await getDB();
 const dynamicDB = await getDynamicDB();
@@ -12,8 +13,10 @@ export async function queryMythicDungeonById(req, res) {
 
   const data = await mythicDungeonMapper.getMythicDungeonById(id);
 
-  // 访问计数 +1
-  mythicDungeonCountMapper.addMythicDungeonCountById(id);
+  if (!isLocal(req)) {
+    // 访问计数 +1
+    await mythicDungeonCountMapper.addMythicDungeonCountById(id);
+  }
 
   res.json({
     nameZH: data.name_zh,

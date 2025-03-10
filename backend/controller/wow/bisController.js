@@ -10,6 +10,7 @@ import { getDynamicDB } from '../../database/utils/index.js';
 import { useBisMapper } from '../../database/wow/mapper/bisMapper.js';
 import { useItemMapper } from '../../database/wow/mapper/itemMapper.js';
 import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
+import { isLocal } from '../../auth/validateAdmin.js';
 
 let api;
 const database = await getDB();
@@ -82,12 +83,14 @@ export async function getBisBySpec(req, res) {
   const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
   const bis_items = await mapBisItems(JSON.parse(bisData.bis_items));
 
-  // 访问次数 +1
-  await bisMapper.updateBisByClassAndSpec({
-    roleClass,
-    classSpec,
-    accessCount: bisData.access_count + 1,
-  });
+  // 避免本地调测时，引起本地的数据和服务器不一致
+  if (!isLocal(req)) {
+    // 访问次数 +1
+    await specBisCountMapper.addSpecBisCountByClassAndSpec({
+      roleClass,
+      classSpec,
+    });
+  }
 
   res.json({
     ...bisData,
