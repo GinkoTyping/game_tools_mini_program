@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { getDB } from '../../../utils/index.js';
-import { useRaidGuideMapper } from '../../mapper/raidGuide.js';
+import { useRaidGuideMapper } from '../../mapper/raidGuideMapper.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

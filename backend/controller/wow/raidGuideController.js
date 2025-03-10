@@ -1,5 +1,5 @@
 import { getDB } from '../../database/utils/index.js';
-import { useRaidGuideMapper } from '../../database/wow/mapper/raidGuide.js';
+import { useRaidGuideMapper } from '../../database/wow/mapper/raidGuideMapper.js';
 
 const db = await getDB();
 const raidGuideMapper = useRaidGuideMapper(db);

@@ -119,3 +119,11 @@ CREATE TABLE
     count INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (id) REFERENCES wow_dungeon (id)
   );
+
+CREATE TABLE
+  IF NOT EXISTS wow_dynamic_spec_bis_count (
+    id INTEGER PRIMARY KEY NOT NULL,
+    role_class TEXT,
+    class_spec TEXT,
+    count INTEGER DEFAULT 0
+  );
