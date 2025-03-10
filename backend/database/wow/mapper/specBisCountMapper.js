@@ -27,6 +27,10 @@ async function addSpecBisCountByClassAndSpec(params) {
   }
 }
 
+async function getAllSpecBisCount() {
+  return db.all(`SELECT * FROM wow_dynamic_spec_bis_count`);
+}
+
 export function useSpecBisCountMapper(database) {
   if (database) {
     db = database;
@@ -37,6 +41,7 @@ export function useSpecBisCountMapper(database) {
 
   return {
     insertSpecBisCount,
+    getAllSpecBisCount,
     getSpecBisCountByClassAndSpec,
     addSpecBisCountByClassAndSpec,
   };

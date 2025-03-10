@@ -5,14 +5,20 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { getDB } from '../../database/utils/index.js';
+import { getDynamicDB } from '../../database/utils/index.js';
 
 import { useBisMapper } from '../../database/wow/mapper/bisMapper.js';
 import { useItemMapper } from '../../database/wow/mapper/itemMapper.js';
+import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
 
 let api;
 const database = await getDB();
 const bisMapper = useBisMapper(database);
 const itemMapper = useItemMapper(database);
+
+const dynamicDB = await getDynamicDB();
+const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
+
 function setBlizzAPI() {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
@@ -47,7 +53,7 @@ export async function getItemPreviewById(req, res) {
   } else {
     try {
       console.log('fetching data...');
-      const data = await queryBlizzItemById(req.params.id)
+      const data = await queryBlizzItemById(req.params.id);
 
       if (item) {
         // 如果之前的装备名称是英文，也可以把英文名称更新为中文
@@ -154,26 +160,23 @@ export async function getSortedSpecsTrend() {
   return data.sort((a, b) => b.access_count - a.access_count);
 }
 
-// TODO: 替换底部的函数
 export async function queryBisTrends(req, res) {
-  const data = await bisMapper.getAllBis();
+  const data = await specBisCountMapper.getAllSpecBisCount();
   const mappedData = data
     .reduce((pre, cur) => {
       const found = pre.find((item) => item.role_class === cur.role_class);
 
       if (found) {
-        found.access_count += cur.access_count;
+        found.access_count += cur.count;
         found.specs.push({
           class_spec: cur.class_spec,
-          access_count: cur.access_count,
+          access_count: cur.count,
         });
       } else {
         pre.push({
           role_class: cur.role_class,
-          access_count: cur.access_count,
-          specs: [
-            { class_spec: cur.class_spec, access_count: cur.access_count },
-          ],
+          access_count: cur.count,
+          specs: [{ class_spec: cur.class_spec, access_count: cur.count }],
         });
       }
 
