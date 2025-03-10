@@ -133,7 +133,8 @@ CREATE TABLE
     id INTEGER PRIMARY KEY NOT NULL,
     name TEXT,
     content TEXT,
-    count INTEGER DEFAULT 0
+    count INTEGER DEFAULT 0,
+    mark_list TEXT
   );
 
 CREATE TABLE
@@ -141,5 +142,6 @@ CREATE TABLE
     id INTEGER PRIMARY KEY NOT NULL,
     name TEXT,
     content TEXT,
-    count INTEGER DEFAULT 0
+    count INTEGER DEFAULT 0,
+    mark_list TEXT
   );
