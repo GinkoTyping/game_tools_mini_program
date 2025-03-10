@@ -382,6 +382,7 @@ async function translateTrash(trash) {
     if (data) {
       return {
         ...trash,
+        trashId: data.id,
         trashName: data.name_zh,
       };
     }

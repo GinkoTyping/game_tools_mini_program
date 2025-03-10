@@ -329,6 +329,7 @@
           {
             "trashName": "不屈的参赛者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Unyielding-Contender.webp",
+            "trashId": 170838,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -375,6 +376,7 @@
           {
             "trashName": "战场祭师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Battlefield-Ritualist-467x1024.webp",
+            "trashId": 174197,
             "data": [
               {
                 "text": "所需打断：",
@@ -421,6 +423,7 @@
           {
             "trashName": "狂怒的血角",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Raging-Bloodhorn.webp",
+            "trashId": 170850,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -607,6 +610,7 @@
           {
             "trashName": "裂伤者耐克萨拉",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nekthara-the-Mangler.webp",
+            "trashId": 162744,
             "data": [
               {
                 "text": "[旋风斩]",
@@ -664,6 +668,7 @@
           {
             "trashName": "老练的里克",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rek-the-Hardened-574x1024.webp",
+            "trashId": 167534,
             "data": [
               {
                 "text": "[旋风斩]",
@@ -721,6 +726,7 @@
           {
             "trashName": "嗜血的哈鲁吉亚",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Harugia-the-Bloodthirsty-507x1024.webp",
+            "trashId": 167536,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -761,6 +767,7 @@
           {
             "trashName": "蹒跚的弩手",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shambling-Arbalest-553x1024.webp",
+            "trashId": 164510,
             "data": [
               {
                 "text": "[射击]",
@@ -807,6 +814,7 @@
           {
             "trashName": "上古队长",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ancient-Captain-633x1024.webp",
+            "trashId": 164506,
             "data": [
               {
                 "text": "所需打断：",
@@ -870,6 +878,7 @@
           {
             "trashName": "阿德文特·追惘",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Advent-Nevermore-521x1024.webp",
+            "trashId": 167533,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -927,6 +936,7 @@
           {
             "trashName": "粉碎者赫文",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Heavin-the-Breaker-716x1024.webp",
+            "trashId": 167532,
             "data": [
               {
                 "text": "[巨人打击]",
@@ -984,6 +994,7 @@
           {
             "trashName": "残暴者多基格",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Dokigg-the-Brutalizer.webp",
+            "trashId": 167538,
             "data": [
               {
                 "text": "[暴怒乱舞]",
@@ -1275,6 +1286,7 @@
           {
             "trashName": "传送门守卫",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Portal-Guardian-1024x1007.webp",
+            "trashId": 167998,
             "data": [
               {
                 "text": "所需诅咒驱散：",
@@ -1321,6 +1333,7 @@
           {
             "trashName": "狂热的缚魂者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Maniacal-Soulbinder-500x1024.webp",
+            "trashId": 160495,
             "data": [
               {
                 "text": "所需打断：",
@@ -1367,6 +1380,7 @@
           {
             "trashName": "白骨魔导师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bone-Magus-547x1024.webp",
+            "trashId": 170882,
             "data": [
               {
                 "text": "所需打断：",
@@ -1442,6 +1456,7 @@
           {
             "trashName": "魂铸白骨编织者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Soulforged-Bonereaver-1024x550.webp",
+            "trashId": 162763,
             "data": [
               {
                 "text": "[白骨风暴]",
@@ -1482,6 +1497,7 @@
           {
             "trashName": "卑劣的暗语者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nefarious-Darkspeaker-500x1024.webp",
+            "trashId": 169893,
             "data": [
               {
                 "text": "所需诅咒驱散：",
@@ -1551,6 +1567,7 @@
           {
             "trashName": "桎梏之魂",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shackled-Soul-541x1024.webp",
+            "trashId": 169875,
             "data": [
               {
                 "text": "所需打断：",
@@ -1692,6 +1709,7 @@
           {
             "trashName": "凋零淤泥喷射者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Blighted-Sludge-Spewer.webp",
+            "trashId": 174210,
             "data": [
               {
                 "text": "所需打断：",
@@ -1778,6 +1796,7 @@
           {
             "trashName": "腥臭屠夫",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Putrid-Butcher-1024x836.webp",
+            "trashId": 169927,
             "data": [
               {
                 "text": "[吞噬血肉]",
@@ -1801,6 +1820,7 @@
           {
             "trashName": "恶心的残躯",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Disgusting-Refuse.webp",
+            "trashId": 163089,
             "data": [
               {
                 "text": "[腾跃猛击]",
@@ -1847,6 +1867,7 @@
           {
             "trashName": "染病恐魔",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Diseased-Horror-668x1024.webp",
+            "trashId": 170690,
             "data": [
               {
                 "text": "[血肉之盾]",
@@ -1887,6 +1908,7 @@
           {
             "trashName": "腐臭的气囊怪",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rancid-Gasbag-1024x911.webp",
+            "trashId": 163086,
             "data": [
               {
                 "text": "[疾病之云]",
@@ -2587,6 +2609,7 @@
           {
             "trashName": "军需官科拉泰特",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Quartermaster-Koratite-Reupload.webp",
+            "trashId": 209801,
             "data": [
               {
                 "text": "[束缚虚空]",
@@ -2627,6 +2650,7 @@
           {
             "trashName": "被诅咒的雷霆使",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Cursed-Thunderer-Reupload.webp",
+            "trashId": 207198,
             "data": [
               {
                 "text": "所需打断：",
@@ -2679,6 +2703,7 @@
           {
             "trashName": "驭虚者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Voidrider.webp",
+            "trashId": 212786,
             "data": [
               {
                 "text": "[局部风暴]",
@@ -2719,6 +2744,7 @@
           {
             "trashName": "被诅咒的雷鸫看护者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Cursed-Rooktender-Reupload.webp",
+            "trashId": 207199,
             "data": [
               {
                 "text": "所需打断：",
@@ -2748,6 +2774,7 @@
           {
             "trashName": "任性的雷鸫",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Unruly-Stormrook.webp",
+            "trashId": 207186,
             "data": [
               {
                 "text": "[能量弹幕]",
@@ -2869,6 +2896,7 @@
           {
             "trashName": "凝虚散播者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Coalescing-Void-Diffuser-Reupload.webp",
+            "trashId": 214421,
             "data": [
               {
                 "text": "[诱集暗影]",
@@ -2915,6 +2943,7 @@
           {
             "trashName": "虚咒碾压者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Void-Cursed-Crusher-Reupload.webp",
+            "trashId": 214419,
             "data": [
               {
                 "text": "[虚空碾压]",
@@ -2955,6 +2984,7 @@
           {
             "trashName": "被腐化的先知",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Corrupted-Oracle.webp",
+            "trashId": 214439,
             "data": [
               {
                 "text": "所需打断：",
@@ -3090,6 +3120,7 @@
           {
             "trashName": "虚空晋升者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Void-Ascendant-489x1024.webp",
+            "trashId": 212793,
             "data": [
               {
                 "text": "所需打断：",
@@ -3165,6 +3196,7 @@
           {
             "trashName": "吞噬虚空石",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Consuming-Voidstone-Reupload.webp",
+            "trashId": 212739,
             "data": [
               {
                 "text": "[虚空萃取]",
@@ -3211,6 +3243,7 @@
           {
             "trashName": "虚咒碾压者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Void-Cursed-Crusher-Reupload.webp",
+            "trashId": 214419,
             "data": [
               {
                 "text": "[虚空碾压]",
@@ -3251,6 +3284,7 @@
           {
             "trashName": "痛苦的平民",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Afflicted-Civilian-Reupload.webp",
+            "trashId": 219066,
             "data": [
               {
                 "text": "[动荡]",
@@ -3752,6 +3786,7 @@
           {
             "trashName": "阿拉希步兵",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Arathi-Footman-492x1024.webp",
+            "trashId": 206705,
             "data": [
               {
                 "text": "[防御]",
@@ -3787,6 +3822,7 @@
           {
             "trashName": "热诚的神射手",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Fervent-Sharpshooter-462x1024.webp",
+            "trashId": 206694,
             "data": [
               {
                 "text": "[射击]",
@@ -3844,6 +3880,7 @@
           {
             "trashName": "作战山猫",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/War-Lynx.webp",
+            "trashId": 206699,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -3879,6 +3916,7 @@
           {
             "trashName": "阿拉希骑士",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Arathi-Knight-385x1024.webp",
+            "trashId": 206696,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -3925,6 +3963,7 @@
           {
             "trashName": "铸炉大师达米安",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Forge-Master-Damian-447x1024.webp",
+            "trashId": 212831,
             "data": [
               {
                 "text": "[烈焰圣印]",
@@ -4000,6 +4039,7 @@
           {
             "trashName": "艾蕾娜·安博兰兹",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Elaena-Emberlanz-501x1024.webp",
+            "trashId": 211290,
             "data": [
               {
                 "text": "[神圣审判]",
@@ -4040,6 +4080,7 @@
           {
             "trashName": "高阶牧师艾姆雅",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Aemya-341x1024.webp",
+            "trashId": 212827,
             "data": [
               {
                 "text": "所需打断：",
@@ -4097,6 +4138,7 @@
           {
             "trashName": "泰纳·杜尔玛",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Taener-Duelmal-497x1024.webp",
+            "trashId": 211289,
             "data": [
               {
                 "text": "所需打断：",
@@ -4160,6 +4202,7 @@
           {
             "trashName": "守卫队长苏雷曼",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Guard-Captain-Suleyman-541x1024.webp",
+            "trashId": 212826,
             "data": [
               {
                 "text": "[雷霆一击]",
@@ -4205,6 +4248,7 @@
           {
             "trashName": "歇尼麦尔中士",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Sergeant-Shaynemail-388x1024.webp",
+            "trashId": 211291,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -4257,6 +4301,7 @@
           {
             "trashName": "光耀之子",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Lightspawn-REAL.webp",
+            "trashId": 206710,
             "data": [
               {
                 "text": "[纯净御罪]  \n在魔兽世界的副本中，[纯净御罪]是一个重要的机制或技能。玩家需要特别注意以下几点：  \n\n1. **技能效果**：该技能会对目标施加一个持续性的负面效果，例如持续伤害或减益效果。  \n2. **应对策略**：  \n   - 治疗职业需要及时驱散或治疗受到影响的队友。  \n   - 坦克职业需要确保BOSS的仇恨稳定，避免技能影响过多队友。  \n   - 输出职业需要保持高输出，同时注意躲避技能范围。  \n3. **团队协作**：团队成员需要密切配合，确保在技能释放时迅速反应，避免团灭。  \n\n通过合理的战术安排和团队协作，玩家可以成功应对[纯净御罪]的挑战，顺利通关副本。",
@@ -4297,6 +4342,7 @@
           {
             "trashName": "虔诚的牧师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Devout-Priest.webp",
+            "trashId": 206697,
             "data": [
               {
                 "text": "所需打断：",
@@ -4483,6 +4529,7 @@
           {
             "trashName": "热切的圣骑士",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ardent-Paladin-521x1024.webp",
+            "trashId": 206704,
             "data": [
               {
                 "text": "[奉献]",
@@ -4523,6 +4570,7 @@
           {
             "trashName": "热心的圣殿骑士",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Zealous-Templar-359x1024.webp",
+            "trashId": 207949,
             "data": [
               {
                 "text": "所需魔法净化：",
@@ -4569,6 +4617,7 @@
           {
             "trashName": "狂热的咒术师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Fanatical-Conjuror-314x1024.webp",
+            "trashId": 206698,
             "data": [
               {
                 "text": "所需打断：",
@@ -4771,6 +4820,7 @@
           {
             "trashName": "布朗派克爵士",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Sir-Braunpyke-411x1024.webp",
+            "trashId": 217658,
             "data": [
               {
                 "text": "[辉耀烈焰]",
@@ -4828,6 +4878,7 @@
           {
             "trashName": "热心的圣殿骑士",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Zealous-Templar-359x1024.webp",
+            "trashId": 207949,
             "data": [
               {
                 "text": "所需魔法净化：",
@@ -4874,6 +4925,7 @@
           {
             "trashName": "热切的圣骑士",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ardent-Paladin-521x1024.webp",
+            "trashId": 206704,
             "data": [
               {
                 "text": "[奉献]",
@@ -4914,6 +4966,7 @@
           {
             "trashName": "亡灵法师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Risen-Mage.webp",
+            "trashId": 221760,
             "data": [
               {
                 "text": "所需打断：",
@@ -4977,6 +5030,7 @@
           {
             "trashName": "光耀之子",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Lightspawn-REAL.webp",
+            "trashId": 206710,
             "data": [
               {
                 "text": "[纯净御罪]  \n在魔兽世界的副本中，[纯净御罪]是一个重要的机制或技能。玩家需要特别注意以下几点：  \n\n1. **技能效果**：该技能会对目标施加一个持续性的负面效果，例如持续伤害或减益效果。  \n2. **应对策略**：  \n   - 治疗职业需要及时驱散或治疗受到影响的队友。  \n   - 坦克职业需要确保BOSS的仇恨稳定，避免技能影响过多队友。  \n   - 输出职业需要保持高输出，同时注意躲避技能范围。  \n3. **团队协作**：团队成员需要密切配合，确保在技能释放时迅速反应，避免团灭。  \n\n通过合理的战术安排和团队协作，玩家可以成功应对[纯净御罪]的挑战，顺利通关副本。",
@@ -5017,6 +5071,7 @@
           {
             "trashName": "复活的步兵",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Risen-Footman-396x1024.webp",
+            "trashId": 212835,
             "data": [
               {
                 "text": "[圣光逐斥]",
@@ -5417,6 +5472,7 @@
           {
             "trashName": "职阶监督者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rank-Overseer.webp",
+            "trashId": 211121,
             "data": [
               {
                 "text": "[压制咆哮]",
@@ -5457,6 +5513,7 @@
           {
             "trashName": "皇家点芯者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Royal-Wicklighter.webp",
+            "trashId": 210812,
             "data": [
               {
                 "text": "所需打断：",
@@ -5509,6 +5566,7 @@
           {
             "trashName": "低贱的鼹鼠倌",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Lowly-Moleherd-693x1024.webp",
+            "trashId": 210818,
             "data": [
               {
                 "text": "所需打断：",
@@ -5578,6 +5636,7 @@
           {
             "trashName": "运货鼹鼠",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Pack-Mole.webp",
+            "trashId": 211977,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -5607,6 +5666,7 @@
           {
             "trashName": "卑微的劳工",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Menial-Laborer.webp",
+            "trashId": 210148,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -5729,6 +5789,7 @@
           {
             "trashName": "漫游蜡烛",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Wandering-Candle.webp",
+            "trashId": 208450,
             "data": [
               {
                 "text": "[镇火冲击]",
@@ -5769,6 +5830,7 @@
           {
             "trashName": "狗头人履职者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Kobold-Taskworker.webp",
+            "trashId": 212383,
             "data": [
               {
                 "text": "[梆！]",
@@ -5792,6 +5854,7 @@
           {
             "trashName": "运货鼹鼠",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Pack-Mole.webp",
+            "trashId": 211977,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -5821,6 +5884,7 @@
           {
             "trashName": "炽焰魔",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Blazing-Fiend.webp",
+            "trashId": 211228,
             "data": [
               {
                 "text": "所需打断：",
@@ -5990,6 +6054,7 @@
           {
             "trashName": "炬龇",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Torchsnarl.webp",
+            "trashId": 212411,
             "data": [
               {
                 "text": "[强力践踏]",
@@ -6047,6 +6112,7 @@
           {
             "trashName": "漫游蜡烛",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Wandering-Candle.webp",
+            "trashId": 208450,
             "data": [
               {
                 "text": "[镇火冲击]",
@@ -6087,6 +6153,7 @@
           {
             "trashName": "灰鼻 <蛮虐者>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Sootsnout.webp",
+            "trashId": 212412,
             "data": [
               {
                 "text": "所需打断：",
@@ -6173,6 +6240,7 @@
           {
             "trashName": "狗头人护焰者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Kobold-Flametender.webp",
+            "trashId": 213913,
             "data": [
               {
                 "text": "所需打断：",
@@ -6202,6 +6270,7 @@
           {
             "trashName": "卑微的劳工",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Menial-Laborer.webp",
+            "trashId": 210148,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -6385,6 +6454,7 @@
           {
             "trashName": "通道爬行者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Corridor-Creeper.webp",
+            "trashId": 210539,
             "data": [
               {
                 "text": "[食尸者]",
@@ -6425,6 +6495,7 @@
           {
             "trashName": "残步恐魔",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shuffling-Horror-1024x530.webp",
+            "trashId": 208456,
             "data": [
               {
                 "text": "所需打断：",
@@ -6454,6 +6525,7 @@
           {
             "trashName": "掠行之暗",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Skittering-Darkness.webp",
+            "trashId": 208457,
             "data": [
               {
                 "text": "[窒息黑暗]",
@@ -7001,6 +7073,7 @@
           {
             "trashName": "主厨丘伊",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Chef-Chewie-2.webp",
+            "trashId": 214697,
             "data": [
               {
                 "text": "[主厨的称赞]",
@@ -7058,6 +7131,7 @@
           {
             "trashName": "风险投资公司纵火狂",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Pyromaniac-2.webp",
+            "trashId": 218671,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -7145,6 +7219,7 @@
           {
             "trashName": "风险投资公司主顾",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Patron.webp",
+            "trashId": 214668,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -7209,6 +7284,7 @@
           {
             "trashName": "雇佣的打手",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Hired-Muscle-549x1024.webp",
+            "trashId": 210269,
             "data": [
               {
                 "text": "[烈性酒桶]",
@@ -7278,6 +7354,7 @@
           {
             "trashName": "品酒间侍从",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Tasting-Room-Attendant-1.webp",
+            "trashId": 214920,
             "data": [
               {
                 "text": "[燧酿飞掷]",
@@ -7455,6 +7532,7 @@
           {
             "trashName": "粗心的酒花大地精",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Careless-Hopgoblin-674x1024.webp",
+            "trashId": 223423,
             "data": [
               {
                 "text": "[鲁莽搬运]",
@@ -7495,6 +7573,7 @@
           {
             "trashName": "美味测试员",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Taste-Tester.webp",
+            "trashId": 220060,
             "data": [
               {
                 "text": "所需打断：",
@@ -7559,6 +7638,7 @@
           {
             "trashName": "风险投资公司纵火狂",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Pyromaniac-2.webp",
+            "trashId": 218671,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -7646,6 +7726,7 @@
           {
             "trashName": "风味科学家",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Flavor-Scientist-469x1024.webp",
+            "trashId": 214673,
             "data": [
               {
                 "text": "所需打断：",
@@ -7708,6 +7789,7 @@
           {
             "trashName": "酒滴",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Brew-Drop.webp",
+            "trashId": 210270,
             "data": [
               {
                 "text": "[泛涌蜂蜜]",
@@ -7881,6 +7963,7 @@
           {
             "trashName": "风险投资公司蜂蜜收割者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Honey-Harvester-680x1024.webp",
+            "trashId": 220946,
             "data": [
               {
                 "text": "[蜂拥惊喜]",
@@ -7939,6 +8022,7 @@
           {
             "trashName": "驯蜂者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bee-Wrangler-566x1024.webp",
+            "trashId": 210264,
             "data": [
               {
                 "text": "所需打断：",
@@ -8020,6 +8104,7 @@
           {
             "trashName": "蜂王浆供应商",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Royal-Jelly-Purveyor-565x1024.webp",
+            "trashId": 220141,
             "data": [
               {
                 "text": "所需打断：",
@@ -8066,6 +8151,7 @@
           {
             "trashName": "工蜂",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Worker-Bee-Reupload.webp",
+            "trashId": 210265,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -8132,6 +8218,7 @@
           {
             "trashName": "小蜜蜂",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bee-let-Reupload.webp",
+            "trashId": 218865,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -8267,6 +8354,7 @@
           {
             "trashName": "好好先生",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Yes-Man.webp",
+            "trashId": 219588,
             "data": [
               {
                 "text": "[现场提拔]",
@@ -8807,6 +8895,7 @@
           {
             "trashName": "机械化维和者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechanized-Peacekeeper-1024x962.webp",
+            "trashId": 136139,
             "data": [
               {
                 "text": "[催泪毒气]",
@@ -8859,6 +8948,7 @@
           {
             "trashName": "混乱的暴徒",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Addled-Thug.webp",
+            "trashId": 130435,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -8917,6 +9007,7 @@
           {
             "trashName": "机甲驾驶员",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mech-Jockey-689x1024.webp",
+            "trashId": 130488,
             "data": [
               {
                 "text": "所需控制技能：",
@@ -8969,6 +9060,7 @@
           {
             "trashName": "雇来的刺客",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Hired-Assassin-647x1024.webp",
+            "trashId": 134232,
             "data": [
               {
                 "text": "所需打断：",
@@ -9033,6 +9125,7 @@
           {
             "trashName": "零食商贩",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Refreshment-Vendor.webp",
+            "trashId": 136470,
             "data": [
               {
                 "text": "所需打断：",
@@ -9073,6 +9166,7 @@
           {
             "trashName": "下班的劳工",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Off-Duty-Laborer-518x1024.webp",
+            "trashId": 130436,
             "data": [
               {
                 "text": "[投掷扳手]",
@@ -9247,6 +9341,7 @@
           {
             "trashName": "监工阿斯加里",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Taskmaster-Askari-740x1024.webp",
+            "trashId": 134012,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -9344,6 +9439,7 @@
           {
             "trashName": "风险投资公司塑地者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Earthshaper-655x1024.webp",
+            "trashId": 130661,
             "data": [
               {
                 "text": "所需打断：",
@@ -9390,6 +9486,7 @@
           {
             "trashName": "艾泽里特提取器",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Azerite-Extractor-1024x671.webp",
+            "trashId": 136643,
             "data": [
               {
                 "text": "[迅速萃取]",
@@ -9436,6 +9533,7 @@
           {
             "trashName": "暴虐的工兵",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Wanton-Sapper-587x1024.webp",
+            "trashId": 130653,
             "data": [
               {
                 "text": "[终极冲击]",
@@ -9476,6 +9574,7 @@
           {
             "trashName": "巨石之怒",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stonefury.webp",
+            "trashId": 130635,
             "data": [
               {
                 "text": "所需打断：",
@@ -9528,6 +9627,7 @@
           {
             "trashName": "矿井鼠",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mine-Rat-720x1024.webp",
+            "trashId": 130437,
             "data": [
               {
                 "text": "[投掷石块]",
@@ -9712,6 +9812,7 @@
           {
             "trashName": "风险投资公司炼金师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Alchemist-706x1024.webp",
+            "trashId": 133432,
             "data": [
               {
                 "text": "所需打断：",
@@ -9770,6 +9871,7 @@
           {
             "trashName": "风险投资公司策划",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Mastermind-686x1024.webp",
+            "trashId": 133430,
             "data": [
               {
                 "text": "[心灵鞭笞]",
@@ -9816,6 +9918,7 @@
           {
             "trashName": "武器测试员",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Weapons-Tester-535x1024.webp",
+            "trashId": 136934,
             "data": [
               {
                 "text": "[回声之刃]",
@@ -9845,6 +9948,7 @@
           {
             "trashName": "测试对象",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Test-Subject.webp",
+            "trashId": 133963,
             "data": [
               {
                 "text": "[不稳定突变]",
@@ -9947,6 +10051,7 @@
           {
             "trashName": "风险投资公司战争机器",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-War-Machine-1024x946.webp",
+            "trashId": 133463,
             "data": [
               {
                 "text": "[充能射击]",
@@ -9993,6 +10098,7 @@
           {
             "trashName": "军械专家",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ordnance-Specialist-616x1024.webp",
+            "trashId": 137029,
             "data": [
               {
                 "text": "[炮弹弹幕]",
@@ -10016,6 +10122,7 @@
           {
             "trashName": "蛛形地雷",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Crawler-Mine-800x1024.webp",
+            "trashId": 133482,
             "data": [
               {
                 "text": "通常情况下，[爬行地雷]会埋藏在地下，直到有玩家靠近时才会激活。一旦被激活，它会锁定触发它的玩家，并开始向该玩家移动。",
@@ -10424,6 +10531,7 @@
           {
             "trashName": "炸弹坦克",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bomb-Tonk.webp",
+            "trashId": 151657,
             "data": [
               {
                 "text": "所需打断：",
@@ -10453,6 +10561,7 @@
           {
             "trashName": "火箭坦克",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rocket-Tonk.webp",
+            "trashId": 151659,
             "data": [
               {
                 "text": "[火箭弹幕]",
@@ -10476,6 +10585,7 @@
           {
             "trashName": "陆行鸟坦克",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Strider-Tonk-549x1024.webp",
+            "trashId": 151658,
             "data": [
               {
                 "text": "[冲天飞跃]",
@@ -10699,7 +10809,124 @@
           }
         ]
       },
-      null,
+      {
+        "title": "\"狂犬K.U.-J.0.\"前的小怪",
+        "type": "trash",
+        "data": [
+          {
+            "trashName": "废料处理单位",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Waste-Processing-Unit-1024x897.webp",
+            "trashId": 144293,
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[刺破]",
+                    "spells": [
+                      {
+                        "name": "‍Puncture",
+                        "id": "1215411",
+                        "nameZH": "刺破"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对目标造成物理伤害并使其流血。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "每当你的坦克处于危险中或没有防御技能冷却时，移除流血效果会非常有帮助。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[超级电钻]",
+                "spells": [
+                  {
+                    "name": "‍Mega Drill",
+                    "id": "1215409",
+                    "nameZH": "超级电钻"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "持续施法，在其持续时间内造成自然伤害。",
+                    "spells": [],
+                    "children": [
+                      {
+                        "text": "确保集中站位以便治疗，并开启一些防御技能。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "Metal Gunk",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Metal-Gunk-1024x660.webp",
+            "data": [
+              {
+                "text": "[腐蚀泥胶]",
+                "spells": [
+                  {
+                    "name": "‍Corrosive Gunk",
+                    "id": "1215412",
+                    "nameZH": "腐蚀泥胶"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "范围攻击法术，对60码内的所有玩家造成自然伤害，并吸收受到的治疗效果。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "trashName": "D.0.G.型垃圾场巡犬",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Junkyard-D.0.G-834x1024.webp",
+            "trashId": 151773,
+            "data": [
+              {
+                "text": "需要魔法驱散：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[灼热巨颚]",
+                    "spells": [
+                      {
+                        "name": "‍Fiery Jaws",
+                        "id": "1217819",
+                        "nameZH": "灼热巨颚"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "随机跳跃到一个目标身上，并施加一个魔法减益效果，在10秒内造成火焰伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
       {
         "title": "\"狂犬K.U.-J.0.\"",
         "type": "boss",
@@ -10864,6 +11091,7 @@
           {
             "trashName": "防御机器人MkI型",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Defense-Bot-Mk-I-788x1024.webp",
+            "trashId": 151649,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -10904,6 +11132,7 @@
           {
             "trashName": "麦卡贡工匠",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechagon-Tinkerer-561x1024.webp",
+            "trashId": 144294,
             "data": [
               {
                 "text": "所需打断：",
@@ -10956,6 +11185,7 @@
           {
             "trashName": "爆破金刚X-80型",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Blastatron-X-80-1024x602.webp",
+            "trashId": 151476,
             "data": [
               {
                 "text": "[高爆火箭]",
@@ -11031,6 +11261,7 @@
           {
             "trashName": "麦卡贡机械师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechagon-Mechanic-699x1024.webp",
+            "trashId": 144295,
             "data": [
               {
                 "text": "所需打断：",
@@ -11089,6 +11320,7 @@
           {
             "trashName": "防御机器人MkIII型",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Defense-Bot-Mk-III-809x1024.webp",
+            "trashId": 144298,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -11281,6 +11513,7 @@
           {
             "trashName": "防御机器人MkIII型",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Defense-Bot-Mk-III-809x1024.webp",
+            "trashId": 144298,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -11361,6 +11594,7 @@
           {
             "trashName": "蜘蛛坦克",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Spider-Tank-1024x600.webp",
+            "trashId": 144296,
             "data": [
               {
                 "text": "[高爆火箭]",
@@ -11413,6 +11647,7 @@
           {
             "trashName": "麦卡贡工匠",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechagon-Tinkerer-561x1024.webp",
+            "trashId": 144294,
             "data": [
               {
                 "text": "所需打断：",
@@ -11828,6 +12063,7 @@
           {
             "trashName": "暗索士兵",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Soldier-499x1024.webp",
+            "trashId": 228144,
             "data": [
               {
                 "text": "[黑血创伤]",
@@ -11851,6 +12087,7 @@
           {
             "trashName": "无人机狙击手",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mechadrone-Sniper.webp",
+            "trashId": 229069,
             "data": [
               {
                 "text": "所需打断：",
@@ -11897,6 +12134,7 @@
           {
             "trashName": "载货机器人",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Loaderbot-Fixed.webp",
+            "trashId": 231014,
             "data": [
               {
                 "text": "[上紧发条]  \n在魔兽世界的副本中，[上紧发条]是一个需要玩家注意的机制或任务。通常，这可能涉及到与机械装置或时间相关的挑战。玩家需要按照特定的顺序或时机进行操作，以确保副本的顺利进行。具体步骤可能包括激活某些机关、击败特定的敌人，或者在规定的时间内完成任务。建议玩家在进入副本前详细了解相关机制，并与队友密切配合，以确保成功完成[上紧发条]的任务。",
@@ -11920,6 +12158,7 @@
           {
             "trashName": "暗索爆破手",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Demolitionist.webp",
+            "trashId": 229212,
             "data": [
               {
                 "text": "[R.P.G.G.]",
@@ -11943,6 +12182,7 @@
           {
             "trashName": "风险投资公司勘探员",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Surveyor-Fixed-745x1024.webp",
+            "trashId": 229686,
             "data": [
               {
                 "text": "所需打断：",
@@ -12001,6 +12241,7 @@
           {
             "trashName": "撕碎王3000型",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shreddinator-3000-1024x998.webp",
+            "trashId": 230740,
             "data": [
               {
                 "text": "[碎切]",
@@ -12053,6 +12294,7 @@
           {
             "trashName": "暗索调查员",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Inspector-682x1024.webp",
+            "trashId": 231385,
             "data": [
               {
                 "text": "[突击调查]",
@@ -12076,6 +12318,7 @@
           {
             "trashName": "暗索土狼",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Hyena.webp",
+            "trashId": 229252,
             "data": [
               {
                 "text": "所需打断：",
@@ -12128,6 +12371,7 @@
           {
             "trashName": "暗索扭血者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Bloodwarper.webp",
+            "trashId": 230748,
             "data": [
               {
                 "text": "所需打断：",
@@ -12174,6 +12418,7 @@
           {
             "trashName": "风险投资公司建筑师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Architect.webp",
+            "trashId": 229251,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -12417,6 +12662,7 @@
           {
             "trashName": "风险投资公司勘探员",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Surveyor-Fixed-745x1024.webp",
+            "trashId": 229686,
             "data": [
               {
                 "text": "所需打断：",
@@ -12475,6 +12721,7 @@
           {
             "trashName": "撕碎王3000型",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shreddinator-3000-1024x998.webp",
+            "trashId": 230740,
             "data": [
               {
                 "text": "[碎切]",
@@ -12527,6 +12774,7 @@
           {
             "trashName": "风险投资公司建筑师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Architect.webp",
+            "trashId": 229251,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -12792,6 +13040,7 @@
           {
             "trashName": "被惊扰的海藻",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Disturbed-Kelp-1024x651.webp",
+            "trashId": 231223,
             "data": [
               {
                 "text": "所需打断：",
@@ -12838,6 +13087,7 @@
           {
             "trashName": "风险管理公司潜水员",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Diver.webp",
+            "trashId": 231496,
             "data": [
               {
                 "text": "所需打断：",
@@ -12896,6 +13146,7 @@
           {
             "trashName": "爆壳螃蟹",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bombshell-Crab-848x1024.webp",
+            "trashId": 231497,
             "data": [
               {
                 "text": "[钳夹]",
@@ -13061,6 +13312,7 @@
           {
             "trashName": "泡泡",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bubbles.webp",
+            "trashId": 231197,
             "data": [
               {
                 "text": "[逆流]",
@@ -13134,6 +13386,7 @@
           {
             "trashName": "暗索接线者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Jumpstarter.webp",
+            "trashId": 231325,
             "data": [
               {
                 "text": "[火花猛击]",
@@ -13174,6 +13427,7 @@
           {
             "trashName": "风险投资公司建筑师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Architect.webp",
+            "trashId": 229251,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -13238,6 +13492,7 @@
           {
             "trashName": "风险投资公司电工",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Venture-Co.-Electrician.webp",
+            "trashId": 231312,
             "data": [
               {
                 "text": "所需打断：",
@@ -13290,6 +13545,7 @@
           {
             "trashName": "暗索调查员",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Darkfuse-Inspector-682x1024.webp",
+            "trashId": 231385,
             "data": [
               {
                 "text": "[突击调查]",
@@ -13313,6 +13569,7 @@
           {
             "trashName": "水能堡食泥者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Waterworks-Bottomfeeder.webp",
+            "trashId": 232228,
             "data": [
               {
                 "text": "[恶毒之咬]",
