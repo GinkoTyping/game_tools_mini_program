@@ -151,7 +151,8 @@
             @click="
               () =>
                 markTip(
-                  tip.type,
+                  tip.type === 'trash',
+                  true,
                   dataItem[tip.type === 'trash' ? 'trashId' : 'spellId']
                 )
             "
@@ -249,7 +250,7 @@
 import { computed, nextTick, ref } from 'vue';
 import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
-import { queryMythicDungeonById } from '@/api/wow';
+import { queryMythicDungeonById, queryUpdateMarkStatus } from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
 import Rating from '@/components/rating.vue';
 import ShareIcon from '@/components/ShareIcon.vue';
@@ -342,17 +343,9 @@ function scrollTo(selector: string) {
   });
 }
 
-async function markTip(type: string, id: number) {
-  const res = await uni.login({
-    provider: 'weixin', //使用微信登录
-  });
-  const { token, userId, error } = await queryLogin(res.code);
-  if (error) {
-    uni.showToast({ title: error, icon: 'error' });
-  } else {
-    uni.setStorageSync('token', token);
-    uni.setStorageSync('userId', userId);
-  }
+async function markTip(isNpc: boolean, isMark: boolean, markId: number) {
+  const userId = uni.getStorageSync('userId');
+  await queryUpdateMarkStatus({ isNpc, isMark, userId, markId });
 }
 </script>
 

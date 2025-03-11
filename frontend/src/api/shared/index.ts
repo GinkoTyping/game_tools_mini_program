@@ -1,9 +1,9 @@
-import { BASE_URL } from '../config';
+import { proxyRequest } from '../config';
 
 export async function getAccessCount() {
   try {
-    const res = await uni.request({
-      url: `${BASE_URL}/common/access-count`,
+    const res = await proxyRequest({
+      url: `/common/access-count`,
     });
     return res.data;
   } catch (error) {
@@ -12,8 +12,8 @@ export async function getAccessCount() {
 }
 
 export async function queryScorllInfo() {
-  const res = await uni.request({
-    url: `${BASE_URL}/common/scroll-info`,
+  const res = await proxyRequest({
+    url: `/common/scroll-info`,
   });
   return res.data as string;
 }
@@ -29,8 +29,8 @@ interface IAdvice {
   created_at: string;
 }
 export async function queryAdviceList() {
-  const res = await uni.request({
-    url: `${BASE_URL}/common/advice/list`,
+  const res = await proxyRequest({
+    url: `/common/advice/list`,
   });
   return (res.data as IAdvice[]).reduce(
     (pre: any, cur: IAdvice) => {
@@ -47,16 +47,16 @@ interface IPatch {
   images: string;
 }
 export async function queryPatchList() {
-  const res = await uni.request({
-    url: `${BASE_URL}/common/patch/list`,
+  const res = await proxyRequest({
+    url: `/common/patch/list`,
   });
   return res.data as IPatch;
 }
 
 export async function queryLogin(code: string) {
   try {
-    const res: any = await uni.request({
-      url: `${BASE_URL}/auth/login`,
+    const res: any = await proxyRequest({
+      url: `/auth/login`,
       method: 'POST',
       data: {
         code,

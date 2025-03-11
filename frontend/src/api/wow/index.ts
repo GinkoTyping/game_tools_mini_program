@@ -1,6 +1,6 @@
 import { IBisItem, ITrinks, IStatPriority } from '@/interface/IWow';
 import { mapTrinks } from '@/data/mapSpecData';
-import { BASE_URL } from '../config';
+import { BASE_URL, proxyRequest } from '../config';
 import colorMap from '@/utils/color-map';
 
 enum BisType {
@@ -38,8 +38,8 @@ function mapRatings(rating: number) {
 }
 
 export async function queryBis(roleClass: string, classSpec: string) {
-  const res = await uni.request({
-    url: `${BASE_URL}/wow/bis/${roleClass}/${classSpec}`,
+  const res = await proxyRequest({
+    url: `/wow/bis/${roleClass}/${classSpec}`,
     method: 'GET',
   });
   const data = res.data as IBisDataDTO;
@@ -139,8 +139,8 @@ export async function queryBis(roleClass: string, classSpec: string) {
 
 export async function queryItemPreview(id: number) {
   try {
-    const res: any = await uni.request({
-      url: `${BASE_URL}/wow/item/${id}`,
+    const res: any = await proxyRequest({
+      url: `/wow/item/${id}`,
     });
     if (res.data?.preview_item?.stats) {
       res.data.preview_item.stats = res.data.preview_item.stats.reduce(
@@ -170,8 +170,8 @@ export async function queryItemPreview(id: number) {
 }
 
 export async function querySpecPopularity() {
-  const res: any = await uni.request({
-    url: `${BASE_URL}/wow/bis/popularity`,
+  const res: any = await proxyRequest({
+    url: `/wow/bis/popularity`,
   });
 
   function handleLongerSpecName(name: string) {
@@ -199,8 +199,8 @@ export interface IDungeonDTO {
 }
 export async function querySeasonDungeons() {
   try {
-    const res = await uni.request({
-      url: `${BASE_URL}/wow/dungeon/list`,
+    const res = await proxyRequest({
+      url: `/wow/dungeon/list`,
     });
     return res.data as IDungeonDTO[];
   } catch (error) {
@@ -215,8 +215,8 @@ export async function queryDungeonTip(params: {
 }) {
   const { roleClass, classSpec, dungeonId } = params;
   try {
-    const res: any = await uni.request({
-      url: `${BASE_URL}/wow/dungeon-tip`,
+    const res: any = await proxyRequest({
+      url: `/wow/dungeon-tip`,
       method: 'POST',
       data: {
         roleClass,
@@ -235,8 +235,8 @@ export async function queryDungeonTip(params: {
 
 export async function querySpellsInTip(ids: number[]) {
   try {
-    const res: any = await uni.request({
-      url: `${BASE_URL}/wow/spell`,
+    const res: any = await proxyRequest({
+      url: `/wow/spell`,
       method: 'POST',
       data: {
         ids,
@@ -259,8 +259,8 @@ export async function querySpellsInTip(ids: number[]) {
 
 export async function queryTrend() {
   try {
-    const res: any = await uni.request({
-      url: `${BASE_URL}/wow/bis/trend`,
+    const res: any = await proxyRequest({
+      url: `/wow/bis/trend`,
     });
     if (res.data?.trend?.[0]?.access_count > 0) {
       res.data.trend.forEach((item: any, index: number) => {
@@ -295,7 +295,7 @@ export interface IHomeViewDTO {
 }
 export async function queryHomeView() {
   try {
-    const res: any = await uni.request({ url: `${BASE_URL}/wow/home-view` });
+    const res: any = await proxyRequest({ url: `/wow/home-view` });
     res.data.tierLists = res.data.tierLists.map((item: any) => {
       if (item.activity_type === 'MYTHIC') {
         item.activity_name = '大秘境';
@@ -337,8 +337,8 @@ export async function queryTierList(params: {
   try {
     const { versionId, role, activityType } = params;
 
-    const res: any = await uni.request({
-      url: `${BASE_URL}/wow/tier-list`,
+    const res: any = await proxyRequest({
+      url: `/wow/tier-list`,
       method: 'POST',
       data: {
         versionId,
@@ -356,8 +356,8 @@ export async function queryTierList(params: {
 }
 
 export async function queryMythicDungeonById(id: number) {
-  const res: any = await uni.request({
-    url: `${BASE_URL}/wow/mythic-dungeon/${id}`,
+  const res: any = await proxyRequest({
+    url: `/wow/mythic-dungeon/${id}`,
   });
   function mapUtilityNeeds(data: any) {
     return data.map((item: any) => {
@@ -381,8 +381,8 @@ export async function queryMythicDungeonById(id: number) {
 }
 
 export async function queryMythicDunegonList() {
-  const res: any = await uni.request({
-    url: `${BASE_URL}/wow/mythic-dungeon/list`,
+  const res: any = await proxyRequest({
+    url: `/wow/mythic-dungeon/list`,
   });
   function mapTierText(tier: string) {
     switch (tier) {
@@ -405,8 +405,28 @@ export async function queryMythicDunegonList() {
 }
 
 export async function queryRaidGuide() {
-  const res: any = await uni.request({
-    url: `${BASE_URL}/wow/raid-guide`,
+  const res: any = await proxyRequest({
+    url: `/wow/raid-guide`,
   });
   return res?.data?.guide ?? [];
+}
+
+export async function queryUpdateMarkStatus(params: {
+  isNpc: boolean;
+  isMark: boolean;
+  userId: number;
+  markId: number;
+}) {
+  const { isNpc, isMark, userId, markId } = params;
+  const res: any = await proxyRequest({
+    url: `/wow/mark/update`,
+    method: 'POST',
+    data: {
+      isNpc,
+      isMark,
+      userId,
+      markId,
+    },
+  });
+  return res.data;
 }
