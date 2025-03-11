@@ -1,4 +1,15 @@
 <template>
+  <uni-notice-bar
+    v-if="isShowNotice"
+    single
+    show-icon
+    show-get-more
+    color="#2979FF"
+    background-color="#EAF2FF"
+    more-text="去看看"
+    text="点赞重要的机制，提醒其他玩家吧~"
+    @click="onClickNotice"
+  />
   <uni-section id="overview" class="shaman" title="总览">
     <view class="divide-section">
       <view class="prefix">
@@ -89,7 +100,7 @@
     v-for="(tip, tipIndex) in mythicDungeonData?.enemyTips"
     :key="tip?.title"
   >
-    <uni-collapse @change="e => onCollapseChange(tipIndex, e)">
+    <uni-collapse @change="(e: any) => onCollapseChange(tipIndex, e)">
       <uni-collapse-item
         v-if="tip?.data?.length"
         v-for="(dataItem, index) in tip.data"
@@ -377,6 +388,11 @@ function onCollapseChange(tipIndex: number, e: string[]) {
   mapKey.push(...openedcollapseItems.value);
 
   openedcollapseItems.value = [...new Set(mapKey)];
+}
+const isShowNotice = ref(true);
+function onClickNotice() {
+  scrollTo('#enemy-section-0');
+  isShowNotice.value = false;
 }
 
 const hasMarked = computed(() => {
