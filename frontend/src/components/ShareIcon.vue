@@ -10,6 +10,7 @@
     </button>
     <button @click="showAdDialog">
       <image
+        class="animate__animated animate__rubberBand"
         src="/static/images/common/Food-Icons.png"
         style="height: 70%; width: 70%"
       />
