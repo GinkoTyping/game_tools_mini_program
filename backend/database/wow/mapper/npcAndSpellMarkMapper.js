@@ -35,6 +35,21 @@ async function getNpcOrSpellCountByIds(ids, isNpc, isAll = false) {
   return db.all(sql, ids);
 }
 
+async function updateNpcOrSpellMark(isNpc, isMark, userId, markId) {
+  const data = await getNpcOrSpellCountByIds([npcId], isNpc);
+  const markList = data[0].mark_list?.split(',') ?? [];
+  if (isMark) {
+    markList.push(userId);
+  } else {
+    markList = markList.filter((item) => Number(item) !== Number(userId));
+  }
+
+  await db.run(
+    `UPDATE wow_dynamic_spell_mark_count SET mark_list = ?1 WHERE id = ?2`,
+    [markList.split(','), markId]
+  );
+}
+
 export function useNpcAndSpellMarkMapper(database) {
   if (database) {
     db = database;
@@ -46,6 +61,7 @@ export function useNpcAndSpellMarkMapper(database) {
   return {
     insertNpc,
     insertSpell,
+    updateNpcOrSpellMark,
     getNpcOrSpellCountByIds,
   };
 }
