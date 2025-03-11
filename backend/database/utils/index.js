@@ -20,16 +20,15 @@ export async function getDB() {
   return _db;
 }
 
-
 let _dynamicDB = null;
 export async function getDynamicDB() {
-  if (!_commonDB) {
-    _commonDB = await open({
+  if (!_dynamicDB) {
+    _dynamicDB = await open({
       filename: path.resolve(__dirname, '../wow/dynamic-database.db'),
       driver: sqlite3.verbose().Database,
     });
   }
-  return _commonDB;
+  return _dynamicDB;
 }
 
 let _commonDB = null;
@@ -41,4 +40,16 @@ export async function getCommonDB() {
     });
   }
   return _commonDB;
+}
+
+let _authDB = null;
+
+export async function getAuthDB() {
+  if (!_authDB) {
+    _authDB = await open({
+      filename: path.resolve(__dirname, '../auth/database.db'),
+      driver: sqlite3.verbose().Database,
+    });
+  }
+  return _authDB;
 }

@@ -146,7 +146,16 @@
           </view>
         </view>
         <view class="buttons">
-          <view class="buttons-item">
+          <view
+            class="buttons-item"
+            @click="
+              () =>
+                markTip(
+                  tip.type,
+                  dataItem[tip.type === 'trash' ? 'trashId' : 'spellId']
+                )
+            "
+          >
             <uni-icons type="hand-up" color="#bbb" size="26"></uni-icons>
             <text class="buttons-item-count">{{ dataItem.count }}</text>
             <text class="buttons-item-tip"
@@ -244,6 +253,7 @@ import { queryMythicDungeonById } from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
 import Rating from '@/components/rating.vue';
 import ShareIcon from '@/components/ShareIcon.vue';
+import { queryLogin } from '@/api/shared';
 
 const mythicDungeonData = ref();
 const dungeonId = ref();
@@ -330,6 +340,19 @@ function scrollTo(selector: string) {
   nextTick(() => {
     menuPopup.value?.close?.();
   });
+}
+
+async function markTip(type: string, id: number) {
+  const res = await uni.login({
+    provider: 'weixin', //使用微信登录
+  });
+  const { token, userId, error } = await queryLogin(res.code);
+  if (error) {
+    uni.showToast({ title: error, icon: 'error' });
+  } else {
+    uni.setStorageSync('token', token);
+    uni.setStorageSync('userId', userId);
+  }
 }
 </script>
 

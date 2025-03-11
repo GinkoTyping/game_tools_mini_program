@@ -145,3 +145,10 @@ CREATE TABLE
     count INTEGER DEFAULT 0,
     mark_list TEXT
   );
+
+CREATE TABLE
+  IF NOT EXISTS wow_dynamic_user_mark (
+    id TEXT PRIMARY KEY NOT NULL,
+    npc_mark_list TEXT,
+    spell_mark_list TEXT
+  );

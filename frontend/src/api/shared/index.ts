@@ -52,3 +52,18 @@ export async function queryPatchList() {
   });
   return res.data as IPatch;
 }
+
+export async function queryLogin(code: string) {
+  try {
+    const res: any = await uni.request({
+      url: `${BASE_URL}/auth/login`,
+      method: 'POST',
+      data: {
+        code,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    return { error };
+  }
+}

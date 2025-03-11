@@ -14,6 +14,7 @@ import mythicDungeonRoutes from './routes/wow/mythicDungeonRoutes.js';
 import npcRoutes from './routes/wow/npcRoutes.js'
 import raidGuideRoutes from './routes/wow/raidGuideRoutes.js'
 import commonBisRoutes from './routes/common/commonRoutes.js';
+import authRoutes from './routes/auth/authRoutes.js'
 
 const app = express();
 const port = 3000;
@@ -64,6 +65,7 @@ app.use('/api/wow', homeViewRoutes);
 app.use('/api/wow', dungeonTipRoutes);
 app.use('/api/wow', mythicDungeonRoutes);
 app.use('/api/common', commonBisRoutes);
+app.use('/api/auth', authRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

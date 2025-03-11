@@ -1,9 +1,15 @@
 import jwt from 'jsonwebtoken';
 
+import '../util/set-env.js';
+
 export function isLocal(req) {
   const clientIP = req.ip || req.headers['x-forwarded-for'];
   const allowedIPs = new Set(['127.0.0.1', '::1', 'localhost']);
   return allowedIPs.has(clientIP);
+}
+
+export function generateToken(userId) {
+  return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '7d' });
 }
 
 export const validateAdmin = async (req, res, next) => {
