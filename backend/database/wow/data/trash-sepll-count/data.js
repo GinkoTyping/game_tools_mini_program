@@ -1,12 +1,12 @@
 import { getDB, getDynamicDB } from '../../../utils/index.js';
-import { useNpcAndSpellMapper } from '../../mapper/npcAndSpellMapper.js';
+import { useNpcAndSpellMarkMapper } from '../../mapper/npcAndSpellMarkMapper.js';
 import { useMythicDungeonMapper } from '../../mapper/mythicDungeonMapper.js';
 
 const db = await getDB();
 const mythicDungeonMapper = useMythicDungeonMapper(db);
 
 const dynamicDB = await getDynamicDB();
-const npcAndSpellMapper = useNpcAndSpellMapper(dynamicDB);
+const npcAndSpellMarkMapper = useNpcAndSpellMarkMapper(dynamicDB);
 
 // 提取 wow_mythic_dungeon 中的攻略数据
 async function main() {
@@ -37,7 +37,7 @@ async function main() {
 
   await Promise.allSettled(
     npcs.map((npc) =>
-      npcAndSpellMapper.insertNpc({
+      npcAndSpellMarkMapper.insertNpc({
         id: npc.trashId,
         name_zh: npc.trashName,
         content: JSON.stringify(npc),
@@ -45,7 +45,7 @@ async function main() {
     )
   );
   await Promise.allSettled(
-    spells.map((spell) => npcAndSpellMapper.insertSpell({
+    spells.map((spell) => npcAndSpellMarkMapper.insertSpell({
       id: spell.spellId,
       name_zh: spell.spellNameZH,
       content: JSON.stringify(spell),

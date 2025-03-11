@@ -1,14 +1,14 @@
 import { getDB, getDynamicDB } from '../../database/utils/index.js';
 import { useMythicDungeonMapper } from '../../database/wow/mapper/mythicDungeonMapper.js';
 import { useMythicDungeonCountMapper } from '../../database/wow/mapper/mythicDungeonCountMapper.js';
-import { useNpcAndSpellMapper } from '../../database/wow/mapper/npcAndSpellMapper.js';
+import { useNpcAndSpellMarkMapper } from '../../database/wow/mapper/npcAndSpellMarkMapper.js';
 import { isLocal } from '../../auth/validateAdmin.js';
 
 const db = await getDB();
 const dynamicDB = await getDynamicDB();
 const mythicDungeonMapper = useMythicDungeonMapper(db);
 const mythicDungeonCountMapper = useMythicDungeonCountMapper(dynamicDB);
-const npcAndSpellMapper = useNpcAndSpellMapper(dynamicDB);
+const npcAndSpellMarkMapper = useNpcAndSpellMarkMapper(dynamicDB);
 
 export async function queryMythicDungeonById(req, res) {
   const id = req.params.id;
@@ -38,11 +38,11 @@ export async function queryMythicDungeonById(req, res) {
       });
     });
 
-    const npcCounts = await npcAndSpellMapper.getNpcOrSpellCountByIds(
+    const npcCounts = await npcAndSpellMarkMapper.getNpcOrSpellCountByIds(
       npcs,
       true
     );
-    const spellCounts = await npcAndSpellMapper.getNpcOrSpellCountByIds(
+    const spellCounts = await npcAndSpellMarkMapper.getNpcOrSpellCountByIds(
       spells,
       false
     );

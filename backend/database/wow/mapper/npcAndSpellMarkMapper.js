@@ -35,7 +35,7 @@ async function getNpcOrSpellCountByIds(ids, isNpc, isAll = false) {
   return db.all(sql, ids);
 }
 
-export function useNpcAndSpellMapper(database) {
+export function useNpcAndSpellMarkMapper(database) {
   if (database) {
     db = database;
     // 仅仅处理异常场景，正常使用 database都应该来源于外部
