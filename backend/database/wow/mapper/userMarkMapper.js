@@ -1,31 +1,38 @@
 let db;
 
+async function addUser(id) {
+  return db.run(`INSERT INTO wow_dynamic_user_mark(id) VALUES(?1)`, [id]);
+}
+
 async function getUserMarkById(isNpc, userId) {
-  const selectSql = isNpc ? 'npc_mark' : 'spell_mark';
+  const column = isNpc ? 'npc_mark_list' : 'spell_mark_list';
   const data = await db.get(
-    `SELECT ${selectSql} FROM wow_dynamic_user_mark WHERE id = ?1`,
+    `SELECT ${column} FROM wow_dynamic_user_mark WHERE id = ?1`,
     [userId]
   );
   if (data) {
-    return data.markList?.split(',') ?? [];
+    return data[column]?.split(',') ?? [];
   }
   return null;
 }
 
 async function updateUserMark(isNpc, isMark, userId, markId) {
-  const markList = await getUserMarkById(isNpc, userId);
-  if (markList) {
-    if (isMark) {
-      markList.push(markId);
-    } else {
-      markList = markList.filter((item) => Number(item) !== Number(markId));
-    }
-
-    return db.run(
-      `UPDATE wow_dynamic_user_mark SET mark_list = ?1 WHERE id = ?2`,
-      [markList.join(','), userId]
-    );
+  let markList = await getUserMarkById(isNpc, userId);
+  if (!markList) {
+    await addUser(userId);
+    markList = [];
   }
+
+  if (isMark) {
+    markList.push(markId);
+  } else {
+    markList = markList.filter((item) => Number(item) !== Number(markId));
+  }
+  const column = isNpc ? 'npc_mark_list' : 'spell_mark_list';
+  return db.run(
+    `UPDATE wow_dynamic_user_mark SET ${column} = ?1 WHERE id = ?2`,
+    [markList.join(','), userId]
+  );
 }
 
 export function useUserMarkMapper(database) {

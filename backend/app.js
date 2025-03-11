@@ -11,10 +11,11 @@ import spellRoutes from './routes/wow/spellRoutes.js';
 import tierListRoutes from './routes/wow/tierListRoutes.js';
 import homeViewRoutes from './routes/wow/homeViewRoutes.js';
 import mythicDungeonRoutes from './routes/wow/mythicDungeonRoutes.js';
-import npcRoutes from './routes/wow/npcRoutes.js'
-import raidGuideRoutes from './routes/wow/raidGuideRoutes.js'
+import npcRoutes from './routes/wow/npcRoutes.js';
+import raidGuideRoutes from './routes/wow/raidGuideRoutes.js';
+import npcAndSpellMarkRoutes from './routes/wow/npcAndMarkRoutes.js';
 import commonBisRoutes from './routes/common/commonRoutes.js';
-import authRoutes from './routes/auth/authRoutes.js'
+import authRoutes from './routes/auth/authRoutes.js';
 
 const app = express();
 const port = 3000;
@@ -64,6 +65,7 @@ app.use('/api/wow', dungeonRoutes);
 app.use('/api/wow', homeViewRoutes);
 app.use('/api/wow', dungeonTipRoutes);
 app.use('/api/wow', mythicDungeonRoutes);
+app.use('/api/wow', npcAndSpellMarkRoutes);
 app.use('/api/common', commonBisRoutes);
 app.use('/api/auth', authRoutes);
 

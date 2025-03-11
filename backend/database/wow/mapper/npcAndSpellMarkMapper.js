@@ -21,7 +21,7 @@ async function getNpcOrSpellCountByIds(ids, isNpc, isAll = false) {
     ? 'wow_dynamic_npc_mark_count'
     : 'wow_dynamic_spell_mark_count';
 
-  const selectSql = isAll ? '*' : 'id, count';
+  const selectSql = isAll ? '*' : 'id, count, mark_list';
 
   const sql = ids.reduce((pre, cur, index) => {
     if (index === 0) {
@@ -36,7 +36,7 @@ async function getNpcOrSpellCountByIds(ids, isNpc, isAll = false) {
 }
 
 async function updateNpcOrSpellMark(isNpc, isMark, userId, markId) {
-  const data = await getNpcOrSpellCountByIds([npcId], isNpc);
+  const data = await getNpcOrSpellCountByIds([markId], isNpc);
   const markList = data[0].mark_list?.split(',') ?? [];
   if (isMark) {
     markList.push(userId);
@@ -44,10 +44,14 @@ async function updateNpcOrSpellMark(isNpc, isMark, userId, markId) {
     markList = markList.filter((item) => Number(item) !== Number(userId));
   }
 
-  await db.run(
-    `UPDATE wow_dynamic_spell_mark_count SET mark_list = ?1 WHERE id = ?2`,
-    [markList.split(','), markId]
-  );
+  const tableName = isNpc
+    ? 'wow_dynamic_npc_mark_count'
+    : 'wow_dynamic_spell_mark_count';
+  return db.run(`UPDATE ${tableName} SET mark_list=?1, count=?2 WHERE id=?3`, [
+    markList.join(','),
+    markList.length,
+    markId,
+  ]);
 }
 
 export function useNpcAndSpellMarkMapper(database) {
