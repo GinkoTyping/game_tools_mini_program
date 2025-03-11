@@ -15,6 +15,11 @@
         style="height: 70%; width: 70%"
       />
     </button>
+    <view
+      class="ad-tooltip animate__animated animate__fadeInDown"
+      v-show="watchAdSuccess"
+      >🍗+1</view
+    >
     <button open-type="share">
       <image src="/static/icon/share.svg" />
     </button>
@@ -94,6 +99,9 @@ onMounted(() => {
   rewardedVideoAd.load().catch(console.error);
 
   rewardedVideoAd.onClose((res: any) => {
+    if (res.isEnded) {
+      swicthWatchSuccessTip(true);
+    }
     res.isEnded
       ? giveReward()
       : uni.showToast({ title: '没关系，有空再投喂吧~', icon: 'none' });
@@ -110,7 +118,10 @@ const shardCount = ref(0);
 const chickenCount = ref(0);
 const shardList = ref<number[]>();
 const chickenList = ref<string[]>();
+const watchAdSuccess = ref(false);
+let timer;
 async function showAdDialog() {
+  swicthWatchSuccessTip(false);
   const data = await queryAdCount();
   shardCount.value = data.count % 10;
   shardList.value = new Array(shardCount.value).fill(1);
@@ -136,6 +147,17 @@ function showAd() {
       });
   });
 }
+function swicthWatchSuccessTip(isShow: boolean) {
+  if (isShow) {
+    watchAdSuccess.value = true;
+    timer = setTimeout(() => {
+      watchAdSuccess.value = false;
+    }, 3000);
+  } else {
+    timer = null;
+    watchAdSuccess.value = false;
+  }
+}
 
 async function giveReward() {
   uni.showToast({ title: '感谢支持！' });
@@ -155,6 +177,16 @@ onUnmounted(() => {
   right: 22px;
   z-index: 99;
   display: flex;
+  .ad-tooltip {
+    position: absolute;
+    right: calc(36px + 0.4rem);
+    transform: translateX(50%);
+    top: -28px;
+    color: #fff;
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 20px;
+  }
   button {
     height: 40px;
     width: 40px;

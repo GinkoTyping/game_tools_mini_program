@@ -423,7 +423,21 @@ async function markTip(
 
   await queryUpdateMarkStatus({ isNpc, isMark, userId, markId });
   await userStore.updateUserMarks();
-  isMark ? dataItem.count++ : dataItem.count--;
+
+  updateLocalMarkCount(isNpc, isMark, markId);
+}
+
+function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
+  const key = isNpc ? 'trashId' : 'spellId';
+  mythicDungeonData.value.enemyTips.forEach((tipkind: any) => {
+    if ((isNpc && tipkind.type === 'trash') || (!isNpc && tipkind.type === 'boss')) {
+      tipkind.data.forEach((item: any) => {
+        if (Number(item[key]) === Number(markId)) {
+          isMark ? item.count++ : item.count--;
+        }
+      });
+    }
+  });
 }
 </script>
 
