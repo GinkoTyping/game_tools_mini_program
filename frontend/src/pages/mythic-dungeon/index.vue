@@ -97,6 +97,17 @@
       >
         <template v-slot:title>
           <view class="menu-title-slot">
+            <uni-icons
+              class="menu-title-slot__marked animate__animated"
+              :class="[
+                hasMarked(dataItem, tip.type)
+                  ? 'animate__fadeInDown'
+                  : 'animate__fadeOut',
+              ]"
+              color="rgb(244, 123, 0)"
+              type="star-filled"
+              size="14"
+            ></uni-icons>
             <text
               :class="[
                 'menu-title',
@@ -109,7 +120,7 @@
               }}</text
             >
             <view class="menu-title-slot__sub">
-              ({{ dataItem.count }} 提醒)
+              <view> ({{ dataItem.count }} <text>提醒</text>) </view>
             </view>
           </view>
         </template>
@@ -451,12 +462,20 @@ async function markTip(
 .menu-title-slot {
   display: flex;
   align-items: center;
+  position: relative;
+  .menu-title-slot__marked {
+    position: absolute;
+    left: -1rem;
+  }
   .menu-title-slot__sub {
     margin-left: 0.4rem;
     display: flex;
     align-items: center;
     color: #bbb;
-    font-size: 12px;
+    font-size: 14px;
+    text {
+      font-size: 12px;
+    }
   }
 }
 .menu-title {
@@ -483,6 +502,8 @@ async function markTip(
     }
     .buttons-item-tip {
       font-size: 12px;
+      text-decoration: underline;
+      font-weight: bold;
     }
   }
 }
