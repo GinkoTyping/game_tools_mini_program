@@ -16,19 +16,25 @@ async function main() {
   const npcs = [];
   const spells = [];
 
-  dungeons.forEach((dungeon) => {
+  dungeons.forEach((dungeon, dungeonIdex) => {
     dungeon.forEach((part) => {
       part.data.forEach((item) => {
         if (part.type === 'trash') {
           if (!npcs.some((npc) => npc.trashId === item.trashId)) {
-            npcs.push(item);
+            npcs.push({
+              ...item,
+              dungeonId: data[dungeonIdex].id,
+            });
           }
         } else {
           if (
             item.spellId &&
             !spells.some((spell) => spell.spellId === item.spellId)
           ) {
-            spells.push(item);
+            spells.push({
+              ...item,
+              dungeonId: data[dungeonIdex].id,
+            });
           }
         }
       });
@@ -41,15 +47,19 @@ async function main() {
         id: npc.trashId,
         name_zh: npc.trashName,
         content: JSON.stringify(npc),
+        dungeon_id: npc.dungeonId,
       })
     )
   );
   await Promise.allSettled(
-    spells.map((spell) => npcAndSpellMarkMapper.insertSpell({
-      id: spell.spellId,
-      name_zh: spell.spellNameZH,
-      content: JSON.stringify(spell),
-    }))
+    spells.map((spell) =>
+      npcAndSpellMarkMapper.insertSpell({
+        id: spell.spellId,
+        name_zh: spell.spellNameZH,
+        content: JSON.stringify(spell),
+        dungeon_id: spell.dungeonId,
+      })
+    )
   );
 }
 

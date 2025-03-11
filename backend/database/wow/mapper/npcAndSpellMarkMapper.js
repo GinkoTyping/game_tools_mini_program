@@ -1,18 +1,18 @@
 let db;
 
 async function insertNpc(npc) {
-  const { id, name_zh, content } = npc;
+  const { id, name_zh, content, dungeon_id } = npc;
   return db.run(
-    `INSERT INTO wow_dynamic_npc_mark_count(id, name, content) VALUES(?1, ?2, ?3)`,
-    [id, name_zh, content]
+    `INSERT INTO wow_dynamic_npc_mark_count(id, name, content, dungeon_id) VALUES(?1, ?2, ?3, ?4)`,
+    [id, name_zh, content, dungeon_id]
   );
 }
 
 async function insertSpell(spell) {
-  const { id, name_zh, content } = spell;
+  const { id, name_zh, content, dungeon_id } = spell;
   return db.run(
-    `INSERT INTO wow_dynamic_spell_mark_count(id, name, content) VALUES(?1, ?2, ?3)`,
-    [id, name_zh, content]
+    `INSERT INTO wow_dynamic_spell_mark_count(id, name, content, dungeon_id) VALUES(?1, ?2, ?3, ?4)`,
+    [id, name_zh, content, dungeon_id]
   );
 }
 

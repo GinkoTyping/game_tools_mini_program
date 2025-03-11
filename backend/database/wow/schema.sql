@@ -134,7 +134,8 @@ CREATE TABLE
     name TEXT,
     content TEXT,
     count INTEGER DEFAULT 0,
-    mark_list TEXT
+    mark_list TEXT,
+    dungeon_id INTEGER
   );
 
 CREATE TABLE
@@ -143,7 +144,8 @@ CREATE TABLE
     name TEXT,
     content TEXT,
     count INTEGER DEFAULT 0,
-    mark_list TEXT
+    mark_list TEXT,
+    dungeon_id INTEGER
   );
 
 CREATE TABLE
