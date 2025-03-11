@@ -56,3 +56,18 @@ export async function queryLogin(code: string) {
     return { error };
   }
 }
+
+export async function queryAdCount() {
+  const res: any = await proxyRequest({
+    url: `/common/ad/query`,
+  });
+  return res.data;
+}
+
+export async function queryUpdateAdCount() {
+  const res: any = await proxyRequest({
+    url: `/common/ad/update`,
+  });
+
+  return res.data;
+}

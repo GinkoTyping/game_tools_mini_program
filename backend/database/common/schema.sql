@@ -19,3 +19,10 @@ CREATE TABLE
     text TEXT,
     images TEXT
   );
+
+CREATE TABLE
+  IF NOT EXISTS common_ad (
+    id INTEGER PRIMARY KEY,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    count
+  );
