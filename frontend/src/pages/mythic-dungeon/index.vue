@@ -254,11 +254,18 @@ import { queryMythicDungeonById, queryUpdateMarkStatus } from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
 import Rating from '@/components/rating.vue';
 import ShareIcon from '@/components/ShareIcon.vue';
-import { queryLogin } from '@/api/shared';
+import { useUserStore } from '@/store/wowStore';
+import { storeToRefs } from 'pinia';
 
 const mythicDungeonData = ref();
 const dungeonId = ref();
+const userStore = useUserStore();
+const { marks } = storeToRefs(userStore);
+
 onLoad(async (options: any) => {
+  await userStore.updateUserMarks(uni.getStorageSync('userId'));
+  console.log(marks.value);
+
   dungeonId.value = options.id;
   mythicDungeonData.value = await queryMythicDungeonById(options.id ?? 382);
   currentUtilityType.value = mythicDungeonData.value?.utilityNeeds[0].type;

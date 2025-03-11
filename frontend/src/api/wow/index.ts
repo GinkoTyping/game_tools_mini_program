@@ -1,6 +1,6 @@
 import { IBisItem, ITrinks, IStatPriority } from '@/interface/IWow';
 import { mapTrinks } from '@/data/mapSpecData';
-import { BASE_URL, proxyRequest } from '../config';
+import { proxyRequest } from '../config';
 import colorMap from '@/utils/color-map';
 
 enum BisType {
@@ -429,4 +429,27 @@ export async function queryUpdateMarkStatus(params: {
     },
   });
   return res.data;
+}
+
+export async function queryUserMarks(userId: number) {
+  try {
+    const res: any = await proxyRequest({
+      url: `/wow/mark/${userId}`,
+    });
+    if (res?.data) {
+      return {
+        npcs: res.data.npc_mark_list?.map(item => Number(item)),
+        spells: res.data.spell_mark_list?.map(item => Number(item)),
+      };
+    }
+    return {
+      npcs: [],
+      spells: [],
+    };
+  } catch (error) {
+    return {
+      npcs: [],
+      spells: [],
+    };
+  }
 }
