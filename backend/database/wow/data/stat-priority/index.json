@@ -264,6 +264,7 @@
     ],
     "best": [
       {
+        "name": "邪痕枭雄",
         "priorityList": [
           "暴击",
           "精通",
@@ -273,6 +274,7 @@
         ]
       },
       {
+        "name": "奥达奇收割者",
         "priorityList": [
           "暴击",
           "精通",
@@ -356,6 +358,7 @@
     ],
     "best": [
       {
+        "name": "丛林守护者",
         "priorityList": [
           "智力",
           "精通",
@@ -365,6 +368,7 @@
         ]
       },
       {
+        "name": "艾露恩钦选者",
         "priorityList": [
           "智力",
           "急速",
@@ -659,7 +663,7 @@
         ]
       },
       {
-        "name": "Frostfire",
+        "name": "霜火",
         "priorityList": [
           "智力",
           "急速",
@@ -881,7 +885,7 @@
     ],
     "best": [
       {
-        "name": "Conduit of the Celestials Raid Stat Priority",
+        "name": "天神御师",
         "priorityList": [
           "智力",
           "急速",
@@ -891,7 +895,7 @@
         ]
       },
       {
-        "name": "Master of Harmony Raid Stat Priority",
+        "name": "祥和宗师",
         "priorityList": [
           "智力",
           "急速",
@@ -1527,6 +1531,7 @@
     ],
     "best": [
       {
+        "name": "地狱召唤者",
         "priorityList": [
           "智力",
           "暴击",
@@ -1536,6 +1541,7 @@
         ]
       },
       {
+        "name": "灵魂收割者",
         "priorityList": [
           "智力",
           "暴击",
@@ -1569,6 +1575,7 @@
     ],
     "best": [
       {
+        "name": "恶魔使徒",
         "priorityList": [
           "智力",
           "急速(24%)",
@@ -1577,6 +1584,7 @@
         ]
       },
       {
+        "name": "灵魂收割者",
         "priorityList": [
           "智力",
           "急速(24%)",
@@ -1655,6 +1663,7 @@
     ],
     "best": [
       {
+        "name": "巨神兵",
         "priorityList": [
           "力量",
           "暴击",
@@ -1664,6 +1673,7 @@
         ]
       },
       {
+        "name": "屠戮者",
         "priorityList": [
           "力量",
           "暴击",
@@ -1701,6 +1711,7 @@
     ],
     "best": [
       {
+        "name": "山丘领主",
         "priorityList": [
           "力量",
           "精通",
@@ -1710,6 +1721,7 @@
         ]
       },
       {
+        "name": "屠戮者",
         "priorityList": [
           "力量",
           "精通",
