@@ -1,8 +1,12 @@
-import { getDB } from '../../database/utils/index.js';
+import { getDB, getCommonDB } from '../../database/utils/index.js';
 import { useInfoMapper } from '../../database/info/mapper/infoMapper.js';
+import { usePatchMapper } from '../../database/common/mapper/patchMapper.js';
 
 const db = await getDB();
 const infoMapper = useInfoMapper(db);
+
+const commonDB = await getCommonDB();
+const patchMapper = usePatchMapper(commonDB);
 
 export async function queryAccessCount(req, res) {
   const date = new Intl.DateTimeFormat('zh-CN', {
@@ -22,5 +26,6 @@ export async function queryAccessCount(req, res) {
 }
 
 export async function queryScrollInfo(req, res) {
-  res.json('更新各专精属性优先级及属性收益讲解。(3.10)');
+  const { date, text } = await patchMapper.getLatestPatch();
+  res.json(`${text.replaceAll('\n', ' ')}(${date})`);
 }

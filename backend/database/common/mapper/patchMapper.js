@@ -4,6 +4,10 @@ function getPactchList() {
   return db.all(`SELECT * FROM common_patch ORDER BY date DESC;`);
 }
 
+function getLatestPatch() {
+  return db.get(`SELECT * FROM common_patch ORDER BY date DESC;`);
+}
+
 export function usePatchMapper(database) {
   if (database) {
     db = database;
@@ -12,5 +16,5 @@ export function usePatchMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { getPactchList };
+  return { getPactchList, getLatestPatch };
 }

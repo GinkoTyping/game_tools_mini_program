@@ -1,6 +1,7 @@
 <template>
   <uni-notice-bar
     v-if="isShowNotice && scrollText"
+    single
     show-icon
     show-get-more
     color="#2979FF"
