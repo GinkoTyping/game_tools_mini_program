@@ -30,3 +30,12 @@ export async function queryUpdateMarkStatus(req, res) {
     res.status(401).json({ error: `更新失败：${error}` });
   }
 }
+
+export async function queryUserMarksById(req, res) {
+  try {
+    const data = await userMarkMapper.getUserMarkById(req.params.id);
+    res.json(data);
+  } catch (error) {
+    res.status(401).json(error);
+  }
+}

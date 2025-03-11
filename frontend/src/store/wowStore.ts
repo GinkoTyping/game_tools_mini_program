@@ -11,10 +11,8 @@ export const useUserStore = defineStore('user', {
     },
   }),
   actions: {
-    async updateUserMarks(userId: number) {
-      if (userId) {
-        this.marks = await queryUserMarks(userId);
-      }
+    async updateUserMarks() {
+      this.marks = await queryUserMarks();
     },
   },
   getters: {},

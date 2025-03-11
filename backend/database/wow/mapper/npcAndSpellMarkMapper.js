@@ -37,18 +37,23 @@ async function getNpcOrSpellCountByIds(ids, isNpc, isAll = false) {
 
 async function updateNpcOrSpellMark(isNpc, isMark, userId, markId) {
   const data = await getNpcOrSpellCountByIds([markId], isNpc);
-  const markList = data[0].mark_list?.split(',') ?? [];
+  let markList = data[0].mark_list?.split(',') ?? [];
   if (isMark) {
     markList.push(userId);
   } else {
-    markList = markList.filter((item) => Number(item) !== Number(userId));
+    markList = markList.filter(
+      (item) => item && Number(item) !== Number(userId)
+    );
   }
+
+  // 避免空数组时，返回一个空字符串
+  const newMarkList = markList?.length ? markList.join(',') : null;
 
   const tableName = isNpc
     ? 'wow_dynamic_npc_mark_count'
     : 'wow_dynamic_spell_mark_count';
   return db.run(`UPDATE ${tableName} SET mark_list=?1, count=?2 WHERE id=?3`, [
-    markList.join(','),
+    newMarkList,
     markList.length,
     markId,
   ]);

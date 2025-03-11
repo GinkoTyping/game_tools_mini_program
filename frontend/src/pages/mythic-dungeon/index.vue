@@ -149,17 +149,22 @@
           <view
             class="buttons-item"
             @click="
-              () =>
-                markTip(
-                  tip.type === 'trash',
-                  true,
-                  dataItem[tip.type === 'trash' ? 'trashId' : 'spellId']
-                )
+              () => markTip(dataItem, !hasMarked(dataItem, tip.type), tip.type)
             "
           >
-            <uni-icons type="hand-up" color="#bbb" size="26"></uni-icons>
+            <uni-icons
+              :type="
+                hasMarked(dataItem, tip.type) ? 'hand-up-filled' : 'hand-up'
+              "
+              :color="
+                hasMarked(dataItem, tip.type) ? 'rgb(244, 123, 0)' : '#bbb'
+              "
+              size="26"
+            ></uni-icons>
             <text class="buttons-item-count">{{ dataItem.count }}</text>
-            <text class="buttons-item-tip"
+            <text
+              class="buttons-item-tip"
+              v-show="!hasMarked(dataItem, tip.type)"
               >(这条攻略重要吗？点赞提醒其他玩家吧)</text
             >
           </view>
@@ -249,22 +254,22 @@
 <script lang="ts" setup>
 import { computed, nextTick, ref } from 'vue';
 import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
+import { storeToRefs } from 'pinia';
+import debounce from 'lodash';
 
 import { queryMythicDungeonById, queryUpdateMarkStatus } from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
 import Rating from '@/components/rating.vue';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { useUserStore } from '@/store/wowStore';
-import { storeToRefs } from 'pinia';
 
 const mythicDungeonData = ref();
 const dungeonId = ref();
 const userStore = useUserStore();
-const { marks } = storeToRefs(userStore);
+const { marks }: { marks: any } = storeToRefs(userStore);
 
 onLoad(async (options: any) => {
-  await userStore.updateUserMarks(uni.getStorageSync('userId'));
-  console.log(marks.value);
+  await userStore.updateUserMarks();
 
   dungeonId.value = options.id;
   mythicDungeonData.value = await queryMythicDungeonById(options.id ?? 382);
@@ -350,9 +355,35 @@ function scrollTo(selector: string) {
   });
 }
 
-async function markTip(isNpc: boolean, isMark: boolean, markId: number) {
+const hasMarked = computed(() => {
+  return (item: any, tipType: string) => {
+    const markId = item[tipType === 'trash' ? 'trashId' : 'spellId'];
+    return marks.value[tipType === 'trash' ? 'npcs' : 'spells'].includes(
+      Number(markId)
+    );
+  };
+});
+
+let lastMarkTime = 0;
+async function markTip(
+  dataItem: { trashId: number; spellId: number; count: number },
+  isMark: boolean,
+  tipType: string
+) {
+  // 防抖
+  const now = Date.now();
+  if (now - lastMarkTime < 300) {
+    return;
+  }
+  lastMarkTime = now;
+
+  const isNpc = tipType === 'trash';
+  const markId = dataItem[tipType === 'trash' ? 'trashId' : 'spellId'];
   const userId = uni.getStorageSync('userId');
+
   await queryUpdateMarkStatus({ isNpc, isMark, userId, markId });
+  await userStore.updateUserMarks();
+  isMark ? dataItem.count++ : dataItem.count--;
 }
 </script>
 

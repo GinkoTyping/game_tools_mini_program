@@ -431,7 +431,8 @@ export async function queryUpdateMarkStatus(params: {
   return res.data;
 }
 
-export async function queryUserMarks(userId: number) {
+export async function queryUserMarks() {
+  const userId = uni.getStorageSync('userId');
   try {
     const res: any = await proxyRequest({
       url: `/wow/mark/${userId}`,
