@@ -89,7 +89,7 @@
     v-for="(tip, tipIndex) in mythicDungeonData?.enemyTips"
     :key="tip?.title"
   >
-    <uni-collapse>
+    <uni-collapse @change="e => onCollapseChange(tipIndex, e)">
       <uni-collapse-item
         v-if="tip?.data?.length"
         v-for="(dataItem, index) in tip.data"
@@ -174,7 +174,12 @@
             ></uni-icons>
             <text class="buttons-item-count">{{ dataItem.count }}</text>
             <text
-              class="buttons-item-tip"
+              class="buttons-item-tip animate__animated"
+              :class="[
+                openedcollapseItems.includes(`${tipIndex}-${index}`)
+                  ? 'animate__fadeInRight'
+                  : '',
+              ]"
               v-show="!hasMarked(dataItem, tip.type)"
               >(这条攻略重要吗？点赞提醒其他玩家吧)</text
             >
@@ -266,7 +271,6 @@
 import { computed, nextTick, ref } from 'vue';
 import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { storeToRefs } from 'pinia';
-import debounce from 'lodash';
 
 import { queryMythicDungeonById, queryUpdateMarkStatus } from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
@@ -364,6 +368,15 @@ function scrollTo(selector: string) {
   nextTick(() => {
     menuPopup.value?.close?.();
   });
+}
+
+// 控制展开collapse面板时，触发collapse内部的动画
+const openedcollapseItems = ref<string[]>([]);
+function onCollapseChange(tipIndex: number, e: string[]) {
+  const mapKey = e.map(item => `${tipIndex}-${Number(item)}`);
+  mapKey.push(...openedcollapseItems.value);
+
+  openedcollapseItems.value = [...new Set(mapKey)];
 }
 
 const hasMarked = computed(() => {
