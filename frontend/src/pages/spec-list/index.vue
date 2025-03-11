@@ -64,7 +64,6 @@ import { onLoad, onShow, onShareAppMessage } from '@dcloudio/uni-app';
 import '@/static/css/index.scss';
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
 import labels from '@/data/zh.json';
-import { getAccessCount } from '@/api/shared';
 import { queryTrend } from '@/api/wow';
 import { useNavigator } from '@/hooks/navigator';
 
@@ -74,10 +73,7 @@ onShareAppMessage(() => ({
 }));
 
 onLoad(async () => {
-  accessCount.value = await getAccessCount();
 
-  // TODO: 访问次数的功能 准备迁移
-  // setAccessPopoverCountdown();
 });
 
 // 用专精页面返回该页面时，也需要刷新

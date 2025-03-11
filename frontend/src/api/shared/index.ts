@@ -1,16 +1,5 @@
 import { proxyRequest } from '../config';
 
-export async function getAccessCount() {
-  try {
-    const res = await proxyRequest({
-      url: `/common/access-count`,
-    });
-    return res.data;
-  } catch (error) {
-    return 0;
-  }
-}
-
 export async function queryScorllInfo() {
   const res = await proxyRequest({
     url: `/common/scroll-info`,
