@@ -237,7 +237,7 @@
   <view class="footer"></view>
   <ShareIcon />
 
-  <uni-popup ref="menuPopup" type="left" background-color="rgb(43, 44, 44)">
+  <uni-popup ref="menuPopup" type="left" background-color="$uni-bg-color-grey-lighter">
     <uni-title
       type="h3"
       title="点击前往"
@@ -430,7 +430,10 @@ async function markTip(
 function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
   const key = isNpc ? 'trashId' : 'spellId';
   mythicDungeonData.value.enemyTips.forEach((tipkind: any) => {
-    if ((isNpc && tipkind.type === 'trash') || (!isNpc && tipkind.type === 'boss')) {
+    if (
+      (isNpc && tipkind.type === 'trash') ||
+      (!isNpc && tipkind.type === 'boss')
+    ) {
       tipkind.data.forEach((item: any) => {
         if (Number(item[key]) === Number(markId)) {
           isMark ? item.count++ : item.count--;
@@ -492,13 +495,18 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
     box-sizing: border-box;
     font-size: 16px;
   }
+  .uni-collapse-item__title.is-open {
+    border-bottom-color: $uni-bg-color-grey-lighter !important;
+    background-color: $uni-bg-color-grey-lighter !important;
+  }
+
   .uni-collapse-item__wrap {
     background-color: $uni-bg-color-grey !important;
-
     .uni-collapse-item__wrap-content {
       border: none !important;
+      border-bottom: 8px solid $uni-bg-color-grey !important;
       padding: 0.4rem 0;
-      background-color: rgb(43, 44, 44) !important;
+      background-color: $uni-bg-color-grey-lighter !important;
     }
   }
 }
@@ -703,7 +711,7 @@ $light-border: rgb(68, 68, 68);
     background-color: $uni-bg-color-grey !important;
   }
   .uni-list-item {
-    background-color: rgb(43, 44, 44) !important;
+    background-color: $uni-bg-color-grey-lighter !important;
     .uni-list-item__content-title {
       color: #fff;
     }
