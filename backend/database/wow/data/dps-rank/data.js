@@ -23,11 +23,17 @@ function getTableElements(context) {
     })
     .get();
 }
-function mapNumber() {
-
-}
-function collectTable(context, table) {
+function collectTable(context, table, tableIndex) {
   const $ = context;
+  let type;
+  if (tableIndex === 0) {
+    type = 'dps';
+  } else if (tableIndex === 1) {
+    type = 'tank';
+  } else {
+    type = 'healer';
+  }
+
   const specInfos = $(table)
     .children('a')
     .map((index, ele) => {
@@ -44,9 +50,11 @@ function collectTable(context, table) {
       } else if (roleClass === 'death') {
         roleClass = 'death-knight';
       }
-      const [avgWidth, topWidth] = $(ele).find('div[style]').map((index, bar) => {
-        return $(bar).attr('style').split(':').pop().trim().replace(';', '');
-      });
+      const [avgWidth, topWidth] = $(ele)
+        .find('div[style]')
+        .map((index, bar) => {
+          return $(bar).attr('style').split(':').pop().trim().replace(';', '');
+        });
       return {
         avgWidth,
         topWidth,
@@ -54,8 +62,8 @@ function collectTable(context, table) {
         roleClass,
       };
     })
-    .get(); 
-  return $(table)
+    .get();
+  const rank = $(table)
     .children('div')
     .map((index, ele) => {
       const tds = $(ele).children('div');
@@ -68,28 +76,46 @@ function collectTable(context, table) {
       };
     })
     .get();
+  return {
+    type,
+    rank,
+  };
 }
 
-async function getData(week) {
-  const period = `10${week < 10 ? `0${week}` : week}`;
-  const filePath = path.resolve(__dirname, `./cache/${period}.html`);
+export async function getSpecDpsRankData(week) {
+  try {
+    const maxWeek = getWeekCount();
+    if (week > maxWeek) {
+      throw new Error(`当前周数(${week})超出最大允许的值(${maxWeek})。`);
+    }
 
-  let html;
-  if (fs.existsSync(filePath)) {
-    html = fs.readFileSync(filePath, 'utf-8');
-  } else {
-    const res = await axios.get(
-      `https://mythicstats.com/dps?dungeon=&period=${period}`
-    );
-    html = res.data;
+    const period = `10${week < 10 ? `0${week}` : week}`;
+    const filePath = path.resolve(__dirname, `./cache/${period}.html`);
 
-    fs.writeFileSync(filePath, html, 'utf-8');
+    let html;
+    if (fs.existsSync(filePath)) {
+      html = fs.readFileSync(filePath, 'utf-8');
+    } else {
+      const res = await axios.get(
+        `https://mythicstats.com/dps?dungeon=&period=${period}`
+      );
+      html = res.data;
+
+      fs.writeFileSync(filePath, html, 'utf-8');
+    }
+
+    const $ = cheerio.load(html);
+    const tables = getTableElements($);
+    const data = tables.map((table, index) => collectTable($, table, index));
+    return {
+      name: '11+',
+      data,
+    };
+  } catch (error) {
+    console.log('获取专精DPS排行失败：' + error);
+    return {
+      name: '11+',
+      data: [],
+    };
   }
-
-  const $ = cheerio.load(html);
-  const tables = getTableElements($);
-  const data = tables.map((table) => collectTable($, table));
-  console.log(data);
 }
-
-getData(1);
