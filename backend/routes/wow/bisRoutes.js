@@ -4,7 +4,10 @@ import {
   getItemPreviewById,
   queryBisTrends,
 } from '../../controller/wow/bisController.js';
-import { queryPolularity } from '../../controller/wow/popularityController.js';
+import {
+  queryPolularity,
+  queryPolularityByCondition,
+} from '../../controller/wow/popularityController.js';
 
 const router = express.Router();
 
@@ -13,5 +16,6 @@ router.get('/bis/:roleClass/:classSpec', getBisBySpec);
 router.get('/item/:id', getItemPreviewById);
 router.get('/bis/trend', queryBisTrends);
 router.get('/bis/popularity', queryPolularity);
+router.post('/bis/popularity', queryPolularityByCondition);
 
 export default router;

@@ -12,6 +12,7 @@ const __dirname = path.dirname(__filename);
 
 let cacheData;
 let cacheDate;
+let cachedClassifiedData = {};
 const db = await getDB();
 const classSpecMapper = useClassSpecMapper(db);
 
@@ -58,6 +59,55 @@ async function mapPopularityData(data) {
       percent: Number((item.value.quantity / total).toFixed(4)),
     }))
     .sort((a, b) => b.quantity - a.quantity);
+}
+
+export async function queryPolularityByCondition(req, res) {
+  const currentDate = getDate();
+  const { minMythicLevel = 2, maxMythicLevel = 99 } = req.body;
+
+  const key = `${minMythicLevel}-${maxMythicLevel}`;
+  if (cacheDate === currentDate && cachedClassifiedData[key]) {
+    res.json({
+      aggregated_at: cachedClassifiedData[key].aggregated_at,
+      data: cachedClassifiedData[key].data,
+    });
+  } else {
+    const folderPath = path.resolve(
+      __dirname,
+      `../../database/wow/data/popularity/${currentDate}`
+    );
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath);
+    }
+    const filePath = path.join(folderPath, `./${key}.json`);
+    if (fs.existsSync(filePath)) {
+      cachedClassifiedData[key] = JSON.parse(fs.readFileSync(filePath));
+      res.json(cachedClassifiedData[key]);
+    } else {
+      const response = await axios.get(
+        `https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=${minMythicLevel}&maxMythicLevel=${maxMythicLevel}&seasonWeekStart=1&seasonWeekEnd=2&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity`
+      );
+
+      if (response?.data?.data) {
+        cacheDate = getDate(response.data.aggregated_at);
+        const mapData = await mapPopularityData(response.data.data);
+        cachedClassifiedData[key] = {
+          aggregated_at: cacheDate,
+          data: mapData,
+        };
+        fs.writeFileSync(
+          filePath,
+          JSON.stringify(cachedClassifiedData[key], null, 2)
+        );
+        res.json(cachedClassifiedData[key]);
+      } else {
+        res.json({
+          aggregated_at: currentDate,
+          data: [],
+        });
+      }
+    }
+  }
 }
 
 export async function queryPolularity(req, res) {

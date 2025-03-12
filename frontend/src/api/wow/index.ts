@@ -169,9 +169,12 @@ export async function queryItemPreview(id: number) {
   }
 }
 
-export async function querySpecPopularity() {
+export async function querySpecPopularity( minMythicLevel: number,
+  maxMythicLevel: number) {
   const res: any = await proxyRequest({
     url: `/wow/bis/popularity`,
+    method: 'POST',
+    data: { minMythicLevel, maxMythicLevel },
   });
 
   function handleLongerSpecName(name: string) {
@@ -183,13 +186,16 @@ export async function querySpecPopularity() {
     return name;
   }
 
-  return res.data.map((item: any) => ({
-    ...item,
-    name_zh: handleLongerSpecName(item.name_zh),
-    color: (colorMap as any)[
-      item.class_name_en.toLowerCase().replaceAll(' ', '-')
-    ],
-  }));
+  return {
+    date: res.data.aggregated_at,
+    data: res.data.data.map((item: any) => ({
+      ...item,
+      name_zh: handleLongerSpecName(item.name_zh),
+      color: (colorMap as any)[
+        item.class_name_en.toLowerCase().replaceAll(' ', '-')
+      ],
+    })),
+  };
 }
 
 export interface IDungeonDTO {

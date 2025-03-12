@@ -3,17 +3,32 @@
     <uni-card>
       <uni-title
         type="h3"
-        title="每日更新"
+        :title="`更新: ${dataDate}`"
         align="center"
         color="#fff"
       ></uni-title>
-
+      <view class="filter-container">
+        <text> 层数： </text>
+        <button
+          class="filter-container__button"
+          :class="[
+            currentLevel === item.value
+              ? 'filter-container__button--active'
+              : '',
+          ]"
+          v-for="item in levelFilter"
+          :key="item.value"
+          @click="() => switchLevel(item.value)"
+        >
+          {{ item.label }}
+        </button>
+      </view>
       <view class="filter-container">
         <text> 职业： </text>
         <button
           class="filter-container__button"
           :class="[
-            currentJob?.value === item.value
+            currentJob.value === item.value
               ? 'filter-container__button--active'
               : '',
           ]"
@@ -67,7 +82,7 @@ state.option = {
         const quantity = popularityData[currentJob.value.value].find(
           item => item.name_zh === name_zh
         )?.quantity;
-        return `${name_zh}: ${(value[0].value * 100).toFixed(
+        return `${name_zh}: ${Number(value[0].value).toFixed(
           1
         )}% (样本数:${quantity})`;
       }
@@ -140,17 +155,28 @@ const popularityData = {
   tank: [],
   healer: [],
 };
+const dataDate = ref('');
 onMounted(async () => {
+  await getPopularityData();
+});
+
+async function getPopularityData() {
   uni.showLoading({
     title: '银子加载中...',
   });
-  popularityData.all = await querySpecPopularity();
+  const [minLevel, maxLevel] = currentLevel.value.split('-');
+  const res = await querySpecPopularity(minLevel, maxLevel);
+  popularityData.all = res.data;
+  popularityData.dps = [];
+  popularityData.tank = [];
+  popularityData.healer = [];
 
-  chart.value.init(echarts, chart => {
+  dataDate.value = res.date;
+  chart.value.init(echarts, () => {
     uni.hideLoading();
     updateChart();
   });
-});
+}
 
 // 渲染完成
 const init = () => {
@@ -241,6 +267,36 @@ function switchJob(job) {
     updateChart();
   }
 }
+
+const levelFilter = [
+  {
+    label: '全部',
+    value: '2-99',
+  },
+  {
+    label: '4-6',
+    value: '4-6',
+  },
+  {
+    label: '7-9',
+    value: '7-9',
+  },
+  {
+    label: '10-11',
+    value: '10-11',
+  },
+  {
+    label: '12+',
+    value: '12-99',
+  },
+];
+const currentLevel = ref('2-99');
+async function switchLevel(value) {
+  if (currentLevel.value !== value) {
+    currentLevel.value = value;
+    await getPopularityData();
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -269,6 +325,9 @@ function switchJob(job) {
     line-height: 24px;
     font-size: 12px;
     margin: 0;
+    padding: 0;
+    width: 46px;
+    text-align: center;
     margin-right: 10rpx;
     border: 1px solid #bbb !important;
     background-color: $uni-bg-color-grey-light;
