@@ -48,10 +48,7 @@
         >
       </view>
       <view class="stats" style="margin: 1rem 0">
-        <template
-          v-for="(statText, index) in currentStatList"
-          :key="statText"
-        >
+        <template v-for="(statText, index) in currentStatList" :key="statText">
           <text>{{ statText }}</text>
           <image
             v-show="index !== currentStatList.length - 1"
@@ -60,7 +57,10 @@
         </template>
       </view>
       <uni-collapse ref="collapse">
-        <uni-collapse-item title="属性说明 (可点击技能)" :open="currentData?.detailedStatsPriority">
+        <uni-collapse-item
+          title="属性说明 (可点击技能)"
+          :open="currentData?.detailedStatsPriority"
+        >
           <view
             class="stat-info"
             v-for="(info, index) in currentData?.detailedStatsPriority
@@ -135,16 +135,26 @@
 
       <uni-collapse ref="collapse">
         <uni-collapse-item
-          :title="getTalentType(index)"
           v-for="(url, index) in currentData?.talents[currentTalentIndex]?.url"
           :key="index"
-          :open="index === 2"
+          :open="isTalentImageLoad && index === 2"
         >
+          <template v-slot:title>
+            <uni-list>
+              <uni-list-item
+                class="dungeon_tip-title"
+                :title="getTalentType(index)"
+                rightText="点击任意位置"
+              >
+              </uni-list-item>
+            </uni-list>
+          </template>
           <image
             class="talent-image"
             mode="widthFix"
             lazy-load
             :src="getTalentImage(url)"
+            @load="() => onImageLoad(currentTalentIndex, index)"
             @click="() => preiviewImage(index)"
           />
         </uni-collapse-item>
@@ -152,7 +162,7 @@
     </uni-card>
   </uni-section>
 
-  <ad-custom unit-id="adunit-43dfd4fbca02d516"></ad-custom>
+  <ad-custom unit-id="adunit-43dfd4fbca02d516" class="ad-container"></ad-custom>
 
   <uni-section class="talent" :class="[classKey]" title="BIS配装">
     <uni-card class="section-card">
@@ -341,11 +351,10 @@
       :status="status"
     />
     <img
-      v-show="currentItem?.image && status !== 'loading'"
+      v-show="currentItem?.source && currentItem?.image && status !== 'loading'"
+      lazy-load
       class="preview-image"
-      :src="`https://ginkolearn.cyou/api/wow/assets/${
-        currentItem?.source ? 'items' : 'trinkets'
-      }/${currentItem?.image}`"
+      :src="currentImageSrc(currentItem)"
       alt=""
     />
     <uni-card
@@ -608,6 +617,12 @@ function switchStatSource() {
     statSource.value = 'wowhead';
   }
 }
+const isTalentImageLoad = ref(false);
+function onImageLoad(tablentIndex: number, index: number) {
+  if (tablentIndex === 0 && index === 2) {
+    isTalentImageLoad.value = true;
+  }
+}
 
 const currentStatType = ref(0);
 const currentStatList = computed(
@@ -696,6 +711,16 @@ const currentItem = ref<
 const messagePopup = ref();
 const messageType = ref('success');
 const messageText = ref('默认文本');
+const currentImageSrc = computed(() => {
+  return (item: any) => {
+    if (item?.image) {
+      return `https://ginkolearn.cyou/api/wow/assets/${
+        item?.source ? 'items' : 'trinkets'
+      }/${item?.image}`
+    }
+    return '';
+  }
+})
 
 async function switchDetail(
   isShow: boolean,
@@ -1364,6 +1389,9 @@ $light-border: rgb(68, 68, 68);
       }
     }
   }
+}
+.ad-container {
+  margin-top: 2rem;
 }
 
 .footer {
