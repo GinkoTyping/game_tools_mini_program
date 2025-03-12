@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Mythic+ DPS rankings | Mythicstats</title>
+        <meta property="og:title" content="Mythic+ DPS rankings | Mythicstats">
+    
+    
+            <meta itemprop="image" content="/img/mythicstats.png">
+        <meta property="og:image" content="/img/mythicstats.png">
+    
+    <link rel="canonical" href="https://mythicstats.com/dps" />
+
+    <link rel="preload" as="style" href="https://mythicstats.com/build/assets/app-af2dc2bf.css" /><link rel="stylesheet" href="https://mythicstats.com/build/assets/app-af2dc2bf.css" data-navigate-track="reload" /></head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGJ2W40RVQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FGJ2W40RVQ');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6858376117038469"
+            crossorigin="anonymous"></script>
+<body class="bg-gray-850 text-gray-400">
+<div class="bg-gray-850 shadow-2xl relative z-10">
+    <div class="container flex justify-between items-center">
+        <div class="flex items-center space-x-6">
+            <a href="/" class="font-bold uppercase text-gray-200 tracking-wider">Mythicstats</a>
+            <a class="hover:text-gray-200 py-3" href="/dps">DPS</a>
+            <a class="hover:text-gray-200 py-3" href="/meta">Meta</a>
+            <a class="hover:text-gray-200 py-3" href="/spec">Specs</a>
+        </div>
+
+        <div class="hidden md:flex space-x-6">
+                            <a class="flex items-center hover:text-gray-200 py-3 text-discord" target="_blank" href="https://mythicstats.com/discord"><svg class="h-4 pr-2" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="currentColor"><title>Discord</title><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg><span class="hidden sm:inline capitalize">discord</span></a>
+                            <a class="flex items-center hover:text-gray-200 py-3 text-patreon" target="_blank" href="https://mythicstats.com/patreon"><svg class="h-4 pr-2" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="currentColor"><title>Patreon</title><path d="M0 .48v23.04h4.22V.48zm15.385 0c-4.764 0-8.641 3.88-8.641 8.65 0 4.755 3.877 8.623 8.641 8.623 4.75 0 8.615-3.868 8.615-8.623C24 4.36 20.136.48 15.385.48z"/></svg><span class="hidden sm:inline capitalize">patreon</span></a>
+                            <a class="flex items-center hover:text-gray-200 py-3 text-twitter" target="_blank" href="https://mythicstats.com/twitter"><svg class="h-4 pr-2" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="currentColor"><title>Twitter</title><path d="M21.543 7.104c.015.211.015.423.015.636 0 6.507-4.954 14.01-14.01 14.01v-.003A13.94 13.94 0 0 1 0 19.539a9.88 9.88 0 0 0 7.287-2.041 4.93 4.93 0 0 1-4.6-3.42 4.916 4.916 0 0 0 2.223-.084A4.926 4.926 0 0 1 .96 9.167v-.062a4.887 4.887 0 0 0 2.235.616A4.928 4.928 0 0 1 1.67 3.148 13.98 13.98 0 0 0 11.82 8.292a4.929 4.929 0 0 1 8.39-4.49 9.868 9.868 0 0 0 3.128-1.196 4.941 4.941 0 0 1-2.165 2.724A9.828 9.828 0 0 0 24 4.555a10.019 10.019 0 0 1-2.457 2.549z"/></svg><span class="hidden sm:inline capitalize">twitter</span></a>
+                    </div>
+    </div>
+</div>
+
+<div class="bg-gray-900">
+    <div class="container">
+        <!-- responsive -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6858376117038469"
+             data-ad-slot="2171487987"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+<div class="py-5 md:py-10 2xl:py-20 container relative z-10">
+    <h1 class="mb-6 text-xl md:text-2xl text-gray-300">Top DPS parses in Mythic+  11-15 keys. Period 1001 (Xal&#039;atath&#039;s Bargain: Ascendant)</h1>
+
+    <form action="" id="filterForm" class="flex-wrap gap-4 mb-6 flex">
+        <select name="dungeon" id="" class="bg-gray-850 p-2" onchange="document.getElementById('filterForm').submit();">
+            <option value="">All dungeons</option>
+                            <option value="247" >The MOTHERLODE!!</option>
+                            <option value="370" >Operation: Mechagon - Workshop</option>
+                            <option value="382" >Theater of Pain</option>
+                            <option value="499" >Priory of the Sacred Flame</option>
+                            <option value="500" >The Rookery</option>
+                            <option value="504" >Darkflame Cleft</option>
+                            <option value="506" >Cinderbrew Meadery</option>
+                            <option value="525" >Operation: Floodgate</option>
+                    </select>
+
+        <select name="period" id="" class="bg-gray-850 p-2" onchange="document.getElementById('filterForm').submit();">
+                            <option value="1002" >1002 (week 2)</option>
+                            <option value="1001" selected>1001 (week 1)</option>
+                    </select>
+    </form>
+
+
+            <div class="overflow-x-auto">
+            <div class="grid grid-cols-2 gap-x-2 gap-y-px text-xs items-center max-w-4xl text-black/70" style="min-width: 576px; grid-template-columns: fit-content(1px) 1fr;">
+                <div class="grid grid-cols-6 text-gray-500 text-sm text-center mb-2 mt-4">
+                    <div class="">#</div>
+                    <div class="">Diff</div>
+                    <div class="">Tier</div>
+                    <div class="text-gray-400">Avg</div>
+                    <div class="">Top</div>
+                    <div class="">Runs</div>
+                </div>
+                <div class="text-left text-sm text-gray-500 mb-2 mt-4">Damage specs</div>
+
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">1</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑8
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ff8000">S</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(64,191,50)" title="2.2M average dps. 100% of max average dps">2.2M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(99,191,50)" title="2.8M top dps. 93% of max top dps">2.8M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(191,74,50)">125</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/outlaw-rogue">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/outlaw-rogue.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-rogue flex items-center overflow-hidden" style="width: 75%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">outlaw rogue</span>
+                            </div>
+                            <div class="h-6 bg-rogue/20 border-r border-rogue"
+                                 style="width: 18.2%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">2</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓1
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ff8000">S</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(86,191,50)" title="2.2M average dps. 97% of max average dps">2.2M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(99,191,50)" title="2.8M top dps. 93% of max top dps">2.8M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(97,191,50)">2.4K</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/retribution-paladin">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/retribution-paladin.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-paladin flex items-center overflow-hidden" style="width: 72.6%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">retribution paladin</span>
+                            </div>
+                            <div class="h-6 bg-paladin/20 border-r border-paladin"
+                                 style="width: 20.8%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">3</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑11
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ff8000">S</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(88,191,50)" title="2.1M average dps. 97% of max average dps">2.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(97,191,50)" title="2.8M top dps. 94% of max top dps">2.8M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 13" style="background-color: rgb(191,98,50)">385</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/assassination-rogue">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/assassination-rogue.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-rogue flex items-center overflow-hidden" style="width: 72.4%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">assassination rogue</span>
+                            </div>
+                            <div class="h-6 bg-rogue/20 border-r border-rogue"
+                                 style="width: 21.3%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">4</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑3
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ff8000">S</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(88,191,50)" title="2.1M average dps. 96% of max average dps">2.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(64,191,50)" title="3.0M top dps. 100% of max top dps">3.0M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,140,50)">834</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/unholy-death-knight">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/unholy-death-knight.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-death-knight flex items-center overflow-hidden" style="width: 72.3%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">unholy death-knight</span>
+                            </div>
+                            <div class="h-6 bg-death-knight/20 border-r border-death-knight"
+                                 style="width: 27.7%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">5</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓2
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ff8000">S</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(89,191,50)" title="2.1M average dps. 96% of max average dps">2.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(96,191,50)" title="2.8M top dps. 94% of max top dps">2.8M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,157,50)">1.0K</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/enhancement-shaman">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/enhancement-shaman.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-shaman flex items-center overflow-hidden" style="width: 72.3%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">enhancement shaman</span>
+                            </div>
+                            <div class="h-6 bg-shaman/20 border-r border-shaman"
+                                 style="width: 21.5%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">6</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑13
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ff8000">S</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(92,191,50)" title="2.1M average dps. 96% of max average dps">2.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(91,191,50)" title="2.8M top dps. 95% of max top dps">2.8M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,176,50)">1.2K</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/elemental-shaman">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/elemental-shaman.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-shaman flex items-center overflow-hidden" style="width: 71.9%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">elemental shaman</span>
+                            </div>
+                            <div class="h-6 bg-shaman/20 border-r border-shaman"
+                                 style="width: 22.9%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">7</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑4
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ff8000">S</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(100,191,50)" title="2.1M average dps. 95% of max average dps">2.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(113,191,50)" title="2.7M top dps. 91% of max top dps">2.7M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,94,50)">339</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/feral-druid">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/feral-druid.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-druid flex items-center overflow-hidden" style="width: 71.1%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">feral druid</span>
+                            </div>
+                            <div class="h-6 bg-druid/20 border-r border-druid"
+                                 style="width: 19.6%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">8</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑5
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ff8000">S</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(103,191,50)" title="2.1M average dps. 94% of max average dps">2.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(105,191,50)" title="2.7M top dps. 92% of max top dps">2.7M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,103,50)">437</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/windwalker-monk">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/windwalker-monk.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-monk flex items-center overflow-hidden" style="width: 70.8%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">windwalker monk</span>
+                            </div>
+                            <div class="h-6 bg-monk/20 border-r border-monk"
+                                 style="width: 21.5%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">9</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑16
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(112,191,50)" title="2.1M average dps. 93% of max average dps">2.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(84,191,50)" title="2.9M top dps. 96% of max top dps">2.9M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(191,148,50)">917</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/beast-mastery-hunter">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/beast-mastery-hunter.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-hunter flex items-center overflow-hidden" style="width: 69.8%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">beast-mastery hunter</span>
+                            </div>
+                            <div class="h-6 bg-hunter/20 border-r border-hunter"
+                                 style="width: 26.3%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">10</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓4
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(116,191,50)" title="2.1M average dps. 93% of max average dps">2.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(117,191,50)" title="2.7M top dps. 90% of max top dps">2.7M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(191,141,50)">841</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/havoc-demon-hunter">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/havoc-demon-hunter.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-demon-hunter flex items-center overflow-hidden" style="width: 69.4%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">havoc demon-hunter</span>
+                            </div>
+                            <div class="h-6 bg-demon-hunter/20 border-r border-demon-hunter"
+                                 style="width: 20.6%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">11</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑6
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(117,191,50)" title="2.1M average dps. 92% of max average dps">2.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(109,191,50)" title="2.7M top dps. 91% of max top dps">2.7M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(172,191,50)">1.6K</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/balance-druid">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/balance-druid.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-druid flex items-center overflow-hidden" style="width: 69.2%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">balance druid</span>
+                            </div>
+                            <div class="h-6 bg-druid/20 border-r border-druid"
+                                 style="width: 22.3%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">12</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑12
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(118,191,50)" title="2.0M average dps. 92% of max average dps">2.0M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(105,191,50)" title="2.7M top dps. 92% of max top dps">2.7M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,143,50)">866</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/destruction-warlock">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/destruction-warlock.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-warlock flex items-center overflow-hidden" style="width: 69.1%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">destruction warlock</span>
+                            </div>
+                            <div class="h-6 bg-warlock/20 border-r border-warlock"
+                                 style="width: 23%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">13</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓11
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(119,191,50)" title="2.0M average dps. 92% of max average dps">2.0M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(126,191,50)" title="2.6M top dps. 88% of max top dps">2.6M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 13" style="background-color: rgb(191,121,50)">626</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/subtlety-rogue">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/subtlety-rogue.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-rogue flex items-center overflow-hidden" style="width: 69%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">subtlety rogue</span>
+                            </div>
+                            <div class="h-6 bg-rogue/20 border-r border-rogue"
+                                 style="width: 19.2%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">14</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑9
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(120,191,50)" title="2.0M average dps. 92% of max average dps">2.0M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(106,191,50)" title="2.7M top dps. 92% of max top dps">2.7M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 13" style="background-color: rgb(191,88,50)">277</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/demonology-warlock">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/demonology-warlock.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-warlock flex items-center overflow-hidden" style="width: 68.9%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">demonology warlock</span>
+                            </div>
+                            <div class="h-6 bg-warlock/20 border-r border-warlock"
+                                 style="width: 23.1%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">15</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓10
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(123,191,50)" title="2.0M average dps. 91% of max average dps">2.0M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(147,191,50)" title="2.5M top dps. 84% of max top dps">2.5M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(191,112,50)">534</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/fury-warrior">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/fury-warrior.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-warrior flex items-center overflow-hidden" style="width: 68.5%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">fury warrior</span>
+                            </div>
+                            <div class="h-6 bg-warrior/20 border-r border-warrior"
+                                 style="width: 15.7%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">16</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓12
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(126,191,50)" title="2.0M average dps. 91% of max average dps">2.0M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(124,191,50)" title="2.6M top dps. 88% of max top dps">2.6M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,108,50)">487</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/arms-warrior">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/arms-warrior.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-warrior flex items-center overflow-hidden" style="width: 68.2%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">arms warrior</span>
+                            </div>
+                            <div class="h-6 bg-warrior/20 border-r border-warrior"
+                                 style="width: 20.3%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">17</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑1
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(127,191,50)" title="2.0M average dps. 91% of max average dps">2.0M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(143,191,50)" title="2.5M top dps. 85% of max top dps">2.5M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 12" style="background-color: rgb(191,70,50)">75</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/affliction-warlock">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/affliction-warlock.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-warlock flex items-center overflow-hidden" style="width: 68.2%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">affliction warlock</span>
+                            </div>
+                            <div class="h-6 bg-warlock/20 border-r border-warlock"
+                                 style="width: 16.9%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">18</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑2
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(129,191,50)" title="2.0M average dps. 91% of max average dps">2.0M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(92,191,50)" title="2.8M top dps. 95% of max top dps">2.8M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(185,191,50)">1.5K</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/fire-mage">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/fire-mage.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-mage flex items-center overflow-hidden" style="width: 67.9%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">fire mage</span>
+                            </div>
+                            <div class="h-6 bg-mage/20 border-r border-mage"
+                                 style="width: 26.6%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">19</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓4
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(145,191,50)" title="2.0M average dps. 88% of max average dps">2.0M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(117,191,50)" title="2.7M top dps. 90% of max top dps">2.7M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(191,129,50)">710</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/frost-mage">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/frost-mage.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-mage flex items-center overflow-hidden" style="width: 66.2%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">frost mage</span>
+                            </div>
+                            <div class="h-6 bg-mage/20 border-r border-mage"
+                                 style="width: 23.7%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">20</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓12
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #0070dd">B</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(153,191,50)" title="1.9M average dps. 87% of max average dps">1.9M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(129,191,50)" title="2.6M top dps. 88% of max top dps">2.6M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,113,50)">537</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/devastation-evoker">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/devastation-evoker.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-evoker flex items-center overflow-hidden" style="width: 65.3%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">devastation evoker</span>
+                            </div>
+                            <div class="h-6 bg-evoker/20 border-r border-evoker"
+                                 style="width: 22.3%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">21</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓5
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #0070dd">B</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(154,191,50)" title="1.9M average dps. 87% of max average dps">1.9M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(146,191,50)" title="2.5M top dps. 84% of max top dps">2.5M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 13" style="background-color: rgb(191,87,50)">263</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/marksmanship-hunter">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/marksmanship-hunter.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-hunter flex items-center overflow-hidden" style="width: 65.2%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">marksmanship hunter</span>
+                            </div>
+                            <div class="h-6 bg-hunter/20 border-r border-hunter"
+                                 style="width: 19.1%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">22</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓12
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #0070dd">B</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(154,191,50)" title="1.9M average dps. 87% of max average dps">1.9M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(164,191,50)" title="2.4M top dps. 81% of max top dps">2.4M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 13" style="background-color: rgb(191,84,50)">230</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/frost-death-knight">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/frost-death-knight.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-death-knight flex items-center overflow-hidden" style="width: 65.2%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">frost death-knight</span>
+                            </div>
+                            <div class="h-6 bg-death-knight/20 border-r border-death-knight"
+                                 style="width: 15.7%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">23</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓2
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #0070dd">B</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(172,191,50)" title="1.9M average dps. 84% of max average dps">1.9M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(159,191,50)" title="2.4M top dps. 82% of max top dps">2.4M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 13" style="background-color: rgb(191,115,50)">567</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/shadow-priest">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/shadow-priest.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-priest flex items-center overflow-hidden" style="width: 63.3%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">shadow priest</span>
+                            </div>
+                            <div class="h-6 bg-priest/20 border-r border-priest"
+                                 style="width: 18.6%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">24</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓12
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #0070dd">B</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,191,50)" title="1.8M average dps. 82% of max average dps">1.8M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,177,50)" title="2.2M top dps. 73% of max top dps">2.2M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 12" style="background-color: rgb(191,69,50)">73</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/survival-hunter">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/survival-hunter.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-hunter flex items-center overflow-hidden" style="width: 61.2%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">survival hunter</span>
+                            </div>
+                            <div class="h-6 bg-hunter/20 border-r border-hunter"
+                                 style="width: 11.8%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">25</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓3
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #1eff00">C</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,177,50)" title="1.8M average dps. 80% of max average dps">1.8M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,162,50)" title="2.1M top dps. 70% of max top dps">2.1M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 12" style="background-color: rgb(191,67,50)">52</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/arcane-mage">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/arcane-mage.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-mage flex items-center overflow-hidden" style="width: 59.7%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">arcane mage</span>
+                            </div>
+                            <div class="h-6 bg-mage/20 border-r border-mage"
+                                 style="width: 10.4%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">26</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-yellow-500">
+                            0
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #9d9d9d">F</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,64,50)" title="1.4M average dps. 63% of max average dps">1.4M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,64,50)" title="1.5M top dps. 52% of max top dps">1.5M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 11" style="background-color: rgb(191,64,50)">12</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/augmentation-evoker">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/augmentation-evoker.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-evoker flex items-center overflow-hidden" style="width: 47.4%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">augmentation evoker</span>
+                            </div>
+                            <div class="h-6 bg-evoker/20 border-r border-evoker"
+                                 style="width: 4.1%;"></div>
+                        </div>
+                    </a>
+                            </div>
+        </div>
+            <div class="overflow-x-auto">
+            <div class="grid grid-cols-2 gap-x-2 gap-y-px text-xs items-center max-w-4xl text-black/70" style="min-width: 576px; grid-template-columns: fit-content(1px) 1fr;">
+                <div class="grid grid-cols-6 text-gray-500 text-sm text-center mb-2 mt-4">
+                    <div class="">#</div>
+                    <div class="">Diff</div>
+                    <div class="">Tier</div>
+                    <div class="text-gray-400">Avg</div>
+                    <div class="">Top</div>
+                    <div class="">Runs</div>
+                </div>
+                <div class="text-left text-sm text-gray-500 mb-2 mt-4">Tank specs</div>
+
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">1</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-yellow-500">
+                            0
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ff8000">S</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(64,191,50)" title="1.3M average dps. 100% of max average dps">1.3M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(64,191,50)" title="1.8M top dps. 100% of max top dps">1.8M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,100,50)">398</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/protection-warrior">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/protection-warrior.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-warrior flex items-center overflow-hidden" style="width: 45.2%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">protection warrior</span>
+                            </div>
+                            <div class="h-6 bg-warrior/20 border-r border-warrior"
+                                 style="width: 16.8%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">2</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-yellow-500">
+                            0
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #0070dd">B</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(157,191,50)" title="1.2M average dps. 92% of max average dps">1.2M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(173,191,50)" title="1.7M top dps. 90% of max top dps">1.7M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,124,50)">659</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/blood-death-knight">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/blood-death-knight.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-death-knight flex items-center overflow-hidden" style="width: 41.7%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">blood death-knight</span>
+                            </div>
+                            <div class="h-6 bg-death-knight/20 border-r border-death-knight"
+                                 style="width: 13.9%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">3</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-yellow-500">
+                            0
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ffffff">D</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,145,50)" title="1.1M average dps. 86% of max average dps">1.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,165,50)" title="1.6M top dps. 86% of max top dps">1.6M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(191,178,50)">1.2K</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/protection-paladin">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/protection-paladin.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-paladin flex items-center overflow-hidden" style="width: 38.7%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">protection paladin</span>
+                            </div>
+                            <div class="h-6 bg-paladin/20 border-r border-paladin"
+                                 style="width: 14.4%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">4</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑2
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #9d9d9d">F</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,100,50)" title="1.1M average dps. 82% of max average dps">1.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,101,50)" title="1.5M top dps. 80% of max top dps">1.5M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(64,191,50)">2.8K</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/vengeance-demon-hunter">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/vengeance-demon-hunter.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-demon-hunter flex items-center overflow-hidden" style="width: 37.1%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">vengeance demon-hunter</span>
+                            </div>
+                            <div class="h-6 bg-demon-hunter/20 border-r border-demon-hunter"
+                                 style="width: 12.3%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">5</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓1
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #9d9d9d">F</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,91,50)" title="1.1M average dps. 81% of max average dps">1.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,77,50)" title="1.4M top dps. 77% of max top dps">1.4M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 13" style="background-color: rgb(191,83,50)">218</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/brewmaster-monk">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/brewmaster-monk.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-monk flex items-center overflow-hidden" style="width: 36.7%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">brewmaster monk</span>
+                            </div>
+                            <div class="h-6 bg-monk/20 border-r border-monk"
+                                 style="width: 11.2%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">6</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓1
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #9d9d9d">F</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,64,50)" title="1.1M average dps. 79% of max average dps">1.1M</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,64,50)" title="1.4M top dps. 76% of max top dps">1.4M</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(191,93,50)">323</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/guardian-druid">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/guardian-druid.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-druid flex items-center overflow-hidden" style="width: 35.7%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">guardian druid</span>
+                            </div>
+                            <div class="h-6 bg-druid/20 border-r border-druid"
+                                 style="width: 11.5%;"></div>
+                        </div>
+                    </a>
+                            </div>
+        </div>
+            <div class="overflow-x-auto">
+            <div class="grid grid-cols-2 gap-x-2 gap-y-px text-xs items-center max-w-4xl text-black/70" style="min-width: 576px; grid-template-columns: fit-content(1px) 1fr;">
+                <div class="grid grid-cols-6 text-gray-500 text-sm text-center mb-2 mt-4">
+                    <div class="">#</div>
+                    <div class="">Diff</div>
+                    <div class="">Tier</div>
+                    <div class="text-gray-400">Avg</div>
+                    <div class="">Top</div>
+                    <div class="">Runs</div>
+                </div>
+                <div class="text-left text-sm text-gray-500 mb-2 mt-4">Healer specs</div>
+
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">1</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-yellow-500">
+                            0
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ff8000">S</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(64,191,50)" title="519K average dps. 100% of max average dps">519K</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(64,191,50)" title="812K top dps. 100% of max top dps">812K</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(191,183,50)">1.3K</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/mistweaver-monk">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/mistweaver-monk.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-monk flex items-center overflow-hidden" style="width: 17.5%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">mistweaver monk</span>
+                            </div>
+                            <div class="h-6 bg-monk/20 border-r border-monk"
+                                 style="width: 9.9%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">2</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-yellow-500">
+                            0
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #a335ee">A</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(142,191,50)" title="421K average dps. 81% of max average dps">421K</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(190,191,50)" title="597K top dps. 74% of max top dps">597K</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 15" style="background-color: rgb(68,191,50)">2.7K</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/discipline-priest">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/discipline-priest.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-priest flex items-center overflow-hidden" style="width: 14.2%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">discipline priest</span>
+                            </div>
+                            <div class="h-6 bg-priest/20 border-r border-priest"
+                                 style="width: 5.9%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">3</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-yellow-500">
+                            0
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #1eff00">C</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,153,50)" title="311K average dps. 60% of max average dps">311K</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,120,50)" title="475K top dps. 58% of max top dps">475K</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 13" style="background-color: rgb(191,71,50)">85</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/preservation-evoker">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/preservation-evoker.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-evoker flex items-center overflow-hidden" style="width: 10.5%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">preservation evoker</span>
+                            </div>
+                            <div class="h-6 bg-evoker/20 border-r border-evoker"
+                                 style="width: 5.5%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">4</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-green-500">
+                            ↑1
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ffffff">D</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,126,50)" title="277K average dps. 53% of max average dps">277K</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,105,50)" title="449K top dps. 55% of max top dps">449K</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,75,50)">128</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/holy-priest">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/holy-priest.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-priest flex items-center overflow-hidden" style="width: 9.3%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">holy priest</span>
+                            </div>
+                            <div class="h-6 bg-priest/20 border-r border-priest"
+                                 style="width: 5.8%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">5</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-red-500">
+                            ↓1
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ffffff">D</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,124,50)" title="274K average dps. 53% of max average dps">274K</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,78,50)" title="403K top dps. 50% of max top dps">403K</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,151,50)">951</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/restoration-shaman">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/restoration-shaman.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-shaman flex items-center overflow-hidden" style="width: 9.2%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">restoration shaman</span>
+                            </div>
+                            <div class="h-6 bg-shaman/20 border-r border-shaman"
+                                 style="width: 4.4%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">6</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-yellow-500">
+                            0
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #ffffff">D</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,108,50)" title="255K average dps. 49% of max average dps">255K</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,64,50)" title="379K top dps. 47% of max top dps">379K</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 14" style="background-color: rgb(191,75,50)">137</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/holy-paladin">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/holy-paladin.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-paladin flex items-center overflow-hidden" style="width: 8.6%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">holy paladin</span>
+                            </div>
+                            <div class="h-6 bg-paladin/20 border-r border-paladin"
+                                 style="width: 4.2%;"></div>
+                        </div>
+                    </a>
+                                    <div class="grid grid-cols-6 gap-px w-56">
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-gray-400">7</div>
+                        <div class="h-6 flex justify-center items-center bg-gray-800/50 text-yellow-500">
+                            0
+                        </div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: #9d9d9d">F</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,64,50)" title="199K average dps. 38% of max average dps">199K</div>
+                        <div class="h-6 flex justify-center items-center" style="background-color: rgb(191,105,50)" title="449K top dps. 55% of max top dps">449K</div>
+                        <div class="h-6 flex justify-center items-center" title="11 - 13" style="background-color: rgb(191,94,50)">336</div>
+                    </div>
+                    <a class="flex" href="https://mythicstats.com/spec/restoration-druid">
+                        <div class="w-6 mr-px"><img class="h-6 w-6" src="/img/spec/restoration-druid.jpg" alt=""></div>
+                        <div class="flex items-center w-full bg-gray-800/50">
+                            <div class="h-6 bg-druid flex items-center overflow-hidden" style="width: 6.7%;">
+                                <span class="pl-1 capitalize whitespace-nowrap">restoration druid</span>
+                            </div>
+                            <div class="h-6 bg-druid/20 border-r border-druid"
+                                 style="width: 8.4%;"></div>
+                        </div>
+                    </a>
+                            </div>
+        </div>
+    
+    
+
+    <div class="bg-gray-850 rounded shadow-lg border-t border-gray-800 p-4 md:p-6 max-w-4xl mt-10 text-blue text-sm md:text-base">
+        <h2 class="text-gray-300 mb-4 font-bold">About this summary</h2>
+        <p class="mb-4">This summary presents DPS parses for Mythic+ keys sourced from the Warcraft Logs API. Warcraft Logs calculates overall DPS by dividing the total damage done by the entire dungeon time, even during moments of non-combat. This is in contrast to in-game addons like Details, which often show higher DPS values. For the most accurate comparison of DPS, consider uploading your logs to Warcraft Logs. Increasing the number of logs on Warcraft Logs enhances the precision of this list.</p>
+
+        <p class="mb-4">You can filter this list by dungeon and period (week). When a new week starts, the list is less accurate because fewer high-level keys have been logged.</p>
+
+        <ul class="list-disc pl-4">
+            <li><span class="font-bold text-gray-300">#</span> is the numeric ranking for the specs role (damage, tank, healer).</li>
+            <li><span class="font-bold text-gray-300">Diff</span> is the number of rankings different from previous period. Green is positive change, yellow is no change and red is negative change.</li>
+            <li><span class="font-bold text-gray-300">Runs</span> is the number of Mythic+ runs.</li>
+            <li><span class="font-bold text-gray-300">Tier</span> is the average DPS for each role divided into 6 equally sized tiers (S, A, B, C, D, F). There will always be atleast one spec in S-tier and one spec in F-tier for each role. F-tier is not always bad, just means that the spec is the lowest DPS for the role.</li>
+            <li><span class="font-bold text-gray-300">Avg</span> is the average dps for the spec and what this list is sorted by. Displayed as the line in full color.</li>
+            <li><span class="font-bold text-gray-300">Top</span> is the average dps for the top 5% of the spec. Displayed as the faded line.</li>
+        </ul>
+    </div>
+</div>
+</div>
+<div class="bg-gray-850 text-gray-500 py-5 border-t border-gray-800" id="menu">
+    <div class="container flex flex-wrap justify-between">
+        <p class="mb-5 mr-5">&copy; 2025 mythicstats.com by raptoranka</p>
+
+        <div class="flex flex-wrap space-x-6 mb-5">
+            <a class="flex items-center text-discord" target="_blank" href="/discord"><svg class="h-4 pr-2" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="currentColor"><title>Discord</title><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg> Discord</a>
+            <a class="flex items-center text-patreon" target="_blank" href="/patreon"><svg class="h-4 pr-2" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="currentColor"><title>Patreon</title><path d="M0 .48v23.04h4.22V.48zm15.385 0c-4.764 0-8.641 3.88-8.641 8.65 0 4.755 3.877 8.623 8.641 8.623 4.75 0 8.615-3.868 8.615-8.623C24 4.36 20.136.48 15.385.48z"/></svg> Patreon</a>
+            <a class="flex items-center text-twitter" target="_blank" href="/twitter"><svg class="h-4 pr-2" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" fill="currentColor"><title>Twitter</title><path d="M21.543 7.104c.015.211.015.423.015.636 0 6.507-4.954 14.01-14.01 14.01v-.003A13.94 13.94 0 0 1 0 19.539a9.88 9.88 0 0 0 7.287-2.041 4.93 4.93 0 0 1-4.6-3.42 4.916 4.916 0 0 0 2.223-.084A4.926 4.926 0 0 1 .96 9.167v-.062a4.887 4.887 0 0 0 2.235.616A4.928 4.928 0 0 1 1.67 3.148 13.98 13.98 0 0 0 11.82 8.292a4.929 4.929 0 0 1 8.39-4.49 9.868 9.868 0 0 0 3.128-1.196 4.941 4.941 0 0 1-2.165 2.724A9.828 9.828 0 0 0 24 4.555a10.019 10.019 0 0 1-2.457 2.549z"/></svg> Twitter</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="max-w-2xl">
+
+        All World of Warcraft-related content, including but not limited to the game itself, is copyright of Blizzard Entertainment, Inc. This website is intended as a fan site and is not affiliated with or endorsed by Blizzard Entertainment, Inc.
+        </div>
+    </div>
+
+    <div class="container mt-5 space-x-4">
+                <a href="/period">Periods</a>
+        <a href="/privacy">Privacy</a>
+    </div>
+</div>
+
+</body>
+</html>
