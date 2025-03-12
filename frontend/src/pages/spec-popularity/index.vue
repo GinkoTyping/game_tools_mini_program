@@ -1,5 +1,9 @@
 <template>
   <view class="main-container">
+    <view class="rank-menu">
+      <view class="rank-menu-item rank-menu-item--active">热度排行</view>
+      <view class="rank-menu-item">输出排行</view>
+    </view>
     <uni-card>
       <uni-title
         type="h3"
@@ -300,6 +304,38 @@ async function switchLevel(value) {
 </script>
 
 <style lang="scss" scoped>
+.rank-menu {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid $uni-color-primary;
+  position: relative;
+  margin: 0 2vw;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: $uni-bg-color-grey-light;
+  color: #fff;
+  margin-bottom: 10px;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: $uni-color-primary;
+  }
+  .rank-menu-item {
+    width: 50%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
+  }
+  .rank-menu-item--active {
+    background-color: $uni-color-primary;
+  }
+}
 .main-container {
   padding-top: 1rem;
 }
