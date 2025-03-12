@@ -148,6 +148,8 @@
     </view>
   </view>
 
+  <view class="footer"></view>
+
   <ShareIcon />
 </template>
 
@@ -478,5 +480,10 @@ $simple-card-width: 43.5vw;
   .suffix {
     color: #2979ff;
   }
+}
+
+.footer {
+  height: 4rem;
+  width: 1vw;
 }
 </style>

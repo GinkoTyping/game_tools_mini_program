@@ -41,7 +41,11 @@
       </view>
     </uni-collapse-item>
   </uni-collapse>
-  <ad-custom unit-id="adunit-84c43763a4fcb5e9"></ad-custom>
+
+  <ad-custom
+    unit-id="adunit-84c43763a4fcb5e9"
+    style="margin-top: 2rem"
+  ></ad-custom>
 
   <!-- <view :class="popoverClass">
     <image
@@ -72,9 +76,7 @@ onShareAppMessage(() => ({
   path: 'pages/index/index',
 }));
 
-onLoad(async () => {
-
-});
+onLoad(async () => {});
 
 // 用专精页面返回该页面时，也需要刷新
 onShow(async () => {
