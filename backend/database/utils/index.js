@@ -43,7 +43,6 @@ export async function getCommonDB() {
 }
 
 let _authDB = null;
-
 export async function getAuthDB() {
   if (!_authDB) {
     _authDB = await open({
@@ -52,4 +51,15 @@ export async function getAuthDB() {
     });
   }
   return _authDB;
+}
+
+let _dailyDB = null;
+export async function getDailyDB() {
+  if (!_dailyDB) {
+    _dailyDB = await open({
+      filename: path.resolve(__dirname, '../wow/daily-database.db'),
+      driver: sqlite3.verbose().Database,
+    });
+  }
+  return _dailyDB;
 }

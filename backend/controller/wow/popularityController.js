@@ -4,8 +4,9 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { getDB } from '../../database/utils/index.js';
+import { getDB, getDailyDB } from '../../database/utils/index.js';
 import { useClassSpecMapper } from '../../database/wow/mapper/classSpecMapper.js';
+import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +16,9 @@ let cacheDate;
 let cachedClassifiedData = {};
 const db = await getDB();
 const classSpecMapper = useClassSpecMapper(db);
+
+const dailyDB = await getDailyDB();
+const specStatMapper = useSpecStatMapper(dailyDB);
 
 function getDate(dateString) {
   let date;
@@ -66,46 +70,40 @@ export async function queryPolularityByCondition(req, res) {
   const { minMythicLevel = 2, maxMythicLevel = 99 } = req.body;
 
   const key = `${minMythicLevel}-${maxMythicLevel}`;
-  if (cacheDate === currentDate && cachedClassifiedData[key]) {
+
+  const dbData = await specStatMapper.getSpecPopularity({
+    date: currentDate,
+    level_range: key,
+  });
+
+  if (dbData?.data) {
     res.json({
-      aggregated_at: cachedClassifiedData[key].aggregated_at,
-      data: cachedClassifiedData[key].data,
+      ...JSON.parse(dbData.data),
     });
   } else {
-    const folderPath = path.resolve(
-      __dirname,
-      `../../database/wow/data/popularity/${currentDate}`
+    const response = await axios.get(
+      `https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=${minMythicLevel}&maxMythicLevel=${maxMythicLevel}&seasonWeekStart=1&seasonWeekEnd=2&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity`
     );
-    if (!fs.existsSync(folderPath)) {
-      fs.mkdirSync(folderPath);
-    }
-    const filePath = path.join(folderPath, `./${key}.json`);
-    if (fs.existsSync(filePath)) {
-      cachedClassifiedData[key] = JSON.parse(fs.readFileSync(filePath));
-      res.json(cachedClassifiedData[key]);
-    } else {
-      const response = await axios.get(
-        `https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=${minMythicLevel}&maxMythicLevel=${maxMythicLevel}&seasonWeekStart=1&seasonWeekEnd=2&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity`
-      );
 
-      if (response?.data?.data) {
-        cacheDate = getDate(response.data.aggregated_at);
-        const mapData = await mapPopularityData(response.data.data);
-        cachedClassifiedData[key] = {
-          aggregated_at: cacheDate,
-          data: mapData,
-        };
-        fs.writeFileSync(
-          filePath,
-          JSON.stringify(cachedClassifiedData[key], null, 2)
-        );
-        res.json(cachedClassifiedData[key]);
-      } else {
-        res.json({
-          aggregated_at: currentDate,
-          data: [],
-        });
-      }
+    if (response?.data?.data) {
+      const newDate = getDate(response.data.aggregated_at);
+      const mapData = await mapPopularityData(response.data.data);
+      const output = {
+        aggregated_at: currentDate,
+        data: mapData,
+      };
+      await specStatMapper.insertSpecPopularity({
+        date: currentDate,
+        level_range: key,
+        data: JSON.stringify(output),
+      });
+
+      res.json(output);
+    } else {
+      res.json({
+        aggregated_at: currentDate,
+        data: [],
+      });
     }
   }
 }

@@ -33,3 +33,4 @@ crawler/.env
 # Database
 backend/database/auth/database.db
 backend/database/wow/dynamic-database.db
+backend/database/wow/daily-database.db

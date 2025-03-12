@@ -154,3 +154,19 @@ CREATE TABLE
     npc_mark_list TEXT,
     spell_mark_list TEXT
   );
+
+-- daily tables
+CREATE TABLE
+  IF NOT EXISTS wow_daily_spec_popularity (
+    id INTEGER PRIMARY KEY NOT NULL,
+    date TEXT NOT NULL,
+    level_range TEXT NOT NULL,
+    data TEXT NOT NULL
+  );
+
+CREATE TABLE
+  IF NOT EXISTS wow_daily_spec_dps_rank (
+    id INTEGER PRIMARY KEY NOT NULL,
+    week_id TEXT NOT NULL,
+    data TEXT NOT NULL
+  );
