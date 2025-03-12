@@ -22,7 +22,7 @@ async function getUserMarkById(userId) {
 async function updateUserMark(isNpc, isMark, userId, markId) {
   const column = isNpc ? 'npc_mark_list' : 'spell_mark_list';
   const data = await getUserMarkById(userId);
-  let markList = data[column];
+  let markList = data?.[column];
   if (!markList) {
     await addUser(userId);
     markList = [];
