@@ -17,10 +17,10 @@ async function getSpecPopularity(params) {
 
 async function insertSpecDpsRank(params) {
   const { week_id, data } = params;
-  return db.run(`INSERT INTO wow_daily_spec_dps_rank(week_id, data) VALUES(?1, ?2)`, [
-    week_id,
-    data,
-  ]);
+  return db.run(
+    `INSERT INTO wow_daily_spec_dps_rank(week_id, data) VALUES(?1, ?2)`,
+    [week_id, data]
+  );
 }
 async function getSpecDpsRank(params) {
   const { week_id } = params;
@@ -31,8 +31,8 @@ async function getSpecDpsRank(params) {
 async function updateSpecDpsRank(params) {
   const { week_id, data } = params;
   return db.run(`UPDATE wow_daily_spec_dps_rank SET data=?1 WHERE week_id=?2`, [
-    week_id,
     data,
+    week_id,
   ]);
 }
 
