@@ -3,33 +3,70 @@
     <view class="rank-menu">
       <view
         class="rank-menu-item"
-        :class="[currentMenu === 'popular' ? 'rank-menu-item--active' : '']"
-        @click="() => switchMenu('popular')"
-        >热度排行</view
-      >
-      <view
-        class="rank-menu-item"
         :class="[currentMenu === 'rank' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('rank')"
         >输出排行</view
       >
+      <view
+        class="rank-menu-item"
+        :class="[currentMenu === 'popular' ? 'rank-menu-item--active' : '']"
+        @click="() => switchMenu('popular')"
+        >热度排行</view
+      >
     </view>
 
     <uni-card v-show="currentMenu === 'rank'">
+      <uni-title
+        type="h4"
+        :title="`仅11层以上的数据 ${
+          currentWeek === thisWeek ? ',持续更新中...' : ''
+        }`"
+        align="center"
+        color="#fff"
+      ></uni-title>
+      <view class="filter-container">
+        <text> 时间： </text>
+        <button
+          class="filter-container__button"
+          :class="[
+            currentWeek === item.value
+              ? 'filter-container__button--active'
+              : '',
+          ]"
+          v-for="item in rankWeekOptions"
+          :key="item.value"
+          @click="() => switchRankWeek(item.value)"
+        >
+          {{ item.label }}
+        </button>
+      </view>
+      <view class="filter-container">
+        <text> 职业： </text>
+        <button
+          class="filter-container__button"
+          :class="[
+            currentRankJob === item.value
+              ? 'filter-container__button--active'
+              : '',
+          ]"
+          v-for="item in rankJobFilter"
+          :key="item.value"
+          @click="() => switchRankJob(item.value)"
+        >
+          {{ item.label }}
+        </button>
+      </view>
       <view class="rank-container">
         <view class="row header">
           <view class="tags">
             <view class="tag"></view>
             <view class="tag">评级</view>
             <view class="tag">平均</view>
+            <view class="tag">最高</view>
+            <view class="tag" v-show="currentRankJob !== 'dps'">次数</view>
           </view>
-
         </view>
-        <view
-          class="row body"
-          v-for="row in rankData?.[0]?.rank"
-          :key="row.type"
-        >
+        <view class="row body" v-for="row in currentRankData" :key="row.type">
           <view class="tags">
             <view class="tag tag-diff" :class="[diffClass(row.diff)]">{{
               row.diff
@@ -38,6 +75,13 @@
               row.tier
             }}</view>
             <view class="tag tag--bg" :class="[row.tier]">{{ row.avg }}</view>
+            <view class="tag tag--bg" :class="[row.tier]">{{ row.top }}</view>
+            <view
+              class="tag tag--bg"
+              v-show="currentRankJob !== 'dps'"
+              :class="[row.tier]"
+              >{{ row.runs }}</view
+            >
           </view>
           <view class="bars-wrap">
             <view
@@ -46,18 +90,19 @@
                 backgroundPosition: row.spritePosition,
               }"
             ></view>
-            <!-- <view class="spec" :class="[row.classSpec]"></view> -->
             <view class="bars">
               <view
                 class="bar-avg"
                 :style="{ width: row.avgWidth, backgroundColor: row.color }"
-                >{{ row.name }}</view
+                >{{ row.name
+                }}<text v-show="currentRankJob === 'dps'"
+                  >({{ row.runs }}次)</text
+                ></view
               >
               <view
                 class="bar-top"
                 :style="{ width: row.topWidth, backgroundColor: row.color }"
               >
-                {{ row.top }}
               </view>
               <view
                 class="bar-edge"
@@ -70,8 +115,8 @@
     </uni-card>
     <uni-card v-show="currentMenu === 'popular'">
       <uni-title
-        type="h3"
-        :title="`更新: ${dataDate}`"
+        type="h4"
+        :title="`持续更新中(${dataDate})...`"
         align="center"
         color="#fff"
       ></uni-title>
@@ -109,7 +154,7 @@
       </view>
 
       <view class="chart-container" :style="chartStyle">
-        <LEchart ref="chart" @finished="init"></LEchart>
+        <LEchart ref="chart" @finished="onChartInit"></LEchart>
       </view>
     </uni-card>
 
@@ -128,18 +173,30 @@ import { onShareAppMessage } from '@dcloudio/uni-app';
 import { querySpecDpsRank, querySpecPopularity } from '@/api/wow/index';
 import LEchart from '@/components/l-echart/l-echart.vue';
 import ShareIcon from '@/components/ShareIcon.vue';
+import { getWeekCount } from '@/utils/wow';
 
+onShareAppMessage(() => ({
+  title: '热门专精排行（每日更新）',
+  path: 'pages/spec-popularity/index',
+}));
+
+const currentMenu = ref('rank');
+function switchMenu(menuName: any) {
+  if (currentMenu.value !== menuName) {
+    currentMenu.value = menuName;
+    if (currentMenu.value === 'popular') {
+      chart.value?.resize();
+    }
+  }
+}
+
+//#region 专精热门度
 const echarts = require('../../static/echarts.min.js');
 
 let chart = ref(); // 获取dom
 const state = reactive<any>({
   option: {},
 });
-
-onShareAppMessage(() => ({
-  title: '热门专精排行（每日更新）',
-  path: 'pages/spec-popularity/index',
-}));
 
 state.option = {
   tooltip: {
@@ -224,19 +281,6 @@ const popularityData: any = {
   healer: [],
 };
 const dataDate = ref('');
-onMounted(async () => {
-  await getPopularityData();
-  await getSpecRankData();
-});
-
-const rankData = ref();
-const diffClass = computed(() => {
-  return (diff: string) => (diff.includes('↑') ? 'up' : 'down');
-});
-async function getSpecRankData() {
-  const data = await querySpecDpsRank(1);
-  rankData.value = data.data;
-}
 
 async function getPopularityData() {
   uni.showLoading({
@@ -255,9 +299,7 @@ async function getPopularityData() {
     updateChart();
   });
 }
-
-// 渲染完成
-const init = () => {
+const onChartInit = () => {
   console.log('渲染完成');
 };
 
@@ -345,7 +387,6 @@ function switchJob(job: any) {
     updateChart();
   }
 }
-
 const levelFilter = [
   {
     label: '全部',
@@ -375,16 +416,86 @@ async function switchLevel(value: any) {
     await getPopularityData();
   }
 }
+//#endregion
 
-const currentMenu = ref('rank');
-function switchMenu(menuName: any) {
-  if (currentMenu.value !== menuName) {
-    currentMenu.value = menuName;
-    if (currentMenu.value === 'popular') {
-      chart.value?.resize();
-    }
+//#region 输出排名
+// 过滤配置
+const rankJobFilter = [
+  {
+    label: '输出',
+    value: 'dps',
+  },
+  {
+    label: '坦克',
+    value: 'tank',
+  },
+  {
+    label: '治疗',
+    value: 'healer',
+  },
+];
+const currentRankJob = ref('dps');
+const currentRankData = computed(() => {
+  return (
+    rankData.value?.find(item => item.type === currentRankJob.value)?.rank ?? []
+  );
+});
+function switchRankJob(job: string) {
+  if (currentRankJob.value !== job) {
+    currentRankJob.value = job;
   }
 }
+const rankWeekOptions = ref();
+const currentWeek = ref<number>();
+rankWeekOptions.value = new Array(getWeekCount())
+  .fill(1)
+  .map((item, index, array) => {
+    let label: string;
+    if (index === array.length - 1) {
+      label = '本周';
+    } else if (index === array.length - 2) {
+      label = `上周`;
+    } else {
+      label = `第${index + 1}周`;
+    }
+    return {
+      label,
+      value: index + 1,
+    };
+  })
+  .reverse();
+const thisWeek = rankWeekOptions.value?.[0].value;
+currentWeek.value = rankWeekOptions.value?.[0].value;
+async function switchRankWeek(week: number) {
+  if (currentWeek.value !== week) {
+    currentWeek.value = week;
+    await getSpecRankData();
+  }
+}
+
+// 数据获取
+const rankData = ref();
+const diffClass = computed(() => {
+  return (diff: string) => (diff.includes('↑') ? 'up' : 'down');
+});
+async function getSpecRankData() {
+  if (currentWeek.value) {
+    uni.showLoading({
+      title: '银子加载中...',
+    });
+
+    const data = await querySpecDpsRank(currentWeek.value);
+    rankData.value = data.data;
+
+    uni.hideLoading();
+  }
+}
+//#endregion
+
+onMounted(async () => {
+  await getPopularityData();
+  await getSpecRankData();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -515,6 +626,9 @@ function switchMenu(menuName: any) {
         .bar-avg {
           padding-left: 4px;
           color: black;
+          text {
+            font-size: 10px;
+          }
         }
         .bar-top {
           color: black;
@@ -528,12 +642,7 @@ function switchMenu(menuName: any) {
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(
-              0,
-              0,
-              0,
-              0.5
-            ); /* 半透明黑色覆盖层，用于变暗效果 */
+            background-color: rgba(0, 0, 0, 0.5);
             z-index: 0;
           }
           text {
