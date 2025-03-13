@@ -94,7 +94,9 @@ export async function getSpecDpsRankData(week) {
     const filePath = path.resolve(__dirname, `./cache/${period}.html`);
 
     let html;
-    if (fs.existsSync(filePath)) {
+
+    // 当周的数据每日都会刷新，不适用cache
+    if (fs.existsSync(filePath) && week < maxWeek) {
       html = fs.readFileSync(filePath, 'utf-8');
     } else {
       const res = await axios.get(
@@ -109,13 +111,13 @@ export async function getSpecDpsRankData(week) {
     const tables = getTableElements($);
     const data = tables.map((table, index) => collectTable($, table, index));
     return {
-      name: '11+',
+      name: '11层以上',
       data,
     };
   } catch (error) {
     console.log('获取专精DPS排行失败：' + error);
     return {
-      name: '11+',
+      name: '11层以上',
       data: [],
     };
   }

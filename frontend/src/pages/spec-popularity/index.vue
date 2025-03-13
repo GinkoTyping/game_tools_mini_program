@@ -18,8 +18,10 @@
     <uni-card v-show="currentMenu === 'rank'">
       <uni-title
         type="h4"
-        :title="`仅11层以上的数据 ${
-          currentWeek === thisWeek ? ',持续更新中...' : ''
+        :title="`仅${currentRankLevel}的数据 ${
+          currentWeek === thisWeek
+            ? `,持续更新中(${currentRankUpdatedAt ?? '加载中'})...`
+            : ''
         }`"
         align="center"
         color="#fff"
@@ -475,6 +477,8 @@ async function switchRankWeek(week: number) {
 
 // 数据获取
 const rankData = ref();
+const currentRankUpdatedAt = ref('');
+const currentRankLevel = ref('');
 const diffClass = computed(() => {
   return (diff: string) => (diff.includes('↑') ? 'up' : 'down');
 });
@@ -486,6 +490,8 @@ async function getSpecRankData() {
 
     const data = await querySpecDpsRank(currentWeek.value);
     rankData.value = data.data;
+    currentRankUpdatedAt.value = data.currentUpdatedAt;
+    currentRankLevel.value = data.name;
 
     uni.hideLoading();
   }

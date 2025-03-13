@@ -209,10 +209,9 @@ export async function querySpecDpsRank(weekId: number) {
     method: 'POST',
     data: { weekId },
   });
-  console.log(res.data);
-
   return {
     ...res.data,
+    currentUpdatedAt: res.data.current_week_updated_at,
     data: res.data.data.map((item: any) => {
       return {
         ...item,
