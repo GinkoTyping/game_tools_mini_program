@@ -415,6 +415,9 @@
           currentDetails.preview_item?.requirements?.level.display_string
         }}</text
       >
+      <text class="description" v-show="currentDetails.source?.source"
+        >掉落于：<text>{{ currentDetails.source?.source }}</text></text
+      >
       <text v-show="currentDetails?.description" class="description"
         >“{{ currentDetails.description }}”</text
       >
@@ -716,11 +719,11 @@ const currentImageSrc = computed(() => {
     if (item?.image) {
       return `https://ginkolearn.cyou/api/wow/assets/${
         item?.source ? 'items' : 'trinkets'
-      }/${item?.image}`
+      }/${item?.image}`;
     }
     return '';
-  }
-})
+  };
+});
 
 async function switchDetail(
   isShow: boolean,
@@ -1038,6 +1041,10 @@ $light-border: rgb(68, 68, 68);
   .item-level,
   .description {
     color: $uni-text-color-inverse;
+    text {
+      color: $uni-text-color-inverse;
+      font-weight: bold;
+    }
   }
   .price {
     display: flex;

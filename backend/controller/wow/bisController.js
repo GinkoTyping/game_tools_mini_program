@@ -46,15 +46,16 @@ export async function getItemPreviewById(req, res) {
   const db = await getDB();
   const item = await db.get(
     `
-  SELECT preview FROM wow_item WHERE id=?1`,
+  SELECT preview,source FROM wow_item WHERE id=?1`,
     [req.params.id]
   );
   if (item?.preview) {
-    console.log('cached.', item.preview);
-    res.json(JSON.parse(item.preview));
+    res.json({
+      ...JSON.parse(item.preview),
+      source: JSON.parse(item.source),
+    });
   } else {
     try {
-      console.log('fetching data...');
       const data = await queryBlizzItemById(req.params.id);
 
       if (item) {
