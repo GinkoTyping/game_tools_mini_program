@@ -74,6 +74,10 @@ async function getUntranslated() {
   WHERE name NOT GLOB '*[一-龥]*'`);
 }
 
+async function getBlankSourceItem() {
+  return db.all(`SELECT id, source FROM wow_item WHERE source IS NULL`);
+}
+
 export function useItemMapper(database) {
   if (database) {
     db = database;
@@ -88,6 +92,7 @@ export function useItemMapper(database) {
     getItemByName,
     getUntranslated,
     updateItemById,
+    getBlankSourceItem,
     updateItemPreivewById,
   };
 }

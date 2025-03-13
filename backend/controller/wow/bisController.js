@@ -194,3 +194,14 @@ export async function queryBisTrends(req, res) {
     sprite: spriteMap,
   });
 }
+
+export async function queryBlankSourceItem(req, res) {
+  const data = await itemMapper.getBlankSourceItem();
+  res.json(data);
+}
+
+export async function queryUpdateItem(req, res) {
+  const { id, source } = req.body;
+  await itemMapper.updateItemById({ id, source });
+  res.json(`更新物品OK, ID:${id}`);
+}

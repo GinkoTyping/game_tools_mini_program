@@ -416,7 +416,7 @@
         }}</text
       >
       <text class="description" v-show="currentDetails.source?.source"
-        >掉落于：<text>{{ currentDetails.source?.source }}</text></text
+        >来源：<text>{{ currentDetails.source?.source }}</text></text
       >
       <text v-show="currentDetails?.description" class="description"
         >“{{ currentDetails.description }}”</text
