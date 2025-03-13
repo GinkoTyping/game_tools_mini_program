@@ -548,11 +548,10 @@ onMounted(async () => {
       }
       view {
         padding: 2px;
-        min-width: 30px;
+        width: 30px;
         text-align: center;
         &:first-child {
           border: none;
-          min-width: 24px;
         }
       }
       .tag {
@@ -569,6 +568,8 @@ onMounted(async () => {
         color: $uni-color-error;
       }
       .tag-diff {
+        width: 30px;
+        font-size: 10px;
         background-color: $uni-bg-color-grey-lighter;
         border-bottom: 1px solid $uni-bg-color-grey-light !important;
       }
