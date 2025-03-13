@@ -192,6 +192,10 @@ async function createItemTable(db) {
   console.log('创建 wow_item表 完成。');
 }
 async function updateItemData() {
+  function isIncludeLetter(input) {
+    const regex = /[a-zA-Z]/;
+    return regex.test(input);
+  }
   function searchItems(output, items) {
     items.forEach((item) => {
       if (!item || item.item === 'Item') {
@@ -204,7 +208,7 @@ async function updateItemData() {
             // 寻找了 source 翻译好的 装备， 更新之
             if (
               outputItem.source.source !== item.source.source &&
-              outputItem.source.source.includes('团本')
+              !isIncludeLetter(item.source.source)
             ) {
               outputItem.source = item.source;
             }
