@@ -1,0 +1,80 @@
+export default {
+  'death-knight': {
+    blood: 0,
+    frost: 1,
+    unholy: 2,
+    sort: 0,
+  },
+  'demon-hunter': {
+    havoc: 0,
+    vengeance: 1,
+    sort: 1,
+  },
+  druid: {
+    balance: 0,
+    feral: 1,
+    guardian: 2,
+    restoration: 3,
+    sort: 2,
+  },
+  mage: {
+    arcane: 0,
+    fire: 1,
+    frost: 2,
+    sort: 3,
+  },
+  monk: {
+    brewmaster: 0,
+    mistweaver: 1,
+    windwalker: 2,
+    sort: 4,
+  },
+  paladin: {
+    holy: 0,
+    protection: 1,
+    retribution: 2,
+    sort: 5,
+  },
+  rogue: {
+    assassination: 0,
+    outlaw: 1,
+    subtlety: 2,
+    sort: 6,
+  },
+  shaman: {
+    elemental: 0,
+    enhancement: 1,
+    restoration: 2,
+    sort: 7,
+  },
+  warlock: {
+    affliction: 0,
+    demonology: 1,
+    destruction: 2,
+    sort: 8,
+  },
+  warrior: {
+    arms: 0,
+    fury: 1,
+    protection: 2,
+    sort: 9,
+  },
+  evoker: {
+    augmentation: 0,
+    devastation: 1,
+    preservation: 2,
+    sort: 10,
+  },
+  hunter: {
+    'beast-mastery': 0,
+    marksmanship: 1,
+    survival: 2,
+    sort: 11,
+  },
+  priest: {
+    discipline: 0,
+    holy: 1,
+    shadow: 2,
+    sort: 12,
+  },
+};

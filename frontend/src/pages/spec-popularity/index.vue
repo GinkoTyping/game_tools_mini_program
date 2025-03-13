@@ -1,10 +1,74 @@
 <template>
   <view class="main-container">
     <view class="rank-menu">
-      <view class="rank-menu-item rank-menu-item--active">热度排行</view>
-      <view class="rank-menu-item">输出排行</view>
+      <view
+        class="rank-menu-item"
+        :class="[currentMenu === 'popular' ? 'rank-menu-item--active' : '']"
+        @click="() => switchMenu('popular')"
+        >热度排行</view
+      >
+      <view
+        class="rank-menu-item"
+        :class="[currentMenu === 'rank' ? 'rank-menu-item--active' : '']"
+        @click="() => switchMenu('rank')"
+        >输出排行</view
+      >
     </view>
-    <uni-card>
+
+    <uni-card v-show="currentMenu === 'rank'">
+      <view class="rank-container">
+        <view class="row header">
+          <view class="tags">
+            <view class="tag"></view>
+            <view class="tag">评级</view>
+            <view class="tag">平均</view>
+          </view>
+
+        </view>
+        <view
+          class="row body"
+          v-for="row in rankData?.[0]?.rank"
+          :key="row.type"
+        >
+          <view class="tags">
+            <view class="tag tag-diff" :class="[diffClass(row.diff)]">{{
+              row.diff
+            }}</view>
+            <view class="tag tag--bg tag-tier" :class="[row.tier]">{{
+              row.tier
+            }}</view>
+            <view class="tag tag--bg" :class="[row.tier]">{{ row.avg }}</view>
+          </view>
+          <view class="bars-wrap">
+            <view
+              class="spec-icon"
+              :style="{
+                backgroundPosition: row.spritePosition,
+              }"
+            ></view>
+            <!-- <view class="spec" :class="[row.classSpec]"></view> -->
+            <view class="bars">
+              <view
+                class="bar-avg"
+                :style="{ width: row.avgWidth, backgroundColor: row.color }"
+                >{{ row.name }}</view
+              >
+              <view
+                class="bar-top"
+                :style="{ width: row.topWidth, backgroundColor: row.color }"
+              >
+                {{ row.top }}
+              </view>
+              <view
+                class="bar-edge"
+                :style="{ left: row.totalWidth, backgroundColor: row.color }"
+              ></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </uni-card>
+    <uni-card v-show="currentMenu === 'popular'">
       <uni-title
         type="h3"
         :title="`更新: ${dataDate}`"
@@ -57,18 +121,18 @@
   <ShareIcon />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed, onMounted, reactive, ref } from 'vue';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 
-import { querySpecPopularity } from '@/api/wow/index';
+import { querySpecDpsRank, querySpecPopularity } from '@/api/wow/index';
 import LEchart from '@/components/l-echart/l-echart.vue';
 import ShareIcon from '@/components/ShareIcon.vue';
 
 const echarts = require('../../static/echarts.min.js');
 
 let chart = ref(); // 获取dom
-const state = reactive({
+const state = reactive<any>({
   option: {},
 });
 
@@ -80,11 +144,11 @@ onShareAppMessage(() => ({
 state.option = {
   tooltip: {
     trigger: 'axis',
-    formatter(value) {
+    formatter(value: any) {
       if (value[0]?.axisValue) {
         const name_zh = value[0].axisValue.split('|').shift();
         const quantity = popularityData[currentJob.value.value].find(
-          item => item.name_zh === name_zh
+          (item: any) => item.name_zh === name_zh
         )?.quantity;
         return `${name_zh}: ${Number(value[0].value).toFixed(
           1
@@ -95,7 +159,7 @@ state.option = {
     axisPointer: {
       type: 'shadow',
       label: {
-        formatter(params) {
+        formatter(params: any) {
           return params.value?.split('|').shift();
         },
       },
@@ -119,7 +183,7 @@ state.option = {
       },
     },
     axisLabel: {
-      formatter(value) {
+      formatter(value: any) {
         return `${value}%`;
       },
     },
@@ -129,10 +193,10 @@ state.option = {
     data: [],
     minInterval: 10,
     axisLabel: {
-      formatter(value) {
+      formatter(value: any) {
         return value.split('|').shift();
       },
-      color(value) {
+      color(value: any) {
         return value.split('|').pop();
       },
     },
@@ -145,7 +209,7 @@ state.option = {
       barCategoryGap: '50%',
       data: [],
       itemStyle: {
-        color(params) {
+        color(params: any) {
           return params.name.split('|').pop();
         },
       },
@@ -153,7 +217,7 @@ state.option = {
   ],
 };
 
-const popularityData = {
+const popularityData: any = {
   all: [],
   dps: [],
   tank: [],
@@ -162,14 +226,24 @@ const popularityData = {
 const dataDate = ref('');
 onMounted(async () => {
   await getPopularityData();
+  await getSpecRankData();
 });
+
+const rankData = ref();
+const diffClass = computed(() => {
+  return (diff: string) => (diff.includes('↑') ? 'up' : 'down');
+});
+async function getSpecRankData() {
+  const data = await querySpecDpsRank(1);
+  rankData.value = data.data;
+}
 
 async function getPopularityData() {
   uni.showLoading({
     title: '银子加载中...',
   });
   const [minLevel, maxLevel] = currentLevel.value.split('-');
-  const res = await querySpecPopularity(minLevel, maxLevel);
+  const res = await querySpecPopularity(Number(minLevel), Number(maxLevel));
   popularityData.all = res.data;
   popularityData.dps = [];
   popularityData.tank = [];
@@ -194,13 +268,13 @@ function filterDataByJob() {
       filterData = popularityData[currentJob.value.value];
     } else {
       const temp = popularityData.all.filter(
-        item => item.role === currentJob.value.value
+        (item: any) => item.role === currentJob.value.value
       );
-      const tempTotal = temp.reduce((pre, cur) => {
+      const tempTotal = temp.reduce((pre: number, cur: any) => {
         pre += cur.quantity;
         return pre;
       }, 0);
-      popularityData[currentJob.value.value] = temp.map(item => ({
+      popularityData[currentJob.value.value] = temp.map((item: any) => ({
         ...item,
         percent: (item.quantity / tempTotal).toFixed(4),
       }));
@@ -216,10 +290,10 @@ function setGridBottom() {
     state.option.grid.bottom = 20;
   }
 }
-function setData(data) {
+function setData(data: any) {
   state.option.yAxis.data = [];
   state.option.series[0].data = [];
-  data.forEach(item => {
+  data.forEach((item: any) => {
     state.option.yAxis.data.unshift(`${item.name_zh}|${item.color}`);
     state.option.series[0].data.unshift((item.percent * 100).toFixed(2));
   });
@@ -265,7 +339,7 @@ const chartStyle = computed(() => {
       return { height: '300px' };
   }
 });
-function switchJob(job) {
+function switchJob(job: any) {
   if (currentJob.value.value !== job.value) {
     currentJob.value = job;
     updateChart();
@@ -295,10 +369,20 @@ const levelFilter = [
   },
 ];
 const currentLevel = ref('2-99');
-async function switchLevel(value) {
+async function switchLevel(value: any) {
   if (currentLevel.value !== value) {
     currentLevel.value = value;
     await getPopularityData();
+  }
+}
+
+const currentMenu = ref('rank');
+function switchMenu(menuName: any) {
+  if (currentMenu.value !== menuName) {
+    currentMenu.value = menuName;
+    if (currentMenu.value === 'popular') {
+      chart.value?.resize();
+    }
   }
 }
 </script>
@@ -336,6 +420,147 @@ async function switchLevel(value) {
     background-color: $uni-color-primary;
   }
 }
+.rank-container {
+  .row {
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    height: 20px;
+    line-height: 20px;
+    .tags {
+      height: 100%;
+      display: flex;
+      margin-right: 6px;
+      &:not(:last-child) {
+        .tag {
+          border-bottom: none;
+        }
+      }
+      view {
+        padding: 2px;
+        min-width: 30px;
+        text-align: center;
+        &:first-child {
+          border: none;
+          min-width: 24px;
+        }
+      }
+      .tag {
+        border: 1px solid black;
+        box-sizing: border-box;
+        &:not(:last-child) {
+          border-right: none;
+        }
+      }
+      .up {
+        color: $color-uncommon;
+      }
+      .down {
+        color: $uni-color-error;
+      }
+      .tag-diff {
+        background-color: $uni-bg-color-grey-lighter;
+        border-bottom: 1px solid $uni-bg-color-grey-light !important;
+      }
+      .tag--bg {
+        color: black;
+      }
+      .tag-tier {
+        font-size: 14px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      }
+      .S {
+        background-color: $color-s-tier;
+      }
+      .A {
+        background-color: $color-a-tier;
+      }
+      .B {
+        background-color: $color-b-tier;
+      }
+      .C {
+        background-color: $color-c-tier;
+      }
+      .D {
+        background-color: $color-d-tier;
+      }
+      .F {
+        background-color: #bbb;
+      }
+    }
+    .bars-wrap {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      height: 100%;
+      .spec-icon {
+        width: 20px;
+        height: 20px;
+        background-image: url(https://ginkolearn.cyou/api/wow/assets/sprites/spec-sprite.png);
+      }
+      .bars {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        background-color: $uni-bg-color-grey-lighter;
+        position: relative;
+        border-bottom: 1px solid black;
+        box-sizing: border-box;
+        .bar-avg,
+        .bar-top {
+          height: 100%;
+          box-sizing: border-box;
+        }
+        .bar-avg {
+          padding-left: 4px;
+          color: black;
+        }
+        .bar-top {
+          color: black;
+          padding-right: 2px;
+          text-align: right;
+          position: relative;
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(
+              0,
+              0,
+              0,
+              0.5
+            ); /* 半透明黑色覆盖层，用于变暗效果 */
+            z-index: 0;
+          }
+          text {
+            position: absolute;
+            right: 0;
+            color: #fff;
+            z-index: 99;
+          }
+        }
+        .bar-edge {
+          position: absolute;
+          width: 1px;
+          height: 100%;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+  .header {
+    .tags {
+      .tag {
+        border-color: transparent;
+      }
+    }
+  }
+}
+
 .main-container {
   padding-top: 1rem;
 }

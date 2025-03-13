@@ -2,6 +2,9 @@ import { IBisItem, ITrinks, IStatPriority } from '@/interface/IWow';
 import { mapTrinks } from '@/data/mapSpecData';
 import { proxyRequest } from '../config';
 import colorMap from '@/utils/color-map';
+import localeName from '@/data/zh.json';
+
+const localeNameMap: any = localeName;
 
 enum BisType {
   Overall = 0,
@@ -169,8 +172,10 @@ export async function queryItemPreview(id: number) {
   }
 }
 
-export async function querySpecPopularity( minMythicLevel: number,
-  maxMythicLevel: number) {
+export async function querySpecPopularity(
+  minMythicLevel: number,
+  maxMythicLevel: number
+) {
   const res: any = await proxyRequest({
     url: `/wow/bis/popularity`,
     method: 'POST',
@@ -195,6 +200,42 @@ export async function querySpecPopularity( minMythicLevel: number,
         item.class_name_en.toLowerCase().replaceAll(' ', '-')
       ],
     })),
+  };
+}
+
+export async function querySpecDpsRank(weekId: number) {
+  const res: any = await proxyRequest({
+    url: `/wow/bis/dps-rank`,
+    method: 'POST',
+    data: { weekId },
+  });
+  console.log(res.data);
+
+  return {
+    ...res.data,
+    data: res.data.data.map((item: any) => {
+      return {
+        ...item,
+        rank: item.rank.map((rankItem: any) => {
+          let name = localeNameMap[rankItem.roleClass][rankItem.classSpec];
+          if (name === '野兽掌控') {
+            name = '兽王';
+          }
+          return {
+            ...rankItem,
+            color: (colorMap as any)[rankItem.roleClass],
+            name,
+            totalWidth: `${
+              Number(rankItem.avgWidth.replace('%', '')) +
+              Number(rankItem.topWidth.replace('%', ''))
+            }%`,
+            spritePosition: `${
+              -res.data.sprite[rankItem.roleClass][rankItem.classSpec] * 20
+            }px ${-res.data.sprite[rankItem.roleClass].sort * 20}px`,
+          };
+        }),
+      };
+    }),
   };
 }
 

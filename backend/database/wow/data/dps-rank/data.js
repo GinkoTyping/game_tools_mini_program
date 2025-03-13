@@ -69,9 +69,10 @@ function collectTable(context, table, tableIndex) {
       const tds = $(ele).children('div');
       return {
         diff: $(tds[1]).text().trim(),
-        avg: $(tds[2]).text().trim(),
-        top: $(tds[3]).text().trim(),
-        runs: $(tds[4]).text().trim(),
+        tier: $(tds[2]).text().trim(),
+        avg: $(tds[3]).text().trim(),
+        top: $(tds[4]).text().trim(),
+        runs: $(tds[5]).text().trim(),
         ...specInfos[index],
       };
     })
