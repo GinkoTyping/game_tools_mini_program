@@ -447,25 +447,18 @@ function switchRankJob(job: string) {
     currentRankJob.value = job;
   }
 }
-const rankWeekOptions = ref();
+// TODO 手机端动态更新异常
+const rankWeekOptions = ref([
+  {
+    value: 2,
+    label: '本周',
+  },
+  {
+    value: 1,
+    label: '上周',
+  },
+]);
 const currentWeek = ref<number>();
-rankWeekOptions.value = new Array(getWeekCount())
-  .fill(1)
-  .map((item, index, array) => {
-    let label: string;
-    if (index === array.length - 1) {
-      label = '本周';
-    } else if (index === array.length - 2) {
-      label = `上周`;
-    } else {
-      label = `第${index + 1}周`;
-    }
-    return {
-      label,
-      value: index + 1,
-    };
-  })
-  .reverse();
 const thisWeek = rankWeekOptions.value?.[0].value;
 currentWeek.value = rankWeekOptions.value?.[0].value;
 async function switchRankWeek(week: number) {
