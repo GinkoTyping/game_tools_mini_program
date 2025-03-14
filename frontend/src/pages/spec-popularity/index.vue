@@ -178,9 +178,46 @@
           {{ item.label }}
         </button>
       </view>
+      <view class="rank-container">
+        <view class="row header">
+          <view class="tags">
+            <view class="tag">数量</view>
+            <view class="tag">职业</view>
+          </view>
+        </view>
+        <view
+          class="row body"
+          v-for="row in popularityData[currentJob.value]"
+          :key="row.type"
+        >
+          <view class="tags">
+            <view class="tag tag-diff">{{ row.quantityText }}</view>
+            <view class="tag" :class="[row.class_name_en.toLowerCase()]">{{
+              row.name_zh
+            }}</view>
+          </view>
+          <view class="bars-wrap">
+            <view
+              class="spec-icon"
+              :style="{
+                backgroundPosition: row.spritePosition,
+              }"
+            ></view>
+            <view class="bars">
+              <view
+                class="bar-avg"
+                :style="{
+                  width: popularSpecBarWidth(row),
+                  backgroundColor: row.color,
+                }"
+              ></view>
+            </view>
+          </view>
+        </view>
+      </view>
 
       <view class="chart-container" :style="chartStyle">
-        <LEchart ref="chart" @finished="onChartInit"></LEchart>
+        <!-- <LEchart ref="chart" @finished="onChartInit"></LEchart> -->
       </view>
     </uni-card>
 
@@ -209,7 +246,7 @@ onShareAppMessage(() => ({
   path: 'pages/spec-popularity/index',
 }));
 
-const currentMenu = ref('rank');
+const currentMenu = ref('popular');
 function switchMenu(menuName: any) {
   if (currentMenu.value !== menuName) {
     currentMenu.value = menuName;
@@ -321,12 +358,13 @@ async function getPopularityData() {
   popularityData.dps = [];
   popularityData.tank = [];
   popularityData.healer = [];
-
   dataDate.value = res.date;
-  chart.value.init(echarts, () => {
-    uni.hideLoading();
-    updateChart();
-  });
+
+  uni.hideLoading();
+  // chart.value.init(echarts, () => {
+  //   uni.hideLoading();
+  //   updateChart();
+  // });
 }
 const onChartInit = () => {
   console.log('渲染完成');
@@ -439,6 +477,11 @@ const levelFilter = [
   },
 ];
 const currentLevel = ref('2-99');
+const popularSpecBarWidth = computed(() => {
+  return item => {
+    return currentJob.value.value === 'all' ? item.allWidth : item.roleWidth;
+  };
+});
 async function switchLevel(value: any) {
   if (currentLevel.value !== value) {
     currentLevel.value = value;
@@ -663,6 +706,7 @@ onMounted(async () => {
         .bar-avg {
           padding-left: 4px;
           color: black;
+          overflow: hidden;
           text {
             font-size: 10px;
           }

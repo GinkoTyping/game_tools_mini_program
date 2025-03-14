@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 import { getDB, getDailyDB } from '../../database/utils/index.js';
 import { useClassSpecMapper } from '../../database/wow/mapper/classSpecMapper.js';
 import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
+import spriteMap from '../../assets/wow/sprites/sprite-map.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -79,6 +80,7 @@ export async function queryPolularityByCondition(req, res) {
   if (dbData?.data) {
     res.json({
       ...JSON.parse(dbData.data),
+      sprite: spriteMap,
     });
   } else {
     const response = await axios.get(
@@ -98,11 +100,15 @@ export async function queryPolularityByCondition(req, res) {
         data: JSON.stringify(output),
       });
 
-      res.json(output);
+      res.json({
+        ...output,
+        sprite: spriteMap,
+      });
     } else {
       res.json({
         aggregated_at: currentDate,
         data: [],
+        sprite: spriteMap,
       });
     }
   }

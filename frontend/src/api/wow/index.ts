@@ -190,17 +190,76 @@ export async function querySpecPopularity(
     }
     return name;
   }
+  function formatNumber(num: number) {
+    if (num < 1000) {
+      return num.toString();
+    } else if (num >= 1000 && num < 1000000) {
+      return (num / 1000).toFixed(0) + 'K';
+    } else {
+      return (num / 1000000).toFixed(0) + 'M';
+    }
+  }
 
-  return {
-    date: res.data.aggregated_at,
-    data: res.data.data.map((item: any) => ({
-      ...item,
-      name_zh: handleLongerSpecName(item.name_zh),
-      color: (colorMap as any)[
-        item.class_name_en.toLowerCase().replaceAll(' ', '-')
-      ],
-    })),
-  };
+  if (res.data?.data) {
+    const cacheData = JSON.parse(JSON.stringify(res.data.data));
+
+    const maxCount = {
+      all: 0,
+      dps: 0,
+      tank: 0,
+      healer: 0,
+    };
+    maxCount.all = cacheData
+      .sort((a, b) => b.quantity - a.quantity)
+      .shift().quantity;
+    maxCount.dps = cacheData
+      .filter(item => item.role === 'dps')
+      .sort((a, b) => b.quantity - a.quantity)
+      .shift().quantity;
+    maxCount.tank = cacheData
+      .filter(item => item.role === 'tank')
+      .sort((a, b) => b.quantity - a.quantity)
+      .shift().quantity;
+    maxCount.healer = cacheData
+      .filter(item => item.role === 'healer')
+      .sort((a, b) => b.quantity - a.quantity)
+      .shift().quantity;
+
+    return {
+      date: res.data.aggregated_at,
+      data: res.data.data.map((item: any) => {
+        const widthConfig = { allWidth: '', roleWidth: '' };
+        widthConfig.allWidth = `${(
+          (item.quantity / maxCount.all) *
+          100
+        ).toFixed(1)}%`;
+        widthConfig.roleWidth = `${(
+          (item.quantity / maxCount[item.role]) *
+          100
+        ).toFixed(1)}%`;
+
+        const roleClass = item.class_name_en.toLowerCase().replaceAll(' ', '-');
+        const classSpec = item.name_en.toLowerCase().replaceAll(' ', '-');
+        return {
+          ...item,
+          name_zh: handleLongerSpecName(item.name_zh),
+          color: (colorMap as any)[
+            item.class_name_en.toLowerCase().replaceAll(' ', '-')
+          ],
+          ...widthConfig,
+          quantityText: formatNumber(item.quantity),
+          spritePosition: `${-res.data.sprite[roleClass][classSpec] * 20}px ${
+            -res.data.sprite[roleClass].sort * 20
+          }px`,
+        };
+      }),
+    };
+  } else {
+    return {
+      date: '未知',
+      data: [],
+    };
+  }
 }
 
 export async function querySpecDpsRank(weekId: number) {
