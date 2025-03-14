@@ -86,7 +86,7 @@
               >{{ row.runs }}</view
             >
           </view>
-          <view class="bars-wrap">
+          <view class="bars-wrap" @click="() => comfirmToSpecBis(row)">
             <view
               class="spec-icon"
               :style="{
@@ -117,12 +117,18 @@
       </view>
       <uni-title type="h4" title="排行说明：" color="#bbb"></uni-title>
       <view class="info-text"
+        >- 每周CD前两天，因为样本数较少，所以排名可能有波动。<text
+          class="info-text--strong"
+          >每4小时</text
+        >更新一次数据；</view
+      >
+      <view class="info-text"
         >- <text class="info-text--strong">每秒伤害</text> =
         整个副本期间造成的伤害 / 完成副本的时间(包括脱战的时间)；</view
       >
       <view class="info-text"
         >-
-        <text class="info-text--strong">评级</text
+        <text class="info-text--strong">评级：</text
         >仅依据平均的每秒伤害从高到低排名，所以并不意味着<text
           class="info-text--strong"
           >排名F</text
@@ -133,10 +139,8 @@
         >页面</view
       >
       <view class="info-text"
-        >- 每周CD前两天，因为样本数较少，所以排名可能有波动。<text
-          class="info-text--strong"
-          >每4小时</text
-        >更新一次数据；</view
+        >- 查看专精攻略：
+        点击对应专精的<text class="info-text--strong">统计条</text>，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；</view
       >
     </uni-card>
     <uni-card v-show="currentMenu === 'popular'">
@@ -196,7 +200,7 @@
               row.name_zh
             }}</view>
           </view>
-          <view class="bars-wrap">
+          <view class="bars-wrap" @click="() => comfirmToSpecBis(row)">
             <view
               class="spec-icon"
               :style="{
@@ -223,11 +227,32 @@
     ></ad-custom>
   </view>
 
+  <uni-popup ref="dialog" type="dialog">
+    <uni-popup-dialog
+      type="warn"
+      cancelText="等会儿"
+      confirmText="去看看"
+      title="提示"
+      :content="dialogContent"
+      @confirm="dialogConfirm"
+    >
+      <template v-slot>
+        <view class="dialog-content">
+          去看看
+          <text class="dialog-content_text--highlight"
+            >{{ currentSpec?.name_zh }}-{{ currentSpec?.class_name_zh }}</text
+          >
+          的天赋、属性优先级、BIS和专属攻略等。
+        </view>
+      </template>
+    </uni-popup-dialog>
+  </uni-popup>
+
   <ShareIcon />
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted, reactive, ref } from 'vue';
+import { computed, nextTick, onMounted, reactive, ref } from 'vue';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 
 import { querySpecDpsRank, querySpecPopularity } from '@/api/wow/index';
@@ -246,6 +271,21 @@ function switchMenu(menuName: any) {
   if (currentMenu.value !== menuName) {
     currentMenu.value = menuName;
   }
+}
+const dialog = ref();
+const dialogContent = ref();
+const currentSpec = ref();
+function comfirmToSpecBis(specData) {
+  currentSpec.value = specData;
+  nextTick(() => {
+    dialog.value?.open?.();
+  });
+}
+function dialogConfirm() {
+  navigator.toSpecDetail(
+    currentSpec.value.roleClass,
+    currentSpec.value.classSpec
+  );
 }
 
 //#region 专精热门度
@@ -603,6 +643,15 @@ onMounted(async () => {
       }
     }
   }
+  .body:nth-child(2) .bars {
+    &::after {
+      content: '看攻略';
+      color: #bbb;
+      position: absolute;
+      right: 4px;
+      top: 0;
+    }
+  }
 }
 
 .info-text {
@@ -654,6 +703,14 @@ onMounted(async () => {
     color: #fff;
     font-weight: bold;
     background-color: $uni-color-primary;
+  }
+}
+
+.dialog-content {
+  font-size: 14px;
+  .dialog-content_text--highlight {
+    font-weight: bold;
+    font-size: 16px;
   }
 }
 </style>

@@ -251,6 +251,8 @@ export async function querySpecPopularity(
           spritePosition: `${-res.data.sprite[roleClass][classSpec] * 20}px ${
             -res.data.sprite[roleClass].sort * 20
           }px`,
+          roleClass,
+          classSpec,
         };
       }),
     };
@@ -290,6 +292,8 @@ export async function querySpecDpsRank(weekId: number) {
             spritePosition: `${
               -res.data.sprite[rankItem.roleClass][rankItem.classSpec] * 20
             }px ${-res.data.sprite[rankItem.roleClass].sort * 20}px`,
+            name_zh: localeNameMap[rankItem.roleClass][rankItem.classSpec],
+            class_name_zh: localeNameMap.class[rankItem.roleClass],
           };
         }),
       };
