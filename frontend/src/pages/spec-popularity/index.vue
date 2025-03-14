@@ -115,16 +115,28 @@
           </view>
         </view>
       </view>
-      <uni-title type="h4" title="说明：" color="#bbb"></uni-title>
-      <view style="color: #bbb"
-        >- 每秒伤害 = 整个副本期间造成的伤害 /
-        完成副本的时间(包括脱战的时间)；</view
+      <uni-title type="h4" title="排行说明：" color="#bbb"></uni-title>
+      <view class="info-text"
+        >- <text class="info-text--strong">每秒伤害</text> =
+        整个副本期间造成的伤害 / 完成副本的时间(包括脱战的时间)；</view
       >
-      <view style="color: #bbb"
-        >- 评级仅依据平均的每秒伤害从高到低排名，所以并不意味着排名F的职业一定很差，单纯是每秒伤害低；</view
+      <view class="info-text"
+        >-
+        <text class="info-text--strong">评级</text
+        >仅依据平均的每秒伤害从高到低排名，所以并不意味着<text
+          class="info-text--strong"
+          >排名F</text
+        >的职业一定很差，单纯是每秒伤害低；如果您想查看综合能力的专精排行，可以<text
+          class="info-text--highlight"
+          @click="toSpecTierPage"
+          >点击查看专精排行</text
+        >页面</view
       >
-      <view style="color: #bbb"
-        >- 每周CD刚开始时，因为样本数较少，所以排名不一定准确；</view
+      <view class="info-text"
+        >- 每周CD前两天，因为样本数较少，所以排名可能有波动。<text
+          class="info-text--strong"
+          >每4小时</text
+        >更新一次数据；</view
       >
     </uni-card>
     <uni-card v-show="currentMenu === 'popular'">
@@ -189,7 +201,9 @@ import { querySpecDpsRank, querySpecPopularity } from '@/api/wow/index';
 import LEchart from '@/components/l-echart/l-echart.vue';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { getWeekCount } from '@/utils/wow';
+import { useNavigator } from '@/hooks/navigator';
 
+const navigator = useNavigator();
 onShareAppMessage(() => ({
   title: '热门专精排行（每日更新）',
   path: 'pages/spec-popularity/index',
@@ -502,6 +516,16 @@ async function getSpecRankData() {
     uni.hideLoading();
   }
 }
+
+const STATIC_VERSION = '11.1';
+const STATIC_ACTIVITY_TYPE = 'MYTHIC';
+function toSpecTierPage() {
+  navigator.toTierList({
+    version_id: STATIC_VERSION,
+    activity_type: STATIC_ACTIVITY_TYPE,
+    role: currentRankJob.value,
+  });
+}
 //#endregion
 
 onMounted(async () => {
@@ -681,6 +705,19 @@ onMounted(async () => {
       }
     }
   }
+}
+
+.info-text {
+  color: #bbb;
+}
+.info-text--strong {
+  font-size: 16px;
+  font-weight: bold;
+}
+.info-text--highlight {
+  color: $uni-text-color-inverse;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .main-container {
