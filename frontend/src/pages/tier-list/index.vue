@@ -1,11 +1,14 @@
 <template>
-  <view class="hint">
-    <uni-icons type="chat-filled" color="#007aff" size="20"></uni-icons>
-    <text
-      >更新<text style="font-weight: bold">{{ tierList?.created_at }}</text>
-      点击专精图标查看详解
-    </text>
-  </view>
+  <uni-notice-bar
+    single
+    show-icon
+    show-get-more
+    color="#2979FF"
+    background-color="#EAF2FF"
+    more-text="想看详细统计数据？点我"
+    text="专精图标可点击哟"
+    @click="navigator.toSpecPopularity"
+  />
   <uni-collapse ref="collapse">
     <uni-collapse-item
       v-for="(item, index) in tierList?.tier_data"
@@ -201,18 +204,6 @@ function dialogClose() {
 </script>
 
 <style lang="scss" scoped>
-.hint {
-  font-size: medium;
-  height: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  .uni-icons {
-    margin-right: 0.5rem;
-  }
-}
-
 // TODO 和 index/index 页面的样式有冗余
 ::v-deep uni-collapse-item {
   &:nth-child(1) {
