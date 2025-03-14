@@ -248,8 +248,8 @@ export async function querySpecPopularity(
           ],
           ...widthConfig,
           quantityText: formatNumber(item.quantity),
-          spritePosition: `${-res.data.sprite[roleClass][classSpec] * 20}px ${
-            -res.data.sprite[roleClass].sort * 20
+          spritePosition: `${-res.data.sprite?.[roleClass][classSpec] * 20}px ${
+            -res.data.sprite?.[roleClass].sort * 20
           }px`,
           roleClass,
           classSpec,

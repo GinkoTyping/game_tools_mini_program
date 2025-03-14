@@ -243,7 +243,7 @@
   <uni-popup
     ref="menuPopup"
     type="left"
-    background-color="$uni-bg-color-grey-lighter"
+    background-color="rgb(43, 44, 44)"
   >
     <uni-title
       type="h3"

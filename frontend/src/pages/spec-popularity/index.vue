@@ -219,6 +219,11 @@
           </view>
         </view>
       </view>
+      <uni-title type="h4" title="使用说明：" color="#bbb"></uni-title>
+      <view class="info-text"
+        >- 查看专精攻略：
+        点击对应专精的<text class="info-text--strong">统计条</text>，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；</view
+      >
     </uni-card>
 
     <ad-custom
