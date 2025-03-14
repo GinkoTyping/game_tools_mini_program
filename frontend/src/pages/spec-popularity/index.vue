@@ -11,7 +11,7 @@
         class="rank-menu-item"
         :class="[currentMenu === 'popular' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('popular')"
-        >热度排行</view
+        >专精热度排行</view
       >
     </view>
 
@@ -215,10 +215,6 @@
           </view>
         </view>
       </view>
-
-      <view class="chart-container" :style="chartStyle">
-        <!-- <LEchart ref="chart" @finished="onChartInit"></LEchart> -->
-      </view>
     </uni-card>
 
     <ad-custom
@@ -235,7 +231,6 @@ import { computed, onMounted, reactive, ref } from 'vue';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 
 import { querySpecDpsRank, querySpecPopularity } from '@/api/wow/index';
-import LEchart from '@/components/l-echart/l-echart.vue';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { getWeekCount } from '@/utils/wow';
 import { useNavigator } from '@/hooks/navigator';
@@ -246,106 +241,20 @@ onShareAppMessage(() => ({
   path: 'pages/spec-popularity/index',
 }));
 
-const currentMenu = ref('popular');
+const currentMenu = ref('rank');
 function switchMenu(menuName: any) {
   if (currentMenu.value !== menuName) {
     currentMenu.value = menuName;
-    if (currentMenu.value === 'popular') {
-      chart.value?.resize();
-    }
   }
 }
 
 //#region 专精热门度
-const echarts = require('../../static/echarts.min.js');
-
-let chart = ref(); // 获取dom
-const state = reactive<any>({
-  option: {},
-});
-
-state.option = {
-  tooltip: {
-    trigger: 'axis',
-    formatter(value: any) {
-      if (value[0]?.axisValue) {
-        const name_zh = value[0].axisValue.split('|').shift();
-        const quantity = popularityData[currentJob.value.value].find(
-          (item: any) => item.name_zh === name_zh
-        )?.quantity;
-        return `${name_zh}: ${Number(value[0].value).toFixed(
-          1
-        )}% (样本数:${quantity})`;
-      }
-      return null;
-    },
-    axisPointer: {
-      type: 'shadow',
-      label: {
-        formatter(params: any) {
-          return params.value?.split('|').shift();
-        },
-      },
-    },
-  },
-
-  grid: {
-    left: '0%',
-    right: '4%',
-    top: '1%',
-    // charts超高时，需要预留广告位的空间，否则广告会覆盖chart
-    bottom: 140,
-    containLabel: true,
-  },
-  xAxis: {
-    type: 'value',
-    max: 'dataMax',
-    splitLine: {
-      lineStyle: {
-        color: '#bbb',
-      },
-    },
-    axisLabel: {
-      formatter(value: any) {
-        return `${value}%`;
-      },
-    },
-  },
-  yAxis: {
-    type: 'category',
-    data: [],
-    minInterval: 10,
-    axisLabel: {
-      formatter(value: any) {
-        return value.split('|').shift();
-      },
-      color(value: any) {
-        return value.split('|').pop();
-      },
-    },
-  },
-  series: [
-    {
-      name: 'percent',
-      type: 'bar',
-      barWidth: '50%',
-      barCategoryGap: '50%',
-      data: [],
-      itemStyle: {
-        color(params: any) {
-          return params.name.split('|').pop();
-        },
-      },
-    },
-  ],
-};
-
-const popularityData: any = {
+const popularityData: any = reactive({
   all: [],
   dps: [],
   tank: [],
   healer: [],
-};
+});
 const dataDate = ref('');
 
 async function getPopularityData() {
@@ -358,64 +267,21 @@ async function getPopularityData() {
   popularityData.dps = [];
   popularityData.tank = [];
   popularityData.healer = [];
+  res.data.forEach(item => {
+    if (item.role === 'dps') {
+      popularityData.dps.push(item);
+    } else if (item.role === 'tank') {
+      popularityData.tank.push(item);
+    } else if (item.role === 'healer') {
+      popularityData.healer.push(item);
+    } else {
+      console.log(`异常的职业类型: ${item.role}`);
+    }
+  });
+
   dataDate.value = res.date;
 
   uni.hideLoading();
-  // chart.value.init(echarts, () => {
-  //   uni.hideLoading();
-  //   updateChart();
-  // });
-}
-const onChartInit = () => {
-  console.log('渲染完成');
-};
-
-function filterDataByJob() {
-  let filterData = popularityData.all;
-  if (currentJob.value.value !== 'all') {
-    if (popularityData[currentJob.value.value]?.length) {
-      filterData = popularityData[currentJob.value.value];
-    } else {
-      const temp = popularityData.all.filter(
-        (item: any) => item.role === currentJob.value.value
-      );
-      const tempTotal = temp.reduce((pre: number, cur: any) => {
-        pre += cur.quantity;
-        return pre;
-      }, 0);
-      popularityData[currentJob.value.value] = temp.map((item: any) => ({
-        ...item,
-        percent: (item.quantity / tempTotal).toFixed(4),
-      }));
-      filterData = popularityData[currentJob.value.value];
-    }
-  }
-  return filterData;
-}
-function setGridBottom() {
-  if (['all', 'dps'].includes(currentJob.value.value)) {
-    state.option.grid.bottom = 140;
-  } else {
-    state.option.grid.bottom = 20;
-  }
-}
-function setData(data: any) {
-  state.option.yAxis.data = [];
-  state.option.series[0].data = [];
-  data.forEach((item: any) => {
-    state.option.yAxis.data.unshift(`${item.name_zh}|${item.color}`);
-    state.option.series[0].data.unshift((item.percent * 100).toFixed(2));
-  });
-}
-function updateChart() {
-  if (popularityData.all?.length) {
-    const filterData = filterDataByJob();
-    setGridBottom();
-    setData(filterData);
-
-    chart.value?.setOption(state.option);
-    chart.value?.resize();
-  }
 }
 
 const jobFilters = ref([
@@ -437,21 +303,9 @@ const jobFilters = ref([
   },
 ]);
 const currentJob = ref(jobFilters.value[0]);
-const chartStyle = computed(() => {
-  switch (currentJob.value.value) {
-    case 'all':
-      return { height: '1400px' };
-    case 'dps':
-      return { height: '1000px' };
-
-    default:
-      return { height: '300px' };
-  }
-});
 function switchJob(job: any) {
   if (currentJob.value.value !== job.value) {
     currentJob.value = job;
-    updateChart();
   }
 }
 const levelFilter = [
