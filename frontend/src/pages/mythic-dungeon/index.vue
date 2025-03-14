@@ -130,7 +130,10 @@
                 dataItem?.spellNameEN
               }}</text
             >
-            <view class="menu-title-slot__sub">
+            <view
+              class="menu-title-slot__sub"
+              :class="[dataItem.count ? 'menu-title-slot__sub--highlight' : '']"
+            >
               <view> ({{ dataItem.count }} <text>提醒</text>) </view>
             </view>
           </view>
@@ -237,7 +240,11 @@
   <view class="footer"></view>
   <ShareIcon />
 
-  <uni-popup ref="menuPopup" type="left" background-color="$uni-bg-color-grey-lighter">
+  <uni-popup
+    ref="menuPopup"
+    type="left"
+    background-color="$uni-bg-color-grey-lighter"
+  >
     <uni-title
       type="h3"
       title="点击前往"
@@ -527,6 +534,9 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
     text {
       font-size: 12px;
     }
+  }
+  .menu-title-slot__sub--highlight {
+    color: $color-mythic;
   }
 }
 .menu-title {

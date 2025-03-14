@@ -5,7 +5,7 @@
         class="rank-menu-item"
         :class="[currentMenu === 'rank' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('rank')"
-        >输出排行</view
+        >输出伤害排行</view
       >
       <view
         class="rank-menu-item"
@@ -26,6 +26,7 @@
         align="center"
         color="#fff"
       ></uni-title>
+
       <view class="filter-container">
         <text> 时间： </text>
         <button
@@ -114,6 +115,17 @@
           </view>
         </view>
       </view>
+      <uni-title type="h4" title="说明：" color="#bbb"></uni-title>
+      <view style="color: #bbb"
+        >- 每秒伤害 = 整个副本期间造成的伤害 /
+        完成副本的时间(包括脱战的时间)；</view
+      >
+      <view style="color: #bbb"
+        >- 评级仅依据平均的每秒伤害从高到低排名，所以并不意味着排名F的职业一定很差，单纯是每秒伤害低；</view
+      >
+      <view style="color: #bbb"
+        >- 每周CD刚开始时，因为样本数较少，所以排名不一定准确；</view
+      >
     </uni-card>
     <uni-card v-show="currentMenu === 'popular'">
       <uni-title
@@ -160,9 +172,10 @@
       </view>
     </uni-card>
 
-    <uni-card>
-      <ad-custom unit-id="adunit-79a3e360c99b34ab"></ad-custom>
-    </uni-card>
+    <ad-custom
+      unit-id="adunit-79a3e360c99b34ab"
+      style="margin: 3rem 0"
+    ></ad-custom>
   </view>
 
   <ShareIcon />
