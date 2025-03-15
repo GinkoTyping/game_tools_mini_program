@@ -1,52 +1,54 @@
 <template>
   <uni-collapse ref="collapse" accordion>
-    <uni-collapse-item v-for="item in trendData" :key="item.role_class">
-      <template v-slot:title>
-        <view :class="[item.role_class, 'menu-title']">
-          <text>{{ localeLabels.class[item.role_class] }}</text>
-          <image
-            v-for="(fire, index) in item.fires"
-            :key="index"
-            src="/static/icon/fire.svg"
-          ></image>
-        </view>
-      </template>
-      <view
-        class="spec"
-        v-for="specItem in item.specs"
-        :key="specItem.class_spec"
-        @click="() => onClickSpec(item.role_class, specItem.class_spec)"
-      >
+    <template v-for="item in trendData" :key="item.role_class">
+      <ad-custom v-if="item.isAd" unit-id="adunit-84c43763a4fcb5e9"></ad-custom>
+
+      <uni-collapse-item v-else>
+        <template v-slot:title>
+          <view :class="[item.role_class, 'menu-title']">
+            <text>{{ localeLabels.class[item.role_class] }}</text>
+            <image
+              v-for="(fire, index) in item.fires"
+              :key="index"
+              src="/static/icon/fire.svg"
+            ></image>
+          </view>
+        </template>
         <view
-          :style="{
-            width: '20px',
-            height: '20px',
-            backgroundImage:
-              'url(https://ginkolearn.cyou/api/wow/assets/sprites/spec-sprite.png)',
-            backgroundPosition: `${
-              -spriteConfig[item.role_class][specItem.class_spec] * 20
-            }px ${-spriteConfig[item.role_class].sort * 20}px`,
-          }"
-        ></view>
-        <text>{{ localeLabels[item.role_class][specItem.class_spec] }}</text>
-        <uni-icons
-          v-show="specItem.access_count"
-          color="rgb(97, 97, 97)"
-          type="eye-filled"
-          size="24"
-        ></uni-icons>
-        <text v-show="specItem.access_count" class="access-count-spec">{{
-          specItem.access_count
-        }}</text>
-      </view>
-    </uni-collapse-item>
+          class="spec"
+          v-for="specItem in item.specs"
+          :key="specItem.class_spec"
+          @click="() => onClickSpec(item.role_class, specItem.class_spec)"
+        >
+          <view
+            :style="{
+              width: '20px',
+              height: '20px',
+              backgroundImage:
+                'url(https://ginkolearn.cyou/api/wow/assets/sprites/spec-sprite.png)',
+              backgroundPosition: `${
+                -spriteConfig[item.role_class][specItem.class_spec] * 20
+              }px ${-spriteConfig[item.role_class].sort * 20}px`,
+            }"
+          ></view>
+          <text>{{ localeLabels[item.role_class][specItem.class_spec] }}</text>
+          <uni-icons
+            v-show="specItem.access_count"
+            color="rgb(97, 97, 97)"
+            type="eye-filled"
+            size="24"
+          ></uni-icons>
+          <text v-show="specItem.access_count" class="access-count-spec">{{
+            specItem.access_count
+          }}</text>
+        </view>
+      </uni-collapse-item>
+    </template>
   </uni-collapse>
 
-  <ad-custom
-    unit-id="adunit-84c43763a4fcb5e9"
-    style="margin-top: 2rem"
-  ></ad-custom>
+  <view class="footer"></view>
 
+  <ShareIcon />
   <!-- <view :class="popoverClass">
     <image
       class="popup-icon"
@@ -70,9 +72,10 @@ import { ILocaleLabels } from '@/interface/ILocaleLabels';
 import labels from '@/data/zh.json';
 import { queryTrend } from '@/api/wow';
 import { useNavigator } from '@/hooks/navigator';
+import ShareIcon from '@/components/ShareIcon.vue';
 
 onShareAppMessage(() => ({
-  title: '银子的搜罗坊',
+  title: '全专精攻略',
   path: 'pages/index/index',
 }));
 
@@ -82,6 +85,8 @@ onLoad(async () => {});
 onShow(async () => {
   const data: any = await queryTrend();
   trendData.value = data.trend;
+  trendData.value.splice(10, 0, { isAd: true, role_class: 'ad' });
+
   spriteConfig.value = data.sprite;
 });
 
@@ -194,5 +199,10 @@ function onClickSpec(classKey: string, specKey: string) {
 }
 .popup-container.disabled {
   display: none;
+}
+
+.footer {
+  height: 5rem;
+  width: 1vw;
 }
 </style>

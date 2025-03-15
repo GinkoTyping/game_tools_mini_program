@@ -139,8 +139,9 @@
         >页面</view
       >
       <view class="info-text"
-        >- 查看专精攻略：
-        点击对应专精的<text class="info-text--strong">统计条</text>，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；</view
+        >- 查看专精攻略： 点击对应专精的<text class="info-text--strong"
+          >统计条</text
+        >，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；</view
       >
     </uni-card>
     <uni-card v-show="currentMenu === 'popular'">
@@ -221,15 +222,11 @@
       </view>
       <uni-title type="h4" title="使用说明：" color="#bbb"></uni-title>
       <view class="info-text"
-        >- 查看专精攻略：
-        点击对应专精的<text class="info-text--strong">统计条</text>，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；</view
+        >- 查看专精攻略： 点击对应专精的<text class="info-text--strong"
+          >统计条</text
+        >，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；</view
       >
     </uni-card>
-
-    <ad-custom
-      unit-id="adunit-79a3e360c99b34ab"
-      style="margin: 3rem 0"
-    ></ad-custom>
   </view>
 
   <uni-popup ref="dialog" type="dialog">
@@ -253,6 +250,11 @@
     </uni-popup-dialog>
   </uni-popup>
 
+  <ad-custom
+    unit-id="adunit-79a3e360c99b34ab"
+    style="margin-top: 1rem"
+  ></ad-custom>
+  <view class="footer"></view>
   <ShareIcon />
 </template>
 
@@ -393,19 +395,19 @@ async function switchLevel(value: any) {
 // 过滤配置
 const rankJobFilter = [
   {
-    label: '输出',
-    value: 'dps',
-  },
-  {
     label: '坦克',
     value: 'tank',
+  },
+  {
+    label: '输出',
+    value: 'dps',
   },
   {
     label: '治疗',
     value: 'healer',
   },
 ];
-const currentRankJob = ref('dps');
+const currentRankJob = ref('tank');
 const currentRankData = computed(() => {
   return (
     rankData.value?.find(item => item.type === currentRankJob.value)?.rank ?? []
@@ -717,5 +719,9 @@ onMounted(async () => {
     font-weight: bold;
     font-size: 16px;
   }
+}
+.footer {
+  height: 5rem;
+  width: 1vw;
 }
 </style>
