@@ -284,7 +284,9 @@
         :class="[item.type === 'boss' ? 'menu-list--highlight' : '']"
         clickable
         showArrow
-        @click="() => scrollTo(`#${getEnemySectionId(index)}`)"
+        @click="
+          () => scrollTo(`#${getEnemySectionId(index > 2 ? index + 1 : index)}`)
+        "
       >
       </uni-list-item>
       <uni-list-item
