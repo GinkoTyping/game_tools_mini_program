@@ -1,11 +1,16 @@
-import { getDB } from '../../database/utils/index.js';
+import { getDB, getDailyDB } from '../../database/utils/index.js';
+import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
 import { useHomeViewMapper } from '../../database/wow/mapper/homeViewMapper.js';
 import { useTierListMapper } from '../../database/wow/mapper/tierListMapper.js';
+import { getWeekCount } from '../../util/wow.js';
 import { getSortedSpecsTrend } from './bisController.js';
 
 const db = await getDB();
 const homeViewMapper = useHomeViewMapper(db);
 const tierListMapper = useTierListMapper(db);
+
+const dailyDB = await getDailyDB();
+const specStatMapper = useSpecStatMapper(dailyDB);
 
 export async function queryHomeView(req, res) {
   const time = new Intl.DateTimeFormat('zh-CN', {
@@ -60,9 +65,28 @@ export async function queryHomeView(req, res) {
 
     // 如果没有当日数据，先查询
   } else {
+    // 访问量高的专精BIS页面
     const sortedData = await getSortedSpecsTrend();
-    const carousels = sortedData.slice(0, 3);
-    const hotTopics = sortedData.slice(3, 7);
+    const hotTopics = sortedData.slice(0, 4);
+
+    // 输出排行靠前的DPS
+    const dpsRankData = await specStatMapper.getSpecDpsRank({
+      week_id: getWeekCount(),
+    });
+    let carousels;
+    if (dpsRankData?.data && JSON.parse(dpsRankData.data).data) {
+      carousels = JSON.parse(dpsRankData.data)
+        .data.find((item) => item.type === 'dps')
+        ?.rank.slice(0, 3)
+        .map((item) => ({
+          ...item,
+          role_class: item.roleClass,
+          class_spec: item.classSpec,
+        }));
+    } else {
+      // TODO: 如果当前周的DPS排名数据还没有更新 怎么办
+      carousels = sortedData.slice(0, 4);
+    }
 
     const tierLists = await tierListMapper.getAllTierList();
     const output = { time, carousels, hotTopics, tierLists };

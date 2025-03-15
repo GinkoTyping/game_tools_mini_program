@@ -40,11 +40,13 @@
                     localeLabels.class[item.role_class]
                   }}</text>
                 </view>
-                <view class="info-type">大秘境</view>
+                <view class="info-type">大秘境输出: {{ item.avg }}</view>
               </view>
             </view>
             <view class="tags">
-              <text class="tag-label">11.1.0 地心之战</text>
+              <text class="tag-label"
+                >大秘境输出排行 NO.{{ index + 1 }}</text
+              >
             </view>
           </view>
         </view>

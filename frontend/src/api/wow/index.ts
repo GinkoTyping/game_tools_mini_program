@@ -391,7 +391,12 @@ export async function queryTrend() {
 }
 
 export interface IHomeViewDTO {
-  carousels: { role_class: string; class_spec: string; access_count: number }[];
+  carousels: {
+    role_class: string;
+    class_spec: string;
+    access_count: number;
+    avg: string;
+  }[];
   hotTopics: { role_class: string; class_spec: string; access_count: number }[];
   tierLists: { version_id: string; role: string; activity_type: string }[];
   entries: {
