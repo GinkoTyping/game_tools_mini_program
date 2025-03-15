@@ -93,117 +93,133 @@
       </uni-list>
     </uni-card>
   </uni-section>
-  <uni-section
-    :id="getEnemySectionId(tipIndex)"
-    class="shaman"
-    :title="tip?.title"
+
+  <template
     v-for="(tip, tipIndex) in mythicDungeonData?.enemyTips"
     :key="tip?.title"
   >
-    <uni-collapse @change="(e: any) => onCollapseChange(tipIndex, e)">
-      <uni-collapse-item
-        v-if="tip?.data?.length"
-        v-for="(dataItem, index) in tip.data"
-        :key="index"
-      >
-        <template v-slot:title>
-          <view class="menu-title-slot">
-            <uni-icons
-              class="menu-title-slot__marked animate__animated"
-              :class="[
-                hasMarked(dataItem, tip.type)
-                  ? 'animate__fadeInDown'
-                  : 'animate__fadeOut',
-              ]"
-              color="rgb(244, 123, 0)"
-              type="star-filled"
-              size="14"
-            ></uni-icons>
-            <text
-              :class="[
-                'menu-title',
-                tip.type === 'trash' ? '' : 'menu-title--hight',
-              ]"
-              >{{
-                dataItem?.trashName ||
-                dataItem?.spellNameZH ||
-                dataItem?.spellNameEN
-              }}</text
-            >
-            <view
-              class="menu-title-slot__sub"
-              :class="[dataItem.count ? 'menu-title-slot__sub--highlight' : '']"
-            >
-              <view> ({{ dataItem.count }} <text>提醒</text>) </view>
-            </view>
-          </view>
-        </template>
-        <view class="tip-image-container">
-          <image
-            v-if="dataItem?.imageSrc"
-            :class="[`${tip.type}-image`]"
-            :mode="tip.type === 'trash' ? 'heightFix' : 'widthFix'"
-            :src="dataItem?.imageSrc"
-            @click="() => preiviewImage(dataItem?.imageSrc)"
-          />
-        </view>
-        <view
-          class="ul-l1 list-style"
-          v-for="(spellTip, spellTipIndex) in dataItem?.data"
-          :key="spellTipIndex"
+    <ad-custom
+      v-if="tip.isAd"
+      unit-id="adunit-ee147e8714106b66"
+      style="margin-top: 1rem"
+    ></ad-custom>
+    <uni-section
+      v-else
+      :id="getEnemySectionId(tipIndex)"
+      :class="[isBossTip(tip.type) ? 'section-title--boss' : 'shaman']"
+      :title="tip?.title"
+    >
+      <uni-collapse @change="(e: any) => onCollapseChange(tipIndex, e)">
+        <uni-collapse-item
+          v-if="tip?.data?.length"
+          v-for="(dataItem, index) in tip.data"
+          :key="index"
         >
-          <rich-text :nodes="renderTip(spellTip.text)"></rich-text>
+          <template v-slot:title>
+            <view class="menu-title-slot">
+              <uni-icons
+                class="menu-title-slot__marked animate__animated"
+                :class="[
+                  hasMarked(dataItem, tip.type)
+                    ? 'animate__fadeInDown'
+                    : 'animate__fadeOut',
+                ]"
+                color="rgb(244, 123, 0)"
+                type="star-filled"
+                size="14"
+              ></uni-icons>
+              <text
+                :class="[
+                  'menu-title',
+                  isBossTip(tip.type) ? 'menu-title--highlight' : '',
+                ]"
+                >{{
+                  dataItem?.trashName ||
+                  dataItem?.spellNameZH ||
+                  dataItem?.spellNameEN
+                }}</text
+              >
+              <view
+                class="menu-title-slot__sub"
+                :class="[
+                  dataItem.count ? 'menu-title-slot__sub--highlight' : '',
+                ]"
+              >
+                <view> ({{ dataItem.count }} <text>提醒</text>) </view>
+              </view>
+            </view>
+          </template>
+          <view class="tip-image-container">
+            <image
+              v-if="dataItem?.imageSrc"
+              :class="[`${tip.type}-image`]"
+              :mode="isBossTip(tip.type) ? 'widthFix' : 'heightFix'"
+              :src="dataItem?.imageSrc"
+              @click="() => preiviewImage(dataItem?.imageSrc)"
+            />
+          </view>
           <view
-            class="ul-l2 list-style-empty"
-            v-if="spellTip.children?.length"
-            v-for="(child1Tip, child1Index) in spellTip.children"
-            :key="child1Index"
+            class="ul-l1 list-style"
+            v-for="(spellTip, spellTipIndex) in dataItem?.data"
+            :key="spellTipIndex"
           >
-            <rich-text :nodes="renderTip(child1Tip.text)"></rich-text>
+            <rich-text :nodes="renderTip(spellTip.text)"></rich-text>
             <view
-              class="ul-l3 list-style-empty"
-              v-if="child1Tip.children?.length"
-              v-for="(child2Tip, child2Index) in child1Tip.children"
-              :key="child2Index"
+              class="ul-l2 list-style-empty"
+              v-if="spellTip.children?.length"
+              v-for="(child1Tip, child1Index) in spellTip.children"
+              :key="child1Index"
             >
-              <rich-text :nodes="renderTip(child2Tip.text)"></rich-text>
+              <rich-text :nodes="renderTip(child1Tip.text)"></rich-text>
+              <view
+                class="ul-l3 list-style-empty"
+                v-if="child1Tip.children?.length"
+                v-for="(child2Tip, child2Index) in child1Tip.children"
+                :key="child2Index"
+              >
+                <rich-text :nodes="renderTip(child2Tip.text)"></rich-text>
+              </view>
             </view>
           </view>
-        </view>
-        <view class="buttons">
-          <view
-            class="buttons-item"
-            @click="
-              () => markTip(dataItem, !hasMarked(dataItem, tip.type), tip.type)
-            "
-          >
-            <uni-icons
-              :type="
-                hasMarked(dataItem, tip.type) ? 'hand-up-filled' : 'hand-up'
+          <view class="buttons">
+            <view
+              class="buttons-item"
+              @click="
+                () =>
+                  markTip(dataItem, !hasMarked(dataItem, tip.type), tip.type)
               "
-              :color="
-                hasMarked(dataItem, tip.type) ? 'rgb(244, 123, 0)' : '#bbb'
-              "
-              size="26"
-            ></uni-icons>
-            <text class="buttons-item-count">{{ dataItem.count }}</text>
-            <text
-              class="buttons-item-tip animate__animated"
-              :class="[
-                openedcollapseItems.includes(`${tipIndex}-${index}`)
-                  ? 'animate__fadeInRight'
-                  : '',
-              ]"
-              v-show="!hasMarked(dataItem, tip.type)"
-              >(这条攻略重要吗？点赞提醒其他玩家吧)</text
             >
+              <uni-icons
+                :type="
+                  hasMarked(dataItem, tip.type) ? 'hand-up-filled' : 'hand-up'
+                "
+                :color="
+                  hasMarked(dataItem, tip.type) ? 'rgb(244, 123, 0)' : '#bbb'
+                "
+                size="26"
+              ></uni-icons>
+              <text class="buttons-item-count">{{ dataItem.count }}</text>
+              <text
+                class="buttons-item-tip animate__animated"
+                :class="[
+                  openedcollapseItems.includes(`${tipIndex}-${index}`)
+                    ? 'animate__fadeInRight'
+                    : '',
+                ]"
+                v-show="!hasMarked(dataItem, tip.type)"
+                >(这条攻略重要吗？点赞提醒其他玩家吧)</text
+              >
+            </view>
           </view>
-        </view>
-      </uni-collapse-item>
-    </uni-collapse>
-  </uni-section>
+        </uni-collapse-item>
+      </uni-collapse>
+    </uni-section>
+  </template>
 
-  <ad-custom unit-id="adunit-ee147e8714106b66"></ad-custom>
+  <ad-custom
+    unit-id="adunit-ee147e8714106b66"
+    style="margin-top: 1rem"
+  ></ad-custom>
 
   <uni-section id="loot-pool" class="shaman" title="装备掉落">
     <uni-card class="section-card">
@@ -240,11 +256,7 @@
   <view class="footer"></view>
   <ShareIcon />
 
-  <uni-popup
-    ref="menuPopup"
-    type="left"
-    background-color="rgb(43, 44, 44)"
-  >
+  <uni-popup ref="menuPopup" type="left" background-color="rgb(43, 44, 44)">
     <uni-title
       type="h3"
       title="点击前往"
@@ -265,15 +277,18 @@
         @click="() => scrollTo('#utility')"
       ></uni-list-item>
       <uni-list-item
-        v-for="(item, index) in mythicDungeonData?.enemyTips"
+        v-for="(item, index) in mythicDungeonData?.enemyTips.filter(
+          item => !item.isAd
+        )"
         :title="`${index + 3}. ${item?.title}`"
+        :class="[item.type === 'boss' ? 'menu-list--highlight' : '']"
         clickable
         showArrow
         @click="() => scrollTo(`#${getEnemySectionId(index)}`)"
       >
       </uni-list-item>
       <uni-list-item
-        :title="`${mythicDungeonData?.enemyTips?.length + 3}. 装备掉落`"
+        :title="`${mythicDungeonData?.enemyTips?.length - 1 + 3}. 装备掉落`"
         clickable
         showArrow
         @click="() => scrollTo('#loot-pool')"
@@ -306,6 +321,8 @@ onLoad(async (options: any) => {
 
   dungeonId.value = options.id;
   mythicDungeonData.value = await queryMythicDungeonById(options.id ?? 382);
+  mythicDungeonData.value.enemyTips.splice(2, 0, { isAd: true, title: 'ad' });
+
   currentUtilityType.value = mythicDungeonData.value?.utilityNeeds[0].type;
   currentLootType.value = mythicDungeonData.value?.lootPool[0].type;
   uni.setNavigationBarTitle({
@@ -387,6 +404,7 @@ function scrollTo(selector: string) {
     menuPopup.value?.close?.();
   });
 }
+const isBossTip = computed(() => (type: string) => type === 'boss');
 
 // 控制展开collapse面板时，触发collapse内部的动画
 const openedcollapseItems = ref<string[]>([]);
@@ -517,6 +535,9 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
     }
   }
 }
+.section-title--boss {
+  color: $color-b-tier;
+}
 .menu-title-slot {
   display: flex;
   align-items: center;
@@ -544,7 +565,7 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
   font-size: 14px;
   font-weight: bold;
 }
-.menu-title--hight {
+.menu-title--highlight {
   color: $color-b-tier;
 }
 
@@ -790,6 +811,9 @@ $light-border: rgb(68, 68, 68);
 ::v-deep .menu-list {
   .uni-list-item__content-title {
     color: #bbb !important;
+  }
+  .menu-list--highlight .uni-list-item__content-title {
+    color: $color-b-tier !important;
   }
 }
 
