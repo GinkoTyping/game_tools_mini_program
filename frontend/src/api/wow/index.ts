@@ -394,10 +394,9 @@ export interface IHomeViewDTO {
   carousels: {
     role_class: string;
     class_spec: string;
-    access_count: number;
     avg: string;
   }[];
-  hotTopics: { role_class: string; class_spec: string; access_count: number }[];
+  hotTopics: { role_class: string; class_spec: string; count: number }[];
   tierLists: { version_id: string; role: string; activity_type: string }[];
   entries: {
     feature: boolean;
@@ -406,6 +405,7 @@ export interface IHomeViewDTO {
     value: string;
     icon: string;
   }[];
+  mythicMarkCount: number;
 }
 export async function queryHomeView() {
   try {

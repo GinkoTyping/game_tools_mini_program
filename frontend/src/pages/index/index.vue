@@ -44,7 +44,7 @@
               </view>
             </view>
             <view class="tags">
-              <text class="tag-label">大秘境输出排行 NO.{{ index + 1 }}</text>
+              <text class="tag-label">大秘境输出排行 <text style="font-weight: bold;">NO.{{ index + 1 }}</text></text>
             </view>
           </view>
         </view>
