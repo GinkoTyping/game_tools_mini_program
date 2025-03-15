@@ -1,6 +1,7 @@
 import { getDB, getDailyDB, getDynamicDB } from '../../database/utils/index.js';
 import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
 import { useHomeViewMapper } from '../../database/wow/mapper/homeViewMapper.js';
+import { useNpcAndSpellMarkMapper } from '../../database/wow/mapper/npcAndSpellMarkMapper.js';
 import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
 import { useTierListMapper } from '../../database/wow/mapper/tierListMapper.js';
 import { getWeekCount } from '../../util/wow.js';
@@ -12,10 +13,44 @@ const dailyDB = await getDailyDB();
 const specStatMapper = useSpecStatMapper(dailyDB);
 const dynamicDB = await getDynamicDB();
 const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
+const npcAndSpellMapper = useNpcAndSpellMarkMapper(dynamicDB);
 
 const UPDATE_INTERVAL_HOUR = 1;
 const UPDATE_INTERVAL = UPDATE_INTERVAL_HOUR * 3600 * 1000;
 let lastUpdateAt = 0;
+let mythicMarkCount = 0;
+
+async function getCarouselsByDpsRank() {
+  const dpsRankData = await specStatMapper.getSpecDpsRank({
+    week_id: getWeekCount(),
+  });
+  let carousels;
+  if (dpsRankData?.data && JSON.parse(dpsRankData.data).data) {
+    carousels = JSON.parse(dpsRankData.data)
+      .data.find((item) => item.type === 'dps')
+      ?.rank.slice(0, 3)
+      .map((item) => ({
+        ...item,
+        role_class: item.roleClass,
+        class_spec: item.classSpec,
+      }));
+  }
+
+  return carousels;
+}
+async function getMythicDungeonMarks() {
+  const { npcMarks, spellMarks } =
+    await npcAndSpellMapper.getAllNpcAndSpellMarks();
+  function getCount(marks) {
+    return marks.reduce((pre, cur) => {
+      const count =
+        cur.mark_list?.split(',').filter((item) => item).length ?? 0;
+      pre += count;
+      return pre;
+    }, 0);
+  }
+  return getCount(npcMarks) + getCount(spellMarks);
+}
 
 export async function queryHomeView(req, res) {
   let basicOutput = {
@@ -62,7 +97,8 @@ export async function queryHomeView(req, res) {
   if (existed && !isToUpdate) {
     res.json({
       ...basicOutput,
-      time: existed.time,
+      time: new Date(lastUpdateAt),
+      mythicMarkCount,
       carousels: JSON.parse(existed.carousels),
       hotTopics: JSON.parse(existed.hot_topics),
       tierLists: JSON.parse(existed.tier_lists),
@@ -74,27 +110,18 @@ export async function queryHomeView(req, res) {
     const sortedData = await specBisCountMapper.getAllSpecBisCount();
     const hotTopics = sortedData.slice(0, 4);
 
-    // 输出排行靠前的DPS
-    const dpsRankData = await specStatMapper.getSpecDpsRank({
-      week_id: getWeekCount(),
-    });
-    let carousels;
-    if (dpsRankData?.data && JSON.parse(dpsRankData.data).data) {
-      carousels = JSON.parse(dpsRankData.data)
-        .data.find((item) => item.type === 'dps')
-        ?.rank.slice(0, 3)
-        .map((item) => ({
-          ...item,
-          role_class: item.roleClass,
-          class_spec: item.classSpec,
-        }));
-    } else {
-      // TODO: 如果当前周的DPS排名数据还没有更新 怎么办
-      carousels = sortedData.slice(0, 4);
-    }
+    // 输出排行靠前的DPS TODO: 如果DPS排行的数据没有更新，怎么办
+    const carousels = (await getCarouselsByDpsRank()) ?? sortedData.slice(0, 4);
 
     const tierLists = await tierListMapper.getAllTierList();
-    const output = { time, carousels, hotTopics, tierLists };
+    mythicMarkCount = await getMythicDungeonMarks();
+    const output = {
+      time: new Date(lastUpdateAt),
+      mythicMarkCount,
+      carousels,
+      hotTopics,
+      tierLists,
+    };
 
     const params = {
       time,
@@ -104,10 +131,10 @@ export async function queryHomeView(req, res) {
     };
     if (existed) {
       await homeViewMapper.updateHomeView(params);
-      lastUpdateAt = Date.now();
     } else {
       await homeViewMapper.insertHomeView(params);
     }
+    lastUpdateAt = Date.now();
     res.json({
       ...basicOutput,
       ...output,

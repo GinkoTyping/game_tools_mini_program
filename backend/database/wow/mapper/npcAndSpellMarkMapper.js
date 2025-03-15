@@ -35,6 +35,19 @@ async function getNpcOrSpellCountByIds(ids, isNpc, isAll = false) {
   return db.all(sql, ids);
 }
 
+async function getAllNpcAndSpellMarks() {
+  const npcMarks = await db.all(
+    `SELECT id,mark_list FROM wow_dynamic_npc_mark_count`
+  );
+  const spellMarks = await db.all(
+    `SELECT id,mark_list FROM wow_dynamic_spell_mark_count`
+  );
+  return {
+    npcMarks,
+    spellMarks,
+  };
+}
+
 async function updateNpcOrSpellMark(isNpc, isMark, userId, markId) {
   const data = await getNpcOrSpellCountByIds([markId], isNpc);
   let markList = data[0].mark_list?.split(',') ?? [];
@@ -72,5 +85,6 @@ export function useNpcAndSpellMarkMapper(database) {
     insertSpell,
     updateNpcOrSpellMark,
     getNpcOrSpellCountByIds,
+    getAllNpcAndSpellMarks,
   };
 }

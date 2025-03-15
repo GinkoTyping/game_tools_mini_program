@@ -95,14 +95,16 @@
     </view>
     <view class="narrow-card" @click="() => navigator.toMythicDungeonList()">
       <view class="narrow-card_info">
-        <uni-icons
-          class="icon"
-          color="#d32121"
-          type="fire-filled"
-          size="24"
-        ></uni-icons>
+        <view class="icon">
+          <uni-icons
+            color="rgb(244, 123, 0)"
+            type="hand-up-filled"
+            size="20"
+          ></uni-icons>
+          <text>{{ homeViewData?.mythicMarkCount }}</text>
+        </view>
         <view class="info">
-          <view class="card-name">大秘境攻略</view>
+          <view class="card-name"> 大秘境攻略 </view>
           <view class="card-desc">MDT路线 | 动图攻略</view>
         </view>
       </view>
@@ -439,6 +441,11 @@ $simple-card-width: 43.5vw;
       z-index: 2;
       top: 0.6rem;
       right: 0.6rem;
+      color: $color-legend;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 14px;
     }
     .info {
       position: absolute;
