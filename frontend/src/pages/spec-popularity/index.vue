@@ -115,34 +115,6 @@
           </view>
         </view>
       </view>
-      <uni-title type="h4" title="排行说明：" color="#bbb"></uni-title>
-      <view class="info-text"
-        >- 每周CD前两天，因为样本数较少，所以排名可能有波动。<text
-          class="info-text--strong"
-          >每4小时</text
-        >更新一次数据；</view
-      >
-      <view class="info-text"
-        >- <text class="info-text--strong">每秒伤害</text> =
-        整个副本期间造成的伤害 / 完成副本的时间(包括脱战的时间)；</view
-      >
-      <view class="info-text"
-        >-
-        <text class="info-text--strong">评级：</text
-        >仅依据平均的每秒伤害从高到低排名，所以并不意味着<text
-          class="info-text--strong"
-          >排名F</text
-        >的职业一定很差，单纯是每秒伤害低；如果您想查看综合能力的专精排行，可以<text
-          class="info-text--highlight"
-          @click="toSpecTierPage"
-          >点击查看专精排行</text
-        >页面</view
-      >
-      <view class="info-text"
-        >- 查看专精攻略： 点击对应专精的<text class="info-text--strong"
-          >统计条</text
-        >，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；</view
-      >
     </uni-card>
     <uni-card v-show="currentMenu === 'popular'">
       <uni-title
@@ -220,14 +192,46 @@
           </view>
         </view>
       </view>
-      <uni-title type="h4" title="使用说明：" color="#bbb"></uni-title>
-      <view class="info-text"
-        >- 查看专精攻略： 点击对应专精的<text class="info-text--strong"
-          >统计条</text
-        >，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；</view
-      >
     </uni-card>
   </view>
+
+  <ad-custom
+    unit-id="adunit-79a3e360c99b34ab"
+    style="margin: 1rem 0"
+  ></ad-custom>
+
+  <uni-card>
+    <uni-title type="h4" title="排行说明：" color="#bbb"></uni-title>
+    <view class="info-text" v-show="currentMenu === 'rank'"
+      >- 每周CD前两天，因为样本数较少，所以排名可能有波动。<text
+        class="info-text--strong"
+        >每4小时</text
+      >更新一次数据；</view
+    >
+    <view class="info-text" v-show="currentMenu === 'rank'"
+      >- <text class="info-text--strong">每秒伤害</text> =
+      整个副本期间造成的伤害 / 完成副本的时间(包括脱战的时间)；</view
+    >
+    <view class="info-text" v-show="currentMenu === 'rank'"
+      >-
+      <text class="info-text--strong">评级：</text
+      >仅依据平均的每秒伤害从高到低排名，所以并不意味着<text
+        class="info-text--strong"
+        >排名F</text
+      >的职业一定很差，单纯是每秒伤害低；如果您想查看综合能力的专精排行，可以<text
+        class="info-text--highlight"
+        @click="toSpecTierPage"
+        >点击查看专精排行</text
+      >页面</view
+    >
+    <view class="info-text"
+      >- 查看专精攻略： 点击对应专精的<text class="info-text--strong"
+        >统计条</text
+      >，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；</view
+    >
+  </uni-card>
+
+  <view class="footer"></view>
 
   <uni-popup ref="dialog" type="dialog">
     <uni-popup-dialog
@@ -249,12 +253,6 @@
       </template>
     </uni-popup-dialog>
   </uni-popup>
-
-  <ad-custom
-    unit-id="adunit-79a3e360c99b34ab"
-    style="margin-top: 1rem"
-  ></ad-custom>
-  <view class="footer"></view>
   <ShareIcon />
 </template>
 
@@ -349,7 +347,7 @@ const jobFilters = ref([
     value: 'healer',
   },
 ]);
-const currentJob = ref(jobFilters.value[0]);
+const currentJob = ref(jobFilters.value[1]);
 function switchJob(job: any) {
   if (currentJob.value.value !== job.value) {
     currentJob.value = job;
@@ -395,19 +393,19 @@ async function switchLevel(value: any) {
 // 过滤配置
 const rankJobFilter = [
   {
-    label: '坦克',
-    value: 'tank',
-  },
-  {
     label: '输出',
     value: 'dps',
+  },
+  {
+    label: '坦克',
+    value: 'tank',
   },
   {
     label: '治疗',
     value: 'healer',
   },
 ];
-const currentRankJob = ref('tank');
+const currentRankJob = ref('dps');
 const currentRankData = computed(() => {
   return (
     rankData.value?.find(item => item.type === currentRankJob.value)?.rank ?? []
