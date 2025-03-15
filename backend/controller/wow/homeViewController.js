@@ -4,27 +4,20 @@ import { useHomeViewMapper } from '../../database/wow/mapper/homeViewMapper.js';
 import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
 import { useTierListMapper } from '../../database/wow/mapper/tierListMapper.js';
 import { getWeekCount } from '../../util/wow.js';
-import { getSortedSpecsTrend } from './bisController.js';
 
 const db = await getDB();
 const homeViewMapper = useHomeViewMapper(db);
 const tierListMapper = useTierListMapper(db);
-
 const dailyDB = await getDailyDB();
 const specStatMapper = useSpecStatMapper(dailyDB);
-
 const dynamicDB = await getDynamicDB();
 const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
 
+const UPDATE_INTERVAL_HOUR = 1;
+const UPDATE_INTERVAL = UPDATE_INTERVAL_HOUR * 3600 * 1000;
+let lastUpdateAt = 0;
+
 export async function queryHomeView(req, res) {
-  const time = new Intl.DateTimeFormat('zh-CN', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date());
-
-  const existed = await homeViewMapper.getHomeView(time);
-
   let basicOutput = {
     entries: [
       {
@@ -57,8 +50,16 @@ export async function queryHomeView(req, res) {
       },
     ],
   };
+  const time = new Intl.DateTimeFormat('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+  const isToUpdate = Date.now() - lastUpdateAt > UPDATE_INTERVAL;
 
-  if (existed) {
+  const existed = await homeViewMapper.getHomeView(time);
+
+  if (existed && !isToUpdate) {
     res.json({
       ...basicOutput,
       time: existed.time,
@@ -71,7 +72,7 @@ export async function queryHomeView(req, res) {
   } else {
     // 访问量高的专精BIS页面
     const sortedData = await specBisCountMapper.getAllSpecBisCount();
-    const hotTopics = sortedData.slice(0, 4)
+    const hotTopics = sortedData.slice(0, 4);
 
     // 输出排行靠前的DPS
     const dpsRankData = await specStatMapper.getSpecDpsRank({
@@ -95,12 +96,18 @@ export async function queryHomeView(req, res) {
     const tierLists = await tierListMapper.getAllTierList();
     const output = { time, carousels, hotTopics, tierLists };
 
-    await homeViewMapper.insertHomeView({
+    const params = {
       time,
       carousels: JSON.stringify(carousels),
       hotTopics: JSON.stringify(hotTopics),
       tierLists: JSON.stringify(tierLists),
-    });
+    };
+    if (existed) {
+      await homeViewMapper.updateHomeView(params);
+      lastUpdateAt = Date.now();
+    } else {
+      await homeViewMapper.insertHomeView(params);
+    }
     res.json({
       ...basicOutput,
       ...output,

@@ -12,6 +12,14 @@ export async function insertHomeView(params) {
   );
 }
 
+export async function updateHomeView(params) {
+  const { time, carousels, tierLists, hotTopics } = params;
+  await db.run(
+    `UPDATE wow_home_view SET carousels=?1, tier_lists=?2, hot_topics=?3 WHERE time=?4`,
+    [carousels, tierLists, hotTopics, time]
+  );
+}
+
 export function useHomeViewMapper(database) {
   if (database) {
     db = database;
@@ -20,5 +28,5 @@ export function useHomeViewMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { getHomeView, insertHomeView };
+  return { getHomeView, insertHomeView, updateHomeView };
 }
