@@ -140,8 +140,8 @@
           </view>
         </view>
         <view class="spec-access-count">
-          <text>{{ item.count }}</text>
           <uni-icons type="eye-filled" color="#bbb" size="20"></uni-icons>
+          <text>{{ item.count }}</text>
         </view>
       </view>
       <view
@@ -368,8 +368,8 @@ $simple-card-width: 43.5vw;
       .spec-access-count {
         position: absolute;
         z-index: 2;
-        right: 0.2rem;
-        bottom: 0.2rem;
+        right: 0.25rem;
+        bottom: 0rem;
         color: #bbb;
         font-size: small;
         display: flex;

@@ -1,55 +1,64 @@
 <template>
   <uni-list>
-    <uni-list-item
-      v-for="dungeon in dungeonList"
-      :key="dungeon.name_zh"
-      showArrow
-      rightText="查看"
-      clickable
-      @click="() => navigator.toMythicDungeon(dungeon.id)"
-    >
-      <template v-slot:header>
-        <view class="slot-header">
-          <image
-            class="slot-image"
-            :src="`https://ginkolearn.cyou/api/wow/assets/dungeon/${dungeon.id}.webp`"
-            mode="heightFix"
-          ></image>
-          <view class="slot-header__tier">
-            <text
-              class="slot-header__tier-main"
-              :class="[`tier-${dungeon.tier?.toLowerCase()}`]"
-              >{{ dungeon.tier }}</text
+    <template v-for="(dungeon, index) in dungeonList" :key="dungeon.name_zh">
+      <ad-custom
+        v-if="dungeon.isAd"
+        unit-id="adunit-5496b0b56b3b44c6"
+      ></ad-custom>
+      <uni-list-item
+        v-else
+        showArrow
+        rightText="查看"
+        clickable
+        @click="() => navigator.toMythicDungeon(dungeon.id)"
+      >
+        <template v-slot:header>
+          <view class="slot-header">
+            <image
+              class="slot-image"
+              :src="`https://ginkolearn.cyou/api/wow/assets/dungeon/${dungeon.id}.webp`"
+              mode="heightFix"
+            ></image>
+            <view class="slot-header__tier">
+              <text
+                class="slot-header__tier-main"
+                :class="[`tier-${dungeon.tier?.toLowerCase()}`]"
+                >{{ dungeon.tier }}</text
+              >
+              <text class="slot-header__tier-sub"
+                >({{ dungeon.tierText }})</text
+              >
+            </view>
+          </view>
+        </template>
+        <template v-slot:body>
+          <view class="slot-body">
+            <view class="slot-body__header">{{ dungeon.name_zh }}</view>
+            <view
+              class="slot-body__desc"
+              v-for="rating in dungeon.ratings"
+              :key="rating.label"
             >
-            <text class="slot-header__tier-sub">({{ dungeon.tierText }})</text>
+              <view class="slot-body__desc-label">{{ rating.label }}</view>
+              <text :class="[scoreConfig(rating.score).class, 'score']">{{
+                rating.score
+              }}</text>
+              <image :src="scoreConfig(rating.score).src" />
+            </view>
           </view>
-        </view>
-      </template>
-      <template v-slot:body>
-        <view class="slot-body">
-          <view class="slot-body__header">{{ dungeon.name_zh }}</view>
-          <view
-            class="slot-body__desc"
-            v-for="rating in dungeon.ratings"
-            :key="rating.label"
-          >
-            <view class="slot-body__desc-label">{{ rating.label }}</view>
-            <text :class="[scoreConfig(rating.score).class, 'score']">{{
-              rating.score
-            }}</text>
-            <image :src="scoreConfig(rating.score).src" />
+        </template>
+        <template v-slot:footer>
+          <view class="slot-footer">
+            <uni-icons type="eye" color="#fff" size="20"></uni-icons>
+            <view>{{ dungeon.count }}</view>
           </view>
-        </view>
-      </template>
-      <template v-slot:footer>
-        <view class="slot-footer">
-          <uni-icons type="eye" color="#fff" size="20"></uni-icons>
-          <view>{{ dungeon.count }}</view>
-        </view>
-      </template>
-    </uni-list-item>
+        </template>
+      </uni-list-item>
+    </template>
   </uni-list>
-  <ad-custom unit-id="adunit-5496b0b56b3b44c6"></ad-custom>
+
+  <view class="footer"></view>
+
   <ShareIcon />
 </template>
 
@@ -66,6 +75,7 @@ const navigator = useNavigator();
 
 onLoad(async () => {
   dungeonList.value = await queryMythicDunegonList();
+  dungeonList.value.splice(4, 0, { isAd: true, name_zh: 'ad' });
 });
 
 onShareAppMessage(() => {
@@ -97,6 +107,10 @@ const scoreConfig = computed(() => {
 });
 </script>
 <style lang="scss" scoped>
+.footer {
+  height: 5rem;
+  width: 1vw;
+}
 .slot-header {
   display: flex;
   align-items: center;
