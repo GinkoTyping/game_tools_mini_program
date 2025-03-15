@@ -44,9 +44,7 @@
               </view>
             </view>
             <view class="tags">
-              <text class="tag-label"
-                >大秘境输出排行 NO.{{ index + 1 }}</text
-              >
+              <text class="tag-label">大秘境输出排行 NO.{{ index + 1 }}</text>
             </view>
           </view>
         </view>
@@ -138,6 +136,10 @@
               localeLabels.class[item.role_class]
             }}</text>
           </view>
+        </view>
+        <view class="spec-access-count">
+          <text>{{ item.count }}</text>
+          <uni-icons type="eye-filled" color="#bbb" size="20"></uni-icons>
         </view>
       </view>
       <view
@@ -361,6 +363,16 @@ $simple-card-width: 43.5vw;
     .card-info {
       position: relative;
       background: transparent;
+      .spec-access-count {
+        position: absolute;
+        z-index: 2;
+        right: 0.2rem;
+        bottom: 0.2rem;
+        color: #bbb;
+        font-size: small;
+        display: flex;
+        align-items: center;
+      }
       .spec-info {
         position: absolute;
         z-index: 2;

@@ -1,6 +1,7 @@
-import { getDB, getDailyDB } from '../../database/utils/index.js';
+import { getDB, getDailyDB, getDynamicDB } from '../../database/utils/index.js';
 import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
 import { useHomeViewMapper } from '../../database/wow/mapper/homeViewMapper.js';
+import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
 import { useTierListMapper } from '../../database/wow/mapper/tierListMapper.js';
 import { getWeekCount } from '../../util/wow.js';
 import { getSortedSpecsTrend } from './bisController.js';
@@ -11,6 +12,9 @@ const tierListMapper = useTierListMapper(db);
 
 const dailyDB = await getDailyDB();
 const specStatMapper = useSpecStatMapper(dailyDB);
+
+const dynamicDB = await getDynamicDB();
+const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
 
 export async function queryHomeView(req, res) {
   const time = new Intl.DateTimeFormat('zh-CN', {
@@ -66,8 +70,8 @@ export async function queryHomeView(req, res) {
     // 如果没有当日数据，先查询
   } else {
     // 访问量高的专精BIS页面
-    const sortedData = await getSortedSpecsTrend();
-    const hotTopics = sortedData.slice(0, 4);
+    const sortedData = await specBisCountMapper.getAllSpecBisCount();
+    const hotTopics = sortedData.slice(0, 4)
 
     // 输出排行靠前的DPS
     const dpsRankData = await specStatMapper.getSpecDpsRank({

@@ -28,7 +28,7 @@ async function addSpecBisCountByClassAndSpec(params) {
 }
 
 async function getAllSpecBisCount() {
-  return db.all(`SELECT * FROM wow_dynamic_spec_bis_count`);
+  return db.all(`SELECT * FROM wow_dynamic_spec_bis_count ORDER BY count DESC`);
 }
 
 export function useSpecBisCountMapper(database) {
