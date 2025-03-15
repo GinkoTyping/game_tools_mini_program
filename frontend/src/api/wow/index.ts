@@ -568,3 +568,28 @@ export async function queryUserMarks() {
     };
   }
 }
+
+//#region /question
+export interface IQuestionItem {
+  dungeon_id: number;
+  guide_id: number;
+  guide_type: string;
+  id: number;
+  imageSrc: string;
+  question_text: {
+    text: string;
+    options: { value: number; text: string }[];
+    answer: { value: number; text: string };
+  };
+}
+export async function queryQuestions(params) {
+  const res: any = await proxyRequest({
+    url: `/wow/question/list`,
+    method: 'POST',
+    data: {
+      dungeonId: params.dungeonId,
+    },
+  });
+
+  return res.data as IQuestionItem[];
+}
