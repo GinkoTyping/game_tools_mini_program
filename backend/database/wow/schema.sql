@@ -111,6 +111,15 @@ CREATE TABLE
     guide TEXT
   );
 
+CREATE TABLE
+  IF NOT EXISTS wow_question (
+    id INTEGER PRIMARY KEY NOT NULL,
+    guide_id INTEGER NOT NULL,
+    guide_type TEXT NOT NULL,
+    dungeon_id INTEGER NOT NULL,
+    question_text TEXT NOT NULL
+  );
+
 -- dynamic tables
 CREATE TABLE
   IF NOT EXISTS wow_dynamic_mythic_dungeon_count (
