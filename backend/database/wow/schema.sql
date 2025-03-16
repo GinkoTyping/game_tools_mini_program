@@ -164,6 +164,14 @@ CREATE TABLE
     spell_mark_list TEXT
   );
 
+CREATE TABLE
+  IF NOT EXISTS wow_dynamic_user_question (
+    id INTEGER PRIMARY KEY NOT NULL,
+    wrong_list TEXT,
+    mark_list TEXT,
+    done_list TEXT
+  );
+
 -- daily tables
 CREATE TABLE
   IF NOT EXISTS wow_daily_spec_popularity (
