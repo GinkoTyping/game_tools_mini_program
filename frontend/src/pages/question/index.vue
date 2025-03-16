@@ -1,24 +1,40 @@
 <template>
-  <ad-custom
-    unit-id="adunit-9b8c383168ec41f3"
-    style="margin-bottom: 1rem;"
-  ></ad-custom>
+  <ad-custom class="ad" unit-id="adunit-9b8c383168ec41f3" style=""></ad-custom>
   <view class="container">
+    <ProgressBar :total="questionList?.length" v-model:current="stepCount" />
+
     <!-- 顶部图片 -->
-    <image
-      class="question-image"
-      :class="[
-        isTrash(questionList?.[currentIndex].guide_type)
-          ? 'trash-image'
-          : 'boss-image',
-      ]"
-      :src="questionList?.[currentIndex].imageSrc"
-      :mode="
-        isTrash(questionList?.[currentIndex].guide_type)
-          ? 'heightFix'
-          : 'widthFix'
-      "
-    />
+    <view class="image-container">
+      <view
+        class="question-image question-image_placeholder"
+        v-if="!isImageLoaded"
+      >
+        <view class="animate__animated animate__rotateOut animate__infinite">
+          <uni-icons
+            type="reload"
+            color="rgb(255, 209, 0)"
+            size="50"
+          ></uni-icons>
+        </view>
+        <view>图片加载中...</view>
+      </view>
+      <image
+        class="question-image"
+        :class="[
+          isTrash(questionList?.[currentIndex].guide_type)
+            ? 'trash-image'
+            : 'boss-image',
+        ]"
+        :src="questionList?.[currentIndex].imageSrc"
+        :mode="
+          isTrash(questionList?.[currentIndex].guide_type)
+            ? 'heightFix'
+            : 'widthFix'
+        "
+        @load="onImageLoad"
+        v-show="isImageLoaded"
+      />
+    </view>
 
     <!-- 问题标题 -->
     <view class="question-title">
@@ -56,9 +72,7 @@
           <view class="slot-footer">
             <uni-icons
               :type="
-                selectedIndex === option.value
-                  ? 'checkbox-filled'
-                  : 'close'
+                selectedIndex === option.value ? 'checkbox-filled' : 'close'
               "
               color="#007aff"
               size="30"
@@ -70,11 +84,7 @@
 
     <!-- 控制按钮 -->
     <view class="question-button">
-      <view
-        class="question-button-item"
-        @click="prevQuestion"
-        >上一题</view
-      >
+      <view class="question-button-item" @click="prevQuestion">上一题</view>
       <view
         class="question-button-item question-button-item--active"
         @click="nextQuestion"
@@ -90,6 +100,7 @@ import { computed, ref } from 'vue';
 
 import { IQuestionItem, queryQuestions } from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
+import ProgressBar from '@/components/ProgressBar.vue';
 
 const questionList = ref<IQuestionItem[]>();
 onLoad(async () => {
@@ -97,10 +108,10 @@ onLoad(async () => {
 });
 
 const currentIndex = ref(0);
+const stepCount = computed(() => currentIndex.value + 1);
 const selectedIndex = ref(-1);
 const selectOption = index => {
   selectedIndex.value = index;
-  console.log(selectedIndex.value);
 };
 const prevQuestion = () => {
   if (currentIndex.value > 0) {
@@ -129,21 +140,55 @@ const optionMark = computed(() => (index: number) => {
       return 'C';
   }
 });
+
+// 图片加载优化
+const isImageLoaded = ref(false);
+function onImageLoad(e) {
+  console.log(e);
+
+  isImageLoaded.value = true;
+}
 </script>
 
 <style lang="scss" scoped>
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  margin-top: 130px;
+}
+// 广告
+.ad {
+  top: 0;
+  width: 100vw;
+  margin-bottom: 1rem;
+  position: absolute;
 }
 
-.question-image {
-  margin: 0 auto;
-  margin-bottom: 20rpx;
-}
-.trash-image {
-  height: 18vh;
+// 图片
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .question-image_placeholder {
+    width: 96vw;
+    height: 18vh;
+    background-color: $uni-bg-color-grey-lighter;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: $uni-text-color-inverse;
+  }
+  .question-image {
+    margin: 20rpx auto;
+    border-radius: 40rpx;
+  }
+  .trash-image {
+    height: 18vh;
+  }
+  .boss-image {
+    width: 96vw !important;
+  }
 }
 
 .question-title {
