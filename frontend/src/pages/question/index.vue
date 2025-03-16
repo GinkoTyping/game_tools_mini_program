@@ -199,6 +199,13 @@ const nextQuestion = () => {
         isShowReason.value = true;
       }
     }
+  } else {
+    console.log(
+      '错误',
+      questionList.value
+        ?.filter(item => item.isRight === 0)
+        .map(item => item.id)
+    );
   }
 };
 const prevQuestion = () => {

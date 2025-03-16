@@ -599,3 +599,15 @@ export async function queryQuestions(params) {
     lastSelectedIndex: -1,
   })) as IQuestionItem[];
 }
+export async function queryUpdateUserQuestion(params) {
+  const res: any = await proxyRequest({
+    url: `/wow/question/update-user-question`,
+    method: 'POST',
+    data: {
+      questionList: params.questionList,
+      userId: uni.getStorageSync('userId'),
+    },
+  });
+  return res.data;
+}
+//#endregion
