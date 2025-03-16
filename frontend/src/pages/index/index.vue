@@ -18,44 +18,56 @@
     mode="round"
   >
     <swiper class="swiper-box" @change="onSwipperChange" autoplay>
-      <swiper-item
-        class="swiper-item-container"
-        v-for="(item, index) in homeViewData?.carousels"
-        :key="index"
-        @click="() => navigator.toSpecDetail(item.role_class, item.class_spec)"
-      >
-        <view class="swiper-item">
-          <view class="swiper-item-info">
-            <view class="spec-info">
-              <image
-                class="class-icon"
-                :src="getClassIconURL(item.role_class, item.class_spec)"
-              />
-              <view class="class-labels">
-                <view :class="[item.role_class]">
-                  <text class="label-spec">{{
-                    localeLabels[item.role_class][item.class_spec]
-                  }}</text>
-                  <text class="label-class">{{
-                    localeLabels.class[item.role_class]
-                  }}</text>
+      <template v-for="(item, index) in homeViewData?.carousels" :key="index">
+        <swiper-item v-if="item.custom"></swiper-item>
+        <swiper-item
+          v-else
+          class="swiper-item-container"
+          @click="
+            () => navigator.toSpecDetail(item.role_class, item.class_spec)
+          "
+        >
+          <view class="swiper-item">
+            <view class="swiper-item-info">
+              <view class="spec-info">
+                <image
+                  class="class-icon"
+                  :src="getClassIconURL(item.role_class, item.class_spec)"
+                />
+                <view class="class-labels">
+                  <view :class="[item.role_class]">
+                    <text class="label-spec">{{
+                      localeLabels[item.role_class][item.class_spec]
+                    }}</text>
+                    <text class="label-class">{{
+                      localeLabels.class[item.role_class]
+                    }}</text>
+                  </view>
+                  <view class="info-type">大秘境输出: {{ item.avg }}</view>
                 </view>
-                <view class="info-type">大秘境输出: {{ item.avg }}</view>
+              </view>
+              <view class="tags">
+                <text class="tag-label"
+                  >大秘境输出排行
+                  <text style="font-weight: bold"
+                    >NO.{{ index + 1 }}</text
+                  ></text
+                >
               </view>
             </view>
-            <view class="tags">
-              <text class="tag-label">大秘境输出排行 <text style="font-weight: bold;">NO.{{ index + 1 }}</text></text>
-            </view>
           </view>
-        </view>
-        <view
-          class="swiper-item-bg"
-          :style="{
-            backgroundImage: getSwipperBgURL(item.role_class, item.class_spec),
-          }"
-        >
-        </view>
-      </swiper-item>
+          <view
+            class="swiper-item-bg"
+            :style="{
+              backgroundImage: getSwipperBgURL(
+                item.role_class,
+                item.class_spec
+              ),
+            }"
+          >
+          </view>
+        </swiper-item>
+      </template>
     </swiper>
   </uni-swiper-dot>
 
@@ -181,6 +193,11 @@ const currentSwipper = ref(0);
 const scrollText = ref('');
 onLoad(async () => {
   homeViewData.value = await queryHomeView();
+
+  // TODO: 待后端新增custom轮播图
+  homeViewData.value.carousels = homeViewData.value.carousels.filter(
+    item => !item.custom
+  );
 });
 onShow(async () => {
   isShowNotice.value = true;

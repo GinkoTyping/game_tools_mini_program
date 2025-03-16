@@ -77,11 +77,18 @@ export async function queryHomeView(req, res) {
         feature: false,
       },
       {
+        label: '做题家',
+        value: 'rating',
+        icon: 'wallet-filled',
+        page: '/pages/question/index',
+        feature: true,
+      },
+      {
         label: '大秘境',
         value: 'rating',
         icon: 'pyq',
         page: '/pages/mythic-dungeon/list',
-        feature: true,
+        feature: false,
       },
     ],
   };
