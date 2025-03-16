@@ -576,6 +576,8 @@ export interface IQuestionItem {
   guide_type: string;
   id: number;
   imageSrc: string;
+  isRight: number;
+  lastSelectedIndex: number;
   question_text: {
     text: string;
     options: { value: number; text: string }[];
@@ -591,5 +593,9 @@ export async function queryQuestions(params) {
     },
   });
 
-  return res.data as IQuestionItem[];
+  return res.data.map(item => ({
+    ...item,
+    isRight: -1,
+    lastSelectedIndex: -1,
+  })) as IQuestionItem[];
 }

@@ -1,7 +1,7 @@
 <template>
   <view class="progress-bar-container">
-    <view class="progress-text-left">当前：{{ current }}</view>
-    <view class="progress-text-right">总共：{{ props.total }}</view>
+    <view class="progress-text-left">第{{ current }}题</view>
+    <view class="progress-text-right">共{{ props.total }}题</view>
     <view
       class="bar-item"
       :style="{ width: barWidth }"
