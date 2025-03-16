@@ -27,12 +27,12 @@ export async function updateById(params) {
       ELSE done_list
     END
     WHERE id=?4`,
-    [id, wrong_list, mark_list, done_list]
+    [wrong_list, mark_list, done_list, id]
   );
 }
 
 export async function getAllById(id) {
-  return db.all(`SELECT * FROM ${TABLE_NAME} WHERE id=?1`, [id]);
+  return db.get(`SELECT * FROM ${TABLE_NAME} WHERE id=?1`, [id]);
 }
 
 export function useUserQuestionMapper(database) {

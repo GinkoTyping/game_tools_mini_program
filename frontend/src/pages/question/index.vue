@@ -103,7 +103,7 @@
 
 <script lang="ts" setup>
 import { onLoad } from '@dcloudio/uni-app';
-import { computed, ref } from 'vue';
+import { computed, reactive, ref } from 'vue';
 
 import {
   IQuestionItem,
@@ -146,8 +146,16 @@ const optionBtnIcon = computed(() => (index: number) => {
 const currentIndex = ref(0);
 const currentQuestion = ref<IQuestionItem>();
 const questionList = ref<IQuestionItem[]>();
-onLoad(async () => {
-  questionList.value = await queryQuestions({ dungeonId: 500 });
+const dungeon = reactive({ id: -1, name: '' });
+onLoad(async options => {
+  dungeon.id = options?.dungeonId ?? 500;
+  const responseData = await queryQuestions({ dungeonId: dungeon.id });
+  questionList.value = responseData.data;
+  dungeon.name = responseData.dungeonName;
+  uni.setNavigationBarTitle({
+    title: dungeon.name,
+  });
+
   currentIndex.value = 0;
   currentQuestion.value = questionList.value?.[0];
 });

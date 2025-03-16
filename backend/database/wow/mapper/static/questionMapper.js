@@ -1,4 +1,5 @@
 let db;
+const TABLE_NAME = 'wow_question';
 
 async function insertQuestion(params) {
   const { guide_id, guide_type, dungeon_id, question_text } = params;
@@ -40,6 +41,22 @@ async function getQuestionsByDungeonId(dungeonId) {
   ]);
 }
 
+async function getQuestionsByIds(ids) {
+  if (ids?.length) {
+    const sql = ids.reduce((pre, cur, index) => {
+      if (index === 0) {
+        pre += `id=?${index + 1} `;
+      } else {
+        pre += `OR id=?${index + 1} `;
+      }
+      return pre;
+    }, `SELECT * FROM ${TABLE_NAME} WHERE `);
+
+    return db.all(sql, ids);
+  }
+  return [];
+}
+
 export function useQuestionMapper(database) {
   if (database) {
     db = database;
@@ -51,6 +68,7 @@ export function useQuestionMapper(database) {
   return {
     insertQuestion,
     updateQuestion,
+    getQuestionsByIds,
     getQuestionByCondition,
     getQuestionsByDungeonId,
   };

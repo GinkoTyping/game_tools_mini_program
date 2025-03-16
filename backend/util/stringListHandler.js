@@ -1,6 +1,6 @@
 export function updateStringList(originString, input) {
   const originList = originString?.split(',') ?? [];
-
-  const outputList = [...new Set([...originList, ...input])];
+  const array = [...originList, ...input].map((item) => Number(item));
+  const outputList = [...new Set(array)];
   return outputList.join(',');
 }
