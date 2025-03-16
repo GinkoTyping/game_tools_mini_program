@@ -105,7 +105,11 @@
 import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
-import { IQuestionItem, queryQuestions } from '@/api/wow';
+import {
+  IQuestionItem,
+  queryQuestions,
+  queryUpdateUserQuestion,
+} from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
 import ProgressBar from '@/components/ProgressBar.vue';
 
@@ -179,7 +183,7 @@ function switchPage(isNext) {
     }
   }
 }
-const nextQuestion = () => {
+const nextQuestion = async () => {
   if (
     questionList.value?.length &&
     currentIndex.value < questionList.value.length - 1
@@ -206,6 +210,10 @@ const nextQuestion = () => {
         ?.filter(item => item.isRight === 0)
         .map(item => item.id)
     );
+    const res = await queryUpdateUserQuestion({
+      questionList: questionList.value,
+    });
+    console.log({ res });
   }
 };
 const prevQuestion = () => {
