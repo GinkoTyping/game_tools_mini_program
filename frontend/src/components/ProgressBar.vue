@@ -31,6 +31,7 @@ const barWidth = computed(() => `${((1 / props.total) * 100).toFixed(2)}%`);
   height: 60rpx;
   background-color: $uni-bg-color-grey-lighter;
   position: relative;
+  font-size: 14px;
   .bar-item {
     background-color: $uni-color-primary;
     box-sizing: border-box;
@@ -42,7 +43,6 @@ const barWidth = computed(() => `${((1 / props.total) * 100).toFixed(2)}%`);
     color: #fff;
     font-weight: bold;
     padding-right: 10rpx;
-    font-size: 14px;
     &:last-child {
       border-top-right-radius: 20rpx;
       border-bottom-right-radius: 20rpx;

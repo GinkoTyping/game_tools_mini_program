@@ -128,8 +128,11 @@ const optionBtnColor = computed(() => (index: number) => {
   return '#007aff';
 });
 const optionBtnIcon = computed(() => (index: number) => {
-  if (isShowReason.value && validateAnswer(index)) {
-    return 'checkbox-filled';
+  if (isShowReason.value) {
+    if (validateAnswer(index)) {
+      return 'checkbox-filled';
+    }
+    return selectedIndex.value === index ? 'clear' : 'close';
   }
   return selectedIndex.value === index ? 'checkbox-filled' : 'close';
 });
