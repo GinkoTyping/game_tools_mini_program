@@ -38,21 +38,33 @@
             <text class="completion-suffix">题</text></view
           >
           <view class="access">
-            <uni-icons type="eye-filled" color="#bbb" size="20"></uni-icons>
+            <uni-icons type="eye-filled" color="#fff" size="20"></uni-icons>
             <view>{{ dungeon.count }}</view>
           </view>
         </view>
       </view>
     </view>
   </view>
+  <ad-custom
+    unit-id="adunit-fb4c9d3de4009085"
+    style="margin-top: 20rpx"
+  ></ad-custom>
+  <view class="footer"></view>
+  <ShareIcon />
 </template>
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { onShow } from '@dcloudio/uni-app';
+import { onShareAppMessage, onShow } from '@dcloudio/uni-app';
 
 import { IQuestionDungeon, queryQuestionDungeons } from '@/api/wow';
 import { useNavigator } from '@/hooks/navigator';
+import ShareIcon from '@/components/ShareIcon.vue';
+
+onShareAppMessage(() => ({
+  title: "大秘境做题家",
+  path: "pages/question/index"
+}));
 
 const navigator = useNavigator();
 const dungeons = ref<IQuestionDungeon[]>();
@@ -174,7 +186,7 @@ $list-item-width: 47vw;
         }
       }
       .access {
-        color: #bbb;
+        color: #fff;
         display: flex;
         align-items: center;
       }
@@ -210,5 +222,9 @@ $list-item-width: 47vw;
       }
     }
   }
+}
+
+.footer {
+  height: 140rpx;
 }
 </style>

@@ -99,10 +99,13 @@
       >
     </view>
   </view>
+  <view class="footer"></view>
+
+  <ShareIcon />
 </template>
 
 <script lang="ts" setup>
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, reactive, ref } from 'vue';
 
 import {
@@ -114,6 +117,12 @@ import {
 import { renderTip } from '@/hooks/richTextGenerator';
 import ProgressBar from '@/components/ProgressBar.vue';
 import { useNavigator } from '@/hooks/navigator';
+import ShareIcon from '@/components/ShareIcon.vue';
+
+onShareAppMessage(() => ({
+  title: '大秘境做题家',
+  path: 'pages/question/index',
+}));
 
 //#region 界面文本
 const isTrash = computed(() => (type: string | undefined) => type === 'trash');
@@ -409,5 +418,9 @@ function onImageLoad() {
 .disabled-button {
   color: #bbb;
   background-color: $uni-bg-color-grey-light;
+}
+
+.footer {
+  height: 140rpx;
 }
 </style>

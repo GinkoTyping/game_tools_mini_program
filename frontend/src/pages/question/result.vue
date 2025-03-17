@@ -75,22 +75,39 @@
     </uni-list>
   </view>
 
+  <view class="question-button">
+    <view
+      class="question-button-item"
+      @click="() => navigator.toQuestionIndex()"
+      >试试其他大秘境</view
+    >
+    <button open-type="share" class="question-button-item question-button-item--active">
+      <text>分享</text>
+    </button>
+  </view>
+
   <ad-custom
     unit-id="adunit-115759c2a1546b5e"
-    style="margin-top: 24rpx"
+    style="margin-top: 36rpx"
   ></ad-custom>
 
   <view class="footer"></view>
 
   <ShareIcon />
 </template>
+
 <script lang="ts" setup>
 import { IQuestionItem, queryQuestions } from '@/api/wow';
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, reactive, ref } from 'vue';
 import { renderTip } from '@/hooks/richTextGenerator';
-import ShareIcon from '@/components/ShareIcon.vue';
 import { useNavigator } from '@/hooks/navigator';
+import ShareIcon from '@/components/ShareIcon.vue';
+
+onShareAppMessage(() => ({
+  title: '大秘境做题家',
+  path: 'pages/question/index',
+}));
 
 //#region 数据
 const questionList = ref<IQuestionItem[]>([]);
@@ -164,6 +181,7 @@ function toMythicDetailPage(item: IQuestionItem) {
   navigator.toMythicDungeon(dungeon.id, item.guide_type, item.guide_id);
 }
 </script>
+
 <style scoped lang="scss">
 .score-container {
   padding: 0 4vw;
@@ -219,8 +237,44 @@ function toMythicDetailPage(item: IQuestionItem) {
     }
   }
 }
-.hide {
-  display: none;
+// 底部按钮
+.question-button {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid $uni-color-primary;
+  position: relative;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+  background-color: $uni-bg-color-grey-lighter;
+  margin-bottom: 10px;
+  height: 40px;
+  box-sizing: border-box;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: $uni-color-primary;
+  }
+  .question-button-item {
+    width: 50%;
+    height: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+  }
+  .question-button-item--active {
+    background-color: $uni-color-primary;
+  }
 }
 .footer {
   height: 140rpx;
