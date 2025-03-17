@@ -33,14 +33,13 @@
       :title="wrongList?.length ? '错题汇总' : '没有任何错题'"
       color="#007aff"
       align="center"
-    ></uni-title>
+    />
 
     <uni-list>
       <uni-list-item
         class="animate__animated animate__fadeInUp"
         v-for="(item, index) in wrongList"
         :key="item.id"
-        ellipsis="2"
         :note="item.question_text.answer.text"
         rightText="查看攻略"
         showArrow
@@ -54,12 +53,7 @@
               :nodes="renderTip(item?.question_text.text, '14px', '14px')"
             ></rich-text>
             <view class="slot-body-answer">
-              <view
-                >答案：{{
-                  item?.question_text.options[item.question_text.answer.value]
-                    .text
-                }}</view
-              >
+              <view>答案：{{ getAnswer(item) }}</view>
               <rich-text
                 :nodes="
                   renderTip(
@@ -118,6 +112,12 @@ onShareAppMessage(() => ({
 const questionList = ref<IQuestionItem[]>([]);
 const wrongList = computed(() =>
   questionList.value.filter(item => item.isRight === 0)
+);
+const getAnswer = computed(
+  () => (item: IQuestionItem) =>
+    item.question_text.options.find(
+      option => option.value === item.question_text.answer.value
+    )?.text
 );
 const dungeon = reactive({ id: -1, name: '' });
 const avgCorrect = ref(0);
@@ -207,33 +207,42 @@ function toMythicDetailPage(item: IQuestionItem) {
   flex-direction: column;
   align-items: center;
   color: #fff;
+
   .score-desc {
     font-size: 32rpx;
   }
+
   .score-avg {
     font-size: 26rpx;
   }
 }
+
 ::v-deep .uni-list {
   background-color: $uni-bg-color-grey-lighter !important;
+
   .uni-list--border-top,
   .uni-list--border-bottom {
     background-color: $uni-bg-color-grey !important;
   }
+
   .uni-list-item {
     background-color: $uni-bg-color-grey-lighter !important;
+
     .uni-list-item__container {
       display: flex;
       align-items: center;
     }
+
     .slot-body {
       flex: 1;
+
       .slot-body-answer {
         margin-top: 20rpx;
         color: $uni-color-success;
         font-size: 14px;
       }
     }
+
     .slot-footer {
       display: flex;
       align-items: center;
@@ -244,6 +253,7 @@ function toMythicDetailPage(item: IQuestionItem) {
     }
   }
 }
+
 // 底部按钮
 .question-button {
   display: flex;
@@ -257,6 +267,7 @@ function toMythicDetailPage(item: IQuestionItem) {
   margin-bottom: 10px;
   height: 40px;
   box-sizing: border-box;
+
   &::before {
     content: '';
     position: absolute;
@@ -266,6 +277,7 @@ function toMythicDetailPage(item: IQuestionItem) {
     width: 2px;
     background-color: $uni-color-primary;
   }
+
   .question-button-item {
     width: 50%;
     height: 100%;
@@ -279,10 +291,12 @@ function toMythicDetailPage(item: IQuestionItem) {
     justify-content: center;
     color: #fff;
   }
+
   .question-button-item--active {
     background-color: $uni-color-primary;
   }
 }
+
 .footer {
   height: 140rpx;
 }
