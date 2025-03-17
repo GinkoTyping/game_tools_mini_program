@@ -588,19 +588,20 @@ export interface IQuestionItem {
   };
 }
 export async function queryQuestions(params) {
+  const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
     url: `/wow/question/list`,
     method: 'POST',
     data: {
       dungeonId: params.dungeonId,
+      userId,
     },
   });
   if (res.data?.data) {
     return {
       ...res.data,
-      data: res.data.data.slice(0, 3).map(item => ({
+      data: res.data.data.map(item => ({
         ...item,
-        isRight: -1,
         lastSelectedIndex: -1,
       })) as IQuestionItem[],
     };

@@ -63,6 +63,20 @@ function toRaidGuide() {
   });
 }
 
+// 大秘境问卷
+function toQuestionDungeon(dungeonId) {
+  uni.navigateTo({
+    url: `/pages/question/each?dungeonId=${dungeonId}`,
+  });
+}
+
+// 大秘境问卷
+function toQuestionResult(dungeonId) {
+  uni.navigateTo({
+    url: `/pages/question/result?dungeonId=${dungeonId}`,
+  });
+}
+
 function toPage(page: string) {
   uni.navigateTo({
     url: page,
@@ -79,6 +93,8 @@ export function useNavigator() {
     toMythicDungeonList,
     toSpecPopularity,
     toPage,
-    toRaidGuide
+    toRaidGuide,
+    toQuestionDungeon,
+    toQuestionResult,
   };
 }

@@ -4,10 +4,11 @@ export const renderTip = computed(() => {
   return (
     text: string,
     fontSize: string = '14px',
-    strongFontSize: string = '14px'
+    strongFontSize: string = '14px',
+    color: string = '#fff'
   ) => {
     if (text) {
-      const wrappedText = `<p style="font-size: ${fontSize};color: #fff !important">${text}</p>`;
+      const wrappedText = `<p style="font-size: ${fontSize};color: ${color} !important">${text}</p>`;
 
       return wrappedText.replace(
         /\[(.*?)\]/g,
