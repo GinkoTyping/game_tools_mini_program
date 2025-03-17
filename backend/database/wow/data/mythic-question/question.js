@@ -1542,7 +1542,7 @@ export default [
     question_text: {
       text: '[投币式群体打击者]激活[硬币磁铁]时，应优先处理？',
       options: [
-        { value: 0, text: '清理场地金币堆' },
+        { value: 0, text: '让BOSS远离金币堆' },
         { value: 1, text: '打断BOSS技能施放' },
         { value: 2, text: '开启团队减伤技能' },
       ],
