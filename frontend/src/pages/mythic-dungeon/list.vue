@@ -1,4 +1,14 @@
 <template>
+  <uni-notice-bar
+    single
+    show-icon
+    show-get-more
+    color="#2979FF"
+    background-color="#EAF2FF"
+    more-text="点击考考你"
+    text="大秘境开卷考，题库在手灭团少！"
+    @click="() => navigator.toQuestionIndex()"
+  />
   <uni-list>
     <template v-for="(dungeon, index) in dungeonList" :key="dungeon.name_zh">
       <ad-custom

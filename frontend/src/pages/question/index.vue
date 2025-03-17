@@ -62,7 +62,7 @@ import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 
 onShareAppMessage(() => ({
-  title: '大秘境做题家',
+  title: '冲层如渡劫，题库是攻略！',
   path: 'pages/question/index',
 }));
 
