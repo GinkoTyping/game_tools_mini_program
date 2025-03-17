@@ -107,7 +107,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage, onUnload } from '@dcloudio/uni-app';
 import { computed, reactive, ref } from 'vue';
 
 import {
@@ -122,9 +122,18 @@ import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 
 onShareAppMessage(() => ({
-  title: '大秘境做题家',
+  title: '冲层如渡劫，题库是攻略！',
   path: 'pages/question/index',
 }));
+
+// 用户返回前一个页面时，保存当前题目的数据
+onUnload(async () => {
+  if (!sendFinishSignal) {
+    await queryUpdateUserQuestion({
+      questionList: questionList.value,
+    });
+  }
+});
 
 //#region 界面文本
 const isTrash = computed(() => (type: string | undefined) => type === 'trash');
@@ -220,7 +229,7 @@ let sendFinishSignal = false;
 const nextQuestion = async () => {
   if (
     questionList.value?.length &&
-    currentIndex.value < questionList.value.length - 1
+    currentIndex.value <= questionList.value.length - 1
   ) {
     if (selectedValue.value === -1 && !isShowReason.value) {
       uni.showToast({ title: '请点击一个选项', icon: 'error' });
@@ -231,28 +240,30 @@ const nextQuestion = async () => {
         currentQuestion.value.lastSelectedIndex = selectedValue.value;
       }
 
-      if (isRight || isShowReason.value) {
+      // 最后一题完成了
+      if (currentIndex.value === questionList.value.length - 1) {
+        uni.showToast({
+          title: '查询结果中',
+          icon: 'success',
+          mask: true,
+        });
+
+        // 避免用户从结果页 返回 到问题页时，重复调用统计接口
+        if (!sendFinishSignal) {
+          await queryUpdateUserQuestion({
+            questionList: questionList.value,
+          });
+          await queryFinishQuestionDungeon(dungeon.id);
+          sendFinishSignal = true;
+        }
+        navigator.toQuestionResult(dungeon.id);
+      } else if (isRight || isShowReason.value) {
         switchPage(true);
       } else {
         isShowReason.value = true;
       }
     }
   } else {
-    uni.showToast({
-      title: '查询结果中',
-      icon: 'success',
-      mask: true,
-    });
-
-    // 避免用户从结果页 返回 到问题页时，重复调用统计接口
-    if (!sendFinishSignal) {
-      await queryUpdateUserQuestion({
-        questionList: questionList.value,
-      });
-      await queryFinishQuestionDungeon(dungeon.id);
-      sendFinishSignal = true;
-    }
-    navigator.toQuestionResult(dungeon.id);
   }
 };
 const prevQuestion = () => {
