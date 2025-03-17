@@ -82,6 +82,7 @@ export async function queryHomeView(req, res) {
         icon: 'wallet-filled',
         page: '/pages/question/index1',
         feature: true,
+        color: '#e37e00',
       },
       {
         label: '大秘境',
