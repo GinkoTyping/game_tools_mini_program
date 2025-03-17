@@ -43,10 +43,12 @@
     <uni-list :class="[isShowReason ? 'show-reason' : '']">
       <uni-list-item
         v-for="(option, index) in currentQuestion?.question_text.options"
-        :key="index"
+        :key="option.value"
         clickable
         @click="selectOption(option.value)"
-        :class="[isAnswerOption(index) && isShowReason ? 'slot-answer' : '']"
+        :class="[
+          isAnswerOption(option.value) && isShowReason ? 'slot-answer' : '',
+        ]"
       >
         <template v-slot:header>
           <view class="slot-header">
@@ -58,7 +60,7 @@
             <text class="slot-body-option">{{ option.text }}</text>
             <rich-text
               class="slot-body-reason"
-              v-show="isAnswerOption(index) && isShowReason"
+              v-show="isAnswerOption(option.value) && isShowReason"
               :nodes="
                 renderTip(
                   `解析：${currentQuestion?.question_text.answer.text ?? ''}`,
@@ -142,14 +144,14 @@ const optionBtnColor = computed(() => (index: number) => {
   }
   return '#007aff';
 });
-const optionBtnIcon = computed(() => (index: number) => {
+const optionBtnIcon = computed(() => (value: number) => {
   if (isShowReason.value) {
-    if (validateAnswer(index)) {
+    if (validateAnswer(value)) {
       return 'checkbox-filled';
     }
-    return selectedIndex.value === index ? 'clear' : 'close';
+    return selectedValue.value === value ? 'clear' : 'close';
   }
-  return selectedIndex.value === index ? 'checkbox-filled' : 'close';
+  return selectedValue.value === value ? 'checkbox-filled' : 'close';
 });
 //#endregion
 
@@ -185,17 +187,17 @@ onLoad(async options => {
 
 //#region 按钮
 const stepCount = computed(() => currentIndex.value + 1);
-const selectedIndex = ref(-1);
-const selectOption = index => {
-  if (selectedIndex.value !== index && !isShowReason.value) {
-    selectedIndex.value = index;
+const selectedValue = ref(-1);
+const selectOption = value => {
+  if (selectedValue.value !== value && !isShowReason.value) {
+    selectedValue.value = value;
   }
 };
 
-function validateAnswer(index: number) {
-  return index === currentQuestion.value?.question_text.answer.value;
+function validateAnswer(value: number) {
+  return value === currentQuestion.value?.question_text.answer.value;
 }
-const isAnswerOption = computed(() => (index: number) => validateAnswer(index));
+const isAnswerOption = computed(() => (value: number) => validateAnswer(value));
 const isShowReason = ref(false);
 function switchPage(isNext) {
   isNext ? currentIndex.value++ : currentIndex.value--;
@@ -205,10 +207,10 @@ function switchPage(isNext) {
   // 检查是不是已经做过的问题
   if (currentQuestion.value) {
     if (currentQuestion.value.isRight === -1) {
-      selectedIndex.value = -1;
+      selectedValue.value = -1;
       isShowReason.value = false;
     } else {
-      selectedIndex.value = currentQuestion.value.lastSelectedIndex;
+      selectedValue.value = currentQuestion.value.lastSelectedIndex;
       isShowReason.value = true;
     }
   }
@@ -219,13 +221,13 @@ const nextQuestion = async () => {
     questionList.value?.length &&
     currentIndex.value < questionList.value.length - 1
   ) {
-    if (selectedIndex.value === -1 && !isShowReason.value) {
+    if (selectedValue.value === -1 && !isShowReason.value) {
       uni.showToast({ title: '请点击一个选项', icon: 'error' });
     } else {
-      const isRight = validateAnswer(selectedIndex.value);
+      const isRight = validateAnswer(selectedValue.value);
       if (!isShowReason.value && currentQuestion.value) {
         currentQuestion.value.isRight = isRight ? 1 : 0;
-        currentQuestion.value.lastSelectedIndex = selectedIndex.value;
+        currentQuestion.value.lastSelectedIndex = selectedValue.value;
       }
 
       if (isRight || isShowReason.value) {
@@ -296,7 +298,7 @@ function onImageLoad() {
     border-radius: 40rpx;
   }
   .trash-image {
-    height: 15vh;
+    height: 20vh;
   }
   .boss-image {
     width: 96vw !important;
