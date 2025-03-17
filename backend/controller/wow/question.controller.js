@@ -118,7 +118,9 @@ export async function queryUpdateUserQuestion(req, res) {
   const wrongList = questionList
     .filter((item) => item.isRight === 0)
     .map((item) => item.id);
-  const doneList = questionList.map((item) => item.id);
+  const doneList = questionList
+    .filter((item) => item.isRight !== -1)
+    .map((item) => item.id);
 
   const existed = await userQuestionMapper.getAllById(userId);
   let result;
