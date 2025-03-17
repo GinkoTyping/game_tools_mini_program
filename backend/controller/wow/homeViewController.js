@@ -80,7 +80,7 @@ export async function queryHomeView(req, res) {
         label: '做题家',
         value: 'rating',
         icon: 'wallet-filled',
-        page: '/pages/question/index1',
+        page: '/pages/question/index',
         feature: true,
         color: '#e37e00',
       },
