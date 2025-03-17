@@ -89,6 +89,12 @@ export async function queryUpdateUserQuestion(req, res) {
   });
 }
 
+export async function queryFinishQuestionByDungeon(req, res) {
+  const { dungeonId } = req.body;
+  const data = await mDungeonQuestionCountMapper.addById(dungeonId);
+  res.json({ message: data.changes ? '更新成功' : '更新失败' });
+}
+
 export async function queryQuestionResult(req, res) {
   const { dungeonId, userId } = req.body;
   const data = await userQuestionMapper.getAllById(userId);
@@ -119,26 +125,23 @@ export async function queryQuestionResult(req, res) {
 export async function queryQuestionDunegons(req, res) {
   const { userId } = req.body;
   const userData = await userQuestionMapper.getAllById(userId);
-  let completionData;
-  if (userData) {
-    const doneList = userData.done_list;
-    const allQuestions = await questionMapper.getAllQuestions();
-    completionData = allQuestions.reduce((pre, cur) => {
-      if (pre[cur.dungeon_id]) {
-        pre[cur.dungeon_id].total++;
-      } else {
-        pre[cur.dungeon_id] = {
-          count: 0,
-          total: 1,
-        };
-      }
+  const doneList = userData?.done_list ?? [];
+  const allQuestions = await questionMapper.getAllQuestions();
+  const completionData = allQuestions.reduce((pre, cur) => {
+    if (pre[cur.dungeon_id]) {
+      pre[cur.dungeon_id].total++;
+    } else {
+      pre[cur.dungeon_id] = {
+        count: 0,
+        total: 1,
+      };
+    }
 
-      if (doneList.includes(cur.id)) {
-        pre[cur.dungeon_id].count++;
-      }
-      return pre;
-    }, {});
-  }
+    if (doneList.includes(cur.id)) {
+      pre[cur.dungeon_id].count++;
+    }
+    return pre;
+  }, {});
 
   const data = await mDungeonQuestionCountMapper.getList();
   const output = data.map((item) => ({

@@ -7,12 +7,10 @@ async function getbyId(id) {
 
 async function addById(id) {
   const dungeonCountItem = await getbyId(id);
-  if (dungeonCountItem) {
-    await db.run(`UPDATE ${TABLE_NAME} SET count=?1 WHERE id=?2`, [
-      dungeonCountItem.count + 1,
-      id,
-    ]);
-  }
+  return db.run(`UPDATE ${TABLE_NAME} SET count=?1 WHERE id=?2`, [
+    dungeonCountItem.count + 1,
+    id,
+  ]);
 }
 
 async function getList() {

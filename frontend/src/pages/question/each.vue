@@ -107,6 +107,7 @@ import { computed, reactive, ref } from 'vue';
 
 import {
   IQuestionItem,
+  queryFinishQuestionDungeon,
   queryQuestions,
   queryUpdateUserQuestion,
 } from '@/api/wow';
@@ -225,10 +226,15 @@ const nextQuestion = async () => {
       }
     }
   } else {
+    uni.showToast({
+      title: '查询结果中',
+      icon: 'success',
+      mask: true,
+    });
     await queryUpdateUserQuestion({
       questionList: questionList.value,
     });
-
+    await queryFinishQuestionDungeon(dungeon.id);
     navigator.toQuestionResult(dungeon.id);
   }
 };
@@ -281,7 +287,7 @@ function onImageLoad() {
     border-radius: 40rpx;
   }
   .trash-image {
-    height: 20vh;
+    height: 15vh;
   }
   .boss-image {
     width: 96vw !important;

@@ -638,4 +638,13 @@ export async function queryQuestionDungeons() {
   });
   return res.data as IQuestionDungeon[];
 }
+export async function queryFinishQuestionDungeon(dungeonId) {
+  return proxyRequest({
+    url: `/wow/question/finish`,
+    method: 'POST',
+    data: {
+      dungeonId,
+    },
+  });
+}
 //#endregion
