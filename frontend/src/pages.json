@@ -13,6 +13,24 @@
 			}
 		},
 		{
+			"path": "pages/question/index",
+			"style": {
+				"navigationBarTitleText": "大秘境做题家"
+			}
+		},
+		{
+			"path": "pages/question/each",
+			"style": {
+				"navigationBarTitleText": "大秘境做题家"
+			}
+		},
+		{
+			"path": "pages/question/result",
+			"style": {
+				"navigationBarTitleText": "大秘境做题家"
+			}
+		},
+		{
 			"path": "pages/raid-guide/index",
 			"style": {
 				"navigationBarTitleText": "解放安德麦"
