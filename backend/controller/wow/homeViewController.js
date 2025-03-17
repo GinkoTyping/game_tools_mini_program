@@ -76,13 +76,13 @@ export async function queryHomeView(req, res) {
         page: '/pages/spec-list/index',
         feature: false,
       },
-      // {
-      //   label: '做题家',
-      //   value: 'rating',
-      //   icon: 'wallet-filled',
-      //   page: '/pages/question/index',
-      //   feature: true,
-      // },
+      {
+        label: '做题家',
+        value: 'rating',
+        icon: 'wallet-filled',
+        page: '/pages/question/index1',
+        feature: true,
+      },
       {
         label: '大秘境',
         value: 'rating',
