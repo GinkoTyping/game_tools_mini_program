@@ -36,6 +36,8 @@
         :note="item.question_text.answer.text"
         rightText="查看攻略"
         showArrow
+        clickable
+        @click="() => toMythicDetailPage(item)"
       >
         <template v-slot:body>
           <view class="slot-body">
@@ -63,9 +65,6 @@
             </view>
           </view>
         </template>
-        <template v-slot:foot>
-          <view class="slot-footer"> 查看攻略 </view>
-        </template>
       </uni-list-item>
     </uni-list>
   </view>
@@ -85,6 +84,7 @@ import { onLoad } from '@dcloudio/uni-app';
 import { computed, reactive, ref } from 'vue';
 import { renderTip } from '@/hooks/richTextGenerator';
 import ShareIcon from '@/components/ShareIcon.vue';
+import { useNavigator } from '@/hooks/navigator';
 
 //#region 数据
 const questionList = ref<IQuestionItem[]>([]);
@@ -115,6 +115,10 @@ const scoreTextClass = computed(() => {
   return 'bad-score';
 });
 //#endregion
+const navigator = useNavigator();
+function toMythicDetailPage(item: IQuestionItem) {
+  navigator.toMythicDungeon(dungeon.id, item.guide_type, item.guide_id);
+}
 </script>
 <style scoped lang="scss">
 .score-container {
@@ -141,8 +145,6 @@ const scoreTextClass = computed(() => {
   .question-icons {
     margin-top: 20rpx;
   }
-  .question-overview {
-  }
 }
 ::v-deep .uni-list {
   background-color: $uni-bg-color-grey-lighter !important;
@@ -152,6 +154,10 @@ const scoreTextClass = computed(() => {
   }
   .uni-list-item {
     background-color: $uni-bg-color-grey-lighter !important;
+    .uni-list-item__container {
+      display: flex;
+      align-items: center;
+    }
     .slot-body {
       flex: 1;
       .slot-body-answer {
@@ -159,6 +165,14 @@ const scoreTextClass = computed(() => {
         color: $uni-color-success;
         font-size: 14px;
       }
+    }
+    .slot-footer {
+      display: flex;
+      align-items: center;
+      color: #bbb;
+      height: 50px;
+      line-height: 50px;
+      font-size: 14px;
     }
   }
 }

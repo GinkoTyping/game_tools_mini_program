@@ -116,6 +116,8 @@
           v-if="tip?.data?.length"
           v-for="(dataItem, index) in tip.data"
           :key="index"
+          :id="`${tip.type}-${dataItem.trashId ?? dataItem.spellId}`"
+          :open="defaultOpenTip(tip.type, dataItem.trashId ?? dataItem.spellId)"
         >
           <template v-slot:title>
             <view class="menu-title-slot">
@@ -320,7 +322,26 @@ const dungeonId = ref();
 const userStore = useUserStore();
 const { marks }: { marks: any } = storeToRefs(userStore);
 
+//#region 跳转到指定TIP
+const jumpParams = ref<{ type: string; guideId: number }>();
+const defaultOpenTip = computed(
+  () => (type, id) =>
+    type === jumpParams.value?.type &&
+    Number(id) === Number(jumpParams.value?.guideId)
+);
+function scrollToTip() {
+  if (jumpParams.value?.type && jumpParams.value.guideId) {
+    nextTick(() => {
+      uni.pageScrollTo({
+        selector: `#${jumpParams.value?.type}-${jumpParams.value?.guideId}`,
+      });
+    });
+  }
+}
+//#endregion
+
 onLoad(async (options: any) => {
+  jumpParams.value = options;
   await userStore.updateUserMarks();
 
   dungeonId.value = options.id;
@@ -332,6 +353,8 @@ onLoad(async (options: any) => {
   uni.setNavigationBarTitle({
     title: `大秘境 —— ${mythicDungeonData.value?.nameZH ?? '未知名称'}`,
   });
+
+  scrollToTip();
 });
 
 onShareAppMessage(() => {

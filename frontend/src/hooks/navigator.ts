@@ -43,9 +43,9 @@ function toMythicDungeonList() {
 }
 
 // 大秘境攻略
-function toMythicDungeon(id: number) {
+function toMythicDungeon(id: number, type?: string, guideId?: number) {
   uni.navigateTo({
-    url: `/pages/mythic-dungeon/index?id=${id}`,
+    url: `/pages/mythic-dungeon/index?id=${id}&type=${type}&guideId=${guideId}`,
   });
 }
 
