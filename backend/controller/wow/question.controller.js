@@ -31,10 +31,26 @@ async function mapQustionItem(item) {
 }
 
 export async function queryQuestionByDungeon(req, res) {
-  const { dungeonId } = req.body;
+  const { dungeonId, userId } = req.body;
   const dungeonsData = await dungeonMapper.getDungeonsById([dungeonId]);
+  let questions = await questionMapper.getQuestionsByDungeonId(dungeonId);
 
-  const questions = await questionMapper.getQuestionsByDungeonId(dungeonId);
+  // 设置 用户历史答题的状态
+  const userData = await userQuestionMapper.getAllById(userId);
+  questions = questions.map((question) => {
+    let isRight;
+    if (userData?.done_list?.includes(question.id)) {
+      isRight = userData?.wrong_list?.includes(question.id) ? 0 : 1;
+    } else {
+      isRight = -1;
+    }
+    return {
+      ...question,
+      isRight,
+    };
+  });
+
+  // 获取题目对应的图片
   const results = await Promise.allSettled(
     questions?.map((question) => mapQustionItem(question))
   );
@@ -105,7 +121,7 @@ export async function queryQuestionDunegons(req, res) {
   const userData = await userQuestionMapper.getAllById(userId);
   let completionData;
   if (userData) {
-    const doneList = userData.done_list?.split(',').map((item) => Number(item));
+    const doneList = userData.done_list;
     const allQuestions = await questionMapper.getAllQuestions();
     completionData = allQuestions.reduce((pre, cur) => {
       if (pre[cur.dungeon_id]) {

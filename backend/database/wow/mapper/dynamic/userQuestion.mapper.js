@@ -1,3 +1,5 @@
+import { mapStringToList } from "../../../../util/stringListHandler.js";
+
 let db;
 const TABLE_NAME = 'wow_dynamic_user_question';
 
@@ -32,7 +34,17 @@ export async function updateById(params) {
 }
 
 export async function getAllById(id) {
-  return db.get(`SELECT * FROM ${TABLE_NAME} WHERE id=?1`, [id]);
+  const data = await db.get(`SELECT * FROM ${TABLE_NAME} WHERE id=?1`, [id]);
+  if (data) {
+
+    return {
+      ...data,
+      done_list: mapStringToList(data.done_list),
+      wrong_list: mapStringToList(data.wrong_list),
+      mark_list: mapStringToList(data.mark_list),
+    }
+  }
+  return data;
 }
 
 export function useUserQuestionMapper(database) {
