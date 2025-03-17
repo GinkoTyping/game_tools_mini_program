@@ -69,6 +69,7 @@
           v-for="item in currentUtility?.spell"
           :title="item.nameZH"
           :note="item.desc"
+          :key="item.spellNameZH"
         />
       </uni-list>
 
@@ -88,6 +89,7 @@
           :rightText="item?.showDesc ? '' : '点击任意处查看详情'"
           clickable
           @click="() => swicthShowSpellDesc(item)"
+          :key="item.nameZH"
         >
         </uni-list-item>
       </uni-list>

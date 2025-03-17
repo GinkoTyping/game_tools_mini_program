@@ -20,13 +20,13 @@
         :class="[getCompletionTextClass(dungeon)]"
         v-for="dungeon in dungeons"
         :key="dungeon.id"
+        @click="() => toQuestionPage(dungeon)"
       >
         <image
           class="image"
           :src="`https://ginkolearn.cyou/api/wow/assets/dungeon/${dungeon.id}.webp`"
           mode="widthFix"
         ></image>
-        <view class="info name"> </view>
         <view class="info">
           <view class="name">{{ dungeon.name }}</view>
           <view class="completion"
@@ -49,12 +49,14 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { onLoad } from '@dcloudio/uni-app';
+import { onShow } from '@dcloudio/uni-app';
 
 import { IQuestionDungeon, queryQuestionDungeons } from '@/api/wow';
+import { useNavigator } from '@/hooks/navigator';
 
+const navigator = useNavigator();
 const dungeons = ref<IQuestionDungeon[]>();
-onLoad(async () => {
+onShow(async () => {
   dungeons.value = await queryQuestionDungeons();
 });
 
@@ -62,6 +64,14 @@ const currentMenu = ref('question');
 function switchMenu(name: string) {
   if (currentMenu.value !== name) {
     currentMenu.value = name;
+  }
+}
+
+function toQuestionPage(dungeon: IQuestionDungeon) {
+  if (dungeon.doneQuestionCount < dungeon.totalQuestionCount) {
+    navigator.toQuestionDungeon(dungeon.id);
+  } else {
+    navigator.toQuestionResult(dungeon.id);
   }
 }
 
@@ -80,6 +90,8 @@ const getCompletionTextClass = computed(() => (dungeon: IQuestionDungeon) => {
 </script>
 
 <style lang="scss" scoped>
+$list-item-width: 47vw;
+
 .container {
   padding: 0 2vw;
 }
@@ -117,7 +129,6 @@ const getCompletionTextClass = computed(() => (dungeon: IQuestionDungeon) => {
   }
 }
 
-$list-item-width: 47vw;
 .dungeon-list {
   display: flex;
   flex-wrap: wrap;

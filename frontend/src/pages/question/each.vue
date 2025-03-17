@@ -112,6 +112,7 @@ import {
 } from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
 import ProgressBar from '@/components/ProgressBar.vue';
+import { useNavigator } from '@/hooks/navigator';
 
 //#region 界面文本
 const isTrash = computed(() => (type: string | undefined) => type === 'trash');
@@ -147,6 +148,18 @@ const currentIndex = ref(0);
 const currentQuestion = ref<IQuestionItem>();
 const questionList = ref<IQuestionItem[]>();
 const dungeon = reactive({ id: -1, name: '' });
+function setStartQuestion() {
+  // 考虑到用户可能做了一部分，从第一个用户未答的题目开始
+  currentIndex.value =
+    questionList.value?.findIndex(item => item.isRight === -1) ?? 0;
+  currentQuestion.value = questionList.value?.[currentIndex.value];
+  if (currentIndex.value !== 0) {
+    uni.showToast({
+      title: `上次做到了第${currentIndex.value + 1}题, 继续完成吧！`,
+      icon: 'none',
+    });
+  }
+}
 onLoad(async options => {
   dungeon.id = options?.dungeonId ?? 500;
   const responseData = await queryQuestions({ dungeonId: dungeon.id });
@@ -156,8 +169,7 @@ onLoad(async options => {
     title: dungeon.name,
   });
 
-  currentIndex.value = 0;
-  currentQuestion.value = questionList.value?.[0];
+  setStartQuestion();
 });
 //#endregion
 
@@ -182,7 +194,7 @@ function switchPage(isNext) {
 
   // 检查是不是已经做过的问题
   if (currentQuestion.value) {
-    if (currentQuestion.value.lastSelectedIndex === -1) {
+    if (currentQuestion.value.isRight === -1) {
       selectedIndex.value = -1;
       isShowReason.value = false;
     } else {
@@ -191,6 +203,7 @@ function switchPage(isNext) {
     }
   }
 }
+const navigator = useNavigator();
 const nextQuestion = async () => {
   if (
     questionList.value?.length &&
@@ -212,16 +225,11 @@ const nextQuestion = async () => {
       }
     }
   } else {
-    console.log(
-      '错误',
-      questionList.value
-        ?.filter(item => item.isRight === 0)
-        .map(item => item.id)
-    );
-    const res = await queryUpdateUserQuestion({
+    await queryUpdateUserQuestion({
       questionList: questionList.value,
     });
-    console.log({ res });
+
+    navigator.toQuestionResult(dungeon.id);
   }
 };
 const prevQuestion = () => {
@@ -273,10 +281,11 @@ function onImageLoad() {
     border-radius: 40rpx;
   }
   .trash-image {
-    height: 18vh;
+    height: 20vh;
   }
   .boss-image {
     width: 96vw !important;
+    max-height: 30vh;
   }
 }
 
