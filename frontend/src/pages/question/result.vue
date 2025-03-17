@@ -28,7 +28,7 @@
   <view class="question-overview">
     <uni-title
       type="h2"
-      :title="wrongList?.length ? '错题汇总' : '试试其他大秘境吧'"
+      :title="wrongList?.length ? '错题汇总' : '没有任何错题'"
       color="#007aff"
       align="center"
     ></uni-title>
@@ -79,9 +79,12 @@
     <view
       class="question-button-item"
       @click="() => navigator.toQuestionIndex()"
-      >试试其他大秘境</view
+      >再做一题</view
     >
-    <button open-type="share" class="question-button-item question-button-item--active">
+    <button
+      open-type="share"
+      class="question-button-item question-button-item--active"
+    >
       <text>分享</text>
     </button>
   </view>
