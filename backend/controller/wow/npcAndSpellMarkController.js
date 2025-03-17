@@ -6,21 +6,25 @@ const dynamicDB = await getDynamicDB();
 const userMarkMapper = useUserMarkMapper(dynamicDB);
 const npcAndSpellMarkMapper = useNpcAndSpellMarkMapper(dynamicDB);
 
+export async function updateMarkStatus(params) {
+  const { isNpc, isMark, userId, markId } = params;
+  const userResult = await userMarkMapper.updateUserMark(
+    isNpc,
+    isMark,
+    userId,
+    markId
+  );
+  const result = await npcAndSpellMarkMapper.updateNpcOrSpellMark(
+    isNpc,
+    isMark,
+    userId,
+    markId
+  );
+  return { userResult, result };
+}
 export async function queryUpdateMarkStatus(req, res) {
   try {
-    const { isNpc, isMark, userId, markId } = req.body;
-    const userResult = await userMarkMapper.updateUserMark(
-      isNpc,
-      isMark,
-      userId,
-      markId
-    );
-    const result = await npcAndSpellMarkMapper.updateNpcOrSpellMark(
-      isNpc,
-      isMark,
-      userId,
-      markId
-    );
+    const {userResult, result} = await updateMarkStatus(req.body);
     if (userResult.changes === 1 && result.changes === 1) {
       res.json({ message: '更新成功' });
     } else {

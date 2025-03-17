@@ -29,7 +29,11 @@ async function updateUserMark(isNpc, isMark, userId, markId) {
   }
 
   if (isMark) {
-    markList.push(markId);
+    // 避免重复点赞
+    const isInclude = markList.some((item) => Number(item) === Number(markId));
+    if (!isInclude) {
+      markList.push(markId);
+    }
   } else {
     markList = markList.filter(
       (item) => item && Number(item) !== Number(markId)

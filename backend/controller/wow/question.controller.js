@@ -5,6 +5,7 @@ import { useQuestionMapper } from '../../database/wow/mapper/static/questionMapp
 import { useUserQuestionMapper } from '../../database/wow/mapper/dynamic/userQuestion.mapper.js';
 import { updateStringList } from '../../util/stringListHandler.js';
 import { useMythicDungeonQuestionCountMapper } from '../../database/wow/mapper/mythicDungeonQuestionCount.mapper.js';
+import { updateMarkStatus } from './npcAndSpellMarkController.js';
 
 const db = await getDB();
 const questionMapper = useQuestionMapper(db);
@@ -13,8 +14,7 @@ const dungeonMapper = useDungeonMapper(db);
 const dynamicDB = await getDynamicDB();
 const npcAndSpellMapper = useNpcAndSpellMarkMapper(dynamicDB);
 const userQuestionMapper = useUserQuestionMapper(dynamicDB);
-const mDungeonQuestionCountMapper =
-  useMythicDungeonQuestionCountMapper(dynamicDB);
+const dqCountMapper = useMythicDungeonQuestionCountMapper(dynamicDB);
 
 async function mapQustionItem(item) {
   const { guide_id, guide_type } = item;
@@ -30,8 +30,30 @@ async function mapQustionItem(item) {
   };
 }
 
+async function getQuestionCorrectRatingByDungeon(dungeonId) {
+  const allUserQuestions = await userQuestionMapper.getAllUserQuestion();
+  const dungeonQuestion = await questionMapper.getQuestionsByDungeonId(
+    dungeonId
+  );
+  const validGuideIds = dungeonQuestion?.map((item) => Number(item.id)) ?? [];
+  const { wrongCount, totalCount } = allUserQuestions.reduce(
+    (pre, cur) => {
+      const validIds = cur.done_list.filter((item) =>
+        validGuideIds.includes(Number(item))
+      );
+      const validWrongIds = cur.wrong_list.filter((item) =>
+        validGuideIds.includes(Number(item))
+      );
+      pre.totalCount += validIds.length;
+      pre.wrongCount += validWrongIds.length;
+      return pre;
+    },
+    { wrongCount: 0, totalCount: 0 }
+  );
+  return ((1 - wrongCount / totalCount) * 100).toFixed(2);
+}
 export async function queryQuestionByDungeon(req, res) {
-  const { dungeonId, userId } = req.body;
+  const { dungeonId, userId, showAvgCorrect } = req.body;
   const dungeonsData = await dungeonMapper.getDungeonsById([dungeonId]);
   let questions = await questionMapper.getQuestionsByDungeonId(dungeonId);
 
@@ -54,13 +76,43 @@ export async function queryQuestionByDungeon(req, res) {
   const results = await Promise.allSettled(
     questions?.map((question) => mapQustionItem(question))
   );
+  let avgCorrectPercentage;
+  if (showAvgCorrect) {
+    avgCorrectPercentage = await getQuestionCorrectRatingByDungeon(dungeonId);
+  }
   res.json({
     dungeonId,
     dungeonName: dungeonsData[0].name_zh,
     data: results.map((result) => result.value),
+    avgCorrect: avgCorrectPercentage,
   });
 }
 
+// TODO mark错误的问题 03-18
+async function syncUpdateTipMark(userId, questionList) {
+  function syncUpdateItem(userId, question) {
+    const params = {
+      isNpc: question.guide_type === 'trash',
+      isMark: true,
+      userId,
+      markId: question.guide_id,
+    };
+
+    return updateMarkStatus(params);
+  }
+
+  // Promise 并发会导致 资源竞争
+  const results = [];
+  for (const item of questionList) {
+    try {
+      const value = await syncUpdateItem(userId, item);
+      results.push({ status: 'fulfilled', value }); // 模拟 Promise.allSettled 成功结构
+    } catch (reason) {
+      results.push({ status: 'rejected', reason }); // 模拟 Promise.allSettled 失败结构
+    }
+  }
+  return results;
+}
 export async function queryUpdateUserQuestion(req, res) {
   const { questionList, userId } = req.body;
   const wrongList = questionList
@@ -83,6 +135,13 @@ export async function queryUpdateUserQuestion(req, res) {
       done_list: doneList?.length ? doneList.join(',') : null,
     });
   }
+
+  // 把错题 同步更新到用户的 mark 记录里
+  await syncUpdateTipMark(
+    userId,
+    questionList.filter((item) => item.isRight === 0)
+  );
+
   res.json({
     isSuccess: result.changes,
     messgae: result.changes ? '更新成功' : '更新失败',
@@ -91,35 +150,8 @@ export async function queryUpdateUserQuestion(req, res) {
 
 export async function queryFinishQuestionByDungeon(req, res) {
   const { dungeonId } = req.body;
-  const data = await mDungeonQuestionCountMapper.addById(dungeonId);
+  const data = await dqCountMapper.addById(dungeonId);
   res.json({ message: data.changes ? '更新成功' : '更新失败' });
-}
-
-export async function queryQuestionResult(req, res) {
-  const { dungeonId, userId } = req.body;
-  const data = await userQuestionMapper.getAllById(userId);
-  if (data) {
-    const { wrong_list, done_list } = data;
-    const doneQuestionsList = await questionMapper.getQuestionsByIds(
-      done_list?.split(',') ?? []
-    );
-    const filteredDoneList = doneQuestionsList.filter(
-      (item) => item.dungeon_id === dungeonId
-    );
-    const filteredWrongIds =
-      wrong_list
-        ?.split(',')
-        ?.filter((item) => filteredDoneList.includes(item)) ?? [];
-    res.json({
-      questions: filteredDoneList,
-      wrongIds: filteredWrongIds,
-    });
-  } else {
-    res.json({
-      questions: [],
-      wrongIds: [],
-    });
-  }
 }
 
 export async function queryQuestionDunegons(req, res) {
@@ -143,7 +175,7 @@ export async function queryQuestionDunegons(req, res) {
     return pre;
   }, {});
 
-  const data = await mDungeonQuestionCountMapper.getList();
+  const data = await dqCountMapper.getList();
   const output = data.map((item) => ({
     ...item,
     doneQuestionCount: completionData?.[item.id]?.count,
