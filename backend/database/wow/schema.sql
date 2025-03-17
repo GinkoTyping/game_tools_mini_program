@@ -172,6 +172,25 @@ CREATE TABLE
     done_list TEXT
   );
 
+CREATE TABLE
+  IF NOT EXISTS wow_dynamic_mythic_dungeon_question_count (
+    id INTEGER PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    count INTEGER DEFAULT 0
+  );
+
+INSERT INTO
+  wow_dynamic_mythic_dungeon_question_count (id, name)
+VALUES
+  (247, '暴富矿区！！'),
+  (370, '麦卡贡行动 - 车间'),
+  (382, '伤逝剧场'),
+  (499, '圣焰隐修院'),
+  (500, '驭雷栖巢'),
+  (504, '暗焰裂口'),
+  (506, '燧酿酒庄'),
+  (525, '水闸行动');
+
 -- daily tables
 CREATE TABLE
   IF NOT EXISTS wow_daily_spec_popularity (

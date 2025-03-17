@@ -616,11 +616,21 @@ export async function queryUpdateUserQuestion(params) {
   });
   return res.data;
 }
+export interface IQuestionDungeon {
+  id: number;
+  name: string;
+  count: number;
+  doneQuestionCount: number;
+  totalQuestionCount: number;
+}
 export async function queryQuestionDungeons() {
   const res: any = await proxyRequest({
     url: `/wow/question/dungeon-list`,
     method: 'POST',
+    data: {
+      userId: uni.getStorageSync('userId'),
+    },
   });
-  return res.data;
+  return res.data as IQuestionDungeon[];
 }
 //#endregion

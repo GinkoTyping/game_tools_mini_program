@@ -1,14 +1,20 @@
 import { getDB, getDynamicDB } from '../../database/utils/index.js';
+import { useDungeonMapper } from '../../database/wow/mapper/dungeonMapper.js';
 import { useNpcAndSpellMarkMapper } from '../../database/wow/mapper/npcAndSpellMarkMapper.js';
 import { useQuestionMapper } from '../../database/wow/mapper/static/questionMapper.js';
 import { useUserQuestionMapper } from '../../database/wow/mapper/dynamic/userQuestion.mapper.js';
 import { updateStringList } from '../../util/stringListHandler.js';
+import { useMythicDungeonQuestionCountMapper } from '../../database/wow/mapper/mythicDungeonQuestionCount.mapper.js';
 
 const db = await getDB();
 const questionMapper = useQuestionMapper(db);
+const dungeonMapper = useDungeonMapper(db);
+
 const dynamicDB = await getDynamicDB();
 const npcAndSpellMapper = useNpcAndSpellMarkMapper(dynamicDB);
 const userQuestionMapper = useUserQuestionMapper(dynamicDB);
+const mDungeonQuestionCountMapper =
+  useMythicDungeonQuestionCountMapper(dynamicDB);
 
 async function mapQustionItem(item) {
   const { guide_id, guide_type } = item;
@@ -26,11 +32,17 @@ async function mapQustionItem(item) {
 
 export async function queryQuestionByDungeon(req, res) {
   const { dungeonId } = req.body;
+  const dungeonsData = await dungeonMapper.getDungeonsById([dungeonId]);
+
   const questions = await questionMapper.getQuestionsByDungeonId(dungeonId);
   const results = await Promise.allSettled(
     questions?.map((question) => mapQustionItem(question))
   );
-  res.json(results.map((result) => result.value));
+  res.json({
+    dungeonId,
+    dungeonName: dungeonsData[0].name_zh,
+    data: results.map((result) => result.value),
+  });
 }
 
 export async function queryUpdateUserQuestion(req, res) {
@@ -51,12 +63,72 @@ export async function queryUpdateUserQuestion(req, res) {
   } else {
     result = await userQuestionMapper.insert({
       id: userId,
-      wrong_list: wrongList.join(','),
-      done_list: doneList.join(','),
+      wrong_list: wrongList?.length ? wrongList.join(',') : null,
+      done_list: doneList?.length ? doneList.join(',') : null,
     });
   }
   res.json({
     isSuccess: result.changes,
     messgae: result.changes ? '更新成功' : '更新失败',
   });
+}
+
+export async function queryQuestionResult(req, res) {
+  const { dungeonId, userId } = req.body;
+  const data = await userQuestionMapper.getAllById(userId);
+  if (data) {
+    const { wrong_list, done_list } = data;
+    const doneQuestionsList = await questionMapper.getQuestionsByIds(
+      done_list?.split(',') ?? []
+    );
+    const filteredDoneList = doneQuestionsList.filter(
+      (item) => item.dungeon_id === dungeonId
+    );
+    const filteredWrongIds =
+      wrong_list
+        ?.split(',')
+        ?.filter((item) => filteredDoneList.includes(item)) ?? [];
+    res.json({
+      questions: filteredDoneList,
+      wrongIds: filteredWrongIds,
+    });
+  } else {
+    res.json({
+      questions: [],
+      wrongIds: [],
+    });
+  }
+}
+
+export async function queryQuestionDunegons(req, res) {
+  const { userId } = req.body;
+  const userData = await userQuestionMapper.getAllById(userId);
+  let completionData;
+  if (userData) {
+    const doneList = userData.done_list?.split(',').map((item) => Number(item));
+    const allQuestions = await questionMapper.getAllQuestions();
+    completionData = allQuestions.reduce((pre, cur) => {
+      if (pre[cur.dungeon_id]) {
+        pre[cur.dungeon_id].total++;
+      } else {
+        pre[cur.dungeon_id] = {
+          count: 0,
+          total: 1,
+        };
+      }
+
+      if (doneList.includes(cur.id)) {
+        pre[cur.dungeon_id].count++;
+      }
+      return pre;
+    }, {});
+  }
+
+  const data = await mDungeonQuestionCountMapper.getList();
+  const output = data.map((item) => ({
+    ...item,
+    doneQuestionCount: completionData?.[item.id]?.count,
+    totalQuestionCount: completionData?.[item.id]?.total,
+  }));
+  res.json(output);
 }

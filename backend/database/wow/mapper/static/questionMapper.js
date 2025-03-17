@@ -57,6 +57,10 @@ async function getQuestionsByIds(ids) {
   return [];
 }
 
+async function getAllQuestions() {
+  return db.all(`SELECT id, dungeon_id FROM ${TABLE_NAME}`);
+}
+
 export function useQuestionMapper(database) {
   if (database) {
     db = database;
@@ -68,6 +72,7 @@ export function useQuestionMapper(database) {
   return {
     insertQuestion,
     updateQuestion,
+    getAllQuestions,
     getQuestionsByIds,
     getQuestionByCondition,
     getQuestionsByDungeonId,

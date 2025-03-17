@@ -17,6 +17,7 @@
     <view class="dungeon-list">
       <view
         class="dungeon-list-item"
+        :class="[getCompletionTextClass(dungeon)]"
         v-for="dungeon in dungeons"
         :key="dungeon.id"
       >
@@ -29,7 +30,12 @@
         <view class="info">
           <view class="name">{{ dungeon.name }}</view>
           <view class="completion"
-            ><text>0/10</text> <text class="completion-suffix">题</text></view
+            ><text class="completion-prefix"
+              >{{ dungeon.doneQuestionCount }}/{{
+                dungeon.totalQuestionCount
+              }}</text
+            >
+            <text class="completion-suffix">题</text></view
           >
           <view class="access">
             <uni-icons type="eye-filled" color="#bbb" size="20"></uni-icons>
@@ -42,12 +48,12 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 
-import { queryQuestionDungeons } from '@/api/wow';
+import { IQuestionDungeon, queryQuestionDungeons } from '@/api/wow';
 
-const dungeons = ref<any>([]);
+const dungeons = ref<IQuestionDungeon[]>();
 onLoad(async () => {
   dungeons.value = await queryQuestionDungeons();
 });
@@ -58,6 +64,19 @@ function switchMenu(name: string) {
     currentMenu.value = name;
   }
 }
+
+//#region 文本、样式
+const getCompletionTextClass = computed(() => (dungeon: IQuestionDungeon) => {
+  if (dungeon.doneQuestionCount === 0) {
+    return 'zero-completion';
+  }
+  if (dungeon.doneQuestionCount < dungeon.totalQuestionCount) {
+    return 'half-completion';
+  }
+  return 'done-completion';
+});
+
+//#endregion
 </script>
 
 <style lang="scss" scoped>
@@ -111,16 +130,6 @@ $list-item-width: 47vw;
       border-radius: 20rpx;
       width: $list-item-width;
       position: relative;
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgb(0 0 0 / 36%);
-        z-index: 1;
-      }
     }
     .info {
       position: absolute;
@@ -157,6 +166,36 @@ $list-item-width: 47vw;
         color: #bbb;
         display: flex;
         align-items: center;
+      }
+    }
+  }
+  .zero-completion {
+    .completion-prefix {
+      color: $uni-color-error;
+    }
+  }
+  .half-completion {
+    .completion-prefix {
+      color: $color-legend;
+    }
+  }
+  .done-completion {
+    .completion-prefix {
+      color: $color-uncommon;
+    }
+  }
+  .zero-completion,
+  .half-completion {
+    image {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(0 0 0 / 40%);
+        z-index: 1;
       }
     }
   }
