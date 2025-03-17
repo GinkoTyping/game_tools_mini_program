@@ -70,10 +70,17 @@ function toQuestionDungeon(dungeonId) {
   });
 }
 
-// 大秘境问卷
+// 大秘境问卷结果
 function toQuestionResult(dungeonId) {
   uni.navigateTo({
     url: `/pages/question/result?dungeonId=${dungeonId}`,
+  });
+}
+
+// 大秘境问卷首页
+function toQuestionIndex() {
+  uni.navigateTo({
+    url: `/pages/question/index`,
   });
 }
 
@@ -96,5 +103,6 @@ export function useNavigator() {
     toRaidGuide,
     toQuestionDungeon,
     toQuestionResult,
+    toQuestionIndex,
   };
 }

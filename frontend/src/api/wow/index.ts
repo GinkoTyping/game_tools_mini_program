@@ -593,8 +593,9 @@ export async function queryQuestions(params) {
     url: `/wow/question/list`,
     method: 'POST',
     data: {
-      dungeonId: params.dungeonId,
       userId,
+      dungeonId: params.dungeonId,
+      showAvgCorrect: params.showAvgCorrect,
     },
   });
   if (res.data?.data) {

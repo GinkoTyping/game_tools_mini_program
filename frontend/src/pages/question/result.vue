@@ -6,14 +6,16 @@
     align="center"
   ></uni-title>
   <view class="score-container animate__animated animate__fadeIn">
-    <view>{{ scoreDisplay.desc }}</view>
+    <view class="score-desc">{{ scoreDisplay.desc }}</view>
     <uni-title
       type="h2"
-      :title="`正确率：${correctRate}%`"
+      :title="`正确率：${correctRate}%(${diffCorrect}平均)`"
       :color="scoreDisplay.color"
       align="center"
-    ></uni-title>
-    <view class="score-text" :class="[scoreDisplay.color]"> </view>
+    >
+      <view class="score-avg">平均： {{ avgCorrect }}%</view>
+    </uni-title>
+
     <view class="question-icons">
       <uni-icons
         :color="item.isRight ? 'rgb(29, 245, 1)' : '#d32121'"
@@ -118,10 +120,23 @@ const wrongList = computed(() =>
   questionList.value.filter(item => item.isRight === 0)
 );
 const dungeon = reactive({ id: -1, name: '' });
+const avgCorrect = ref(0);
+const diffCorrect = computed(() => {
+  const diff = Number(correctRate.value) - avgCorrect.value;
+  const absDiff = Math.abs(diff);
+  if (diff === 0) {
+    return `恰好`;
+  }
+  return diff ? `↑${absDiff}%` : `↓${absDiff}%`;
+});
 onLoad(async options => {
   dungeon.id = options?.dungeonId ?? 500;
-  const responseData = await queryQuestions({ dungeonId: dungeon.id });
+  const responseData = await queryQuestions({
+    dungeonId: dungeon.id,
+    showAvgCorrect: true,
+  });
   dungeon.name = responseData.dungeonName;
+  avgCorrect.value = Number(responseData.avgCorrect);
   questionList.value = responseData.data;
 });
 //#endregion
@@ -192,22 +207,11 @@ function toMythicDetailPage(item: IQuestionItem) {
   flex-direction: column;
   align-items: center;
   color: #fff;
-  .score-text {
-    font-size: 60rpx;
-    font-weight: bold;
-    display: flex;
-    align-items: flex-end;
-    .score-text--suffix {
-      font-size: 30rpx;
-    }
-  }
-  .score-label {
-    color: #bbb;
-    font-size: 26rpx;
-  }
-  .score-label-tip {
-    color: $uni-color-primary;
+  .score-desc {
     font-size: 32rpx;
+  }
+  .score-avg {
+    font-size: 26rpx;
   }
 }
 ::v-deep .uni-list {
