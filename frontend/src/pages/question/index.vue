@@ -1,5 +1,5 @@
 <template>
-  <view class="rank-menu">
+  <!-- <view class="rank-menu">
     <view
       class="rank-menu-item"
       :class="[currentMenu === 'question' ? 'rank-menu-item--active' : '']"
@@ -12,7 +12,7 @@
       @click="() => switchMenu('popular')"
       >我的收藏</view
     >
-  </view>
+  </view> -->
   <view class="container">
     <view class="dungeon-list">
       <view
@@ -62,8 +62,8 @@ import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 
 onShareAppMessage(() => ({
-  title: "大秘境做题家",
-  path: "pages/question/index"
+  title: '大秘境做题家',
+  path: 'pages/question/index',
 }));
 
 const navigator = useNavigator();
