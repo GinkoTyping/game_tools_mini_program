@@ -395,6 +395,7 @@ export interface IHomeViewDTO {
     role_class: string;
     class_spec: string;
     avg: string;
+    custom: boolean;
   }[];
   hotTopics: { role_class: string; class_spec: string; count: number }[];
   tierLists: { version_id: string; role: string; activity_type: string }[];
@@ -592,12 +593,17 @@ export async function queryQuestions(params) {
       dungeonId: params.dungeonId,
     },
   });
-
-  return res.data.map(item => ({
-    ...item,
-    isRight: -1,
-    lastSelectedIndex: -1,
-  })) as IQuestionItem[];
+  if (res.data?.data) {
+    return {
+      ...res.data,
+      data: res.data.data.slice(0, 3).map(item => ({
+        ...item,
+        isRight: -1,
+        lastSelectedIndex: -1,
+      })) as IQuestionItem[],
+    };
+  }
+  return {};
 }
 export async function queryUpdateUserQuestion(params) {
   const res: any = await proxyRequest({
@@ -607,6 +613,13 @@ export async function queryUpdateUserQuestion(params) {
       questionList: params.questionList,
       userId: uni.getStorageSync('userId'),
     },
+  });
+  return res.data;
+}
+export async function queryQuestionDungeons() {
+  const res: any = await proxyRequest({
+    url: `/wow/question/dungeon-list`,
+    method: 'POST',
   });
   return res.data;
 }
