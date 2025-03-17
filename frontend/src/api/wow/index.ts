@@ -3,8 +3,10 @@ import { mapTrinks } from '@/data/mapSpecData';
 import { proxyRequest } from '../config';
 import colorMap from '@/utils/color-map';
 import localeName from '@/data/zh.json';
+import { useAuth } from '@/hooks/auth';
 
 const localeNameMap: any = localeName;
+const auth = useAuth();
 
 enum BisType {
   Overall = 0,
@@ -547,7 +549,7 @@ export async function queryUpdateMarkStatus(params: {
 }
 
 export async function queryUserMarks() {
-  const userId = uni.getStorageSync('userId');
+  const { userId } = await auth.getUserInfo();
   try {
     const res: any = await proxyRequest({
       url: `/wow/mark/${userId}`,
@@ -606,12 +608,13 @@ export async function queryQuestions(params) {
   return {};
 }
 export async function queryUpdateUserQuestion(params) {
+  const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
     url: `/wow/question/update-user-question`,
     method: 'POST',
     data: {
       questionList: params.questionList,
-      userId: uni.getStorageSync('userId'),
+      userId,
     },
   });
   return res.data;
@@ -624,11 +627,12 @@ export interface IQuestionDungeon {
   totalQuestionCount: number;
 }
 export async function queryQuestionDungeons() {
+  const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
     url: `/wow/question/dungeon-list`,
     method: 'POST',
     data: {
-      userId: uni.getStorageSync('userId'),
+      userId,
     },
   });
   return res.data as IQuestionDungeon[];
