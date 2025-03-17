@@ -43,7 +43,7 @@
     <uni-list :class="[isShowReason ? 'show-reason' : '']">
       <uni-list-item
         v-for="(option, index) in currentQuestion?.question_text.options"
-        :key="option.value"
+        :key="option.text"
         clickable
         @click="selectOption(option.value)"
         :class="[
@@ -60,7 +60,7 @@
             <text class="slot-body-option">{{ option.text }}</text>
             <rich-text
               class="slot-body-reason"
-              v-show="isAnswerOption(option.value) && isShowReason"
+              v-if="isAnswerOption(option.value) && isShowReason"
               :nodes="
                 renderTip(
                   `解析：${currentQuestion?.question_text.answer.text ?? ''}`,
@@ -216,6 +216,7 @@ function switchPage(isNext) {
   }
 }
 const navigator = useNavigator();
+let sendFinishSignal = false;
 const nextQuestion = async () => {
   if (
     questionList.value?.length &&
@@ -242,10 +243,15 @@ const nextQuestion = async () => {
       icon: 'success',
       mask: true,
     });
-    await queryUpdateUserQuestion({
-      questionList: questionList.value,
-    });
-    await queryFinishQuestionDungeon(dungeon.id);
+
+    // 避免用户从结果页 返回 到问题页时，重复调用统计接口
+    if (!sendFinishSignal) {
+      await queryUpdateUserQuestion({
+        questionList: questionList.value,
+      });
+      await queryFinishQuestionDungeon(dungeon.id);
+      sendFinishSignal = true;
+    }
     navigator.toQuestionResult(dungeon.id);
   }
 };
