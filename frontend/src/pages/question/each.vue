@@ -128,7 +128,7 @@ onShareAppMessage(() => ({
 
 // 用户返回前一个页面时，保存当前题目的数据
 onUnload(async () => {
-  if (!sendFinishSignal) {
+  if (!sendFinishSignal && !dungeon.isRetry) {
     await queryUpdateUserQuestion({
       questionList: questionList.value,
     });
@@ -168,7 +168,7 @@ const optionBtnIcon = computed(() => (value: number) => {
 const currentIndex = ref(0);
 const currentQuestion = ref<IQuestionItem>();
 const questionList = ref<IQuestionItem[]>();
-const dungeon = reactive({ id: -1, name: '' });
+const dungeon = reactive({ id: -1, name: '', isRetry: false });
 function setStartQuestion() {
   // 考虑到用户可能做了一部分，从第一个用户未答的题目开始
   currentIndex.value =
@@ -183,7 +183,12 @@ function setStartQuestion() {
 }
 onLoad(async options => {
   dungeon.id = options?.dungeonId ?? 500;
-  const responseData = await queryQuestions({ dungeonId: dungeon.id });
+  dungeon.isRetry = options?.isRetry ? JSON.parse(options?.isRetry) : false;
+
+  const responseData = await queryQuestions({
+    dungeonId: dungeon.id,
+    setDefault: dungeon.isRetry,
+  });
   questionList.value = responseData.data;
   dungeon.name = responseData.dungeonName;
   uni.setNavigationBarTitle({

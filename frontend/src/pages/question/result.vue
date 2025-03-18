@@ -25,6 +25,14 @@
         :key="item.id"
       ></uni-icons>
     </view>
+
+    <view
+      class="retry"
+      @click="() => navigator.toQuestionDungeon(dungeon.id, true)"
+    >
+      <view>🎲重答一遍？</view>
+      <view>点我<text>「/reload」</text></view>
+    </view>
   </view>
 
   <view class="question-overview">
@@ -214,6 +222,17 @@ function toMythicDetailPage(item: IQuestionItem) {
 
   .score-avg {
     font-size: 26rpx;
+  }
+  .retry {
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    text {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      color: $uni-color-primary;
+    }
   }
 }
 

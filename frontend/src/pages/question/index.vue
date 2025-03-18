@@ -13,6 +13,13 @@
       >我的收藏</view
     >
   </view> -->
+  <uni-notice-bar
+    single
+    show-icon
+    color="#2979FF"
+    background-color="#EAF2FF"
+    text="点击结果页面'/reload'📜可重新挑战！"
+  />
   <view class="container">
     <view class="dungeon-list">
       <view

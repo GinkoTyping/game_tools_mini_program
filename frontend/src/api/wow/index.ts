@@ -407,6 +407,7 @@ export interface IHomeViewDTO {
     page: string;
     value: string;
     icon: string;
+    color: string;
   }[];
   mythicMarkCount: number;
 }
@@ -587,7 +588,11 @@ export interface IQuestionItem {
     answer: { value: number; text: string };
   };
 }
-export async function queryQuestions(params) {
+export async function queryQuestions(params: {
+  dungeonId: number;
+  showAvgCorrect?: boolean;
+  setDefault: number;
+}) {
   const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
     url: `/wow/question/list`,
@@ -603,6 +608,7 @@ export async function queryQuestions(params) {
       ...res.data,
       data: res.data.data.map(item => ({
         ...item,
+        isRight: params.setDefault ? -1 : item.isRight,
         lastSelectedIndex: -1,
       })) as IQuestionItem[],
     };
