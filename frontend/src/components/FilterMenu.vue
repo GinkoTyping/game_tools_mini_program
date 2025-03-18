@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType, ref, watch } from 'vue';
+import { PropType, watch } from 'vue';
 
 interface Idata {
   title: string;
@@ -25,13 +25,13 @@ const data = defineModel('data', {
 
 //#region 选择按钮
 const emits = defineEmits(['change']);
-const activeMenu = ref<string | number>();
+const activeMenu = defineModel('value');
 watch(
   data,
   value => {
-    console.log({ value });
-
-    activeMenu.value = data.value?.list[0]?.value;
+    if (data.value?.list[0]?.value) {
+      activeMenu.value = data.value.list[0].value;
+    }
   },
   {
     immediate: true,
@@ -39,8 +39,8 @@ watch(
 );
 function switchMenu(value: number | string) {
   console.log(value);
-  
-  if (activeMenu.value !== value) {
+
+  if (value && activeMenu.value !== value) {
     activeMenu.value = value;
     emits('change', value);
   }

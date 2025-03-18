@@ -1,17 +1,22 @@
 <template>
+  <FilterMenu v-model:data="menus" @change="onSwitchOrder" />
   <uni-collapse ref="collapse" accordion>
-    <template v-for="item in trendData" :key="item.role_class">
+    <template v-for="item in displayData" :key="item.role_class">
       <ad-custom v-if="item.isAd" unit-id="adunit-84c43763a4fcb5e9"></ad-custom>
-
       <uni-collapse-item v-else>
         <template v-slot:title>
-          <view :class="[item.role_class, 'menu-title']">
-            <text>{{ localeLabels.class[item.role_class] }}</text>
-            <image
-              v-for="(fire, index) in item.fires"
-              :key="index"
-              src="/static/icon/fire.svg"
-            ></image>
+          <view class="slot-title">
+            <view :class="[item.role_class, 'menu-title']">
+              <text>{{ localeLabels.class[item.role_class] }}</text>
+              <image
+                v-for="(fire, index) in item.fires"
+                :key="index"
+                src="/static/icon/fire.svg"
+              ></image>
+            </view>
+            <view class="update-label"
+              >更新于：{{ getDateLable(item.updated_at) }}</view
+            >
           </view>
         </template>
         <view
@@ -41,6 +46,9 @@
           <text v-show="specItem.access_count" class="access-count-spec">{{
             specItem.access_count
           }}</text>
+          <text class="spec-update-at"
+            >更新于：{{ getDateLable(specItem.updated_at) }}</text
+          >
         </view>
       </uni-collapse-item>
     </template>
@@ -64,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { onLoad, onShow, onShareAppMessage } from '@dcloudio/uni-app';
 
 import '@/static/css/index.scss';
@@ -73,6 +81,7 @@ import labels from '@/data/zh.json';
 import { queryTrend } from '@/api/wow';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
+import FilterMenu from '@/components/FilterMenu.vue';
 
 onShareAppMessage(() => ({
   title: '全专精攻略',
@@ -85,41 +94,75 @@ onLoad(async () => {});
 onShow(async () => {
   const data: any = await queryTrend();
   trendData.value = data.trend;
-  trendData.value.splice(10, 0, { isAd: true, role_class: 'ad' });
+  displayData.value = getSortData();
 
   spriteConfig.value = data.sprite;
 });
 
-// TODO: 选择最多的3个; 规避审核时展示图标
+//#region 切换排序
+const menus = ref({
+  title: '过滤',
+  list: [
+    {
+      label: '热度排序',
+      value: 'popularity',
+    },
+    {
+      label: '更新时间排序',
+      value: 'latest',
+    },
+  ],
+});
+const currentMenu = ref('popularity');
+const displayData = ref<any>([]);
+function getSortData() {
+  const clone = JSON.parse(JSON.stringify(trendData.value));
+  let output;
+  if (currentMenu.value === 'popularity') {
+    output = clone.sort((a, b) => b.access_count - a.access_count);
+  } else {
+    output = clone.sort(
+      (a, b) =>
+        new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+    );
+  }
+  output.splice(8, 0, { isAd: true, role_class: 'ad' });
+  return output;
+}
+function onSwitchOrder(order) {
+  if (currentMenu.value !== order) {
+    currentMenu.value = order;
+    displayData.value = getSortData();
+  }
+}
+//#endregion
+
 const trendData = ref<any>([]);
 const spriteConfig = ref<any>({});
-const accessCount = ref<any>();
-const popoverClass = ref(['popup-container', 'animate__animated']);
-function setAccessPopoverCountdown() {
-  // 数据异常时，避免展示错误界面
-  if (accessCount.value === -1) {
-    popoverClass.value.push('disabled');
-    return;
-  }
-
-  if (!popoverClass.value.includes('animate__fadeInUp')) {
-    popoverClass.value.push('animate__fadeInUp');
-  }
-  let timer: any = setTimeout(() => {
-    if (popoverClass.value.includes('animate__fadeInUp')) {
-      popoverClass.value.pop();
-      popoverClass.value.push('animate__fadeOut');
-    }
-    timer = null;
-  }, 5000);
-}
-
 const localeLabels = labels as ILocaleLabels;
 
 const navigator = useNavigator();
 function onClickSpec(classKey: string, specKey: string) {
   navigator.toSpecDetail(classKey, specKey);
 }
+
+//#region 文本样式
+const DAY_TIME = 24 * 60 * 60 * 1000;
+const getDateLable = computed(() => {
+  return (date: string) => {
+    if (date) {
+      const diff = Math.abs(new Date(date).getTime() - Date.now());
+      if (diff < DAY_TIME * 2) {
+        return '昨天';
+      }
+      if (diff < DAY_TIME * 3) {
+        return '前天';
+      }
+      return date.slice(5);
+    }
+  };
+});
+//#endregion
 </script>
 
 <style lang="scss" scoped>
@@ -127,15 +170,25 @@ function onClickSpec(classKey: string, specKey: string) {
   color: rgb(97, 97, 97);
   width: 30px;
 }
-.menu-title {
+
+.slot-title {
   display: flex;
-  align-items: center;
-  image {
-    margin-left: 4px;
-    width: 20px;
-    height: 20px;
+  justify-content: space-between;
+  .menu-title {
+    display: flex;
+    align-items: center;
+    image {
+      margin-left: 4px;
+      width: 20px;
+      height: 20px;
+    }
   }
 }
+.update-label {
+  color: #bbb;
+  font-size: 12px;
+}
+
 ::v-deep .uni-collapse {
   background-color: $uni-bg-color !important;
 }
@@ -163,6 +216,12 @@ function onClickSpec(classKey: string, specKey: string) {
       position: relative;
       display: flex;
       align-items: center;
+      .spec-update-at {
+        position: absolute;
+        right: 30px;
+        font-size: 12px;
+        color: #bbb;
+      }
       uni-icons {
         height: 40px;
         margin-left: 4px;
