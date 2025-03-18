@@ -39,7 +39,11 @@
           >
           <view class="access">
             <uni-icons type="eye-filled" color="#fff" size="20"></uni-icons>
-            <view>{{ dungeon.count }}</view>
+            <view class="access-num">{{ dungeon.count }}</view>
+          </view>
+          <view class="avg">
+            <view>平均正确率：</view>
+            <view class="avg-num">{{ dungeon.avgCorrect }}%</view>
           </view>
         </view>
       </view>
@@ -174,7 +178,7 @@ $list-item-width: 47vw;
       .completion {
         color: #fff;
         font-size: 16px;
-        font-weight: bold;
+        font-weight: bolder;
         margin-top: 10rpx;
         margin-bottom: 10rpx;
         display: flex;
@@ -185,10 +189,24 @@ $list-item-width: 47vw;
           font-weight: normal;
         }
       }
-      .access {
+      .access,
+      .avg {
         color: #fff;
         display: flex;
         align-items: center;
+        .access-num {
+          font-size: 30rpx;
+          font-weight: bold;
+          margin-left: 6rpx;
+        }
+      }
+      .avg {
+        font-size: 20rpx;
+        color: $uni-text-color-inverse;
+        .avg-num {
+          font-weight: bold;
+          text-decoration: underline;
+        }
       }
     }
   }

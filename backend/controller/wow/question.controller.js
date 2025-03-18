@@ -6,6 +6,7 @@ import { useUserQuestionMapper } from '../../database/wow/mapper/dynamic/userQue
 import { updateStringList } from '../../util/stringListHandler.js';
 import { useMythicDungeonQuestionCountMapper } from '../../database/wow/mapper/mythicDungeonQuestionCount.mapper.js';
 import { updateMarkStatus } from './npcAndSpellMarkController.js';
+import { useScheduleCheck } from '../../util/use-schedule-check.js';
 
 const db = await getDB();
 const questionMapper = useQuestionMapper(db);
@@ -50,7 +51,10 @@ async function getQuestionCorrectRatingByDungeon(dungeonId) {
     },
     { wrongCount: 0, totalCount: 0 }
   );
-  return ((1 - wrongCount / totalCount) * 100).toFixed(2);
+  return {
+    dungeonId,
+    rating: ((1 - wrongCount / totalCount) * 100).toFixed(2),
+  };
 }
 export async function queryQuestionByDungeon(req, res) {
   const { dungeonId, userId, showAvgCorrect } = req.body;
@@ -78,7 +82,8 @@ export async function queryQuestionByDungeon(req, res) {
   );
   let avgCorrectPercentage;
   if (showAvgCorrect) {
-    avgCorrectPercentage = await getQuestionCorrectRatingByDungeon(dungeonId);
+    const ratingData = await getQuestionCorrectRatingByDungeon(dungeonId);
+    avgCorrectPercentage = ratingData.rating;
   }
   res.json({
     dungeonId,
@@ -88,7 +93,6 @@ export async function queryQuestionByDungeon(req, res) {
   });
 }
 
-// TODO mark错误的问题 03-18
 async function syncUpdateTipMark(userId, questionList) {
   function syncUpdateItem(userId, question) {
     const params = {
@@ -156,6 +160,9 @@ export async function queryFinishQuestionByDungeon(req, res) {
   res.json({ message: data.changes ? '更新成功' : '更新失败' });
 }
 
+const UPDATE_INTERVAL_HOUR = 1;
+const questionDungeonsSchedule = useScheduleCheck(UPDATE_INTERVAL_HOUR);
+let correctRatingCache = {};
 export async function queryQuestionDunegons(req, res) {
   const { userId } = req.body;
   const userData = await userQuestionMapper.getAllById(userId);
@@ -178,10 +185,23 @@ export async function queryQuestionDunegons(req, res) {
   }, {});
 
   const data = await dqCountMapper.getList();
+
+  if (questionDungeonsSchedule.isSchedule()) {
+    const ratingResults = await Promise.allSettled(
+      data.map((item) => getQuestionCorrectRatingByDungeon(item.id))
+    );
+    correctRatingCache = ratingResults.reduce((pre, cur) => {
+      pre[cur.value.dungeonId] = cur.value.rating;
+      return pre;
+    }, {});
+    questionDungeonsSchedule.setLastUpdate();
+  }
+
   const output = data.map((item) => ({
     ...item,
+    avgCorrect: correctRatingCache[item.id],
     doneQuestionCount: completionData?.[item.id]?.count,
     totalQuestionCount: completionData?.[item.id]?.total,
-  }));
+  })).sort((a, b) => Number(a.avgCorrect) - Number(b.avgCorrect));
   res.json(output);
 }

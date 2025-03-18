@@ -82,7 +82,7 @@
         :class="[entry.feature ? 'entries-item--feature' : '']"
         :type="entry.icon"
         size="36"
-        color="#bbb"
+        :color="entry.color ?? '#bbb'"
       ></uni-icons>
       <view>{{ entry.label }}</view>
     </view>
