@@ -64,7 +64,7 @@ function toRaidGuide() {
 }
 
 // 大秘境问卷
-function toQuestionDungeon(dungeonId, isRetry?: boolean) {
+function toQuestionDungeon(dungeonId, isRetry: boolean = false) {
   uni.navigateTo({
     url: `/pages/question/each?dungeonId=${dungeonId}&isRetry=${isRetry}`,
   });
