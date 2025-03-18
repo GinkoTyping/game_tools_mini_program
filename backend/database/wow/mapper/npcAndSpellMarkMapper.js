@@ -52,9 +52,9 @@ async function updateNpcOrSpellMark(isNpc, isMark, userId, markId) {
   const data = await getNpcOrSpellCountByIds([markId], isNpc);
   let markList = data[0].mark_list?.split(',') ?? [];
   if (isMark) {
-    const isInclude = markList.some((item) => Number(item) === Number(markId));
+    const isInclude = markList.some((item) => Number(item) === Number(userId));
     if (!isInclude) {
-      markList.push(markId);
+      markList.push(userId);
     }
   } else {
     markList = markList.filter(
