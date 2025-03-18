@@ -1,4 +1,5 @@
 let db;
+const TABLE_NAME = 'wow_dynamic_user_mark';
 
 async function addUser(id) {
   return db.run(`INSERT INTO wow_dynamic_user_mark(id) VALUES(?1)`, [id]);
@@ -49,6 +50,10 @@ async function updateUserMark(isNpc, isMark, userId, markId) {
   );
 }
 
+async function getAllList() {
+  return db.all(`SELECT * FROM ${TABLE_NAME}`);
+}
+
 export function useUserMarkMapper(database) {
   if (database) {
     db = database;
@@ -57,5 +62,5 @@ export function useUserMarkMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { getUserMarkById, updateUserMark };
+  return { getUserMarkById, updateUserMark, getAllList };
 }
