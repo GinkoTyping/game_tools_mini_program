@@ -633,6 +633,7 @@ export interface IQuestionDungeon {
   count: number;
   doneQuestionCount: number;
   totalQuestionCount: number;
+  avgCorrect: string;
 }
 export async function queryQuestionDungeons() {
   const { userId } = await auth.getUserInfo();

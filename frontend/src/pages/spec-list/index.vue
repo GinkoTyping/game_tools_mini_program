@@ -1,5 +1,7 @@
 <template>
-  <FilterMenu v-model:data="menus" @change="onSwitchOrder" />
+  <view class="header">
+    <FilterMenu v-model:data="menus" align="center" @change="onSwitchOrder"/>
+  </view>
   <uni-collapse ref="collapse" accordion>
     <template v-for="item in displayData" :key="item.role_class">
       <ad-custom v-if="item.isAd" unit-id="adunit-84c43763a4fcb5e9"></ad-custom>
@@ -101,7 +103,7 @@ onShow(async () => {
 
 //#region 切换排序
 const menus = ref({
-  title: '过滤',
+  title: '排序',
   list: [
     {
       label: '热度排序',
@@ -166,6 +168,9 @@ const getDateLable = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+.header {
+  margin:0 32px;
+}
 .access-count-spec {
   color: rgb(97, 97, 97);
   width: 30px;

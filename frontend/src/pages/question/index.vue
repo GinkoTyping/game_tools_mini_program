@@ -20,7 +20,9 @@
     background-color="#EAF2FF"
     text="点击结果页面'/reload'📜可重新挑战！"
   />
+
   <view class="container">
+    <FilterMenu v-model:data="questionSort" @change="switchMenu"/>
     <view class="dungeon-list">
       <view
         class="dungeon-list-item"
@@ -71,6 +73,7 @@ import { onShareAppMessage, onShow } from '@dcloudio/uni-app';
 import { IQuestionDungeon, queryQuestionDungeons } from '@/api/wow';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
+import FilterMenu from '@/components/FilterMenu.vue';
 
 onShareAppMessage(() => ({
   title: '冲层如渡劫，题库是攻略！',
@@ -81,12 +84,36 @@ const navigator = useNavigator();
 const dungeons = ref<IQuestionDungeon[]>();
 onShow(async () => {
   dungeons.value = await queryQuestionDungeons();
+  sortDungeon();
 });
 
-const currentMenu = ref('question');
+const questionSort = ref({
+  title: '排序',
+  list: [
+    {
+      label: '热度排序',
+      value: 'popularity',
+    },
+    {
+      label: '正确率',
+      value: 'correct',
+    },
+  ],
+});
+function sortDungeon() {
+  if (currentMenu.value === 'popularity') {
+    dungeons.value = dungeons.value?.sort((a, b) => b.count - a.count);
+  } else {
+    dungeons.value = dungeons.value?.sort(
+      (a, b) => Number(a.avgCorrect) - Number(b.avgCorrect)
+    );
+  }
+}
+const currentMenu = ref('popularity');
 function switchMenu(name: string) {
   if (currentMenu.value !== name) {
     currentMenu.value = name;
+    sortDungeon();
   }
 }
 

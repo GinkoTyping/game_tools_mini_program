@@ -1,5 +1,5 @@
 <template>
-  <view class="filter-menus">
+  <view class="filter-menus" :style="{ justifyContent: props.align }">
     <view
       class="menu"
       :class="[activeMenu === menu.value ? 'menu--active' : '']"
@@ -14,6 +14,13 @@
 
 <script lang="ts" setup>
 import { PropType, watch } from 'vue';
+
+const props = defineProps({
+  align: {
+    type: String,
+    default: 'flex-start',
+  },
+});
 
 interface Idata {
   title: string;
@@ -50,7 +57,7 @@ function switchMenu(value: number | string) {
 
 <style lang="scss" scoped>
 .filter-menus {
-  margin: 20rpx 4vw;
+  margin: 20rpx 0;
   display: flex;
   .menu {
     display: flex;
