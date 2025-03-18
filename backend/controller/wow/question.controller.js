@@ -118,13 +118,14 @@ async function syncUpdateTipMark(userId, questionList) {
   return results;
 }
 export async function queryUpdateUserQuestion(req, res) {
-  const { questionList, userId } = req.body;
-  const wrongList = questionList
-    .filter((item) => item.isRight === 0)
-    .map((item) => item.id);
-  const doneList = questionList
-    .filter((item) => item.isRight !== -1)
-    .map((item) => item.id);
+  const { questionList = [], userId } = req.body;
+  const wrongList =
+    questionList?.filter((item) => item.isRight === 0).map((item) => item.id) ??
+    [];
+  const doneList =
+    questionList
+      ?.filter((item) => item.isRight !== -1)
+      .map((item) => item.id) ?? [];
 
   const existed = await userQuestionMapper.getAllById(userId);
   let result;
@@ -145,7 +146,7 @@ export async function queryUpdateUserQuestion(req, res) {
   // 把错题 同步更新到用户的 mark 记录里
   await syncUpdateTipMark(
     userId,
-    questionList.filter((item) => item.isRight === 0)
+    questionList?.filter((item) => item.isRight === 0)
   );
 
   res.json({
@@ -197,11 +198,13 @@ export async function queryQuestionDunegons(req, res) {
     questionDungeonsSchedule.setLastUpdate();
   }
 
-  const output = data.map((item) => ({
-    ...item,
-    avgCorrect: correctRatingCache[item.id],
-    doneQuestionCount: completionData?.[item.id]?.count,
-    totalQuestionCount: completionData?.[item.id]?.total,
-  })).sort((a, b) => Number(a.avgCorrect) - Number(b.avgCorrect));
+  const output = data
+    .map((item) => ({
+      ...item,
+      avgCorrect: correctRatingCache[item.id],
+      doneQuestionCount: completionData?.[item.id]?.count,
+      totalQuestionCount: completionData?.[item.id]?.total,
+    }))
+    .sort((a, b) => Number(a.avgCorrect) - Number(b.avgCorrect));
   res.json(output);
 }
