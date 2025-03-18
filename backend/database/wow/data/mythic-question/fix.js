@@ -42,7 +42,7 @@ async function main() {
       const value = await updateNpcSpellMark(userMarkItem);
       status = 'fulfilled';
       results.push({ status: 'fulfilled', value });
-    } catch (error) {
+    } catch (reason) {
       status = 'rejected';
       results.push({ status: 'rejected', reason });
     } finally {
