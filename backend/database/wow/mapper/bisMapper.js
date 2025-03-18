@@ -1,4 +1,5 @@
 let db;
+const TABLE_NAME = 'wow_bis';
 
 async function getBisByClassAndSpec(roleClass, classSpec) {
   return db.get(`SELECT * FROM wow_bis WHERE role_class=?1 AND class_spec=?2`, [
@@ -125,6 +126,10 @@ async function getAllBis() {
   `);
 }
 
+async function getAllBisDateInfo() {
+  return db.all(`SELECT role_class, class_spec, updated_at FROM ${TABLE_NAME}`);
+}
+
 export function useBisMapper(database) {
   if (database) {
     db = database;
@@ -136,6 +141,7 @@ export function useBisMapper(database) {
   return {
     getBisByClassAndSpec,
     getAllBis,
+    getAllBisDateInfo,
     updateBisByClassAndSpec,
     insertBis,
   };

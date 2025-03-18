@@ -133,55 +133,38 @@ async function mapBisItems(bisItems) {
   return bisItemResult.map((item) => item.value);
 }
 
-export async function getSortedBisTrend() {
-  const data = await bisMapper.getAllBis();
-  return data
-    .reduce((pre, cur) => {
-      const found = pre.find((item) => item.role_class === cur.role_class);
-
-      if (found) {
-        found.access_count += cur.access_count;
-        found.specs.push({
-          class_spec: cur.class_spec,
-          access_count: cur.access_count,
-        });
-      } else {
-        pre.push({
-          role_class: cur.role_class,
-          access_count: cur.access_count,
-          specs: [
-            { class_spec: cur.class_spec, access_count: cur.access_count },
-          ],
-        });
-      }
-
-      return pre;
-    }, [])
-    .sort((a, b) => b.access_count - a.access_count);
-}
-
-export async function getSortedSpecsTrend() {
-  const data = await bisMapper.getAllBis();
-  return data.sort((a, b) => b.access_count - a.access_count);
-}
-
 export async function queryBisTrends(req, res) {
   const data = await specBisCountMapper.getAllSpecBisCount();
+  const updateInfo = await bisMapper.getAllBisDateInfo();
+  const updateMap = updateInfo.reduce((pre, cur) => {
+    if (pre[cur.role_class]) {
+      pre[cur.role_class][cur.class_spec] = cur.updated_at;
+    } else {
+      pre[cur.role_class] = { [cur.class_spec]: cur.updated_at };
+    }
+    return pre;
+  }, {});
   const mappedData = data
     .reduce((pre, cur) => {
       const found = pre.find((item) => item.role_class === cur.role_class);
-
+      const updated_at = updateMap[cur.role_class][cur.class_spec];
       if (found) {
         found.access_count += cur.count;
+        found.updated_at =
+          updated_at > found.updated_at ? updated_at : found.updated_at;
         found.specs.push({
           class_spec: cur.class_spec,
           access_count: cur.count,
+          updated_at,
         });
       } else {
         pre.push({
           role_class: cur.role_class,
           access_count: cur.count,
-          specs: [{ class_spec: cur.class_spec, access_count: cur.count }],
+          updated_at,
+          specs: [
+            { class_spec: cur.class_spec, access_count: cur.count, updated_at },
+          ],
         });
       }
 
