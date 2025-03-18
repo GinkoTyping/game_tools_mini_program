@@ -19,6 +19,9 @@
         <view class="collapse-title">
           <text class="collapse-title__tier">{{ item.tier }}</text>
           <text class="collapse-title__tier--suffix">级</text>
+          <text class="update-note" v-show="index === 0"
+            >({{ tierList.created_at }} 更新)</text
+          >
         </view>
       </template>
       <view class="collapse-content">
@@ -249,6 +252,11 @@ function dialogClose() {
     font-size: large;
     margin-right: 0.2rem;
     display: block;
+  }
+  .update-note {
+    font-size: small;
+    margin-left: 20rpx;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   }
 }
 $card-right-margin: 0.4rem;
