@@ -68,6 +68,7 @@ export async function queryHomeView(req, res) {
         icon: 'fire-filled',
         page: '/pages/spec-popularity/index',
         feature: true,
+        color: '#e37e00',
       },
       {
         label: '专精攻略',
