@@ -206,7 +206,7 @@
       >- 每周CD前两天，因为样本数较少，所以排名可能有波动。<text
         class="info-text--strong"
         >每4小时</text
-      >更新一次数据；</view
+      >更新一次数据（来源mythicstats）；</view
     >
     <view class="info-text" v-show="currentMenu === 'rank'"
       >- <text class="info-text--strong">每秒伤害</text> =
