@@ -31,7 +31,7 @@ function formateDate(dateString) {
 
 export async function querySpecDpsRank(req, res) {
   const weekCountMax = getWeekCount();
-  const weekId = req.body.weekId;
+  const weekId = Math.min(Number(req.body.weekId), weekCountMax);
   const isLatestWeek = weekId >= weekCountMax;
   let toUpdateLatestWeek = false;
   if (isLatestWeek) {
@@ -44,7 +44,7 @@ export async function querySpecDpsRank(req, res) {
 
   if (databaseData?.data) {
     if (toUpdateLatestWeek) {
-      output = await getSpecDpsRankData(weekId);
+      output = await getSpecDpsRankData(weekId, weekCountMax);
       await specStatMapper.updateSpecDpsRank({
         week_id: weekId,
         data: JSON.stringify(output),
@@ -57,7 +57,7 @@ export async function querySpecDpsRank(req, res) {
       };
     }
   } else {
-    output = await getSpecDpsRankData(weekId);
+    output = await getSpecDpsRankData(weekId, weekCountMax);
     await specStatMapper.insertSpecDpsRank({
       week_id: weekId,
       data: JSON.stringify(output),

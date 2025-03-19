@@ -8,10 +8,6 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const START_TIME = new Date('2025-03-05 8:00:00').getTime();
-function getWeekCount() {
-  return Math.ceil((Date.now() - START_TIME) / 3600 / 1000 / 24 / 7);
-}
 function getTableElements(context) {
   const $ = context;
   return $('.overflow-x-auto')
@@ -83,9 +79,8 @@ function collectTable(context, table, tableIndex) {
   };
 }
 
-export async function getSpecDpsRankData(week) {
+export async function getSpecDpsRankData(week, maxWeek) {
   try {
-    const maxWeek = getWeekCount();
     if (week > maxWeek) {
       throw new Error(`当前周数(${week})超出最大允许的值(${maxWeek})。`);
     }
