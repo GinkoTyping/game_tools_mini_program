@@ -7,7 +7,7 @@
     background-color="#EAF2FF"
     more-text="去看看"
     text="新增了专精附魔推荐"
-    @click="toHotSpot"
+    @click="() => toHotSpot()"
   />
   <view>
     <ShareIcon />
@@ -413,7 +413,7 @@
       :status="status"
     />
     <img
-      v-show="currentItem?.source && currentItem?.image && status !== 'loading'"
+      v-show="currentItem?.image && status !== 'loading'"
       lazy-load
       class="preview-image"
       :src="currentImageSrc(currentItem)"
@@ -780,6 +780,12 @@ const messageType = ref('success');
 const messageText = ref('默认文本');
 const currentImageSrc = computed(() => {
   return (item: any) => {
+    if (item?.type === 'item') {
+      return `https://ginkolearn.cyou/api/wow/assets/items/${item.image}`;
+    }
+    if (item?.type === 'spell') {
+      return `https://ginkolearn.cyou/api/wow/assets/spellIcon/${item.image}`;
+    }
     if (item?.image) {
       return `https://ginkolearn.cyou/api/wow/assets/${
         item?.source ? 'items' : 'trinkets'

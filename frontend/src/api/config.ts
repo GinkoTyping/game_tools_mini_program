@@ -1,5 +1,5 @@
-const BASE_URL = 'http://localhost:3000/api';
-// const BASE_URL = 'https://ginkolearn.cyou/api';
+// const BASE_URL = 'http://localhost:3000/api';
+const BASE_URL = 'https://ginkolearn.cyou/api';
 
 export const proxyRequest = (options: any) => {
   // 默认请求头
