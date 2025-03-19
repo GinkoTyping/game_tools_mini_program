@@ -107,6 +107,7 @@ export async function getBisBySpec(req, res) {
     ratings: JSON.parse(bisData.ratings),
     bis_trinkets: JSON.parse(bisData.bis_trinkets),
     talents: JSON.parse(bisData.talents),
+    enhancement: JSON.parse(bisData.enhancement),
   });
 }
 

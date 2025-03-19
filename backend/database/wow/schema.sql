@@ -43,6 +43,7 @@ CREATE TABLE
     talents TEXT,
     bis_items TEXT NOT NULL,
     bis_trinkets TEXT NOT NULL,
+    enhancement TEXT,
     access_count INTEGER DEFAULT 0,
     sort INTEGER DEFAULT 0,
     spec_sort INTEGER DEFAULT 0

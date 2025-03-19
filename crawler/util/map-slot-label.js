@@ -23,6 +23,7 @@ export function mapSlotLabel(key) {
     weapon: '武器',
     shield: '盾牌',
     ['main hand']: '主手',
+    ['mainhand']: '主手',
     ['main-hand']: '主手',
     ['off hand']: '副手',
     ['off-hand']: '副手',
