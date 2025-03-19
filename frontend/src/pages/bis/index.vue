@@ -1,4 +1,14 @@
 <template>
+  <uni-notice-bar
+    single
+    show-icon
+    show-get-more
+    color="#2979FF"
+    background-color="#EAF2FF"
+    more-text="去看看"
+    text="新增了专精附魔推荐"
+    @click="toHotSpot"
+  />
   <view>
     <ShareIcon />
   </view>
@@ -107,7 +117,7 @@
     </uni-card>
   </uni-section>
 
-  <uni-section class="bis" :class="[classKey]" title="天赋">
+  <uni-section class="talent" :class="[classKey]" title="天赋">
     <uni-card class="section-card">
       <view class="menu talent-menu">
         <text
@@ -164,19 +174,27 @@
 
   <ad-custom unit-id="adunit-43dfd4fbca02d516" class="ad-container"></ad-custom>
 
-  <uni-section class="talent" :class="[classKey]" title="BIS配装">
+  <uni-section class="bis" :class="[classKey]" title="BIS配装">
     <uni-card class="section-card">
-      <view class="menu">
-        <text
-          v-for="bis in currentData?.bisItems"
-          :key="bis.title"
-          @click="() => switchBisTable(bis.title)"
-          :class="[
-            classKey,
-            currentTableName === bis.title ? 'menu_active' : '',
-          ]"
-          >{{ bis.title }}</text
-        >
+      <view class="menu-container">
+        <view class="menu">
+          <text
+            v-for="bis in currentData?.bisItems"
+            :key="bis.title"
+            @click="() => switchBisTable(bis.title)"
+            :class="[
+              classKey,
+              currentTableName === bis.title ? 'menu_active' : '',
+            ]"
+            >{{ bis.title }}</text
+          >
+        </view>
+        <view class="to-enhancement" @click="toHotSpot">
+          <image
+            src="https://ginkolearn.cyou/api/wow/assets/items/463531.webp"
+          />
+          <text>查看附魔</text>
+        </view>
       </view>
 
       <uni-table ref="table" stripe emptyText="暂无更多数据">
@@ -248,7 +266,7 @@
     </uni-card>
   </uni-section>
 
-  <uni-section id="overview" :class="[classKey]" title="附魔推荐">
+  <uni-section id="enhancement" :class="[classKey]" title="附魔推荐">
     <uni-card class="section-card">
       <uni-table ref="table" stripe emptyText="暂无更多数据">
         <uni-tr>
@@ -942,7 +960,9 @@ const enhancementImage = computed(() => {
       : `https://ginkolearn.cyou/api/wow/assets/spellIcon/${item.image}`;
   };
 });
-
+function toHotSpot() {
+  uni.pageScrollTo({ selector: '#enhancement' });
+}
 //#endregion
 </script>
 
@@ -1227,6 +1247,24 @@ $light-border: rgb(68, 68, 68);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+  .to-enhancement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: $uni-text-color-inverse;
+    font-weight: bold;
+    margin-right: 6px;
+    image {
+      width: 20px;
+      height: 20px;
+      margin-right: 6px;
+    }
+  }
 }
 
 .stat-menu,
