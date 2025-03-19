@@ -68,14 +68,14 @@ export async function queryHomeView(req, res) {
         icon: 'fire-filled',
         page: '/pages/spec-popularity/index',
         feature: true,
-        color: '#e37e00',
       },
       {
         label: '专精攻略',
         value: 'rating',
         icon: 'map-filled',
         page: '/pages/spec-list/index',
-        feature: false,
+        feature: true,
+        color: '#e37e00',
       },
       {
         label: '做题家',
