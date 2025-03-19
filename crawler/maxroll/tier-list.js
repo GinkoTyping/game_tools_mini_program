@@ -21,7 +21,7 @@ async function collect(url) {
   let browser;
   try {
     let html;
-    const staticFilePath = `./cache/${url}.html`;
+    const staticFilePath = `./cache/tier-list/${url}.html`;
     if (fs.existsSync(path.resolve(__dirname, staticFilePath))) {
       html = fs.readFileSync(path.resolve(__dirname, staticFilePath), 'utf-8');
     } else {
@@ -147,7 +147,7 @@ function getTierList(context, url) {
 }
 
 function saveFile(data, fileName) {
-  const outputPath = path.resolve(__dirname, `./output/${fileName}.json`);
+  const outputPath = path.resolve(__dirname, `./output/tier-list/${fileName}.json`);
   const copyPath = path.resolve(
     __dirname,
     `../../backend/database/wow/data/tier-list/${fileName}.json`

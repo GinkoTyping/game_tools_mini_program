@@ -147,7 +147,7 @@ async function crawler() {
   console.log(errorSpecs.join(','));
 }
 
-const OUTPUT_FILE_PATH = './output/output.json';
+const OUTPUT_FILE_PATH = './output/bis/output.json';
 const BACKEND_OUTPUT_FILE_PATH = '../../backend/database/wow/data/maxroll.json';
 function saveFile(data, isOverrideAll = false) {
   const __filename = fileURLToPath(import.meta.url);
