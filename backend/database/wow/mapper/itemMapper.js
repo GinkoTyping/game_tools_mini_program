@@ -30,7 +30,7 @@ async function getItemByName(name) {
 
 async function updateItemById(itemData) {
   const { id, slot, item, source, itemIcon, preview } = itemData;
-  return db.get(
+  return db.run(
     `
     UPDATE wow_item
     SET

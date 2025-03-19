@@ -4,6 +4,11 @@ import { configDotenv } from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+// 设置公共的请求头
+axios.defaults.headers.common[
+  'Authorization'
+] = `Bearer ${process.env.LOCAL_TOKEN}`;
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 configDotenv({ path: path.resolve(__dirname, '../.env') });
@@ -51,6 +56,22 @@ export async function queryDungeon(name) {
 export async function queryItemById(id) {
   const res = await axios.get(
     `${process.env.DEV_URL}/api/wow/item/${Number(id)}`
+  );
+  return res.data;
+}
+
+export async function queryRegsiterItem(params) {
+  const res = await axios.post(
+    `${process.env.DEV_URL}/api/wow/item/add`,
+    params
+  );
+  return res.data;
+}
+
+export async function queryUpdateItem(params) {
+  const res = await axios.post(
+    `${process.env.DEV_URL}/api/wow/item/update`,
+    params
   );
   return res.data;
 }

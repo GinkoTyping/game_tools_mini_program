@@ -4,6 +4,7 @@ import {
   getItemPreviewById,
   queryBisTrends,
   queryBlankSourceItem,
+  queryRegisterItem,
   queryUpdateItem,
 } from '../../controller/wow/bisController.js';
 import {
@@ -23,6 +24,7 @@ router.get('/bis/popularity', queryPolularity);
 router.get('/item/blank-source', queryBlankSourceItem);
 router.get('/item/:id', getItemPreviewById);
 router.post('/item/update', validateAdmin, queryUpdateItem);
+router.post('/item/add', validateAdmin, queryRegisterItem);
 
 router.post('/bis/popularity', queryPolularityByCondition);
 router.post('/bis/dps-rank', querySpecDpsRank);

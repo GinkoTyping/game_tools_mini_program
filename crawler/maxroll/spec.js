@@ -7,7 +7,16 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import '../util/set-env.js';
-import { translate } from '../api/index.js';
+import {
+  queryAddSpell,
+  queryItemById,
+  queryRegsiterItem,
+  querySpellByIds,
+  queryUpdateItem,
+  translate,
+} from '../api/index.js';
+import { mapSlotLabel } from '../util/map-slot-label.js';
+import { downloadSingle } from '../util/download.js';
 
 const specs = {
   'death-knight': ['blood', 'frost', 'unholy'],
@@ -109,11 +118,21 @@ async function collectBySpec(roleClass, classSpec) {
     const dungeonTips = await getDungeonTips($);
     const talents = await getTalentCode($, page, roleClass, classSpec);
 
+    const consumables = await getConsumables($);
+
     if (!talents?.length) {
       console.log(`${classSpec} ${roleClass} 的天赋数据获取失败。`);
     }
 
-    return { roleClass, classSpec, stats, ratings, dungeonTips, talents };
+    return {
+      roleClass,
+      classSpec,
+      stats,
+      ratings,
+      dungeonTips,
+      talents,
+      consumables,
+    };
   } catch (error) {
     console.error(error);
   } finally {
@@ -152,7 +171,7 @@ const BACKEND_OUTPUT_FILE_PATH = '../../backend/database/wow/data/maxroll.json';
 function saveFile(data, isOverrideAll = false) {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-  const filePath = path.resolve(__dirname, './output/output.json');
+  const filePath = path.resolve(__dirname, OUTPUT_FILE_PATH);
   let dataToWrite;
   if (!fs.existsSync(filePath) || isOverrideAll) {
     dataToWrite = data;
@@ -673,5 +692,154 @@ async function getTalentCode(context, page, roleClass, classSpec) {
     selector: undefined,
   }));
 }
+
+//#region 宝石和附魔
+function getRawConsumable(context) {
+  const $ = context;
+  const reference = $('#enchantments-header');
+  let enhancementContainer = reference.next();
+  if (!enhancementContainer.find('figure').length) {
+    enhancementContainer = enhancementContainer.next();
+  }
+
+  const enhancementTable = enhancementContainer.find('figure table tbody');
+  const enhancementData = enhancementTable
+    .find('tr')
+    .map((index, ele) => {
+      const slot = mapSlotLabel($(ele).children('td').first().text());
+      const itemEle = $(ele).children('td').last();
+
+      let items;
+      const attrKey = itemEle.find('span[data-wow-item]').length
+        ? 'data-wow-item'
+        : 'data-wow-id';
+      items = itemEle
+        .find(`span[${attrKey}]`)
+        .map((index, spanEle) => {
+          const name = $(spanEle).text();
+          const id = Number($(spanEle).attr(attrKey).split(':').shift());
+          const backgroundImage = $(spanEle).find('.wow-icon').attr('style');
+          const imageSrc = /url\(\s*["']?(.*?)["']?\s*\)/gi.exec(
+            backgroundImage
+          )?.[1];
+          return {
+            id,
+            name,
+            type: attrKey === 'data-wow-item' ? 'item' : 'spell',
+            image: imageSrc.split('/').pop(),
+            imageSrc,
+          };
+        })
+        .get();
+
+      return {
+        slot,
+        items,
+      };
+    })
+    .get();
+
+  return enhancementData;
+}
+async function translateConsumable(consumable) {
+  async function searchItem(item) {
+    let output = { ...item };
+    if (item.type === 'item') {
+      const exsisted = await queryItemById(item.id);
+      if (exsisted) {
+        output = {
+          ...output,
+          name_zh: exsisted.name,
+        };
+        if (!exsisted.image) {
+          const updateResult = await queryUpdateItem({
+            id: item.id,
+            image: item.image,
+          });
+          console.log(updateResult);
+        }
+      } else {
+        const registerResult = await queryRegsiterItem({
+          id: item.id,
+          name: item.name,
+          slot: item.slot,
+          itemIcon: item.iamge,
+        });
+        console.log(
+          `注册物品${registerResult.changes ? '成功' : '失败'}：${item.id}, ${
+            item.name
+          }`
+        );
+      }
+    } else {
+      const exsisted = await querySpellByIds([item.id]);
+      if (exsisted[0]) {
+        output = {
+          ...output,
+          name_zh: exsisted[0].name_zh,
+        };
+      } else {
+        const registerResult = await queryAddSpell({
+          id: item.id,
+          name: item.name,
+        });
+        console.log(
+          `注册技能${registerResult.changes ? '成功' : '失败'}：${item.id}, ${
+            item.name
+          }`
+        );
+      }
+    }
+    return output;
+  }
+
+  const results = await Promise.allSettled(
+    consumable.items.map((item) => searchItem(item))
+  );
+  return {
+    ...consumable,
+    items: results.map((item) => item.value),
+  };
+}
+function getItemImgPath(name) {
+  return path.resolve(__dirname, `../../backend/assets/wow/items/${name}`);
+}
+function getSpellImgPath(name) {
+  return path.resolve(__dirname, `../../backend/assets/wow/spellIcon/${name}`);
+}
+async function downloadConsumableImages(consumableData) {
+  const imagesUrl = consumableData.reduce((pre, cur) => {
+    pre.push(...cur.items);
+    return pre;
+  }, []);
+  const results = await Promise.allSettled(
+    imagesUrl.map((item) =>
+      downloadSingle(
+        item.imageSrc,
+        item.type === 'item'
+          ? getItemImgPath(item.image)
+          : getSpellImgPath(item.image)
+      )
+    )
+  );
+  results.forEach((item) => {
+    if (item.status !== 'fulfilled') {
+      console.log('图片下载失败');
+    }
+  });
+
+  return results;
+}
+async function getConsumables(context) {
+  const rawData = getRawConsumable(context);
+  const translateResults = await Promise.allSettled(
+    rawData.map((item) => translateConsumable(item))
+  );
+  const output = translateResults.map((item) => item.value);
+  // const downloadResult = await downloadConsumableImages(output);
+
+  return output;
+}
+//#endregion
 
 crawler();

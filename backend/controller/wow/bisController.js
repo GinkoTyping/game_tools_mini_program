@@ -46,13 +46,14 @@ export async function getItemPreviewById(req, res) {
   const db = await getDB();
   const item = await db.get(
     `
-  SELECT preview,source FROM wow_item WHERE id=?1`,
+  SELECT preview,source,image FROM wow_item WHERE id=?1`,
     [req.params.id]
   );
   if (item?.preview) {
     res.json({
       ...JSON.parse(item.preview),
       source: JSON.parse(item.source),
+      image: item.image,
     });
   } else {
     try {
@@ -62,11 +63,15 @@ export async function getItemPreviewById(req, res) {
         // 如果之前的装备名称是英文，也可以把英文名称更新为中文
         itemMapper.updateItemPreivewById(req.params.id, data);
       } else {
-        db.run(`INSERT INTO wow_item(id, name, preview) VALUES(?1, ?2, ?3)`, [
-          data.id,
-          data.name,
-          JSON.stringify(data),
-        ]);
+        const insertResult = await db.run(
+          `INSERT INTO wow_item(id, name, preview) VALUES(?1, ?2, ?3)`,
+          [data.id, data.name, JSON.stringify(data)]
+        );
+        console.log(
+          `新增物品${insertResult?.changes ? '成功' : '失败'}: ${data.id},${
+            data.name
+          }`
+        );
       }
 
       res.json(data);
@@ -184,7 +189,23 @@ export async function queryBlankSourceItem(req, res) {
 }
 
 export async function queryUpdateItem(req, res) {
-  const { id, source } = req.body;
-  await itemMapper.updateItemById({ id, source });
-  res.json(`更新物品OK, ID:${id}`);
+  const { id, source, image } = req.body;
+  const result = await itemMapper.updateItemById({
+    id,
+    source,
+    itemIcon: image,
+  });
+  res.json(`更新物品${result.changes ? '成功' : '失败'}, ID:${id}`);
 }
+
+//#region 内部接口
+export async function queryRegisterItem(req, res) {
+  try {
+    const data = await itemMapper.insertItem(req.body);
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json(error);
+  }
+}
+//#endregion
