@@ -211,7 +211,7 @@
           </uni-td>
           <uni-td>
             <view
-              class="ellipsis"
+              class="ellipsis bis-item"
               :class="[
                 item.wrap ? 'disale-ellipsis' : '',
                 item.source.isLoot ? 'is-loot' : '',
@@ -247,6 +247,50 @@
       </view>
     </uni-card>
   </uni-section>
+
+  <uni-section id="overview" :class="[classKey]" title="附魔推荐">
+    <uni-card class="section-card">
+      <uni-table ref="table" stripe emptyText="暂无更多数据">
+        <uni-tr>
+          <uni-th align="left">部位</uni-th>
+          <uni-th align="left">装备强化</uni-th>
+        </uni-tr>
+        <uni-tr v-for="(item, index) in currentData?.enhancement" :key="index">
+          <uni-td>{{ item.slot }}</uni-td>
+          <uni-td>
+            <view class="items">
+              <view
+                class="slot-container"
+                v-for="child in item.items"
+                :key="child.id"
+              >
+                <img
+                  :src="enhancementImage(child)"
+                  alt=""
+                  srcset=""
+                  style="width: 14px; height: 14px"
+                />
+                <view
+                  class="ellipsis"
+                  style="flex: 1; width: auto !important"
+                  :class="[child.wrap ? 'disale-ellipsis' : '']"
+                  @click="
+                    () => {
+                      switchDetail(true, child);
+                      switchWrap(child);
+                    }
+                  "
+                  >{{ child.name_zh }}</view
+                >
+              </view>
+            </view>
+          </uni-td>
+        </uni-tr>
+      </uni-table>
+    </uni-card>
+  </uni-section>
+
+  <ad-custom unit-id="adunit-43dfd4fbca02d516" class="ad-container"></ad-custom>
 
   <uni-section class="dungeon" :class="[classKey]" title="一句话大秘境">
     <uni-card class="section-card">
@@ -361,11 +405,11 @@
       v-show="status !== 'loading' && currentDetails"
       class="previw-popup"
     >
-      <text class="name">{{ currentDetails.name }}</text>
+      <text class="name">{{ currentDetails?.name }}</text>
       <text class="qulity">{{ currentDetails.quality?.name }}</text>
       <text class="item-level">物品等级：{{ currentDetails.level }}</text>
       <text class="binding">{{
-        currentDetails.preview_item?.binding.name
+        currentDetails.preview_item?.binding?.name
       }}</text>
       <view class="type">
         <text>{{ currentDetails.preview_item?.inventory_type?.name }}</text>
@@ -410,7 +454,9 @@
       <text class="durability">{{
         currentDetails.preview_item?.durability?.display_string
       }}</text>
-      <text class="requirements"
+      <text
+        class="requirements"
+        v-show="currentDetails.preview_item?.requirements"
         >{{
           currentDetails.preview_item?.requirements?.level.display_string
         }}</text
@@ -421,26 +467,26 @@
       <text v-show="currentDetails?.description" class="description"
         >“{{ currentDetails.description }}”</text
       >
-      <view class="price">
+      <view class="price" v-if="currentDetails.preview_item?.sell_price">
         <view>
           <text>售价：</text>
         </view>
         <view>
           <img src="/static/images/wow/money-gold.gif" alt="" srcset="" />
           <text>{{
-            currentDetails.preview_item?.sell_price.display_strings.gold
+            currentDetails.preview_item?.sell_price?.display_strings.gold
           }}</text>
         </view>
         <view>
           <img src="/static/images/wow/money-silver.gif" alt="" srcset="" />
           <text>{{
-            currentDetails.preview_item?.sell_price.display_strings.silver
+            currentDetails.preview_item?.sell_price?.display_strings.silver
           }}</text>
         </view>
         <view>
           <img src="/static/images/wow/money-copper.gif" alt="" srcset="" />
           <text>{{
-            currentDetails.preview_item?.sell_price.display_strings.copper
+            currentDetails.preview_item?.sell_price?.display_strings.copper
           }}</text>
         </view>
       </view>
@@ -456,7 +502,7 @@
       <text class="spell-name">{{ spell.name_zh }}</text>
       <view class="spell-prop">
         <text
-          v-show="spell.range && !spell.range?.includes('0码')"
+          v-show="spell?.range && !spell.range?.includes('0码')"
           style="width: 100%"
           >{{ spell.range }}</text
         >
@@ -727,23 +773,27 @@ const currentImageSrc = computed(() => {
 
 async function switchDetail(
   isShow: boolean,
-  item: IBisItem | { image: string; id: number }
+  item: { image: string; id: number; type: string }
 ) {
-  currentDetails.value = {};
-  if (isShow) {
-    status.value = 'loading';
-    popup.value.open();
+  if (item.type === 'spell') {
+    displaySpells([item]);
+  } else {
+    currentDetails.value = {};
+    if (isShow) {
+      status.value = 'loading';
+      popup.value.open();
 
-    currentItem.value = item;
-    const { data, statusCode } = await queryItemPreview(item.id);
-    if (statusCode === 200) {
-      currentDetails.value = data;
-      status.value = '';
-    } else {
-      messageType.value = 'error';
-      messageText.value = data.message;
-      messagePopup.value.open();
-      popup.value.close();
+      currentItem.value = item;
+      const { data, statusCode } = await queryItemPreview(item.id);
+      if (statusCode === 200) {
+        currentDetails.value = data;
+        status.value = '';
+      } else {
+        messageType.value = 'error';
+        messageText.value = data.message;
+        messagePopup.value.open();
+        popup.value.close();
+      }
     }
   }
 }
@@ -884,7 +934,14 @@ onPageScroll(e => {
     isShowFab.value = false;
   }
 });
-//#region 悬浮按钮
+//#region 附魔
+const enhancementImage = computed(() => {
+  return item => {
+    return item.type === 'item'
+      ? `https://ginkolearn.cyou/api/wow/assets/items/${item.image}`
+      : `https://ginkolearn.cyou/api/wow/assets/spellIcon/${item.image}`;
+  };
+});
 
 //#endregion
 </script>
@@ -1089,7 +1146,7 @@ $light-border: rgb(68, 68, 68);
     }
     &:nth-child(2) {
       color: rgb(163, 53, 238);
-      view {
+      view.bis-item {
         width: 160px !important;
       }
     }

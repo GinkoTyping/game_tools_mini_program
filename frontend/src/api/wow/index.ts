@@ -28,6 +28,10 @@ interface IBisDataDTO {
     best: { name: string; priorityList: string[] }[];
     overview: { text: string; spells: { id: string; name: string }[] };
   };
+  enhancement: {
+    slot: string;
+    items: { id: number; name_zh: string; image: string }[];
+  }[];
 }
 
 function mapRatings(rating: number) {
@@ -139,6 +143,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
     })),
     version: data.version,
     talents: data.talents,
+    enhancement: data.enhancement,
   };
 }
 
@@ -354,7 +359,7 @@ export async function querySpellsInTip(ids: number[]) {
     return res.data?.map((spell: any) => {
       return {
         ...spell,
-        range: spell.range === -1 ? '' : spell.range,
+        range: spell?.range === -1 ? '' : spell?.range,
         cost: spell.cost?.replaceAll(' 值', ''),
         description: spell.description?.replaceAll(' sec', '秒'),
       };
