@@ -211,21 +211,18 @@ export async function querySpecPopularity(
       tank: 0,
       healer: 0,
     };
-    maxCount.all = cacheData
-      .sort((a, b) => b.quantity - a.quantity)
-      .shift().quantity;
+    maxCount.all = cacheData.sort(
+      (a, b) => b.quantity - a.quantity
+    )[0].quantity;
     maxCount.dps = cacheData
       .filter(item => item.role === 'dps')
-      .sort((a, b) => b.quantity - a.quantity)
-      .shift().quantity;
+      .sort((a, b) => b.quantity - a.quantity)[0].quantity;
     maxCount.tank = cacheData
       .filter(item => item.role === 'tank')
-      .sort((a, b) => b.quantity - a.quantity)
-      .shift().quantity;
+      .sort((a, b) => b.quantity - a.quantity)[0].quantity;
     maxCount.healer = cacheData
       .filter(item => item.role === 'healer')
-      .sort((a, b) => b.quantity - a.quantity)
-      .shift().quantity;
+      .sort((a, b) => b.quantity - a.quantity)[0].quantity;
 
     return {
       date: res.data.aggregated_at,
