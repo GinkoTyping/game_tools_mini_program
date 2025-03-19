@@ -117,8 +117,7 @@ async function collectBySpec(roleClass, classSpec) {
     const ratings = getSpecRating($);
     const dungeonTips = await getDungeonTips($);
     const talents = await getTalentCode($, page, roleClass, classSpec);
-
-    const consumables = await getConsumables($);
+    const enhancement = await getEnhancements($);
 
     if (!talents?.length) {
       console.log(`${classSpec} ${roleClass} 的天赋数据获取失败。`);
@@ -131,7 +130,7 @@ async function collectBySpec(roleClass, classSpec) {
       ratings,
       dungeonTips,
       talents,
-      consumables,
+      enhancement,
     };
   } catch (error) {
     console.error(error);
@@ -693,8 +692,8 @@ async function getTalentCode(context, page, roleClass, classSpec) {
   }));
 }
 
-//#region 宝石和附魔
-function getRawConsumable(context) {
+//#region 附魔
+function getRawEnhancement(context) {
   const $ = context;
   const reference = $('#enchantments-header');
   let enhancementContainer = reference.next();
@@ -741,58 +740,57 @@ function getRawConsumable(context) {
 
   return enhancementData;
 }
-async function translateConsumable(consumable) {
-  async function searchItem(item) {
-    let output = { ...item };
-    if (item.type === 'item') {
-      const exsisted = await queryItemById(item.id);
-      if (exsisted) {
-        output = {
-          ...output,
-          name_zh: exsisted.name,
-        };
-        if (!exsisted.image) {
-          const updateResult = await queryUpdateItem({
-            id: item.id,
-            image: item.image,
-          });
-          console.log(updateResult);
-        }
-      } else {
-        const registerResult = await queryRegsiterItem({
+async function searchItem(item) {
+  let output = { ...item };
+  if (item.type === 'item') {
+    const exsisted = await queryItemById(item.id);
+    if (exsisted) {
+      output = {
+        ...output,
+        name_zh: exsisted.name,
+      };
+      if (!exsisted.image) {
+        const updateResult = await queryUpdateItem({
           id: item.id,
-          name: item.name,
-          slot: item.slot,
-          itemIcon: item.iamge,
+          image: item.image,
         });
-        console.log(
-          `注册物品${registerResult.changes ? '成功' : '失败'}：${item.id}, ${
-            item.name
-          }`
-        );
+        console.log(updateResult);
       }
     } else {
-      const exsisted = await querySpellByIds([item.id]);
-      if (exsisted[0]) {
-        output = {
-          ...output,
-          name_zh: exsisted[0].name_zh,
-        };
-      } else {
-        const registerResult = await queryAddSpell({
-          id: item.id,
-          name: item.name,
-        });
-        console.log(
-          `注册技能${registerResult.changes ? '成功' : '失败'}：${item.id}, ${
-            item.name
-          }`
-        );
-      }
+      const registerResult = await queryRegsiterItem({
+        id: item.id,
+        name: item.name,
+        slot: item.slot,
+        itemIcon: item.iamge,
+      });
+      console.log(
+        `注册物品${registerResult.changes ? '成功' : '失败'}：${item.id}, ${
+          item.name
+        }`
+      );
     }
-    return output;
+  } else {
+    const exsisted = await querySpellByIds([item.id]);
+    if (exsisted[0]) {
+      output = {
+        ...output,
+        name_zh: exsisted[0].name_zh,
+      };
+    } else {
+      const registerResult = await queryAddSpell({
+        id: item.id,
+        name: item.name,
+      });
+      console.log(
+        `注册技能${registerResult.changes ? '成功' : '失败'}：${item.id}, ${
+          item.name
+        }`
+      );
+    }
   }
-
+  return output;
+}
+async function translateEnhancement(consumable) {
   const results = await Promise.allSettled(
     consumable.items.map((item) => searchItem(item))
   );
@@ -807,7 +805,7 @@ function getItemImgPath(name) {
 function getSpellImgPath(name) {
   return path.resolve(__dirname, `../../backend/assets/wow/spellIcon/${name}`);
 }
-async function downloadConsumableImages(consumableData) {
+async function downloadEnhancementImages(consumableData) {
   const imagesUrl = consumableData.reduce((pre, cur) => {
     pre.push(...cur.items);
     return pre;
@@ -830,15 +828,167 @@ async function downloadConsumableImages(consumableData) {
 
   return results;
 }
-async function getConsumables(context) {
-  const rawData = getRawConsumable(context);
+async function getEnhancements(context) {
+  const rawData = getRawEnhancement(context);
   const translateResults = await Promise.allSettled(
-    rawData.map((item) => translateConsumable(item))
+    rawData.map((item) => translateEnhancement(item))
   );
   const output = translateResults.map((item) => item.value);
-  const downloadResult = await downloadConsumableImages(output);
+  const downloadResult = await downloadEnhancementImages(output);
 
   return output;
+}
+//#endregion
+
+//#region 消耗品和宝石 搁置
+function mapConsumableType(key) {
+  const lowerKey = key.toLowerCase();
+  if (lowerKey.includes('phials')) {
+    return '合剂';
+  }
+  if (lowerKey.includes('food')) {
+    return '食物';
+  }
+  if (lowerKey.includes('oil')) {
+    return '油';
+  }
+  if (lowerKey.includes('rune')) {
+    return '强化符文';
+  }
+  if (lowerKey.includes('sockets')) {
+    return '宝石';
+  }
+  if (lowerKey.includes('health')) {
+    return '治疗药水';
+  }
+  if (lowerKey.includes('combat')) {
+    return '战斗药水';
+  }
+  return key;
+}
+function getRawConsumables(context) {
+  const $ = context;
+  const reference = $('#consumables-header')
+    .parentsUntil('#main-article')
+    .last();
+  let consumableUl = reference.next();
+  while (reference.next()?.[0]?.name !== 'ul') {
+    consumableUl = consumableUl.next();
+  }
+
+  function mapUlEle(ulEle) {
+    return $(ulEle)
+      .children('li')
+      .map((index, liEle) => {
+        const itemEle = $(liEle)
+          .children('span')
+          .find(`span[data-wow-item]`)
+          .first();
+        const name = itemEle.text();
+        const id = itemEle.attr('data-wow-item').split(':').pop();
+        const backgroundImage = itemEle.find('.wow-icon').attr('style');
+        const imageSrc = /url\(\s*["']?(.*?)["']?\s*\)/gi.exec(
+          backgroundImage
+        )?.[1];
+        let children;
+
+        if ($(liEle).children('ul').length) {
+          children = mapUlEle($(liEle).children('ul').first());
+        }
+        return {
+          id,
+          name,
+          type: 'item',
+          children,
+          imageSrc,
+          image: imageSrc.split('/').pop(),
+        };
+      })
+      .get();
+  }
+
+  const output = consumableUl
+    .children('li')
+    .last()
+    .map((index, ele) => {
+      const type = mapConsumableType($(ele).children('span').first().text());
+      let children;
+
+      if ($(ele).children('ul').length) {
+        children = $(ele)
+          .children('ul')
+          .map((ulIndex, ulEle) => mapUlEle(ulEle))
+          .get();
+      }
+      return { type, children };
+    })
+    .get();
+
+  return output;
+}
+async function translateConsumable(data) {
+  async function recursiveSearch(item) {
+    const itemResult = await searchItem(item);
+    let newChildren;
+    if (item.children?.length) {
+      newChildren = await Promise.allSettled(
+        item.children.map((child) => recursiveSearch(child))
+      );
+    }
+    return {
+      ...itemResult,
+      children: newChildren,
+    };
+  }
+  async function translateByType(type) {
+    let results;
+    if (type.children?.length) {
+      results = await Promise.allSettled(
+        type.children.map((item) => recursiveSearch(item))
+      );
+    }
+    return {
+      ...type,
+      children: results.map((result) => result.value),
+    };
+  }
+
+  const translatedResults = await Promise.allSettled(
+    data.map((item) => translateByType(item))
+  );
+
+  return translatedResults.map((item) => item.value);
+}
+async function downloadConsumableImages(consumableData) {
+  let imagesUrl = [];
+  function recurseGetItem(item) {
+    imagesUrl.push(item);
+    if (item.chilren?.length) {
+      item.chilren.forEach((child) => recurseGetItem(child));
+    }
+  }
+  consumableData.forEach((item) => {
+    item.children.forEach((child) => recurseGetItem(child));
+  });
+
+  const results = await Promise.allSettled(
+    imagesUrl.map((item) =>
+      downloadSingle(item.imageSrc, getItemImgPath(item.image))
+    )
+  );
+  results.forEach((item) => {
+    if (item.status !== 'fulfilled') {
+      console.log('图片下载失败');
+    }
+  });
+
+  return results;
+}
+async function getConsumables(context) {
+  const rawData = getRawConsumables(context);
+  const transaltedData = await translateConsumable(rawData);
+  await downloadConsumableImages(transaltedData);
+  return transaltedData;
 }
 //#endregion
 
