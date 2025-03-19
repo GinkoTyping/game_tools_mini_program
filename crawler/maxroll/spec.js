@@ -836,7 +836,7 @@ async function getConsumables(context) {
     rawData.map((item) => translateConsumable(item))
   );
   const output = translateResults.map((item) => item.value);
-  // const downloadResult = await downloadConsumableImages(output);
+  const downloadResult = await downloadConsumableImages(output);
 
   return output;
 }
