@@ -40,7 +40,8 @@
         <view class="ad-popup-container">
           <view class="not-wacth" v-show="!adInfo?.isFreeAd">
             <view class="main">
-              {{ adInfo?.count }}人观看了<text style="color: #dd524d">30秒</text>广告视频
+              {{ adInfo?.count }}人观看了<text style="color: #dd524d">30秒</text
+              >广告视频
             </view>
             <view class="main">
               <text style="color: rgb(29, 245, 1)">24小时</text>免除所有页面广告
@@ -135,6 +136,8 @@
 import { queryAdCount, queryUpdateAdCount } from '@/api/shared';
 import { ref, onUnmounted } from 'vue';
 
+import { useUserStore } from '@/store/wowStore';
+
 const props = defineProps({
   tierListIcons: {
     type: Array<any>,
@@ -218,9 +221,13 @@ function swicthWatchSuccessTip(isShow: boolean) {
   }
 }
 
+const userStore = useUserStore();
 async function giveReward() {
   uni.showToast({ title: '感谢支持！' });
-  await queryUpdateAdCount();
+  const data = await queryUpdateAdCount();
+  if (data) {
+    userStore.isFreeAd = data.isFreeAd;
+  }
 }
 
 // 资源清理
