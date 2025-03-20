@@ -38,7 +38,7 @@
     >
       <template v-slot>
         <view class="ad-popup-container">
-          <view class="not-wacth" v-show="!freeDate">
+          <view class="not-wacth" v-show="!adInfo?.isFreeAd">
             <view class="main">
               观看<text style="color: #dd524d">30秒</text>广告视频
             </view>
@@ -54,7 +54,7 @@
               <view> x1！ </view>
             </view>
           </view>
-          <view class="wacthed" v-show="freeDate">
+          <view class="wacthed" v-show="adInfo?.isFreeAd">
             <view class="main">
               <view>
                 <text style="color: #dd524d">感谢您</text
@@ -64,7 +64,7 @@
             <view class="main">
               <view>
                 广告免除剩余：<text style="color: rgb(29, 245, 1)"
-                  >{{ countdown.hour }}时 {{ countdown.minute }}分</text
+                  >{{ adInfo?.freeLeft }}</text
                 >⏳
               </view>
             </view>
@@ -135,25 +135,7 @@ let rewardedVideoAd: any = null;
 
 // 广告初始化
 // 免广告倒计时
-const freeDate = ref('');
-const countdown = reactive({
-  hour: 0,
-  minute: 0,
-});
-function setCountdown(date) {
-  if (date) {
-    freeDate.value = date;
-    const diff = Math.abs(
-      new Date().getTime() - new Date(freeDate.value).getTime()
-    );
-    countdown.hour = Math.floor(diff / 3600 / 1000);
-    countdown.minute = Math.floor(
-      (diff - countdown.hour * 3600 * 1000) / 60 / 1000
-    );
-    console.log(countdown);
-  }
-}
-
+const adInfo = ref();
 const adPopup = ref();
 const shardCount = ref(0);
 const chickenCount = ref(0);
@@ -189,7 +171,8 @@ async function showAdDialog() {
 
   swicthWatchSuccessTip(false);
   const data = await queryAdCount();
-  setCountdown(data.freeDate);
+  adInfo.value = data;
+
   shardCount.value = data.count % 10;
   shardList.value = new Array(shardCount.value).fill(1);
   while (shardList.value.length < 10) {

@@ -7,14 +7,7 @@ const db = await getCommonDynamicDB();
 const adMapper = useAdMapper(db);
 const userAdMapper = useUserAdMapper(db);
 
-//
 const UPDATE_INTERVAL = 24 * 60 * 60 * 1000;
-function isToUpdateUserAd(userAdItem) {
-  if (userAdItem?.ad_list?.length) {
-    const latest = userAdItem.ad_list[userAdItem.ad_list.length - 1];
-    return Math.abs(new Date().getTime() - latest) > UPDATE_INTERVAL;
-  }
-}
 async function updateUserAdById(id) {
   const date = formatDateByMinute();
   const existed = await userAdMapper.getUserAd(id);
@@ -95,13 +88,34 @@ export async function queryAdCount(req, res) {
 }
 
 // 新接口
+export async function getFreeAdInfo(id) {
+  const userAd = await userAdMapper.getUserAd(id);
+  let output = {
+    isFreeAd: false,
+    freeLeft: null,
+    lastUtil: null,
+  };
+  if (userAd?.ad_list?.length) {
+    const freeUntil = formatNextDay(userAd.ad_list.pop());
+    const diff = Math.abs(new Date().getTime() - new Date(freeUntil).getTime());
+    output.lastUtil = freeUntil;
+    if (diff < UPDATE_INTERVAL) {
+      const hour = Math.floor(diff / 3600 / 1000);
+      const minute = Math.floor((diff - hour * 3600 * 1000) / 60 / 1000);
+      output.isFreeAd = true;
+      output.freeLeft = `${hour}时${minute}分`;
+    }
+  }
+  return output;
+}
 export async function queryUpdateAdCountByUser(req, res) {
   try {
     const { id } = req.body;
     const adResult = await updateAdCount();
     const userAdResult = await updateUserAdById(id);
     if (adResult.changes && userAdResult.changes) {
-      res.json({ message: '投喂成功', freeDate: userAdResult.freeDate });
+      const freeAdInfo = await getFreeAdInfo(id);
+      res.json({ message: '投喂成功', ...freeAdInfo });
     } else {
       res.status(401).json({ error: '后端投喂计数异常。' });
     }
@@ -110,7 +124,6 @@ export async function queryUpdateAdCountByUser(req, res) {
     res.status().json({ error: '后端投喂计数异常。' });
   }
 }
-
 export async function queryAdCountByUser(req, res) {
   try {
     const { id } = req.body;
@@ -122,10 +135,11 @@ export async function queryAdCountByUser(req, res) {
 
     const data = await adMapper.getAdCount(date);
     const userAd = await userAdMapper.getUserAd(id);
+    const freeAdInfo = await getFreeAdInfo(id);
     if (data) {
       res.json({
         ...data,
-        freeDate: userAd?.ad_list ? formatNextDay(userAd.ad_list.pop()) : null,
+        ...freeAdInfo,
       });
     } else {
       const defaultCount = Math.floor(Math.random() * 8) + 2;
@@ -133,7 +147,7 @@ export async function queryAdCountByUser(req, res) {
       res.json({
         date,
         count: defaultCount,
-        freeDate: null,
+        ...freeAdInfo,
       });
     }
   } catch (error) {
