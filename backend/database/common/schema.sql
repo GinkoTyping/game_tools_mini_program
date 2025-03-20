@@ -26,3 +26,14 @@ CREATE TABLE
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     count
   );
+
+-- dynamic table
+CREATE TABLE
+  IF NOT EXISTS common_dynamic_user_ad (id INTEGER PRIMARY KEY, ad_list TEXT);
+
+CREATE TABLE
+  IF NOT EXISTS common_dynamic_ad (
+    id INTEGER PRIMARY KEY,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    count
+  );

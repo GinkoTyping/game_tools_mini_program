@@ -1,15 +1,19 @@
 let db;
 
+let TABLE_NAME = 'common_dynamic_ad';
 async function updateAdCount(date, count) {
-  return db.run(`UPDATE common_ad SET count=?1 WHERE date=?2`, [count, date]);
+  return db.run(`UPDATE ${TABLE_NAME} SET count=?1 WHERE date=?2`, [
+    count,
+    date,
+  ]);
 }
 
 async function getAdCount(date) {
-  return db.get(`SELECT * FROM common_ad WHERE date = ?1`, [date]);
+  return db.get(`SELECT * FROM ${TABLE_NAME} WHERE date = ?1`, [date]);
 }
 
 async function insertAd(date, count) {
-  return db.run(`INSERT INTO common_ad(date, count) VALUES(?1, ?2)`, [
+  return db.run(`INSERT INTO ${TABLE_NAME}(date, count) VALUES(?1, ?2)`, [
     date,
     count,
   ]);

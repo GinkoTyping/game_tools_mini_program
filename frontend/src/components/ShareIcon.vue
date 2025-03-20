@@ -32,25 +32,50 @@
     <uni-popup-dialog
       type="success"
       cancelText="下次一定"
-      confirmText="投喂并免广告"
+      confirmText="投喂!免广告"
       title="24小时⏳免广告⚡投喂指南"
       @confirm="showAd"
     >
       <template v-slot>
         <view class="ad-popup-container">
-          <view class="main">
-            观看<text style="color: #dd524d">30秒</text>广告视频 <br />
-          </view>
-          <view class="main">
-            免<text style="color: rgb(29, 245, 1)">24小时</text>贴片广告<br />
-          </view>
-          <view class="main">
-            <view>还能投喂程序猿</view>
-            <view>
-              <image src="/static/images/wow/food/shard.gif" />
-              <text>大餐碎片</text>
+          <view class="not-wacth" v-show="!freeDate">
+            <view class="main">
+              观看<text style="color: #dd524d">30秒</text>广告视频
             </view>
-            <view> x1！ </view>
+            <view class="main">
+              <text style="color: rgb(29, 245, 1)">24小时</text>免贴片广告
+            </view>
+            <view class="main">
+              <view>还能🍗投喂程序猿</view>
+              <view>
+                <image src="/static/images/wow/food/shard.gif" />
+                <text>大餐碎片</text>
+              </view>
+              <view> x1！ </view>
+            </view>
+          </view>
+          <view class="wacthed" v-show="freeDate">
+            <view class="main">
+              <view>
+                <text style="color: #dd524d">感谢您</text
+                >的投喂🎉，程序猿更有干劲！
+              </view>
+            </view>
+            <view class="main">
+              <view>
+                广告免除剩余：<text style="color: rgb(29, 245, 1)"
+                  >{{ countdown.hour }}时 {{ countdown.minute }}分</text
+                >⏳
+              </view>
+            </view>
+            <view class="main">
+              <view class="repeat-watch-info"> 在此期间重复观看 </view>
+            </view>
+            <view class="main">
+              <view class="repeat-watch-info">
+                广告免除时间将自动从最后一次观看起延长。
+              </view>
+            </view>
           </view>
           <view class="sub">
             [备战间隙、副本开打前或者您空闲时，顺手给攻略引擎加个油呗~]
@@ -99,7 +124,7 @@
 
 <script lang="ts" setup>
 import { queryAdCount, queryUpdateAdCount } from '@/api/shared';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, reactive } from 'vue';
 
 const props = defineProps({
   tierListIcons: {
@@ -109,7 +134,33 @@ const props = defineProps({
 let rewardedVideoAd: any = null;
 
 // 广告初始化
-onMounted(() => {});
+// 免广告倒计时
+const freeDate = ref('');
+const countdown = reactive({
+  hour: 0,
+  minute: 0,
+});
+function setCountdown(date) {
+  if (date) {
+    freeDate.value = date;
+    const diff = Math.abs(
+      new Date().getTime() - new Date(freeDate.value).getTime()
+    );
+    countdown.hour = Math.floor(diff / 3600 / 1000);
+    countdown.minute = Math.floor(
+      (diff - countdown.hour * 3600 * 1000) / 60 / 1000
+    );
+    console.log(countdown);
+  }
+}
+
+const adPopup = ref();
+const shardCount = ref(0);
+const chickenCount = ref(0);
+const shardList = ref<number[]>();
+const chickenList = ref<string[]>();
+const watchAdSuccess = ref(false);
+let timer;
 function loadAd() {
   if (!rewardedVideoAd) {
     rewardedVideoAd = uni.createRewardedVideoAd({
@@ -118,6 +169,7 @@ function loadAd() {
     rewardedVideoAd.load().catch(console.error);
 
     rewardedVideoAd.onClose((res: any) => {
+      giveReward()
       if (res.isEnded) {
         swicthWatchSuccessTip(true);
       }
@@ -132,19 +184,12 @@ function loadAd() {
     });
   }
 }
-
-const adPopup = ref();
-const shardCount = ref(0);
-const chickenCount = ref(0);
-const shardList = ref<number[]>();
-const chickenList = ref<string[]>();
-const watchAdSuccess = ref(false);
-let timer;
 async function showAdDialog() {
   loadAd();
 
   swicthWatchSuccessTip(false);
   const data = await queryAdCount();
+  setCountdown(data.freeDate);
   shardCount.value = data.count % 10;
   shardList.value = new Array(shardCount.value).fill(1);
   while (shardList.value.length < 10) {
@@ -253,6 +298,15 @@ onUnmounted(() => {
   margin-bottom: 4px;
   display: flex;
   justify-content: center;
+  .repeat-watch-info {
+    font-size: 12px;
+    color: #bbb;
+    text {
+      font-size: 12px !important;
+      font-weight: bold;
+      color: black;
+    }
+  }
   text {
     font-weight: bold;
   }

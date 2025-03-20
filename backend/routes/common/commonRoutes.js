@@ -9,7 +9,9 @@ import { queryPatchList } from '../../controller/common/patchController.js';
 import {
   queryUpdateAdCount,
   queryAdCount,
-} from '../../controller/common/adController.js';
+  queryUpdateAdCountByUser,
+  queryAdCountByUser,
+} from '../../controller/common/dynamic/adController.js';
 import { authenticateToken } from '../../auth/validateAdmin.js';
 
 const router = express.Router();
@@ -22,5 +24,8 @@ router.get('/patch/list', queryPatchList);
 
 router.get('/ad/query', authenticateToken, queryAdCount);
 router.get('/ad/update', authenticateToken, queryUpdateAdCount);
+
+router.post('/ad/query', authenticateToken, queryAdCountByUser);
+router.post('/ad/update', authenticateToken, queryUpdateAdCountByUser);
 
 export default router;

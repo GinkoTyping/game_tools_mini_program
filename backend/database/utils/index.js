@@ -42,6 +42,17 @@ export async function getCommonDB() {
   return _commonDB;
 }
 
+let _commonDynamicDB = null;
+export async function getCommonDynamicDB() {
+  if (!_commonDynamicDB) {
+    _commonDynamicDB = await open({
+      filename: path.resolve(__dirname, '../common/dynamic-database.db'),
+      driver: sqlite3.verbose().Database,
+    });
+  }
+  return _commonDynamicDB;
+}
+
 let _authDB = null;
 export async function getAuthDB() {
   if (!_authDB) {

@@ -1,0 +1,143 @@
+import { getCommonDynamicDB } from '../../../database/utils/index.js';
+import { useAdMapper } from '../../../database/common/mapper/dynamic/adMapper.js';
+import { useUserAdMapper } from '../../../database/common/mapper/dynamic/userAdMapper.js';
+import { formatDateByMinute, formatNextDay } from '../../../util/time.js';
+
+const db = await getCommonDynamicDB();
+const adMapper = useAdMapper(db);
+const userAdMapper = useUserAdMapper(db);
+
+//
+const UPDATE_INTERVAL = 24 * 60 * 60 * 1000;
+function isToUpdateUserAd(userAdItem) {
+  if (userAdItem?.ad_list?.length) {
+    const latest = userAdItem.ad_list[userAdItem.ad_list.length - 1];
+    return Math.abs(new Date().getTime() - latest) > UPDATE_INTERVAL;
+  }
+}
+async function updateUserAdById(id) {
+  const date = formatDateByMinute();
+  const existed = await userAdMapper.getUserAd(id);
+  let result;
+  if (existed) {
+    existed.ad_list.push(date);
+    result = await userAdMapper.updateUserAd(id, existed.ad_list);
+  } else {
+    result = await userAdMapper.insertUserAd(id, [date]);
+  }
+
+  return { ...result, freeDate: formatNextDay(date) };
+}
+
+async function updateAdCount() {
+  const date = new Intl.DateTimeFormat('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+  const data = await adMapper.getAdCount(date);
+
+  let result;
+  if (data) {
+    result = await adMapper.updateAdCount(date, data.count + 1);
+  } else {
+    result = await adMapper.insertAd(date, 1);
+  }
+  return result;
+}
+
+export async function queryUpdateAdCount(req, res) {
+  try {
+    const date = new Intl.DateTimeFormat('zh-CN', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(new Date());
+
+    const data = await adMapper.getAdCount(date);
+
+    if (data) {
+      await adMapper.updateAdCount(date, data.count + 1);
+    } else {
+      await adMapper.insertAd(date, 1);
+    }
+
+    res.json({ message: '投喂成功' });
+  } catch (error) {
+    console.log(`后端投喂计数异常: ${error}`);
+    res.status(401).json({ error: `后端投喂计数异常。` });
+  }
+}
+
+export async function queryAdCount(req, res) {
+  try {
+    const date = new Intl.DateTimeFormat('zh-CN', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(new Date());
+
+    const data = await adMapper.getAdCount(date);
+    if (data) {
+      res.json(data);
+    } else {
+      const defaultCount = Math.floor(Math.random() * 8) + 2;
+      await adMapper.insertAd(date, defaultCount);
+      res.json({
+        date,
+        count: defaultCount,
+      });
+    }
+  } catch (error) {
+    console.log(`后端服务异常: ${error}`);
+    res.status(401).json({ error: `后端服务异常。` });
+  }
+}
+
+// 新接口
+export async function queryUpdateAdCountByUser(req, res) {
+  try {
+    const { id } = req.body;
+    const adResult = await updateAdCount();
+    const userAdResult = await updateUserAdById(id);
+    if (adResult.changes && userAdResult.changes) {
+      res.json({ message: '投喂成功', freeDate: userAdResult.freeDate });
+    } else {
+      res.status(401).json({ error: '后端投喂计数异常。' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status().json({ error: '后端投喂计数异常。' });
+  }
+}
+
+export async function queryAdCountByUser(req, res) {
+  try {
+    const { id } = req.body;
+    const date = new Intl.DateTimeFormat('zh-CN', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(new Date());
+
+    const data = await adMapper.getAdCount(date);
+    const userAd = await userAdMapper.getUserAd(id);
+    if (data) {
+      res.json({
+        ...data,
+        freeDate: userAd?.ad_list ? formatNextDay(userAd.ad_list.pop()) : null,
+      });
+    } else {
+      const defaultCount = Math.floor(Math.random() * 8) + 2;
+      await adMapper.insertAd(date, defaultCount);
+      res.json({
+        date,
+        count: defaultCount,
+        freeDate: null,
+      });
+    }
+  } catch (error) {
+    console.log(`后端服务异常: ${error}`);
+    res.status(401).json({ error: `后端服务异常。` });
+  }
+}

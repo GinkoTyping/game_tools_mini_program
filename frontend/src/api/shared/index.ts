@@ -1,4 +1,5 @@
 import { proxyRequest } from '../config';
+import { useAuth } from '@/hooks/auth';
 
 export async function queryScorllInfo() {
   const res = await proxyRequest({
@@ -57,17 +58,32 @@ export async function queryLogin(code: string) {
   }
 }
 
+//#region 广告
+let auth;
 export async function queryAdCount() {
+  auth = auth ?? useAuth();
+  const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
     url: `/common/ad/query`,
+    method: 'POST',
+    data: {
+      id: userId,
+    },
   });
   return res.data;
 }
 
 export async function queryUpdateAdCount() {
+  auth = auth ?? useAuth();
+  const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
     url: `/common/ad/update`,
+    method: 'POST',
+    data: {
+      id: userId,
+    },
   });
 
   return res.data;
 }
+//#endregion
