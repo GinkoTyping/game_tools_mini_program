@@ -85,9 +85,6 @@ import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 import FilterMenu from '@/components/FilterMenu.vue';
 
-import { useUserStore } from '@/store/wowStore';
-
-const userStore = useUserStore();
 onShareAppMessage(() => ({
   title: '全专精攻略',
   path: 'pages/index/index',
@@ -132,9 +129,7 @@ function getSortData() {
     );
   }
 
-  if (!userStore.isFreeAd) {
-    output.splice(8, 0, { isAd: true, role_class: 'ad' });
-  }
+  output.splice(8, 0, { isAd: true, role_class: 'ad' });
 
   return output;
 }
