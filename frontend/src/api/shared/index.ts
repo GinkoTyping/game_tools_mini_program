@@ -59,6 +59,12 @@ export async function queryLogin(code: string) {
 }
 
 //#region 广告
+export interface IUserAd {
+  count: number;
+  isFreeAd: boolean;
+  freeLeft: string;
+  lastUntil: string;
+}
 let auth;
 export async function queryAdCount() {
   auth = auth ?? useAuth();
@@ -70,7 +76,7 @@ export async function queryAdCount() {
       id: userId,
     },
   });
-  return res.data;
+  return res.data as IUserAd;
 }
 
 export async function queryUpdateAdCount() {

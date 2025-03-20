@@ -1,6 +1,6 @@
 <template>
   <view class="header">
-    <FilterMenu v-model:data="menus" align="center" @change="onSwitchOrder"/>
+    <FilterMenu v-model:data="menus" align="center" @change="onSwitchOrder" />
   </view>
   <uni-collapse ref="collapse" accordion>
     <template v-for="item in displayData" :key="item.role_class">
@@ -85,6 +85,9 @@ import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 import FilterMenu from '@/components/FilterMenu.vue';
 
+import { useUserStore } from '@/store/wowStore';
+
+const userStore = useUserStore();
 onShareAppMessage(() => ({
   title: '全专精攻略',
   path: 'pages/index/index',
@@ -128,7 +131,11 @@ function getSortData() {
         new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
     );
   }
-  output.splice(8, 0, { isAd: true, role_class: 'ad' });
+
+  if (!userStore.isFreeAd) {
+    output.splice(8, 0, { isAd: true, role_class: 'ad' });
+  }
+
   return output;
 }
 function onSwitchOrder(order) {
@@ -169,7 +176,7 @@ const getDateLable = computed(() => {
 
 <style lang="scss" scoped>
 .header {
-  margin:0 32px;
+  margin: 0 32px;
 }
 .access-count-spec {
   color: rgb(97, 97, 97);

@@ -9,6 +9,7 @@ export const useUserStore = defineStore('user', {
       npcs: [],
       spells: [],
     },
+    isFreeAd: false,
   }),
   actions: {
     async updateUserMarks() {
