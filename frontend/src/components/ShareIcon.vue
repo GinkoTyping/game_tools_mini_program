@@ -14,9 +14,7 @@
         src="/static/images/common/Food-Icons.png"
         style="height: 70%; width: 70%"
       />
-      <view class="badage">
-        <text>免</text>
-      </view>
+      <view class="badage" v-if="!userStore?.isFreeAd"> </view>
     </button>
     <view
       class="ad-tooltip animate__animated animate__fadeInDown"
@@ -32,22 +30,28 @@
     <uni-popup-dialog
       type="success"
       cancelText="下次一定"
-      confirmText="投喂!免广告"
-      title="24小时⏳免广告⚡投喂指南"
+      confirmText="投喂!"
+      title="投喂指南⚡"
       @confirm="showAd"
     >
       <template v-slot>
         <view class="ad-popup-container">
           <view class="not-wacth" v-show="!adInfo?.isFreeAd">
             <view class="main">
-              {{ adInfo?.count }}人观看了<text style="color: #dd524d">30秒</text
+              <text style="color: #dd524d">{{ adInfo?.count }}人</text>观看了<text
+                style="color: #dd524d"
+                >30秒</text
               >广告视频
             </view>
             <view class="main">
-              <text style="color: rgb(29, 245, 1)">24小时</text>免除所有页面广告
+              <view>给程序猿上了</view>
+              <view><text style="color: rgb(29, 245, 1)">24小时</text>的</view>
+              <view
+                ><image src="/static/images/wow/food/ability_mage_timewarp.jpg"
+              /></view>
             </view>
             <view class="main">
-              <view>还能🍗投喂程序猿</view>
+              <view>还投喂了</view>
               <view>
                 <image src="/static/images/wow/food/shard.gif" />
                 <text>大餐碎片</text>
@@ -56,7 +60,7 @@
             </view>
             <view class="main" v-if="adInfo?.lastUntil?.length">
               <view class="repeat-watch-info">
-                上次免除截止: {{ adInfo?.lastUntil }}⏳
+                上次投喂的buff截止: {{ adInfo?.lastUntil }}⏳
               </view>
             </view>
           </view>
@@ -72,7 +76,9 @@
             <view class="main"> 程序猿更有干劲了！ </view>
             <view class="main">
               <view>
-                广告免除剩余：<text style="color: rgb(29, 245, 1)">{{
+                <image
+                  src="/static/images/wow/food/ability_mage_timewarp.jpg"
+                />剩余：<text style="color: rgb(29, 245, 1)">{{
                   adInfo?.freeLeft
                 }}</text
                 >⏳
@@ -83,7 +89,7 @@
             </view>
             <view class="main">
               <view class="repeat-watch-info">
-                广告免除时间将自动从最后一次观看起延长。
+                Buff时间将自动从最后一次观看起延长。
               </view>
             </view>
           </view>
@@ -163,7 +169,6 @@ function loadAd() {
     rewardedVideoAd.load().catch(console.error);
 
     rewardedVideoAd.onClose((res: any) => {
-      giveReward();
       if (res.isEnded) {
         swicthWatchSuccessTip(true);
       }
@@ -270,12 +275,11 @@ onUnmounted(() => {
       position: absolute;
       right: 0;
       top: 0;
-
       color: #fff;
       background-color: $color-s-tier;
-      height: 32rpx;
-      min-width: 32rpx;
-      border-radius: 16rpx;
+      height: 20rpx;
+      width: 20rpx;
+      border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -297,6 +301,9 @@ onUnmounted(() => {
   margin-bottom: 4px;
   display: flex;
   justify-content: center;
+  image {
+    margin: 0 2px;
+  }
   .repeat-watch-info {
     font-size: 12px;
     color: #bbb;
