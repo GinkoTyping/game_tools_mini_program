@@ -155,7 +155,10 @@
           </template>
           <view class="tip-image-container">
             <image
-              v-if="dataItem?.imageSrc"
+              v-if="
+                dataItem?.imageSrc &&
+                openedcollapseItems.includes(`${tipIndex}-${index}`)
+              "
               :class="[`${tip.type}-image`]"
               :mode="isBossTip(tip.type) ? 'widthFix' : 'heightFix'"
               :src="dataItem?.imageSrc"
@@ -438,7 +441,6 @@ const openedcollapseItems = ref<string[]>([]);
 function onCollapseChange(tipIndex: number, e: string[]) {
   const mapKey = e.map(item => `${tipIndex}-${Number(item)}`);
   mapKey.push(...openedcollapseItems.value);
-
   openedcollapseItems.value = [...new Set(mapKey)];
 }
 const isShowNotice = ref(true);
