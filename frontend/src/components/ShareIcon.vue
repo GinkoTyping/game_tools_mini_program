@@ -14,6 +14,9 @@
         src="/static/images/common/Food-Icons.png"
         style="height: 70%; width: 70%"
       />
+      <view class="badage">
+        <text>免</text>
+      </view>
     </button>
     <view
       class="ad-tooltip animate__animated animate__fadeInDown"
@@ -29,15 +32,25 @@
     <uni-popup-dialog
       type="success"
       cancelText="下次一定"
-      confirmText="投喂"
-      title="投喂⚡指南"
+      confirmText="投喂并免广告"
+      title="24小时⏳免广告⚡投喂指南"
       @confirm="showAd"
     >
       <template v-slot>
         <view class="ad-popup-container">
           <view class="main">
-            完整观看最多<text>30</text>秒广告视频 <br />
-            投喂程序猿<text>🍗鸡腿碎片</text>x1！
+            观看<text style="color: #dd524d">30秒</text>广告视频 <br />
+          </view>
+          <view class="main">
+            免<text style="color: rgb(29, 245, 1)">24小时</text>贴片广告<br />
+          </view>
+          <view class="main">
+            <view>还能投喂程序猿</view>
+            <view>
+              <image src="/static/images/wow/food/shard.gif" />
+              <text>大餐碎片</text>
+            </view>
+            <view> x1！ </view>
           </view>
           <view class="sub">
             [备战间隙、副本开打前或者您空闲时，顺手给攻略引擎加个油呗~]
@@ -45,13 +58,18 @@
           <view class="progress-container">
             <view class="progress-bars">
               <view
-                >🍗合成大餐(<text>{{ shardCount }}</text
+                >大餐合成中(<text>{{ shardCount }}</text
                 >/10)：</view
               >
               <view class="bars">
-                <text v-for="(item, index) in shardList" :key="index">{{
-                  item ? '▰' : '▱'
-                }}</text>
+                <image
+                  v-for="(item, index) in shardList"
+                  :key="index"
+                  :src="`/static/images/wow/food/${
+                    item ? 'shard.gif' : 'shard_a.gif'
+                  }`"
+                  mode="widthFix"
+                ></image>
               </view>
             </view>
             <image
@@ -61,7 +79,7 @@
             <view></view>
           </view>
           <view class="done-count">
-            <text v-if="chickenCount <= 0">还没有完整的鸡腿🍗</text>
+            <text v-if="chickenCount <= 0">还没有完整的大餐🍗</text>
             <image
               v-else
               v-for="url in chickenList"
@@ -91,27 +109,29 @@ const props = defineProps({
 let rewardedVideoAd: any = null;
 
 // 广告初始化
-onMounted(() => {
-  rewardedVideoAd = uni.createRewardedVideoAd({
-    adUnitId: 'adunit-2fc9cdf66956bc88',
-  });
+onMounted(() => {});
+function loadAd() {
+  if (!rewardedVideoAd) {
+    rewardedVideoAd = uni.createRewardedVideoAd({
+      adUnitId: 'adunit-2fc9cdf66956bc88',
+    });
+    rewardedVideoAd.load().catch(console.error);
 
-  rewardedVideoAd.load().catch(console.error);
+    rewardedVideoAd.onClose((res: any) => {
+      if (res.isEnded) {
+        swicthWatchSuccessTip(true);
+      }
+      res.isEnded
+        ? giveReward()
+        : uni.showToast({ title: '没关系，有空再投喂吧~', icon: 'none' });
+    });
 
-  rewardedVideoAd.onClose((res: any) => {
-    if (res.isEnded) {
-      swicthWatchSuccessTip(true);
-    }
-    res.isEnded
-      ? giveReward()
-      : uni.showToast({ title: '没关系，有空再投喂吧~', icon: 'none' });
-  });
-
-  rewardedVideoAd.onError((err: any) => {
-    console.error('广告错误:', err);
-    uni.showToast({ title: '广告加载失败', icon: 'none' });
-  });
-});
+    rewardedVideoAd.onError((err: any) => {
+      console.error('广告错误:', err);
+      uni.showToast({ title: '广告加载失败', icon: 'none' });
+    });
+  }
+}
 
 const adPopup = ref();
 const shardCount = ref(0);
@@ -121,6 +141,8 @@ const chickenList = ref<string[]>();
 const watchAdSuccess = ref(false);
 let timer;
 async function showAdDialog() {
+  loadAd();
+
   swicthWatchSuccessTip(false);
   const data = await queryAdCount();
   shardCount.value = data.count % 10;
@@ -190,6 +212,7 @@ onUnmounted(() => {
   button {
     height: 40px;
     width: 40px;
+    overflow: visible;
     border-radius: 50%;
     padding: 0;
     margin-left: 0.4rem;
@@ -198,6 +221,26 @@ onUnmounted(() => {
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%);
+    position: relative;
+    .badage {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      color: #fff;
+      background-color: $color-s-tier;
+      height: 32rpx;
+      min-width: 32rpx;
+      border-radius: 16rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      text {
+        font-size: 10px;
+        line-height: 32rpx;
+      }
+    }
     image {
       width: 50%;
       height: 50%;
@@ -208,9 +251,23 @@ onUnmounted(() => {
   text-align: center;
   font-size: 14px;
   margin-bottom: 4px;
+  display: flex;
+  justify-content: center;
   text {
     font-weight: bold;
-    font-size: 16px;
+  }
+  view {
+    display: flex;
+    align-items: center;
+    text {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    image {
+      border-radius: 30%;
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 .sub {
@@ -225,11 +282,33 @@ onUnmounted(() => {
   .progress-bars {
     font-size: 12px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-bottom: 6px;
-    text {
-      font-weight: bold;
-      font-size: 14px;
+    width: 100%;
+    .bars {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      image {
+        width: calc((100% - 50px) / 10);
+        margin: 1px;
+        position: relative;
+        border-radius: 30%;
+      }
+      .unfilled::after {
+        content: '';
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: rgba($color: #000000, $alpha: 0.2);
+        width: 100%;
+        height: 100%;
+      }
     }
   }
   .down-arrow {
@@ -249,6 +328,7 @@ onUnmounted(() => {
     padding: 1px;
     border-radius: 30%;
     width: calc((100% - 50px) / 10);
+    max-width: 30px;
   }
 }
 .footer {
