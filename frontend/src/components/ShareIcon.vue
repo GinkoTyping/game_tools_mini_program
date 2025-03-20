@@ -40,10 +40,10 @@
         <view class="ad-popup-container">
           <view class="not-wacth" v-show="!adInfo?.isFreeAd">
             <view class="main">
-              观看<text style="color: #dd524d">30秒</text>广告视频
+              {{ adInfo?.count }}人观看了<text style="color: #dd524d">30秒</text>广告视频
             </view>
             <view class="main">
-              <text style="color: rgb(29, 245, 1)">24小时</text>免贴片广告
+              <text style="color: rgb(29, 245, 1)">24小时</text>免除所有页面广告
             </view>
             <view class="main">
               <view>还能🍗投喂程序猿</view>
@@ -53,18 +53,27 @@
               </view>
               <view> x1！ </view>
             </view>
+            <view class="main" v-if="adInfo?.lastUntil?.length">
+              <view class="repeat-watch-info">
+                上次免除截止: {{ adInfo?.lastUntil }}⏳
+              </view>
+            </view>
           </view>
           <view class="wacthed" v-show="adInfo?.isFreeAd">
             <view class="main">
               <view>
-                <text style="color: #dd524d">感谢您</text
-                >的投喂🎉，程序猿更有干劲！
+                <text style="color: #dd524d">感谢您</text>和其他伙伴<text
+                  style="color: #dd524d"
+                  >{{ adInfo?.count - 1 }}次</text
+                >的投喂🎉
               </view>
             </view>
+            <view class="main"> 程序猿更有干劲了！ </view>
             <view class="main">
               <view>
-                广告免除剩余：<text style="color: rgb(29, 245, 1)"
-                  >{{ adInfo?.freeLeft }}</text
+                广告免除剩余：<text style="color: rgb(29, 245, 1)">{{
+                  adInfo?.freeLeft
+                }}</text
                 >⏳
               </view>
             </view>
@@ -124,7 +133,7 @@
 
 <script lang="ts" setup>
 import { queryAdCount, queryUpdateAdCount } from '@/api/shared';
-import { ref, onMounted, onUnmounted, reactive } from 'vue';
+import { ref, onUnmounted } from 'vue';
 
 const props = defineProps({
   tierListIcons: {
@@ -151,7 +160,7 @@ function loadAd() {
     rewardedVideoAd.load().catch(console.error);
 
     rewardedVideoAd.onClose((res: any) => {
-      giveReward()
+      giveReward();
       if (res.isEnded) {
         swicthWatchSuccessTip(true);
       }
