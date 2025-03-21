@@ -28,14 +28,14 @@
           mode="widthFix"
         />
       </view>
-      <view class="button">
+      <view class="button" @click="drawTarot">
         <image
           class="animate__animated animate__fadeIn animate__delay-1s"
           src="https://ginkolearn.cyou/api/wow/assets/tarot/button.jpg"
         />
-        <view class="animate__animated animate__fadeInUp animate__delay-2s"
-          >点击抽卡</view
-        >
+        <view class="animate__animated animate__fadeInUp animate__delay-2s">{{
+          lastDrawCheck?.hasDraw ? '查看抽卡结果' : '点击抽卡'
+        }}</view>
       </view>
     </view>
   </view>
@@ -46,15 +46,38 @@
 </template>
 
 <script lang="ts" setup>
+import { onShareAppMessage, onShow } from '@dcloudio/uni-app';
+import { nextTick, ref } from 'vue';
+
+import { ILastDrawCheck, queryCheckDrawTarot, queryDrawTarot } from '@/api/wow';
 import ShareIcon from '@/components/ShareIcon.vue';
-import { onShareAppMessage } from '@dcloudio/uni-app';
+import { useUserStore } from '@/store/wowStore';
+import { useNavigator } from '@/hooks/navigator';
 
 onShareAppMessage(() => ({
   title: '卡牌玄学改天命，艾泽拉斯掌乾坤',
   path: 'pages/question/index',
 }));
 
+const lastDrawCheck = ref<ILastDrawCheck>();
+onShow(async () => {
+  lastDrawCheck.value = await queryCheckDrawTarot();
+});
+
+const userStore = useUserStore();
+const navigator = useNavigator();
+async function drawTarot() {
+  if (lastDrawCheck.value?.hasDraw) {
+    userStore.tarot = lastDrawCheck.value.tarot;
+    userStore.tarotCount.count = lastDrawCheck.value.count;
+    userStore.tarotCount.totalCount = lastDrawCheck.value.totalCount;
+  } else {
+    await userStore.drawTarot();
+  }
+  navigator.toDivinationResult(userStore.tarot.id);
+}
 </script>
+
 <style lang="scss" scoped>
 $bg-corlor: #1f2729;
 $primary-corlor: #ab8d60;

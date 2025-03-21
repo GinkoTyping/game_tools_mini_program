@@ -92,6 +92,18 @@ function toQuestionIndex() {
   });
 }
 
+// 塔罗牌
+function toDivinationResult(tarotId: number = -1) {
+  uni.navigateTo({
+    url: `/pages/divination/result?tarotId=${tarotId}`,
+  });
+}
+function toDivinationIndex() {
+  uni.navigateTo({
+    url: `/pages/divination/index`,
+  });
+}
+
 function toPage(page: string) {
   uni.navigateTo({
     url: page,
@@ -113,5 +125,7 @@ export function useNavigator() {
     toQuestionDungeon,
     toQuestionResult,
     toQuestionIndex,
+    toDivinationIndex,
+    toDivinationResult,
   };
 }

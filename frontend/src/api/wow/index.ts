@@ -593,7 +593,7 @@ export interface IQuestionItem {
 export async function queryQuestions(params: {
   dungeonId: number;
   showAvgCorrect?: boolean;
-  setDefault: number;
+  setDefault?: number;
 }) {
   const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
@@ -656,5 +656,48 @@ export async function queryFinishQuestionDungeon(dungeonId) {
       dungeonId,
     },
   });
+}
+//#endregion
+
+//#region /tarot
+export interface ITarot {
+  id: number;
+  isPositive: boolean;
+  name: string;
+  name_en: string;
+  negative_suggestion: string;
+  negative_summary: string;
+  positive_suggestion: string;
+  positive_summary: string;
+}
+export interface ILastDrawCheck {
+  hasDraw: boolean;
+  lastDrawId: number;
+  count: number;
+  totalCount: number;
+  tarot: ITarot;
+}
+export async function queryCheckDrawTarot() {
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/common/tarot/check`,
+    method: 'POST',
+    data: {
+      userId,
+    },
+  });
+  return res.data;
+}
+
+export async function queryDrawTarot() {
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/common/tarot/draw`,
+    method: 'POST',
+    data: {
+      userId,
+    },
+  });
+  return res.data;
 }
 //#endregion

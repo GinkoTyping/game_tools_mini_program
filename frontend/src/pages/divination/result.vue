@@ -1,9 +1,9 @@
 <template>
   <view class="container">
-    <view class="card-wrap">
+    <view class="card-wrap" v-if="tarot.id >= 0">
       <image
         class="animate__animated animate__fadeInDown"
-        src="https://ginkolearn.cyou/api/wow/assets/tarot/0.jpg"
+        :src="`https://ginkolearn.cyou/api/wow/assets/tarot/${tarot.id}.jpg`"
         mode="heightFix"
         :class="[tarot.isPositive ? 'image--positive' : 'image--negative']"
       />
@@ -15,7 +15,7 @@
             class="sub-title"
             :class="[tarot.isPositive ? 'text--positive' : 'text--negative']"
           >
-            ({{ tarot.positiveText }})</text
+            ({{ tarot.isPositive ? '正位' : '逆位' }})</text
           >
         </view>
         <view
@@ -47,7 +47,9 @@
             v-show="isExpand"
             :class="[isExpand ? 'animate__fadeInUp' : '']"
           >
-            今天有99人占卜，其中24人也抽中了{{ tarot.name }}!
+            今天有{{ userStore.tarotCount.totalCount }}人占卜，其中{{
+              userStore.tarotCount.count
+            }}人也抽中了{{ tarot.name }}!
           </view>
         </view>
       </view>
@@ -60,24 +62,34 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { onShareAppMessage } from '@dcloudio/uni-app';
+import { useUserStore } from '@/store/wowStore';
 
 onShareAppMessage(() => ({
   title: '卡牌玄学改天命，艾泽拉斯掌乾坤',
   path: 'pages/question/index',
 }));
 
+const userStore = useUserStore();
 const navigator = useNavigator();
-const tarot = ref({
-  name: '愚者',
-  isPositive: 1,
-  positiveText: '正位',
-  summary: '新的冒险、自由探索',
-  suggestion:
-    '练小号、解锁新种族/职业、首次尝试随机战场、探索未去过的地图（如巨龙群岛隐藏区域）',
+const tarot = computed(() => {
+  console.log(userStore.tarot);
+
+  const isPositive = userStore.tarot.isPositive;
+  return {
+    id: userStore.tarot.id,
+    name: userStore.tarot.name,
+    isPositive,
+    summary: isPositive
+      ? userStore.tarot.positive_summary
+      : userStore.tarot.negative_summary,
+    suggestion: isPositive
+      ? userStore.tarot.positive_suggestion
+      : userStore.tarot.negative_suggestion,
+  };
 });
 
 const isExpand = ref(false);
@@ -129,10 +141,11 @@ $content-font: 32rpx;
     box-shadow: 0 0 14px 6px rgb(135 253 72 / 32%);
   }
   .image--negative {
-    box-shadow: 0 0 14px 6px rgb(135 253 72 / 32%);
+    box-shadow: 0 0 14px 6px rgb(253 72 72 / 32%);
     scale: -100% -100%;
   }
   .summary {
+    font-weight: bold;
     font-size: 36rpx;
     color: $secondary-corlor;
   }
