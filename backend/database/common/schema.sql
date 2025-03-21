@@ -37,3 +37,13 @@ CREATE TABLE
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     count
   );
+
+CREATE TABLE
+  IF NOT EXISTS common_dynamic_tarot (
+    id INTEGER PRIMARY KEY,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    tarots_count TEXT
+  );
+
+CREATE TABLE
+  IF NOT EXISTS common_dynamic_user_tarot (id INTEGER PRIMARY KEY, tarot_list TEXT);

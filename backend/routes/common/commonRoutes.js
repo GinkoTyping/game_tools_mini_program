@@ -13,6 +13,10 @@ import {
   queryAdCountByUser,
 } from '../../controller/common/dynamic/adController.js';
 import { authenticateToken } from '../../auth/validateAdmin.js';
+import {
+  queryCheckDrawTarot,
+  queryDrawTarot,
+} from '../../controller/common/dynamic/tarotController.js';
 
 const router = express.Router();
 
@@ -27,5 +31,8 @@ router.get('/ad/update', authenticateToken, queryUpdateAdCount);
 
 router.post('/ad/query', authenticateToken, queryAdCountByUser);
 router.post('/ad/update', authenticateToken, queryUpdateAdCountByUser);
+
+router.post('/tarot/check', authenticateToken, queryCheckDrawTarot);
+router.post('/tarot/draw', authenticateToken, queryDrawTarot);
 
 export default router;
