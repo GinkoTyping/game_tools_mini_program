@@ -2,6 +2,14 @@ import labels from '@/data/zh.json';
 import { ILocaleLabels } from '@/interface/ILocaleLabels';
 
 const localeLabels = labels as ILocaleLabels;
+
+// 主页
+function toHome() {
+  uni.navigateTo({
+    url: `/pages/index/index`,
+  });
+}
+
 // 专精攻略
 function toSpecDetail(classKey: string, specKey: string) {
   uni.navigateTo({
@@ -92,6 +100,7 @@ function toPage(page: string) {
 
 export function useNavigator() {
   return {
+    toHome,
     toSpecDetail,
     toSpecsMenu,
     toTierList,
