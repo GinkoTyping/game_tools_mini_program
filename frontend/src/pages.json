@@ -7,9 +7,15 @@
 	},
 	"pages": [
 		{
+			"path": "pages/divination/index",
+			"style": {
+				"navigationBarTitleText": "WOW 塔罗牌占卜"
+			}
+		},
+		{
 			"path": "pages/divination/result",
 			"style": {
-				"navigationBarTitleText": "WOW塔罗牌占卜"
+				"navigationBarTitleText": "WOW 塔罗牌占卜"
 			}
 		},
 		{

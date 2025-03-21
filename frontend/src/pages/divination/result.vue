@@ -66,7 +66,7 @@ import ShareIcon from '@/components/ShareIcon.vue';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 
 onShareAppMessage(() => ({
-  title: 'WOW今天玩啥？塔罗牌占卜',
+  title: '卡牌玄学改天命，艾泽拉斯掌乾坤',
   path: 'pages/question/index',
 }));
 
