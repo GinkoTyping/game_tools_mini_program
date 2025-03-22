@@ -1,17 +1,27 @@
 <template>
   <view class="container">
     <view class="card-wrap" v-if="tarot.id >= 0">
-      <image class="animate__animated animate__fadeInDown"
-        :src="`https://ginkolearn.cyou/api/wow/assets/tarot/${tarot.id}.jpg`" mode="heightFix"
-        :class="[tarot.isPositive ? 'image--positive' : 'image--negative']" />
+      <image
+        class="animate__animated animate__fadeInDown"
+        :src="`https://ginkolearn.cyou/api/wow/assets/tarot/${tarot.id}.jpg`"
+        mode="heightFix"
+        :class="[tarot.isPositive ? 'image--positive' : 'image--negative']"
+      />
       <view class="main-content animate__animated animate__zoomIn">
         <view class="title">
           <text class="sub-title">您抽中了</text>
           {{ tarot.name
-          }}<text class="sub-title" :class="[tarot.isPositive ? 'text--positive' : 'text--negative']">
-            ({{ tarot.isPositive ? '正位' : '逆位' }})</text>
+          }}<text
+            class="sub-title"
+            :class="[tarot.isPositive ? 'text--positive' : 'text--negative']"
+          >
+            ({{ tarot.isPositive ? '正位' : '逆位' }})</text
+          >
         </view>
-        <view class="summary" :class="[tarot.isPositive ? 'text--positive' : 'text--negative']">
+        <view
+          class="summary"
+          :class="[tarot.isPositive ? 'text--positive' : 'text--negative']"
+        >
           {{ tarot.summary }}
         </view>
         <view class="suggestion"> {{ tarot.suggestion }} </view>
@@ -26,12 +36,25 @@
         <view id="more">
           <view class="more-button" @click="switchExpand">
             <view class="more-label">{{ isExpand ? '收起' : '更多' }}</view>
-            <uni-icons :type="isExpand ? 'up' : 'down'" size="20" color="#ab8d60"></uni-icons>
+            <uni-icons
+              :type="isExpand ? 'up' : 'down'"
+              size="20"
+              color="#ab8d60"
+            ></uni-icons>
           </view>
-          <view class="fold-content animate__animated" v-if="isExpand" :class="[isExpand ? 'animate__fadeInUp' : '']">
-            <view>今天有<text>{{ userStore.drawTarotInfo.totalCount }}人</text>占卜，其中<text>{{ userStore.drawTarotInfo.count
-            }}人</text>也抽中了{{ tarot.name }}!</view>
-            <view @click="clickShowAdDialog">觉得不错的话，点击<text>赏程序猿一个鸡腿🍗</text>吧</view>
+          <view
+            class="fold-content animate__animated"
+            v-if="isExpand"
+            :class="[isExpand ? 'animate__fadeInUp' : '']"
+          >
+            <view
+              >今天有<text>{{ userStore.drawTarotInfo.totalCount }}人</text
+              >占卜，其中<text>{{ userStore.drawTarotInfo.count }}人</text
+              >也抽中了{{ tarot.name }}!</view
+            >
+            <view @click="clickShowAdDialog"
+              >觉得不错的话，点击<text>赏程序猿一个鸡腿🍗</text>吧</view
+            >
           </view>
         </view>
       </view>
@@ -41,6 +64,7 @@
   <ShareIcon ref="shareIconRef" />
 
   <ad-custom unit-id="adunit-5764afeffba54701"></ad-custom>
+  <view class="ad-avoider"></view>
 </template>
 
 <script lang="ts" setup>
@@ -215,5 +239,8 @@ $content-font: 32rpx;
       }
     }
   }
+}
+.ad-avoider {
+  height: 140rpx;
 }
 </style>

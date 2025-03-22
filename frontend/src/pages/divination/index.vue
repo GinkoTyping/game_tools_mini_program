@@ -1,28 +1,45 @@
 <template>
   <view class="container">
     <view class="image-bg">
-      <image src="https://ginkolearn.cyou/api/wow/assets/dungeon/wow-generic-news-image-10.webp" mode="widthFix" />
+      <image
+        src="https://ginkolearn.cyou/api/wow/assets/dungeon/wow-generic-news-image-10.webp"
+        mode="widthFix"
+      />
       <view class="shadow-mask"></view>
     </view>
     <view class="cards-wrap">
       <view class="cards">
-        <image class="center animate__animated animate__fadeInDown"
-          src="https://ginkolearn.cyou/api/wow/assets/tarot/0.jpg" mode="widthFix" />
-        <view class="center-shadow animate__animated animate__fadeInDown"></view>
-        <image class="left animate__animated animate__fadeIn animate__delay-1s"
-          src="https://ginkolearn.cyou/api/wow/assets/tarot/1.jpg" mode="widthFix" />
-        <image class="right animate__animated animate__fadeIn animate__delay-1s"
-          src="https://ginkolearn.cyou/api/wow/assets/tarot/2.jpg" mode="widthFix" />
+        <image
+          class="center animate__animated animate__fadeInDown"
+          src="https://ginkolearn.cyou/api/wow/assets/tarot/0.jpg"
+          mode="widthFix"
+        />
+        <view
+          class="center-shadow animate__animated animate__fadeInDown"
+        ></view>
+        <image
+          class="left animate__animated animate__fadeIn animate__delay-1s"
+          src="https://ginkolearn.cyou/api/wow/assets/tarot/1.jpg"
+          mode="widthFix"
+        />
+        <image
+          class="right animate__animated animate__fadeIn animate__delay-1s"
+          src="https://ginkolearn.cyou/api/wow/assets/tarot/2.jpg"
+          mode="widthFix"
+        />
       </view>
       <view class="button" @click="drawTarot">
-        <image class="animate__animated animate__fadeIn animate__delay-1s"
-          src="https://ginkolearn.cyou/api/wow/assets/tarot/button.jpg" />
+        <image
+          class="animate__animated animate__fadeIn animate__delay-1s"
+          src="https://ginkolearn.cyou/api/wow/assets/tarot/button.jpg"
+        />
         <view class="animate__animated animate__fadeInUp animate__delay-2s">
           {{ userStore.drawTarotInfo.hasDraw ? '查看抽卡结果' : '点击抽卡' }}
         </view>
       </view>
-      <view class="footer animate__animated animate__fadeIn animate__delay-2s">{{ userStore.drawTarotInfo.totalCount ??
-        0 }}人已抽</view>
+      <view class="footer animate__animated animate__fadeIn animate__delay-2s"
+        >{{ userStore.drawTarotInfo.totalCount ?? 0 }}人已抽</view
+      >
     </view>
   </view>
   <ad-custom unit-id="adunit-19cdfb0cd4073687"></ad-custom>
@@ -51,6 +68,11 @@ const userStore = useUserStore();
 const navigator = useNavigator();
 async function drawTarot() {
   if (!userStore.drawTarotInfo.hasDraw) {
+    uni.showLoading({
+      title: '抽卡中...',
+      mask: true,
+    });
+
     await userStore.drawTarot();
   }
 
@@ -64,7 +86,7 @@ $primary-corlor: #ab8d60;
 $secondary-corlor: #f4e0c2;
 
 .container {
-  min-height: calc(100vh - 130px);
+  min-height: calc(100vh - 120px);
   box-sizing: border-box;
   background-color: $bg-corlor;
   position: relative;
@@ -159,6 +181,7 @@ $secondary-corlor: #f4e0c2;
         color: $primary-corlor;
       }
     }
+
     .footer {
       margin-bottom: 10rpx;
       font-size: 24rpx;
@@ -166,6 +189,7 @@ $secondary-corlor: #f4e0c2;
     }
   }
 }
+
 .ad-avoider {
   height: 140rpx;
 }
