@@ -24,7 +24,7 @@
         >
           {{ tarot.summary }}
         </view>
-        <view class="suggestion"> 宜: {{ tarot.suggestion }} </view>
+        <view class="suggestion"> {{ tarot.suggestion }} </view>
       </view>
       <view class="footer animate__animated animate__fadeInUpBig">
         <view class="buttons">

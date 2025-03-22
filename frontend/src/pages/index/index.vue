@@ -125,7 +125,7 @@
         </view>
         <view class="info">
           <view class="card-name">每日塔罗牌</view>
-          <view class="card-desc">卡牌玄学改天命</view>
+          <view class="card-desc">一抽玄学 包红到底🔮</view>
         </view>
       </view>
       <view class="narrow-card_bg"></view>
