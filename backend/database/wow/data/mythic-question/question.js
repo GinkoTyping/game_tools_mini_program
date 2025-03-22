@@ -891,24 +891,24 @@ export default [
     guide_type: 'trash',
     guide_id: 212827,
     question_text: {
-      text: '[高阶牧师艾姆雅]的[反射护盾]应该如何应对？',
+      text: '[高阶牧师艾姆雅]的[反射护盾]，以下哪个描述正确？',
       options: [
         {
           value: 0,
-          text: '魔法驱散护盾',
+          text: '护盾反弹40%伤害',
         },
         {
           value: 1,
-          text: '物理职业集中爆发',
+          text: '护盾只反弹所有魔法伤害',
         },
         {
           value: 2,
-          text: '引导至熔岩池消除',
+          text: '护盾只反弹法术效果',
         },
       ],
       answer: {
         value: 0,
-        text: '护盾会反弹40%伤害，必须优先驱散魔法效果后再进行输出',
+        text: '护盾会反弹小怪受到的40%全伤害。避免在自己血量危险时，对其使用高伤害的技能',
       },
     },
   },
@@ -1347,7 +1347,7 @@ export default [
     guide_type: 'trash',
     guide_id: 236033,
     question_text: {
-      text: '[金属黏泥]施放[腐蚀泥胶]时，正确的应对是？',
+      text: '[金属黏泥]施放[腐蚀泥胶]时，以下应对方式，[错误]的是？',
       options: [
         {
           value: 0,
@@ -1359,11 +1359,11 @@ export default [
         },
         {
           value: 2,
-          text: '打断施法并集火',
+          text: '使用强控技能打断施法并集火',
         },
       ],
       answer: {
-        value: 0,
+        value: 1,
         text: '[腐蚀泥胶]向技能范围内的玩家释放腐蚀泥胶，造成自然伤害并给玩家一个吸奶盾。',
       },
     },
