@@ -2,7 +2,10 @@ import axios from 'axios';
 
 import { useAuthMapper } from '../../database/auth/mapper/authMapper.js';
 import { getAuthDB } from '../../database/utils/index.js';
-import { generateToken } from '../../auth/validateAdmin.js';
+import {
+  generateRefreshToken,
+  generateToken,
+} from '../../auth/validateAdmin.js';
 import '../../util/set-env.js';
 
 const db = await getAuthDB();
@@ -33,8 +36,9 @@ export async function queryLogin(req, res) {
 
     // 生成自定义 Token（例如 JWT）
     const token = generateToken(user.id);
+    const refreshToken = generateRefreshToken(user.id);
 
-    res.json({ token, userId: user.id });
+    res.json({ token, refreshToken, userId: user.id });
   } catch (error) {
     res.status(401).json({ error: '身份验证失败' });
   }

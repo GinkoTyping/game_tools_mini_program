@@ -9,7 +9,13 @@ export function isLocal(req) {
 }
 
 export function generateToken(userId) {
-  return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '7d' });
+  return jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '15m' });
+}
+
+export function generateRefreshToken(userId) {
+  return jwt.sign({ id: userId }, process.env.JWT_REFRESH_SECRET, {
+    expiresIn: '7d',
+  });
 }
 
 export const validateAdmin = async (req, res, next) => {
@@ -35,16 +41,24 @@ export const validateAdmin = async (req, res, next) => {
 };
 
 export function authenticateToken(req, res, next) {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-  if (!token) return res.sendStatus(401);
+  if (process.env.ENABLE_AUTHENTICATE === 'true') {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (!token) return res.sendStatus(401);
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) {
-      console.log('token', token, err);
-    }
-    if (err) return res.sendStatus(403);
-    req.user = user;
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+      if (err) {
+        if (err.name === 'TokenExpiredError') {
+          return res
+            .status(401)
+            .json({ code: 'TOKEN_EXPIRED', error: 'Token 已过期' });
+        }
+        return res.sendStatus(403);
+      }
+      req.user = user;
+      next();
+    });
+  } else {
     next();
-  });
+  }
 }
