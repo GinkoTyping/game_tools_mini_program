@@ -137,7 +137,7 @@ export async function queryHomeView(req, res) {
 
     const tierLists = await tierListMapper.getAllTierList();
     mythicMarkCount = await getMythicDungeonMarks();
-    tarotCount = await tarotMapper.getTotalTarotCount()
+    // tarotCount = await tarotMapper.getTotalTarotCount()
     const output = {
       time: new Date(lastUpdateAt),
       mythicMarkCount,
