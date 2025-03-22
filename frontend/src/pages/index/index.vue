@@ -258,12 +258,15 @@ function onClickNotice() {
 <style lang="scss" scoped>
 $heightDividedByWidth: 56.2 / 100;
 $simple-card-width: 43.5vw;
+
 .swiper-box {
   width: 100vw !important;
   height: calc(100vw * $heightDividedByWidth) !important;
+
   .swiper-item-container {
     height: 100%;
     position: relative;
+
     .swiper-item,
     .swiper-item-bg {
       margin: 1rem;
@@ -272,22 +275,27 @@ $simple-card-width: 43.5vw;
       height: calc(100% - 1.2rem);
       border-radius: 1rem;
     }
+
     .swiper-item {
       border: 0.1rem solid #999;
       position: relative;
+
       .swiper-item-info {
         position: absolute;
         right: 1rem;
         top: 1rem;
+
         .spec-info {
           display: flex;
           align-items: center;
+
           .class-icon {
             height: 2.4rem;
             width: 2.4rem;
             border-radius: 0.2rem;
             border: 0.1rem solid #999;
           }
+
           .class-labels {
             margin-left: 0.2rem;
             font-weight: bolder;
@@ -296,10 +304,12 @@ $simple-card-width: 43.5vw;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+
             .label-spec {
               font-size: large;
               margin-right: 0.2rem;
             }
+
             .info-type {
               font-size: small;
               color: $uni-text-color-grey;
@@ -308,10 +318,12 @@ $simple-card-width: 43.5vw;
           }
         }
       }
+
       .tags {
         margin-top: 10px;
       }
     }
+
     .swiper-item-bg {
       position: absolute;
       background-size: cover;
@@ -327,23 +339,28 @@ $simple-card-width: 43.5vw;
     }
   }
 }
+
 .entries {
   display: flex;
   justify-content: space-between;
   margin: 0.6rem 1rem 0 1rem;
+
   .entries-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 28vw;
+
     view {
       font-size: 14px;
       color: #fff;
       font-weight: bold;
     }
   }
+
   .entries-item--feature {
     position: relative;
+
     &::after {
       content: '';
       position: absolute;
@@ -369,6 +386,7 @@ $simple-card-width: 43.5vw;
   justify-content: space-between;
   margin: 0 1rem;
   padding-bottom: 1rem;
+
   .simple-card {
     width: $simple-card-width;
     height: calc($simple-card-width * $heightDividedByWidth);
@@ -377,19 +395,23 @@ $simple-card-width: 43.5vw;
 
     border-radius: 1rem;
     border: 0.1rem solid #6d6d6d;
+
     &:nth-child(3),
     &:nth-child(4) {
       margin-bottom: 0 !important;
     }
+
     .card-bg,
     .card-info {
       width: 100% !important;
       height: 100% !important;
       border-radius: 1rem;
     }
+
     .card-info {
       position: relative;
       background: transparent;
+
       .spec-access-count {
         position: absolute;
         z-index: 2;
@@ -400,6 +422,7 @@ $simple-card-width: 43.5vw;
         display: flex;
         align-items: center;
       }
+
       .spec-info {
         position: absolute;
         z-index: 2;
@@ -407,19 +430,23 @@ $simple-card-width: 43.5vw;
         bottom: 0.2rem;
         display: flex;
         align-items: center;
+
         .labels {
           margin-left: 0.5rem;
           font-size: smaller;
+
           .label-spec {
             font-size: small;
             display: flex;
             flex-direction: column;
             font-weight: bolder;
           }
+
           text {
             color: #fff;
           }
         }
+
         image {
           border-radius: 0.2rem;
           width: 2rem;
@@ -427,6 +454,7 @@ $simple-card-width: 43.5vw;
         }
       }
     }
+
     .card-bg {
       top: 0;
       position: absolute;
@@ -438,29 +466,35 @@ $simple-card-width: 43.5vw;
     }
   }
 }
+
 .narrow-card-container {
   display: flex;
   justify-content: space-between;
   margin: 0 1rem;
 }
+
 .narrow-card {
   width: 43.5vw;
   height: 10rem;
   border-radius: 1rem;
   position: relative;
+
   .narrow-card_bg,
   .narrow-card_info {
     border-radius: 1rem;
     width: 100%;
     height: calc(100% - 0.2rem) !important;
   }
+
   .highlight-shadow {
     box-shadow: 0 0 6px 2px $color-legend;
   }
+
   .narrow-card_info {
     border: 0.1rem solid #6d6d6d;
     background-color: transparent;
     position: relative;
+
     .icon {
       position: absolute;
       z-index: 2;
@@ -472,23 +506,27 @@ $simple-card-width: 43.5vw;
       font-weight: bold;
       font-size: 14px;
     }
+
     .info {
       position: absolute;
       z-index: 2;
       left: 0.6rem;
       bottom: 0.6rem;
+
       .card-name {
         font-size: medium;
         color: #fff;
         font-weight: bold;
         margin-bottom: 0.6rem;
       }
+
       .card-desc {
         font-size: small;
         color: #fff;
       }
     }
   }
+
   .narrow-card_bg {
     top: 0.1rem;
     left: 0.1rem;
@@ -499,6 +537,7 @@ $simple-card-width: 43.5vw;
     background-repeat: no-repeat;
     background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/wow-generic-news-image-10.webp);
   }
+
   .narrow-card_bg--mythic {
     background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/bg-undermine.jpg);
   }
@@ -512,8 +551,10 @@ $simple-card-width: 43.5vw;
   color: #fff;
   font-size: 14px;
   line-height: 14px;
+
   .prefix {
     display: flex;
+
     .icon {
       width: 4px;
       height: 12px;
@@ -523,6 +564,7 @@ $simple-card-width: 43.5vw;
       background-color: #2979ff;
     }
   }
+
   .suffix {
     color: #2979ff;
   }
