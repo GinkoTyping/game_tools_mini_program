@@ -97,9 +97,11 @@ export async function getFreeAdInfo(id) {
   };
   if (userAd?.ad_list?.length) {
     const freeUntil = formatNextDay(userAd.ad_list.pop());
-    const diff = Math.abs(new Date().getTime() - new Date(freeUntil).getTime());
+    const nowTime = new Date().getTime();
+    const untilTime = new Date(freeUntil).getTime();
+    const diff = Math.abs(nowTime - untilTime);
     output.lastUntil = freeUntil;
-    if (diff < UPDATE_INTERVAL) {
+    if (nowTime < untilTime && diff < UPDATE_INTERVAL) {
       const hour = Math.floor(diff / 3600 / 1000);
       const minute = Math.floor((diff - hour * 3600 * 1000) / 60 / 1000);
       output.isFreeAd = true;

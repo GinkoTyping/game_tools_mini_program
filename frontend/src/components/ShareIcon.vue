@@ -58,7 +58,7 @@
             </view>
             <view class="main" v-if="adInfo?.lastUntil?.length">
               <view class="repeat-watch-info">
-                上次投喂的buff截止: {{ adInfo?.lastUntil }}⏳
+                上次投喂的buff消失于: {{ adInfo?.lastUntil }}⏳
               </view>
             </view>
           </view>
