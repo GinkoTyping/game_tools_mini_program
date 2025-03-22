@@ -1,10 +1,15 @@
 // stores/userStore.js
 import { defineStore } from 'pinia';
 
-import { ITarot, queryDrawTarot, queryUserMarks } from '@/api/wow';
+import {
+  IDrawTarotInfo,
+  queryCheckDrawTarot,
+  queryDrawTarot,
+  queryUserMarks,
+} from '@/api/wow';
 
 interface IUserState {
-  tarot: ITarot;
+  drawTarotInfo: IDrawTarotInfo;
   [key: string]: any;
 }
 export const useUserStore = defineStore('user', {
@@ -14,30 +19,32 @@ export const useUserStore = defineStore('user', {
       spells: [],
     },
     isFreeAd: false,
-    tarotCount: {
+    drawTarotInfo: {
+      hasDraw: false,
       count: 0,
       totalCount: 0,
-    },
-    tarot: {
-      id: -1,
-      isPositive: false,
-      name: '',
-      name_en: '',
-      negative_suggestion: '',
-      negative_summary: '',
-      positive_suggestion: '',
-      positive_summary: '',
+      drawCardId: -1,
+      tarot: {
+        id: -1,
+        isPositive: false,
+        name: '',
+        name_en: '',
+        negative_suggestion: '',
+        negative_summary: '',
+        positive_suggestion: '',
+        positive_summary: '',
+      },
     },
   }),
   actions: {
     async updateUserMarks() {
       this.marks = await queryUserMarks();
     },
+    async checkDrawTarot() {
+      this.drawTarotInfo = await queryCheckDrawTarot();
+    },
     async drawTarot() {
-      const data = await queryDrawTarot();
-      this.tarot = data.tarot;
-      this.tarotCount.count = data.count ?? 0;
-      this.tarotCount.totalCount = data.totalCount ?? 0;
+      this.drawTarotInfo = await queryDrawTarot();
     },
   },
   getters: {},

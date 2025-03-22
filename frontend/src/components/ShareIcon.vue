@@ -38,10 +38,8 @@
         <view class="ad-popup-container">
           <view class="not-wacth" v-show="!adInfo?.isFreeAd">
             <view class="main">
-              <text style="color: #dd524d">{{ adInfo?.count }}人</text>观看了<text
-                style="color: #dd524d"
-                >30秒</text
-              >广告视频
+              <text style="color: #dd524d">{{ adInfo?.count }}人</text
+              >观看了<text style="color: #dd524d">30秒</text>广告视频
             </view>
             <view class="main">
               <view>给程序猿上了</view>
@@ -234,6 +232,10 @@ async function giveReward() {
     userStore.isFreeAd = data.isFreeAd;
   }
 }
+
+defineExpose({
+  showAdDialog,
+});
 
 // 资源清理
 onUnmounted(() => {

@@ -36,3 +36,5 @@ backend/database/wow/dynamic-database.db
 backend/database/wow/daily-database.db
 backend/database/wow/data/dps-rank/cache
 backend/database/common/dynamic-database.db
+media/assets
+

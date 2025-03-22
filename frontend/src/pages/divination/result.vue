@@ -9,7 +9,7 @@
       />
       <view class="main-content animate__animated animate__zoomIn">
         <view class="title">
-          <text class="sub-title">我抽中了</text>
+          <text class="sub-title">您抽中了</text>
           {{ tarot.name
           }}<text
             class="sub-title"
@@ -35,7 +35,7 @@
         </view>
         <view id="more">
           <view class="more-button" @click="switchExpand">
-            <view class="more-label">{{ isExpand ? '' : '更多' }}</view>
+            <view class="more-label">{{ isExpand ? '收起' : '更多' }}</view>
             <uni-icons
               :type="isExpand ? 'up' : 'down'"
               size="20"
@@ -44,28 +44,33 @@
           </view>
           <view
             class="fold-content animate__animated"
-            v-show="isExpand"
+            v-if="isExpand"
             :class="[isExpand ? 'animate__fadeInUp' : '']"
           >
-            今天有{{ userStore.tarotCount.totalCount }}人占卜，其中{{
-              userStore.tarotCount.count
-            }}人也抽中了{{ tarot.name }}!
+            <view
+              >今天有<text>{{ userStore.drawTarotInfo.totalCount }}人</text
+              >占卜，其中<text>{{ userStore.drawTarotInfo.count }}人</text
+              >也抽中了{{ tarot.name }}!</view
+            >
+            <view @click="clickShowAdDialog"
+              >觉得不错的话，点击<text>赏程序猿一个鸡腿🍗</text>吧</view
+            >
           </view>
         </view>
       </view>
     </view>
   </view>
 
-  <ShareIcon />
+  <ShareIcon ref="shareIconRef" />
 
   <ad-custom unit-id="adunit-5764afeffba54701"></ad-custom>
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
-import { onShareAppMessage } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { useUserStore } from '@/store/wowStore';
 
 onShareAppMessage(() => ({
@@ -73,28 +78,42 @@ onShareAppMessage(() => ({
   path: 'pages/question/index',
 }));
 
+onLoad(() => {
+  nextTick(() => {
+    if (!userStore.drawTarotInfo.tarot?.name) {
+      uni.showToast({
+        title: '请返回抽卡页面',
+        icon: 'error',
+      });
+    }
+  });
+});
+
 const userStore = useUserStore();
 const navigator = useNavigator();
 const tarot = computed(() => {
-  console.log(userStore.tarot);
-
-  const isPositive = userStore.tarot.isPositive;
+  const isPositive = userStore.drawTarotInfo.tarot.isPositive;
   return {
-    id: userStore.tarot.id,
-    name: userStore.tarot.name,
+    id: userStore.drawTarotInfo.tarot.id,
+    name: userStore.drawTarotInfo.tarot.name,
     isPositive,
     summary: isPositive
-      ? userStore.tarot.positive_summary
-      : userStore.tarot.negative_summary,
+      ? userStore.drawTarotInfo.tarot.positive_summary
+      : userStore.drawTarotInfo.tarot.negative_summary,
     suggestion: isPositive
-      ? userStore.tarot.positive_suggestion
-      : userStore.tarot.negative_suggestion,
+      ? userStore.drawTarotInfo.tarot.positive_suggestion
+      : userStore.drawTarotInfo.tarot.negative_suggestion,
   };
 });
 
 const isExpand = ref(false);
 function switchExpand() {
   isExpand.value = !isExpand.value;
+}
+
+const shareIconRef = ref();
+function clickShowAdDialog() {
+  shareIconRef.value?.showAdDialog?.();
 }
 </script>
 
@@ -192,6 +211,11 @@ $content-font: 32rpx;
     }
     .fold-content {
       color: $secondary-corlor;
+      text {
+        font-size: 28rpx;
+        font-weight: bold;
+        color: $primary-corlor;
+      }
     }
   }
 }

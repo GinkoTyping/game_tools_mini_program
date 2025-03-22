@@ -34,13 +34,11 @@
           src="https://ginkolearn.cyou/api/wow/assets/tarot/button.jpg"
         />
         <view class="animate__animated animate__fadeInUp animate__delay-2s">
-          {{ lastDrawCheck?.hasDraw ? '查看抽卡结果' : '点击抽卡' }}
+          {{ userStore.drawTarotInfo.hasDraw ? '查看抽卡结果' : '点击抽卡' }}
         </view>
       </view>
-    </view>
-    <view id="footer-wrap">
-      <text class="animate__animated animate__fadeIn animate__delay-2s"
-        >今日{{ lastDrawCheck?.totalCount ?? 0 }}人已抽</text
+      <view class="footer animate__animated animate__fadeIn animate__delay-2s"
+        >{{ userStore.drawTarotInfo.totalCount ?? 0 }}人已抽</view
       >
     </view>
   </view>
@@ -52,9 +50,7 @@
 
 <script lang="ts" setup>
 import { onShareAppMessage, onShow } from '@dcloudio/uni-app';
-import { ref } from 'vue';
 
-import { ILastDrawCheck, queryCheckDrawTarot } from '@/api/wow';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { useUserStore } from '@/store/wowStore';
 import { useNavigator } from '@/hooks/navigator';
@@ -64,22 +60,18 @@ onShareAppMessage(() => ({
   path: 'pages/question/index',
 }));
 
-const lastDrawCheck = ref<ILastDrawCheck>();
 onShow(async () => {
-  lastDrawCheck.value = await queryCheckDrawTarot();
+  userStore.checkDrawTarot();
 });
 
 const userStore = useUserStore();
 const navigator = useNavigator();
 async function drawTarot() {
-  if (lastDrawCheck.value?.hasDraw) {
-    userStore.tarot = lastDrawCheck.value.tarot;
-    userStore.tarotCount.count = lastDrawCheck.value.count;
-    userStore.tarotCount.totalCount = lastDrawCheck.value.totalCount;
-  } else {
+  if (!userStore.drawTarotInfo.hasDraw) {
     await userStore.drawTarot();
   }
-  navigator.toDivinationResult(userStore.tarot.id);
+
+  navigator.toDivinationResult(userStore.drawTarotInfo.tarot.id);
 }
 </script>
 
@@ -102,8 +94,13 @@ $secondary-corlor: #f4e0c2;
   }
   .cards-wrap {
     position: absolute;
-    top: 24vh;
+    bottom: 0;
     width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     .cards {
       display: flex;
       justify-content: center;
@@ -148,10 +145,6 @@ $secondary-corlor: #f4e0c2;
       }
     }
     .button {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translate(-50%, calc(150% + 0rpx)) !important;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -168,14 +161,11 @@ $secondary-corlor: #f4e0c2;
         color: $primary-corlor;
       }
     }
-  }
-  #footer-wrap {
-    position: absolute;
-    font-size: 20rpx;
-    color: $secondary-corlor;
-    bottom: 20rpx;
-    left: 50%;
-    transform: translateX(-50%) !important;
+    .footer {
+      margin-bottom: 10rpx;
+      font-size: 24rpx;
+      color: $secondary-corlor;
+    }
   }
 }
 .ad-avoider {

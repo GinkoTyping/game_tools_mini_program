@@ -412,6 +412,7 @@ export interface IHomeViewDTO {
     color: string;
   }[];
   mythicMarkCount: number;
+  tarotCount: number;
 }
 export async function queryHomeView() {
   try {
@@ -670,9 +671,9 @@ export interface ITarot {
   positive_suggestion: string;
   positive_summary: string;
 }
-export interface ILastDrawCheck {
+export interface IDrawTarotInfo {
   hasDraw: boolean;
-  lastDrawId: number;
+  drawCardId: number;
   count: number;
   totalCount: number;
   tarot: ITarot;

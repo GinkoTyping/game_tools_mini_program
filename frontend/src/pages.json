@@ -7,6 +7,12 @@
 	},
 	"pages": [
 		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "银子的搜罗坊"
+			}
+		},
+		{
 			"path": "pages/divination/index",
 			"style": {
 				"navigationBarTitleText": "WOW 塔罗牌占卜"
@@ -16,12 +22,6 @@
 			"path": "pages/divination/result",
 			"style": {
 				"navigationBarTitleText": "WOW 塔罗牌占卜"
-			}
-		},
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "银子的搜罗坊"
 			}
 		},
 		{

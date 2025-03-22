@@ -79,9 +79,14 @@ export async function queryCheckDrawTarot(req, res) {
     );
   }
 
+  // 保证数据格式完整
+  if (!countInfo) {
+    countInfo = { count: 0, totalCount: 0 };
+  }
+
   res.json({
     hasDraw,
-    lastTarotId,
+    drawCardId: lastTarotId,
     ...countInfo,
     tarot: tarotInfo,
   });
@@ -117,7 +122,7 @@ export async function queryDrawTarot(req, res) {
 
   res.json({
     ...countData,
-    hasDraw,
+    hasDraw: true,
     drawCardId,
     tarot,
   });
