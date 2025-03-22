@@ -33,10 +33,15 @@
           class="animate__animated animate__fadeIn animate__delay-1s"
           src="https://ginkolearn.cyou/api/wow/assets/tarot/button.jpg"
         />
-        <view class="animate__animated animate__fadeInUp animate__delay-2s">{{
-          lastDrawCheck?.hasDraw ? '查看抽卡结果' : '点击抽卡'
-        }}</view>
+        <view class="animate__animated animate__fadeInUp animate__delay-2s">
+          {{ lastDrawCheck?.hasDraw ? '查看抽卡结果' : '点击抽卡' }}
+        </view>
       </view>
+    </view>
+    <view id="footer-wrap">
+      <text class="animate__animated animate__fadeIn animate__delay-2s"
+        >今日{{ lastDrawCheck?.totalCount ?? 0 }}人已抽</text
+      >
     </view>
   </view>
   <ad-custom unit-id="adunit-19cdfb0cd4073687"></ad-custom>
@@ -47,9 +52,9 @@
 
 <script lang="ts" setup>
 import { onShareAppMessage, onShow } from '@dcloudio/uni-app';
-import { nextTick, ref } from 'vue';
+import { ref } from 'vue';
 
-import { ILastDrawCheck, queryCheckDrawTarot, queryDrawTarot } from '@/api/wow';
+import { ILastDrawCheck, queryCheckDrawTarot } from '@/api/wow';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { useUserStore } from '@/store/wowStore';
 import { useNavigator } from '@/hooks/navigator';
@@ -81,6 +86,7 @@ async function drawTarot() {
 <style lang="scss" scoped>
 $bg-corlor: #1f2729;
 $primary-corlor: #ab8d60;
+$secondary-corlor: #f4e0c2;
 
 .container {
   min-height: calc(100vh - 130px);
@@ -162,6 +168,14 @@ $primary-corlor: #ab8d60;
         color: $primary-corlor;
       }
     }
+  }
+  #footer-wrap {
+    position: absolute;
+    font-size: 20rpx;
+    color: $secondary-corlor;
+    bottom: 20rpx;
+    left: 50%;
+    transform: translateX(-50%) !important;
   }
 }
 .ad-avoider {
