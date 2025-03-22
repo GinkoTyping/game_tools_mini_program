@@ -84,7 +84,7 @@ async function updateTarotCount(date, tarotId) {
     }
 
     return db.run(`UPDATE ${TABLE_NAME} SET tarots_count=?1 WHERE date=?2`, [
-      tarotsCount,
+      JSON.stringify(tarotsCount),
       date,
     ]);
   } catch (error) {
