@@ -75,6 +75,7 @@ async function drawTarot() {
 
     await userStore.drawTarot();
   }
+  uni.hideLoading();
 
   navigator.toDivinationResult(userStore.drawTarotInfo.tarot.id);
 }

@@ -96,7 +96,7 @@
     </view>
   </view>
   <view class="narrow-card-container">
-    <view class="narrow-card" @click="() => navigator.toMythicDungeonList()">
+    <view class="narrow-card" @click="() => navigator.toQuestionIndex()">
       <view class="narrow-card_info">
         <view class="icon">
           <uni-icons
@@ -107,8 +107,8 @@
           <text>{{ homeViewData?.mythicMarkCount }}</text>
         </view>
         <view class="info">
-          <view class="card-name"> 大秘境攻略 </view>
-          <view class="card-desc">MDT路线 | 动图攻略</view>
+          <view class="card-name"> 做题家 </view>
+          <view class="card-desc">大秘境开卷考</view>
         </view>
       </view>
       <view class="narrow-card_bg narrow-card_bg--mythic"></view>
@@ -539,7 +539,7 @@ $simple-card-width: 43.5vw;
   }
 
   .narrow-card_bg--mythic {
-    background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/bg-undermine.jpg);
+    background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/Patchnotes.webp);
   }
 }
 
