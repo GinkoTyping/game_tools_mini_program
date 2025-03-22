@@ -9,6 +9,20 @@ async function getTarotInfoById(id) {
   return null;
 }
 
+async function getTotalTarotCount() {
+  const allDateData = await db.all(`SELECT * FROM ${TABLE_NAME}`);
+  return allDateData.reduce((pre, cur) => {
+    const tarotsCount = cur.tarots_count ? JSON.parse(cur.tarots_count) : [];
+    const curTotal = tarotsCount.reduce((preTotal, curTarot) => {
+      preTotal += curTarot.count;
+      return preTotal;
+    }, 0);
+
+    pre += curTotal;
+    return pre;
+  }, 0);
+}
+
 async function getTarotCountByDateAndTarotId(date, tarotId) {
   const data = await db.get(`SELECT * FROM ${TABLE_NAME} WHERE date=?1`, [
     date,
@@ -89,6 +103,7 @@ export function useTarotMapper(database) {
 
   return {
     getTarotInfoById,
+    getTotalTarotCount,
     getTarotCountByDateAndTarotId,
     insertTartoCount,
     updateTarotCount,

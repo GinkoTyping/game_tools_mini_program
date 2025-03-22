@@ -25,6 +25,11 @@ async function checkUpdateTarotCount(date, tarotId) {
       console.log('INSERT CAROT失败');
     }
   }
+
+  // 新增一次统计计数
+  totalCount++;
+  count++;
+
   return { count, totalCount };
 }
 async function checkUserTarotCount(userId, date, tarotId, isPositive) {

@@ -1,4 +1,10 @@
-import { getDB, getDailyDB, getDynamicDB } from '../../database/utils/index.js';
+import { useTarotMapper } from '../../database/common/mapper/dynamic/tarotMapper.js';
+import {
+  getCommonDynamicDB,
+  getDB,
+  getDailyDB,
+  getDynamicDB,
+} from '../../database/utils/index.js';
 import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
 import { useHomeViewMapper } from '../../database/wow/mapper/homeViewMapper.js';
 import { useNpcAndSpellMarkMapper } from '../../database/wow/mapper/npcAndSpellMarkMapper.js';
@@ -9,16 +15,22 @@ import { getWeekCount } from '../../util/wow.js';
 const db = await getDB();
 const homeViewMapper = useHomeViewMapper(db);
 const tierListMapper = useTierListMapper(db);
+
 const dailyDB = await getDailyDB();
 const specStatMapper = useSpecStatMapper(dailyDB);
+
 const dynamicDB = await getDynamicDB();
 const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
 const npcAndSpellMapper = useNpcAndSpellMarkMapper(dynamicDB);
+
+const commonDynamicDB = await getCommonDynamicDB();
+const tarotMapper = useTarotMapper(commonDynamicDB);
 
 const UPDATE_INTERVAL_HOUR = 1;
 const UPDATE_INTERVAL = UPDATE_INTERVAL_HOUR * 3600 * 1000;
 let lastUpdateAt = 0;
 let mythicMarkCount = 0;
+let tarotCount = 0;
 
 async function getCarouselsByDpsRank() {
   const dpsRankData = await specStatMapper.getSpecDpsRank({
@@ -108,6 +120,7 @@ export async function queryHomeView(req, res) {
       ...basicOutput,
       time: new Date(lastUpdateAt),
       mythicMarkCount,
+      tarotCount,
       carousels: JSON.parse(existed.carousels),
       hotTopics: JSON.parse(existed.hot_topics),
       tierLists: JSON.parse(existed.tier_lists),
@@ -124,9 +137,11 @@ export async function queryHomeView(req, res) {
 
     const tierLists = await tierListMapper.getAllTierList();
     mythicMarkCount = await getMythicDungeonMarks();
+    tarotCount = await tarotMapper.getTotalTarotCount()
     const output = {
       time: new Date(lastUpdateAt),
       mythicMarkCount,
+      tarotCount,
       carousels,
       hotTopics,
       tierLists,
