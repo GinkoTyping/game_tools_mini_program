@@ -43,21 +43,6 @@ export async function queryPatchList() {
   return res.data as IPatch;
 }
 
-export async function queryLogin(code: string) {
-  try {
-    const res: any = await proxyRequest({
-      url: `/auth/login`,
-      method: 'POST',
-      data: {
-        code,
-      },
-    });
-    return res.data;
-  } catch (error) {
-    return { error };
-  }
-}
-
 //#region 广告
 export interface IUserAd {
   count: number;
