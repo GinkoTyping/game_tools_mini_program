@@ -29,9 +29,11 @@ async function getTarotCountByDateAndTarotId(date, tarotId) {
   ]);
   let count = 0;
   let totalCount = 0;
+  let tarots_count = [];
   if (data) {
     if (data.tarots_count) {
       const countData = JSON.parse(data.tarots_count);
+      tarots_count = countData;
       const found = countData.find(
         (item) => Number(item.id) === Number(tarotId)
       );
@@ -46,6 +48,7 @@ async function getTarotCountByDateAndTarotId(date, tarotId) {
   return {
     count,
     totalCount,
+    tarots_count,
   };
 }
 
@@ -68,10 +71,10 @@ async function updateTarotCount(date, tarotId) {
     const data = await getTarotCountByDateAndTarotId(date, tarotId);
     let tarotsCount;
     if (data.tarots_count) {
-      tarotsCount = JSON.parse(data.tarots_count);
+      tarotsCount = data.tarots_count;
       tarotsCount.some((item) => {
         if (Number(item.id) === Number(tarotId)) {
-          item.count++;
+          item.count = Number(item.count) + 1;
           return true;
         }
         return false;
