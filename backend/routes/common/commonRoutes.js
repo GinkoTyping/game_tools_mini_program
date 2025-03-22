@@ -26,13 +26,13 @@ router.get('/scroll-info', queryScrollInfo);
 router.get('/advice/list', queryAdviceList);
 router.get('/patch/list', queryPatchList);
 
-router.get('/ad/query', authenticateToken, queryAdCount);
-router.get('/ad/update', authenticateToken, queryUpdateAdCount);
+router.get('/ad/query', queryAdCount);
+router.get('/ad/update', queryUpdateAdCount);
 
-router.post('/ad/query', authenticateToken, queryAdCountByUser);
-router.post('/ad/update', authenticateToken, queryUpdateAdCountByUser);
+router.post('/ad/query', queryAdCountByUser);
+router.post('/ad/update', queryUpdateAdCountByUser);
 
-router.post('/tarot/check', authenticateToken, queryCheckDrawTarot);
-router.post('/tarot/draw', authenticateToken, queryDrawTarot);
+router.post('/tarot/check', queryCheckDrawTarot);
+router.post('/tarot/draw', queryDrawTarot);
 
 export default router;
