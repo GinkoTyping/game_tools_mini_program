@@ -96,15 +96,6 @@
     </view>
   </view>
   <view class="narrow-card-container">
-    <view class="narrow-card" @click="() => navigator.toRaidGuide()">
-      <view class="narrow-card_info highlight-shadow">
-        <view class="info">
-          <view class="card-name">解放安德麦</view>
-          <view class="card-desc">一句话攻略</view>
-        </view>
-      </view>
-      <view class="narrow-card_bg"></view>
-    </view>
     <view class="narrow-card" @click="() => navigator.toMythicDungeonList()">
       <view class="narrow-card_info">
         <view class="icon">
@@ -121,6 +112,23 @@
         </view>
       </view>
       <view class="narrow-card_bg narrow-card_bg--mythic"></view>
+    </view>
+    <view class="narrow-card" @click="() => navigator.toDivinationIndex()">
+      <view class="narrow-card_info highlight-shadow">
+        <view class="icon" v-if="homeViewData?.tarotCount">
+          <uni-icons
+            color="rgb(244, 123, 0)"
+            type="search"
+            size="20"
+          ></uni-icons>
+          <text>{{ homeViewData?.tarotCount }}</text>
+        </view>
+        <view class="info">
+          <view class="card-name">每日塔罗牌</view>
+          <view class="card-desc">卡牌玄学改天命</view>
+        </view>
+      </view>
+      <view class="narrow-card_bg"></view>
     </view>
   </view>
 
@@ -489,7 +497,7 @@ $simple-card-width: 43.5vw;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url(https://ginkolearn.cyou/api/wow/assets/raid-guide/liberation-of-undermine-small.jpg);
+    background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/wow-generic-news-image-10.webp);
   }
   .narrow-card_bg--mythic {
     background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/bg-undermine.jpg);

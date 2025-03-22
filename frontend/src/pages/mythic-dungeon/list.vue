@@ -20,16 +20,16 @@
         showArrow
         rightText="查看"
         clickable
-        @click="() => navigator.toMythicDungeon(dungeon.id)"
+        @click="() => toDetail(dungeon)"
       >
         <template v-slot:header>
           <view class="slot-header">
             <image
               class="slot-image"
-              :src="`https://ginkolearn.cyou/api/wow/assets/dungeon/${dungeon.id}.webp`"
+              :src="imageSrc(dungeon)"
               mode="heightFix"
             ></image>
-            <view class="slot-header__tier">
+            <view class="slot-header__tier" v-if="dungeon.tier">
               <text
                 class="slot-header__tier-main"
                 :class="[`tier-${dungeon.tier?.toLowerCase()}`]"
@@ -58,7 +58,7 @@
           </view>
         </template>
         <template v-slot:footer>
-          <view class="slot-footer">
+          <view class="slot-footer" v-if="dungeon.count">
             <uni-icons type="eye" color="#fff" size="20"></uni-icons>
             <view>{{ dungeon.count }}</view>
           </view>
@@ -86,6 +86,14 @@ const navigator = useNavigator();
 onLoad(async () => {
   dungeonList.value = await queryMythicDunegonList();
   dungeonList.value.splice(4, 0, { isAd: true, name_zh: 'ad' });
+  dungeonList.value.push({
+    name_zh: '解放安德麦',
+    ratings: [
+      {
+        label: '一句话攻略',
+      },
+    ],
+  });
 });
 
 onShareAppMessage(() => {
@@ -115,6 +123,21 @@ const scoreConfig = computed(() => {
     };
   };
 });
+const imageSrc = computed(() => {
+  return dungeon => {
+    if (dungeon.id) {
+      return `https://ginkolearn.cyou/api/wow/assets/dungeon/${dungeon.id}.webp`;
+    }
+    return 'https://ginkolearn.cyou/api/wow/assets/raid-guide/liberation-of-undermine-small.jpg';
+  };
+});
+function toDetail(dungeon) {
+  if (dungeon.id) {
+    navigator.toMythicDungeon(dungeon.id);
+  } else {
+    navigator.toRaidGuide();
+  }
+}
 </script>
 <style lang="scss" scoped>
 .footer {
