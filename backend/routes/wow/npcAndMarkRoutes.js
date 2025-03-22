@@ -7,7 +7,7 @@ import {
 import { authenticateToken } from '../../auth/validateAdmin.js';
 
 const router = express.Router();
-router.post('/mark/update', authenticateToken, queryUpdateMarkStatus);
-router.get('/mark/:id', authenticateToken, queryUserMarksById);
+router.post('/mark/update', queryUpdateMarkStatus);
+router.get('/mark/:id', queryUserMarksById);
 
 export default router;
