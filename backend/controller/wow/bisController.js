@@ -43,6 +43,10 @@ export async function queryBlizzItemById(id) {
 }
 
 export async function getItemPreviewById(req, res) {
+  if (!req.params.id || req.params.id === 'null') {
+    res.status(404).json({message: '物品的ID为空'});
+  }
+
   const db = await getDB();
   const item = await db.get(
     `
@@ -78,7 +82,7 @@ export async function getItemPreviewById(req, res) {
     } catch (error) {
       console.log(error);
       res.statusCode = 404;
-      res.json({ message: '抱歉，11.1副本的装备数据暂未更新。' });
+      res.json({ message: '获取物品信息失败' });
     }
   }
 }
