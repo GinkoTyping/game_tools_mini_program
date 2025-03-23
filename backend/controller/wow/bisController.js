@@ -45,6 +45,7 @@ export async function queryBlizzItemById(id) {
 export async function getItemPreviewById(req, res) {
   if (!req.params.id || req.params.id === 'null') {
     res.status(404).json({message: '物品的ID为空'});
+    return;
   }
 
   const db = await getDB();
