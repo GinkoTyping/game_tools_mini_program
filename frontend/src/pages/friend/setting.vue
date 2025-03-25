@@ -63,7 +63,7 @@
   </uni-section>
   <!-- 游戏风格 -->
   <uni-section
-    id="classes"
+    id="game-style"
     class="priest"
     title="游戏风格"
     subTitle="请选择您游戏风格(最多选3个)"
@@ -130,6 +130,116 @@
       </view>
     </view>
   </uni-popup>
+  <!-- 活跃时间段 -->
+  <uni-section
+    id="active-time"
+    class="priest"
+    title="活跃时间段"
+    subTitle="请点亮您活跃的时间段"
+    type="line"
+    titleFontSize="16px"
+  >
+    <view class="active-time-wrap">
+      <view
+        class="active-time-item"
+        v-for="(item, dayIndex) in form.activeTime"
+      >
+        <view class="active-time-item__title">
+          <view>{{ item.title }}</view>
+          <uni-icons
+            :type="dayIndex ? 'color' : 'calendar'"
+            size="20"
+            color="#007aff"
+          ></uni-icons>
+        </view>
+        <view class="active-time-item_content">
+          <view
+            class="active-time-item__times-wrap"
+            v-for="range in [0, 12]"
+            :key="range"
+          >
+            <view class="active-time-item__times">
+              <view
+                class="active-time-item__times-item"
+                :class="[
+                  timeItem.selected
+                    ? 'active-time-item__times-item--active'
+                    : '',
+                ]"
+                v-for="timeItem in item.values.slice(range, range + 6)"
+                :key="timeItem.value"
+                @click="() => onClickTimeItem(dayIndex, timeItem)"
+              >
+                <text
+                  class="time-label"
+                  :class="[timeLabelClass(timeItem.value)]"
+                  v-show="isDisplayTime(timeItem.value, dayIndex)"
+                  >{{ `${timeItem.value}:00` }}</text
+                >
+              </view>
+            </view>
+            <view class="active-time-item__times">
+              <view
+                class="active-time-item__times-item"
+                :class="[
+                  timeItem.selected
+                    ? 'active-time-item__times-item--active'
+                    : '',
+                ]"
+                v-for="timeItem in item.values.slice(range + 6, range + 12)"
+                :key="timeItem.value"
+                @click="() => onClickTimeItem(dayIndex, timeItem)"
+              >
+                <text
+                  class="time-label"
+                  :class="[timeLabelClass(timeItem.value)]"
+                  v-show="isDisplayTime(timeItem.value, dayIndex)"
+                  >{{ `${timeItem.value}:00` }}</text
+                ></view
+              >
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </uni-section>
+  <!-- 隐私设置 -->
+  <uni-section
+    id="privacy"
+    class="priest"
+    title="隐私设置"
+    subTitle="大家如何找到你？"
+    type="line"
+    titleFontSize="16px"
+  >
+    <template v-slot:right>
+      <view class="right-slot">
+        <text>信息如何被使用？是否安全</text>
+        <uni-icons type="help-filled" size="30" color="#007aff"></uni-icons>
+      </view>
+    </template>
+    <uni-easyinput
+      class="contact-input"
+      type="password"
+      v-model="form.privacy.contact"
+      placeholder="战网昵称或者邮箱"
+    ></uni-easyinput>
+    <view class="switch-list">
+      <view class="switch-lits-item">
+        <view class="switch-lits-item__label">获取战网信息时需要我同意</view>
+        <switch
+          :checked="form.privacy.needConfirm"
+          color="#007aff"
+          style="transform: scale(0.7)"
+        />
+      </view>
+    </view>
+  </uni-section>
+
+  <view id="buttons">
+    <view class="submit-btn" @click="submit">注册</view>
+  </view>
+  <view class="footer"></view>
 </template>
 
 <script lang="ts" setup>
@@ -142,21 +252,37 @@ const userStore = useUserStore();
 const allOptions = computed(() => userStore.friendOptions);
 onLoad(async () => {
   await userStore.getFriendOptions();
-  console.log(userStore.friendOptions);
 });
 
 interface IOptionItem {
   text: string;
   value: string;
 }
+function getBasicTimeValues(title) {
+  return {
+    title: title,
+    values: new Array(24).fill({ text: '', value: 0 }).map((item, index) => ({
+      text: `${index}:00`,
+      value: index,
+      selected: false,
+    })),
+  };
+}
 const form = reactive<{
   jobs: IOptionItem[];
   classes: IOptionItem[];
   gameStyle: IOptionItem[];
+  activeTime: {
+    title: string;
+    values: { text: string; value: number; selected: boolean }[];
+  }[];
+  privacy: { needConfirm: boolean; contact: string };
 }>({
   jobs: [],
   classes: [],
   gameStyle: [],
+  activeTime: [getBasicTimeValues('工作日'), getBasicTimeValues('休息日')],
+  privacy: { needConfirm: true, contact: '' },
 });
 
 //#region 职责
@@ -216,6 +342,63 @@ function closeClassPopup() {
   classPopup.value?.close?.();
 }
 //#endregion
+
+//#region 活跃时间段
+const currentClickTime = ref<string>();
+let displayTimer;
+const isDisplayTime = computed(
+  () => (value: number, dayIndex: number) =>
+    [0, 6, 12, 18].includes(value) ||
+    (currentClickTime.value === `${dayIndex}-${value}` &&
+      ![1, 7, 13, 19].includes(value))
+);
+const timeLabelClass = computed(() => {
+  return (value: number) => {
+    if ([0, 12].includes(value)) {
+      return 'time-label--left-top';
+    }
+    if ([6, 18].includes(value)) {
+      return 'time-label--center-top';
+    }
+    if ([11, 23].includes(value)) {
+      return 'time-label--right-top';
+    }
+    return 'time-label-normal';
+  };
+});
+function onClickTimeItem(dayIndex, item) {
+  item.selected = !item.selected;
+  clearTimeout(displayTimer);
+  currentClickTime.value = `${dayIndex}-${item.value}`;
+  displayTimer = setTimeout(() => {
+    currentClickTime.value = '';
+  }, 1000);
+}
+//#endregion
+
+//#region 提交
+function validate() {
+  const isJobsValid = form.jobs.length;
+  const isClassesValid = form.classes.length;
+  const isGameStyleValid = form.gameStyle.length;
+  const isActiveTimeValid = form.activeTime.reduce((pre, cur) => {
+    const selected = cur.values.filter(item => item.selected);
+    pre.push(...selected);
+    return pre;
+  }, [] as any).length;
+  console.log({
+    isJobsValid,
+    isClassesValid,
+    isGameStyleValid,
+    isActiveTimeValid,
+  });
+  return isJobsValid && isClassesValid && isGameStyleValid && isActiveTimeValid;
+}
+function submit() {
+  const isValid = validate();
+  console.log(form);
+}
+//#endregion
 </script>
 
 <style lang="scss" scoped>
@@ -249,7 +432,7 @@ function closeClassPopup() {
   }
   .btn-item--normal {
     color: black;
-    background-color: #bbb;
+    background-color: #fff;
     border: none;
   }
   .btn-item--active {
@@ -271,6 +454,7 @@ function closeClassPopup() {
 }
 
 ::v-deep .uni-section {
+  border-bottom: 1px solid $uni-bg-color-grey-lighter;
   .uni-section-content {
     padding: 0 12px;
   }
@@ -323,5 +507,124 @@ function closeClassPopup() {
       color: #bbb;
     }
   }
+}
+
+$time-item-gap: 20rpx;
+$time-range-item-gap: 30rpx;
+$time-item-width: calc(
+  (100vw - 24px - $time-range-item-gap - $time-item-gap * 11) / 12
+);
+$time-item-height: calc(
+  (100vw - 24px - $time-range-item-gap - $time-item-gap * 11) / 12 * 2
+);
+$time-item-radius: calc(
+  (100vw - 24px - $time-range-item-gap - $time-item-gap * 11) / 12 / 2
+);
+#active-time {
+  .active-time-item {
+    .active-time-item__title {
+      padding: 10rpx 0;
+      display: flex;
+      align-items: center;
+      view {
+        font-size: 28rpx;
+        font-weight: bold;
+      }
+    }
+    .active-time-item_content {
+      padding-top: 30rpx;
+      .active-time-item__times-wrap {
+        display: flex;
+        justify-content: space-between;
+        &:first-child {
+          margin-bottom: 30rpx;
+        }
+        .active-time-item__times {
+          display: flex;
+          justify-content: space-between;
+          flex: 1;
+          &:first-child {
+            margin-right: $time-range-item-gap;
+          }
+          .active-time-item__times-item {
+            background-color: $uni-bg-color-grey-lighter;
+            width: $time-item-width;
+            height: $time-item-height;
+            border-radius: $time-item-radius;
+            margin-bottom: 10rpx;
+            position: relative;
+            &.active-time-item__times-item--active {
+              background-color: $uni-color-primary;
+            }
+            .time-label {
+              position: absolute;
+              &.time-label--left-top {
+                top: 0;
+                left: 0;
+                transform: translateY(-100%);
+              }
+              &.time-label--center-top {
+                top: 0;
+                left: 0;
+                transform: translateY(-100%);
+              }
+              &.time-label--right-top {
+                top: 0;
+                right: 0;
+                transform: translateY(-100%);
+              }
+              &.time-label-normal {
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, -100%);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#privacy {
+  .right-slot {
+    display: flex;
+    align-items: center;
+  }
+  .switch-list {
+    padding: 14rpx 0;
+    background-color: $uni-bg-color-grey;
+
+    .switch-lits-item {
+      padding: 10rpx 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+  }
+}
+
+#buttons {
+  padding: 20rpx 12px;
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  .submit-btn {
+    width: 100%;
+    padding: 10rpx 48rpx;
+    box-sizing: border-box;
+    border-radius: 30rpx;
+    background-color: $uni-color-primary;
+    text-align: center;
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #fff;
+  }
+}
+
+.footer {
+  height: 140rpx;
+  width: 100vw;
 }
 </style>
