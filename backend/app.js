@@ -15,6 +15,7 @@ import npcRoutes from './routes/wow/npcRoutes.js';
 import questionRoutes from './routes/wow/questionRoutes.js';
 import raidGuideRoutes from './routes/wow/raidGuideRoutes.js';
 import npcAndSpellMarkRoutes from './routes/wow/npcAndMarkRoutes.js';
+import friendRoutes from './routes/wow/friend.route.js';
 import commonBisRoutes from './routes/common/commonRoutes.js';
 import authRoutes from './routes/auth/authRoutes.js';
 
@@ -58,6 +59,7 @@ app.use('/api/common/assets', (req, res, next) => {
 
 // 挂载用户路由
 app.use('/api/wow', npcRoutes);
+app.use('/api/wow', friendRoutes);
 app.use('/api/wow', wowBisRoutes);
 app.use('/api/wow', questionRoutes);
 app.use('/api/wow', tierListRoutes);
