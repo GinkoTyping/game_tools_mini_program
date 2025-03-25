@@ -159,7 +159,21 @@ const form = reactive<{
   gameStyle: [],
 });
 
-//#region 公共选择器
+//#region 职责
+function selectJobs(item: IOptionItem) {
+  const existed = form.jobs.find(job => job.value === item.value);
+  if (existed) {
+    form.jobs = form.jobs.filter(job => job.value !== item.value);
+  } else {
+    form.jobs.push(item);
+  }
+}
+const isJobSelected = computed(() => {
+  return (value: string) => form.jobs.some(item => item.value === value);
+});
+//#endregion
+
+//#region 职业 / 游戏风格 公共选择器
 const currentFormKey = ref('');
 const popoverTitle = ref('');
 const selectionList = ref<IOptionItem[]>();
@@ -194,23 +208,6 @@ const isOptionSelected = computed(() => {
   return (value: string) =>
     form[currentFormKey.value].some(item => item.value === value);
 });
-//#endregion
-
-//#region 职责
-function selectJobs(item: IOptionItem) {
-  const existed = form.jobs.find(job => job.value === item.value);
-  if (existed) {
-    form.jobs = form.jobs.filter(job => job.value !== item.value);
-  } else {
-    form.jobs.push(item);
-  }
-}
-const isJobSelected = computed(() => {
-  return (value: string) => form.jobs.some(item => item.value === value);
-});
-//#endregion
-
-//#region 职业
 const isAllowAddClass = computed(() => {
   return (key: string, max: number = 3) => form[key].length < max;
 });
