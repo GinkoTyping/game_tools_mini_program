@@ -1,4 +1,5 @@
 <template>
+  <!-- 职责 -->
   <uni-section
     id="jobs"
     class="priest"
@@ -22,12 +23,12 @@
       </view>
     </view>
   </uni-section>
-
+  <!-- 职业 -->
   <uni-section
     id="classes"
     class="priest"
     title="职业"
-    subTitle="请选择您主玩的职业(可多选3个)"
+    subTitle="请选择您主玩的职业(最多选3个)"
     type="line"
     titleFontSize="16px"
   >
@@ -40,20 +41,68 @@
       >
         <text class="ellipsis">{{ item.text }}</text>
       </view>
-      <view class="btn-item ellipsis" @click="openClassPopup">
-        <text>{{ isAllowAddClass ? '添加' : '编辑' }}</text>
+      <view
+        class="btn-item ellipsis"
+        @click="
+          () =>
+            openClassPopup(
+              'classes',
+              '请选择您主玩的职业(最多3个)',
+              allOptions.classes.options
+            )
+        "
+      >
+        <text>{{ isAllowAddClass('classes') ? '添加' : '编辑' }}</text>
         <uni-icons
-          :type="isAllowAddClass ? 'plusempty' : 'compose'"
+          :type="isAllowAddClass('classes') ? 'plusempty' : 'compose'"
           color="#fff"
           size="16"
         ></uni-icons>
       </view>
     </view>
   </uni-section>
+  <!-- 游戏风格 -->
+  <uni-section
+    id="classes"
+    class="priest"
+    title="游戏风格"
+    subTitle="请选择您游戏风格(最多选3个)"
+    type="line"
+    titleFontSize="16px"
+  >
+    <view class="btns">
+      <view
+        class="btn-item btn-item--normal"
+        v-for="item in form.gameStyle"
+        :key="item.value"
+      >
+        <text class="ellipsis">{{ item.text }}</text>
+      </view>
+      <view
+        class="btn-item ellipsis"
+        @click="
+          () =>
+            openClassPopup(
+              'gameStyle',
+              '请选择您主玩的职业(最多3个)',
+              allOptions.gameStyle.options
+            )
+        "
+      >
+        <text>{{ isAllowAddClass('gameStyle') ? '添加' : '编辑' }}</text>
+        <uni-icons
+          :type="isAllowAddClass('gameStyle') ? 'plusempty' : 'compose'"
+          color="#fff"
+          size="16"
+        ></uni-icons>
+      </view>
+    </view>
+  </uni-section>
+  <!-- 公共选择器 -->
   <uni-popup ref="classPopup" type="bottom">
     <view class="classPopup">
       <view class="classPopup-header" @click="closeClassPopup">
-        <view class="classPopup-header-title">请选择您主玩的职业(最多3个)</view>
+        <view class="classPopup-header-title">{{ popoverTitle }}</view>
         <view class="classPopup-header-btn">
           <view>确定</view>
           <uni-icons
@@ -65,9 +114,9 @@
       </view>
       <view
         class="classItem"
-        v-for="item in allOptions.classes.options"
+        v-for="item in selectionList"
         :key="item.value"
-        @click="() => selectClasses(item)"
+        @click="() => setSelection(item, 3)"
       >
         <view :class="[item.value]">{{ item.text }}</view>
         <view class="class-check">
@@ -75,7 +124,7 @@
           <uni-icons
             type="checkbox-filled"
             size="28"
-            :color="isClassSelected(item.value) ? 'rgb(29, 245, 1)' : ''"
+            :color="isOptionSelected(item.value) ? 'rgb(29, 245, 1)' : ''"
           ></uni-icons>
         </view>
       </view>
@@ -100,10 +149,52 @@ interface IOptionItem {
   text: string;
   value: string;
 }
-const form = reactive<{ jobs: IOptionItem[]; classes: IOptionItem[] }>({
+const form = reactive<{
+  jobs: IOptionItem[];
+  classes: IOptionItem[];
+  gameStyle: IOptionItem[];
+}>({
   jobs: [],
   classes: [],
+  gameStyle: [],
 });
+
+//#region 公共选择器
+const currentFormKey = ref('');
+const popoverTitle = ref('');
+const selectionList = ref<IOptionItem[]>();
+const classPopup = ref();
+function openClassPopup(key: string, title: string, list: IOptionItem[]) {
+  currentFormKey.value = key;
+  popoverTitle.value = title;
+  selectionList.value = list;
+  classPopup.value?.open?.();
+}
+function setSelection(item: IOptionItem, max?: number) {
+  const key = currentFormKey.value;
+  const existed = form[key].find(
+    seletedItem => seletedItem.value === item.value
+  );
+  if (existed) {
+    form[key] = form[key].filter(
+      seletedItem => seletedItem.value !== item.value
+    );
+  } else {
+    if (max && form[key].length >= max) {
+      uni.showToast({
+        title: '最多选3个',
+        icon: 'error',
+      });
+    } else {
+      form[key].push(item);
+    }
+  }
+}
+const isOptionSelected = computed(() => {
+  return (value: string) =>
+    form[currentFormKey.value].some(item => item.value === value);
+});
+//#endregion
 
 //#region 职责
 function selectJobs(item: IOptionItem) {
@@ -120,33 +211,9 @@ const isJobSelected = computed(() => {
 //#endregion
 
 //#region 职业
-const classPopup = ref();
-function openClassPopup() {
-  classPopup.value?.open?.();
-}
-function selectClasses(item: IOptionItem) {
-  const existed = form.classes.find(
-    classItem => classItem.value === item.value
-  );
-  if (existed) {
-    form.classes = form.classes.filter(
-      classItem => classItem.value !== item.value
-    );
-  } else {
-    if (form.classes.length >= 3) {
-      uni.showToast({
-        title: '最多选3个',
-        icon: 'error',
-      });
-    } else {
-      form.classes.push(item);
-    }
-  }
-}
-const isClassSelected = computed(() => {
-  return (value: string) => form.classes.some(item => item.value === value);
+const isAllowAddClass = computed(() => {
+  return (key: string, max: number = 3) => form[key].length < max;
 });
-const isAllowAddClass = computed(() => form.classes.length < 3);
 
 function closeClassPopup() {
   classPopup.value?.close?.();
@@ -183,19 +250,24 @@ function closeClassPopup() {
       color: black;
     }
   }
+  .btn-item--normal {
+    color: black;
+    background-color: #bbb;
+    border: none;
+  }
   .btn-item--active {
     color: black;
     position: relative;
     &.tank {
-      background: $color-d-tier;
+      background: $shaman;
       border: none;
     }
     &.healer {
-      background: $color-c-tier;
+      background: $hunter;
       border: none;
     }
     &.dps {
-      background: $uni-color-error;
+      background: $death-knight;
       border: none;
     }
   }
@@ -243,6 +315,7 @@ function closeClassPopup() {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #fff;
     view {
       height: auto;
     }
