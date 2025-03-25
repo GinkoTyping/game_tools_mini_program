@@ -3,15 +3,19 @@ import { defineStore } from 'pinia';
 
 import {
   IDrawTarotInfo,
+  IFriendOptions,
   queryCheckDrawTarot,
   queryDrawTarot,
+  queryFriendOptions,
   queryUserMarks,
 } from '@/api/wow';
 
 interface IUserState {
   drawTarotInfo: IDrawTarotInfo;
+  friendOptions: IFriendOptions;
   [key: string]: any;
 }
+
 export const useUserStore = defineStore('user', {
   state: (): IUserState => ({
     marks: {
@@ -35,6 +39,13 @@ export const useUserStore = defineStore('user', {
         positive_summary: '',
       },
     },
+    friendOptions: {
+      jobs: [],
+      classes: [],
+      gameStyle: [],
+      activeTime: [],
+      communication: [],
+    },
   }),
   actions: {
     async updateUserMarks() {
@@ -45,6 +56,9 @@ export const useUserStore = defineStore('user', {
     },
     async drawTarot() {
       this.drawTarotInfo = await queryDrawTarot();
+    },
+    async getFriendOptions() {
+      this.friendOptions = await queryFriendOptions();
     },
   },
   getters: {},

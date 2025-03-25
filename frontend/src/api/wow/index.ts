@@ -702,3 +702,25 @@ export async function queryDrawTarot() {
   return res.data;
 }
 //#endregion
+
+//#region /friend
+export interface IFriendOptionItem {
+  text: string;
+  value: string;
+  options: { text: string; value: string }[];
+}
+export interface IFriendOptions {
+  jobs: IFriendOptionItem;
+  classes: IFriendOptionItem;
+  gameStyle: IFriendOptionItem;
+  activeTime: IFriendOptionItem;
+  communication: IFriendOptionItem;
+}
+export async function queryFriendOptions() {
+  const res: any = await proxyRequest({
+    url: `/wow/friend/options`,
+    method: 'POST',
+  });
+  return res.data as IFriendOptions;
+}
+//#endregion

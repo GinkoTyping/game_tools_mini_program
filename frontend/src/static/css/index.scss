@@ -17,12 +17,19 @@ $priest: rgb(255, 255, 255);
 .warrior::before {
   background-color: $warrior;
 }
+.warrior-bg {
+  background-color: $warrior;
+}
+
 
 .evoker {
   color: $evoker;
   border-color: $evoker;
 }
 .evoker::before {
+  background-color: $evoker;
+}
+.evoker-bg {
   background-color: $evoker;
 }
 
@@ -33,12 +40,18 @@ $priest: rgb(255, 255, 255);
 .hunter::before {
   background-color: $hunter;
 }
+.hunter-bg {
+  background-color: $hunter;
+}
 
 .priest {
   color: $priest;
   border-color: $priest;
 }
 .priest::before {
+  background-color: $priest;
+}
+.priest-bg {
   background-color: $priest;
 }
 
@@ -49,12 +62,18 @@ $priest: rgb(255, 255, 255);
 .death-knight::before {
   background-color: $death-knight;
 }
+.death-knight-bg {
+  background-color: $death-knight;
+}
 
 .shaman {
   color: $shaman;
   border-color: $shaman;
 }
 .shaman::before {
+  background-color: $shaman;
+}
+.shaman-bg {
   background-color: $shaman;
 }
 
@@ -65,12 +84,18 @@ $priest: rgb(255, 255, 255);
 .mage::before {
   background-color: $mage;
 }
+.mage-bg {
+  background-color: $mage;
+}
 
 .warlock {
   color: $warlock;
   border-color: $warlock;
 }
 .warlock::before {
+  background-color: $warlock;
+}
+.warlock-bg {
   background-color: $warlock;
 }
 
@@ -81,12 +106,18 @@ $priest: rgb(255, 255, 255);
 .monk::before {
   background-color: $monk;
 }
+.monk-bg {
+  background-color: $monk;
+}
 
 .druid {
   color: $druid;
   border-color: $druid;
 }
 .druid::before {
+  background-color: $druid;
+}
+.druid-bg{
   background-color: $druid;
 }
 
@@ -97,6 +128,9 @@ $priest: rgb(255, 255, 255);
 .demon-hunter::before {
   background-color: $demon-hunter;
 }
+.demon-hunter-bg {
+  background-color: $demon-hunter;
+}
 
 .paladin {
   color: $paladin;
@@ -105,12 +139,18 @@ $priest: rgb(255, 255, 255);
 .paladin::before {
   background-color: $paladin;
 }
+.paladin-bg {
+  background-color: $paladin;
+}
 
 .rogue {
   color: $rogue;
   border-color: $rogue;
 }
 .rogue::before {
+  background-color: $rogue;
+}
+.rogue-bg {
   background-color: $rogue;
 }
 
