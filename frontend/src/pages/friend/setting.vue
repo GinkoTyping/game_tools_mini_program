@@ -82,7 +82,7 @@
     >
       <view class="btns">
         <view
-          class="btn-item btn-item--normal"
+          class="btn-item btn-item--common"
           v-for="item in wowForm.gameStyle"
           :key="item.value"
         >
@@ -239,6 +239,42 @@
                 'status',
                 '请选择您目前的状态(最多3个)',
                 commonOptions.status.options,
+                'button'
+              )
+          "
+        >
+          <text>{{ isAllowAddSelection('gameStyle') ? '添加' : '编辑' }}</text>
+          <uni-icons
+            :type="isAllowAddSelection('gameStyle') ? 'plusempty' : 'compose'"
+            color="#fff"
+            size="16"
+          ></uni-icons>
+        </view> </view
+    ></uni-section>
+    <uni-section
+      id="game"
+      class="priest"
+      title="常玩游戏"
+      subTitle="请选择您其他常玩的游戏(最多选3个)"
+      type="line"
+      titleFontSize="16px"
+    >
+      <view class="btns">
+        <view
+          class="btn-item btn-item--common"
+          v-for="item in commonForm.game"
+          :key="item.value"
+        >
+          <text class="ellipsis">{{ item.text }}</text>
+        </view>
+        <view
+          class="btn-item ellipsis"
+          @click="
+            () =>
+              openSelectionPopup(
+                'game',
+                '请选择您目前的状态(最多3个)',
+                commonOptions.game.options,
                 'button'
               )
           "
@@ -470,8 +506,9 @@ function onClickTimeItem(dayIndex, item) {
 //#endregion
 
 //#region 其他信息
-const commonForm = reactive<{ status: IOptionItem[] }>({
+const commonForm = reactive<{ status: IOptionItem[]; game: IOptionItem[] }>({
   status: [],
+  game: [],
 });
 //#endregion
 
@@ -554,8 +591,8 @@ async function submit() {
     border: none;
   }
   .btn-item--common {
-    color: #fff;
-    background-color: $uni-color-primary;
+    color: $uni-color-primary;
+    background-color: #c2d6fd;
     border: none;
   }
   .btn-item--reverse {
