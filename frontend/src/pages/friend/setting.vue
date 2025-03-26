@@ -225,7 +225,7 @@
     >
       <view class="btns">
         <view
-          class="btn-item btn-item--normal"
+          class="btn-item btn-item--common"
           v-for="item in commonForm.status"
           :key="item.value"
         >
@@ -236,9 +236,10 @@
           @click="
             () =>
               openSelectionPopup(
-                'gameStyle',
-                '请选择您主玩的职业(最多3个)',
-                wowOptions.gameStyle.options
+                'status',
+                '请选择您目前的状态(最多3个)',
+                commonOptions.status.options,
+                'button'
               )
           "
         >
@@ -270,22 +271,43 @@
           ></uni-icons>
         </view>
       </view>
-      <view
-        class="classItem"
-        v-for="item in selectionList"
-        :key="item.value"
-        @click="() => setSelection(item, 3)"
-      >
-        <view :class="[item.value]">{{ item.text }}</view>
-        <view class="class-check">
-          <view>点击任意位置</view>
-          <uni-icons
-            type="checkbox-filled"
-            size="28"
-            :color="isOptionSelected(item.value) ? 'rgb(29, 245, 1)' : ''"
-          ></uni-icons>
+      <template v-if="optionDisplayType === 'list'">
+        <view
+          class="classItem"
+          v-for="item in selectionList"
+          :key="item.value"
+          @click="() => setSelection(item, 'wow', 3)"
+        >
+          <view :class="[item.value]">{{ item.text }}</view>
+          <view class="class-check">
+            <view>点击任意位置</view>
+            <uni-icons
+              type="checkbox-filled"
+              size="28"
+              :color="
+                isOptionSelected(item.value, wowForm) ? 'rgb(29, 245, 1)' : ''
+              "
+            ></uni-icons>
+          </view>
         </view>
-      </view>
+      </template>
+      <template v-if="optionDisplayType === 'button'">
+        <view class="btns">
+          <view
+            class="btn-item"
+            :class="
+              isOptionSelected(item.value, commonForm)
+                ? 'btn-item--common'
+                : 'btn-item--reverse'
+            "
+            v-for="item in selectionList"
+            :key="item.value"
+            @click="() => setSelection(item, 'common', 3)"
+          >
+            <text class="ellipsis">{{ item.text }}</text>
+          </view>
+        </view>
+      </template>
     </view>
   </uni-popup>
 </template>
@@ -367,35 +389,43 @@ const currentFormKey = ref('');
 const popoverTitle = ref('');
 const selectionList = ref<IOptionItem[]>();
 const classPopup = ref();
-function openSelectionPopup(key: string, title: string, list: IOptionItem[]) {
+const optionDisplayType = ref('list');
+function openSelectionPopup(
+  key: string,
+  title: string,
+  list: IOptionItem[],
+  display: string = 'list'
+) {
   currentFormKey.value = key;
   popoverTitle.value = title;
   selectionList.value = list;
+  optionDisplayType.value = display;
   classPopup.value?.open?.();
 }
-function setSelection(item: IOptionItem, max?: number) {
+function setSelection(item: IOptionItem, type: 'wow' | 'common', max?: number) {
   const key = currentFormKey.value;
-  const existed = wowForm[key].find(
+  const formRef = type === 'wow' ? wowForm : commonForm;
+  const existed = formRef[key].find(
     seletedItem => seletedItem.value === item.value
   );
   if (existed) {
-    wowForm[key] = wowForm[key].filter(
+    formRef[key] = formRef[key].filter(
       seletedItem => seletedItem.value !== item.value
     );
   } else {
-    if (max && wowForm[key].length >= max) {
+    if (max && formRef[key].length >= max) {
       uni.showToast({
         title: '最多选3个',
         icon: 'error',
       });
     } else {
-      wowForm[key].push(item);
+      formRef[key].push(item);
     }
   }
 }
 const isOptionSelected = computed(() => {
-  return (value: string) =>
-    wowForm[currentFormKey.value].some(item => item.value === value);
+  return (value: string, form) =>
+    form[currentFormKey.value].some(item => item.value === value);
 });
 const isAllowAddSelection = computed(() => {
   return (key: string, max: number = 3) => wowForm[key].length < max;
@@ -523,6 +553,16 @@ async function submit() {
     background-color: #fff;
     border: none;
   }
+  .btn-item--common {
+    color: #fff;
+    background-color: $uni-color-primary;
+    border: none;
+  }
+  .btn-item--reverse {
+    color: black;
+    background-color: #bbb;
+    border: none;
+  }
 
   .btn-item--active {
     color: black;
@@ -604,6 +644,13 @@ async function submit() {
       display: flex;
       align-items: center;
       color: #bbb;
+    }
+  }
+
+  .btns {
+    padding: 12px;
+    text {
+      font-weight: normal !important;
     }
   }
 }
