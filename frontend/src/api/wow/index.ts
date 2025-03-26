@@ -704,30 +704,25 @@ export async function queryDrawTarot() {
 //#endregion
 
 //#region /user-tag
-export interface IWowTagOptionItem {
+export interface ITagOptionItem {
   text: string;
   value: string;
   options: { text: string; value: string }[];
 }
 export interface IWowUserTagOptions {
-  jobs: IWowTagOptionItem;
-  classes: IWowTagOptionItem;
-  gameStyle: IWowTagOptionItem;
-  activeTime: IWowTagOptionItem;
-  communication: IWowTagOptionItem;
+  jobs: ITagOptionItem;
+  classes: ITagOptionItem;
+  gameStyle: ITagOptionItem;
+  activeTime: ITagOptionItem;
+  communication: ITagOptionItem;
 }
 
-export interface ICommonUserTagOptionItem {
-  text: string;
-  value: string;
-  options: string[];
-}
 export interface ICommonUserTagOptions {
-  age: ICommonUserTagOptionItem;
-  game: ICommonUserTagOptionItem;
-  personality: ICommonUserTagOptionItem;
-  role: ICommonUserTagOptionItem;
-  status: ICommonUserTagOptionItem;
+  age: ITagOptionItem;
+  game: ITagOptionItem;
+  personality: ITagOptionItem;
+  role: ITagOptionItem;
+  status: ITagOptionItem;
 }
 export async function queryFriendOptions() {
   const res: any = await proxyRequest({

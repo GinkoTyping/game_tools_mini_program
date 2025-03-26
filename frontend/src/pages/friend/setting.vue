@@ -55,16 +55,16 @@
           class="btn-item ellipsis"
           @click="
             () =>
-              openClassPopup(
+              openSelectionPopup(
                 'classes',
                 '请选择您主玩的职业(最多3个)',
                 wowOptions.classes.options
               )
           "
         >
-          <text>{{ isAllowAddClass('classes') ? '添加' : '编辑' }}</text>
+          <text>{{ isAllowAddSelection('classes') ? '添加' : '编辑' }}</text>
           <uni-icons
-            :type="isAllowAddClass('classes') ? 'plusempty' : 'compose'"
+            :type="isAllowAddSelection('classes') ? 'plusempty' : 'compose'"
             color="#fff"
             size="16"
           ></uni-icons>
@@ -92,16 +92,16 @@
           class="btn-item ellipsis"
           @click="
             () =>
-              openClassPopup(
+              openSelectionPopup(
                 'gameStyle',
                 '请选择您主玩的职业(最多3个)',
                 wowOptions.gameStyle.options
               )
           "
         >
-          <text>{{ isAllowAddClass('gameStyle') ? '添加' : '编辑' }}</text>
+          <text>{{ isAllowAddSelection('gameStyle') ? '添加' : '编辑' }}</text>
           <uni-icons
-            :type="isAllowAddClass('gameStyle') ? 'plusempty' : 'compose'"
+            :type="isAllowAddSelection('gameStyle') ? 'plusempty' : 'compose'"
             color="#fff"
             size="16"
           ></uni-icons>
@@ -226,7 +226,7 @@
       <view class="btns">
         <view
           class="btn-item btn-item--normal"
-          v-for="item in wowForm.gameStyle"
+          v-for="item in commonForm.status"
           :key="item.value"
         >
           <text class="ellipsis">{{ item.text }}</text>
@@ -235,16 +235,16 @@
           class="btn-item ellipsis"
           @click="
             () =>
-              openClassPopup(
+              openSelectionPopup(
                 'gameStyle',
                 '请选择您主玩的职业(最多3个)',
                 wowOptions.gameStyle.options
               )
           "
         >
-          <text>{{ isAllowAddClass('gameStyle') ? '添加' : '编辑' }}</text>
+          <text>{{ isAllowAddSelection('gameStyle') ? '添加' : '编辑' }}</text>
           <uni-icons
-            :type="isAllowAddClass('gameStyle') ? 'plusempty' : 'compose'"
+            :type="isAllowAddSelection('gameStyle') ? 'plusempty' : 'compose'"
             color="#fff"
             size="16"
           ></uni-icons>
@@ -299,10 +299,22 @@ import { computed, reactive, ref } from 'vue';
 
 const userStore = useUserStore();
 const wowOptions = computed(() => userStore.userTagOptions.wowOptions);
+const commonOptions = computed(() => userStore.userTagOptions.commonOptions);
 onLoad(async () => {
   await userStore.getFriendOptions();
 });
 
+//#region 分段器
+const currentTab = ref(1);
+const tabs = ref(['基本信息', '其他(选填)']);
+function switchTab(e) {
+  if (currentTab.value !== e.currentIndex) {
+    currentTab.value = e.currentIndex;
+  }
+}
+//#endregion
+
+//#region 基本信息
 interface IOptionItem {
   text: string;
   value: string;
@@ -334,15 +346,6 @@ const wowForm = reactive<{
   privacy: { needConfirm: true },
 });
 const battlenetId = ref('');
-
-//#region 分段器
-const currentTab = ref(1);
-const tabs = ref(['基本信息', '其他(选填)']);
-function switchTab(e) {
-  if (currentTab.value !== e.currentIndex) {
-    currentTab.value = e.currentIndex;
-  }
-}
 //#endregion
 
 //#region 职责
@@ -364,7 +367,7 @@ const currentFormKey = ref('');
 const popoverTitle = ref('');
 const selectionList = ref<IOptionItem[]>();
 const classPopup = ref();
-function openClassPopup(key: string, title: string, list: IOptionItem[]) {
+function openSelectionPopup(key: string, title: string, list: IOptionItem[]) {
   currentFormKey.value = key;
   popoverTitle.value = title;
   selectionList.value = list;
@@ -394,7 +397,7 @@ const isOptionSelected = computed(() => {
   return (value: string) =>
     wowForm[currentFormKey.value].some(item => item.value === value);
 });
-const isAllowAddClass = computed(() => {
+const isAllowAddSelection = computed(() => {
   return (key: string, max: number = 3) => wowForm[key].length < max;
 });
 
@@ -434,6 +437,12 @@ function onClickTimeItem(dayIndex, item) {
     currentClickTime.value = '';
   }, 1000);
 }
+//#endregion
+
+//#region 其他信息
+const commonForm = reactive<{ status: IOptionItem[] }>({
+  status: [],
+});
 //#endregion
 
 //#region 提交

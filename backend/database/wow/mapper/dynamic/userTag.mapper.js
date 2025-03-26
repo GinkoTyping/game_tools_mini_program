@@ -4,9 +4,19 @@ import commonOptions from '../../data/user-tag/common_tag.js';
 
 let db;
 const TABLE_NAME = 'wow_dynamic_user_tag';
+const mappedCommonOptions = mapCommonOptions();
+function mapCommonOptions() {
+  Object.entries(commonOptions).forEach(([key, value]) => {
+    commonOptions[key].options = value.options.map((item) => ({
+      text: item,
+      value: item,
+    }));
+  });
+  return commonOptions;
+}
 
 async function getTagOptions() {
-  return { wowOptions, commonOptions };
+  return { wowOptions, commonOptions: mappedCommonOptions };
 }
 
 async function insertUserTag(params) {
