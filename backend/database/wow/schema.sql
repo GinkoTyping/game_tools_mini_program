@@ -192,6 +192,15 @@ VALUES
   (506, '燧酿酒庄'),
   (525, '水闸行动');
 
+CREATE TABLE
+  IF NOT EXISTS wow_dynamic_user_tag (
+    id INTEGER PRIMARY KEY,
+    created_at TIMESTAMP CURRENT_TIME,
+    update_at TIMESTAMP,
+    wow_tag TEXT,
+    common_tag TEXT
+  );
+
 -- daily tables
 CREATE TABLE
   IF NOT EXISTS wow_daily_spec_popularity (
