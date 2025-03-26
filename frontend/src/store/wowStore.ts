@@ -2,8 +2,11 @@
 import { defineStore } from 'pinia';
 
 import {
+  ICommonUserTagOptionItem,
+  ICommonUserTagOptions,
   IDrawTarotInfo,
-  IFriendOptions,
+  IWowTagOptionItem,
+  IWowUserTagOptions,
   queryCheckDrawTarot,
   queryDrawTarot,
   queryFriendOptions,
@@ -12,7 +15,10 @@ import {
 
 interface IUserState {
   drawTarotInfo: IDrawTarotInfo;
-  friendOptions: IFriendOptions;
+  userTagOptions: {
+    wowOptions: IWowUserTagOptions;
+    commonOptions: ICommonUserTagOptions;
+  };
   [key: string]: any;
 }
 
@@ -39,12 +45,21 @@ export const useUserStore = defineStore('user', {
         positive_summary: '',
       },
     },
-    friendOptions: {
-      jobs: [],
-      classes: [],
-      gameStyle: [],
-      activeTime: [],
-      communication: [],
+    userTagOptions: {
+      wowOptions: {
+        jobs: {} as IWowTagOptionItem,
+        classes: {} as IWowTagOptionItem,
+        gameStyle: {} as IWowTagOptionItem,
+        activeTime: {} as IWowTagOptionItem,
+        communication: {} as IWowTagOptionItem,
+      },
+      commonOptions: {
+        status: {} as ICommonUserTagOptionItem,
+        age: {} as ICommonUserTagOptionItem,
+        game: {} as ICommonUserTagOptionItem,
+        personality: {} as ICommonUserTagOptionItem,
+        role: {} as ICommonUserTagOptionItem,
+      },
     },
   }),
   actions: {
@@ -58,7 +73,7 @@ export const useUserStore = defineStore('user', {
       this.drawTarotInfo = await queryDrawTarot();
     },
     async getFriendOptions() {
-      this.friendOptions = await queryFriendOptions();
+      this.userTagOptions = await queryFriendOptions();
     },
   },
   getters: {},

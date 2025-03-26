@@ -25,7 +25,7 @@
             item.value,
             isJobSelected(item.value) ? 'btn-item--active' : '',
           ]"
-          v-for="item in allOptions.jobs.options"
+          v-for="item in wowOptions.jobs.options"
           :key="item.value"
           @click="() => selectJobs(item)"
         >
@@ -46,7 +46,7 @@
         <view
           class="btn-item btn-item--spec"
           :class="[`${item.value}-bg`, item.value]"
-          v-for="item in form.classes"
+          v-for="item in wowForm.classes"
           :key="item.value"
         >
           <text class="ellipsis">{{ item.text }}</text>
@@ -58,7 +58,7 @@
               openClassPopup(
                 'classes',
                 '请选择您主玩的职业(最多3个)',
-                allOptions.classes.options
+                wowOptions.classes.options
               )
           "
         >
@@ -83,7 +83,7 @@
       <view class="btns">
         <view
           class="btn-item btn-item--normal"
-          v-for="item in form.gameStyle"
+          v-for="item in wowForm.gameStyle"
           :key="item.value"
         >
           <text class="ellipsis">{{ item.text }}</text>
@@ -95,7 +95,7 @@
               openClassPopup(
                 'gameStyle',
                 '请选择您主玩的职业(最多3个)',
-                allOptions.gameStyle.options
+                wowOptions.gameStyle.options
               )
           "
         >
@@ -108,38 +108,6 @@
         </view>
       </view>
     </uni-section>
-    <!-- 公共选择器 -->
-    <uni-popup ref="classPopup" type="bottom">
-      <view class="classPopup">
-        <view class="classPopup-header" @click="closeClassPopup">
-          <view class="classPopup-header-title">{{ popoverTitle }}</view>
-          <view class="classPopup-header-btn">
-            <view>确定</view>
-            <uni-icons
-              type="checkbox-filled"
-              size="28"
-              :color="form.classes.length ? 'rgb(29, 245, 1)' : ''"
-            ></uni-icons>
-          </view>
-        </view>
-        <view
-          class="classItem"
-          v-for="item in selectionList"
-          :key="item.value"
-          @click="() => setSelection(item, 3)"
-        >
-          <view :class="[item.value]">{{ item.text }}</view>
-          <view class="class-check">
-            <view>点击任意位置</view>
-            <uni-icons
-              type="checkbox-filled"
-              size="28"
-              :color="isOptionSelected(item.value) ? 'rgb(29, 245, 1)' : ''"
-            ></uni-icons>
-          </view>
-        </view>
-      </view>
-    </uni-popup>
     <!-- 活跃时间段 -->
     <uni-section
       id="active-time"
@@ -152,7 +120,7 @@
       <view class="active-time-wrap">
         <view
           class="active-time-item"
-          v-for="(item, dayIndex) in form.activeTime"
+          v-for="(item, dayIndex) in wowForm.activeTime"
         >
           <view class="active-time-item__title">
             <view>{{ item.title }}</view>
@@ -238,7 +206,7 @@
         <view class="switch-lits-item">
           <view class="switch-lits-item__label">获取战网信息时需要我同意</view>
           <switch
-            :checked="form.privacy.needConfirm"
+            :checked="wowForm.privacy.needConfirm"
             color="#007aff"
             style="transform: scale(0.7)"
           />
@@ -251,15 +219,75 @@
       id="status"
       class="priest"
       title="状态"
-      subTitle="请选择您主玩的职责(可多选)"
+      subTitle="请选择您目前的状态(最多选3个)"
       type="line"
       titleFontSize="16px"
+    >
+      <view class="btns">
+        <view
+          class="btn-item btn-item--normal"
+          v-for="item in wowForm.gameStyle"
+          :key="item.value"
+        >
+          <text class="ellipsis">{{ item.text }}</text>
+        </view>
+        <view
+          class="btn-item ellipsis"
+          @click="
+            () =>
+              openClassPopup(
+                'gameStyle',
+                '请选择您主玩的职业(最多3个)',
+                wowOptions.gameStyle.options
+              )
+          "
+        >
+          <text>{{ isAllowAddClass('gameStyle') ? '添加' : '编辑' }}</text>
+          <uni-icons
+            :type="isAllowAddClass('gameStyle') ? 'plusempty' : 'compose'"
+            color="#fff"
+            size="16"
+          ></uni-icons>
+        </view> </view
     ></uni-section>
   </view>
   <view id="buttons">
     <view class="submit-btn" @click="submit">注册</view>
   </view>
   <view class="footer"></view>
+
+  <!-- 公共选择器 -->
+  <uni-popup ref="classPopup" type="bottom">
+    <view class="classPopup">
+      <view class="classPopup-header" @click="closeClassPopup">
+        <view class="classPopup-header-title">{{ popoverTitle }}</view>
+        <view class="classPopup-header-btn">
+          <view>确定</view>
+          <uni-icons
+            type="checkbox-filled"
+            size="28"
+            :color="wowForm.classes.length ? 'rgb(29, 245, 1)' : ''"
+          ></uni-icons>
+        </view>
+      </view>
+      <view
+        class="classItem"
+        v-for="item in selectionList"
+        :key="item.value"
+        @click="() => setSelection(item, 3)"
+      >
+        <view :class="[item.value]">{{ item.text }}</view>
+        <view class="class-check">
+          <view>点击任意位置</view>
+          <uni-icons
+            type="checkbox-filled"
+            size="28"
+            :color="isOptionSelected(item.value) ? 'rgb(29, 245, 1)' : ''"
+          ></uni-icons>
+        </view>
+      </view>
+    </view>
+  </uni-popup>
 </template>
 
 <script lang="ts" setup>
@@ -270,7 +298,7 @@ import { onLoad } from '@dcloudio/uni-app';
 import { computed, reactive, ref } from 'vue';
 
 const userStore = useUserStore();
-const allOptions = computed(() => userStore.friendOptions);
+const wowOptions = computed(() => userStore.userTagOptions.wowOptions);
 onLoad(async () => {
   await userStore.getFriendOptions();
 });
@@ -289,7 +317,7 @@ function getBasicTimeValues(title) {
     })),
   };
 }
-const form = reactive<{
+const wowForm = reactive<{
   jobs: IOptionItem[];
   classes: IOptionItem[];
   gameStyle: IOptionItem[];
@@ -319,15 +347,15 @@ function switchTab(e) {
 
 //#region 职责
 function selectJobs(item: IOptionItem) {
-  const existed = form.jobs.find(job => job.value === item.value);
+  const existed = wowForm.jobs.find(job => job.value === item.value);
   if (existed) {
-    form.jobs = form.jobs.filter(job => job.value !== item.value);
+    wowForm.jobs = wowForm.jobs.filter(job => job.value !== item.value);
   } else {
-    form.jobs.push(item);
+    wowForm.jobs.push(item);
   }
 }
 const isJobSelected = computed(() => {
-  return (value: string) => form.jobs.some(item => item.value === value);
+  return (value: string) => wowForm.jobs.some(item => item.value === value);
 });
 //#endregion
 
@@ -344,30 +372,30 @@ function openClassPopup(key: string, title: string, list: IOptionItem[]) {
 }
 function setSelection(item: IOptionItem, max?: number) {
   const key = currentFormKey.value;
-  const existed = form[key].find(
+  const existed = wowForm[key].find(
     seletedItem => seletedItem.value === item.value
   );
   if (existed) {
-    form[key] = form[key].filter(
+    wowForm[key] = wowForm[key].filter(
       seletedItem => seletedItem.value !== item.value
     );
   } else {
-    if (max && form[key].length >= max) {
+    if (max && wowForm[key].length >= max) {
       uni.showToast({
         title: '最多选3个',
         icon: 'error',
       });
     } else {
-      form[key].push(item);
+      wowForm[key].push(item);
     }
   }
 }
 const isOptionSelected = computed(() => {
   return (value: string) =>
-    form[currentFormKey.value].some(item => item.value === value);
+    wowForm[currentFormKey.value].some(item => item.value === value);
 });
 const isAllowAddClass = computed(() => {
-  return (key: string, max: number = 3) => form[key].length < max;
+  return (key: string, max: number = 3) => wowForm[key].length < max;
 });
 
 function closeClassPopup() {
@@ -410,10 +438,10 @@ function onClickTimeItem(dayIndex, item) {
 
 //#region 提交
 function validate() {
-  const isJobsValid = form.jobs.length;
-  const isClassesValid = form.classes.length;
-  const isGameStyleValid = form.gameStyle.length;
-  const isActiveTimeValid = form.activeTime.reduce((pre, cur) => {
+  const isJobsValid = wowForm.jobs.length;
+  const isClassesValid = wowForm.classes.length;
+  const isGameStyleValid = wowForm.gameStyle.length;
+  const isActiveTimeValid = wowForm.activeTime.reduce((pre, cur) => {
     const selected = cur.values.filter(item => item.selected);
     pre.push(...selected);
     return pre;
@@ -431,7 +459,7 @@ async function submit() {
   if (isValid) {
     const result = await queryAddUserTag({
       battlenetId: battlenetId.value,
-      wowTag: form,
+      wowTag: wowForm,
     });
     console.log({ result });
   } else {

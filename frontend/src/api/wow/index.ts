@@ -704,24 +704,40 @@ export async function queryDrawTarot() {
 //#endregion
 
 //#region /user-tag
-export interface IFriendOptionItem {
+export interface IWowTagOptionItem {
   text: string;
   value: string;
   options: { text: string; value: string }[];
 }
-export interface IFriendOptions {
-  jobs: IFriendOptionItem;
-  classes: IFriendOptionItem;
-  gameStyle: IFriendOptionItem;
-  activeTime: IFriendOptionItem;
-  communication: IFriendOptionItem;
+export interface IWowUserTagOptions {
+  jobs: IWowTagOptionItem;
+  classes: IWowTagOptionItem;
+  gameStyle: IWowTagOptionItem;
+  activeTime: IWowTagOptionItem;
+  communication: IWowTagOptionItem;
+}
+
+export interface ICommonUserTagOptionItem {
+  text: string;
+  value: string;
+  options: string[];
+}
+export interface ICommonUserTagOptions {
+  age: ICommonUserTagOptionItem;
+  game: ICommonUserTagOptionItem;
+  personality: ICommonUserTagOptionItem;
+  role: ICommonUserTagOptionItem;
+  status: ICommonUserTagOptionItem;
 }
 export async function queryFriendOptions() {
   const res: any = await proxyRequest({
     url: `/wow/user-tag/options`,
     method: 'POST',
   });
-  return res.data as IFriendOptions;
+  return res.data as {
+    wowOptions: IWowUserTagOptions;
+    commonOptions: ICommonUserTagOptions;
+  };
 }
 export async function queryAddUserTag(params) {
   const { battlenetId, wowTag, commonTag } = params;

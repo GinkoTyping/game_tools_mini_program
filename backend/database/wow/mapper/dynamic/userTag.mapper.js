@@ -1,11 +1,12 @@
 import { formatDateByMinute } from '../../../../util/time.js';
-import friendOptions from '../../data/user-tag/wow_tag.js';
+import wowOptions from '../../data/user-tag/wow_tag.js';
+import commonOptions from '../../data/user-tag/common_tag.js';
 
 let db;
 const TABLE_NAME = 'wow_dynamic_user_tag';
 
 async function getTagOptions() {
-  return friendOptions;
+  return { wowOptions, commonOptions };
 }
 
 async function insertUserTag(params) {
