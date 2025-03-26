@@ -272,11 +272,14 @@
             color="#fff"
             size="16"
           ></uni-icons>
-        </view> </view
-    ></uni-section>
+        </view>
+      </view>
+    </uni-section>
   </view>
   <view id="buttons">
-    <view class="submit-btn" @click="submit">注册</view>
+    <view class="submit-btn" @click="submit">{{
+      isEdit ? '更新' : '注册'
+    }}</view>
   </view>
   <view class="footer"></view>
 
@@ -333,10 +336,22 @@
       </template>
     </view>
   </uni-popup>
+
+  <!-- 提示弹窗 -->
+  <uni-popup ref="infoDialog" type="dialog">
+    <uni-popup-dialog
+      type="info"
+      cancelText="去填写"
+      confirmText="跳过"
+      title="通知"
+      content="还要更多趣味性的标签，可以丰富您的铭牌？是否去看看？"
+      @confirm="comfirmInfoDialog"
+    ></uni-popup-dialog>
+  </uni-popup>
 </template>
 
 <script lang="ts" setup>
-import { queryAddUserTag } from '@/api/wow';
+import { querySubmitUserTag, queryUserTagById } from '@/api/wow';
 import { useUserStore } from '@/store/wowStore';
 import { onLoad } from '@dcloudio/uni-app';
 
@@ -345,9 +360,6 @@ import { computed, reactive, ref } from 'vue';
 const userStore = useUserStore();
 const wowOptions = computed(() => userStore.userTagOptions.wowOptions);
 const commonOptions = computed(() => userStore.userTagOptions.commonOptions);
-onLoad(async () => {
-  await userStore.getFriendOptions();
-});
 
 //#region 分段器
 const currentTab = ref(1);
@@ -549,6 +561,9 @@ const commonSections = ref([
 //#endregion
 
 //#region 提交
+const isEdit = ref(false);
+const infoDialog = ref();
+function comfirmInfoDialog() {}
 function validate() {
   const isJobsValid = wowForm.jobs.length;
   const isClassesValid = wowForm.classes.length;
@@ -573,12 +588,22 @@ async function submit() {
       title: '提交中...',
       mask: true,
     });
-    const result = await queryAddUserTag({
+    const { isSuccess, message } = await querySubmitUserTag({
+      isEdit: isEdit.value,
       battlenetId: battlenetId.value,
       wowTag: wowForm,
+      commonTag: commonForm,
     });
     uni.hideLoading();
-    console.log({ result });
+    if (message) {
+      uni.showToast({
+        title: message,
+        icon: isSuccess ? 'success' : 'error',
+      });
+    }
+    if (isSuccess) {
+      isEdit.value = true;
+    }
   } else {
     uni.showToast({
       title: '未填写完整',
@@ -587,12 +612,36 @@ async function submit() {
   }
 }
 //#endregion
+
+onLoad(async () => {
+  await userStore.getFriendOptions();
+  const data = await queryUserTagById();
+  isEdit.value = Boolean(data.wow_tag || data.common_tag);
+
+  if (data?.wow_tag) {
+    const { jobs, classes, activeTime, gameStyle, privacy } = data.wow_tag;
+    wowForm.jobs = jobs;
+    wowForm.classes = classes;
+    wowForm.gameStyle = gameStyle;
+    wowForm.activeTime = activeTime;
+    wowForm.privacy = privacy;
+  }
+  if (data?.common_tag) {
+    const { status, game, age, personality, role } = data.common_tag;
+    commonForm.status = status;
+    commonForm.game = game;
+    commonForm.age = age;
+    commonForm.personality = personality;
+    commonForm.role = role;
+  }
+});
 </script>
 
 <style lang="scss" scoped>
 .header {
   padding: 0 12px;
 }
+
 .btns {
   display: flex;
   flex-wrap: wrap;
@@ -631,11 +680,13 @@ async function submit() {
     background-color: #fff;
     border: none;
   }
+
   .btn-item--common {
     color: $uni-color-primary;
     background-color: #c2d6fd;
     border: none;
   }
+
   .btn-item--reverse {
     color: black;
     background-color: #bbb;
@@ -728,6 +779,7 @@ async function submit() {
 
   .btns {
     padding: 12px;
+
     text {
       font-weight: normal !important;
     }
