@@ -703,7 +703,7 @@ export async function queryDrawTarot() {
 }
 //#endregion
 
-//#region /friend
+//#region /user-tag
 export interface IFriendOptionItem {
   text: string;
   value: string;
@@ -718,9 +718,24 @@ export interface IFriendOptions {
 }
 export async function queryFriendOptions() {
   const res: any = await proxyRequest({
-    url: `/wow/friend/options`,
+    url: `/wow/user-tag/options`,
     method: 'POST',
   });
   return res.data as IFriendOptions;
+}
+export async function queryAddUserTag(params) {
+  const { battlenetId, wowTag, commonTag } = params;
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/wow/user-tag/add`,
+    method: 'POST',
+    data: {
+      id: userId,
+      battlenetId,
+      wowTag,
+      commonTag,
+    },
+  });
+  return res;
 }
 //#endregion

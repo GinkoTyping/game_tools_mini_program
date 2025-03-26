@@ -221,7 +221,7 @@
     <uni-easyinput
       class="contact-input"
       type="password"
-      v-model="form.privacy.contact"
+      v-model="battlenetId"
       placeholder="战网昵称或者邮箱"
     ></uni-easyinput>
     <view class="switch-list">
@@ -243,6 +243,7 @@
 </template>
 
 <script lang="ts" setup>
+import { queryAddUserTag } from '@/api/wow';
 import { useUserStore } from '@/store/wowStore';
 import { onLoad } from '@dcloudio/uni-app';
 
@@ -276,14 +277,15 @@ const form = reactive<{
     title: string;
     values: { text: string; value: number; selected: boolean }[];
   }[];
-  privacy: { needConfirm: boolean; contact: string };
+  privacy: { needConfirm: boolean };
 }>({
   jobs: [],
   classes: [],
   gameStyle: [],
   activeTime: [getBasicTimeValues('工作日'), getBasicTimeValues('休息日')],
-  privacy: { needConfirm: true, contact: '' },
+  privacy: { needConfirm: true },
 });
+const battlenetId = ref('');
 
 //#region 职责
 function selectJobs(item: IOptionItem) {
@@ -394,9 +396,20 @@ function validate() {
   });
   return isJobsValid && isClassesValid && isGameStyleValid && isActiveTimeValid;
 }
-function submit() {
+async function submit() {
   const isValid = validate();
-  console.log(form);
+  if (isValid) {
+    const result = await queryAddUserTag({
+      battlenetId: battlenetId.value,
+      wowTag: form,
+    });
+    console.log({ result });
+  } else {
+    uni.showToast({
+      title: '未填写完整',
+      icon: 'error',
+    });
+  }
 }
 //#endregion
 </script>
