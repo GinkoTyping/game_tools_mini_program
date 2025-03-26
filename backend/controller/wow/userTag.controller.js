@@ -11,16 +11,20 @@ export async function queryUserTagOptions(req, res) {
 
 export async function queryAddUserTag(req, res) {
   const { id, battlenetId, wowTag, commonTag } = req.body;
-  const result = await userTagMapper.insertUserTag({
-    id,
-    wowTag,
-    commonTag,
-    battlenetId,
-  });
-  if (result.changes) {
-    res.json({ message: '注册用户铭牌成功！' });
-  } else {
-    res.status(500).json({ message: '注册铭牌失败' });
+  try {
+    const result = await userTagMapper.insertUserTag({
+      id,
+      wowTag,
+      commonTag,
+      battlenetId,
+    });
+    if (result.changes) {
+      res.json({ message: '注册用户铭牌成功！' });
+    } else {
+      res.status(500).json({ message: '注册铭牌失败' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: '注册铭牌失败', error: error.code });
   }
 }
 
