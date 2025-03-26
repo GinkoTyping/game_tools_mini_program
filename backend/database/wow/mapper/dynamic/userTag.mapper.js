@@ -23,7 +23,7 @@ async function insertUserTag(params) {
   const { id, battlenetId, wowTag, commonTag } = params;
   const date = formatDateByMinute();
   return db.run(
-    `INSERT INTO ${TABLE_NAME}(id, battlenet_id, wow_tag, common_tag, created_at, update_at) VALUES(?1, ?2, ?3, ?4, ?5, ?6)`,
+    `INSERT INTO ${TABLE_NAME}(id, battlenet_id, wow_tag, common_tag, created_at, updated_at) VALUES(?1, ?2, ?3, ?4, ?5, ?6)`,
     [
       id,
       battlenetId,
@@ -32,6 +32,33 @@ async function insertUserTag(params) {
       date,
       date,
     ]
+  );
+}
+
+async function updateUserTag(params) {
+  const { id, battlenetId, wowTag, commonTag } = params;
+  const date = formatDateByMinute();
+  return db.run(
+    `UPDATE ${TABLE_NAME}
+    SET battlenet_id = CASE
+      WHEN ?1 IS NOT NULL THEN ?1
+      ELSE battlenet_id
+    END,
+    wow_tag = CASE
+      WHEN ?2 IS NOT NULL THEN ?2
+      ELSE wow_tag
+    END,
+    common_tag = CASE
+      WHEN ?3 IS NOT NULL THEN ?3
+      ELSE common_tag
+    END,
+    updated_at = CASE
+      WHEN ?4 IS NOT NULL THEN ?4
+      ELSE updated_at
+    END
+    WHERE id = ?5
+    `,
+    [battlenetId, JSON.stringify(wowTag), JSON.stringify(commonTag), date, id]
   );
 }
 
@@ -49,8 +76,8 @@ async function getUserTagByIds(ids) {
 
   return data.map((item) => ({
     ...item,
-    wow_tag: JSON.parse(item.wowTag),
-    common_tag: JSON.parse(item.commonTag),
+    wow_tag: JSON.parse(item.wow_tag ?? null),
+    common_tag: JSON.parse(item.common_tag ?? null),
   }));
 }
 
@@ -66,6 +93,7 @@ export function useUserTagMapper(database) {
     getTagOptions,
 
     insertUserTag,
+    updateUserTag,
     getUserTagByIds,
   };
 }

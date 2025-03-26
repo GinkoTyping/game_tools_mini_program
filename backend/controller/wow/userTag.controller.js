@@ -19,12 +19,31 @@ export async function queryAddUserTag(req, res) {
       battlenetId,
     });
     if (result.changes) {
-      res.json({ message: '注册用户铭牌成功！' });
+      res.json({ message: '注册成功！' });
     } else {
-      res.status(500).json({ message: '注册铭牌失败' });
+      res.status(500).json({ message: '注册失败' });
     }
   } catch (error) {
-    res.status(500).json({ message: '注册铭牌失败', error: error.code });
+    res.status(500).json({ message: '注册失败', error: error.code });
+  }
+}
+
+export async function queryUpdateUserTag(req, res) {
+  const { id, battlenetId, wowTag, commonTag } = req.body;
+  try {
+    const result = await userTagMapper.updateUserTag({
+      id,
+      wowTag,
+      commonTag,
+      battlenetId,
+    });
+    if (result.changes) {
+      res.json({ message: '更新成功！' });
+    } else {
+      res.status(500).json({ message: '更新失败' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: '更新失败', error: error.code });
   }
 }
 
