@@ -1,241 +1,261 @@
 <template>
-  <!-- 职责 -->
-  <uni-section
-    id="jobs"
-    class="priest"
-    title="职责"
-    subTitle="请选择您主玩的职责(可多选)"
-    type="line"
-    titleFontSize="16px"
-  >
-    <view class="btns">
-      <view
-        class="btn-item"
-        :class="[
-          item.value,
-          isJobSelected(item.value) ? 'btn-item--active' : '',
-        ]"
-        v-for="item in allOptions.jobs.options"
-        :key="item.value"
-        @click="() => selectJobs(item)"
-      >
-        <text>{{ item.text }}</text>
+  <view class="header">
+    <uni-segmented-control
+      :current="currentTab"
+      :values="tabs"
+      style-type="button"
+      active-color="#007aff"
+      @clickItem="switchTab"
+    />
+  </view>
+  <view class="wow-wrap" v-show="currentTab === 0">
+    <!-- 职责 -->
+    <uni-section
+      id="jobs"
+      class="priest"
+      title="职责"
+      subTitle="请选择您主玩的职责(可多选)"
+      type="line"
+      titleFontSize="16px"
+    >
+      <view class="btns">
+        <view
+          class="btn-item"
+          :class="[
+            item.value,
+            isJobSelected(item.value) ? 'btn-item--active' : '',
+          ]"
+          v-for="item in allOptions.jobs.options"
+          :key="item.value"
+          @click="() => selectJobs(item)"
+        >
+          <text>{{ item.text }}</text>
+        </view>
       </view>
-    </view>
-  </uni-section>
-  <!-- 职业 -->
-  <uni-section
-    id="classes"
-    class="priest"
-    title="职业"
-    subTitle="请选择您主玩的职业(最多选3个)"
-    type="line"
-    titleFontSize="16px"
-  >
-    <view class="btns">
-      <view
-        class="btn-item btn-item--spec"
-        :class="[`${item.value}-bg`, item.value]"
-        v-for="item in form.classes"
-        :key="item.value"
-      >
-        <text class="ellipsis">{{ item.text }}</text>
-      </view>
-      <view
-        class="btn-item ellipsis"
-        @click="
-          () =>
-            openClassPopup(
-              'classes',
-              '请选择您主玩的职业(最多3个)',
-              allOptions.classes.options
-            )
-        "
-      >
-        <text>{{ isAllowAddClass('classes') ? '添加' : '编辑' }}</text>
-        <uni-icons
-          :type="isAllowAddClass('classes') ? 'plusempty' : 'compose'"
-          color="#fff"
-          size="16"
-        ></uni-icons>
-      </view>
-    </view>
-  </uni-section>
-  <!-- 游戏风格 -->
-  <uni-section
-    id="game-style"
-    class="priest"
-    title="游戏风格"
-    subTitle="请选择您游戏风格(最多选3个)"
-    type="line"
-    titleFontSize="16px"
-  >
-    <view class="btns">
-      <view
-        class="btn-item btn-item--normal"
-        v-for="item in form.gameStyle"
-        :key="item.value"
-      >
-        <text class="ellipsis">{{ item.text }}</text>
-      </view>
-      <view
-        class="btn-item ellipsis"
-        @click="
-          () =>
-            openClassPopup(
-              'gameStyle',
-              '请选择您主玩的职业(最多3个)',
-              allOptions.gameStyle.options
-            )
-        "
-      >
-        <text>{{ isAllowAddClass('gameStyle') ? '添加' : '编辑' }}</text>
-        <uni-icons
-          :type="isAllowAddClass('gameStyle') ? 'plusempty' : 'compose'"
-          color="#fff"
-          size="16"
-        ></uni-icons>
-      </view>
-    </view>
-  </uni-section>
-  <!-- 公共选择器 -->
-  <uni-popup ref="classPopup" type="bottom">
-    <view class="classPopup">
-      <view class="classPopup-header" @click="closeClassPopup">
-        <view class="classPopup-header-title">{{ popoverTitle }}</view>
-        <view class="classPopup-header-btn">
-          <view>确定</view>
+    </uni-section>
+    <!-- 职业 -->
+    <uni-section
+      id="classes"
+      class="priest"
+      title="职业"
+      subTitle="请选择您主玩的职业(最多选3个)"
+      type="line"
+      titleFontSize="16px"
+    >
+      <view class="btns">
+        <view
+          class="btn-item btn-item--spec"
+          :class="[`${item.value}-bg`, item.value]"
+          v-for="item in form.classes"
+          :key="item.value"
+        >
+          <text class="ellipsis">{{ item.text }}</text>
+        </view>
+        <view
+          class="btn-item ellipsis"
+          @click="
+            () =>
+              openClassPopup(
+                'classes',
+                '请选择您主玩的职业(最多3个)',
+                allOptions.classes.options
+              )
+          "
+        >
+          <text>{{ isAllowAddClass('classes') ? '添加' : '编辑' }}</text>
           <uni-icons
-            type="checkbox-filled"
-            size="28"
-            :color="form.classes.length ? 'rgb(29, 245, 1)' : ''"
+            :type="isAllowAddClass('classes') ? 'plusempty' : 'compose'"
+            color="#fff"
+            size="16"
           ></uni-icons>
         </view>
       </view>
-      <view
-        class="classItem"
-        v-for="item in selectionList"
-        :key="item.value"
-        @click="() => setSelection(item, 3)"
-      >
-        <view :class="[item.value]">{{ item.text }}</view>
-        <view class="class-check">
-          <view>点击任意位置</view>
+    </uni-section>
+    <!-- 游戏风格 -->
+    <uni-section
+      id="game-style"
+      class="priest"
+      title="游戏风格"
+      subTitle="请选择您游戏风格(最多选3个)"
+      type="line"
+      titleFontSize="16px"
+    >
+      <view class="btns">
+        <view
+          class="btn-item btn-item--normal"
+          v-for="item in form.gameStyle"
+          :key="item.value"
+        >
+          <text class="ellipsis">{{ item.text }}</text>
+        </view>
+        <view
+          class="btn-item ellipsis"
+          @click="
+            () =>
+              openClassPopup(
+                'gameStyle',
+                '请选择您主玩的职业(最多3个)',
+                allOptions.gameStyle.options
+              )
+          "
+        >
+          <text>{{ isAllowAddClass('gameStyle') ? '添加' : '编辑' }}</text>
           <uni-icons
-            type="checkbox-filled"
-            size="28"
-            :color="isOptionSelected(item.value) ? 'rgb(29, 245, 1)' : ''"
+            :type="isAllowAddClass('gameStyle') ? 'plusempty' : 'compose'"
+            color="#fff"
+            size="16"
           ></uni-icons>
         </view>
       </view>
-    </view>
-  </uni-popup>
-  <!-- 活跃时间段 -->
-  <uni-section
-    id="active-time"
-    class="priest"
-    title="活跃时间段"
-    subTitle="请点亮您活跃的时间段"
-    type="line"
-    titleFontSize="16px"
-  >
-    <view class="active-time-wrap">
-      <view
-        class="active-time-item"
-        v-for="(item, dayIndex) in form.activeTime"
-      >
-        <view class="active-time-item__title">
-          <view>{{ item.title }}</view>
-          <uni-icons
-            :type="dayIndex ? 'color' : 'calendar'"
-            size="20"
-            color="#007aff"
-          ></uni-icons>
+    </uni-section>
+    <!-- 公共选择器 -->
+    <uni-popup ref="classPopup" type="bottom">
+      <view class="classPopup">
+        <view class="classPopup-header" @click="closeClassPopup">
+          <view class="classPopup-header-title">{{ popoverTitle }}</view>
+          <view class="classPopup-header-btn">
+            <view>确定</view>
+            <uni-icons
+              type="checkbox-filled"
+              size="28"
+              :color="form.classes.length ? 'rgb(29, 245, 1)' : ''"
+            ></uni-icons>
+          </view>
         </view>
-        <view class="active-time-item_content">
-          <view
-            class="active-time-item__times-wrap"
-            v-for="range in [0, 12]"
-            :key="range"
-          >
-            <view class="active-time-item__times">
-              <view
-                class="active-time-item__times-item"
-                :class="[
-                  timeItem.selected
-                    ? 'active-time-item__times-item--active'
-                    : '',
-                ]"
-                v-for="timeItem in item.values.slice(range, range + 6)"
-                :key="timeItem.value"
-                @click="() => onClickTimeItem(dayIndex, timeItem)"
-              >
-                <text
-                  class="time-label"
-                  :class="[timeLabelClass(timeItem.value)]"
-                  v-show="isDisplayTime(timeItem.value, dayIndex)"
-                  >{{ `${timeItem.value}:00` }}</text
+        <view
+          class="classItem"
+          v-for="item in selectionList"
+          :key="item.value"
+          @click="() => setSelection(item, 3)"
+        >
+          <view :class="[item.value]">{{ item.text }}</view>
+          <view class="class-check">
+            <view>点击任意位置</view>
+            <uni-icons
+              type="checkbox-filled"
+              size="28"
+              :color="isOptionSelected(item.value) ? 'rgb(29, 245, 1)' : ''"
+            ></uni-icons>
+          </view>
+        </view>
+      </view>
+    </uni-popup>
+    <!-- 活跃时间段 -->
+    <uni-section
+      id="active-time"
+      class="priest"
+      title="活跃时间段"
+      subTitle="请点亮您活跃的时间段"
+      type="line"
+      titleFontSize="16px"
+    >
+      <view class="active-time-wrap">
+        <view
+          class="active-time-item"
+          v-for="(item, dayIndex) in form.activeTime"
+        >
+          <view class="active-time-item__title">
+            <view>{{ item.title }}</view>
+            <uni-icons
+              :type="dayIndex ? 'color' : 'calendar'"
+              size="20"
+              color="#007aff"
+            ></uni-icons>
+          </view>
+          <view class="active-time-item_content">
+            <view
+              class="active-time-item__times-wrap"
+              v-for="range in [0, 12]"
+              :key="range"
+            >
+              <view class="active-time-item__times">
+                <view
+                  class="active-time-item__times-item"
+                  :class="[
+                    timeItem.selected
+                      ? 'active-time-item__times-item--active'
+                      : '',
+                  ]"
+                  v-for="timeItem in item.values.slice(range, range + 6)"
+                  :key="timeItem.value"
+                  @click="() => onClickTimeItem(dayIndex, timeItem)"
                 >
+                  <text
+                    class="time-label"
+                    :class="[timeLabelClass(timeItem.value)]"
+                    v-show="isDisplayTime(timeItem.value, dayIndex)"
+                    >{{ `${timeItem.value}:00` }}</text
+                  >
+                </view>
               </view>
-            </view>
-            <view class="active-time-item__times">
-              <view
-                class="active-time-item__times-item"
-                :class="[
-                  timeItem.selected
-                    ? 'active-time-item__times-item--active'
-                    : '',
-                ]"
-                v-for="timeItem in item.values.slice(range + 6, range + 12)"
-                :key="timeItem.value"
-                @click="() => onClickTimeItem(dayIndex, timeItem)"
-              >
-                <text
-                  class="time-label"
-                  :class="[timeLabelClass(timeItem.value)]"
-                  v-show="isDisplayTime(timeItem.value, dayIndex)"
-                  >{{ `${timeItem.value}:00` }}</text
-                ></view
-              >
+              <view class="active-time-item__times">
+                <view
+                  class="active-time-item__times-item"
+                  :class="[
+                    timeItem.selected
+                      ? 'active-time-item__times-item--active'
+                      : '',
+                  ]"
+                  v-for="timeItem in item.values.slice(range + 6, range + 12)"
+                  :key="timeItem.value"
+                  @click="() => onClickTimeItem(dayIndex, timeItem)"
+                >
+                  <text
+                    class="time-label"
+                    :class="[timeLabelClass(timeItem.value)]"
+                    v-show="isDisplayTime(timeItem.value, dayIndex)"
+                    >{{ `${timeItem.value}:00` }}</text
+                  >
+                </view>
+              </view>
             </view>
           </view>
         </view>
       </view>
-    </view>
-  </uni-section>
-  <!-- 隐私设置 -->
-  <uni-section
-    id="privacy"
-    class="priest"
-    title="隐私设置"
-    subTitle="大家如何找到你？"
-    type="line"
-    titleFontSize="16px"
-  >
-    <template v-slot:right>
-      <view class="right-slot">
-        <text>信息如何被使用？是否安全</text>
-        <uni-icons type="help-filled" size="30" color="#007aff"></uni-icons>
+    </uni-section>
+    <!-- 隐私设置 -->
+    <uni-section
+      id="privacy"
+      class="priest"
+      title="隐私设置"
+      subTitle="大家如何找到你？"
+      type="line"
+      titleFontSize="16px"
+    >
+      <template v-slot:right>
+        <view class="right-slot">
+          <text>信息如何被使用？是否安全</text>
+          <uni-icons type="help-filled" size="30" color="#007aff"></uni-icons>
+        </view>
+      </template>
+      <uni-easyinput
+        class="contact-input"
+        type="password"
+        v-model="battlenetId"
+        placeholder="战网昵称或者邮箱"
+      ></uni-easyinput>
+      <view class="switch-list">
+        <view class="switch-lits-item">
+          <view class="switch-lits-item__label">获取战网信息时需要我同意</view>
+          <switch
+            :checked="form.privacy.needConfirm"
+            color="#007aff"
+            style="transform: scale(0.7)"
+          />
+        </view>
       </view>
-    </template>
-    <uni-easyinput
-      class="contact-input"
-      type="password"
-      v-model="battlenetId"
-      placeholder="战网昵称或者邮箱"
-    ></uni-easyinput>
-    <view class="switch-list">
-      <view class="switch-lits-item">
-        <view class="switch-lits-item__label">获取战网信息时需要我同意</view>
-        <switch
-          :checked="form.privacy.needConfirm"
-          color="#007aff"
-          style="transform: scale(0.7)"
-        />
-      </view>
-    </view>
-  </uni-section>
-
+    </uni-section>
+  </view>
+  <view class="common-wrap" v-show="currentTab === 1">
+    <uni-section
+      id="status"
+      class="priest"
+      title="状态"
+      subTitle="请选择您主玩的职责(可多选)"
+      type="line"
+      titleFontSize="16px"
+    ></uni-section>
+  </view>
   <view id="buttons">
     <view class="submit-btn" @click="submit">注册</view>
   </view>
@@ -286,6 +306,16 @@ const form = reactive<{
   privacy: { needConfirm: true },
 });
 const battlenetId = ref('');
+
+//#region 分段器
+const currentTab = ref(1);
+const tabs = ref(['基本信息', '其他(选填)']);
+function switchTab(e) {
+  if (currentTab.value !== e.currentIndex) {
+    currentTab.value = e.currentIndex;
+  }
+}
+//#endregion
 
 //#region 职责
 function selectJobs(item: IOptionItem) {
@@ -415,9 +445,13 @@ async function submit() {
 </script>
 
 <style lang="scss" scoped>
+.header {
+  padding: 0 12px;
+}
 .btns {
   display: flex;
   flex-wrap: wrap;
+
   .btn-item {
     font-size: 30rpx;
     padding: 6rpx 28rpx;
@@ -431,34 +465,42 @@ async function submit() {
     display: flex;
     align-items: center;
     position: relative;
+
     text {
       font-weight: bold;
     }
+
     &:not(.btn-item--spec) {
       border-color: #fff;
     }
   }
+
   .btn-item--spec {
     text {
       color: black;
     }
   }
+
   .btn-item--normal {
     color: black;
     background-color: #fff;
     border: none;
   }
+
   .btn-item--active {
     color: black;
     position: relative;
+
     &.tank {
       background: $shaman;
       border: none;
     }
+
     &.healer {
       background: $hunter;
       border: none;
     }
+
     &.dps {
       background: $death-knight;
       border: none;
@@ -468,6 +510,7 @@ async function submit() {
 
 ::v-deep .uni-section {
   border-bottom: 1px solid $uni-bg-color-grey-lighter;
+
   .uni-section-content {
     padding: 0 12px;
   }
@@ -478,6 +521,7 @@ async function submit() {
   max-height: 60vh;
   overflow: auto;
   padding-top: 100rpx;
+
   .classPopup-header {
     display: flex;
     justify-content: space-between;
@@ -491,15 +535,18 @@ async function submit() {
     box-sizing: border-box;
     background-color: $uni-bg-color;
     box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%);
+
     .classPopup-header-title {
       font-size: 30rpx;
     }
+
     .classPopup-header-btn {
       display: flex;
       align-items: center;
       font-size: 26rpx;
     }
   }
+
   .classItem {
     text-align: center;
     font-size: 30rpx;
@@ -510,9 +557,11 @@ async function submit() {
     justify-content: space-between;
     align-items: center;
     color: #fff;
+
     view {
       height: auto;
     }
+
     .class-check {
       font-size: 26rpx;
       display: flex;
@@ -533,32 +582,40 @@ $time-item-height: calc(
 $time-item-radius: calc(
   (100vw - 24px - $time-range-item-gap - $time-item-gap * 11) / 12 / 2
 );
+
 #active-time {
   .active-time-item {
     .active-time-item__title {
       padding: 10rpx 0;
       display: flex;
       align-items: center;
+
       view {
         font-size: 28rpx;
         font-weight: bold;
       }
     }
+
     .active-time-item_content {
       padding-top: 30rpx;
+
       .active-time-item__times-wrap {
         display: flex;
         justify-content: space-between;
+
         &:first-child {
           margin-bottom: 30rpx;
         }
+
         .active-time-item__times {
           display: flex;
           justify-content: space-between;
           flex: 1;
+
           &:first-child {
             margin-right: $time-range-item-gap;
           }
+
           .active-time-item__times-item {
             background-color: $uni-bg-color-grey-lighter;
             width: $time-item-width;
@@ -566,26 +623,32 @@ $time-item-radius: calc(
             border-radius: $time-item-radius;
             margin-bottom: 10rpx;
             position: relative;
+
             &.active-time-item__times-item--active {
               background-color: $uni-color-primary;
             }
+
             .time-label {
               position: absolute;
+
               &.time-label--left-top {
                 top: 0;
                 left: 0;
                 transform: translateY(-100%);
               }
+
               &.time-label--center-top {
                 top: 0;
                 left: 0;
                 transform: translateY(-100%);
               }
+
               &.time-label--right-top {
                 top: 0;
                 right: 0;
                 transform: translateY(-100%);
               }
+
               &.time-label-normal {
                 top: 0;
                 left: 50%;
@@ -604,6 +667,7 @@ $time-item-radius: calc(
     display: flex;
     align-items: center;
   }
+
   .switch-list {
     padding: 14rpx 0;
     background-color: $uni-bg-color-grey;
@@ -623,6 +687,7 @@ $time-item-radius: calc(
   display: flex;
   justify-content: flex-end;
   box-sizing: border-box;
+
   .submit-btn {
     width: 100%;
     padding: 10rpx 48rpx;

@@ -1,5 +1,5 @@
 import { formatDateByMinute } from '../../../../util/time.js';
-import friendOptions from '../../data/user-tag/tag.js';
+import friendOptions from '../../data/user-tag/wow_tag.js';
 
 let db;
 const TABLE_NAME = 'wow_dynamic_user_tag';
