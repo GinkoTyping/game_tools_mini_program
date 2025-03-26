@@ -99,7 +99,7 @@
             () =>
               openSelectionPopup(
                 'gameStyle',
-                '请选择您主玩的职业(最多3个)',
+                '请选择您游戏风格(最多3个)',
                 wowOptions.gameStyle.options,
                 3
               )
@@ -290,7 +290,7 @@
           <uni-icons
             type="checkbox-filled"
             size="28"
-            :color="wowForm.classes.length ? 'rgb(29, 245, 1)' : ''"
+            color="rgb(29, 245, 1)"
           ></uni-icons>
         </view>
       </view>
@@ -407,7 +407,7 @@ const isJobSelected = computed(() => {
 });
 //#endregion
 
-//#region 职业 / 游戏风格 公共选择器
+//#region 公共选择器
 const currentFormKey = ref('');
 const currentSelectMax = ref<number>();
 const popoverTitle = ref('');
@@ -569,10 +569,15 @@ function validate() {
 async function submit() {
   const isValid = validate();
   if (isValid) {
+    uni.showLoading({
+      title: '提交中...',
+      mask: true,
+    });
     const result = await queryAddUserTag({
       battlenetId: battlenetId.value,
       wowTag: wowForm,
     });
+    uni.hideLoading();
     console.log({ result });
   } else {
     uni.showToast({
