@@ -1,17 +1,26 @@
-import friendOptions from '../../data/friend/tag.js';
+import { formatDateByMinute } from '../../../../util/time.js';
+import friendOptions from '../../data/user-tag/tag.js';
 
 let db;
-const TABLE_NAME = 'wow_dynamic_use_tag';
+const TABLE_NAME = 'wow_dynamic_user_tag';
 
 async function getTagOptions() {
   return friendOptions;
 }
 
 async function insertUserTag(params) {
-  const { id, wowTag, commonTag } = params;
+  const { id, battlenetId, wowTag, commonTag } = params;
+  const date = formatDateByMinute();
   return db.run(
-    `INSERT INTO ${TABLE_NAME}(id, wow_tag, common_tag) VALUES(?1, ?2, ?3)`,
-    [id, JSON.stringify(wowTag), JSON.stringify(commonTag)]
+    `INSERT INTO ${TABLE_NAME}(id, battlenet_id, wow_tag, common_tag, created_at, update_at) VALUES(?1, ?2, ?3, ?4, ?5, ?6)`,
+    [
+      id,
+      battlenetId,
+      JSON.stringify(wowTag),
+      JSON.stringify(commonTag),
+      date,
+      date,
+    ]
   );
 }
 

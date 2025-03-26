@@ -197,6 +197,7 @@ CREATE TABLE
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP CURRENT_TIME,
     update_at TIMESTAMP,
+    battlenet_id TEXT,
     wow_tag TEXT,
     common_tag TEXT
   );
