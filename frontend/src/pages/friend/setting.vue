@@ -58,13 +58,18 @@
               openSelectionPopup(
                 'classes',
                 '请选择您主玩的职业(最多3个)',
-                wowOptions.classes.options
+                wowOptions.classes.options,
+                3
               )
           "
         >
-          <text>{{ isAllowAddSelection('classes') ? '添加' : '编辑' }}</text>
+          <text>{{
+            isAllowAddSelection('classes', wowForm) ? '添加' : '编辑'
+          }}</text>
           <uni-icons
-            :type="isAllowAddSelection('classes') ? 'plusempty' : 'compose'"
+            :type="
+              isAllowAddSelection('classes', wowForm) ? 'plusempty' : 'compose'
+            "
             color="#fff"
             size="16"
           ></uni-icons>
@@ -95,13 +100,20 @@
               openSelectionPopup(
                 'gameStyle',
                 '请选择您主玩的职业(最多3个)',
-                wowOptions.gameStyle.options
+                wowOptions.gameStyle.options,
+                3
               )
           "
         >
-          <text>{{ isAllowAddSelection('gameStyle') ? '添加' : '编辑' }}</text>
+          <text>{{
+            isAllowAddSelection('gameStyle', wowForm) ? '添加' : '编辑'
+          }}</text>
           <uni-icons
-            :type="isAllowAddSelection('gameStyle') ? 'plusempty' : 'compose'"
+            :type="
+              isAllowAddSelection('gameStyle', wowForm)
+                ? 'plusempty'
+                : 'compose'
+            "
             color="#fff"
             size="16"
           ></uni-icons>
@@ -216,17 +228,19 @@
   </view>
   <view class="common-wrap" v-show="currentTab === 1">
     <uni-section
-      id="status"
+      v-for="section in commonSections"
+      :key="section.id"
+      :id="section.id"
       class="priest"
-      title="状态"
-      subTitle="请选择您目前的状态(最多选3个)"
+      :title="section.title"
+      :subTitle="section.subTitle"
       type="line"
       titleFontSize="16px"
     >
       <view class="btns">
         <view
           class="btn-item btn-item--common"
-          v-for="item in commonForm.status"
+          v-for="item in commonForm[section.id]"
           :key="item.value"
         >
           <text class="ellipsis">{{ item.text }}</text>
@@ -236,52 +250,25 @@
           @click="
             () =>
               openSelectionPopup(
-                'status',
-                '请选择您目前的状态(最多3个)',
-                commonOptions.status.options,
+                section.id,
+                section.subTitle,
+                commonOptions[section.id].options,
+                section.max,
                 'button'
               )
           "
         >
-          <text>{{ isAllowAddSelection('gameStyle') ? '添加' : '编辑' }}</text>
+          <text>{{
+            isAllowAddSelection(section.id, commonForm, section.max)
+              ? '添加'
+              : '编辑'
+          }}</text>
           <uni-icons
-            :type="isAllowAddSelection('gameStyle') ? 'plusempty' : 'compose'"
-            color="#fff"
-            size="16"
-          ></uni-icons>
-        </view> </view
-    ></uni-section>
-    <uni-section
-      id="game"
-      class="priest"
-      title="常玩游戏"
-      subTitle="请选择您其他常玩的游戏(最多选3个)"
-      type="line"
-      titleFontSize="16px"
-    >
-      <view class="btns">
-        <view
-          class="btn-item btn-item--common"
-          v-for="item in commonForm.game"
-          :key="item.value"
-        >
-          <text class="ellipsis">{{ item.text }}</text>
-        </view>
-        <view
-          class="btn-item ellipsis"
-          @click="
-            () =>
-              openSelectionPopup(
-                'game',
-                '请选择您目前的状态(最多3个)',
-                commonOptions.game.options,
-                'button'
-              )
-          "
-        >
-          <text>{{ isAllowAddSelection('gameStyle') ? '添加' : '编辑' }}</text>
-          <uni-icons
-            :type="isAllowAddSelection('gameStyle') ? 'plusempty' : 'compose'"
+            :type="
+              isAllowAddSelection(section.id, commonForm, section.max)
+                ? 'plusempty'
+                : 'compose'
+            "
             color="#fff"
             size="16"
           ></uni-icons>
@@ -312,7 +299,7 @@
           class="classItem"
           v-for="item in selectionList"
           :key="item.value"
-          @click="() => setSelection(item, 'wow', 3)"
+          @click="() => setSelection(item, 'wow')"
         >
           <view :class="[item.value]">{{ item.text }}</view>
           <view class="class-check">
@@ -338,7 +325,7 @@
             "
             v-for="item in selectionList"
             :key="item.value"
-            @click="() => setSelection(item, 'common', 3)"
+            @click="() => setSelection(item, 'common')"
           >
             <text class="ellipsis">{{ item.text }}</text>
           </view>
@@ -422,6 +409,7 @@ const isJobSelected = computed(() => {
 
 //#region 职业 / 游戏风格 公共选择器
 const currentFormKey = ref('');
+const currentSelectMax = ref<number>();
 const popoverTitle = ref('');
 const selectionList = ref<IOptionItem[]>();
 const classPopup = ref();
@@ -430,16 +418,19 @@ function openSelectionPopup(
   key: string,
   title: string,
   list: IOptionItem[],
+  max: number,
   display: string = 'list'
 ) {
   currentFormKey.value = key;
+  currentSelectMax.value = max;
   popoverTitle.value = title;
   selectionList.value = list;
   optionDisplayType.value = display;
   classPopup.value?.open?.();
 }
-function setSelection(item: IOptionItem, type: 'wow' | 'common', max?: number) {
+function setSelection(item: IOptionItem, type: 'wow' | 'common') {
   const key = currentFormKey.value;
+  const max = currentSelectMax.value;
   const formRef = type === 'wow' ? wowForm : commonForm;
   const existed = formRef[key].find(
     seletedItem => seletedItem.value === item.value
@@ -450,10 +441,14 @@ function setSelection(item: IOptionItem, type: 'wow' | 'common', max?: number) {
     );
   } else {
     if (max && formRef[key].length >= max) {
-      uni.showToast({
-        title: '最多选3个',
-        icon: 'error',
-      });
+      if (max === 1) {
+        formRef[key] = [item];
+      } else {
+        uni.showToast({
+          title: `最多选${max}个`,
+          icon: 'error',
+        });
+      }
     } else {
       formRef[key].push(item);
     }
@@ -464,7 +459,7 @@ const isOptionSelected = computed(() => {
     form[currentFormKey.value].some(item => item.value === value);
 });
 const isAllowAddSelection = computed(() => {
-  return (key: string, max: number = 3) => wowForm[key].length < max;
+  return (key: string, form, max: number = 3) => form[key].length < max;
 });
 
 function closeClassPopup() {
@@ -506,10 +501,51 @@ function onClickTimeItem(dayIndex, item) {
 //#endregion
 
 //#region 其他信息
-const commonForm = reactive<{ status: IOptionItem[]; game: IOptionItem[] }>({
+const commonForm = reactive<{
+  status: IOptionItem[];
+  game: IOptionItem[];
+  age: IOptionItem[];
+  personality: IOptionItem[];
+  role: IOptionItem[];
+}>({
   status: [],
+  age: [],
   game: [],
+  personality: [],
+  role: [],
 });
+const commonSections = ref([
+  {
+    id: 'status',
+    title: '状态',
+    subTitle: '请选择您目前的状态(最多选3个)',
+    max: 3,
+  },
+  {
+    id: 'age',
+    title: '年龄',
+    subTitle: '请选择您的年龄段',
+    max: 1,
+  },
+  {
+    id: 'game',
+    title: '常玩游戏',
+    subTitle: '请选择您其他常玩的游戏(最多选3个)',
+    max: 3,
+  },
+  {
+    id: 'personality',
+    title: '赛博八字',
+    subTitle: '请选择您星座或者MBTI',
+    max: 2,
+  },
+  {
+    id: 'role',
+    title: '性格',
+    subTitle: '请选择您的性格(最多选3个)',
+    max: 3,
+  },
+]);
 //#endregion
 
 //#region 提交
@@ -557,7 +593,7 @@ async function submit() {
   flex-wrap: wrap;
 
   .btn-item {
-    font-size: 30rpx;
+    font-size: 26rpx;
     padding: 6rpx 28rpx;
     border-width: 1px;
     border-style: solid;
@@ -639,16 +675,17 @@ async function submit() {
   .classPopup-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    color: #fff;
-    padding: 20rpx;
     position: fixed;
     top: 0;
+    z-index: 2;
+    align-items: center;
+    padding: 20rpx;
     height: 100rpx;
     width: 100%;
     box-sizing: border-box;
     background-color: $uni-bg-color;
     box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%);
+    color: #fff;
 
     .classPopup-header-title {
       font-size: 30rpx;
