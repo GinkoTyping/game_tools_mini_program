@@ -340,11 +340,11 @@
   <!-- 提示弹窗 -->
   <uni-popup ref="infoDialog" type="dialog">
     <uni-popup-dialog
-      type="info"
-      cancelText="去填写"
-      confirmText="跳过"
-      title="通知"
-      content="还要更多趣味性的标签，可以丰富您的铭牌？是否去看看？"
+      type="success"
+      cancelText="跳过"
+      confirmText="好的"
+      title="更新成功"
+      content="还有年龄段、常玩游戏等趣味性的标签，可以丰富您的铭牌。是否去看看？"
       @confirm="comfirmInfoDialog"
     ></uni-popup-dialog>
   </uni-popup>
@@ -362,7 +362,7 @@ const wowOptions = computed(() => userStore.userTagOptions.wowOptions);
 const commonOptions = computed(() => userStore.userTagOptions.commonOptions);
 
 //#region 分段器
-const currentTab = ref(1);
+const currentTab = ref(0);
 const tabs = ref(['基本信息', '其他(选填)']);
 function switchTab(e) {
   if (currentTab.value !== e.currentIndex) {
@@ -563,7 +563,10 @@ const commonSections = ref([
 //#region 提交
 const isEdit = ref(false);
 const infoDialog = ref();
-function comfirmInfoDialog() {}
+function comfirmInfoDialog() {
+  currentTab.value = 1;
+  infoDialog.value?.close?.();
+}
 function validate() {
   const isJobsValid = wowForm.jobs.length;
   const isClassesValid = wowForm.classes.length;
@@ -581,6 +584,9 @@ function validate() {
   });
   return isJobsValid && isClassesValid && isGameStyleValid && isActiveTimeValid;
 }
+function checkIsCommonTagEmpty() {
+  return Object.values(commonForm).filter(value => value.length)?.length === 0;
+}
 async function submit() {
   const isValid = validate();
   if (isValid) {
@@ -595,18 +601,29 @@ async function submit() {
       commonTag: commonForm,
     });
     uni.hideLoading();
-    if (message) {
+    if (isSuccess) {
+      isEdit.value = true;
+      if (
+        checkIsCommonTagEmpty() &&
+        !userStore.notification.fillCommonUserTag
+      ) {
+        userStore.notification.fillCommonUserTag = true;
+        infoDialog.value?.open?.();
+      } else {
+        uni.showToast({
+          title: message ?? '请求成功',
+          icon: isSuccess ? 'success' : 'error',
+        });
+      }
+    } else {
       uni.showToast({
-        title: message,
+        title: message ?? '请求失败',
         icon: isSuccess ? 'success' : 'error',
       });
     }
-    if (isSuccess) {
-      isEdit.value = true;
-    }
   } else {
     uni.showToast({
-      title: '未填写完整',
+      title: '基本信息未填写',
       icon: 'error',
     });
   }

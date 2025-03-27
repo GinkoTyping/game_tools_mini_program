@@ -749,4 +749,31 @@ export async function queryAddUserTag(params) {
   });
   return res;
 }
+export async function querySubmitUserTag(params) {
+  const { battlenetId, wowTag, commonTag, isEdit } = params;
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/wow/user-tag/${isEdit ? 'update' : 'add'}`,
+    method: 'POST',
+    data: {
+      id: userId,
+      battlenetId,
+      wowTag,
+      commonTag,
+    },
+  });
+  const isSuccess = res.statusCode === 200;
+  return { isSuccess, message: res?.data?.message };
+}
+export async function queryUserTagById() {
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/wow/user-tag/query`,
+    method: 'POST',
+    data: {
+      ids: [userId],
+    },
+  });
+  return res?.data?.[0];
+}
 //#endregion
