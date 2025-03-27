@@ -195,7 +195,8 @@ VALUES
 -- user tag
 CREATE TABLE
   IF NOT EXISTS wow_dynamic_user_tag (
-    id INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
     created_at TIMESTAMP CURRENT_TIME,
     updated_at TIMESTAMP,
     battlenet_id TEXT,

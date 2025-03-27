@@ -55,7 +55,7 @@ async function insertUserTag(params) {
   const { id, battlenetId, wowTag, commonTag } = params;
   const date = formatDateByMinute();
   return db.run(
-    `INSERT INTO ${TABLE_NAME}(id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_jobs, wow_classes, wow_game_style,wow_active_time, wow_privacy, common_status, common_game, common_age, common_personality, common_role) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)`,
+    `INSERT INTO ${TABLE_NAME}(user_id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_jobs, wow_classes, wow_game_style,wow_active_time, wow_privacy, common_status, common_game, common_age, common_personality, common_role) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)`,
     [
       id,
       battlenetId,
@@ -90,16 +90,14 @@ async function updateUserTag(params) {
     'common_role',
   ];
   let sql = columns.reduce((pre, cur, index) => {
-    pre += `${cur} = CASE WHEN ?${index + 1} IS NOT NULL THEN ?${
-      index + 1
-    } ELSE ${cur} END`;
+    pre += `${cur} = COALESCE(?, ${cur})`
     if (index !== columns.length - 1) {
       pre += ', ';
     }
     return pre;
   }, `UPDATE ${TABLE_NAME} SET `);
 
-  sql += ` WHERE id = ?${columns.length + 1}`;
+  sql += ` WHERE user_id = ?`;
 
   return db.run(sql, [
     battlenetId,
@@ -114,7 +112,7 @@ async function updateUserTag(params) {
 }
 
 async function getUserTagByIds(ids) {
-  const selectSql = 'id, wow_tag, common_tag';
+  const selectSql = 'user_id, wow_tag, common_tag';
   const sql = ids.reduce((pre, cur, index) => {
     if (index === 0) {
       pre += `id=?${index + 1} `;
@@ -130,6 +128,11 @@ async function getUserTagByIds(ids) {
     wow_tag: JSON.parse(item.wow_tag ?? null),
     common_tag: JSON.parse(item.common_tag ?? null),
   }));
+}
+
+async function getUserTagByFilter(params) {
+  const { pageSize, pageNo } = params;
+  return db.all(`SELECT id, wow_tag, common_tag FROM ${TABLE_NAME} LIMIT 10`);
 }
 
 export function useUserTagMapper(database) {

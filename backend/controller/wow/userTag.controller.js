@@ -52,3 +52,7 @@ export async function queryUserTagByIds(req, res) {
   const list = await userTagMapper.getUserTagByIds(ids);
   res.json(list);
 }
+
+export async function queryFilterUserTag(req, res) {
+  const { filter } = req.body;
+}
