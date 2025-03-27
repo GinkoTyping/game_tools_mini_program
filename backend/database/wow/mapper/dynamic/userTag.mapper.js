@@ -19,11 +19,43 @@ async function getTagOptions() {
   return { wowOptions, commonOptions: mappedCommonOptions };
 }
 
+function mapSingleTag(wowTag, commonTag) {
+  function toString(arr) {
+    return arr.map((item) => item.value).join(',');
+  }
+  const wowJobs = toString(wowTag.jobs);
+  const wowClasses = toString(wowTag.classes);
+  const wowGameStyle = toString(wowTag.gameStyle);
+  const wowActiveTime = wowTag.activeTime
+    .map((item) => toString(item.values.filter((child) => child.selected)))
+    .join('|');
+  const wowPrivacy = wowTag.privacy ? 1 : 0;
+
+  const commonStatus = toString(commonTag.status);
+  const commonGame = toString(commonTag.game);
+  const commonAge = toString(commonTag.age);
+  const commonPersonality = toString(commonTag.personality);
+  const commonRole = toString(commonTag.role);
+
+  return [
+    wowJobs,
+    wowClasses,
+    wowGameStyle,
+    wowActiveTime,
+    wowPrivacy,
+    commonStatus,
+    commonGame,
+    commonAge,
+    commonPersonality,
+    commonRole,
+  ];
+}
+
 async function insertUserTag(params) {
   const { id, battlenetId, wowTag, commonTag } = params;
   const date = formatDateByMinute();
   return db.run(
-    `INSERT INTO ${TABLE_NAME}(id, battlenet_id, wow_tag, common_tag, created_at, updated_at) VALUES(?1, ?2, ?3, ?4, ?5, ?6)`,
+    `INSERT INTO ${TABLE_NAME}(id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_jobs, wow_classes, wow_game_style,wow_active_time, wow_privacy, common_status, common_game, common_age, common_personality, common_role) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)`,
     [
       id,
       battlenetId,
@@ -31,6 +63,7 @@ async function insertUserTag(params) {
       JSON.stringify(commonTag),
       date,
       date,
+      ...mapSingleTag(wowTag, commonTag),
     ]
   );
 }
@@ -38,28 +71,46 @@ async function insertUserTag(params) {
 async function updateUserTag(params) {
   const { id, battlenetId, wowTag, commonTag } = params;
   const date = formatDateByMinute();
-  return db.run(
-    `UPDATE ${TABLE_NAME}
-    SET battlenet_id = CASE
-      WHEN ?1 IS NOT NULL THEN ?1
-      ELSE battlenet_id
-    END,
-    wow_tag = CASE
-      WHEN ?2 IS NOT NULL THEN ?2
-      ELSE wow_tag
-    END,
-    common_tag = CASE
-      WHEN ?3 IS NOT NULL THEN ?3
-      ELSE common_tag
-    END,
-    updated_at = CASE
-      WHEN ?4 IS NOT NULL THEN ?4
-      ELSE updated_at
-    END
-    WHERE id = ?5
-    `,
-    [battlenetId, JSON.stringify(wowTag), JSON.stringify(commonTag), date, id]
-  );
+  const columns = [
+    'battlenet_id',
+    'wow_tag',
+    'common_tag',
+    'updated_at',
+
+    'wow_jobs',
+    'wow_classes',
+    'wow_game_style',
+    'wow_active_time',
+    'wow_privacy',
+
+    'common_status',
+    'common_game',
+    'common_age',
+    'common_personality',
+    'common_role',
+  ];
+  let sql = columns.reduce((pre, cur, index) => {
+    pre += `${cur} = CASE WHEN ?${index + 1} IS NOT NULL THEN ?${
+      index + 1
+    } ELSE ${cur} END`;
+    if (index !== columns.length - 1) {
+      pre += ', ';
+    }
+    return pre;
+  }, `UPDATE ${TABLE_NAME} SET `);
+
+  sql += ` WHERE id = ?${columns.length + 1}`;
+
+  return db.run(sql, [
+    battlenetId,
+    JSON.stringify(wowTag),
+    JSON.stringify(commonTag),
+    date,
+
+    ...mapSingleTag(wowTag, commonTag),
+
+    id,
+  ]);
 }
 
 async function getUserTagByIds(ids) {

@@ -192,14 +192,27 @@ VALUES
   (506, '燧酿酒庄'),
   (525, '水闸行动');
 
+-- user tag
 CREATE TABLE
   IF NOT EXISTS wow_dynamic_user_tag (
     id INTEGER PRIMARY KEY,
     created_at TIMESTAMP CURRENT_TIME,
     updated_at TIMESTAMP,
     battlenet_id TEXT,
+    -- 用于前端的回填
     wow_tag TEXT,
-    common_tag TEXT
+    common_tag TEXT,
+    -- 独立的属性用于过滤
+    wow_jobs TEXT,
+    wow_classes TEXT,
+    wow_game_style TEXT,
+    wow_active_time TEXT,
+    wow_privacy TEXT,
+    common_status TEXT,
+    common_game TEXT,
+    common_age TEXT,
+    common_personality TEXT,
+    common_role TEXT
   );
 
 -- daily tables
