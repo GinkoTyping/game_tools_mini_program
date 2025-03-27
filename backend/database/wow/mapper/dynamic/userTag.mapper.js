@@ -90,7 +90,7 @@ async function updateUserTag(params) {
     'common_role',
   ];
   let sql = columns.reduce((pre, cur, index) => {
-    pre += `${cur} = COALESCE(?, ${cur})`
+    pre += `${cur} = COALESCE(?, ${cur})`;
     if (index !== columns.length - 1) {
       pre += ', ';
     }
@@ -132,7 +132,14 @@ async function getUserTagByIds(ids) {
 
 async function getUserTagByFilter(params) {
   const { pageSize, pageNo } = params;
-  return db.all(`SELECT id, wow_tag, common_tag FROM ${TABLE_NAME} LIMIT 10`);
+  const data = await db.all(
+    `SELECT id, wow_tag, common_tag FROM ${TABLE_NAME} LIMIT 10`
+  );
+  return data.map((item) => ({
+    ...item,
+    wow_tag: JSON.parse(item.wow_tag ?? null),
+    common_tag: JSON.parse(item.common_tag ?? null),
+  }));
 }
 
 export function useUserTagMapper(database) {
@@ -149,5 +156,6 @@ export function useUserTagMapper(database) {
     insertUserTag,
     updateUserTag,
     getUserTagByIds,
+    getUserTagByFilter,
   };
 }

@@ -352,6 +352,7 @@
 
 <script lang="ts" setup>
 import { querySubmitUserTag, queryUserTagById } from '@/api/wow';
+import { IOptionItem, ICommonTag, IWowTag } from '@/interface/IUserTag';
 import { useUserStore } from '@/store/wowStore';
 import { onLoad } from '@dcloudio/uni-app';
 
@@ -372,10 +373,6 @@ function switchTab(e) {
 //#endregion
 
 //#region 基本信息
-interface IOptionItem {
-  text: string;
-  value: string;
-}
 function getBasicTimeValues(title) {
   return {
     title: title,
@@ -386,16 +383,7 @@ function getBasicTimeValues(title) {
     })),
   };
 }
-const wowForm = reactive<{
-  jobs: IOptionItem[];
-  classes: IOptionItem[];
-  gameStyle: IOptionItem[];
-  activeTime: {
-    title: string;
-    values: { text: string; value: number; selected: boolean }[];
-  }[];
-  privacy: { needConfirm: boolean };
-}>({
+const wowForm = reactive<IWowTag>({
   jobs: [],
   classes: [],
   gameStyle: [],
@@ -513,13 +501,7 @@ function onClickTimeItem(dayIndex, item) {
 //#endregion
 
 //#region 其他信息
-const commonForm = reactive<{
-  status: IOptionItem[];
-  game: IOptionItem[];
-  age: IOptionItem[];
-  personality: IOptionItem[];
-  role: IOptionItem[];
-}>({
+const commonForm = reactive<ICommonTag>({
   status: [],
   age: [],
   game: [],
