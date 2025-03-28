@@ -52,6 +52,16 @@
           >
         </template>
       </view>
+      <ActiveTimeBar
+        v-model="activeTime.workDay"
+        direction="row"
+        width="100vw - 80rpx"
+      />
+      <ActiveTimeBar
+        v-model="activeTime.weekend"
+        direction="row"
+        width="100vw - 80rpx"
+      />
     </view>
     <view class="card-content-simple" v-if="props.type === 'simple'">
       <image
@@ -94,10 +104,11 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { computed, reactive, watch } from 'vue';
 
-import { ICommonTag, IWowTag } from '@/interface/IUserTag';
+import { IActiveTimeBar, ICommonTag, IWowTag } from '@/interface/IUserTag';
 import localeLabels from '@/data/zh.json';
+import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
 
 interface ITagCard {
   wow_tag: IWowTag;
@@ -118,11 +129,31 @@ const props = defineProps({
 });
 
 const wowTag = computed(() => {
-  console.log(props.data);
   return props.data.wow_tag;
 });
 const commonTag = computed(() => props.data.common_tag);
 
+//#region 时间
+const activeTime = reactive<{
+  workDay: IActiveTimeBar[];
+  weekend: IActiveTimeBar[];
+}>({
+  workDay: [],
+  weekend: [],
+});
+watch(
+  () => props.data,
+  val => {
+    activeTime.workDay = val?.wow_tag.activeTime[0].values;
+    activeTime.weekend = val?.wow_tag.activeTime[1].values;
+    console.log(activeTime);
+  },
+  {
+    deep: true,
+    immediate: true,
+  }
+);
+//#endregion
 //#region 文本样式
 const basicClassItem = computed(() => wowTag.value?.classes?.[0]);
 const getBgURL = computed(() => {

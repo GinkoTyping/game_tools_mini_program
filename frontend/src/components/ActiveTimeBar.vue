@@ -1,17 +1,15 @@
 <template>
-  <cell class="active-time-bar-wrap" :style="containerStyle">
-    <view
-      class="active-time-item__times-wrap"
-      v-for="range in [0, 12]"
-      :key="range"
-    >
-      <view class="active-time-item__times" v-for="startIndex in [0, 6]">
+  <cell class="container" :style="containerStyle">
+    <view v-for="range in [0, 12]" class="list-time-wrap" :key="range">
+      <view
+        v-for="(startIndex, index) in [0, 6]"
+        class="list-time"
+        :style="listTimeWrapStyle(index)"
+      >
         <view
-          class="active-time-item__times-item"
-          :class="[
-            timeItem.selected ? 'active-time-item__times-item--active' : '',
-          ]"
-          :style="timeBarStyle"
+          class="list-time-item"
+          :class="[timeItem.selected ? 'list-time-item--active' : '']"
+          :style="listTimeItemStyle"
           v-for="timeItem in times.slice(
             range + startIndex,
             range + 6 + startIndex
@@ -37,22 +35,55 @@ import { computed, ref } from 'vue';
 
 const props = defineProps({
   direction: String,
+  width: {
+    type: String,
+    default: '100vw - 24px',
+  },
 });
+
 const containerStyle = computed(() => {
   return {
     flexDirection: props.direction === 'row' ? 'row' : 'column',
   };
 });
-const timeBarStyle = computed(() => {
-  const itemGap = '20rpx';
-  const itemGrounpGap = '30rpx';
-  const itemWidth = `(100vw - 24px - ${itemGrounpGap} - ${itemGap} * 10) / 12`;
+const basicCssVars = computed(() => {
+  let itemGap;
+  let itemGroupGap;
+  let divideCount;
+  let gapByRow;
+  if (props.direction === 'row') {
+    itemGap = '10rpx';
+    itemGroupGap = '10rpx';
+    divideCount = 24;
+    gapByRow = '30px';
+  } else {
+    itemGap = '20rpx';
+    itemGroupGap = '30rpx';
+    divideCount = 12;
+    gapByRow = '0px';
+  }
+  return { itemGap, itemGroupGap, divideCount, gapByRow };
+});
+const listTimeWrapStyle = computed(() => {
+  return (index: number) => ({
+    justifyContent: props.direction === 'row' ? 'flex-start' : 'space-between',
+    marginRight:
+      index === 0 && props.direction !== 'row'
+        ? basicCssVars.value.itemGroupGap
+        : '',
+  });
+});
+const listTimeItemStyle = computed(() => {
+  const { itemGap, itemGroupGap, divideCount, gapByRow } = basicCssVars.value;
+
+  const itemWidth = `(${props.width} - ${itemGroupGap} - ${gapByRow} - ${itemGap} * ${divideCount - 2}) / ${divideCount}`;
   const itemHeight = `${itemWidth} * 2`;
   const itemRadius = `${itemWidth} / 2`;
   return {
     width: `calc(${itemWidth})`,
     height: `calc(${itemHeight})`,
     borderRadius: `calc(${itemRadius})`,
+    marginRight: props.direction === 'row' ? itemGap : '',
   };
 });
 
@@ -101,32 +132,30 @@ const isDisplayTime = computed(
 $time-item-gap: 20rpx;
 $time-range-item-gap: 30rpx;
 
-.active-time-bar-wrap {
-  display: flex;
-}
-
-.active-time-item__times-wrap {
+.container {
   display: flex;
   justify-content: space-between;
+}
+
+.list-time-wrap {
+  display: flex;
+  justify-content: space-between;
+
   &:first-child {
     margin-bottom: 30rpx;
   }
 
-  .active-time-item__times {
+  .list-time {
     display: flex;
-    justify-content: space-between;
     flex: 1;
 
-    &:first-child {
-      margin-right: $time-range-item-gap;
-    }
 
-    .active-time-item__times-item {
+    .list-time-item {
       background-color: $uni-bg-color-grey-lighter;
       margin-bottom: 10rpx;
       position: relative;
 
-      &.active-time-item__times-item--active {
+      &.list-time-item--active {
         background-color: $uni-color-primary;
       }
 
