@@ -3,13 +3,18 @@ export interface IOptionItem {
   value: string;
 }
 
+export interface IActiveTimeBar {
+  text: string;
+  value: number;
+  selected: boolean;
+}
 export interface IWowTag {
   jobs: IOptionItem[];
   classes: IOptionItem[];
   gameStyle: IOptionItem[];
   activeTime: {
     title: string;
-    values: { text: string; value: number; selected: boolean }[];
+    values: IActiveTimeBar[];
   }[];
   privacy: { needConfirm: boolean };
 }
