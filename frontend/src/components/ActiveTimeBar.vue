@@ -1,51 +1,60 @@
 <template>
-  <view
-    class="active-time-item__times-wrap"
-    v-for="range in [0, 12]"
-    :key="range"
-  >
-    <view class="active-time-item__times">
-      <view
-        class="active-time-item__times-item"
-        :class="[
-          timeItem.selected ? 'active-time-item__times-item--active' : '',
-        ]"
-        v-for="timeItem in times.slice(range, range + 6)"
-        :key="timeItem.value"
-        @click="() => onClickTimeItem(timeItem)"
-      >
-        <text
-          class="time-label"
-          :class="[timeLabelClass(timeItem.value)]"
-          v-show="isDisplayTime(timeItem.value)"
-          >{{ `${timeItem.value}:00` }}</text
+  <cell class="active-time-bar-wrap" :style="containerStyle">
+    <view
+      class="active-time-item__times-wrap"
+      v-for="range in [0, 12]"
+      :key="range"
+    >
+      <view class="active-time-item__times" v-for="startIndex in [0, 6]">
+        <view
+          class="active-time-item__times-item"
+          :class="[
+            timeItem.selected ? 'active-time-item__times-item--active' : '',
+          ]"
+          :style="timeBarStyle"
+          v-for="timeItem in times.slice(
+            range + startIndex,
+            range + 6 + startIndex
+          )"
+          :key="timeItem.value"
+          @click="() => onClickTimeItem(timeItem)"
         >
+          <text
+            class="time-label"
+            :class="[timeLabelClass(timeItem.value)]"
+            v-show="isDisplayTime(timeItem.value)"
+            >{{ `${timeItem.value}:00` }}</text
+          >
+        </view>
       </view>
     </view>
-    <view class="active-time-item__times">
-      <view
-        class="active-time-item__times-item"
-        :class="[
-          timeItem.selected ? 'active-time-item__times-item--active' : '',
-        ]"
-        v-for="timeItem in times.slice(range + 6, range + 12)"
-        :key="timeItem.value"
-        @click="() => onClickTimeItem(timeItem)"
-      >
-        <text
-          class="time-label"
-          :class="[timeLabelClass(timeItem.value)]"
-          v-show="isDisplayTime(timeItem.value)"
-          >{{ `${timeItem.value}:00` }}</text
-        >
-      </view>
-    </view>
-  </view>
+  </cell>
 </template>
 
 <script lang="ts" setup>
 import { IActiveTimeBar } from '@/interface/IUserTag';
 import { computed, ref } from 'vue';
+
+const props = defineProps({
+  direction: String,
+});
+const containerStyle = computed(() => {
+  return {
+    flexDirection: props.direction === 'row' ? 'row' : 'column',
+  };
+});
+const timeBarStyle = computed(() => {
+  const itemGap = '20rpx';
+  const itemGrounpGap = '30rpx';
+  const itemWidth = `(100vw - 24px - ${itemGrounpGap} - ${itemGap} * 10) / 12`;
+  const itemHeight = `${itemWidth} * 2`;
+  const itemRadius = `${itemWidth} / 2`;
+  return {
+    width: `calc(${itemWidth})`,
+    height: `calc(${itemHeight})`,
+    borderRadius: `calc(${itemRadius})`,
+  };
+});
 
 const times = defineModel({
   type: Array<IActiveTimeBar>,
@@ -91,15 +100,11 @@ const isDisplayTime = computed(
 <style lang="scss" scoped>
 $time-item-gap: 20rpx;
 $time-range-item-gap: 30rpx;
-$time-item-width: calc(
-  (100vw - 24px - $time-range-item-gap - $time-item-gap * 11) / 12
-);
-$time-item-height: calc(
-  (100vw - 24px - $time-range-item-gap - $time-item-gap * 11) / 12 * 2
-);
-$time-item-radius: calc(
-  (100vw - 24px - $time-range-item-gap - $time-item-gap * 11) / 12 / 2
-);
+
+.active-time-bar-wrap {
+  display: flex;
+}
+
 .active-time-item__times-wrap {
   display: flex;
   justify-content: space-between;
@@ -118,9 +123,6 @@ $time-item-radius: calc(
 
     .active-time-item__times-item {
       background-color: $uni-bg-color-grey-lighter;
-      width: $time-item-width;
-      height: $time-item-height;
-      border-radius: $time-item-radius;
       margin-bottom: 10rpx;
       position: relative;
 
