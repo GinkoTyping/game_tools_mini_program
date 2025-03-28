@@ -47,17 +47,15 @@
 import { IActiveTimeBar } from '@/interface/IUserTag';
 import { computed, ref } from 'vue';
 
-const props = defineProps({
-  time: {
-    type: Array<IActiveTimeBar>,
-    default: () => [],
-  },
-});
-
 const times = defineModel({
   type: Array<IActiveTimeBar>,
-  required: true,
-  default: () => [],
+  required: false,
+  default: () =>
+    new Array(24).fill({ text: '', value: 0 }).map((item, index) => ({
+      text: `${index}:00`,
+      value: index,
+      selected: false,
+    })),
 });
 
 let displayTimer;
@@ -105,7 +103,6 @@ $time-item-radius: calc(
 .active-time-item__times-wrap {
   display: flex;
   justify-content: space-between;
-
   &:first-child {
     margin-bottom: 30rpx;
   }
