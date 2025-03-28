@@ -776,4 +776,16 @@ export async function queryUserTagById() {
   });
   return res?.data?.[0];
 }
+export async function queryFilterUserTag(params?) {
+  const res: any = await proxyRequest({
+    url: `/wow/user-tag/list`,
+    method: 'POST',
+    data: {
+      filter: {},
+      pageSize: params?.pageSize ?? 10,
+      pageNo: params?.pageNo ?? 0,
+    },
+  });
+  return res.data;
+}
 //#endregion
