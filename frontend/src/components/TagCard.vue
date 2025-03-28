@@ -1,6 +1,7 @@
 <template>
   <view class="card-wrap">
     <view class="card-content" v-if="props.type === 'normal'">
+      <!-- 顶部 -->
       <view class="main-spec">
         <image
           class="spec-image"
@@ -25,6 +26,7 @@
           </view>
         </view>
       </view>
+      <!-- 各种tag -->
       <view class="sub-content label-list">
         <image
           class="label-list-item__job"
@@ -52,16 +54,26 @@
           >
         </template>
       </view>
-      <ActiveTimeBar
-        v-model="activeTime.workDay"
-        direction="row"
-        width="100vw - 80rpx"
-      />
-      <ActiveTimeBar
-        v-model="activeTime.weekend"
-        direction="row"
-        width="100vw - 80rpx"
-      />
+      <!-- 时间 -->
+      <view
+        v-for="item in ['workDay', 'weekend']"
+        :key="item"
+        class="time-range"
+        :class="[item === 'workDay' ? 'time-range__work-day' : '']"
+      >
+        <view class="time-range__label">{{
+          item === 'workDay' ? '工作日' : '休息日'
+        }}</view>
+        <view class="time-range__bars">
+          <ActiveTimeBar
+            v-model="activeTime[item]"
+            mode="display"
+            :show-time="item === 'workDay'"
+            :default-display-time="[0, 12]"
+            width="100vw - 80rpx - 80rpx"
+          />
+        </view>
+      </view>
     </view>
     <view class="card-content-simple" v-if="props.type === 'simple'">
       <image
@@ -94,6 +106,7 @@
     </view>
     <view
       class="card-bg"
+      :class="[props.type === 'normal' ? 'card-bg__mask' : '']"
       :style="{
         backgroundImage:
           'url(https://ginkolearn.cyou/api/wow/assets/class-bgs/hunter-beast-mastery-spec-background.webp)',
@@ -184,6 +197,7 @@ $label-margin-bottom: 12rpx;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  box-shadow: 0px 2px 5px 2px rgba(255, 255, 255, 0.2);
   // 公共
   .spec-image {
     width: 100rpx;
@@ -248,6 +262,21 @@ $label-margin-bottom: 12rpx;
         }
       }
     }
+    .time-range {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 10rpx;
+      color: #fff;
+      font-size: 20rpx;
+      .time-range__label {
+        width: 80rpx;
+        white-space: nowrap;
+      }
+      &.time-range__work-day {
+        padding-top: 26rpx;
+      }
+    }
   }
   // 缩略版
   .card-content-simple {
@@ -274,7 +303,9 @@ $label-margin-bottom: 12rpx;
     background-repeat: no-repeat;
     scale: -1 1;
     z-index: -1;
-    // mask-image: linear-gradient(0deg, transparent 20%, rgb(0, 0, 0) 90%);
+    &.card-bg__mask {
+      mask-image: linear-gradient(0deg, transparent 20%, rgb(0, 0, 0) 90%);
+    }
   }
 }
 </style>

@@ -1,20 +1,25 @@
 <template>
   <cell class="container" :style="containerStyle">
-    <view v-for="range in [0, 12]" class="list-time-wrap" :key="range">
+    <view
+      v-for="(range, rangeIndex) in [0, 12]"
+      class="list-time-wrap"
+      :key="range"
+      :style="listTimeWrapStyle(rangeIndex)"
+    >
       <view
         v-for="(startIndex, index) in [0, 6]"
         class="list-time"
-        :style="listTimeWrapStyle(index)"
+        :style="listTimeStyle(index)"
       >
         <view
-          class="list-time-item"
-          :class="[timeItem.selected ? 'list-time-item--active' : '']"
-          :style="listTimeItemStyle"
-          v-for="timeItem in times.slice(
+          v-for="(timeItem, timeItemIndex) in times.slice(
             range + startIndex,
             range + 6 + startIndex
           )"
           :key="timeItem.value"
+          class="list-time-item"
+          :class="[timeItem.selected ? 'list-time-item--active' : '']"
+          :style="listTimeItemStyle(timeItemIndex, index)"
           @click="() => onClickTimeItem(timeItem)"
         >
           <text
@@ -34,28 +39,29 @@ import { IActiveTimeBar } from '@/interface/IUserTag';
 import { computed, ref } from 'vue';
 
 const props = defineProps({
-  direction: String,
+  mode: String,
+  showTime: Boolean,
+  defaultDisplayTime: {
+    type: Array<Number>,
+    default: () => [0, 6, 12, 18],
+  },
   width: {
     type: String,
     default: '100vw - 24px',
   },
 });
 
-const containerStyle = computed(() => {
-  return {
-    flexDirection: props.direction === 'row' ? 'row' : 'column',
-  };
-});
+//#region 样式
 const basicCssVars = computed(() => {
   let itemGap;
   let itemGroupGap;
   let divideCount;
   let gapByRow;
-  if (props.direction === 'row') {
+  if (props.mode === 'display') {
     itemGap = '10rpx';
     itemGroupGap = '10rpx';
     divideCount = 24;
-    gapByRow = '30px';
+    gapByRow = '20rpx';
   } else {
     itemGap = '20rpx';
     itemGroupGap = '30rpx';
@@ -64,28 +70,56 @@ const basicCssVars = computed(() => {
   }
   return { itemGap, itemGroupGap, divideCount, gapByRow };
 });
+const containerStyle = computed(() => {
+  return {
+    flexDirection: props.mode === 'display' ? 'row' : 'column',
+  };
+});
 const listTimeWrapStyle = computed(() => {
   return (index: number) => ({
-    justifyContent: props.direction === 'row' ? 'flex-start' : 'space-between',
+    marginBottom: index === 0 && props.mode !== 'display' ? '30rpx' : '',
     marginRight:
-      index === 0 && props.direction !== 'row'
+      index === 0 && props.mode === 'display'
+        ? basicCssVars.value.gapByRow
+        : '',
+  });
+});
+const listTimeStyle = computed(() => {
+  return (index: number) => ({
+    justifyContent: props.mode === 'display' ? 'flex-start' : 'space-between',
+    marginRight:
+      index === 0 && props.mode !== 'display'
         ? basicCssVars.value.itemGroupGap
         : '',
   });
 });
 const listTimeItemStyle = computed(() => {
-  const { itemGap, itemGroupGap, divideCount, gapByRow } = basicCssVars.value;
+  return (index: number, startIndex) => {
+    const { itemGap, itemGroupGap, divideCount, gapByRow } = basicCssVars.value;
 
-  const itemWidth = `(${props.width} - ${itemGroupGap} - ${gapByRow} - ${itemGap} * ${divideCount - 2}) / ${divideCount}`;
-  const itemHeight = `${itemWidth} * 2`;
-  const itemRadius = `${itemWidth} / 2`;
-  return {
-    width: `calc(${itemWidth})`,
-    height: `calc(${itemHeight})`,
-    borderRadius: `calc(${itemRadius})`,
-    marginRight: props.direction === 'row' ? itemGap : '',
+    const itemWidth = `(${props.width} - ${itemGroupGap} - ${gapByRow} - ${itemGap} * ${divideCount - 2}) / ${divideCount}`;
+    const itemHeight = `${itemWidth} * 2`;
+    const itemRadius = `${itemWidth} / 2`;
+    let marginRight;
+    if (props.mode === 'display') {
+      if (startIndex === 0) {
+        marginRight = itemGap;
+      } else if (startIndex === 1) {
+        marginRight = index === 5 ? '' : itemGap;
+      }
+    } else {
+      marginRight = '';
+    }
+    return {
+      width: `calc(${itemWidth})`,
+      height: `calc(${itemHeight})`,
+      borderRadius: `calc(${itemRadius})`,
+      marginRight: marginRight,
+      marginBottom: props.mode === 'display' ? '' : '10rpx',
+    };
   };
 });
+//#endregion
 
 const times = defineModel({
   type: Array<IActiveTimeBar>,
@@ -111,7 +145,9 @@ function onClickTimeItem(item) {
 const timeLabelClass = computed(() => {
   return (value: number) => {
     if ([0, 12].includes(value)) {
-      return 'time-label--left-top';
+      return props.mode === 'display'
+        ? 'time-label--left-top--align-center'
+        : 'time-label--left-top';
     }
     if ([6, 18].includes(value)) {
       return 'time-label--center-top';
@@ -124,7 +160,8 @@ const timeLabelClass = computed(() => {
 });
 const isDisplayTime = computed(
   () => (value: number) =>
-    [0, 6, 12, 18].includes(value) ||
+    ((props.showTime || props.mode === 'edit') &&
+      props.defaultDisplayTime.includes(value)) ||
     (currentClickTime.value === value && ![1, 7, 13, 19].includes(value))
 );
 </script>
@@ -140,19 +177,12 @@ $time-range-item-gap: 30rpx;
 .list-time-wrap {
   display: flex;
   justify-content: space-between;
-
-  &:first-child {
-    margin-bottom: 30rpx;
-  }
-
   .list-time {
     display: flex;
     flex: 1;
 
-
     .list-time-item {
       background-color: $uni-bg-color-grey-lighter;
-      margin-bottom: 10rpx;
       position: relative;
 
       &.list-time-item--active {
@@ -160,12 +190,18 @@ $time-range-item-gap: 30rpx;
       }
 
       .time-label {
+        color: #fff;
         position: absolute;
 
         &.time-label--left-top {
           top: 0;
           left: 0;
           transform: translateY(-100%);
+        }
+        &.time-label--left-top--align-center {
+          top: 0;
+          left: 0;
+          transform: translate(-30%, -100%);
         }
 
         &.time-label--center-top {
