@@ -137,7 +137,7 @@ async function getUserTagByIds(ids, hasBattlenetId) {
 async function getUserTagByFilter(params) {
   const { pageSize, pageNo } = params;
   const data = await db.all(
-    `SELECT id, wow_tag, common_tag FROM ${TABLE_NAME} LIMIT 10`
+    `SELECT id, wow_tag, common_tag, updated_at FROM ${TABLE_NAME} LIMIT 10`
   );
   return data.map((item) => ({
     ...item,

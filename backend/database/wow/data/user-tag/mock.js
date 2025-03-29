@@ -3,6 +3,7 @@ import { getDynamicDB } from '../../../utils/index.js';
 import commonTag from './common_tag.js';
 import wowTag from './wow_tag.js';
 import specOptions from './spec-option.js';
+import { formatDateByMinute } from '../../../../util/time.js';
 
 // 辅助函数：随机选择数组元素
 const randomSelect = (arr, max = 3) => {
@@ -36,12 +37,7 @@ const generateActiveTime = () => {
 const generateWowTag = () => {
   const jobs = randomSelect(wowTag.jobs.options, 3);
   const classes = randomSelect(wowTag.classes.options, 3);
-
-  // 根据职业筛选可用专精
-  const spec = classes.flatMap((cls) => {
-    const validSpecs = specOptions.filter((s) => s.roleClass === cls.value);
-    return validSpecs.length > 0 ? [randomSelect(validSpecs, 1)[0]] : [];
-  });
+  const spec = randomSelect(specOptions, 1);
 
   return {
     jobs: jobs.map((job) => ({ text: job.text, value: job.value })),
@@ -60,6 +56,13 @@ const generateWowTag = () => {
     privacy: { needConfirm: true },
   };
 };
+
+// 生成时间数据
+function generateRandomDate() {
+  const nowTime = Date.now();
+  const ramdonTime = Math.floor(Math.random() * 3600 * 1000 - 2 * 3600 * 1000);
+  return formatDateByMinute(nowTime + ramdonTime);
+}
 
 // 生成common_tag字段
 const generateCommonTag = () => ({
@@ -93,13 +96,13 @@ const generateRecord = (id) => {
   return {
     id: id.toString(),
     user_id: id,
-    created_at: new Date().toISOString().slice(0, 19).replace('T', ' '),
-    updated_at: new Date().toISOString().slice(0, 19).replace('T', ' '),
+    created_at: generateRandomDate(),
+    updated_at: generateRandomDate(),
     battlenet_id: generateBattlenetId(),
     wow_tag: JSON.stringify(wowTagData).replace(/'/g, "''"),
     common_tag: JSON.stringify(commonTagData).replace(/'/g, "''"),
     wow_jobs: wowTagData.jobs.map((j) => j.value).join(','),
-    wow_spec: wowTagData.spec.map((s) => s.value.split('|')[0]).join(','),
+    wow_spec: wowTagData.spec.map((s) => s.value).join(','),
     wow_classes: wowTagData.classes.map((c) => c.value).join(','),
     wow_game_style: wowTagData.gameStyle.map((gs) => gs.value).join(','),
     wow_active_time: wowTagData.activeTime

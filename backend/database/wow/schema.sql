@@ -217,6 +217,14 @@ CREATE TABLE
     common_role TEXT
   );
 
+CREATE INDEX idx_jobs_updated ON wow_dynamic_user_tag (wow_jobs, updated_at DESC);
+
+CREATE INDEX idx_spec_updated ON wow_dynamic_user_tag (wow_spec, updated_at DESC);
+
+CREATE INDEX idx_game_style_updated ON wow_dynamic_user_tag (wow_game_style, updated_at DESC);
+
+CREATE INDEX idx_active_time_updated ON wow_dynamic_user_tag (wow_active_time, updated_at DESC);
+
 -- daily tables
 CREATE TABLE
   IF NOT EXISTS wow_daily_spec_popularity (
