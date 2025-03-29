@@ -139,14 +139,10 @@
 <script lang="ts" setup>
 import { computed, reactive, watch } from 'vue';
 
-import { IActiveTimeBar, ICommonTag, IWowTag } from '@/interface/IUserTag';
+import { IActiveTimeBar } from '@/interface/IUserTag';
 import localeLabels from '@/data/zh.json';
 import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
-
-interface ITagCard {
-  wow_tag: IWowTag;
-  common_tag: ICommonTag;
-}
+import { ITagCardItem } from '@/api/wow';
 
 const type = defineModel('type', {
   type: String,
@@ -156,7 +152,7 @@ const type = defineModel('type', {
 
 const props = defineProps({
   data: {
-    type: Object as () => ITagCard,
+    type: Object as () => ITagCardItem,
     required: true,
     default: () => ({}),
   },
@@ -181,7 +177,6 @@ watch(
   val => {
     activeTime.workDay = val?.wow_tag.activeTime[0].values;
     activeTime.weekend = val?.wow_tag.activeTime[1].values;
-    console.log(activeTime);
   },
   {
     deep: true,

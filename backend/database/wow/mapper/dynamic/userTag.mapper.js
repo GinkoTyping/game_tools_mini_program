@@ -135,10 +135,25 @@ async function getUserTagByIds(ids, hasBattlenetId) {
 }
 
 async function getUserTagByFilter(params) {
-  const { pageSize, pageNo } = params;
-  const data = await db.all(
-    `SELECT id, wow_tag, common_tag, updated_at FROM ${TABLE_NAME} LIMIT 10`
-  );
+  const { filter, pageSize = 10, lastId = -1, lastUpdatedAt } = params;
+  const sql = `
+  SELECT
+    id, wow_tag, common_tag, updated_at
+  FROM
+    ${TABLE_NAME}
+  WHERE
+    id != ?
+  AND
+    ${lastUpdatedAt ? 'updated_at <= ? ' : 'updated_at >= ? '}
+  ORDER BY
+    updated_at DESC 
+  LIMIT ?`;
+
+  const data = await db.all(sql, [
+    lastId,
+    lastUpdatedAt?.toString() ?? '',
+    pageSize,
+  ]);
   return data.map((item) => ({
     ...item,
     wow_tag: JSON.parse(item.wow_tag ?? null),

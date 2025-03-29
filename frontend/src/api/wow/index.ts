@@ -4,6 +4,7 @@ import { proxyRequest } from '../config';
 import colorMap from '@/utils/color-map';
 import localeName from '@/data/zh.json';
 import { useAuth } from '@/hooks/auth';
+import { ICommonTag, IWowTag } from '@/interface/IUserTag';
 
 const localeNameMap: any = localeName;
 const auth = useAuth();
@@ -715,6 +716,7 @@ export interface IWowUserTagOptions {
   gameStyle: ITagOptionItem;
   activeTime: ITagOptionItem;
   communication: ITagOptionItem;
+  spec: ITagOptionItem;
 }
 export interface ISpecTagOptions {
   sprite: { [key: string]: { [key: string]: number } };
@@ -786,6 +788,14 @@ export async function queryUserTagById() {
   });
   return res?.data?.[0];
 }
+
+export interface ITagCardItem {
+  common_tag: ICommonTag;
+  wow_tag: IWowTag;
+  id: number;
+  updated_at: string;
+  type: string;
+}
 export async function queryFilterUserTag(params?) {
   const res: any = await proxyRequest({
     url: `/wow/user-tag/list`,
@@ -793,9 +803,10 @@ export async function queryFilterUserTag(params?) {
     data: {
       filter: {},
       pageSize: params?.pageSize ?? 10,
-      pageNo: params?.pageNo ?? 0,
+      lastId: params?.lastId,
+      lastUpdatedAt: params?.lastUpdatedAt,
     },
   });
-  return res.data;
+  return res.data as ITagCardItem[];
 }
 //#endregion
