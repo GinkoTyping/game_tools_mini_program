@@ -74,6 +74,21 @@
           />
         </view>
       </view>
+      <!-- 按钮 -->
+      <view class="buttons">
+        <view class="button-item">
+          <uni-icons
+            type="personadd-filled"
+            size="30"
+            color="#777777"
+          ></uni-icons>
+          <text>{{ wowTag.privacy.needConfirm ? '申请' : '获取' }}</text>
+        </view>
+        <view class="button-item">
+          <text>收起</text>
+          <uni-icons type="minus-filled" size="28" color="#999"></uni-icons>
+        </view>
+      </view>
     </view>
     <view class="card-content-simple" v-if="props.type === 'simple'">
       <image
@@ -103,10 +118,16 @@
           item.text
         }}</text>
       </view>
+      <view class="buttons">
+        <text>展开</text>
+        <view class="collapse-button">
+          <uni-icons type="more-filled" size="16" color="black"></uni-icons>
+        </view>
+      </view>
     </view>
     <view
       class="card-bg"
-      :class="[props.type === 'normal' ? 'card-bg__mask' : '']"
+      :class="[props.type === 'normal' ? 'card-bg__mask' : 'card-bg__mask']"
       :style="{
         backgroundImage:
           'url(https://ginkolearn.cyou/api/wow/assets/class-bgs/hunter-beast-mastery-spec-background.webp)',
@@ -187,6 +208,7 @@ const getBgURL = computed(() => {
 <style lang="scss" scoped>
 $label-height: 40rpx;
 $label-margin-bottom: 12rpx;
+
 .card-wrap {
   padding: 20rpx;
   // min-height: 20vh;
@@ -198,6 +220,7 @@ $label-margin-bottom: 12rpx;
   flex-direction: column;
   justify-content: flex-end;
   box-shadow: 0px 2px 5px 2px rgba(255, 255, 255, 0.2);
+
   // 公共
   .spec-image {
     width: 100rpx;
@@ -205,12 +228,14 @@ $label-margin-bottom: 12rpx;
     margin-right: 18rpx;
     border-radius: 24rpx;
   }
+
   .label-list {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     font-size: 24rpx;
     line-height: $label-height;
+
     .label-list-item {
       height: $label-height;
       margin-right: 12rpx;
@@ -218,29 +243,35 @@ $label-margin-bottom: 12rpx;
       padding: 0 16rpx;
       color: black;
       border-radius: 12rpx;
+
       &:not(.label-list-item__class) {
         background-color: #999;
       }
     }
+
     .label-list-item__job {
       margin-bottom: $label-margin-bottom;
       width: $label-height;
       height: $label-height;
     }
   }
+
   // 完整版
   .card-content {
     width: 100%;
     padding-top: 0rpx;
+
     .main-spec {
       display: flex;
       align-items: center;
       margin-bottom: 10rpx;
+
       .main-spec__content {
         height: 110rpx;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
         .main-spec__content-title {
           display: flex;
           align-items: flex-end;
@@ -250,10 +281,12 @@ $label-margin-bottom: 12rpx;
             font-size: 36rpx;
             margin-right: 10rpx;
           }
+
           .role-class {
             font-size: 28rpx;
           }
         }
+
         .main-spec__content-other {
           display: flex;
           font-size: 28rpx;
@@ -262,6 +295,7 @@ $label-margin-bottom: 12rpx;
         }
       }
     }
+
     .time-range {
       display: flex;
       justify-content: space-between;
@@ -269,27 +303,77 @@ $label-margin-bottom: 12rpx;
       padding-top: 10rpx;
       color: #fff;
       font-size: 20rpx;
+
       .time-range__label {
         width: 80rpx;
         white-space: nowrap;
       }
+
       &.time-range__work-day {
         padding-top: 26rpx;
       }
     }
+
+    .buttons {
+      padding-top: 16rpx;
+      display: flex;
+      justify-content: space-between;
+      .button-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20rpx;
+        font-size: 22rpx;
+        color: $uni-text-color-grey;
+        & > text {
+          margin: 0 10rpx;
+        }
+      }
+    }
   }
+
   // 缩略版
   .card-content-simple {
     display: flex;
-    .card-content-simple__left {
-    }
+    position: relative;
     .card-content-simple__right {
       flex: 1;
-
       max-height: calc($label-height * 2 + $label-margin-bottom);
       overflow: hidden;
     }
+    .buttons {
+      position: absolute;
+      right: 25rpx;
+      bottom: -42rpx;
+      height: 42rpx;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      border-radius: 20rpx;
+      background-color: $uni-bg-color-grey-lighter;
+      color: $uni-text-color-grey;
+      border: 1px solid $uni-text-color-grey;
+      box-sizing: border-box;
+      box-shadow: 0px 2px 6px 0px rgba(255, 255, 255, 0.2);
+
+      & > text {
+        font-size: 22rpx;
+        padding-left: 20rpx;
+        padding-right: 14rpx;
+      }
+      .collapse-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $uni-text-color-grey;
+        width: 42rpx;
+        height: 42rpx;
+        border-radius: 50%;
+      }
+    }
   }
+
   .card-bg {
     top: 0;
     left: 0;
@@ -303,6 +387,7 @@ $label-margin-bottom: 12rpx;
     background-repeat: no-repeat;
     scale: -1 1;
     z-index: -1;
+
     &.card-bg__mask {
       mask-image: linear-gradient(0deg, transparent 20%, rgb(0, 0, 0) 90%);
     }
