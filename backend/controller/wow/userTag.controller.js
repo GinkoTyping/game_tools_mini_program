@@ -1,12 +1,25 @@
 import { getDynamicDB } from '../../database/utils/index.js';
 import { useUserTagMapper } from '../../database/wow/mapper/dynamic/userTag.mapper.js';
+import { getTrendData } from './bisController.js';
+import { useScheduleCheck } from '../../util/use-schedule-check.js';
 
 const db = await getDynamicDB();
 const userTagMapper = useUserTagMapper(db);
 
+const UPDATE_INTERVAL_HOUR = 24;
+const optionSchedule = useScheduleCheck(UPDATE_INTERVAL_HOUR);
+let trendDataCache;
+
 export async function queryUserTagOptions(req, res) {
   const data = await userTagMapper.getTagOptions();
-  res.json(data);
+  if (optionSchedule.isSchedule()) {
+    trendDataCache = await getTrendData();
+    optionSchedule.setLastUpdate();
+  }
+  res.json({
+    ...data,
+    specs: trendDataCache,
+  });
 }
 
 export async function queryAddUserTag(req, res) {

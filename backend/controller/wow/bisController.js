@@ -144,7 +144,7 @@ async function mapBisItems(bisItems) {
   return bisItemResult.map((item) => item.value);
 }
 
-export async function queryBisTrends(req, res) {
+export async function getTrendData() {
   const data = await specBisCountMapper.getAllSpecBisCount();
   const updateInfo = await bisMapper.getAllBisDateInfo();
   const updateMap = updateInfo.reduce((pre, cur) => {
@@ -182,10 +182,17 @@ export async function queryBisTrends(req, res) {
       return pre;
     }, [])
     .sort((a, b) => b.access_count - a.access_count);
-
-  res.json({
+  return {
     trend: mappedData,
     sprite: spriteMap,
+  };
+}
+
+export async function queryBisTrends(req, res) {
+  const { trend, sprite } = await getTrendData();
+  res.json({
+    trend,
+    sprite,
   });
 }
 

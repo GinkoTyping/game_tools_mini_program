@@ -18,8 +18,14 @@ export default {
       },
     ],
   },
-  classes: {
+  spec: {
     index: 1,
+    text: '专精',
+    value: 'spec',
+    options: [],
+  },
+  classes: {
+    index: 2,
 
     text: '职业',
     value: 'classes',
@@ -80,7 +86,7 @@ export default {
     ],
   },
   gameStyle: {
-    index: 2,
+    index: 3,
     text: '游戏风格',
     value: 'gameStyle',
     options: [
@@ -115,7 +121,7 @@ export default {
     ],
   },
   activeTime: {
-    index: 3,
+    index: 4,
     text: '活跃时间段',
     value: 'activeTime',
     options: [
@@ -132,7 +138,7 @@ export default {
     ],
   },
   communication: {
-    index: 4,
+    index: 5,
     text: '交流方式',
     value: 'communication',
     options: [
