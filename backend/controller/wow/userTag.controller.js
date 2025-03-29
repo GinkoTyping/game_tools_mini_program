@@ -75,7 +75,7 @@ export async function queryUpdateUserTag(req, res) {
 
 export async function queryUserTagByIds(req, res) {
   const { ids } = req.body;
-  const list = await userTagMapper.getUserTagByIds(ids);
+  const list = await userTagMapper.getUserTagByIds(ids, true);
   res.json(list);
 }
 
