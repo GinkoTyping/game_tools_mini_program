@@ -8,8 +8,13 @@ export interface IActiveTimeBar {
   value: number;
   selected: boolean;
 }
+export interface ISpecOptionItem extends IOptionItem {
+  roleClass: string;
+  classSpec: string;
+}
 export interface IWowTag {
   jobs: IOptionItem[];
+  spec: ISpecOptionItem[];
   classes: IOptionItem[];
   gameStyle: IOptionItem[];
   activeTime: {

@@ -33,12 +33,56 @@
         </view>
       </view>
     </uni-section>
+    <!-- 专精 -->
+    <uni-section
+      id="spec"
+      class="priest"
+      title="专精"
+      subTitle="请选择您主玩的专精"
+      type="line"
+      titleFontSize="16px"
+    >
+      <view class="btns">
+        <view
+          class="btn-item btn-item--spec"
+          :class="[`${item.roleClass}-bg`, item.roleClass]"
+          v-for="item in wowForm.spec"
+          :key="item.value"
+        >
+          <text class="ellipsis">{{ item.text }}</text>
+        </view>
+        <view
+          class="btn-item ellipsis"
+          @click="
+            () =>
+              openSelectionPopup(
+                'spec',
+                '请选择您主玩的专精',
+                specOptions.trend,
+                1,
+                'spec'
+              )
+          "
+        >
+          <text>{{
+            isAllowAddSelection('spec', wowForm, 1) ? '添加' : '编辑'
+          }}</text>
+          <uni-icons
+            :type="
+              isAllowAddSelection('spec', wowForm, 1) ? 'plusempty' : 'compose'
+            "
+            color="#fff"
+            size="16"
+          ></uni-icons>
+        </view>
+      </view>
+    </uni-section>
     <!-- 职业 -->
     <uni-section
       id="classes"
       class="priest"
       title="职业"
-      subTitle="请选择您主玩的职业(最多选3个)"
+      subTitle="请选择您的副职(最多选3个)"
       type="line"
       titleFontSize="16px"
     >
@@ -57,7 +101,7 @@
             () =>
               openSelectionPopup(
                 'classes',
-                '请选择您主玩的职业(最多3个)',
+                '请选择您的副职(最多3个)',
                 wowOptions.classes.options,
                 3
               )
@@ -143,7 +187,7 @@
             ></uni-icons>
           </view>
           <view class="active-time-item_content">
-            <ActiveTimeBar v-model="item.values"/>
+            <ActiveTimeBar v-model="item.values" showTime />
           </view>
         </view>
       </view>
@@ -272,6 +316,24 @@
           </view>
         </view>
       </template>
+      <template v-if="optionDisplayType === 'spec'">
+        <view class="btns">
+          <view
+            class="btn-item--spec-option btn-item"
+            :class="[
+              isOptionSelected(item.value, wowForm)
+                ? `${(item as ISpecOptionItem).roleClass}-bg btn-item--spec-option--active`
+                : '',
+              (item as ISpecOptionItem).roleClass,
+            ]"
+            v-for="item in selectionList"
+            :key="item.value"
+            @click="() => setSelection(item, 'wow')"
+          >
+            <text class="ellipsis">{{ item.text }}</text>
+          </view>
+        </view>
+      </template>
       <template v-if="optionDisplayType === 'button'">
         <view class="btns">
           <view
@@ -306,8 +368,16 @@
 </template>
 
 <script lang="ts" setup>
-import { querySubmitUserTag, queryUserTagById } from '@/api/wow';
-import { IOptionItem, ICommonTag, IWowTag } from '@/interface/IUserTag';
+import {
+  querySubmitUserTag,
+  queryUserTagById,
+} from '@/api/wow';
+import {
+  IOptionItem,
+  ICommonTag,
+  IWowTag,
+  ISpecOptionItem,
+} from '@/interface/IUserTag';
 import { useUserStore } from '@/store/wowStore';
 import { onLoad } from '@dcloudio/uni-app';
 
@@ -317,6 +387,7 @@ import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
 const userStore = useUserStore();
 const wowOptions = computed(() => userStore.userTagOptions.wowOptions);
 const commonOptions = computed(() => userStore.userTagOptions.commonOptions);
+const specOptions = computed(() => userStore.userTagOptions.specs);
 
 //#region 分段器
 const currentTab = ref(0);
@@ -341,6 +412,7 @@ function getBasicTimeValues(title) {
 }
 const wowForm = reactive<IWowTag>({
   jobs: [],
+  spec: [],
   classes: [],
   gameStyle: [],
   activeTime: [getBasicTimeValues('工作日'), getBasicTimeValues('休息日')],
@@ -367,7 +439,7 @@ const isJobSelected = computed(() => {
 const currentFormKey = ref('');
 const currentSelectMax = ref<number>();
 const popoverTitle = ref('');
-const selectionList = ref<IOptionItem[]>();
+const selectionList = ref<IOptionItem[] | ISpecOptionItem[]>();
 const classPopup = ref();
 const optionDisplayType = ref('list');
 function openSelectionPopup(
@@ -571,7 +643,7 @@ async function submit() {
 onLoad(async () => {
   await userStore.getFriendOptions();
   const data = await queryUserTagById();
-  isEdit.value = Boolean(data.wow_tag || data.common_tag);
+  isEdit.value = Boolean(data?.wow_tag || data?.common_tag);
 
   if (data?.wow_tag) {
     const { jobs, classes, activeTime, gameStyle, privacy } = data.wow_tag;
@@ -619,13 +691,19 @@ onLoad(async () => {
       font-weight: bold;
     }
 
-    &:not(.btn-item--spec) {
+    &:not(.btn-item--spec):not(.btn-item--spec-option) {
       border-color: #fff;
     }
   }
 
   .btn-item--spec {
     text {
+      color: black;
+    }
+  }
+  .btn-item--spec-option--active {
+    text {
+      font-weight: bold;
       color: black;
     }
   }

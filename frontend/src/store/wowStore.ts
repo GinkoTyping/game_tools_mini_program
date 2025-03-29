@@ -4,6 +4,7 @@ import { defineStore } from 'pinia';
 import {
   ICommonUserTagOptions,
   IDrawTarotInfo,
+  ISpecTagOptions,
   ITagOptionItem,
   IWowUserTagOptions,
   queryCheckDrawTarot,
@@ -17,6 +18,7 @@ interface IUserState {
   userTagOptions: {
     wowOptions: IWowUserTagOptions;
     commonOptions: ICommonUserTagOptions;
+    specs: ISpecTagOptions;
   };
   notification: {
     fillCommonUserTag: boolean;
@@ -62,6 +64,7 @@ export const useUserStore = defineStore('user', {
         personality: {} as ITagOptionItem,
         role: {} as ITagOptionItem,
       },
+      specs: {} as ISpecTagOptions,
     },
     notification: {
       fillCommonUserTag: false,
