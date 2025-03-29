@@ -20,13 +20,6 @@ import { ref } from 'vue';
 const cardList = ref();
 onLoad(async () => {
   cardList.value = await queryFilterUserTag();
-  cardList.value[0].type = 'normal';
-  const temp = JSON.parse(JSON.stringify(cardList.value[0]));
-  cardList.value.push(JSON.parse(JSON.stringify(temp)));
-  cardList.value.push(JSON.parse(JSON.stringify(temp)));
-  cardList.value.push(JSON.parse(JSON.stringify(temp)));
-  cardList.value[0].type = 'simple';
-  cardList.value[2].type = 'simple';
 });
 </script>
 <style lang="scss" scoped>

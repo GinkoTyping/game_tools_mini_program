@@ -1,21 +1,22 @@
 <template>
-  <view class="card-wrap" :class="['hunter']">
+  <view class="card-wrap" :class="[specInfo.roleClass]">
     <view class="card-content" v-if="type === 'normal'">
       <!-- 顶部 -->
       <view class="main-spec">
         <image
           class="spec-image"
-          src="https://ginkolearn.cyou/api/wow/assets/class-icons/hunter-beast-mastery-class-icon.webp"
+          :src="getSpecIconURL(specInfo.roleClass, specInfo.classSpec)"
           mode="widthFix"
         />
 
         <view class="main-spec__content">
-          <view
-            class="main-spec__content-title"
-            :class="[basicClassItem.value]"
-          >
-            <view class="class-spec">野兽掌控</view>
-            <view class="role-class">猎人</view>
+          <view class="main-spec__content-title" :class="[specInfo.roleClass]">
+            <view class="class-spec">{{
+              localeLabels[specInfo.roleClass][specInfo.classSpec]
+            }}</view>
+            <view class="role-class">{{
+              localeLabels.class[specInfo.roleClass]
+            }}</view>
           </view>
           <view class="main-spec__content-other">
             <view class="game-style label-list">
@@ -93,7 +94,7 @@
     <view class="card-content-simple" v-if="type === 'simple'">
       <image
         class="card-content-simple__left spec-image"
-        src="https://ginkolearn.cyou/api/wow/assets/class-icons/hunter-beast-mastery-class-icon.webp"
+        :src="getSpecIconURL(specInfo.roleClass, specInfo.classSpec)"
         mode="widthFix"
       />
       <view class="card-content-simple__right label-list">
@@ -128,8 +129,7 @@
     <view
       class="card-bg card-bg__mask"
       :style="{
-        backgroundImage:
-          'url(https://ginkolearn.cyou/api/wow/assets/class-bgs/hunter-beast-mastery-spec-background.webp)',
+        backgroundImage: getBgURL(specInfo.roleClass, specInfo.classSpec),
       }"
     >
     </view>
@@ -166,6 +166,7 @@ const wowTag = computed(() => {
   return props.data.wow_tag;
 });
 const commonTag = computed(() => props.data.common_tag);
+const specInfo = computed(() => props.data.wow_tag.spec?.[0]);
 
 //#region 时间
 const activeTime = reactive<{
@@ -188,8 +189,12 @@ watch(
   }
 );
 //#endregion
+
 //#region 文本样式
-const basicClassItem = computed(() => wowTag.value?.classes?.[0]);
+const getSpecIconURL = computed(() => {
+  return (roleClass: string, classSpec: string) =>
+    `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`;
+});
 const getBgURL = computed(() => {
   return (roleClass: string, classSpec: string) => {
     let formatClass;
@@ -293,6 +298,7 @@ $label-margin-bottom: 12rpx;
           font-size: 28rpx;
           height: 50rpx;
           line-height: 50rpx;
+          overflow: hidden;
         }
       }
     }
