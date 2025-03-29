@@ -24,6 +24,7 @@ function mapSingleTag(wowTag, commonTag) {
     return arr.map((item) => item.value).join(',');
   }
   const wowJobs = toString(wowTag.jobs);
+  const wowSpec = toString(wowTag.spec);
   const wowClasses = toString(wowTag.classes);
   const wowGameStyle = toString(wowTag.gameStyle);
   const wowActiveTime = wowTag.activeTime
@@ -39,6 +40,7 @@ function mapSingleTag(wowTag, commonTag) {
 
   return [
     wowJobs,
+    wowSpec,
     wowClasses,
     wowGameStyle,
     wowActiveTime,
@@ -55,7 +57,7 @@ async function insertUserTag(params) {
   const { id, battlenetId, wowTag, commonTag } = params;
   const date = formatDateByMinute();
   return db.run(
-    `INSERT INTO ${TABLE_NAME}(user_id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_jobs, wow_classes, wow_game_style,wow_active_time, wow_privacy, common_status, common_game, common_age, common_personality, common_role) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)`,
+    `INSERT INTO ${TABLE_NAME}(user_id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_jobs, wow_spec, wow_classes, wow_game_style,wow_active_time, wow_privacy, common_status, common_game, common_age, common_personality, common_role) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)`,
     [
       id,
       battlenetId,
@@ -78,6 +80,7 @@ async function updateUserTag(params) {
     'updated_at',
 
     'wow_jobs',
+    'wow_spec',
     'wow_classes',
     'wow_game_style',
     'wow_active_time',

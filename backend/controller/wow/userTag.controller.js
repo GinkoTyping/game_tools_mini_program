@@ -1,3 +1,4 @@
+import classLocale from '../../util/classLocale.js';
 import { getDynamicDB } from '../../database/utils/index.js';
 import { useUserTagMapper } from '../../database/wow/mapper/dynamic/userTag.mapper.js';
 import { getTrendData } from './bisController.js';
@@ -13,7 +14,19 @@ let trendDataCache;
 export async function queryUserTagOptions(req, res) {
   const data = await userTagMapper.getTagOptions();
   if (optionSchedule.isSchedule()) {
-    trendDataCache = await getTrendData();
+    const trendData = await getTrendData();
+    trendData.trend = trendData.trend.reduce((pre, cur) => {
+      cur.specs.forEach((spec) => {
+        pre.push({
+          text: classLocale[cur.role_class][spec.class_spec],
+          value: `${spec.class_spec}|${cur.role_class}`,
+          roleClass: cur.role_class,
+          classSpec: spec.class_spec,
+        });
+      });
+      return pre;
+    }, []);
+    trendDataCache = trendData;
     optionSchedule.setLastUpdate();
   }
   res.json({
