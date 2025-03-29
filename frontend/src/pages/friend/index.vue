@@ -4,9 +4,9 @@
       v-for="(item, index) in cardList"
       :key="item.user_id"
       class="card-item"
-      :class="[item.isCollapse ? 'card-item__collapse' : '']"
+      :class="[item.type ? 'card-item__collapse' : '']"
     >
-      <TagCard :data="item" :type="item.isCollapse ? 'simple' : 'normal'" />
+      <TagCard :data="item" v-model:type="item.type" />
     </view>
   </view>
 </template>
@@ -20,14 +20,13 @@ import { ref } from 'vue';
 const cardList = ref();
 onLoad(async () => {
   cardList.value = await queryFilterUserTag();
-
+  cardList.value[0].type = 'normal';
   const temp = JSON.parse(JSON.stringify(cardList.value[0]));
   cardList.value.push(JSON.parse(JSON.stringify(temp)));
   cardList.value.push(JSON.parse(JSON.stringify(temp)));
   cardList.value.push(JSON.parse(JSON.stringify(temp)));
-
-  cardList.value[0].isCollapse = true;
-  cardList.value[2].isCollapse = true;
+  cardList.value[0].type = 'simple';
+  cardList.value[2].type = 'simple';
 });
 </script>
 <style lang="scss" scoped>

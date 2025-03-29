@@ -1,6 +1,6 @@
 <template>
-  <view class="card-wrap">
-    <view class="card-content" v-if="props.type === 'normal'">
+  <view class="card-wrap" :class="['hunter']">
+    <view class="card-content" v-if="type === 'normal'">
       <!-- 顶部 -->
       <view class="main-spec">
         <image
@@ -84,13 +84,13 @@
           ></uni-icons>
           <text>{{ wowTag.privacy.needConfirm ? '申请' : '获取' }}</text>
         </view>
-        <view class="button-item">
+        <view class="button-item" @click="type = 'simple'">
           <text>收起</text>
           <uni-icons type="minus-filled" size="28" color="#999"></uni-icons>
         </view>
       </view>
     </view>
-    <view class="card-content-simple" v-if="props.type === 'simple'">
+    <view class="card-content-simple" v-if="type === 'simple'">
       <image
         class="card-content-simple__left spec-image"
         src="https://ginkolearn.cyou/api/wow/assets/class-icons/hunter-beast-mastery-class-icon.webp"
@@ -118,7 +118,7 @@
           item.text
         }}</text>
       </view>
-      <view class="buttons">
+      <view class="buttons" @click="type = 'normal'">
         <text>展开</text>
         <view class="collapse-button">
           <uni-icons type="more-filled" size="16" color="black"></uni-icons>
@@ -126,8 +126,7 @@
       </view>
     </view>
     <view
-      class="card-bg"
-      :class="[props.type === 'normal' ? 'card-bg__mask' : 'card-bg__mask']"
+      class="card-bg card-bg__mask"
       :style="{
         backgroundImage:
           'url(https://ginkolearn.cyou/api/wow/assets/class-bgs/hunter-beast-mastery-spec-background.webp)',
@@ -149,16 +148,17 @@ interface ITagCard {
   common_tag: ICommonTag;
 }
 
+const type = defineModel('type', {
+  type: String,
+  default: 'normal',
+  validator: (value: string) => ['normal', 'simple'].includes(value),
+});
+
 const props = defineProps({
   data: {
     type: Object as () => ITagCard,
     required: true,
     default: () => ({}),
-  },
-  type: {
-    type: String,
-    default: 'normal',
-    validator: (value: string) => ['normal', 'simple'].includes(value),
   },
 });
 
@@ -215,7 +215,8 @@ $label-margin-bottom: 12rpx;
   border-radius: 20rpx;
   position: relative;
   box-sizing: border-box;
-  border: 0.1rem solid #6d6d6d;
+  border-width: 2rpx;
+  border-style: solid;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -318,6 +319,7 @@ $label-margin-bottom: 12rpx;
       padding-top: 16rpx;
       display: flex;
       justify-content: space-between;
+
       .button-item {
         display: flex;
         justify-content: center;
@@ -325,6 +327,7 @@ $label-margin-bottom: 12rpx;
         padding: 0 20rpx;
         font-size: 22rpx;
         color: $uni-text-color-grey;
+
         & > text {
           margin: 0 10rpx;
         }
@@ -336,11 +339,13 @@ $label-margin-bottom: 12rpx;
   .card-content-simple {
     display: flex;
     position: relative;
+
     .card-content-simple__right {
       flex: 1;
       max-height: calc($label-height * 2 + $label-margin-bottom);
       overflow: hidden;
     }
+
     .buttons {
       position: absolute;
       right: 25rpx;
@@ -362,6 +367,7 @@ $label-margin-bottom: 12rpx;
         padding-left: 20rpx;
         padding-right: 14rpx;
       }
+
       .collapse-button {
         display: flex;
         justify-content: center;
@@ -389,7 +395,7 @@ $label-margin-bottom: 12rpx;
     z-index: -1;
 
     &.card-bg__mask {
-      mask-image: linear-gradient(0deg, transparent 20%, rgb(0, 0, 0) 90%);
+      mask-image: linear-gradient(0deg, transparent 10%, rgb(0, 0, 0) 80%);
     }
   }
 }
