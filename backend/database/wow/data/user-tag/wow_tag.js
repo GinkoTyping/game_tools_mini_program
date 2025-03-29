@@ -91,11 +91,11 @@ export default {
     value: 'gameStyle',
     options: [
       {
-        text: '大秘境-低保层',
+        text: '大秘-低保',
         value: 'mythic-low',
       },
       {
-        text: '大秘境-高层',
+        text: '大秘-高层',
         value: 'mythic-high',
       },
       {
@@ -107,7 +107,7 @@ export default {
         value: 'delves',
       },
       {
-        text: '收集幻化坐骑',
+        text: '坐骑幻化',
         value: 'collections',
       },
       {
