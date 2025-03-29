@@ -57,7 +57,7 @@ async function insertUserTag(params) {
   const { id, battlenetId, wowTag, commonTag } = params;
   const date = formatDateByMinute();
   return db.run(
-    `INSERT INTO ${TABLE_NAME}(user_id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_jobs, wow_spec, wow_classes, wow_game_style,wow_active_time, wow_privacy, common_status, common_game, common_age, common_personality, common_role) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)`,
+    `INSERT INTO ${TABLE_NAME}(user_id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_jobs, wow_spec, wow_classes, wow_game_style,wow_active_time, wow_privacy, common_status, common_game, common_age, common_personality, common_role) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
       id,
       battlenetId,
@@ -114,13 +114,14 @@ async function updateUserTag(params) {
   ]);
 }
 
-async function getUserTagByIds(ids) {
-  const selectSql = 'user_id, wow_tag, common_tag';
+async function getUserTagByIds(ids, hasBattlenetId) {
+  let selectSql =
+    'user_id, wow_tag, common_tag' + `${hasBattlenetId ? ',battlenet_id' : ''}`;
   const sql = ids.reduce((pre, cur, index) => {
     if (index === 0) {
-      pre += `id=?${index + 1} `;
+      pre += `user_id=?${index + 1} `;
     } else {
-      pre += `OR id=?${index + 1} `;
+      pre += `OR user_id=?${index + 1} `;
     }
     return pre;
   }, `SELECT ${selectSql} FROM ${TABLE_NAME} WHERE `);

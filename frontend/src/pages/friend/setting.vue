@@ -368,10 +368,7 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  querySubmitUserTag,
-  queryUserTagById,
-} from '@/api/wow';
+import { querySubmitUserTag, queryUserTagById } from '@/api/wow';
 import {
   IOptionItem,
   ICommonTag,
@@ -579,6 +576,7 @@ function comfirmInfoDialog() {
 }
 function validate() {
   const isJobsValid = wowForm.jobs.length;
+  const isSpecValid = wowForm.spec.length;
   const isClassesValid = wowForm.classes.length;
   const isGameStyleValid = wowForm.gameStyle.length;
   const isActiveTimeValid = wowForm.activeTime.reduce((pre, cur) => {
@@ -588,11 +586,18 @@ function validate() {
   }, [] as any).length;
   console.log({
     isJobsValid,
+    isSpecValid,
     isClassesValid,
     isGameStyleValid,
     isActiveTimeValid,
   });
-  return isJobsValid && isClassesValid && isGameStyleValid && isActiveTimeValid;
+  return (
+    isJobsValid &&
+    isSpecValid &&
+    isClassesValid &&
+    isGameStyleValid &&
+    isActiveTimeValid
+  );
 }
 function checkIsCommonTagEmpty() {
   return Object.values(commonForm).filter(value => value.length)?.length === 0;
@@ -645,9 +650,13 @@ onLoad(async () => {
   const data = await queryUserTagById();
   isEdit.value = Boolean(data?.wow_tag || data?.common_tag);
 
+  battlenetId.value = data?.battlenet_id;
+
   if (data?.wow_tag) {
-    const { jobs, classes, activeTime, gameStyle, privacy } = data.wow_tag;
+    const { jobs, classes, activeTime, gameStyle, privacy, spec } =
+      data.wow_tag;
     wowForm.jobs = jobs;
+    wowForm.spec = spec;
     wowForm.classes = classes;
     wowForm.gameStyle = gameStyle;
     wowForm.activeTime = activeTime;

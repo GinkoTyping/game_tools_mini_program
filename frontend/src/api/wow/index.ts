@@ -716,6 +716,15 @@ export interface IWowUserTagOptions {
   activeTime: ITagOptionItem;
   communication: ITagOptionItem;
 }
+export interface ISpecTagOptions {
+  sprite: { [key: string]: { [key: string]: number } };
+  trend: {
+    text: string;
+    value: string;
+    classSpec: string;
+    roleClass: string;
+  }[];
+}
 
 export interface ICommonUserTagOptions {
   age: ITagOptionItem;
@@ -732,6 +741,7 @@ export async function queryFriendOptions() {
   return res.data as {
     wowOptions: IWowUserTagOptions;
     commonOptions: ICommonUserTagOptions;
+    specs: ISpecTagOptions;
   };
 }
 export async function queryAddUserTag(params) {
