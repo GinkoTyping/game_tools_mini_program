@@ -101,7 +101,7 @@ const filterParams = reactive<IFilterParams>({
   lastId: -1,
   lastUpdatedAt: '',
 });
-function setGameStyleFilter() {
+async function setGameStyleFilter() {
   let output;
   switch (currentFeature.value) {
     case 'all':
@@ -109,7 +109,7 @@ function setGameStyleFilter() {
       break;
     case 'mythic':
     case 'raid':
-    case 'mythic':
+    case 'delves':
       output = [currentFeature.value];
       break;
     default:
@@ -117,9 +117,12 @@ function setGameStyleFilter() {
       break;
   }
   filterParams.filter.wow_game_style = output;
+
+  // 重置分页参数
   filterParams.lastId = -1;
   filterParams.lastUpdatedAt = '';
-  return;
+
+  uni.startPullDownRefresh();
 }
 //#endregion
 
@@ -168,7 +171,7 @@ onPullDownRefresh(async () => {
   if (pulldownRefresh.status === LoadingStatus.More) {
     uni.vibrateShort();
     pulldownRefresh.status = LoadingStatus.Loading;
-    await updateCardList(true);
+    await updateCardList();
     pulldownRefresh.status = LoadingStatus.More;
     uni.stopPullDownRefresh();
 
