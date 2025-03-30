@@ -26,10 +26,23 @@
         </CustomTag>
       </view>
     </view>
+
     <uni-load-more
+      class="pulldonw-load-more"
+      iconSize="18"
       :status="pulldownRefresh.status"
       :contentText="pulldownRefresh"
     ></uni-load-more>
+
+    <uni-transition
+      ref="ani"
+      custom-class="transition"
+      mode-class="fade"
+      :show="showPulldownResult"
+    >
+      <view class="pulldown-result"> 铭牌信息已更新 </view>
+    </uni-transition>
+
     <view class="card-list">
       <view
         v-for="(item, index) in cardList"
@@ -40,7 +53,9 @@
         <TagCard :data="item" v-model:type="item.type" />
       </view>
     </view>
+
     <FriendFooter />
+
     <uni-load-more status="more"></uni-load-more>
   </view>
 </template>
@@ -56,7 +71,6 @@ import FriendFooter from '@/components/FriendFooter.vue';
 
 //#region 加载
 const cardList = ref<ITagCardItem[]>([]);
-
 enum LoadingStatus {
   More = 'more',
   Loading = 'loading',
@@ -64,10 +78,6 @@ enum LoadingStatus {
 }
 const pullupRefresh = reactive({
   status: LoadingStatus.More,
-});
-const pulldownRefresh = reactive({
-  status: LoadingStatus.More,
-  contentdown: '下拉刷新数据',
 });
 async function updateCardList(isLoadMore?: boolean) {
   pullupRefresh.status = LoadingStatus.Loading;
@@ -92,10 +102,17 @@ async function updateCardList(isLoadMore?: boolean) {
   pullupRefresh.status =
     data.length < 10 ? LoadingStatus.NoMore : LoadingStatus.More;
 }
+// 上拉懒加载数据
 onReachBottom(async () => {
   if (pullupRefresh.status === LoadingStatus.More) {
     await updateCardList(true);
   }
+});
+
+// 下拉刷新
+const pulldownRefresh = reactive({
+  status: LoadingStatus.More,
+  contentdown: '下拉刷新数据',
 });
 onPullDownRefresh(async () => {
   if (pulldownRefresh.status === LoadingStatus.More) {
@@ -104,8 +121,23 @@ onPullDownRefresh(async () => {
     await updateCardList(true);
     pulldownRefresh.status = LoadingStatus.More;
     uni.stopPullDownRefresh();
+
+    togglePullDownResult();
   }
 });
+
+const showPulldownResult = ref(false);
+function togglePullDownResult() {
+  if (showPulldownResult.value) {
+    showPulldownResult.value = false;
+  } else {
+    showPulldownResult.value = true;
+    setTimeout(() => {
+      showPulldownResult.value = false;
+    }, 3000);
+  }
+}
+
 onLoad(async () => {
   await updateCardList();
 });
@@ -194,5 +226,17 @@ $header-bg-color: #1d1d1f;
   .card-item__collapse {
     margin-bottom: 40rpx;
   }
+}
+
+::v-deep .pulldonw-load-more {
+  text {
+    font-size: 24rpx !important;
+  }
+}
+.pulldown-result {
+  padding-top: 30rpx;
+  color: #bbb;
+  font-size: 24rpx;
+  text-align: center;
 }
 </style>
