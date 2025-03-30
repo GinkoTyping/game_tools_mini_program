@@ -14,14 +14,9 @@
         >
       </view>
       <view class="right-drop-down">
-        <CustomTag title="国服">
-          <template v-slot:suffix>
-            <view>。</view>
-          </template>
-        </CustomTag>
         <CustomTag title="筛选">
           <template v-slot:suffix>
-            <view>。</view>
+            <view>↓</view>
           </template>
         </CustomTag>
       </view>
@@ -50,6 +45,10 @@
       class="reach-bottom-load-more"
       :status="pullupRefresh"
     ></uni-load-more>
+
+    <view class="filter-page">
+      <FilterPage />
+    </view>
   </view>
 </template>
 
@@ -61,6 +60,7 @@ import { IFilterParams, ITagCardItem, queryFilterUserTag } from '@/api/wow';
 import TagCard from '@/components/TagCard.vue';
 import CustomTag from '@/components/CustomTag.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
+import FilterPage from '@/components/FilterPage.vue'
 
 //#region 过滤栏
 const currentFeature = ref('all');
@@ -180,13 +180,175 @@ onLoad(async () => {
   await updateCardList();
 });
 //#endregion
+
+//#region 过滤页面
+const filterOptions = ref([
+  {
+    title: '基本信息',
+    value: 'wow',
+    children: [
+      {
+        index: 6,
+        text: '服务器',
+        value: 'server',
+        options: [
+          {
+            text: '国服',
+            value: 'china',
+          },
+          {
+            text: '亚服',
+            value: 'aisa',
+          },
+          {
+            text: '美服',
+            value: 'america',
+          },
+          {
+            text: '欧服',
+            value: 'europe',
+          },
+        ],
+      },
+      {
+        index: 0,
+        text: '职责',
+        value: 'jobs',
+        options: [
+          {
+            text: '坦克',
+            value: 'tank',
+          },
+          {
+            text: '治疗',
+            value: 'healer',
+          },
+          {
+            text: '输出',
+            value: 'dps',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: '基本信息1',
+    value: 'wow1',
+    children: [
+      {
+        index: 6,
+        text: '服务器',
+        value: 'server',
+        options: [
+          {
+            text: '国服',
+            value: 'china',
+          },
+          {
+            text: '亚服',
+            value: 'aisa',
+          },
+          {
+            text: '美服',
+            value: 'america',
+          },
+          {
+            text: '欧服',
+            value: 'europe',
+          },
+        ],
+      },
+      {
+        index: 0,
+        text: '职责',
+        value: 'jobs',
+        options: [
+          {
+            text: '坦克',
+            value: 'tank',
+          },
+          {
+            text: '治疗',
+            value: 'healer',
+          },
+          {
+            text: '输出',
+            value: 'dps',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: '基本信息2',
+    value: 'wow2',
+    children: [
+      {
+        index: 6,
+        text: '服务器',
+        value: 'server',
+        options: [
+          {
+            text: '国服',
+            value: 'china',
+          },
+          {
+            text: '亚服',
+            value: 'aisa',
+          },
+          {
+            text: '美服',
+            value: 'america',
+          },
+          {
+            text: '欧服',
+            value: 'europe',
+          },
+        ],
+      },
+      {
+        index: 0,
+        text: '职责',
+        value: 'jobs',
+        options: [
+          {
+            text: '坦克',
+            value: 'tank',
+          },
+          {
+            text: '治疗',
+            value: 'healer',
+          },
+          {
+            text: '输出',
+            value: 'dps',
+          },
+        ],
+      },
+    ],
+  },
+]);
+//#endregion
 </script>
 
 <style lang="scss" scoped>
 .page-container {
   padding-bottom: 150rpx;
+  position: relative;
 }
 
+// 过滤页面
+$filter-main-color: #262629;
+.filter-page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+
+// 主页面
 $header-bg-color: #1d1d1f;
 
 .header-filter {
@@ -230,6 +392,7 @@ $header-bg-color: #1d1d1f;
 .card-list {
   padding: 20rpx;
   padding-top: 0;
+
   .card-item {
     &:not(:last-child) {
       margin-bottom: 20rpx;
@@ -258,6 +421,7 @@ $header-bg-color: #1d1d1f;
     height: 60rpx;
   }
 }
+
 .pulldown-result-wrapper {
   position: fixed;
   top: 80rpx; // 根据header实际高度调整

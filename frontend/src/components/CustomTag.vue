@@ -17,7 +17,7 @@ $label-height: 40rpx;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10rpx 12rpx;
+  padding: 10rpx 20rpx;
   height: $label-height;
   border-radius: 12rpx;
   color: #bbb;
