@@ -146,46 +146,53 @@ function generateFilterSql(filterParams) {
             if (index !== value.length - 1) {
               child += ' OR ';
             }
-            pre.sqlParams.push(`%${item}%`);
+            pre.filterParams.push(`%${item}%`);
             return child;
           }, '');
         pre.condition += ` AND (${sql})`;
         return pre;
       },
-      { condition: '', sqlParams: [] }
+      { condition: '', filterParams: [] }
     );
 }
 
 async function getUserTagByFilter(params) {
   const { filter, pageSize = 10, lastId = -1, lastUpdatedAt } = params;
 
-  const { condition, sqlParams } = generateFilterSql(filter);
+  const { condition, filterParams } = generateFilterSql(filter);
+  const baseWhere = `
+    id != ? 
+    AND updated_at ${lastUpdatedAt ? '<= ?' : '>= ?'}
+    ${condition}
+  `;
+  const dataSql = `
+    SELECT id, wow_tag, common_tag, updated_at
+    FROM ${TABLE_NAME}
+    WHERE ${baseWhere}
+    ORDER BY updated_at DESC 
+    LIMIT ?`;
+  const countSql = `
+    SELECT COUNT(*) as total
+    FROM ${TABLE_NAME}
+    WHERE ${baseWhere}`;
 
-  const sql = `
-  SELECT
-    id, wow_tag, common_tag, updated_at
-  FROM
-    ${TABLE_NAME}
-  WHERE
-    id != ?
-  AND
-    ${lastUpdatedAt ? 'updated_at <= ? ' : 'updated_at >= ? '}
-  ${condition}
-  ORDER BY
-    updated_at DESC 
-  LIMIT ?`;
+  // 构建参数数组
+  const baseParams = [lastId, lastUpdatedAt?.toString() ?? '', ...filterParams];
 
-  const data = await db.all(sql, [
-    lastId,
-    lastUpdatedAt?.toString() ?? '',
-    ...sqlParams,
-    pageSize,
+  // 并行执行两个查询
+  const [dataResult, countResult] = await Promise.all([
+    db.all(dataSql, [...baseParams, pageSize]),
+    db.get(countSql, baseParams),
   ]);
-  return data.map((item) => ({
-    ...item,
-    wow_tag: JSON.parse(item.wow_tag ?? null),
-    common_tag: JSON.parse(item.common_tag ?? null),
-  }));
+
+  return {
+    data: dataResult.map((item) => ({
+      ...item,
+      wow_tag: JSON.parse(item.wow_tag || 'null'),
+      common_tag: JSON.parse(item.common_tag || 'null'),
+    })),
+    total: countResult.total,
+  };
 }
 
 export function useUserTagMapper(database) {
