@@ -56,7 +56,10 @@
 
     <FriendFooter />
 
-    <uni-load-more class="reach-bottom-load-more" :status="pullupRefresh"></uni-load-more>
+    <uni-load-more
+      class="reach-bottom-load-more"
+      :status="pullupRefresh"
+    ></uni-load-more>
   </view>
 </template>
 
@@ -245,6 +248,7 @@ $header-bg-color: #1d1d1f;
 .card-list {
   padding: 20rpx;
   padding-top: 30rpx;
+
   .card-item {
     &:not(:last-child) {
       margin-bottom: 20rpx;
@@ -252,7 +256,9 @@ $header-bg-color: #1d1d1f;
   }
 
   .card-item__collapse {
-    margin-bottom: 40rpx;
+    &:not(:last-child) {
+      margin-bottom: 40rpx;
+    }
   }
 }
 
@@ -261,6 +267,7 @@ $header-bg-color: #1d1d1f;
     font-size: 24rpx !important;
   }
 }
+
 ::v-deep .reach-bottom-load-more {
   view {
     height: 60rpx;
