@@ -27,16 +27,11 @@
       </view>
     </view>
 
-    <uni-transition ref="ani" custom-class="transition" mode-class="fade" show>
-      <view
-        class="pulldown-result"
-        :style="{
-          paddingTop: pulldownInfo?.paddingTop,
-        }"
-      >
-        {{ pulldownInfo?.text }}
-      </view>
-    </uni-transition>
+    <uni-load-more
+      class="pulldown-load-more"
+      :showIcon="false"
+      :status="pulldownRefresh.status"
+    ></uni-load-more>
 
     <view class="card-list">
       <view
@@ -95,7 +90,7 @@ function switchFeature(value: string) {
 }
 
 const filterParams = reactive<IFilterParams>({
-  filter: { wow_game_style: [] },
+  filter: { wow_game_style: [], wow_jobs: [] },
   lastId: -1,
   lastUpdatedAt: '',
 });
@@ -132,7 +127,6 @@ enum LoadingStatus {
   More = 'more',
   Loading = 'loading',
   NoMore = 'no-more',
-  Result = 'result',
 }
 const pullupRefresh = reactive({
   status: LoadingStatus.More,
@@ -150,6 +144,10 @@ async function updateCardList(isLoadMore?: boolean) {
   if (isLoadMore) {
     cardList.value.push(...data);
   } else {
+    uni.showToast({
+      title: `获取了${total}张铭牌`,
+      icon: 'none',
+    });
     cardList.value = data;
   }
 
@@ -168,33 +166,8 @@ onPullDownRefresh(async () => {
     await updateCardList();
     pulldownRefresh.status = LoadingStatus.More;
     uni.stopPullDownRefresh();
-
-    togglePullDownResult();
   }
 });
-const pulldownInfo = computed(() => {
-  switch (pulldownRefresh.status) {
-    case LoadingStatus.More:
-      return { text: '下拉刷新数据', paddingTop: '70rpx' };
-    case LoadingStatus.NoMore:
-      return { text: '暂无更多数据', paddingTop: '70rpx' };
-    case LoadingStatus.Loading:
-      return { text: '数据加载中', paddingTop: '10rpx' };
-    case LoadingStatus.Result:
-      return {
-        text: `铭牌信息已更新, 总计${cardCount.value}张`,
-        paddingTop: '110rpx',
-      };
-    default:
-      break;
-  }
-});
-function togglePullDownResult() {
-  pulldownRefresh.status = LoadingStatus.Result;
-  setTimeout(() => {
-    pulldownRefresh.status = LoadingStatus.More;
-  }, 3000);
-}
 
 // 上拉懒加载数据
 onReachBottom(async () => {
@@ -256,7 +229,7 @@ $header-bg-color: #1d1d1f;
 
 .card-list {
   padding: 20rpx;
-
+  padding-top: 0;
   .card-item {
     &:not(:last-child) {
       margin-bottom: 20rpx;
@@ -272,7 +245,7 @@ $header-bg-color: #1d1d1f;
 
 ::v-deep .pulldown-load-more {
   view {
-    height: 60rpx !important;
+    height: 120rpx !important;
   }
 
   text {
@@ -285,10 +258,19 @@ $header-bg-color: #1d1d1f;
     height: 60rpx;
   }
 }
-
-.pulldown-result {
-  color: #bbb;
-  font-size: 24rpx;
-  text-align: center;
+.pulldown-result-wrapper {
+  position: fixed;
+  top: 80rpx; // 根据header实际高度调整
+  left: 0;
+  right: 0;
+  z-index: 9;
+  height: 60rpx; // 固定高度
+  overflow: hidden;
+  .pulldown-result {
+    font-size: 24rpx;
+    color: #bbb;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
 }
 </style>

@@ -797,7 +797,7 @@ export interface ITagCardItem {
   type: string;
 }
 export interface IFilterParams {
-  filter: { wow_game_style: string[] };
+  filter: { wow_game_style: string[]; wow_jobs: string[] };
   lastId: number;
   lastUpdatedAt: string;
 }
@@ -812,6 +812,6 @@ export async function queryFilterUserTag(params?) {
       lastUpdatedAt: params?.lastUpdatedAt,
     },
   });
-  return res.data as ITagCardItem[];
+  return (res?.data as { data: ITagCardItem[]; total: number }) ?? {};
 }
 //#endregion
