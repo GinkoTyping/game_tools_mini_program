@@ -28,7 +28,7 @@
     </view>
 
     <uni-load-more
-      class="pulldonw-load-more"
+      class="pulldown-load-more"
       iconSize="18"
       :status="pulldownRefresh.status"
       :contentText="pulldownRefresh"
@@ -126,6 +126,7 @@ async function setGameStyleFilter() {
   filterParams.lastUpdatedAt = '';
 
   uni.startPullDownRefresh();
+  uni.pageScrollTo({ scrollTop: 0 });
 }
 //#endregion
 
@@ -158,12 +159,6 @@ async function updateCardList(isLoadMore?: boolean) {
   pullupRefresh.status =
     data.length < 10 ? LoadingStatus.NoMore : LoadingStatus.More;
 }
-// 上拉懒加载数据
-onReachBottom(async () => {
-  if (pullupRefresh.status === LoadingStatus.More) {
-    await updateCardList(true);
-  }
-});
 
 // 下拉刷新
 const pulldownRefresh = reactive({
@@ -181,7 +176,6 @@ onPullDownRefresh(async () => {
     togglePullDownResult();
   }
 });
-
 const showPulldownResult = ref(false);
 function togglePullDownResult() {
   if (showPulldownResult.value) {
@@ -193,6 +187,13 @@ function togglePullDownResult() {
     }, 3000);
   }
 }
+
+// 上拉懒加载数据
+onReachBottom(async () => {
+  if (pullupRefresh.status === LoadingStatus.More) {
+    await updateCardList(true);
+  }
+});
 
 onLoad(async () => {
   await updateCardList();
@@ -247,7 +248,6 @@ $header-bg-color: #1d1d1f;
 
 .card-list {
   padding: 20rpx;
-  padding-top: 30rpx;
 
   .card-item {
     &:not(:last-child) {
@@ -262,7 +262,10 @@ $header-bg-color: #1d1d1f;
   }
 }
 
-::v-deep .pulldonw-load-more {
+::v-deep .pulldown-load-more {
+  view {
+    height: 90rpx !important;
+  }
   text {
     font-size: 24rpx !important;
   }
