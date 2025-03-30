@@ -64,10 +64,64 @@
 import { onLoad, onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app';
 import { reactive, ref } from 'vue';
 
-import { ITagCardItem, queryFilterUserTag } from '@/api/wow';
+import { IFilterParams, ITagCardItem, queryFilterUserTag } from '@/api/wow';
 import TagCard from '@/components/TagCard.vue';
 import CustomTag from '@/components/CustomTag.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
+
+//#region 过滤栏
+const currentFeature = ref('all');
+const featureFilters = ref([
+  {
+    title: '最新',
+    value: 'all',
+  },
+  {
+    title: '大秘境',
+    value: 'mythic',
+  },
+  {
+    title: '团本',
+    value: 'raid',
+  },
+  {
+    title: '地下堡',
+    value: 'delves',
+  },
+]);
+function switchFeature(value: string) {
+  if (currentFeature.value !== value) {
+    currentFeature.value = value;
+    setGameStyleFilter();
+  }
+}
+
+const filterParams = reactive<IFilterParams>({
+  filter: { wow_game_style: [] },
+  lastId: -1,
+  lastUpdatedAt: '',
+});
+function setGameStyleFilter() {
+  let output;
+  switch (currentFeature.value) {
+    case 'all':
+      output = [];
+      break;
+    case 'mythic':
+    case 'raid':
+    case 'mythic':
+      output = [currentFeature.value];
+      break;
+    default:
+      output = [];
+      break;
+  }
+  filterParams.filter.wow_game_style = output;
+  filterParams.lastId = -1;
+  filterParams.lastUpdatedAt = '';
+  return;
+}
+//#endregion
 
 //#region 加载
 const cardList = ref<ITagCardItem[]>([]);
@@ -82,16 +136,12 @@ const pullupRefresh = reactive({
 async function updateCardList(isLoadMore?: boolean) {
   pullupRefresh.status = LoadingStatus.Loading;
 
-  const params = {
-    lastId: -1,
-    lastUpdatedAt: '',
-  };
   if (isLoadMore && cardList.value) {
     const lastTagCard = cardList.value.slice(-1)[0];
-    params.lastId = lastTagCard.id;
-    params.lastUpdatedAt = lastTagCard.updated_at;
+    filterParams.lastId = lastTagCard.id;
+    filterParams.lastUpdatedAt = lastTagCard.updated_at;
   }
-  const data = await queryFilterUserTag(params);
+  const data = await queryFilterUserTag(filterParams);
 
   if (isLoadMore) {
     cardList.value.push(...data);
@@ -141,33 +191,6 @@ function togglePullDownResult() {
 onLoad(async () => {
   await updateCardList();
 });
-//#endregion
-
-//#region 过滤栏
-const currentFeature = ref('all');
-const featureFilters = ref([
-  {
-    title: '最新',
-    value: 'all',
-  },
-  {
-    title: '大秘境',
-    value: 'mythic',
-  },
-  {
-    title: '团本',
-    value: 'raid',
-  },
-  {
-    title: '地下堡',
-    value: 'delves',
-  },
-]);
-function switchFeature(value: string) {
-  if (currentFeature.value !== value) {
-    currentFeature.value = value;
-  }
-}
 //#endregion
 </script>
 
@@ -233,6 +256,7 @@ $header-bg-color: #1d1d1f;
     font-size: 24rpx !important;
   }
 }
+
 .pulldown-result {
   padding-top: 30rpx;
   color: #bbb;

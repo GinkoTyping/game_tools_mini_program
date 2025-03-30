@@ -796,12 +796,17 @@ export interface ITagCardItem {
   updated_at: string;
   type: string;
 }
+export interface IFilterParams {
+  filter: { wow_game_style: string[] };
+  lastId: number;
+  lastUpdatedAt: string;
+}
 export async function queryFilterUserTag(params?) {
   const res: any = await proxyRequest({
     url: `/wow/user-tag/list`,
     method: 'POST',
     data: {
-      filter: {},
+      filter: params?.filter,
       pageSize: params?.pageSize ?? 10,
       lastId: params?.lastId,
       lastUpdatedAt: params?.lastUpdatedAt,
