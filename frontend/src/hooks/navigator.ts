@@ -92,6 +92,20 @@ function toQuestionIndex() {
   });
 }
 
+// 艾泽拉斯同好会 首页
+function toFrindIndex() {
+  uni.navigateTo({
+    url: `/pages/friend/index`,
+  });
+}
+
+// 艾泽拉斯同好会 个人设置
+function toFrindSetting() {
+  uni.navigateTo({
+    url: `/pages/friend/setting`,
+  });
+}
+
 // 塔罗牌
 function toDivinationResult(tarotId: number = -1) {
   uni.navigateTo({
@@ -127,5 +141,8 @@ export function useNavigator() {
     toQuestionIndex,
     toDivinationIndex,
     toDivinationResult,
+
+    toFrindIndex,
+    toFrindSetting,
   };
 }
