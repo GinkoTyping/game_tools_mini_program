@@ -27,20 +27,15 @@
       </view>
     </view>
 
-    <uni-load-more
-      class="pulldown-load-more"
-      iconSize="18"
-      :status="pulldownRefresh.status"
-      :contentText="pulldownRefresh"
-    ></uni-load-more>
-
-    <uni-transition
-      ref="ani"
-      custom-class="transition"
-      mode-class="fade"
-      :show="showPulldownResult"
-    >
-      <view class="pulldown-result"> 铭牌信息已更新 </view>
+    <uni-transition ref="ani" custom-class="transition" mode-class="fade" show>
+      <view
+        class="pulldown-result"
+        :style="{
+          paddingTop: pulldownInfo?.paddingTop,
+        }"
+      >
+        {{ pulldownInfo?.text }}
+      </view>
     </uni-transition>
 
     <view class="card-list">
@@ -65,7 +60,7 @@
 
 <script lang="ts" setup>
 import { onLoad, onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app';
-import { reactive, ref } from 'vue';
+import { computed, reactive, ref } from 'vue';
 
 import { IFilterParams, ITagCardItem, queryFilterUserTag } from '@/api/wow';
 import TagCard from '@/components/TagCard.vue';
@@ -132,10 +127,12 @@ async function setGameStyleFilter() {
 
 //#region 加载
 const cardList = ref<ITagCardItem[]>([]);
+const cardCount = ref<number>();
 enum LoadingStatus {
   More = 'more',
   Loading = 'loading',
   NoMore = 'no-more',
+  Result = 'result',
 }
 const pullupRefresh = reactive({
   status: LoadingStatus.More,
@@ -148,8 +145,8 @@ async function updateCardList(isLoadMore?: boolean) {
     filterParams.lastId = lastTagCard.id;
     filterParams.lastUpdatedAt = lastTagCard.updated_at;
   }
-  const data = await queryFilterUserTag(filterParams);
-
+  const { data, total } = await queryFilterUserTag(filterParams);
+  cardCount.value = total;
   if (isLoadMore) {
     cardList.value.push(...data);
   } else {
@@ -163,7 +160,6 @@ async function updateCardList(isLoadMore?: boolean) {
 // 下拉刷新
 const pulldownRefresh = reactive({
   status: LoadingStatus.More,
-  contentdown: '下拉刷新数据',
 });
 onPullDownRefresh(async () => {
   if (pulldownRefresh.status === LoadingStatus.More) {
@@ -176,16 +172,28 @@ onPullDownRefresh(async () => {
     togglePullDownResult();
   }
 });
-const showPulldownResult = ref(false);
-function togglePullDownResult() {
-  if (showPulldownResult.value) {
-    showPulldownResult.value = false;
-  } else {
-    showPulldownResult.value = true;
-    setTimeout(() => {
-      showPulldownResult.value = false;
-    }, 3000);
+const pulldownInfo = computed(() => {
+  switch (pulldownRefresh.status) {
+    case LoadingStatus.More:
+      return { text: '下拉刷新数据', paddingTop: '70rpx' };
+    case LoadingStatus.NoMore:
+      return { text: '暂无更多数据', paddingTop: '70rpx' };
+    case LoadingStatus.Loading:
+      return { text: '数据加载中', paddingTop: '10rpx' };
+    case LoadingStatus.Result:
+      return {
+        text: `铭牌信息已更新, 总计${cardCount.value}张`,
+        paddingTop: '110rpx',
+      };
+    default:
+      break;
   }
+});
+function togglePullDownResult() {
+  pulldownRefresh.status = LoadingStatus.Result;
+  setTimeout(() => {
+    pulldownRefresh.status = LoadingStatus.More;
+  }, 3000);
 }
 
 // 上拉懒加载数据
@@ -264,8 +272,9 @@ $header-bg-color: #1d1d1f;
 
 ::v-deep .pulldown-load-more {
   view {
-    height: 90rpx !important;
+    height: 60rpx !important;
   }
+
   text {
     font-size: 24rpx !important;
   }
@@ -278,7 +287,6 @@ $header-bg-color: #1d1d1f;
 }
 
 .pulldown-result {
-  padding-top: 30rpx;
   color: #bbb;
   font-size: 24rpx;
   text-align: center;
