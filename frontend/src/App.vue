@@ -26,6 +26,6 @@ onHide(() => {
 <style lang="scss">
 page {
   height: 100vh;
-  background-color: $uni-bg-color-grey;
+  background-color: $uni-bg-color-grey !important;
 }
 </style>

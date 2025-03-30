@@ -1,60 +1,76 @@
 <template>
-  <view class="header-filter">
-    <view class="left-feature">
-      <text class="feature-label feature-label--active">大秘境</text>
-      <text class="feature-label">团本</text>
-      <text class="feature-label">地下堡</text>
+  <view class="page-container">
+    <view class="header-filter">
+      <view class="left-feature">
+        <text
+          v-for="feature in featureFilters"
+          :key="feature.value"
+          class="feature-label"
+          :class="[
+            currentFeature === feature.value ? ' feature-label--active' : '',
+          ]"
+          @click="() => switchFeature(feature.value)"
+          >{{ feature.title }}</text
+        >
+      </view>
+      <view class="right-drop-down">
+        <CustomTag title="国服">
+          <template v-slot:suffix>
+            <view>。</view>
+          </template>
+        </CustomTag>
+        <CustomTag title="筛选">
+          <template v-slot:suffix>
+            <view>。</view>
+          </template>
+        </CustomTag>
+      </view>
     </view>
-    <view class="right-drop-down">
-      <CustomTag title="国服">
-        <template v-slot:suffix>
-          <view>。</view>
-        </template>
-      </CustomTag>
-      <CustomTag title="筛选">
-        <template v-slot:suffix>
-          <view>。</view>
-        </template>
-      </CustomTag>
+    <uni-load-more
+      :status="pulldownRefresh.status"
+      :contentText="pulldownRefresh"
+    ></uni-load-more>
+    <view class="card-list">
+      <view
+        v-for="(item, index) in cardList"
+        :key="item.id"
+        class="card-item"
+        :class="[item.type ? 'card-item__collapse' : '']"
+      >
+        <TagCard :data="item" v-model:type="item.type" />
+      </view>
     </view>
+    <FriendFooter />
+    <uni-load-more status="more"></uni-load-more>
   </view>
-  <view class="card-list">
-    <view
-      v-for="(item, index) in cardList"
-      :key="item.id"
-      class="card-item"
-      :class="[item.type ? 'card-item__collapse' : '']"
-    >
-      <TagCard :data="item" v-model:type="item.type" />
-    </view>
-  </view>
-  <FriendFooter />
-  <uni-load-more status="more"></uni-load-more>
 </template>
 
 <script lang="ts" setup>
-import { onLoad, onReachBottom } from '@dcloudio/uni-app';
-import { ref } from 'vue';
+import { onLoad, onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app';
+import { reactive, ref } from 'vue';
 
 import { ITagCardItem, queryFilterUserTag } from '@/api/wow';
 import TagCard from '@/components/TagCard.vue';
 import CustomTag from '@/components/CustomTag.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
 
+//#region 加载
 const cardList = ref<ITagCardItem[]>([]);
-onLoad(async () => {
-  await updateCardList();
-});
 
 enum LoadingStatus {
   More = 'more',
   Loading = 'loading',
   NoMore = 'no-more',
 }
-const loadingStatus = ref<LoadingStatus>(LoadingStatus.More);
-
+const pullupRefresh = reactive({
+  status: LoadingStatus.More,
+});
+const pulldownRefresh = reactive({
+  status: LoadingStatus.More,
+  contentdown: '下拉刷新数据',
+});
 async function updateCardList(isLoadMore?: boolean) {
-  loadingStatus.value = LoadingStatus.Loading;
+  pullupRefresh.status = LoadingStatus.Loading;
 
   const params = {
     lastId: -1,
@@ -66,22 +82,70 @@ async function updateCardList(isLoadMore?: boolean) {
     params.lastUpdatedAt = lastTagCard.updated_at;
   }
   const data = await queryFilterUserTag(params);
-  cardList.value.push(...data);
 
-  loadingStatus.value =
+  if (isLoadMore) {
+    cardList.value.push(...data);
+  } else {
+    cardList.value = data;
+  }
+
+  pullupRefresh.status =
     data.length < 10 ? LoadingStatus.NoMore : LoadingStatus.More;
 }
 onReachBottom(async () => {
-  if (loadingStatus.value === LoadingStatus.More) {
-    console.log('loading');
+  if (pullupRefresh.status === LoadingStatus.More) {
     await updateCardList(true);
-  } else {
   }
 });
+onPullDownRefresh(async () => {
+  if (pulldownRefresh.status === LoadingStatus.More) {
+    uni.vibrateShort();
+    pulldownRefresh.status = LoadingStatus.Loading;
+    await updateCardList(true);
+    pulldownRefresh.status = LoadingStatus.More;
+    uni.stopPullDownRefresh();
+  }
+});
+onLoad(async () => {
+  await updateCardList();
+});
+//#endregion
+
+//#region 过滤栏
+const currentFeature = ref('all');
+const featureFilters = ref([
+  {
+    title: '最新',
+    value: 'all',
+  },
+  {
+    title: '大秘境',
+    value: 'mythic',
+  },
+  {
+    title: '团本',
+    value: 'raid',
+  },
+  {
+    title: '地下堡',
+    value: 'delves',
+  },
+]);
+function switchFeature(value: string) {
+  if (currentFeature.value !== value) {
+    currentFeature.value = value;
+  }
+}
+//#endregion
 </script>
 
 <style lang="scss" scoped>
+.page-container {
+  padding-top: 10rpx;
+}
+
 $header-bg-color: #1d1d1f;
+
 .header-filter {
   display: flex;
   justify-content: space-between;
@@ -94,21 +158,26 @@ $header-bg-color: #1d1d1f;
   box-sizing: border-box;
   color: #bbb;
   background-color: $header-bg-color;
+
   .left-feature {
     font-size: 24rpx;
+
     .feature-label {
       margin-right: 24rpx;
     }
+
     .feature-label--active {
       color: #fff;
       font-size: 26rpx;
     }
   }
+
   .right-drop-down {
     display: flex;
     align-items: center;
   }
 }
+
 ::v-deep .right-drop-down {
   .tag-button {
     margin-left: 12rpx;
@@ -117,7 +186,7 @@ $header-bg-color: #1d1d1f;
 
 .card-list {
   padding: 20rpx;
-  padding-top: 120rpx;
+
   .card-item {
     margin-bottom: 20rpx;
   }
