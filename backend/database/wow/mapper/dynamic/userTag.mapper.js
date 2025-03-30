@@ -134,8 +134,33 @@ async function getUserTagByIds(ids, hasBattlenetId) {
   }));
 }
 
+function generateFilterSql(filterParams) {
+  return Object.entries(filterParams)
+    .filter(([key, value]) => value.filter((item) => item?.length)?.length)
+    .reduce(
+      (pre, [column, value]) => {
+        const sql = value
+          .filter((item) => item?.length)
+          .reduce((child, item, index) => {
+            child += `${column} LIKE ?`;
+            if (index !== value.length - 1) {
+              child += ' OR ';
+            }
+            pre.sqlParams.push(`%${item}%`);
+            return child;
+          }, '');
+        pre.condition += ` AND (${sql})`;
+        return pre;
+      },
+      { condition: '', sqlParams: [] }
+    );
+}
+
 async function getUserTagByFilter(params) {
   const { filter, pageSize = 10, lastId = -1, lastUpdatedAt } = params;
+
+  const { condition, sqlParams } = generateFilterSql(filter);
+
   const sql = `
   SELECT
     id, wow_tag, common_tag, updated_at
@@ -145,6 +170,7 @@ async function getUserTagByFilter(params) {
     id != ?
   AND
     ${lastUpdatedAt ? 'updated_at <= ? ' : 'updated_at >= ? '}
+  ${condition}
   ORDER BY
     updated_at DESC 
   LIMIT ?`;
@@ -152,6 +178,7 @@ async function getUserTagByFilter(params) {
   const data = await db.all(sql, [
     lastId,
     lastUpdatedAt?.toString() ?? '',
+    ...sqlParams,
     pageSize,
   ]);
   return data.map((item) => ({
