@@ -14,7 +14,7 @@
         >
       </view>
       <view class="right-drop-down">
-        <CustomTag title="筛选">
+        <CustomTag title="筛选" @click="onSwitchFilterPage">
           <template v-slot:suffix>
             <view>↓</view>
           </template>
@@ -46,8 +46,8 @@
       :status="pullupRefresh"
     ></uni-load-more>
 
-    <view class="filter-page">
-      <FilterPage v-model:data="filterOptions"/>
+    <view class="filter-page" v-if="showFilterPage">
+      <FilterPage v-model:data="filterOptions" />
     </view>
   </view>
 </template>
@@ -188,7 +188,11 @@ onLoad(async () => {
 //#endregion
 
 //#region 过滤页面
+const showFilterPage = ref(false);
 const filterOptions = ref();
+function onSwitchFilterPage() {
+  showFilterPage.value = !showFilterPage.value;
+}
 //#endregion
 </script>
 

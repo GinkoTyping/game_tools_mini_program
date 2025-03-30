@@ -1,5 +1,5 @@
 <template>
-  <view class="tag-button">
+  <view class="tag-button" @click="handleClick">
     <text>{{ props.title }}</text>
     <slot name="suffix"></slot>
   </view>
@@ -9,6 +9,13 @@
 const props = defineProps({
   title: String,
 });
+
+// 声明事件
+const emit = defineEmits(['click']);
+
+const handleClick = () => {
+  emit('click'); // 触发自定义的 click 事件
+};
 </script>
 
 <style lang="scss" scoped>
