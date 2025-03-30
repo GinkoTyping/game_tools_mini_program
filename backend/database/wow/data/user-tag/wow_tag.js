@@ -1,7 +1,30 @@
 export default {
+  server: {
+    index: 6,
+    text: '服务器',
+    value: 'server',
+    options: [
+      {
+        text: '国服',
+        value: 'china',
+      },
+      {
+        text: '亚服',
+        value: 'aisa',
+      },
+      {
+        text: '美服',
+        value: 'america',
+      },
+      {
+        text: '欧服',
+        value: 'europe',
+      },
+    ],
+  },
   jobs: {
     index: 0,
-    text: '职责',
+    text: '主玩职责',
     value: 'jobs',
     options: [
       {
@@ -20,14 +43,14 @@ export default {
   },
   spec: {
     index: 1,
-    text: '专精',
+    text: '主玩专精',
     value: 'spec',
     options: [],
   },
   classes: {
     index: 2,
 
-    text: '职业',
+    text: '副玩职业',
     value: 'classes',
     options: [
       {
@@ -93,6 +116,10 @@ export default {
       {
         text: '大秘-低保',
         value: 'mythic-low',
+      },
+      {
+        text: '大秘3000分',
+        value: 'mythic-3000',
       },
       {
         text: '大秘-高层',

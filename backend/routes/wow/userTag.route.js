@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   queryAddUserTag,
+  queryFilterDetails,
   queryFilterUserTag,
   queryUpdateUserTag,
   queryUserTagByIds,
@@ -13,5 +14,6 @@ router.post('/user-tag/add', queryAddUserTag);
 router.post('/user-tag/update', queryUpdateUserTag);
 router.post('/user-tag/query', queryUserTagByIds);
 router.post('/user-tag/list', queryFilterUserTag);
+router.post('/user-tag/filters', queryFilterDetails);
 
 export default router;

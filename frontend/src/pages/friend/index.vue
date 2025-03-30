@@ -47,20 +47,25 @@
     ></uni-load-more>
 
     <view class="filter-page">
-      <FilterPage />
+      <FilterPage v-model:data="filterOptions"/>
     </view>
   </view>
 </template>
 
 <script lang="ts" setup>
 import { onLoad, onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app';
-import { computed, reactive, ref } from 'vue';
+import { reactive, ref } from 'vue';
 
-import { IFilterParams, ITagCardItem, queryFilterUserTag } from '@/api/wow';
+import {
+  IFilterParams,
+  ITagCardItem,
+  queryFilterUserTag,
+  queryUserTagFilterOptions,
+} from '@/api/wow';
 import TagCard from '@/components/TagCard.vue';
 import CustomTag from '@/components/CustomTag.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
-import FilterPage from '@/components/FilterPage.vue'
+import FilterPage from '@/components/FilterPage.vue';
 
 //#region 过滤栏
 const currentFeature = ref('all');
@@ -177,157 +182,13 @@ onReachBottom(async () => {
 });
 
 onLoad(async () => {
-  await updateCardList();
+  updateCardList();
+  filterOptions.value = await queryUserTagFilterOptions();
 });
 //#endregion
 
 //#region 过滤页面
-const filterOptions = ref([
-  {
-    title: '基本信息',
-    value: 'wow',
-    children: [
-      {
-        index: 6,
-        text: '服务器',
-        value: 'server',
-        options: [
-          {
-            text: '国服',
-            value: 'china',
-          },
-          {
-            text: '亚服',
-            value: 'aisa',
-          },
-          {
-            text: '美服',
-            value: 'america',
-          },
-          {
-            text: '欧服',
-            value: 'europe',
-          },
-        ],
-      },
-      {
-        index: 0,
-        text: '职责',
-        value: 'jobs',
-        options: [
-          {
-            text: '坦克',
-            value: 'tank',
-          },
-          {
-            text: '治疗',
-            value: 'healer',
-          },
-          {
-            text: '输出',
-            value: 'dps',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: '基本信息1',
-    value: 'wow1',
-    children: [
-      {
-        index: 6,
-        text: '服务器',
-        value: 'server',
-        options: [
-          {
-            text: '国服',
-            value: 'china',
-          },
-          {
-            text: '亚服',
-            value: 'aisa',
-          },
-          {
-            text: '美服',
-            value: 'america',
-          },
-          {
-            text: '欧服',
-            value: 'europe',
-          },
-        ],
-      },
-      {
-        index: 0,
-        text: '职责',
-        value: 'jobs',
-        options: [
-          {
-            text: '坦克',
-            value: 'tank',
-          },
-          {
-            text: '治疗',
-            value: 'healer',
-          },
-          {
-            text: '输出',
-            value: 'dps',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: '基本信息2',
-    value: 'wow2',
-    children: [
-      {
-        index: 6,
-        text: '服务器',
-        value: 'server',
-        options: [
-          {
-            text: '国服',
-            value: 'china',
-          },
-          {
-            text: '亚服',
-            value: 'aisa',
-          },
-          {
-            text: '美服',
-            value: 'america',
-          },
-          {
-            text: '欧服',
-            value: 'europe',
-          },
-        ],
-      },
-      {
-        index: 0,
-        text: '职责',
-        value: 'jobs',
-        options: [
-          {
-            text: '坦克',
-            value: 'tank',
-          },
-          {
-            text: '治疗',
-            value: 'healer',
-          },
-          {
-            text: '输出',
-            value: 'dps',
-          },
-        ],
-      },
-    ],
-  },
-]);
+const filterOptions = ref();
 //#endregion
 </script>
 
@@ -339,6 +200,7 @@ const filterOptions = ref([
 
 // 过滤页面
 $filter-main-color: #262629;
+
 .filter-page {
   position: absolute;
   left: 0;
@@ -430,6 +292,7 @@ $header-bg-color: #1d1d1f;
   z-index: 9;
   height: 60rpx; // 固定高度
   overflow: hidden;
+
   .pulldown-result {
     font-size: 24rpx;
     color: #bbb;

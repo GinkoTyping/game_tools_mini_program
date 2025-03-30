@@ -22,7 +22,7 @@
           }"
           @click="switchMenu(index)"
         >
-          {{ item.title }}
+          {{ item.text }}
         </view>
       </scroll-view>
 
@@ -59,167 +59,24 @@
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 import CustomTag from '@/components/CustomTag.vue';
+import { ITagOptionItem } from '@/api/wow';
 
 const activeMenu = ref(0);
 
-const menuList = ref([
-  {
-    title: '基本信息',
-    value: 'wow',
-    children: [
-      {
-        index: 6,
-        text: '服务器',
-        value: 'server',
-        options: [
-          {
-            text: '国服',
-            value: 'china',
-          },
-          {
-            text: '亚服',
-            value: 'aisa',
-          },
-          {
-            text: '美服',
-            value: 'america',
-          },
-          {
-            text: '欧服',
-            value: 'europe',
-          },
-        ],
-      },
-      {
-        index: 0,
-        text: '职责',
-        value: 'jobs',
-        options: [
-          {
-            text: '坦克',
-            value: 'tank',
-          },
-          {
-            text: '治疗',
-            value: 'healer',
-          },
-          {
-            text: '输出',
-            value: 'dps',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: '基本信息1',
-    value: 'wow1',
-    children: [
-      {
-        index: 6,
-        text: '服务器',
-        value: 'server',
-        options: [
-          {
-            text: '国服',
-            value: 'china',
-          },
-          {
-            text: '亚服',
-            value: 'aisa',
-          },
-          {
-            text: '美服',
-            value: 'america',
-          },
-          {
-            text: '欧服',
-            value: 'europe',
-          },
-        ],
-      },
-      {
-        index: 0,
-        text: '职责',
-        value: 'jobs',
-        options: [
-          {
-            text: '坦克',
-            value: 'tank',
-          },
-          {
-            text: '治疗',
-            value: 'healer',
-          },
-          {
-            text: '输出',
-            value: 'dps',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: '基本信息2',
-    value: 'wow2',
-    children: [
-      {
-        index: 6,
-        text: '服务器',
-        value: 'server',
-        options: [
-          {
-            text: '国服',
-            value: 'china',
-          },
-          {
-            text: '亚服',
-            value: 'aisa',
-          },
-          {
-            text: '美服',
-            value: 'america',
-          },
-          {
-            text: '欧服',
-            value: 'europe',
-          },
-        ],
-      },
-      {
-        index: 0,
-        text: '职责',
-        value: 'jobs',
-        options: [
-          {
-            text: '坦克',
-            value: 'tank',
-          },
-          {
-            text: '治疗',
-            value: 'healer',
-          },
-          {
-            text: '输出',
-            value: 'dps',
-          },
-        ],
-      },
-    ],
-  },
-]);
+const menuList = defineModel('data', {
+  type: Object as () => ITagOptionItem[],
+  default: () => [],
+});
 
 const activeContent = computed(() => {
-  return menuList.value[activeMenu.value].children;
+  return menuList.value[activeMenu.value]?.options;
 });
 
 const switchMenu = index => {
   activeMenu.value = index;
 };
 
-const handleSelect = (gIndex, oIndex) => {
-
-};
+const handleSelect = (gIndex, oIndex) => {};
 </script>
 
 <style lang="scss" scoped>
@@ -252,7 +109,7 @@ $filter-main-color: #262629;
 
 .main {
   display: flex;
-  height: calc(100vh - 80rpx);
+  height: calc(100vh - 80rpx - 160rpx);
 }
 
 .menu-left {

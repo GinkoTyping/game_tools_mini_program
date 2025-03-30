@@ -11,8 +11,7 @@ const UPDATE_INTERVAL_HOUR = 24;
 const optionSchedule = useScheduleCheck(UPDATE_INTERVAL_HOUR);
 let trendDataCache;
 
-export async function queryUserTagOptions(req, res) {
-  const data = await userTagMapper.getTagOptions();
+async function mapSpecOptions() {
   if (optionSchedule.isSchedule()) {
     const trendData = await getTrendData();
     trendData.trend = trendData.trend.reduce((pre, cur) => {
@@ -29,9 +28,15 @@ export async function queryUserTagOptions(req, res) {
     trendDataCache = trendData;
     optionSchedule.setLastUpdate();
   }
+  return trendDataCache;
+}
+
+export async function queryUserTagOptions(req, res) {
+  const data = await userTagMapper.getTagOptions();
+  await mapSpecOptions();
   res.json({
     ...data,
-    specs: trendDataCache,
+    specs: trendDataCache.trend,
   });
 }
 
@@ -82,4 +87,33 @@ export async function queryUserTagByIds(req, res) {
 export async function queryFilterUserTag(req, res) {
   const list = await userTagMapper.getUserTagByFilter(req.body);
   res.json(list);
+}
+
+async function mapFilterDetail(wowOptions) {
+  await mapSpecOptions();
+  const basicWow = Object.values(wowOptions).reduce((pre, cur) => {
+    if (cur.value === 'activeTime') {
+    } else if (cur.value === 'spec') {
+      pre.push({
+        ...cur,
+        options: mapSpecOptions,
+      });
+    } else {
+      pre.push(cur);
+    }
+    return pre;
+  }, []);
+  return basicWow;
+}
+
+export async function queryFilterDetails(req, res) {
+  const data = await userTagMapper.getTagOptions();
+  const filterOptions = await mapFilterDetail(data.wowOptions);
+  res.json([
+    {
+      text: '基本信息',
+      value: 'wow_basic',
+      options: filterOptions,
+    },
+  ]);
 }
