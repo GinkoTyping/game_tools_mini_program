@@ -20,6 +20,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import { useNavigator } from '@/hooks/navigator';
+import { onShow } from '@dcloudio/uni-app';
 
 const activeMenu = defineModel('menu', { type: String, default: 'index' });
 const menus = reactive([
@@ -36,6 +37,12 @@ const menus = reactive([
     page: '/pages/friend/index',
   },
   {
+    title: '分享',
+    value: 'invites',
+    icon: 'redo-filled',
+    page: '/pages/friend/index',
+  },
+  {
     title: '我的',
     value: 'setting',
     icon: 'vip-filled',
@@ -49,6 +56,22 @@ function switchMenu(menuItem) {
     navigator.toPage(menuItem.page);
   }
 }
+
+onShow(() => {
+  const currentPage = getCurrentPages().slice(-1)?.[0].route;
+  switch (currentPage) {
+    case 'pages/friend/index':
+      activeMenu.value = 'index';
+      break;
+    case 'pages/friend/setting':
+      activeMenu.value = 'setting';
+      break;
+    default:
+      activeMenu.value = 'index';
+      console.warn('异常的页面路径');
+      break;
+  }
+});
 </script>
 <style lang="scss" scoped>
 $header-bg-color: #1d1d1f;

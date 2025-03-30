@@ -282,6 +282,8 @@
   </view>
   <view class="footer"></view>
 
+  <FriendFooter />
+
   <!-- 公共选择器 -->
   <uni-popup ref="classPopup" type="bottom">
     <view class="classPopup">
@@ -380,6 +382,7 @@ import { onLoad } from '@dcloudio/uni-app';
 
 import { computed, reactive, ref } from 'vue';
 import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
+import FriendFooter from '@/components/FriendFooter.vue';
 
 const userStore = useUserStore();
 const wowOptions = computed(() => userStore.userTagOptions.wowOptions);

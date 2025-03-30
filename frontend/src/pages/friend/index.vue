@@ -28,12 +28,12 @@
       <TagCard :data="item" v-model:type="item.type" />
     </view>
   </view>
-  <FriendFooter v-model:menu="currentMenu" />
+  <FriendFooter />
   <uni-load-more status="more"></uni-load-more>
 </template>
 
 <script lang="ts" setup>
-import { onLoad, onReachBottom, onShow } from '@dcloudio/uni-app';
+import { onLoad, onReachBottom } from '@dcloudio/uni-app';
 import { ref } from 'vue';
 
 import { ITagCardItem, queryFilterUserTag } from '@/api/wow';
@@ -41,13 +41,9 @@ import TagCard from '@/components/TagCard.vue';
 import CustomTag from '@/components/CustomTag.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
 
-const currentMenu = ref('index');
 const cardList = ref<ITagCardItem[]>([]);
 onLoad(async () => {
   await updateCardList();
-});
-onShow(() => {
-  currentMenu.value = 'index';
 });
 
 enum LoadingStatus {
