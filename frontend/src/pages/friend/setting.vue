@@ -26,7 +26,9 @@
             isOptionSelected(item.value, wowForm, 'server') ? 'active' : ''
           "
           :title="item.text"
-          @click="() => setSelection(item, 'wow', 'server', 1)"
+          @click="
+            () => setSelection({ item, formName: 'wow', key: 'server', max: 1 })
+          "
         />
       </view>
     </uni-section>
@@ -79,7 +81,8 @@
                 '请选择您主玩的专精',
                 specOptions,
                 1,
-                'spec'
+                'spec',
+                'wow'
               )
           "
         />
@@ -113,7 +116,9 @@
                 'classes',
                 '请选择您的副职(最多3个)',
                 wowOptions.classes.options,
-                3
+                3,
+                'spec',
+                'wow'
               )
           "
         />
@@ -146,7 +151,9 @@
                 'gameStyle',
                 '请选择您游戏风格(最多3个)',
                 wowOptions.gameStyle.options,
-                3
+                3,
+                'button',
+                'wow'
               )
           "
         />
@@ -241,7 +248,8 @@
                 section.subTitle,
                 commonOptions[section.id].options,
                 section.max,
-                'button'
+                'button',
+                'common'
               )
           "
         >
@@ -291,7 +299,7 @@
           class="classItem"
           v-for="item in selectionList"
           :key="item.value"
-          @click="() => setSelection(item, 'wow')"
+          @click="() => setSelection({ item })"
         >
           <view :class="[item.value]">{{ item.text }}</view>
           <view class="class-check">
@@ -311,30 +319,31 @@
           <CustomTag
             v-for="item in selectionList"
             :key="item.value"
-            @click="() => setSelection(item, 'wow')"
+            @click="() => setSelection({ item })"
             :type="
               isOptionSelected(item.value, wowForm) ? 'spec-reverse' : 'spec'
             "
-            :wow-class="(item as ISpecOptionItem).roleClass"
+            :wow-class="(item as ISpecOptionItem).roleClass ?? item.value"
             :title="item.text"
           />
         </view>
       </template>
       <template v-if="optionDisplayType === 'button'">
         <view class="btns">
-          <view
-            class="btn-item"
-            :class="
-              isOptionSelected(item.value, commonForm)
-                ? 'btn-item--common'
-                : 'btn-item--reverse'
-            "
+          <CustomTag
             v-for="item in selectionList"
             :key="item.value"
-            @click="() => setSelection(item, 'common')"
-          >
-            <text class="ellipsis">{{ item.text }}</text>
-          </view>
+            @click="() => setSelection({ item })"
+            :type="
+              isOptionSelected(
+                item.value,
+                currentFormName === 'wow' ? wowForm : commonForm
+              )
+                ? 'active'
+                : ''
+            "
+            :title="item.text"
+          />
         </view>
       </template>
     </view>
@@ -439,6 +448,7 @@ const jobClass = computed(() => {
 //#region 公共选择器
 const currentFormKey = ref('');
 const currentSelectMax = ref<number>();
+const currentFormName = ref('');
 const popoverTitle = ref('');
 const selectionList = ref<IOptionItem[] | ISpecOptionItem[]>();
 const classPopup = ref();
@@ -448,24 +458,30 @@ function openSelectionPopup(
   title: string,
   list: IOptionItem[],
   max: number,
-  display: string = 'list'
+  display: string = 'list',
+  formName: string
 ) {
   currentFormKey.value = key;
   currentSelectMax.value = max;
+  currentFormName.value = formName;
   popoverTitle.value = title;
   selectionList.value = list;
   optionDisplayType.value = display;
   classPopup.value?.open?.();
 }
-function setSelection(
-  item: IOptionItem,
-  type: 'wow' | 'common',
-  formKey?: string,
-  formKeyMax?: number
-) {
-  const key = formKey ?? currentFormKey.value;
-  const max = formKeyMax ?? currentSelectMax.value;
-  const formRef = type === 'wow' ? wowForm : commonForm;
+function setSelection(params: {
+  item: IOptionItem;
+  key?: string;
+  formName?: string;
+  max?: number;
+}) {
+  const {
+    item,
+    key = currentFormKey.value,
+    formName = currentFormName.value,
+    max = currentSelectMax.value,
+  } = params;
+  const formRef = formName === 'wow' ? wowForm : commonForm;
   const existed = formRef[key].find(
     seletedItem => seletedItem.value === item.value
   );
