@@ -92,40 +92,40 @@ const selectionCount = computed(
   () => Object.values(selectedOptions.value).flat()?.length
 );
 const selectedOptions = ref<{ [key: string]: string[] }>({});
-const MAX_ALLOW_COUNT = 10;
+const MAX_ALLOW_COUNT = 12;
 const handleSelect = (item, group) => {
+  const paramKey = ['workDay', 'weekend'].includes(group.value)
+    ? 'wow_active_time'
+    : group.value;
+
   const isSelect =
-    !selectedOptions.value[group.value] ||
-    selectedOptions.value[group.value].filter(
+    !selectedOptions.value[paramKey] ||
+    selectedOptions.value[paramKey].filter(
       selection => selection === item.value
     ).length === 0;
 
-  if (isSelect && selectionCount.value === MAX_ALLOW_COUNT) {
-    uni.showToast({ title: '总共可选10个', icon: 'error' });
-  }
-
   if (isSelect) {
     if (selectionCount.value === MAX_ALLOW_COUNT) {
-      uni.showToast({ title: '总共可选10个', icon: 'error' });
+      uni.showToast({ title: `总共可选${MAX_ALLOW_COUNT}个`, icon: 'error' });
     } else {
-      const hasSeleted = selectedOptions.value[group.value]?.length;
+      const hasSeleted = selectedOptions.value[paramKey]?.length;
       // 超过当前选项的最大值
       if (hasSeleted && hasSeleted === group.filterMax) {
-        selectedOptions.value[group.value].pop();
-        selectedOptions.value[group.value].push(item.value);
+        selectedOptions.value[paramKey].pop();
+        selectedOptions.value[paramKey].push(item.value);
       } else {
-        if (selectedOptions.value[group.value]) {
-          selectedOptions.value[group.value].push(item.value);
+        if (selectedOptions.value[paramKey]) {
+          selectedOptions.value[paramKey].push(item.value);
         } else {
-          selectedOptions.value[group.value] = [item.value];
+          selectedOptions.value[paramKey] = [item.value];
         }
       }
     }
   } else {
-    if (selectedOptions.value[group.value]) {
-      selectedOptions.value[group.value] = selectedOptions.value[
-        group.value
-      ].filter(selection => selection !== item.value);
+    if (selectedOptions.value[paramKey]) {
+      selectedOptions.value[paramKey] = selectedOptions.value[paramKey].filter(
+        selection => selection !== item.value
+      );
     }
   }
 
@@ -137,12 +137,16 @@ const handleSelect = (item, group) => {
 //#region 样式文本
 const getButtonType = computed(() => {
   return (item: ITagOptionItem, group) => {
+    const paramKey = ['workDay', 'weekend'].includes(group.value)
+      ? 'wow_active_time'
+      : group.value;
+
     if (item.roleClass) {
-      return selectedOptions.value[group.value]?.includes(item.value)
+      return selectedOptions.value[paramKey]?.includes(item.value)
         ? 'spec'
         : '';
     }
-    return selectedOptions.value[group.value]?.includes(item.value)
+    return selectedOptions.value[paramKey]?.includes(item.value)
       ? 'active'
       : '';
   };

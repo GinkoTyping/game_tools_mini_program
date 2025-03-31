@@ -4,6 +4,7 @@ import commonTag from './common_tag.js';
 import wowTag from './wow_tag.js';
 import specOptions from './spec-option.js';
 import { formatDateByMinute } from '../../../../util/time.js';
+import { generateTimeLabels } from '../../mapper/dynamic/userTag.mapper.js';
 
 // 辅助函数：随机选择数组元素
 const randomSelect = (arr, max = 3) => {
@@ -73,26 +74,11 @@ function generateRandomDate() {
 
 // 生成common_tag字段
 const generateCommonTag = () => ({
-  status: randomSelect(commonTag.status.options, 3).map((item) => ({
-    text: item,
-    value: item,
-  })),
-  age: randomSelect(commonTag.age.options, 1).map((item) => ({
-    text: item,
-    value: item,
-  })),
-  game: randomSelect(commonTag.game.options, 3).map((item) => ({
-    text: item,
-    value: item,
-  })),
-  personality: randomSelect(commonTag.personality.options, 2).map((item) => ({
-    text: item,
-    value: item,
-  })),
-  role: randomSelect(commonTag.role.options, 3).map((item) => ({
-    text: item,
-    value: item,
-  })),
+  status: randomSelect(commonTag.status.options, 3),
+  age: randomSelect(commonTag.age.options, 1),
+  game: randomSelect(commonTag.game.options, 3),
+  personality: randomSelect(commonTag.personality.options, 2),
+  role: randomSelect(commonTag.role.options, 3),
 });
 
 // 生成单条记录
@@ -114,15 +100,7 @@ const generateRecord = (id) => {
     wow_spec: wowTagData.spec.map((s) => s.value).join(','),
     wow_classes: wowTagData.classes.map((c) => c.value).join(','),
     wow_game_style: wowTagData.gameStyle.map((gs) => gs.value).join(','),
-    wow_active_time: wowTagData.activeTime
-      .map((day) =>
-        day.values
-          .filter((t) => t.selected)
-          .map((t) => t.value)
-          .join('|')
-      )
-      .filter((str) => str) // 过滤空值
-      .join(','), // 改为逗号分隔
+    wow_active_time: generateTimeLabels(wowTagData.activeTime),
     wow_privacy: Math.floor(Math.random() * 2),
     common_status: commonTagData.status.map((j) => j.value).join(','),
     common_game: commonTagData.game.map((j) => j.value).join(','),

@@ -19,19 +19,88 @@ async function getTagOptions() {
   return { wowOptions, commonOptions: mappedCommonOptions };
 }
 
-function mapSingleTag(wowTag, commonTag) {
-  function toString(arr) {
-    return arr.map((item) => item.value).join(',');
+function toString(arr) {
+  return arr.map((item) => item.value).join(',');
+}
+export function generateTimeLabels(activeTime) {
+  // 通用处理函数（增加时段特殊阈值判断）
+  function processPart(timeStr, prefix, getPeriod, periodOrder) {
+    const hours = timeStr.split(',').map(Number);
+
+    // 统计时间段出现次数
+    const periodCounts = hours.reduce((acc, hour) => {
+      const period = getPeriod(hour);
+      acc[period] = (acc[period] || 0) + 1;
+      return acc;
+    }, {});
+
+    // 过滤并排序有效时间段
+    return Object.keys(periodCounts)
+      .filter((period) => {
+        if (period === 'early_morning') {
+          return periodCounts[period] >= 3; // 凌晨时段需要至少3个时刻
+        }
+
+        if (['morning', 'midday'].includes(period)) {
+          return periodCounts[period] >= 1;
+        }
+
+        return periodCounts[period] >= 2; // 其他时段至少1个时刻
+      })
+      .sort((a, b) => periodOrder[a] - periodOrder[b])
+      .map((period) => `${prefix}_${period}`);
   }
+
+  // 时间段定义保持不变
+  const getPeriod = (hour) => {
+    if (hour >= 6 && hour < 10) return 'morning';
+    if (hour >= 10 && hour < 14) return 'midday';
+    if (hour >= 14 && hour < 18) return 'afternoon';
+    if (hour >= 18 && hour < 22) return 'evening';
+    if (hour >= 22 || hour < 2) return 'late_night';
+    return 'early_morning';
+  };
+
+  const periodOrder = {
+    /* 保持不变 */
+  };
+
+  // 调整数据解析逻辑（假设数据结构为：[{values: [...]}, {values: [...]}]）
+  const [workdayData, weekendData] = activeTime;
+  const workdayPart = workdayData.values
+    .filter((child) => child.selected)
+    .map((child) => child.value)
+    .join(',');
+
+  const weekendPart = weekendData.values
+    .filter((child) => child.selected)
+    .map((child) => child.value)
+    .join(',');
+
+  // 后续处理保持不变
+  const workdayLabels = processPart(
+    workdayPart,
+    'workday',
+    getPeriod,
+    periodOrder
+  );
+  const weekendLabels = processPart(
+    weekendPart,
+    'weekend',
+    getPeriod,
+    periodOrder
+  );
+
+  return `${workdayLabels.join(',')}|${weekendLabels.join(',')}`;
+}
+function mapSingleTag(wowTag, commonTag) {
   const wowServer = toString(wowTag.server);
   const wowJobs = toString(wowTag.jobs);
   const wowSpec = toString(wowTag.spec);
   const wowClasses = toString(wowTag.classes);
   const wowCommunication = toString(wowTag.communication);
   const wowGameStyle = toString(wowTag.gameStyle);
-  const wowActiveTime = wowTag.activeTime
-    .map((item) => toString(item.values.filter((child) => child.selected)))
-    .join('|');
+  const wowActiveTime = generateTimeLabels(wowTag.activeTime);
   const wowPrivacy = wowTag.privacy ? 1 : 0;
 
   const commonStatus = toString(commonTag.status);

@@ -3,7 +3,7 @@ export default {
     index: 0,
     text: '年龄',
     max: 1,
-    filterMax: 1,
+    filterMax: 3,
     value: 'common_age',
     options: [
       '55后',

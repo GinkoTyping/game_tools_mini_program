@@ -71,7 +71,7 @@ import { reactive, ref } from 'vue';
 import {
   IFilterParams,
   ITagCardItem,
-  queryFilterUserTag,
+  queryUserTagByFilter,
   queryUserTagFilterOptions,
 } from '@/api/wow';
 import TagCard from '@/components/TagCard.vue';
@@ -175,7 +175,7 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
     filterParams.lastId = -1;
     filterParams.lastUpdatedAt = '';
   }
-  const { data, total } = await queryFilterUserTag(filterParams);
+  const { data, total } = await queryUserTagByFilter(filterParams);
   cardCount.value = total;
   if (['load-more'].includes(from)) {
     cardList.push(...data);

@@ -166,28 +166,28 @@ export default {
         value: 'workDay',
         options: [
           {
-            text: '早上',
-            value: [7, 8, 9, 10],
+            text: '清晨',
+            value: 'workday_morning',
           },
           {
-            text: '中午',
-            value: [11, 12, 13, 14],
+            text: '半上午-午间',
+            value: 'workday_midday',
           },
           {
             text: '下午',
-            value: [15, 16, 17, 18],
+            value: 'workday_afternoon',
           },
           {
             text: '晚上',
-            value: [19, 20, 21, 22, 23, 0],
+            value: 'workday_evening',
           },
           {
-            text: '前半夜',
-            value: [1, 2, 3],
+            text: '上半夜',
+            value: 'workday_late_night',
           },
           {
-            text: '后半夜',
-            value: [4, 5, 6],
+            text: '下半夜',
+            value: 'workday_early_morning',
           },
         ],
       },
@@ -196,28 +196,28 @@ export default {
         value: 'weekend',
         options: [
           {
-            text: '早上',
-            value: [7, 8, 9, 10],
+            text: '清晨',
+            value: 'weekend_morning',
           },
           {
-            text: '中午',
-            value: [11, 12, 13, 14],
+            text: '半上午-午间',
+            value: 'weekend_midday',
           },
           {
             text: '下午',
-            value: [15, 16, 17, 18],
+            value: 'weekend_afternoon',
           },
           {
             text: '晚上',
-            value: [19, 20, 21, 22, 23, 0],
+            value: 'weekend_evening',
           },
           {
-            text: '前半夜',
-            value: [1, 2, 3],
+            text: '上半夜',
+            value: 'weekend_late_night',
           },
           {
-            text: '后半夜',
-            value: [4, 5, 6],
+            text: '下半夜',
+            value: 'weekend_early_morning',
           },
         ],
       },

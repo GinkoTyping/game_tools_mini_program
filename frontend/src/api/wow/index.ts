@@ -811,7 +811,7 @@ export interface IFilterParams {
   lastId: number;
   lastUpdatedAt: string;
 }
-export async function queryFilterUserTag(params?) {
+export async function queryUserTagByFilter(params?) {
   const res: any = await proxyRequest({
     url: `/wow/user-tag/list`,
     method: 'POST',
