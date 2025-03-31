@@ -36,8 +36,8 @@
     <uni-section
       id="jobs"
       class="priest"
-      title="主玩职责"
-      subTitle="请选择您主玩的职责(可多选)"
+      title="常玩职责"
+      subTitle="请选择您常玩的职责"
       type="line"
       titleFontSize="16px"
     >
@@ -57,7 +57,7 @@
       id="spec"
       class="priest"
       title="主玩专精"
-      subTitle="请选择您主玩的专精"
+      subTitle="请选择您主玩的专精(最多选1个)"
       type="line"
       titleFontSize="16px"
     >
@@ -93,7 +93,7 @@
       id="classes"
       class="priest"
       title="副职业"
-      subTitle="请选择您的副职(最多选3个)"
+      subTitle="请选择您常玩的副职(最多选3个)"
       type="line"
       titleFontSize="16px"
     >
@@ -129,7 +129,7 @@
       id="game-style"
       class="priest"
       title="游戏风格"
-      subTitle="请选择您游戏风格(最多选3个)"
+      subTitle="请选择您的游戏风格(最多选3个)"
       type="line"
       titleFontSize="16px"
     >
@@ -155,6 +155,31 @@
                 'button',
                 'wow'
               )
+          "
+        />
+      </view>
+    </uni-section>
+    <!-- 交流方式 -->
+    <uni-section
+      id="game-style"
+      class="priest"
+      title="交流方式"
+      subTitle="请选择您偏好的交流方式"
+      type="line"
+      titleFontSize="16px"
+    >
+      <view class="btns">
+        <CustomTag
+          v-for="item in wowOptions.communication.options"
+          :key="item.value"
+          :type="
+            isOptionSelected(item.value, wowForm, 'communication')
+              ? 'active'
+              : ''
+          "
+          :title="item.text"
+          @click="
+            () => setSelection({ item, formName: 'wow', key: 'communication' })
           "
         />
       </view>
@@ -239,9 +264,15 @@
           :title="item.text"
         />
         <CustomTag
-          :title="isAllowAddSelection(section.id, commonForm, section.max) ? '添加' : '编辑'"
+          :title="
+            isAllowAddSelection(section.id, commonForm, section.max)
+              ? '添加'
+              : '编辑'
+          "
           :suffix-icon="
-            isAllowAddSelection(section.id, commonForm, section.max) ? 'plusempty' : 'compose'
+            isAllowAddSelection(section.id, commonForm, section.max)
+              ? 'plusempty'
+              : 'compose'
           "
           @click="
             () =>
