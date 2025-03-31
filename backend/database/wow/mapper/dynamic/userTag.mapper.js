@@ -165,6 +165,12 @@ async function getUserTagByFilter(params) {
     AND updated_at ${lastUpdatedAt ? '<= ?' : '>= ?'}
     ${condition}
   `;
+
+  const countWhere = `
+    id != -1
+    ${condition}
+  `
+
   const dataSql = `
     SELECT id, wow_tag, common_tag, updated_at
     FROM ${TABLE_NAME}
@@ -174,7 +180,7 @@ async function getUserTagByFilter(params) {
   const countSql = `
     SELECT COUNT(*) as total
     FROM ${TABLE_NAME}
-    WHERE ${baseWhere}`;
+    WHERE ${countWhere}`;
 
   // 构建参数数组
   const baseParams = [lastId, lastUpdatedAt?.toString() ?? '', ...filterParams];
@@ -182,7 +188,7 @@ async function getUserTagByFilter(params) {
   // 并行执行两个查询
   const [dataResult, countResult] = await Promise.all([
     db.all(dataSql, [...baseParams, pageSize]),
-    db.get(countSql, baseParams),
+    db.get(countSql, filterParams),
   ]);
 
   return {
