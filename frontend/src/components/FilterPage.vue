@@ -41,8 +41,9 @@
               v-for="(option, oIndex) in group.options"
               :key="oIndex"
               :title="option.text"
-              :class="{ selected: group.selected === oIndex }"
-              @click="handleSelect(gIndex, oIndex)"
+              :type="getButtonType(option)"
+              :wow-class="option.roleClass"
+              @click="handleSelect(option)"
             />
           </view>
         </view>
@@ -78,7 +79,17 @@ const switchMenu = index => {
   activeMenu.value = index;
 };
 
-const handleSelect = (gIndex, oIndex) => {};
+const handleSelect = item => {
+  item.selected = !item.selected;
+};
+const getButtonType = computed(() => {
+  return (item: ITagOptionItem) => {
+    if (item.roleClass) {
+      return item.selected ? 'spec' : '';
+    }
+    return item.selected ? 'active' : '';
+  };
+});
 </script>
 
 <style lang="scss" scoped>
