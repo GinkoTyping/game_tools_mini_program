@@ -36,7 +36,7 @@ async function updateUserTarot(id, date, tarotId, isPositive) {
     const existed = await getUserTarotById(id);
     if (existed) {
       existed.tarot_list.push({ date, id: tarotId, isPositive });
-      const result = db.run(
+      const result = await db.run(
         `UPDATE ${TABLE_NAME} SET tarot_list=?1 WHERE id=?2`,
         [JSON.stringify(existed.tarot_list), id]
       );
