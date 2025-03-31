@@ -708,9 +708,22 @@ export async function queryDrawTarot() {
 export interface ITagOptionItem {
   text: string;
   value: string;
-  options: { text: string; value: string }[];
+  selected: boolean;
+  filterMax: boolean;
+  roleClass?: string;
+  max: number;
+  options: {
+    text: string;
+    value: string;
+    selected: boolean;
+    roleClass?: string;
+    max: number;
+    filterMax: boolean;
+    options?: ITagOptionItem[];
+  }[];
 }
 export interface IWowUserTagOptions {
+  server: ITagOptionItem;
   jobs: ITagOptionItem;
   classes: ITagOptionItem;
   gameStyle: ITagOptionItem;
@@ -718,14 +731,11 @@ export interface IWowUserTagOptions {
   communication: ITagOptionItem;
   spec: ITagOptionItem;
 }
-export interface ISpecTagOptions {
-  sprite: { [key: string]: { [key: string]: number } };
-  trend: {
-    text: string;
-    value: string;
-    classSpec: string;
-    roleClass: string;
-  }[];
+export interface ISpecTagOption {
+  text: string;
+  value: string;
+  classSpec: string;
+  roleClass: string;
 }
 
 export interface ICommonUserTagOptions {
@@ -743,7 +753,7 @@ export async function queryFriendOptions() {
   return res.data as {
     wowOptions: IWowUserTagOptions;
     commonOptions: ICommonUserTagOptions;
-    specs: ISpecTagOptions;
+    specs: ISpecTagOption[];
   };
 }
 export async function queryAddUserTag(params) {
@@ -812,6 +822,20 @@ export async function queryFilterUserTag(params?) {
       lastUpdatedAt: params?.lastUpdatedAt,
     },
   });
+  if (res?.data?.data) {
+    res.data.data = res.data.data.map(item => ({
+      ...item,
+      type: 'normal',
+    }));
+  }
   return (res?.data as { data: ITagCardItem[]; total: number }) ?? {};
+}
+
+export async function queryUserTagFilterOptions() {
+  const res: any = await proxyRequest({
+    url: `/wow/user-tag/filters`,
+    method: 'POST',
+  });
+  return res.data;
 }
 //#endregion

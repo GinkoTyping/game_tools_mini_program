@@ -204,10 +204,12 @@ CREATE TABLE
     wow_tag TEXT,
     common_tag TEXT,
     -- 独立的属性用于过滤
+    wow_server TEXT,
     wow_jobs TEXT,
     wow_spec TEXT,
     wow_classes TEXT,
     wow_game_style TEXT,
+    wow_communication TEXT,
     wow_active_time TEXT,
     wow_privacy TEXT,
     common_status TEXT,

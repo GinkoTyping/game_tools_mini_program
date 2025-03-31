@@ -23,9 +23,11 @@ function mapSingleTag(wowTag, commonTag) {
   function toString(arr) {
     return arr.map((item) => item.value).join(',');
   }
+  const wowServer = toString(wowTag.server);
   const wowJobs = toString(wowTag.jobs);
   const wowSpec = toString(wowTag.spec);
   const wowClasses = toString(wowTag.classes);
+  const wowCommunication = toString(wowTag.communication);
   const wowGameStyle = toString(wowTag.gameStyle);
   const wowActiveTime = wowTag.activeTime
     .map((item) => toString(item.values.filter((child) => child.selected)))
@@ -39,9 +41,11 @@ function mapSingleTag(wowTag, commonTag) {
   const commonRole = toString(commonTag.role);
 
   return [
+    wowServer,
     wowJobs,
     wowSpec,
     wowClasses,
+    wowCommunication,
     wowGameStyle,
     wowActiveTime,
     wowPrivacy,
@@ -57,7 +61,7 @@ async function insertUserTag(params) {
   const { id, battlenetId, wowTag, commonTag } = params;
   const date = formatDateByMinute();
   return db.run(
-    `INSERT INTO ${TABLE_NAME}(user_id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_jobs, wow_spec, wow_classes, wow_game_style,wow_active_time, wow_privacy, common_status, common_game, common_age, common_personality, common_role) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO ${TABLE_NAME}(user_id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_server, wow_jobs, wow_spec, wow_classes, wow_communication, wow_game_style,wow_active_time, wow_privacy, common_status, common_game, common_age, common_personality, common_role) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
       id,
       battlenetId,
@@ -79,9 +83,11 @@ async function updateUserTag(params) {
     'common_tag',
     'updated_at',
 
+    'wow_server',
     'wow_jobs',
     'wow_spec',
     'wow_classes',
+    'wow_communication',
     'wow_game_style',
     'wow_active_time',
     'wow_privacy',
@@ -169,7 +175,7 @@ async function getUserTagByFilter(params) {
   const countWhere = `
     id != -1
     ${condition}
-  `
+  `;
 
   const dataSql = `
     SELECT id, wow_tag, common_tag, updated_at

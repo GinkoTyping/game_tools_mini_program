@@ -45,7 +45,7 @@
         <CustomTag
           v-for="item in wowOptions.jobs.options"
           :key="item.value"
-          :type="isJobSelected(item.value) ? 'spec-reverse' : 'spec'"
+          :type="isJobSelected(item.value) ? 'spec-reverse' : ''"
           :wow-class="jobClass(item.value)"
           :title="item.text"
           @click="() => selectJobs(item)"
@@ -70,9 +70,9 @@
           :title="item.text"
         />
         <CustomTag
-          :title="isAllowAddSelection('spec', wowForm) ? '添加' : '编辑'"
+          :title="isAllowAddSelection('spec', wowForm, 1) ? '添加' : '编辑'"
           :suffix-icon="
-            isAllowAddSelection('spec', wowForm) ? 'plusempty' : 'compose'
+            isAllowAddSelection('spec', wowForm, 1) ? 'plusempty' : 'compose'
           "
           @click="
             () =>
@@ -696,13 +696,22 @@ onLoad(async () => {
   battlenetId.value = data?.battlenet_id;
 
   if (data?.wow_tag) {
-    const { server, jobs, classes, activeTime, gameStyle, privacy, spec } =
-      data.wow_tag;
+    const {
+      server,
+      jobs,
+      classes,
+      activeTime,
+      communication,
+      gameStyle,
+      privacy,
+      spec,
+    } = data.wow_tag;
     wowForm.server = server ?? [];
     wowForm.jobs = jobs;
     wowForm.spec = spec;
     wowForm.classes = classes;
     wowForm.gameStyle = gameStyle;
+    wowForm.communication = communication;
     wowForm.activeTime = activeTime;
     wowForm.privacy = privacy;
   } else {
