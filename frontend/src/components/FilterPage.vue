@@ -10,7 +10,7 @@
       ></uni-icons>
       <view class="header-title">筛选</view>
       <view class="selection-info"
-        >已选: {{ selectedCount }}/{{ MAX_ALLOW_COUNT }}</view
+        >已选: {{ selectionCount }}/{{ MAX_ALLOW_COUNT }}</view
       >
     </view>
     <view class="main">
@@ -38,15 +38,20 @@
           :key="gIndex"
           class="section"
         >
-          <view class="section-title">{{ group.text }}</view>
+          <view class="section-title">
+            <text class="section-title__label">{{ group.text }}</text>
+            <text class="section-title__info" v-show="showMaxOptionCount(group)"
+              >(最多选{{ group.filterMax }}项)</text
+            >
+          </view>
           <view class="options-container">
             <CustomTag
               v-for="(option, oIndex) in group.options"
               :key="oIndex"
               :title="option.text"
-              :type="getButtonType(option)"
+              :type="getButtonType(option, group)"
               :wow-class="option.roleClass"
-              @click="handleSelect(option)"
+              @click="handleSelect(option, group)"
             />
           </view>
         </view>
@@ -56,7 +61,7 @@
     <!-- 底部操作栏 -->
     <view class="action-bar">
       <view class="btn reset" @click="show = false">清除</view>
-      <view class="btn confirm">确定</view>
+      <view class="btn confirm" @click="confirm">确定</view>
     </view>
   </view>
 </template>
@@ -67,7 +72,6 @@ import CustomTag from '@/components/CustomTag.vue';
 import { ITagOptionItem } from '@/api/wow';
 
 const activeMenu = ref(0);
-
 const menuList = defineModel('data', {
   type: Object as () => ITagOptionItem[],
   default: () => [],
@@ -84,32 +88,77 @@ const switchMenu = index => {
 //#endregion
 
 //#region 选择 标签
-const selectedCount = ref(0);
+const selectionCount = computed(
+  () => Object.values(selectedOptions.value).flat()?.length
+);
+const selectedOptions = ref<{ [key: string]: string[] }>({});
 const MAX_ALLOW_COUNT = 10;
-const handleSelect = item => {
-  if (!item.selected && selectedCount.value === MAX_ALLOW_COUNT) {
-    uni.showToast({ title: '最多选择10个', icon: 'error' });
-    return;
+const handleSelect = (item, group) => {
+  const isSelect =
+    !selectedOptions.value[group.value] ||
+    selectedOptions.value[group.value].filter(
+      selection => selection === item.value
+    ).length === 0;
+
+  if (isSelect && selectionCount.value === MAX_ALLOW_COUNT) {
+    uni.showToast({ title: '总共可选10个', icon: 'error' });
   }
-  item.selected = !item.selected;
-  if (item.selected) {
-    selectedCount.value++;
+
+  if (isSelect) {
+    if (selectionCount.value === MAX_ALLOW_COUNT) {
+      uni.showToast({ title: '总共可选10个', icon: 'error' });
+    } else {
+      const hasSeleted = selectedOptions.value[group.value]?.length;
+      // 超过当前选项的最大值
+      if (hasSeleted === group.filterMax) {
+        selectedOptions.value[group.value].pop();
+        selectedOptions.value[group.value].push(item.value);
+      } else {
+        if (selectedOptions.value[group.value]) {
+          selectedOptions.value[group.value].push(item.value);
+        } else {
+          selectedOptions.value[group.value] = [item.value];
+        }
+      }
+    }
   } else {
-    selectedCount.value--;
+    if (selectedOptions.value[group.value]) {
+      selectedOptions.value[group.value] = selectedOptions.value[
+        group.value
+      ].filter(selection => selection !== item.value);
+    }
   }
+
+  console.log(selectedOptions.value);
 };
 
 //#endregion
 
 //#region 样式文本
 const getButtonType = computed(() => {
-  return (item: ITagOptionItem) => {
+  return (item: ITagOptionItem, group) => {
     if (item.roleClass) {
-      return item.selected ? 'spec' : '';
+      return selectedOptions.value[group.value]?.includes(item.value)
+        ? 'spec'
+        : '';
     }
-    return item.selected ? 'active' : '';
+    return selectedOptions.value[group.value]?.includes(item.value)
+      ? 'active'
+      : '';
   };
 });
+
+const showMaxOptionCount = computed(() => {
+  return group => group.filterMax < group.options.length;
+});
+//#endregion
+
+//#region 提交
+const emits = defineEmits(['change']);
+function confirm() {
+  emits('change', selectedOptions.value);
+  show.value = false;
+}
 //#endregion
 </script>
 
@@ -227,11 +276,18 @@ $filter-main-color: #262629;
     border-radius: 16rpx;
     margin-bottom: 24rpx;
 
-    &-title {
-      font-size: 30rpx;
-      font-weight: 600;
-      color: #fff;
+    .section-title {
       margin-bottom: 24rpx;
+      .section-title__label {
+        font-size: 30rpx;
+        font-weight: 600;
+        color: #fff;
+      }
+      .section-title__info {
+        padding-left: 10rpx;
+        font-size: 24rpx;
+        color: #bbb;
+      }
     }
   }
 }

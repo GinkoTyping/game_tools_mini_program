@@ -56,7 +56,11 @@
     </z-paging>
 
     <view class="filter-page" v-show="showFilterPage">
-      <FilterPage v-model:data="filterOptions" v-model:show="showFilterPage" />
+      <FilterPage
+        v-model:data="filterOptions"
+        v-model:show="showFilterPage"
+        @change="onFilterOptionChange"
+      />
     </view>
   </view>
 </template>
@@ -129,6 +133,13 @@ async function setGameStyleFilter() {
   filterParams.filter.wow_game_style = output;
 
   // 重置分页参数
+  filterParams.lastId = -1;
+  filterParams.lastUpdatedAt = '';
+
+  vListRef.value?.reload?.();
+}
+async function onFilterOptionChange(params) {
+  filterParams.filter = params;
   filterParams.lastId = -1;
   filterParams.lastUpdatedAt = '';
 
