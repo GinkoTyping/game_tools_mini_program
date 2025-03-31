@@ -40,18 +40,14 @@
       titleFontSize="16px"
     >
       <view class="btns">
-        <view
-          class="btn-item"
-          :class="[
-            item.value,
-            isJobSelected(item.value) ? 'btn-item--active' : '',
-          ]"
+        <CustomTag
           v-for="item in wowOptions.jobs.options"
           :key="item.value"
+          :type="isJobSelected(item.value) ? 'spec-reverse' : 'spec'"
+          :wow-class="jobClass(item.value)"
+          :title="item.text"
           @click="() => selectJobs(item)"
-        >
-          <text>{{ item.text }}</text>
-        </view>
+        />
       </view>
     </uni-section>
     <!-- 专精 -->
@@ -64,41 +60,32 @@
       titleFontSize="16px"
     >
       <view class="btns">
-        <view
-          class="btn-item btn-item--spec"
-          :class="[`${item.roleClass}-bg`, item.roleClass]"
+        <CustomTag
           v-for="item in wowForm.spec"
           :key="item.value"
-        >
-          <text class="ellipsis">{{ item.text }}</text>
-        </view>
-        <view
-          class="btn-item ellipsis"
+          type="spec-reverse"
+          :wow-class="item.roleClass"
+          :title="item.text"
+        />
+        <CustomTag
+          :title="isAllowAddSelection('spec', wowForm) ? '添加' : '编辑'"
+          :suffix-icon="
+            isAllowAddSelection('spec', wowForm) ? 'plusempty' : 'compose'
+          "
           @click="
             () =>
               openSelectionPopup(
                 'spec',
                 '请选择您主玩的专精',
-                specOptions.trend,
+                specOptions,
                 1,
                 'spec'
               )
           "
-        >
-          <text>{{
-            isAllowAddSelection('spec', wowForm, 1) ? '添加' : '编辑'
-          }}</text>
-          <uni-icons
-            :type="
-              isAllowAddSelection('spec', wowForm, 1) ? 'plusempty' : 'compose'
-            "
-            color="#fff"
-            size="16"
-          ></uni-icons>
-        </view>
+        />
       </view>
     </uni-section>
-    <!-- 职业 -->
+    <!-- 副职业 -->
     <uni-section
       id="classes"
       class="priest"
@@ -108,16 +95,18 @@
       titleFontSize="16px"
     >
       <view class="btns">
-        <view
-          class="btn-item btn-item--spec"
-          :class="[`${item.value}-bg`, item.value]"
+        <CustomTag
           v-for="item in wowForm.classes"
           :key="item.value"
-        >
-          <text class="ellipsis">{{ item.text }}</text>
-        </view>
-        <view
-          class="btn-item ellipsis"
+          type="spec-reverse"
+          :wow-class="item.value"
+          :title="item.text"
+        />
+        <CustomTag
+          :title="isAllowAddSelection('classes', wowForm) ? '添加' : '编辑'"
+          :suffix-icon="
+            isAllowAddSelection('classes', wowForm) ? 'plusempty' : 'compose'
+          "
           @click="
             () =>
               openSelectionPopup(
@@ -127,18 +116,7 @@
                 3
               )
           "
-        >
-          <text>{{
-            isAllowAddSelection('classes', wowForm) ? '添加' : '编辑'
-          }}</text>
-          <uni-icons
-            :type="
-              isAllowAddSelection('classes', wowForm) ? 'plusempty' : 'compose'
-            "
-            color="#fff"
-            size="16"
-          ></uni-icons>
-        </view>
+        />
       </view>
     </uni-section>
     <!-- 游戏风格 -->
@@ -151,15 +129,17 @@
       titleFontSize="16px"
     >
       <view class="btns">
-        <view
-          class="btn-item btn-item--common"
+        <CustomTag
           v-for="item in wowForm.gameStyle"
           :key="item.value"
-        >
-          <text class="ellipsis">{{ item.text }}</text>
-        </view>
-        <view
-          class="btn-item ellipsis"
+          type="active"
+          :title="item.text"
+        />
+        <CustomTag
+          :title="isAllowAddSelection('gameStyle', wowForm) ? '添加' : '编辑'"
+          :suffix-icon="
+            isAllowAddSelection('gameStyle', wowForm) ? 'plusempty' : 'compose'
+          "
           @click="
             () =>
               openSelectionPopup(
@@ -169,20 +149,7 @@
                 3
               )
           "
-        >
-          <text>{{
-            isAllowAddSelection('gameStyle', wowForm) ? '添加' : '编辑'
-          }}</text>
-          <uni-icons
-            :type="
-              isAllowAddSelection('gameStyle', wowForm)
-                ? 'plusempty'
-                : 'compose'
-            "
-            color="#fff"
-            size="16"
-          ></uni-icons>
-        </view>
+        />
       </view>
     </uni-section>
     <!-- 活跃时间段 -->
@@ -341,20 +308,16 @@
       </template>
       <template v-if="optionDisplayType === 'spec'">
         <view class="btns">
-          <view
-            class="btn-item--spec-option btn-item"
-            :class="[
-              isOptionSelected(item.value, wowForm)
-                ? `${(item as ISpecOptionItem).roleClass}-bg btn-item--spec-option--active`
-                : '',
-              (item as ISpecOptionItem).roleClass,
-            ]"
+          <CustomTag
             v-for="item in selectionList"
             :key="item.value"
             @click="() => setSelection(item, 'wow')"
-          >
-            <text class="ellipsis">{{ item.text }}</text>
-          </view>
+            :type="
+              isOptionSelected(item.value, wowForm) ? 'spec-reverse' : 'spec'
+            "
+            :wow-class="(item as ISpecOptionItem).roleClass"
+            :title="item.text"
+          />
         </view>
       </template>
       <template v-if="optionDisplayType === 'button'">
@@ -456,6 +419,20 @@ function selectJobs(item: IOptionItem) {
 }
 const isJobSelected = computed(() => {
   return (value: string) => wowForm.jobs.some(item => item.value === value);
+});
+const jobClass = computed(() => {
+  return (job: string) => {
+    switch (job) {
+      case 'tank':
+        return 'shaman';
+      case 'healer':
+        return 'monk';
+      case 'dps':
+        return 'death-knight';
+      default:
+        return 'death-knight';
+    }
+  };
 });
 //#endregion
 
@@ -718,6 +695,7 @@ onLoad(async () => {
   display: flex;
   flex-wrap: wrap;
   gap: 20rpx;
+  padding-bottom: 14px;
   .btn-item {
     font-size: 26rpx;
     padding: 6rpx 28rpx;
@@ -746,6 +724,7 @@ onLoad(async () => {
       color: black;
     }
   }
+
   .btn-item--spec-option--active {
     text {
       font-weight: bold;
