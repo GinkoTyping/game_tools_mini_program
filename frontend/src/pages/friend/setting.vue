@@ -232,15 +232,17 @@
       titleFontSize="16px"
     >
       <view class="btns">
-        <view
-          class="btn-item btn-item--common"
+        <CustomTag
           v-for="item in commonForm[section.id]"
           :key="item.value"
-        >
-          <text class="ellipsis">{{ item.text }}</text>
-        </view>
-        <view
-          class="btn-item ellipsis"
+          type="active"
+          :title="item.text"
+        />
+        <CustomTag
+          :title="isAllowAddSelection(section.id, commonForm, section.max) ? '添加' : '编辑'"
+          :suffix-icon="
+            isAllowAddSelection(section.id, commonForm, section.max) ? 'plusempty' : 'compose'
+          "
           @click="
             () =>
               openSelectionPopup(
@@ -252,22 +254,7 @@
                 'common'
               )
           "
-        >
-          <text>{{
-            isAllowAddSelection(section.id, commonForm, section.max)
-              ? '添加'
-              : '编辑'
-          }}</text>
-          <uni-icons
-            :type="
-              isAllowAddSelection(section.id, commonForm, section.max)
-                ? 'plusempty'
-                : 'compose'
-            "
-            color="#fff"
-            size="16"
-          ></uni-icons>
-        </view>
+        />
       </view>
     </uni-section>
   </view>
