@@ -21,9 +21,16 @@
           </view>
           <view class="main-spec__content-other">
             <view class="game-style label-list">
-              <text class="label-list-item" v-for="item in wowTag?.gameStyle">{{
-                item.text
-              }}</text>
+              <CustomTag
+                v-for="item in [
+                  ...(wowTag?.communication ?? []),
+                  ...(wowTag?.gameStyle ?? []),
+                ]"
+                :key="item.value"
+                :title="item.text"
+                size="small"
+                theme="dark"
+              />
             </view>
           </view>
         </view>
@@ -37,23 +44,27 @@
           :src="`/static/images/wow/job-icons/role-icon-${job.value}.jpg`"
           mode="heightFix"
         />
-        <view
-          class="label-list-item__class label-list-item"
+
+        <CustomTag
           v-for="classItem in wowTag?.classes"
           :key="classItem.value"
-          :class="[`${classItem.value}-bg`]"
-          >{{ classItem.text }}</view
-        >
+          :title="classItem.text"
+          type="spec-reverse"
+          :wow-class="classItem.value"
+          size="small"
+          theme="dark"
+        />
         <template
           v-for="propKey in ['age', 'status', 'personality', 'game', 'role']"
           :key="propKey"
         >
-          <view
-            class="label-list-item"
+          <CustomTag
             v-for="item in commonTag?.[propKey]"
             :key="item.value"
-            >{{ item.text }}</view
-          >
+            :title="item.text"
+            size="small"
+            theme="dark"
+          />
         </template>
       </view>
       <!-- 时间 -->
@@ -106,19 +117,28 @@
           :src="`/static/images/wow/job-icons/role-icon-${job.value}.jpg`"
           mode="heightFix"
         />
-        <view
-          class="label-list-item__class label-list-item"
+
+        <CustomTag
           v-for="classItem in wowTag?.classes"
           :key="classItem.value"
-          :class="[`${classItem.value}-bg`]"
-          >{{ classItem.text }}</view
-        >
-        <text class="label-list-item" v-for="item in wowTag?.gameStyle">{{
-          item.text
-        }}</text>
-        <text class="label-list-item" v-for="item in commonTag?.role">{{
-          item.text
-        }}</text>
+          :title="classItem.text"
+          type="spec-reverse"
+          :wow-class="classItem.value"
+          size="small"
+          theme="dark"
+        />
+
+        <CustomTag
+          v-for="item in [
+            ...(wowTag?.communication ?? []),
+            ...(wowTag?.gameStyle ?? []),
+            ...(commonTag?.role ?? []),
+          ]"
+          :key="item.value"
+          :title="item.text"
+          size="small"
+          theme="dark"
+        />
       </view>
       <view class="buttons" @click="switchType('normal')">
         <text>展开</text>
@@ -142,8 +162,9 @@ import { computed, nextTick, reactive, watch } from 'vue';
 
 import { IActiveTimeBar } from '@/interface/IUserTag';
 import localeLabels from '@/data/zh.json';
-import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
 import { ITagCardItem } from '@/api/wow';
+import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
+import CustomTag from '@/components/CustomTag.vue';
 
 const type = defineModel('type', {
   type: String,
@@ -250,6 +271,7 @@ $label-margin-bottom: 12rpx;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    gap: 12rpx;
     font-size: 24rpx;
     line-height: $label-height;
 
@@ -267,7 +289,6 @@ $label-margin-bottom: 12rpx;
     }
 
     .label-list-item__job {
-      margin-bottom: $label-margin-bottom;
       width: $label-height;
       height: $label-height;
     }
@@ -312,6 +333,9 @@ $label-margin-bottom: 12rpx;
           overflow: hidden;
         }
       }
+    }
+    .sub-content {
+      margin-bottom: 20rpx;
     }
 
     .time-range {

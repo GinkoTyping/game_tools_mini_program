@@ -40,7 +40,6 @@
           :key="item.zp_index"
           v-for="(item, index) in virtualList"
           class="card-item"
-          :class="[item.type ? 'card-item__collapse' : '']"
         >
           <TagCard
             :data="item"
@@ -68,7 +67,6 @@
 <script lang="ts" setup>
 import { onLoad } from '@dcloudio/uni-app';
 import { reactive, ref } from 'vue';
-import { debounce } from 'lodash';
 
 import {
   IFilterParams,
@@ -264,17 +262,8 @@ $header-bg-color: #1d1d1f;
 .card-list {
   padding: 20rpx;
   padding-top: 0;
-
   .card-item {
-    &:not(:last-child) {
-      padding-bottom: 20rpx;
-    }
-  }
-
-  .card-item__collapse {
-    &:not(:last-child) {
-      margin-bottom: 40rpx;
-    }
+    padding-bottom: 36rpx;
   }
 }
 

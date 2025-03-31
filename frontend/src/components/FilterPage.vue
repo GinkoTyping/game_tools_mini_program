@@ -278,11 +278,13 @@ $filter-main-color: #262629;
 
     .section-title {
       margin-bottom: 24rpx;
+
       .section-title__label {
         font-size: 30rpx;
         font-weight: 600;
         color: #fff;
       }
+
       .section-title__info {
         padding-left: 10rpx;
         font-size: 24rpx;
