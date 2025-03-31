@@ -35,12 +35,17 @@ const generateActiveTime = () => {
 
 // 生成wow_tag字段
 const generateWowTag = () => {
+  const server = randomSelect(wowTag.server.options, 1);
   const jobs = randomSelect(wowTag.jobs.options, 3);
   const classes = randomSelect(wowTag.classes.options, 3);
   const spec = randomSelect(specOptions, 1);
+  const communication = randomSelect(wowTag.communication.options, 3);
+
 
   return {
     jobs: jobs.map((job) => ({ text: job.text, value: job.value })),
+    server: server.map((item) => ({ text: item.text, value: item.value })),
+    communication: communication.map((item) => ({ text: item.text, value: item.value })),
     spec: spec.map((s) => ({
       text: s.text,
       value: s.value,
@@ -102,6 +107,8 @@ const generateRecord = (id) => {
     wow_tag: JSON.stringify(wowTagData).replace(/'/g, "''"),
     common_tag: JSON.stringify(commonTagData).replace(/'/g, "''"),
     wow_jobs: wowTagData.jobs.map((j) => j.value).join(','),
+    wow_server: wowTagData.server.map((j) => j.value).join(','),
+    wow_communication: wowTagData.communication.map((j) => j.value).join(','),
     wow_spec: wowTagData.spec.map((s) => s.value).join(','),
     wow_classes: wowTagData.classes.map((c) => c.value).join(','),
     wow_game_style: wowTagData.gameStyle.map((gs) => gs.value).join(','),
@@ -114,12 +121,12 @@ const generateRecord = (id) => {
       )
       .filter((str) => str) // 过滤空值
       .join(','), // 改为逗号分隔
-    wow_privacy: '1',
-    common_status: commonTagData.status.join(','),
-    common_game: commonTagData.game.join(','),
-    common_age: commonTagData.age.join(','),
-    common_personality: commonTagData.personality.join(','),
-    common_role: commonTagData.role.join(','),
+    wow_privacy: Math.floor(Math.random() * 2),
+    common_status: commonTagData.status.map((j) => j.value).join(','),
+    common_game: commonTagData.game.map((j) => j.value).join(','),
+    common_age: commonTagData.age.map((j) => j.value).join(','),
+    common_personality: commonTagData.personality.map((j) => j.value).join(','),
+    common_role: commonTagData.role.map((j) => j.value).join(','),
   };
 };
 
