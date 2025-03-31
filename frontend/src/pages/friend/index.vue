@@ -5,6 +5,7 @@
       use-virtual-list
       cell-height-mode="dynamic"
       :force-close-inner-list="true"
+      lower-threshold="300rpx"
       @virtualListChange="virtualListChange"
       @query="queryList"
     >
@@ -127,19 +128,13 @@ async function setGameStyleFilter() {
   filterParams.lastId = -1;
   filterParams.lastUpdatedAt = '';
 
-  uni.startPullDownRefresh();
-  uni.pageScrollTo({ scrollTop: 0 });
+  vListRef.value?.reload?.();
 }
 //#endregion
 
 //#region 加载
 let cardList: ITagCardItem[] = [];
 const cardCount = ref<number>();
-enum LoadingStatus {
-  More = 'more',
-  Loading = 'loading',
-  NoMore = 'no-more',
-}
 //#endregion
 
 //#region 过滤页面
@@ -163,6 +158,9 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
     const lastTagCard = cardList.slice(-1)[0];
     filterParams.lastId = lastTagCard.id;
     filterParams.lastUpdatedAt = lastTagCard.updated_at;
+  } else if (['user-pull-down'].includes(from)) {
+    filterParams.lastId = -1;
+    filterParams.lastUpdatedAt = '';
   }
   const { data, total } = await queryFilterUserTag(filterParams);
   cardCount.value = total;
@@ -176,8 +174,7 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
     cardList = data;
   }
 
-  // 如果不深拷贝，card.type会互相污染
-  vListRef.value?.complete(JSON.parse(JSON.stringify(cardList)));
+  vListRef.value?.complete(data);
 }
 //#endregion
 
