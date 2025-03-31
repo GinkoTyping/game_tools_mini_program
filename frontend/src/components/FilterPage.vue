@@ -110,7 +110,7 @@ const handleSelect = (item, group) => {
     } else {
       const hasSeleted = selectedOptions.value[group.value]?.length;
       // 超过当前选项的最大值
-      if (hasSeleted === group.filterMax) {
+      if (hasSeleted && hasSeleted === group.filterMax) {
         selectedOptions.value[group.value].pop();
         selectedOptions.value[group.value].push(item.value);
       } else {

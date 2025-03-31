@@ -91,11 +91,15 @@
       <view class="buttons">
         <view class="button-item">
           <uni-icons
-            type="personadd-filled"
+            :type="
+              wowTag.privacy.needConfirm ? 'personadd-filled' : 'auth-filled'
+            "
             size="30"
-            color="#777777"
+            :color="wowTag.privacy.needConfirm ? '#777777' : '#007aff'"
           ></uni-icons>
-          <text>{{ wowTag.privacy.needConfirm ? '申请' : '获取' }}</text>
+          <text :class="wowTag.privacy.needConfirm ? '' : 'available'">{{
+            wowTag.privacy.needConfirm ? '申请战网' : '获取战网'
+          }}</text>
         </view>
         <view class="button-item" @click="switchType('simple')">
           <text>收起</text>
@@ -334,6 +338,7 @@ $label-margin-bottom: 12rpx;
         }
       }
     }
+
     .sub-content {
       margin-bottom: 20rpx;
     }
@@ -371,6 +376,9 @@ $label-margin-bottom: 12rpx;
 
         & > text {
           margin: 0 10rpx;
+        }
+        .available {
+          color: $uni-color-primary !important;
         }
       }
     }
