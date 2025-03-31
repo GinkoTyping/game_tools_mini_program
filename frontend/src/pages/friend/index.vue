@@ -58,7 +58,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onLoad, onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app';
+import { onLoad } from '@dcloudio/uni-app';
 import { reactive, ref } from 'vue';
 
 import {
@@ -133,60 +133,13 @@ async function setGameStyleFilter() {
 //#endregion
 
 //#region 加载
-const cardList = ref<ITagCardItem[]>([]);
+let cardList: ITagCardItem[] = [];
 const cardCount = ref<number>();
 enum LoadingStatus {
   More = 'more',
   Loading = 'loading',
   NoMore = 'no-more',
 }
-const pullupRefresh = reactive({
-  status: LoadingStatus.More,
-});
-async function updateCardList(isLoadMore?: boolean) {
-  pullupRefresh.status = LoadingStatus.Loading;
-
-  if (isLoadMore && cardList.value) {
-    const lastTagCard = cardList.value.slice(-1)[0];
-    filterParams.lastId = lastTagCard.id;
-    filterParams.lastUpdatedAt = lastTagCard.updated_at;
-  }
-  const { data, total } = await queryFilterUserTag(filterParams);
-  cardCount.value = total;
-  if (isLoadMore) {
-    cardList.value.push(...data);
-  } else {
-    uni.showToast({
-      title: `获取了${total}张铭牌`,
-      icon: 'none',
-    });
-    cardList.value = data;
-  }
-
-  pullupRefresh.status =
-    data.length < 10 ? LoadingStatus.NoMore : LoadingStatus.More;
-}
-
-// 下拉刷新
-const pulldownRefresh = reactive({
-  status: LoadingStatus.More,
-});
-onPullDownRefresh(async () => {
-  if (pulldownRefresh.status === LoadingStatus.More) {
-    // uni.vibrateShort();
-    // pulldownRefresh.status = LoadingStatus.Loading;
-    // await updateCardList();
-    // pulldownRefresh.status = LoadingStatus.More;
-    // uni.stopPullDownRefresh();
-  }
-});
-
-// 上拉懒加载数据
-onReachBottom(async () => {
-  if (pullupRefresh.status === LoadingStatus.More) {
-    // await updateCardList(true);
-  }
-});
 //#endregion
 
 //#region 过滤页面
@@ -203,14 +156,33 @@ const virtualList = ref();
 function virtualListChange(vList) {
   virtualList.value = vList;
 }
-async function queryList() {
-  await updateCardList();
-  vListRef.value?.complete(JSON.parse(JSON.stringify(cardList.value)));
+async function queryList(pageNo: number, pageSize: number, from: string) {
+  console.log(pageNo, pageSize, from);
+
+  if (['load-more'].includes(from) && cardList.length) {
+    const lastTagCard = cardList.slice(-1)[0];
+    filterParams.lastId = lastTagCard.id;
+    filterParams.lastUpdatedAt = lastTagCard.updated_at;
+  }
+  const { data, total } = await queryFilterUserTag(filterParams);
+  cardCount.value = total;
+  if (['load-more'].includes(from)) {
+    cardList.push(...data);
+  } else {
+    uni.showToast({
+      title: `获取了${total}张铭牌`,
+      icon: 'none',
+    });
+    cardList = data;
+  }
+
+  // 如果不深拷贝，card.type会互相污染
+  vListRef.value?.complete(JSON.parse(JSON.stringify(cardList)));
 }
 //#endregion
 
 onLoad(async () => {
-  vListRef.value.reload();
+  vListRef.value?.reload?.();
   filterOptions.value = await queryUserTagFilterOptions();
 });
 </script>
@@ -290,7 +262,6 @@ $header-bg-color: #1d1d1f;
     }
   }
 }
-
 
 ::v-deep .z-paging-content {
   .zp-absoulte {
