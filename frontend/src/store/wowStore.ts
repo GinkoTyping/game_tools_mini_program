@@ -51,7 +51,9 @@ export const useUserStore = defineStore('user', {
     },
     userTagOptions: {
       wowOptions: {
+        server: {} as ITagOptionItem,
         jobs: {} as ITagOptionItem,
+        spec: {} as ITagOptionItem,
         classes: {} as ITagOptionItem,
         gameStyle: {} as ITagOptionItem,
         activeTime: {} as ITagOptionItem,

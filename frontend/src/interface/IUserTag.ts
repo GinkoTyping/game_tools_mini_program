@@ -13,10 +13,12 @@ export interface ISpecOptionItem extends IOptionItem {
   classSpec: string;
 }
 export interface IWowTag {
+  server: IOptionItem[];
   jobs: IOptionItem[];
   spec: ISpecOptionItem[];
   classes: IOptionItem[];
   gameStyle: IOptionItem[];
+  communication: IOptionItem[];
   activeTime: {
     title: string;
     values: IActiveTimeBar[];

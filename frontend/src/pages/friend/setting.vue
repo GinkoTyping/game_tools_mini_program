@@ -9,11 +9,32 @@
     />
   </view>
   <view class="wow-wrap" v-show="currentTab === 0">
+    <!-- 服务器 -->
+    <uni-section
+      id="server"
+      class="priest"
+      title="服务器"
+      subTitle="请选择您主玩的服务器"
+      type="line"
+      titleFontSize="16px"
+    >
+      <view class="btns">
+        <CustomTag
+          v-for="item in wowOptions.server.options"
+          :key="item.value"
+          :type="
+            isOptionSelected(item.value, wowForm, 'server') ? 'active' : ''
+          "
+          :title="item.text"
+          @click="() => setSelection(item, 'wow', 'server', 1)"
+        />
+      </view>
+    </uni-section>
     <!-- 职责 -->
     <uni-section
       id="jobs"
       class="priest"
-      title="职责"
+      title="主玩职责"
       subTitle="请选择您主玩的职责(可多选)"
       type="line"
       titleFontSize="16px"
@@ -37,7 +58,7 @@
     <uni-section
       id="spec"
       class="priest"
-      title="专精"
+      title="主玩专精"
       subTitle="请选择您主玩的专精"
       type="line"
       titleFontSize="16px"
@@ -81,7 +102,7 @@
     <uni-section
       id="classes"
       class="priest"
-      title="职业"
+      title="副职业"
       subTitle="请选择您的副职(最多选3个)"
       type="line"
       titleFontSize="16px"
@@ -383,6 +404,7 @@ import { onLoad } from '@dcloudio/uni-app';
 import { computed, reactive, ref } from 'vue';
 import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
+import CustomTag from '@/components/CustomTag.vue';
 
 const userStore = useUserStore();
 const wowOptions = computed(() => userStore.userTagOptions.wowOptions);
@@ -411,10 +433,12 @@ function getBasicTimeValues(title) {
   };
 }
 const wowForm = reactive<IWowTag>({
+  server: [],
   jobs: [],
   spec: [],
   classes: [],
   gameStyle: [],
+  communication: [],
   activeTime: [getBasicTimeValues('工作日'), getBasicTimeValues('休息日')],
   privacy: { needConfirm: true },
 });
@@ -456,9 +480,14 @@ function openSelectionPopup(
   optionDisplayType.value = display;
   classPopup.value?.open?.();
 }
-function setSelection(item: IOptionItem, type: 'wow' | 'common') {
-  const key = currentFormKey.value;
-  const max = currentSelectMax.value;
+function setSelection(
+  item: IOptionItem,
+  type: 'wow' | 'common',
+  formKey?: string,
+  formKeyMax?: number
+) {
+  const key = formKey ?? currentFormKey.value;
+  const max = formKeyMax ?? currentSelectMax.value;
   const formRef = type === 'wow' ? wowForm : commonForm;
   const existed = formRef[key].find(
     seletedItem => seletedItem.value === item.value
@@ -483,8 +512,8 @@ function setSelection(item: IOptionItem, type: 'wow' | 'common') {
   }
 }
 const isOptionSelected = computed(() => {
-  return (value: string, form) =>
-    form[currentFormKey.value].some(item => item.value === value);
+  return (value: string, form, formKey?: string) =>
+    form[formKey ?? currentFormKey.value]?.some(item => item.value === value);
 });
 const isAllowAddSelection = computed(() => {
   return (key: string, form, max: number = 3) => form[key].length < max;
@@ -656,15 +685,19 @@ onLoad(async () => {
   battlenetId.value = data?.battlenet_id;
 
   if (data?.wow_tag) {
-    const { jobs, classes, activeTime, gameStyle, privacy, spec } =
+    const { server, jobs, classes, activeTime, gameStyle, privacy, spec } =
       data.wow_tag;
+    wowForm.server = server ?? [];
     wowForm.jobs = jobs;
     wowForm.spec = spec;
     wowForm.classes = classes;
     wowForm.gameStyle = gameStyle;
     wowForm.activeTime = activeTime;
     wowForm.privacy = privacy;
+  } else {
+    wowForm.server.push(wowOptions.value.server.options[0]);
   }
+
   if (data?.common_tag) {
     const { status, game, age, personality, role } = data.common_tag;
     commonForm.status = status;
@@ -684,7 +717,7 @@ onLoad(async () => {
 .btns {
   display: flex;
   flex-wrap: wrap;
-
+  gap: 20rpx;
   .btn-item {
     font-size: 26rpx;
     padding: 6rpx 28rpx;
