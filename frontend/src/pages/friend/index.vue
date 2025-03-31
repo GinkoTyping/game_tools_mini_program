@@ -140,7 +140,7 @@ async function onFilterOptionChange(params) {
   filterParams.filter = params;
   filterParams.lastId = -1;
   filterParams.lastUpdatedAt = '';
-
+  currentFeature.value = 'all';
   vListRef.value?.reload?.();
 }
 //#endregion
