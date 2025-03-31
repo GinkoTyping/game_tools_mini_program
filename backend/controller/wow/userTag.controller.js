@@ -93,8 +93,8 @@ async function mapFilterDetail(wowOptions, commonOptions) {
   await mapSpecOptions();
   const wowFilter = Object.values(wowOptions).reduce(
     (pre, cur) => {
-      if (cur.value === 'activeTime') {
-      } else if (cur.value === 'spec') {
+      if (cur.value === 'wow_active_time') {
+      } else if (cur.value === 'wow_spec') {
         pre.options.push({
           ...cur,
           options: trendDataCache.trend,
@@ -113,10 +113,10 @@ async function mapFilterDetail(wowOptions, commonOptions) {
 
   const commonFilters = Object.values(commonOptions).reduce(
     (pre, cur) => {
-      if (['age', 'personality', 'status'].includes(cur.value)) {
+      if (['common_age', 'common_personality', 'common_status'].includes(cur.value)) {
         const parent = pre.find((item) => item.value === 'personal');
         parent.options.push(cur);
-      } else if (['role'].includes(cur.value)) {
+      } else if (['common_role'].includes(cur.value)) {
         const parent = pre.find((item) => item.value === 'role');
         parent.options.push(cur);
       } else {

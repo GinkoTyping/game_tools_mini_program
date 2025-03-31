@@ -2,7 +2,9 @@ export default {
   age: {
     index: 0,
     text: '年龄',
-    value: 'age',
+    max: 1,
+    filterMax: 1,
+    value: 'common_age',
     options: [
       '55后',
       '60后',
@@ -20,7 +22,9 @@ export default {
   personality: {
     index: 1,
     text: '赛博八字',
-    value: 'personality',
+    value: 'common_personality',
+    filterMax: 2,
+    max: 2,
     options: [
       '白羊座',
       '金牛座',
@@ -57,7 +61,9 @@ export default {
   status: {
     index: 2,
     text: '状态',
-    value: 'status',
+    filterMax: 3,
+    max: 3,
+    value: 'common_status',
     options: [
       // 进阶挑战
       '大秘境冲层',
@@ -104,7 +110,9 @@ export default {
   role: {
     index: 3,
     text: '性格',
-    value: 'role',
+    value: 'common_role',
+    filterMax: 3,
+    max: 3,
     options: [
       '团队指挥官',
       '社交达人',
@@ -161,7 +169,9 @@ export default {
   game: {
     index: 4,
     text: '游戏',
-    value: 'game',
+    value: 'common_game',
+    filterMax: 3,
+    max: 3,
     options: [
       // 核心MMORPG类
       '魔兽世界',

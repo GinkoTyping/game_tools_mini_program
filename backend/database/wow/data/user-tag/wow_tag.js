@@ -2,7 +2,9 @@ export default {
   server: {
     index: 6,
     text: '服务器',
-    value: 'server',
+    value: 'wow_server',
+    max: 1,
+    filterMax: 1,
     options: [
       {
         text: '国服',
@@ -25,7 +27,9 @@ export default {
   jobs: {
     index: 0,
     text: '主玩职责',
-    value: 'jobs',
+    value: 'wow_jobs',
+    max: 3,
+    filterMax: 3,
     options: [
       {
         text: '坦克',
@@ -44,14 +48,17 @@ export default {
   spec: {
     index: 1,
     text: '主玩专精',
-    value: 'spec',
+    value: 'wow_spec',
+    max: 1,
+    filterMax: 2,
     options: [],
   },
   classes: {
     index: 2,
-
+    max: 2,
+    filterMax: 2,
     text: '副玩职业',
-    value: 'classes',
+    value: 'wow_classes',
     options: [
       {
         text: '战士',
@@ -111,7 +118,9 @@ export default {
   gameStyle: {
     index: 3,
     text: '游戏风格',
-    value: 'gameStyle',
+    value: 'wow_game_style',
+    max: 3,
+    filterMax: 3,
     options: [
       {
         text: '大秘-低保',
@@ -150,7 +159,7 @@ export default {
   activeTime: {
     index: 4,
     text: '活跃时间段',
-    value: 'activeTime',
+    value: 'wow_active_time',
     options: [
       {
         text: '工作日',
@@ -167,7 +176,9 @@ export default {
   communication: {
     index: 5,
     text: '交流方式',
-    value: 'communication',
+    value: 'wow_communication',
+    max: 3,
+    filterMax: 3,
     options: [
       {
         text: '语音交流',
