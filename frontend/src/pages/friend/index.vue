@@ -22,22 +22,26 @@
       </view>
     </view>
 
-    <uni-load-more
-      class="pulldown-load-more"
-      :showIcon="false"
-      :status="pulldownRefresh.status"
-    ></uni-load-more>
-
-    <view class="card-list">
-      <view
-        v-for="(item, index) in cardList"
-        :key="item.id"
-        class="card-item"
-        :class="[item.type ? 'card-item__collapse' : '']"
-      >
-        <TagCard :data="item" v-model:type="item.type" />
+    <z-paging
+      ref="vListRef"
+      use-virtual-list
+      cell-height-mode="dynamic"
+      :force-close-inner-list="true"
+      @virtualListChange="virtualListChange"
+      @query="queryList"
+    >
+      <view class="card-list">
+        <view
+          :id="`zp-id-${item.zp_index}`"
+          :key="item.zp_index"
+          v-for="(item, index) in virtualList"
+          class="card-item"
+          :class="[item.type ? 'card-item__collapse' : '']"
+        >
+          <TagCard :data="item" v-model:type="item.type" />
+        </view>
       </view>
-    </view>
+    </z-paging>
 
     <FriendFooter />
 
@@ -66,6 +70,8 @@ import TagCard from '@/components/TagCard.vue';
 import CustomTag from '@/components/CustomTag.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
 import FilterPage from '@/components/FilterPage.vue';
+
+const vListRef = ref();
 
 //#region 过滤栏
 const currentFeature = ref('all');
@@ -166,24 +172,19 @@ const pulldownRefresh = reactive({
 });
 onPullDownRefresh(async () => {
   if (pulldownRefresh.status === LoadingStatus.More) {
-    uni.vibrateShort();
-    pulldownRefresh.status = LoadingStatus.Loading;
-    await updateCardList();
-    pulldownRefresh.status = LoadingStatus.More;
-    uni.stopPullDownRefresh();
+    // uni.vibrateShort();
+    // pulldownRefresh.status = LoadingStatus.Loading;
+    // await updateCardList();
+    // pulldownRefresh.status = LoadingStatus.More;
+    // uni.stopPullDownRefresh();
   }
 });
 
 // 上拉懒加载数据
 onReachBottom(async () => {
   if (pullupRefresh.status === LoadingStatus.More) {
-    await updateCardList(true);
+    // await updateCardList(true);
   }
-});
-
-onLoad(async () => {
-  updateCardList();
-  filterOptions.value = await queryUserTagFilterOptions();
 });
 //#endregion
 
@@ -194,6 +195,27 @@ function onSwitchFilterPage() {
   showFilterPage.value = !showFilterPage.value;
 }
 //#endregion
+
+//#region 虚拟列表
+const virtualList = ref();
+
+function virtualListChange(vList) {
+  virtualList.value = vList;
+}
+async function queryList() {
+  await updateCardList();
+  vListRef.value?.complete(JSON.parse(JSON.stringify(cardList.value)));
+}
+//#endregion
+
+onLoad(async () => {
+  updateCardList();
+  filterOptions.value = await queryUserTagFilterOptions();
+  console.log(vListRef.value);
+  
+  vListRef.value.reload();
+});
+
 </script>
 
 <style lang="scss" scoped>
@@ -255,13 +277,17 @@ $header-bg-color: #1d1d1f;
   }
 }
 
+::v-deep .z-paging-content {
+  top: 120rpx !important;
+  box-sizing: border-box;
+}
 .card-list {
   padding: 20rpx;
   padding-top: 0;
 
   .card-item {
     &:not(:last-child) {
-      margin-bottom: 20rpx;
+      padding-bottom: 20rpx;
     }
   }
 
