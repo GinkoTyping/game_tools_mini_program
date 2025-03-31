@@ -52,7 +52,7 @@
     </z-paging>
 
     <view class="filter-page" v-show="showFilterPage">
-      <FilterPage v-model:data="filterOptions" v-model:show="showFilterPage"/>
+      <FilterPage v-model:data="filterOptions" v-model:show="showFilterPage" />
     </view>
   </view>
 </template>
@@ -210,11 +210,8 @@ async function queryList() {
 //#endregion
 
 onLoad(async () => {
-  updateCardList();
-  filterOptions.value = await queryUserTagFilterOptions();
-  console.log(vListRef.value);
-
   vListRef.value.reload();
+  filterOptions.value = await queryUserTagFilterOptions();
 });
 </script>
 
@@ -294,36 +291,11 @@ $header-bg-color: #1d1d1f;
   }
 }
 
-::v-deep .pulldown-load-more {
-  view {
-    height: 120rpx !important;
-  }
 
-  text {
-    font-size: 24rpx !important;
-  }
-}
-
-::v-deep .reach-bottom-load-more {
-  view {
-    height: 60rpx;
-  }
-}
-
-.pulldown-result-wrapper {
-  position: fixed;
-  top: 80rpx; // 根据header实际高度调整
-  left: 0;
-  right: 0;
-  z-index: 9;
-  height: 60rpx; // 固定高度
-  overflow: hidden;
-
-  .pulldown-result {
-    font-size: 24rpx;
-    color: #bbb;
-    text-align: center;
-    transition: transform 0.3s ease;
+::v-deep .z-paging-content {
+  .zp-absoulte {
+    top: 100rpx;
+    height: calc(100% - 100rpx - 140rpx);
   }
 }
 </style>
