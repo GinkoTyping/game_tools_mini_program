@@ -1,27 +1,5 @@
 <template>
   <view class="page-container">
-    <view class="header-filter">
-      <view class="left-feature">
-        <text
-          v-for="feature in featureFilters"
-          :key="feature.value"
-          class="feature-label"
-          :class="[
-            currentFeature === feature.value ? ' feature-label--active' : '',
-          ]"
-          @click="() => switchFeature(feature.value)"
-          >{{ feature.title }}</text
-        >
-      </view>
-      <view class="right-drop-down">
-        <CustomTag title="筛选" @click="onSwitchFilterPage">
-          <template v-slot:suffix>
-            <view>↓</view>
-          </template>
-        </CustomTag>
-      </view>
-    </view>
-
     <z-paging
       ref="vListRef"
       use-virtual-list
@@ -30,6 +8,32 @@
       @virtualListChange="virtualListChange"
       @query="queryList"
     >
+      <template #top>
+        <view class="header-filter">
+          <view class="left-feature">
+            <text
+              v-for="feature in featureFilters"
+              :key="feature.value"
+              class="feature-label"
+              :class="[
+                currentFeature === feature.value
+                  ? ' feature-label--active'
+                  : '',
+              ]"
+              @click="() => switchFeature(feature.value)"
+              >{{ feature.title }}</text
+            >
+          </view>
+          <view class="right-drop-down">
+            <CustomTag title="筛选" @click="onSwitchFilterPage">
+              <template v-slot:suffix>
+                <view>↓</view>
+              </template>
+            </CustomTag>
+          </view>
+        </view>
+      </template>
+
       <view class="card-list">
         <view
           :id="`zp-id-${item.zp_index}`"
@@ -41,17 +45,14 @@
           <TagCard :data="item" v-model:type="item.type" />
         </view>
       </view>
+
+      <template #bottom>
+        <FriendFooter />
+      </template>
     </z-paging>
 
-    <FriendFooter />
-
-    <uni-load-more
-      class="reach-bottom-load-more"
-      :status="pullupRefresh"
-    ></uni-load-more>
-
-    <view class="filter-page" v-if="showFilterPage">
-      <FilterPage v-model:data="filterOptions" />
+    <view class="filter-page" v-show="showFilterPage">
+      <FilterPage v-model:data="filterOptions" v-model:show="showFilterPage"/>
     </view>
   </view>
 </template>
@@ -212,10 +213,9 @@ onLoad(async () => {
   updateCardList();
   filterOptions.value = await queryUserTagFilterOptions();
   console.log(vListRef.value);
-  
+
   vListRef.value.reload();
 });
-
 </script>
 
 <style lang="scss" scoped>
@@ -277,10 +277,6 @@ $header-bg-color: #1d1d1f;
   }
 }
 
-::v-deep .z-paging-content {
-  top: 120rpx !important;
-  box-sizing: border-box;
-}
 .card-list {
   padding: 20rpx;
   padding-top: 0;

@@ -1,11 +1,12 @@
 <template>
-  <view class="container">
+  <view class="container" v-show="show">
     <view class="header">
       <uni-icons
         class="close-icon"
         type="closeempty"
         size="26"
         color="#bbb"
+        @click="show = false"
       ></uni-icons>
       <view class="header-title">筛选</view>
     </view>
@@ -50,7 +51,7 @@
 
     <!-- 底部操作栏 -->
     <view class="action-bar">
-      <view class="btn reset">清除</view>
+      <view class="btn reset" @click="show = false">清除</view>
       <view class="btn confirm">确定</view>
     </view>
   </view>
@@ -67,6 +68,7 @@ const menuList = defineModel('data', {
   type: Object as () => ITagOptionItem[],
   default: () => [],
 });
+const show = defineModel('show', { type: Boolean, default: false });
 
 const activeContent = computed(() => {
   return menuList.value[activeMenu.value]?.options;
@@ -122,6 +124,7 @@ $filter-main-color: #262629;
     color: #bbb;
     border-left: 6rpx solid transparent;
     position: relative;
+
     &.active-pre {
       &::after,
       &::before {
@@ -132,21 +135,25 @@ $filter-main-color: #262629;
         right: 0;
         bottom: 0;
       }
+
       &::after {
         background-color: $uni-bg-color-grey;
         z-index: 11;
       }
+
       &::before {
         border-bottom-right-radius: 50%;
         background-color: $filter-main-color;
         z-index: 12;
       }
     }
+
     &.active {
       color: #1890ff;
       font-weight: 500;
       border-left-color: #1890ff;
       background-color: $uni-bg-color-grey;
+
       &::after,
       &::before {
         position: absolute;
@@ -156,10 +163,12 @@ $filter-main-color: #262629;
         bottom: -30rpx;
         content: '';
       }
+
       &::after {
         background-color: $uni-bg-color-grey;
         z-index: 11;
       }
+
       &::before {
         border-top-right-radius: 50%;
         background-color: $filter-main-color;
@@ -204,6 +213,7 @@ $filter-main-color: #262629;
   display: flex;
   flex-wrap: wrap;
   gap: 20rpx;
+
   .option-item {
     padding: 16rpx 32rpx;
     background: #f8f8f8;
