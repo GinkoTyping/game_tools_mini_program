@@ -9,6 +9,9 @@
         @click="show = false"
       ></uni-icons>
       <view class="header-title">筛选</view>
+      <view class="selection-info"
+        >已选: {{ selectedCount }}/{{ MAX_ALLOW_COUNT }}</view
+      >
     </view>
     <view class="main">
       <!-- 左侧菜单 -->
@@ -71,17 +74,34 @@ const menuList = defineModel('data', {
 });
 const show = defineModel('show', { type: Boolean, default: false });
 
+//#region 选择 菜单
 const activeContent = computed(() => {
   return menuList.value[activeMenu.value]?.options;
 });
-
 const switchMenu = index => {
   activeMenu.value = index;
 };
+//#endregion
 
+//#region 选择 标签
+const selectedCount = ref(0);
+const MAX_ALLOW_COUNT = 10;
 const handleSelect = item => {
+  if (!item.selected && selectedCount.value === MAX_ALLOW_COUNT) {
+    uni.showToast({ title: '最多选择10个', icon: 'error' });
+    return;
+  }
   item.selected = !item.selected;
+  if (item.selected) {
+    selectedCount.value++;
+  } else {
+    selectedCount.value--;
+  }
 };
+
+//#endregion
+
+//#region 样式文本
 const getButtonType = computed(() => {
   return (item: ITagOptionItem) => {
     if (item.roleClass) {
@@ -90,6 +110,7 @@ const getButtonType = computed(() => {
     return item.selected ? 'active' : '';
   };
 });
+//#endregion
 </script>
 
 <style lang="scss" scoped>
@@ -116,6 +137,15 @@ $filter-main-color: #262629;
       font-weight: bold;
       line-height: 80rpx;
       text-align: center;
+    }
+
+    .selection-info {
+      color: #bbb;
+      font-size: 28rpx;
+      position: absolute;
+      right: 30rpx;
+      top: 50%;
+      transform: translateY(-50%);
     }
   }
 }
