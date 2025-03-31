@@ -41,11 +41,13 @@ const generateWowTag = () => {
   const spec = randomSelect(specOptions, 1);
   const communication = randomSelect(wowTag.communication.options, 1);
 
-
   return {
     jobs: jobs.map((job) => ({ text: job.text, value: job.value })),
     server: server.map((item) => ({ text: item.text, value: item.value })),
-    communication: communication.map((item) => ({ text: item.text, value: item.value })),
+    communication: communication.map((item) => ({
+      text: item.text,
+      value: item.value,
+    })),
     spec: spec.map((s) => ({
       text: s.text,
       value: s.value,
@@ -58,7 +60,7 @@ const generateWowTag = () => {
       value: gs.value,
     })),
     activeTime: generateActiveTime(),
-    privacy: { needConfirm: true },
+    privacy: { needConfirm: Math.floor(Math.random() * 2) ? true : false },
   };
 };
 

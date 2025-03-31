@@ -164,12 +164,62 @@ export default {
       {
         text: '工作日',
         value: 'workDay',
-        range: [],
+        options: [
+          {
+            text: '早上',
+            value: [7, 8, 9, 10],
+          },
+          {
+            text: '中午',
+            value: [11, 12, 13, 14],
+          },
+          {
+            text: '下午',
+            value: [15, 16, 17, 18],
+          },
+          {
+            text: '晚上',
+            value: [19, 20, 21, 22, 23, 0],
+          },
+          {
+            text: '前半夜',
+            value: [1, 2, 3],
+          },
+          {
+            text: '后半夜',
+            value: [4, 5, 6],
+          },
+        ],
       },
       {
         text: '休息日',
         value: 'weekend',
-        range: [],
+        options: [
+          {
+            text: '早上',
+            value: [7, 8, 9, 10],
+          },
+          {
+            text: '中午',
+            value: [11, 12, 13, 14],
+          },
+          {
+            text: '下午',
+            value: [15, 16, 17, 18],
+          },
+          {
+            text: '晚上',
+            value: [19, 20, 21, 22, 23, 0],
+          },
+          {
+            text: '前半夜',
+            value: [1, 2, 3],
+          },
+          {
+            text: '后半夜',
+            value: [4, 5, 6],
+          },
+        ],
       },
     ],
   },
