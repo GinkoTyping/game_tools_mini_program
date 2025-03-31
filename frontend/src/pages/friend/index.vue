@@ -5,7 +5,6 @@
       use-virtual-list
       cell-height-mode="dynamic"
       :force-close-inner-list="true"
-      lower-threshold="300rpx"
       @virtualListChange="virtualListChange"
       @query="queryList"
     >
@@ -43,7 +42,11 @@
           class="card-item"
           :class="[item.type ? 'card-item__collapse' : '']"
         >
-          <TagCard :data="item" v-model:type="item.type" />
+          <TagCard
+            :data="item"
+            v-model:type="item.type"
+            @cell-update="() => handleCellUpdate(item.zp_index)"
+          />
         </view>
       </view>
 
@@ -61,6 +64,7 @@
 <script lang="ts" setup>
 import { onLoad } from '@dcloudio/uni-app';
 import { reactive, ref } from 'vue';
+import { debounce } from 'lodash';
 
 import {
   IFilterParams,
@@ -174,7 +178,10 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
     cardList = data;
   }
 
-  vListRef.value?.complete(data);
+  vListRef.value?.completeByTotal(data, total);
+}
+function handleCellUpdate(index: number) {
+  vListRef.value?.didUpdateVirtualListCell?.(index);
 }
 //#endregion
 
@@ -261,7 +268,7 @@ $header-bg-color: #1d1d1f;
 }
 
 ::v-deep .z-paging-content {
-  .zp-absoulte {
+  .zp-scroll-view-container {
     top: 100rpx;
     height: calc(100% - 100rpx - 140rpx);
   }

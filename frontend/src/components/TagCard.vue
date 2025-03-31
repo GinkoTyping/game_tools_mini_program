@@ -7,6 +7,7 @@
           class="spec-image"
           :src="getSpecIconURL(specInfo.roleClass, specInfo.classSpec)"
           mode="widthFix"
+          @load="onImageLoad"
         />
 
         <view class="main-spec__content">
@@ -85,7 +86,7 @@
           ></uni-icons>
           <text>{{ wowTag.privacy.needConfirm ? '申请' : '获取' }}</text>
         </view>
-        <view class="button-item" @click="type = 'simple'">
+        <view class="button-item" @click="switchType('simple')">
           <text>收起</text>
           <uni-icons type="minus-filled" size="28" color="#999"></uni-icons>
         </view>
@@ -119,7 +120,7 @@
           item.text
         }}</text>
       </view>
-      <view class="buttons" @click="type = 'normal'">
+      <view class="buttons" @click="switchType('normal')">
         <text>展开</text>
         <view class="collapse-button">
           <uni-icons type="more-filled" size="16" color="black"></uni-icons>
@@ -137,7 +138,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive, watch } from 'vue';
+import { computed, nextTick, reactive, watch } from 'vue';
 
 import { IActiveTimeBar } from '@/interface/IUserTag';
 import localeLabels from '@/data/zh.json';
@@ -157,6 +158,21 @@ const props = defineProps({
     default: () => ({}),
   },
 });
+const emit = defineEmits(['cell-update']);
+
+const onImageLoad = () => {
+  // TODO 不使用 setTimeout 会造成 z-paging 获取不到node
+  setTimeout(() => {
+    emit('cell-update');
+  }, 500);
+};
+
+function switchType(value: string) {
+  type.value = value;
+  nextTick(() => {
+    emit('cell-update');
+  });
+}
 
 const wowTag = computed(() => {
   return props.data.wow_tag;
