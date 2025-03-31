@@ -89,31 +89,55 @@ export async function queryFilterUserTag(req, res) {
   res.json(list);
 }
 
-async function mapFilterDetail(wowOptions) {
+async function mapFilterDetail(wowOptions, commonOptions) {
   await mapSpecOptions();
-  const basicWow = Object.values(wowOptions).reduce((pre, cur) => {
-    if (cur.value === 'activeTime') {
-    } else if (cur.value === 'spec') {
-      pre.push({
-        ...cur,
-        options: mapSpecOptions,
-      });
-    } else {
-      pre.push(cur);
+  const wowFilter = Object.values(wowOptions).reduce(
+    (pre, cur) => {
+      if (cur.value === 'activeTime') {
+      } else if (cur.value === 'spec') {
+        pre.options.push({
+          ...cur,
+          options: trendDataCache.trend,
+        });
+      } else {
+        pre.options.push(cur);
+      }
+      return pre;
+    },
+    {
+      text: 'WOW',
+      value: 'wow_basic',
+      options: [],
     }
-    return pre;
-  }, []);
-  return basicWow;
+  );
+
+  const commonFilters = Object.values(commonOptions).reduce(
+    (pre, cur) => {
+      if (['age', 'personality', 'status'].includes(cur.value)) {
+        const parent = pre.find((item) => item.value === 'personal');
+        parent.options.push(cur);
+      } else if (['role'].includes(cur.value)) {
+        const parent = pre.find((item) => item.value === 'role');
+        parent.options.push(cur);
+      } else {
+        const parent = pre.find((item) => item.value === 'likes');
+        parent.options.push(cur);
+      }
+
+      return pre;
+    },
+    [
+      { text: '铭牌主', value: 'personal', options: [] },
+      { text: '自我定位', value: 'role', options: [] },
+      { text: '其他爱玩', value: 'likes', options: [] },
+    ]
+  );
+
+  return [wowFilter, ...commonFilters];
 }
 
 export async function queryFilterDetails(req, res) {
   const data = await userTagMapper.getTagOptions();
-  const filterOptions = await mapFilterDetail(data.wowOptions);
-  res.json([
-    {
-      text: '基本信息',
-      value: 'wow_basic',
-      options: filterOptions,
-    },
-  ]);
+  const filters = await mapFilterDetail(data.wowOptions, data.commonOptions);
+  res.json(filters);
 }

@@ -118,7 +118,7 @@ export default {
         value: 'mythic-low',
       },
       {
-        text: '大秘3000分',
+        text: '大秘冲3000',
         value: 'mythic-3000',
       },
       {
