@@ -177,7 +177,7 @@ export default {
     index: 5,
     text: '交流方式',
     value: 'wow_communication',
-    max: 3,
+    max: 1,
     filterMax: 3,
     options: [
       {

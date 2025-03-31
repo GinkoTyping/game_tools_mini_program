@@ -39,7 +39,7 @@ const generateWowTag = () => {
   const jobs = randomSelect(wowTag.jobs.options, 3);
   const classes = randomSelect(wowTag.classes.options, 3);
   const spec = randomSelect(specOptions, 1);
-  const communication = randomSelect(wowTag.communication.options, 3);
+  const communication = randomSelect(wowTag.communication.options, 1);
 
 
   return {

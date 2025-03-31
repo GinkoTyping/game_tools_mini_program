@@ -27,7 +27,13 @@
           "
           :title="item.text"
           @click="
-            () => setSelection({ item, formName: 'wow', key: 'server', max: 1 })
+            () =>
+              setSelection({
+                item,
+                formName: 'wow',
+                key: 'server',
+                max: wowOptions.server.max,
+              })
           "
         />
       </view>
@@ -164,7 +170,7 @@
       id="game-style"
       class="priest"
       title="交流方式"
-      subTitle="请选择您偏好的交流方式"
+      subTitle="请选择您最偏好的交流方式"
       type="line"
       titleFontSize="16px"
     >
@@ -179,7 +185,13 @@
           "
           :title="item.text"
           @click="
-            () => setSelection({ item, formName: 'wow', key: 'communication' })
+            () =>
+              setSelection({
+                item,
+                formName: 'wow',
+                key: 'communication',
+                max: wowOptions.communication.max,
+              })
           "
         />
       </view>
@@ -739,6 +751,7 @@ onLoad(async () => {
   flex-wrap: wrap;
   gap: 20rpx;
   padding-bottom: 14px;
+
   .btn-item {
     font-size: 26rpx;
     padding: 6rpx 28rpx;
