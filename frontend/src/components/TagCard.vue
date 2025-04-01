@@ -238,7 +238,7 @@ const isUserSelf = computed(() => {
 });
 const getNickName = computed(() => {
   return (roleClass: string, classSpec: string) =>
-    props.data?.nickName
+    wowTag.value?.privacy?.displayWxProfile && props.data?.nickName
       ? {
           main: props.data?.nickName,
           sub: `${localeLabels[roleClass][classSpec]} ${localeLabels.class[roleClass]}`,
@@ -262,9 +262,12 @@ const dynamicButtonText = computed(() => {
   return wowTag.value.privacy.needConfirm ? '申请战网' : '获取战网';
 });
 const getSpecIconURL = computed(() => {
-  return (roleClass: string, classSpec: string) =>
-    props.data?.avatarUrl ??
-    `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`;
+  return (roleClass: string, classSpec: string) => {
+    if (wowTag.value?.privacy?.displayWxProfile && props.data?.avatarUrl) {
+      return props.data?.avatarUrl;
+    }
+    return `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`;
+  };
 });
 const getBgURL = computed(() => {
   return (roleClass: string, classSpec: string) => {

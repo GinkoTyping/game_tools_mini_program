@@ -48,6 +48,12 @@ const menus = reactive([
     page: '/pages/friend/index',
   },
   {
+    title: '返回主页',
+    value: 'home',
+    icon: 'home-filled',
+    page: '/pages/index/index',
+  },
+  {
     title: '我的',
     value: 'setting',
     icon: 'vip-filled',
@@ -63,7 +69,7 @@ function switchMenu(menuItem) {
 }
 onShareAppMessage(() => {
   return {
-    title: `艾泽拉斯同好会`,
+    title: '标签即名片，相逢即战友',
     path: `pages/frind/index`,
   };
 });

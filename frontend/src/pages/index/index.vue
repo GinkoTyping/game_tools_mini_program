@@ -107,7 +107,7 @@
         </view>
         <view class="info">
           <view class="card-name"> 艾泽拉斯同好会 </view>
-          <view class="card-desc">寻找志同道合的伙伴</view>
+          <view class="card-desc">标签即名片，相逢即战友</view>
         </view>
       </view>
       <view class="narrow-card_bg narrow-card_bg--friend"></view>
