@@ -18,6 +18,7 @@
             <view class="role-class">{{
               getNickName(specInfo.roleClass, specInfo.classSpec).sub
             }}</view>
+            <text class="role-class">{{ serverName }}</text>
           </view>
           <view class="main-spec__content-other">
             <view class="game-style label-list">
@@ -236,6 +237,12 @@ const getNickName = computed(() => {
           sub: localeLabels.class[roleClass],
         };
 });
+const serverName = computed(() => {
+  const serverItem = wowTag.value?.server?.[0];
+  return serverItem && serverItem.value !== 'china'
+    ? `[${serverItem.text}]`
+    : '';
+});
 const getSpecIconURL = computed(() => {
   return (roleClass: string, classSpec: string) =>
     props.data?.avatarUrl ??
@@ -374,6 +381,7 @@ $label-margin-bottom: 12rpx;
 
           .role-class {
             font-size: 28rpx;
+            margin-right: 10rpx;
           }
         }
 
