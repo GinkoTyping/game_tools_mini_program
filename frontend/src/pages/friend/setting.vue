@@ -241,7 +241,8 @@
         </view> -->
       </template>
       <view class="switch-list">
-        <view class="switch-lits-item">
+        <!-- TODO: wx回收了该接口 只能自选图片 -->
+        <!-- <view class="switch-lits-item">
           <view class="switch-lits-item__label">名片展示微信昵称和头像</view>
           <switch
             :checked="wowForm.privacy.displayWxProfile"
@@ -249,7 +250,7 @@
             color="#007aff"
             style="transform: scale(0.7)"
           />
-        </view>
+        </view> -->
         <view class="switch-lits-item">
           <view class="switch-lits-item__label">通过名片公开战网信息</view>
           <switch
