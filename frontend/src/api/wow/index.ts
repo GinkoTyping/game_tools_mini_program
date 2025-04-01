@@ -9,6 +9,19 @@ import { ICommonTag, IWowTag } from '@/interface/IUserTag';
 const localeNameMap: any = localeName;
 const auth = useAuth();
 
+export async function updateUserProfile(params) {
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/auth/update`,
+    method: 'POST',
+    data: {
+      id: userId,
+      ...params,
+    },
+  });
+  return res;
+}
+
 enum BisType {
   Overall = 0,
   Raid = 1,

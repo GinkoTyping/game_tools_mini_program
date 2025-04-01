@@ -43,3 +43,14 @@ export async function queryLogin(req, res) {
     res.status(401).json({ error: '身份验证失败' });
   }
 }
+
+export async function queryUpdateUser(req, res) {
+  try {
+    const result = await authMapper.updateUserById(req.body);
+    res.json({
+      message: result.changes ? '同步用户信息成功' : '同步用户信息失败',
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.changes });
+  }
+}

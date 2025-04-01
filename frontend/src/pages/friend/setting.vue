@@ -242,6 +242,15 @@
       </template>
       <view class="switch-list">
         <view class="switch-lits-item">
+          <view class="switch-lits-item__label">名片展示微信昵称和头像</view>
+          <switch
+            :checked="wowForm.privacy.displayWxProfile"
+            @change="onDisplayWxInfo"
+            color="#007aff"
+            style="transform: scale(0.7)"
+          />
+        </view>
+        <view class="switch-lits-item">
           <view class="switch-lits-item__label">通过名片公开战网信息</view>
           <switch
             :checked="!wowForm.privacy.needConfirm"
@@ -252,12 +261,14 @@
         </view>
       </view>
       <uni-easyinput
+        v-if="!wowForm.privacy.needConfirm"
         class="battlenet-input"
         type="password"
         v-model="battlenetId"
-        placeholder="战网昵称或者邮箱"
-        v-if="!wowForm.privacy.needConfirm"
+        :placeholder="battlenetDisplayInfo.placeholder"
+        :errorMessage="battlenetDisplayInfo.isError"
       ></uni-easyinput>
+
       <view v-if="wowForm.privacy.needConfirm"
         >即将推出“申请”获取战网信息功能，只展示战网信息给您同意的用户。敬请期待</view
       >
@@ -312,17 +323,12 @@
       id="preview-card"
       class="priest"
       title="预览名片"
-      :subTitle="`上次更新：${cardData?.updated_at}`"
+      :subTitle="previewText"
       type="line"
       titleFontSize="14px"
     >
       <TagCard v-if="cardData" :data="cardData" preview />
     </uni-section>
-    <!-- <view class="preview-header">
-      <view class="preview-header__title"
-        >上次更新：{{ cardData?.updated_at }}</view
-      >
-    </view> -->
   </view>
   <view id="buttons" v-if="[0, 1].includes(currentTab)">
     <view class="submit-btn" @click="submit">{{
@@ -416,7 +422,11 @@
 </template>
 
 <script lang="ts" setup>
-import { querySubmitUserTag, queryUserTagById } from '@/api/wow';
+import {
+  querySubmitUserTag,
+  queryUserTagById,
+  updateUserProfile,
+} from '@/api/wow';
 import {
   IOptionItem,
   ICommonTag,
@@ -438,7 +448,7 @@ const commonOptions = computed(() => userStore.userTagOptions.commonOptions);
 const specOptions = computed(() => userStore.userTagOptions.specs);
 
 //#region 分段器
-const currentTab = ref(2);
+const currentTab = ref(0);
 const tabs = ref(['基本信息', '其他(选填)', '我的名片']);
 function switchTab(e) {
   if (currentTab.value !== e.currentIndex) {
@@ -466,12 +476,24 @@ const wowForm = reactive<IWowTag>({
   gameStyle: [],
   communication: [],
   activeTime: [getBasicTimeValues('工作日'), getBasicTimeValues('休息日')],
-  privacy: { needConfirm: false },
+  privacy: { needConfirm: false, displayWxProfile: false },
 });
 const battlenetId = ref('');
 //#endregion
 
-//#region 隐私
+//#region 隐私信息
+const battlenetStatus = ref(true);
+const battlenetDisplayInfo = computed(() => {
+  return battlenetStatus.value
+    ? {
+        placeholder: '输入战网昵称或者邮箱',
+        isError: false,
+      }
+    : {
+        placeholder: '输入战网昵称或者邮箱！或上方切换为不公开战网',
+        isError: true,
+      };
+});
 function onPrivacyChange(e) {
   wowForm.privacy.needConfirm = !e.detail.value;
 }
@@ -479,6 +501,21 @@ function showPrivacyNote() {
   uni.showToast({
     title: '',
     icon: 'none',
+  });
+}
+const userProfile = ref();
+function onDisplayWxInfo(e) {
+  wowForm.privacy.displayWxProfile = e.detail.value;
+  uni.getUserProfile({
+    desc: '名片里展示您的微信头像和昵称',
+    async success(data) {
+      userProfile.value = data.userInfo;
+      const res = await updateUserProfile(data.userInfo);
+      uni.showToast({
+        title: res.data.message,
+        icon: 'none',
+      });
+    },
   });
 }
 //#endregion
@@ -682,9 +719,10 @@ function validate() {
     isPrivacyValid = true;
   } else {
     isPrivacyValid = battlenetId.value?.length > 0;
+    battlenetStatus.value = isPrivacyValid;
     if (!isPrivacyValid) {
       error =
-        '如果选择“公开战网信息”需要填写您的战网昵称或者邮箱。\n如果忘记了战网信息，可以先选择“不公开战网信息”。';
+        '请填写战网昵称或者邮箱！\n如果忘记了战网信息，可以先选择“不公开战网信息”。';
     }
   }
 
@@ -757,11 +795,20 @@ async function submit() {
 }
 //#endregion
 
+//#region 预览
 const cardData = ref();
+const previewText = computed(() => {
+  return cardData.value
+    ? `上次更新: ${cardData.value?.updated_at}`
+    : '您还没有编辑名片信息';
+});
+//#endregion
 onLoad(async () => {
   await userStore.getFriendOptions();
   const data = await queryUserTagById();
-  cardData.value = JSON.parse(JSON.stringify(data));
+  if (data) {
+    cardData.value = JSON.parse(JSON.stringify(data));
+  }
 
   isEdit.value = Boolean(data?.wow_tag || data?.common_tag);
 
@@ -996,6 +1043,7 @@ onLoad(async () => {
     }
   }
 }
+
 ::v-deep #privacy .uni-easyinput {
   padding-bottom: 14rpx;
 }

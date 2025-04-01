@@ -23,7 +23,7 @@ export interface IWowTag {
     title: string;
     values: IActiveTimeBar[];
   }[];
-  privacy: { needConfirm: boolean };
+  privacy: { needConfirm: boolean; displayWxProfile: boolean };
 }
 
 export interface ICommonTag {

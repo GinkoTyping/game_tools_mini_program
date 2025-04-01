@@ -14,7 +14,7 @@ const randomSelect = (arr, max = 3) => {
 
 // 生成战网ID
 const generateBattlenetId = () => {
-  return `TEST#${Math.floor(1000 + Math.random() * 9000)}`
+  return `TEST#${Math.floor(1000 + Math.random() * 9000)}`;
 };
 
 // 生成活跃时间段数据
@@ -59,7 +59,10 @@ const generateWowTag = () => {
       value: gs.value,
     })),
     activeTime: generateActiveTime(),
-    privacy: { needConfirm: Math.floor(Math.random() * 2) ? true : false },
+    privacy: {
+      needConfirm: Math.floor(Math.random() * 2) ? true : false,
+      displayWxProfile: Math.floor(Math.random() * 2) ? true : false,
+    },
   };
 };
 
@@ -99,7 +102,8 @@ const generateRecord = (id) => {
     wow_classes: wowTagData.classes.map((c) => c.value).join(','),
     wow_game_style: wowTagData.gameStyle.map((gs) => gs.value).join(','),
     wow_active_time: generateTimeLabels(wowTagData.activeTime),
-    wow_privacy: Math.floor(Math.random() * 2),
+    wow_privacy_need_confirm: wowTagData.privacy.needConfirm ? 1 : 0,
+    wow_privacy_wx_profile: wowTagData.privacy.displayWxProfile ? 1 : 0,
     common_status: commonTagData.status.map((j) => j.value).join(','),
     common_game: commonTagData.game.map((j) => j.value).join(','),
     common_age: commonTagData.age.map((j) => j.value).join(','),

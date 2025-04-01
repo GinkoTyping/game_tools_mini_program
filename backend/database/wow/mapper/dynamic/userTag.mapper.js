@@ -101,7 +101,8 @@ function mapSingleTag(wowTag, commonTag) {
   const wowCommunication = toString(wowTag.communication);
   const wowGameStyle = toString(wowTag.gameStyle);
   const wowActiveTime = generateTimeLabels(wowTag.activeTime);
-  const wowPrivacy = wowTag.privacy ? 1 : 0;
+  const wowPrivacyNeedConfirm = wowTag.privacy.needConfirm ? 1 : 0;
+  const wowPrivacyDisplayWxProfile = wowTag.privacy.displayWxProfile ? 1 : 0;
 
   const commonStatus = toString(commonTag.status);
   const commonGame = toString(commonTag.game);
@@ -117,7 +118,8 @@ function mapSingleTag(wowTag, commonTag) {
     wowCommunication,
     wowGameStyle,
     wowActiveTime,
-    wowPrivacy,
+    wowPrivacyNeedConfirm,
+    wowPrivacyDisplayWxProfile,
     commonStatus,
     commonGame,
     commonAge,
@@ -130,7 +132,7 @@ async function insertUserTag(params) {
   const { id, battlenetId, wowTag, commonTag } = params;
   const date = formatDateByMinute();
   return db.run(
-    `INSERT INTO ${TABLE_NAME}(user_id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_server, wow_jobs, wow_spec, wow_classes, wow_communication, wow_game_style,wow_active_time, wow_privacy, common_status, common_game, common_age, common_personality, common_role) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    `INSERT INTO ${TABLE_NAME}(user_id, battlenet_id, wow_tag, common_tag, created_at, updated_at, wow_server, wow_jobs, wow_spec, wow_classes, wow_communication, wow_game_style,wow_active_time, wow_privacy_need_confirm, wow_privacy_wx_profile, common_status, common_game, common_age, common_personality, common_role) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     [
       id,
       battlenetId,
@@ -159,7 +161,8 @@ async function updateUserTag(params) {
     'wow_communication',
     'wow_game_style',
     'wow_active_time',
-    'wow_privacy',
+    'wow_privacy_need_confirm',
+    'wow_privacy_wx_profile',
 
     'common_status',
     'common_game',
