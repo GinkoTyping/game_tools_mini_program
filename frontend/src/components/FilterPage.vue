@@ -60,7 +60,7 @@
 
     <!-- 底部操作栏 -->
     <view class="action-bar">
-      <view class="btn reset" @click="show = false">清除</view>
+      <view class="btn reset" @click="onClearFilter">清除</view>
       <view class="btn confirm" @click="confirm">确定</view>
     </view>
   </view>
@@ -88,10 +88,10 @@ const switchMenu = index => {
 //#endregion
 
 //#region 选择 标签
+const selectedOptions = ref<{ [key: string]: string[] }>({});
 const selectionCount = computed(
   () => Object.values(selectedOptions.value).flat()?.length
 );
-const selectedOptions = ref<{ [key: string]: string[] }>({});
 const MAX_ALLOW_COUNT = 12;
 const handleSelect = (item, group) => {
   const paramKey = ['workDay', 'weekend'].includes(group.value)
@@ -162,6 +162,9 @@ const emits = defineEmits(['change']);
 function confirm() {
   emits('change', selectedOptions.value);
   show.value = false;
+}
+function onClearFilter() {
+  selectedOptions.value = {};
 }
 //#endregion
 </script>

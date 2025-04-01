@@ -7,11 +7,16 @@
       :class="[activeMenu === menu.value ? 'menu-item--active' : '']"
       @click="() => switchMenu(menu)"
     >
-      <uni-icons
-        :type="menu.icon"
-        size="24"
-        :color="activeMenu === menu.value ? '#007aff' : '#bbb'"
-      ></uni-icons>
+      <button
+        class="button-wrap"
+        :open-type="menu.value === 'share' ? 'share' : ''"
+      >
+        <uni-icons
+          :type="menu.icon"
+          size="24"
+          :color="activeMenu === menu.value ? '#007aff' : '#bbb'"
+        ></uni-icons>
+      </button>
       <view>{{ menu.title }}</view>
     </view>
   </view>
@@ -20,7 +25,7 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import { useNavigator } from '@/hooks/navigator';
-import { onShow } from '@dcloudio/uni-app';
+import { onShareAppMessage, onShow } from '@dcloudio/uni-app';
 
 const activeMenu = defineModel('menu', { type: String, default: 'index' });
 const menus = reactive([
@@ -30,15 +35,15 @@ const menus = reactive([
     icon: 'map-filled',
     page: '/pages/friend/index',
   },
-  {
-    title: '申请',
-    value: 'invites',
-    icon: 'personadd-filled',
-    page: '/pages/friend/index',
-  },
+  // {
+  //   title: '申请',
+  //   value: 'invites',
+  //   icon: 'personadd-filled',
+  //   page: '/pages/friend/index',
+  // },
   {
     title: '分享',
-    value: 'invites',
+    value: 'share',
     icon: 'redo-filled',
     page: '/pages/friend/index',
   },
@@ -51,12 +56,17 @@ const menus = reactive([
 ]);
 const navigator = useNavigator();
 function switchMenu(menuItem) {
-  if (activeMenu.value !== menuItem.value) {
+  if (menuItem.value !== 'share' && activeMenu.value !== menuItem.value) {
     activeMenu.value = menuItem.value;
     navigator.toPage(menuItem.page);
   }
 }
-
+onShareAppMessage(() => {
+  return {
+    title: `艾泽拉斯同好会`,
+    path: `pages/frind/index`,
+  };
+});
 onShow(() => {
   const currentPage = getCurrentPages().slice(-1)?.[0].route;
   switch (currentPage) {
@@ -85,6 +95,15 @@ $header-bg-color: #1d1d1f;
   width: 100vw;
   background-color: $header-bg-color;
   box-sizing: border-box;
+  .button-wrap {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    background: transparent;
+  }
   .menu-item {
     display: flex;
     flex-direction: column;
