@@ -185,7 +185,7 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
     cardList.push(...data);
   } else {
     uni.showToast({
-      title: `获取了${total}张铭牌`,
+      title: `获取了${total}张名片`,
       icon: 'none',
     });
     cardList = data;

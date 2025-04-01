@@ -88,6 +88,32 @@
     </view>
   </view>
 
+  <!-- 魔兽式“相亲” -->
+  <view class="divide-section">
+    <view class="prefix">
+      <view class="icon"></view>
+      <view class="title">魔兽式“相♂亲”</view>
+    </view>
+  </view>
+  <view class="narrow-card-container">
+    <view
+      class="narrow-card narrow-card--row"
+      @click="() => navigator.toFrindIndex()"
+    >
+      <view class="narrow-card_info">
+        <view class="icon icon-right-bottom">
+          <uni-icons color="#bbb" type="image" size="20"></uni-icons>
+          <text>{{ homeViewData?.mythicMarkCount }}</text>
+        </view>
+        <view class="info">
+          <view class="card-name"> 艾泽拉斯同好会 </view>
+          <view class="card-desc">寻找志同道合的伙伴</view>
+        </view>
+      </view>
+      <view class="narrow-card_bg narrow-card_bg--friend"></view>
+    </view>
+  </view>
+
   <!-- 精选板块 -->
   <view class="divide-section">
     <view class="prefix">
@@ -498,13 +524,19 @@ $simple-card-width: 43.5vw;
     .icon {
       position: absolute;
       z-index: 2;
-      top: 0.6rem;
       right: 0.6rem;
       color: $color-legend;
       display: flex;
       align-items: center;
       font-weight: bold;
       font-size: 14px;
+    }
+    .icon:not(.icon-right-bottom) {
+      top: 0.6rem;
+    }
+    .icon-right-bottom {
+      bottom: 0.4rem;
+      color: #bbb;
     }
 
     .info {
@@ -541,6 +573,14 @@ $simple-card-width: 43.5vw;
   .narrow-card_bg--mythic {
     background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/Patchnotes.webp);
   }
+  .narrow-card_bg--friend {
+    background-image: url(https://ginkolearn.cyou/api/wow/assets/home/friend-home.webp);
+    mask-image: linear-gradient(0deg, transparent 0%, rgb(0, 0, 0) 90%);
+  }
+}
+.narrow-card.narrow-card--row {
+  height: 8rem;
+  width: 100% !important;
 }
 
 .divide-section {
