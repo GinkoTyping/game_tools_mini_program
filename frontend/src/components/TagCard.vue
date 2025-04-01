@@ -89,7 +89,7 @@
       </view>
       <!-- 按钮 -->
       <view class="buttons">
-        <view class="button-item">
+        <view class="button-item" @click="requestBattlenet">
           <uni-icons
             :type="
               wowTag.privacy.needConfirm ? 'personadd-filled' : 'auth-filled'
@@ -166,7 +166,7 @@ import { computed, nextTick, reactive, watch } from 'vue';
 
 import { IActiveTimeBar } from '@/interface/IUserTag';
 import localeLabels from '@/data/zh.json';
-import { ITagCardItem } from '@/api/wow';
+import { ITagCardItem, queryUserTagById } from '@/api/wow';
 import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
 import CustomTag from '@/components/CustomTag.vue';
 
@@ -191,13 +191,6 @@ const onImageLoad = () => {
     emit('cell-update');
   }, 500);
 };
-
-function switchType(value: string) {
-  type.value = value;
-  nextTick(() => {
-    emit('cell-update');
-  });
-}
 
 const wowTag = computed(() => {
   return props.data.wow_tag;
@@ -245,7 +238,45 @@ const getBgURL = computed(() => {
   };
 });
 //#endregion
+
+//#region 按钮
+async function requestBattlenet() {
+  if (!wowTag.value?.privacy) {
+    return;
+  }
+
+  if (wowTag.value?.privacy?.needConfirm) {
+    uni.showToast({
+      title: '用户目前还没有公开战网信息噢',
+      icon: 'none',
+      duration: 3000,
+    });
+  } else {
+    const data = await queryUserTagById({ id: props.data.id });
+    if (data?.battlenet_id) {
+      uni.setClipboardData({
+        data: data.battlenet_id,
+        success: function () {
+          uni.showToast({
+            title: '已复制战网至粘贴板',
+            icon: 'none',
+            duration: 3000,
+          });
+        },
+      });
+    }
+  }
+}
+
+function switchType(value: string) {
+  type.value = value;
+  nextTick(() => {
+    emit('cell-update');
+  });
+}
+//#endregion
 </script>
+
 <style lang="scss" scoped>
 $label-height: 40rpx;
 $label-margin-bottom: 12rpx;

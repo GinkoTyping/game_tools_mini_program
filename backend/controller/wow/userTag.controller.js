@@ -79,9 +79,15 @@ export async function queryUpdateUserTag(req, res) {
 }
 
 export async function queryUserTagByIds(req, res) {
-  const { ids } = req.body;
-  const list = await userTagMapper.getUserTagByIds(ids, true);
-  res.json(list);
+  try {
+    const { ids, userIds } = req.body;
+    const whereKey = ids ? 'id' : 'user_id';
+
+    const list = await userTagMapper.getUserTagByIds(ids ?? userIds, whereKey, true);
+    res.json(list);
+  } catch (error) {
+    res.status(500).json({ message: error?.message });
+  }
 }
 
 export async function queryUserTagByFilter(req, res) {

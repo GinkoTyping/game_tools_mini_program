@@ -13,6 +13,7 @@ $hunter: rgb(170, 211, 114);
 $priest: rgb(255, 255, 255);
 .warrior {
   color: $warrior;
+  border-color: $warrior;
 }
 .warrior::before {
   background-color: $warrior;

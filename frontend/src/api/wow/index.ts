@@ -787,14 +787,27 @@ export async function querySubmitUserTag(params) {
   const isSuccess = res.statusCode === 200;
   return { isSuccess, message: res?.data?.message };
 }
-export async function queryUserTagById() {
+export async function queryUserTagById(params?: {
+  id?: number;
+  userId?: number;
+}) {
   const { userId } = await auth.getUserInfo();
+
+  const finalParams: any = {};
+  if (params?.id || params?.userId) {
+    if (params.id) {
+      finalParams.ids = [params.id];
+    } else {
+      finalParams.userIds = [params.userId];
+    }
+  } else {
+    finalParams.ids = [userId];
+  }
+
   const res: any = await proxyRequest({
     url: `/wow/user-tag/query`,
     method: 'POST',
-    data: {
-      ids: [userId],
-    },
+    data: finalParams,
   });
   return res?.data?.[0];
 }

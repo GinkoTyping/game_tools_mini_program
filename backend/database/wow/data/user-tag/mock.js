@@ -14,9 +14,7 @@ const randomSelect = (arr, max = 3) => {
 
 // 生成战网ID
 const generateBattlenetId = () => {
-  return Math.random() > 0.2
-    ? `TEST#${Math.floor(1000 + Math.random() * 9000)}`
-    : 'NULL';
+  return `TEST#${Math.floor(1000 + Math.random() * 9000)}`
 };
 
 // 生成活跃时间段数据

@@ -189,14 +189,20 @@ async function updateUserTag(params) {
   ]);
 }
 
-async function getUserTagByIds(ids, hasBattlenetId) {
+async function getUserTagByIds(ids, whereKey, hasBattlenetId) {
   let selectSql =
-    'user_id, wow_tag, common_tag' + `${hasBattlenetId ? ',battlenet_id' : ''}`;
+    'id, user_id, wow_tag, common_tag' +
+    `${hasBattlenetId ? ',battlenet_id' : ''}`;
+
+  if (!['id', 'user_id'].includes(whereKey)) {
+    throw new Error('invalid where key');
+  }
+
   const sql = ids.reduce((pre, cur, index) => {
     if (index === 0) {
-      pre += `user_id=?${index + 1} `;
+      pre += `${whereKey}=?${index + 1} `;
     } else {
-      pre += `OR user_id=?${index + 1} `;
+      pre += `OR ${whereKey}=?${index + 1} `;
     }
     return pre;
   }, `SELECT ${selectSql} FROM ${TABLE_NAME} WHERE `);
