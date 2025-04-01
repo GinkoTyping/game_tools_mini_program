@@ -831,6 +831,8 @@ export interface ITagCardItem {
   id: number;
   updated_at: string;
   type: string;
+  nickName: string;
+  avatarUrl: string;
 }
 export interface IFilterParams {
   filter: { wow_game_style: string[]; wow_jobs: string[] };

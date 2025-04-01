@@ -13,10 +13,10 @@
         <view class="main-spec__content">
           <view class="main-spec__content-title" :class="[specInfo.roleClass]">
             <view class="class-spec">{{
-              localeLabels[specInfo.roleClass][specInfo.classSpec]
+              getNickName(specInfo.roleClass, specInfo.classSpec).main
             }}</view>
             <view class="role-class">{{
-              localeLabels.class[specInfo.roleClass]
+              getNickName(specInfo.roleClass, specInfo.classSpec).sub
             }}</view>
           </view>
           <view class="main-spec__content-other">
@@ -224,8 +224,21 @@ watch(
 //#endregion
 
 //#region 文本样式
+const getNickName = computed(() => {
+  return (roleClass: string, classSpec: string) =>
+    props.data?.nickName
+      ? {
+          main: props.data?.nickName,
+          sub: `${localeLabels[roleClass][classSpec]} ${localeLabels.class[roleClass]}`,
+        }
+      : {
+          main: localeLabels[roleClass][classSpec],
+          sub: localeLabels.class[roleClass],
+        };
+});
 const getSpecIconURL = computed(() => {
   return (roleClass: string, classSpec: string) =>
+    props.data?.avatarUrl ??
     `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`;
 });
 const getBgURL = computed(() => {
@@ -412,6 +425,7 @@ $label-margin-bottom: 12rpx;
         & > text {
           margin: 0 10rpx;
         }
+
         .available {
           color: $uni-color-primary !important;
         }

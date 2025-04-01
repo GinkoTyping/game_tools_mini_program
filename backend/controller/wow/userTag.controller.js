@@ -1,11 +1,15 @@
 import classLocale from '../../util/classLocale.js';
-import { getDynamicDB } from '../../database/utils/index.js';
+import { getAuthDB, getDynamicDB } from '../../database/utils/index.js';
 import { useUserTagMapper } from '../../database/wow/mapper/dynamic/userTag.mapper.js';
 import { getTrendData } from './bisController.js';
 import { useScheduleCheck } from '../../util/use-schedule-check.js';
+import { useAuthMapper } from '../../database/auth/mapper/authMapper.js';
 
 const db = await getDynamicDB();
 const userTagMapper = useUserTagMapper(db);
+
+const authDb = await getAuthDB();
+const authMapper = useAuthMapper(authDb);
 
 const UPDATE_INTERVAL_HOUR = 24;
 const optionSchedule = useScheduleCheck(UPDATE_INTERVAL_HOUR);
@@ -83,7 +87,11 @@ export async function queryUserTagByIds(req, res) {
     const { ids, userIds } = req.body;
     const whereKey = ids ? 'id' : 'user_id';
 
-    const list = await userTagMapper.getUserTagByIds(ids ?? userIds, whereKey, true);
+    const list = await userTagMapper.getUserTagByIds(
+      ids ?? userIds,
+      whereKey,
+      true
+    );
     res.json(list);
   } catch (error) {
     res.status(500).json({ message: error?.message });
@@ -91,8 +99,19 @@ export async function queryUserTagByIds(req, res) {
 }
 
 export async function queryUserTagByFilter(req, res) {
-  const list = await userTagMapper.getUserTagByFilter(req.body);
-  res.json(list);
+  const allData = await userTagMapper.getUserTagByFilter(req.body);
+  const users = await authMapper.getUsersByIds(
+    allData.data.map((item) => item.user_id)
+  );
+  allData.data = allData.data.map((item) => {
+    const existed = users.find((user) => user.id === item.user_id);
+    return {
+      ...item,
+      nickName: existed?.nick_name ?? null,
+      avatarUrl: existed?.avatar_url ?? null,
+    };
+  });
+  res.json(allData);
 }
 
 async function mapFilterDetail(wowOptions, commonOptions) {

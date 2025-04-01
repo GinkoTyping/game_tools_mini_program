@@ -256,7 +256,7 @@ async function getUserTagByFilter(params) {
   `;
 
   const dataSql = `
-    SELECT id, wow_tag, common_tag, updated_at
+    SELECT id, user_id, wow_tag, common_tag, updated_at
     FROM ${TABLE_NAME}
     WHERE ${baseWhere}
     ORDER BY updated_at DESC 

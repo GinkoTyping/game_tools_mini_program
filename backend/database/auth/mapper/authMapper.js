@@ -12,6 +12,22 @@ async function getUserById(open_id) {
   return db.get(`SELECT * FROM user WHERE open_id = ?1`, [open_id]);
 }
 
+async function getUsersByIds(ids) {
+  // 检查是否为非空数组
+  if (!Array.isArray(ids) || ids.length === 0) {
+    return [];
+  }
+
+  // 生成占位符：根据数组长度生成 ?, ?, ?
+  const placeholders = ids.map(() => '?').join(', ');
+
+  // 构建 SQL 查询
+  const sql = `SELECT * FROM user WHERE id IN (${placeholders})`;
+
+  // 执行查询（使用 db.all 获取多行结果）
+  return db.all(sql, ids);
+}
+
 async function updateUserById(params) {
   const { id, nickName, avatarUrl, gender, country, province, city } = params;
   return db.run(
@@ -48,5 +64,5 @@ export function useAuthMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { addUser, getUserById, updateUserById };
+  return { addUser, getUserById, updateUserById, getUsersByIds };
 }
