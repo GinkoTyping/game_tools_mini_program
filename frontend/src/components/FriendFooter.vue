@@ -67,12 +67,6 @@ function switchMenu(menuItem) {
     navigator.toPage(menuItem.page);
   }
 }
-onShareAppMessage(() => {
-  return {
-    title: '标签即名片，相逢即战友',
-    path: `pages/frind/index`,
-  };
-});
 onShow(() => {
   const currentPage = getCurrentPages().slice(-1)?.[0].route;
   switch (currentPage) {

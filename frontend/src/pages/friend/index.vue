@@ -71,10 +71,11 @@
       />
     </view>
   </view>
+  <CustomToast ref="toastRef" />
 </template>
 
 <script lang="ts" setup>
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { reactive, ref } from 'vue';
 
 import {
@@ -87,8 +88,12 @@ import TagCard from '@/components/TagCard.vue';
 import CustomTag from '@/components/CustomTag.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
 import FilterPage from '@/components/FilterPage.vue';
+import CustomToast from '@/components/CustomToast.vue';
 
-const vListRef = ref();
+onShareAppMessage(() => ({
+  title: '标签即名片，相逢即战友',
+  path: `pages/frind/index`,
+}));
 
 //#region 过滤栏
 const currentFeature = ref('all');
@@ -218,6 +223,7 @@ function onAdLoad(index: number) {
 //#endregion
 
 //#region 虚拟列表
+const vListRef = ref();
 let cardList: ITagCardItem[] = [];
 const cardCount = ref<number>();
 const virtualList = ref();
@@ -225,6 +231,7 @@ const virtualList = ref();
 function virtualListChange(vList) {
   virtualList.value = vList;
 }
+const toastRef = ref();
 async function queryList(pageNo: number, pageSize: number, from: string) {
   if (['load-more'].includes(from) && cardList.length) {
     const lastTagCard = cardList.slice(-1)[0];
@@ -244,11 +251,8 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
   if (['load-more'].includes(from)) {
     cardList.push(...data);
   } else {
-    uni.showToast({
-      title: `获取了${total}张名片`,
-      icon: 'none',
-    });
-    cardList = data;
+    toastRef.value.showToast(`获取了${total}张名片`);
+    cardList = [...data];
   }
 
   // 根据是否有广告,在原数据中插入广告

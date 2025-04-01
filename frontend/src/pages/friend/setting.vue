@@ -435,13 +435,18 @@ import {
   ISpecOptionItem,
 } from '@/interface/IUserTag';
 import { useUserStore } from '@/store/wowStore';
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
 import { computed, reactive, ref } from 'vue';
 import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
 import CustomTag from '@/components/CustomTag.vue';
 import TagCard from '@/components/TagCard.vue';
+
+onShareAppMessage(() => ({
+  title: '标签即名片，相逢即战友',
+  path: `pages/frind/index`,
+}));
 
 const userStore = useUserStore();
 const wowOptions = computed(() => userStore.userTagOptions.wowOptions);
@@ -712,8 +717,7 @@ function validateBattlenetId(value: string) {
   if (!value) {
     return {
       isValid: false,
-      message:
-        '请填写战网昵称或者邮箱！或选择“不公开战网信息”。',
+      message: '请填写战网昵称或者邮箱！或选择“不公开战网信息”。',
     };
   }
   if (!value.includes('#') && !value.includes('@')) {
