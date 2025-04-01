@@ -3,7 +3,7 @@ CREATE TABLE
     id INTEGER PRIMARY KEY NOT NULL,
     open_id TEXT UNIQUE NOT NULL,
     nick_name TEXT,
-    avatarUrl TEXT,
+    avatar_url TEXT,
     gender INTEGER,
     country TEXT,
     province TEXT,
