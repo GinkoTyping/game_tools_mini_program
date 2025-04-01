@@ -833,6 +833,7 @@ export interface ITagCardItem {
   type: string;
   nickName: string;
   avatarUrl: string;
+  isAd?: boolean;
 }
 export interface IFilterParams {
   filter: {
@@ -842,6 +843,7 @@ export interface IFilterParams {
   };
   lastId: number;
   lastUpdatedAt: string;
+  pageSize: number;
 }
 export async function queryUserTagByFilter(params?) {
   const res: any = await proxyRequest({

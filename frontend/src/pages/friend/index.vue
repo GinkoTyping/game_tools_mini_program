@@ -37,7 +37,6 @@
           </view>
         </view>
       </template>
-
       <view class="card-list">
         <view
           :id="`zp-id-${item.zp_index}`"
@@ -45,7 +44,13 @@
           v-for="(item, index) in virtualList"
           class="card-item"
         >
+          <ad-custom
+            v-if="item.isAd"
+            unit-id="adunit-3e881d1ef7f4ed0f"
+            @load="() => handleCellUpdate(item.zp_index)"
+          ></ad-custom>
           <TagCard
+            v-if="!item.isAd"
             :data="item"
             v-model:type="item.type"
             @cell-update="() => handleCellUpdate(item.zp_index)"
@@ -121,6 +126,7 @@ const filterParams = reactive<IFilterParams>({
   filter: { wow_game_style: [], wow_jobs: [], wow_privacy_need_confirm: [] },
   lastId: -1,
   lastUpdatedAt: '',
+  pageSize: 10,
 });
 async function setGameStyleFilter() {
   // 重置参数
@@ -176,9 +182,23 @@ const virtualList = ref();
 function virtualListChange(vList) {
   virtualList.value = vList;
 }
-async function queryList(pageNo: number, pageSize: number, from: string) {
-  console.log(pageNo, pageSize, from);
+function isInsertAd(from) {
+  if (['user-pull-down', 'init', 'reload'].includes(from)) {
+    return true;
+  }
 
+  if (from === 'load-more' && Math.random() < 0.5) {
+    return true;
+  }
+  return false;
+}
+function createAdItem() {
+  return {
+    isAd: true,
+    id: Date.now(),
+  } as ITagCardItem;
+}
+async function queryList(pageNo: number, pageSize: number, from: string) {
   if (['load-more'].includes(from) && cardList.length) {
     const lastTagCard = cardList.slice(-1)[0];
     filterParams.lastId = lastTagCard.id;
@@ -187,6 +207,11 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
     filterParams.lastId = -1;
     filterParams.lastUpdatedAt = '';
   }
+
+  // 根据是否有广告，动态修改请求的pageSize
+  const hasAd = isInsertAd(from);
+  filterParams.pageSize = hasAd ? 9 : 10;
+
   const { data, total } = await queryUserTagByFilter(filterParams);
   cardCount.value = total;
   if (['load-more'].includes(from)) {
@@ -199,7 +224,12 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
     cardList = data;
   }
 
-  vListRef.value?.completeByTotal(data, total);
+  // 根据是否有广告,在原数据中插入广告
+  if (hasAd) {
+    data.splice(5, 0, createAdItem());
+  }
+
+  vListRef.value?.complete(data);
 }
 function handleCellUpdate(index: number) {
   vListRef.value?.didUpdateVirtualListCell?.(index);
