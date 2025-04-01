@@ -288,6 +288,11 @@ async function getUserTagByFilter(params) {
   };
 }
 
+async function getTotalTagCardCount(params) {
+  const data = await db.get(`SELECT COUNT(*) as total FROM ${TABLE_NAME}`);
+  return data?.total ?? 0;
+}
+
 export function useUserTagMapper(database) {
   if (database) {
     db = database;
@@ -303,5 +308,6 @@ export function useUserTagMapper(database) {
     updateUserTag,
     getUserTagByIds,
     getUserTagByFilter,
+    getTotalTagCardCount,
   };
 }

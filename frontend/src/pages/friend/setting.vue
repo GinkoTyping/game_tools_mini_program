@@ -510,7 +510,12 @@ function onDisplayWxInfo(e) {
     desc: '名片里展示您的微信头像和昵称',
     async success(data) {
       userProfile.value = data.userInfo;
+      uni.showLoading({
+        title: '银子加载中...',
+        mask: true,
+      });
       const res = await updateUserProfile(data.userInfo);
+      uni.hideLoading();
       uni.showToast({
         title: res.data.message,
         icon: 'none',
@@ -755,7 +760,7 @@ async function submit() {
   const { isValid, error } = validate();
   if (isValid) {
     uni.showLoading({
-      title: '提交中...',
+      title: '银子处理中...',
       mask: true,
     });
     const { isSuccess, message } = await querySubmitUserTag({

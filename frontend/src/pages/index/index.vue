@@ -103,7 +103,7 @@
       <view class="narrow-card_info">
         <view class="icon icon-right-bottom">
           <uni-icons color="#bbb" type="image" size="20"></uni-icons>
-          <text>{{ homeViewData?.mythicMarkCount }}</text>
+          <text>{{ homeViewData?.tagCardCount }}</text>
         </view>
         <view class="info">
           <view class="card-name"> 艾泽拉斯同好会 </view>
@@ -531,9 +531,11 @@ $simple-card-width: 43.5vw;
       font-weight: bold;
       font-size: 14px;
     }
+
     .icon:not(.icon-right-bottom) {
       top: 0.6rem;
     }
+
     .icon-right-bottom {
       bottom: 0.4rem;
       color: #bbb;
@@ -573,11 +575,13 @@ $simple-card-width: 43.5vw;
   .narrow-card_bg--mythic {
     background-image: url(https://ginkolearn.cyou/api/wow/assets/dungeon/Patchnotes.webp);
   }
+
   .narrow-card_bg--friend {
     background-image: url(https://ginkolearn.cyou/api/wow/assets/home/friend-home.webp);
     mask-image: linear-gradient(0deg, transparent 0%, rgb(0, 0, 0) 90%);
   }
 }
+
 .narrow-card.narrow-card--row {
   height: 8rem;
   width: 100% !important;

@@ -6,6 +6,7 @@ import {
   getDynamicDB,
 } from '../../database/utils/index.js';
 import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
+import { useUserTagMapper } from '../../database/wow/mapper/dynamic/userTag.mapper.js';
 import { useHomeViewMapper } from '../../database/wow/mapper/homeViewMapper.js';
 import { useNpcAndSpellMarkMapper } from '../../database/wow/mapper/npcAndSpellMarkMapper.js';
 import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
@@ -22,6 +23,7 @@ const specStatMapper = useSpecStatMapper(dailyDB);
 const dynamicDB = await getDynamicDB();
 const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
 const npcAndSpellMapper = useNpcAndSpellMarkMapper(dynamicDB);
+const userTagMapper = useUserTagMapper(dynamicDB);
 
 const commonDynamicDB = await getCommonDynamicDB();
 const tarotMapper = useTarotMapper(commonDynamicDB);
@@ -106,6 +108,7 @@ export async function queryHomeView(req, res) {
       },
     ],
   };
+
   const time = new Intl.DateTimeFormat('zh-CN', {
     year: 'numeric',
     month: '2-digit',
@@ -114,6 +117,9 @@ export async function queryHomeView(req, res) {
   const isToUpdate = Date.now() - lastUpdateAt > UPDATE_INTERVAL;
 
   const existed = await homeViewMapper.getHomeView(time);
+
+  const tagCardCount = await userTagMapper.getTotalTagCardCount();
+  basicOutput.tagCardCount = tagCardCount;
 
   if (existed && !isToUpdate) {
     res.json({

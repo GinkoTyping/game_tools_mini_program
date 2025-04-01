@@ -427,6 +427,7 @@ export interface IHomeViewDTO {
   }[];
   mythicMarkCount: number;
   tarotCount: number;
+  tagCardCount: number;
 }
 export async function queryHomeView() {
   try {
