@@ -1,6 +1,14 @@
 <template>
   <view class="card-wrap" :class="[specInfo.roleClass]">
     <view class="card-content" v-if="type === 'normal'">
+      <view class="self-mark" v-show="isUserSelf">
+        <uni-icons
+          class="shaman"
+          type="auth"
+          size="30"
+          color="#007aff"
+        ></uni-icons>
+      </view>
       <!-- 顶部 -->
       <view class="main-spec">
         <image
@@ -99,7 +107,7 @@
             :color="wowTag.privacy.needConfirm ? '#777777' : '#007aff'"
           ></uni-icons>
           <text :class="wowTag.privacy.needConfirm ? '' : 'available'">{{
-            wowTag.privacy.needConfirm ? '申请战网' : '获取战网'
+            dynamicButtonText
           }}</text>
         </view>
         <view class="button-item" @click="switchType('simple')">
@@ -163,7 +171,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, nextTick, reactive, watch } from 'vue';
+import { computed, nextTick, reactive, ref, watch } from 'vue';
 
 import { IActiveTimeBar } from '@/interface/IUserTag';
 import localeLabels from '@/data/zh.json';
@@ -225,6 +233,9 @@ watch(
 //#endregion
 
 //#region 文本样式
+const isUserSelf = computed(() => {
+  return uni.getStorageSync('userId') === props.data.user_id;
+});
 const getNickName = computed(() => {
   return (roleClass: string, classSpec: string) =>
     props.data?.nickName
@@ -242,6 +253,13 @@ const serverName = computed(() => {
   return serverItem && serverItem.value !== 'china'
     ? `[${serverItem.text}]`
     : '';
+});
+const battlenetId = ref();
+const dynamicButtonText = computed(() => {
+  if (battlenetId.value) {
+    return battlenetId.value;
+  }
+  return wowTag.value.privacy.needConfirm ? '申请战网' : '获取战网';
 });
 const getSpecIconURL = computed(() => {
   return (roleClass: string, classSpec: string) =>
@@ -278,6 +296,7 @@ async function requestBattlenet() {
   } else {
     const data = await queryUserTagById({ id: props.data.id });
     if (data?.battlenet_id) {
+      battlenetId.value = data.battlenet_id;
       uni.setClipboardData({
         data: data.battlenet_id,
         success: function () {
@@ -357,6 +376,14 @@ $label-margin-bottom: 12rpx;
   .card-content {
     width: 100%;
     padding-top: 0rpx;
+    position: relative;
+    z-index: 2;
+
+    .self-mark {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
 
     .main-spec {
       display: flex;
@@ -498,7 +525,7 @@ $label-margin-bottom: 12rpx;
     background-size: cover;
     background-repeat: no-repeat;
     scale: -1 1;
-    z-index: -1;
+    z-index: 0;
 
     &.card-bg__mask {
       mask-image: linear-gradient(0deg, transparent 10%, rgb(0, 0, 0) 80%);

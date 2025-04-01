@@ -829,6 +829,7 @@ export interface ITagCardItem {
   common_tag: ICommonTag;
   wow_tag: IWowTag;
   id: number;
+  user_id: number;
   updated_at: string;
   type: string;
   nickName: string;
