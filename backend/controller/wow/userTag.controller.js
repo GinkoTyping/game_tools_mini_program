@@ -87,23 +87,23 @@ export async function queryUserTagByIds(req, res) {
     const { ids, userIds } = req.body;
     const whereKey = ids ? 'id' : 'user_id';
 
-    const list = await userTagMapper.getUserTagByIds(
+    let list = await userTagMapper.getUserTagByIds(
       ids ?? userIds,
       whereKey,
       true
     );
+    list = await mapUserProfileInfo(list);
     res.json(list);
   } catch (error) {
     res.status(500).json({ message: error?.message });
   }
 }
 
-export async function queryUserTagByFilter(req, res) {
-  const allData = await userTagMapper.getUserTagByFilter(req.body);
+async function mapUserProfileInfo(list) {
   const users = await authMapper.getUsersByIds(
-    allData.data.map((item) => item.user_id)
+    list.map((item) => item.user_id)
   );
-  allData.data = allData.data.map((item) => {
+  return list.map((item) => {
     const existed = users.find((user) => user.id === item.user_id);
     return {
       ...item,
@@ -111,6 +111,11 @@ export async function queryUserTagByFilter(req, res) {
       avatarUrl: existed?.avatar_url ?? null,
     };
   });
+}
+
+export async function queryUserTagByFilter(req, res) {
+  const allData = await userTagMapper.getUserTagByFilter(req.body);
+  allData.data = await mapUserProfileInfo(allData.data);
   res.json(allData);
 }
 
