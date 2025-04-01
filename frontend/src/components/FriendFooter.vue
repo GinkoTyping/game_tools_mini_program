@@ -64,7 +64,13 @@ const navigator = useNavigator();
 function switchMenu(menuItem) {
   if (menuItem.value !== 'share' && activeMenu.value !== menuItem.value) {
     activeMenu.value = menuItem.value;
-    navigator.toPage(menuItem.page);
+    if (activeMenu.value === 'setting') {
+      navigator.toPage(menuItem.page);
+    } else if (activeMenu.value === 'home') {
+      navigator.toHome();
+    } else {
+      navigator.redirectToPage(menuItem.page);
+    }
   }
 }
 onShow(() => {

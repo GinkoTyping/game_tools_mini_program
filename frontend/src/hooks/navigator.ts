@@ -5,7 +5,7 @@ const localeLabels = labels as ILocaleLabels;
 
 // 主页
 function toHome() {
-  uni.navigateTo({
+  uni.reLaunch({
     url: `/pages/index/index`,
   });
 }
@@ -124,6 +124,12 @@ function toPage(page: string) {
   });
 }
 
+function redirectToPage(page: string) {
+  uni.redirectTo({
+    url: page,
+  });
+}
+
 export function useNavigator() {
   return {
     toHome,
@@ -144,5 +150,6 @@ export function useNavigator() {
 
     toFrindIndex,
     toFrindSetting,
+    redirectToPage,
   };
 }
