@@ -708,6 +708,24 @@ function comfirmInfoDialog() {
   currentTab.value = 1;
   infoDialog.value?.close?.();
 }
+function validateBattlenetId(value: string) {
+  if (!value) {
+    return {
+      isValid: false,
+      message:
+        '请填写战网昵称或者邮箱！如果忘记了战网信息，可以先选择“不公开战网信息”。',
+    };
+  }
+  if (!value.includes('#') && !value.includes('@')) {
+    return {
+      isValid: false,
+      message: `战网格式异常。战网昵称需要包含'#', 邮箱需要包含'@''`,
+    };
+  }
+  return {
+    isValid: true,
+  };
+}
 function validate() {
   let error;
   const isJobsValid = wowForm.jobs.length;
@@ -724,11 +742,13 @@ function validate() {
   if (wowForm.privacy.needConfirm) {
     isPrivacyValid = true;
   } else {
-    isPrivacyValid = battlenetId.value?.length > 0;
-    battlenetStatus.value = isPrivacyValid;
+    const { isValid: isBattlenetValid, message } = validateBattlenetId(
+      battlenetId.value
+    );
+    isPrivacyValid = isBattlenetValid;
+    battlenetStatus.value = isBattlenetValid;
     if (!isPrivacyValid) {
-      error =
-        '请填写战网昵称或者邮箱！\n如果忘记了战网信息，可以先选择“不公开战网信息”。';
+      error = message;
     }
   }
 
@@ -748,7 +768,6 @@ function validate() {
       isSpecValid &&
       isClassesValid &&
       isGameStyleValid &&
-      isActiveTimeValid &&
       isPrivacyValid &&
       isCommunicationValid,
     error,
@@ -1031,22 +1050,21 @@ onLoad(async () => {
   }
 }
 
+.switch-list {
+  padding-bottom: 14rpx;
+  background-color: $uni-bg-color-grey;
+
+  .switch-lits-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+  }
+}
 #privacy {
   .right-slot {
     display: flex;
     align-items: center;
-  }
-
-  .switch-list {
-    padding-bottom: 14rpx;
-    background-color: $uni-bg-color-grey;
-
-    .switch-lits-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #fff;
-    }
   }
 }
 
