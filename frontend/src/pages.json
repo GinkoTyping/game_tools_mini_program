@@ -2,7 +2,8 @@
 	"easycom": {
 		"autoscan": true,
 		"custom": {
-			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+			"^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)": "z-paging/components/z-paging$1/z-paging$1.vue"
 		}
 	},
 	"pages": [
@@ -10,6 +11,18 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "银子的搜罗坊"
+			}
+		},
+		{
+			"path": "pages/friend/index",
+			"style": {
+				"navigationBarTitleText": "艾泽拉斯同好会"
+			}
+		},
+		{
+			"path": "pages/friend/setting",
+			"style": {
+				"navigationBarTitleText": "艾泽拉斯名片"
 			}
 		},
 		{
@@ -94,6 +107,7 @@
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#181818"
+		"navigationBarBackgroundColor": "#181818",
+		"onReachBottomDistance": 800
 	}
 }

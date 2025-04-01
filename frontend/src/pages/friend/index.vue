@@ -47,7 +47,7 @@
           <ad-custom
             v-if="item.isAd"
             unit-id="adunit-3e881d1ef7f4ed0f"
-            @load="() => handleCellUpdate(item.zp_index)"
+            @load="() => onAdLoad(item.zp_index)"
           ></ad-custom>
           <TagCard
             v-if="!item.isAd"
@@ -174,6 +174,49 @@ async function onFilterOptionChange(params) {
 }
 //#endregion
 
+//#region 广告控制 TODO: 后端控制广告数量，监控广告数量
+const MAX_AD_COUNT = 5;
+const adState = reactive({
+  lastAdTimestamp: 0,
+  todayAdCount: 0,
+  minInterval: 20 * 1000,
+});
+function isInsertAd(from) {
+  // 初始化展示广告的概率降低
+  if (
+    ['user-pull-down', 'init', 'reload'].includes(from) &&
+    Math.random() < 0.3
+  ) {
+    return true;
+  }
+
+  const frequencyCondition =
+    Date.now() - adState.lastAdTimestamp > adState.minInterval && // 时间间隔
+    adState.todayAdCount < MAX_AD_COUNT;
+
+  return frequencyCondition && Math.random() < getDynamicProbability();
+}
+function getDynamicProbability() {
+  if (adState.todayAdCount <= 3) return 0.8; // 前3次高概率
+  if (adState.todayAdCount <= 6) return 0.5;
+  return 0.3; // 后续降频
+}
+function updateAdState() {
+  adState.lastAdTimestamp = Date.now();
+  adState.todayAdCount++;
+}
+function createAdItem() {
+  return {
+    isAd: true,
+    id: Date.now(),
+  } as ITagCardItem;
+}
+function onAdLoad(index: number) {
+  updateAdState();
+  handleCellUpdate(index);
+}
+//#endregion
+
 //#region 虚拟列表
 let cardList: ITagCardItem[] = [];
 const cardCount = ref<number>();
@@ -181,22 +224,6 @@ const virtualList = ref();
 
 function virtualListChange(vList) {
   virtualList.value = vList;
-}
-function isInsertAd(from) {
-  if (['user-pull-down', 'init', 'reload'].includes(from)) {
-    return true;
-  }
-
-  if (from === 'load-more' && Math.random() < 0.5) {
-    return true;
-  }
-  return false;
-}
-function createAdItem() {
-  return {
-    isAd: true,
-    id: Date.now(),
-  } as ITagCardItem;
 }
 async function queryList(pageNo: number, pageSize: number, from: string) {
   if (['load-more'].includes(from) && cardList.length) {
@@ -225,7 +252,7 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
   }
 
   // 根据是否有广告,在原数据中插入广告
-  if (hasAd) {
+  if (hasAd && data.length > 5) {
     data.splice(5, 0, createAdItem());
   }
 
