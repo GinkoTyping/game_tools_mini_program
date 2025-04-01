@@ -191,7 +191,7 @@ async function updateUserTag(params) {
 
 async function getUserTagByIds(ids, whereKey, hasBattlenetId) {
   let selectSql =
-    'id, user_id, wow_tag, common_tag' +
+    'id, user_id, wow_tag, common_tag, updated_at' +
     `${hasBattlenetId ? ',battlenet_id' : ''}`;
 
   if (!['id', 'user_id'].includes(whereKey)) {

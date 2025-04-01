@@ -16,7 +16,7 @@
       title="服务器"
       subTitle="请选择您主玩的服务器"
       type="line"
-      titleFontSize="16px"
+      titleFontSize="14px"
     >
       <view class="btns">
         <CustomTag
@@ -45,7 +45,7 @@
       title="常玩职责"
       subTitle="请选择您常玩的职责"
       type="line"
-      titleFontSize="16px"
+      titleFontSize="14px"
     >
       <view class="btns">
         <CustomTag
@@ -65,7 +65,7 @@
       title="主玩专精"
       subTitle="请选择您主玩的专精(最多选1个)"
       type="line"
-      titleFontSize="16px"
+      titleFontSize="14px"
     >
       <view class="btns">
         <CustomTag
@@ -101,7 +101,7 @@
       title="副职业"
       subTitle="请选择您常玩的副职(最多选3个)"
       type="line"
-      titleFontSize="16px"
+      titleFontSize="14px"
     >
       <view class="btns">
         <CustomTag
@@ -137,7 +137,7 @@
       title="游戏风格"
       subTitle="请选择您的游戏风格(最多选3个)"
       type="line"
-      titleFontSize="16px"
+      titleFontSize="14px"
     >
       <view class="btns">
         <CustomTag
@@ -172,7 +172,7 @@
       title="交流方式"
       subTitle="请选择您最偏好的交流方式"
       type="line"
-      titleFontSize="16px"
+      titleFontSize="14px"
     >
       <view class="btns">
         <CustomTag
@@ -203,7 +203,7 @@
       title="活跃时间段"
       subTitle="请点亮您活跃的时间段"
       type="line"
-      titleFontSize="16px"
+      titleFontSize="14px"
     >
       <view class="active-time-wrap">
         <view
@@ -231,7 +231,7 @@
       title="隐私设置"
       subTitle="大家如何找到你？"
       type="line"
-      titleFontSize="16px"
+      titleFontSize="14px"
     >
       <template v-slot:right>
         <!-- TODO: 待完善 -->
@@ -272,7 +272,7 @@
       :title="section.title"
       :subTitle="section.subTitle"
       type="line"
-      titleFontSize="16px"
+      titleFontSize="14px"
     >
       <view class="btns">
         <CustomTag
@@ -307,7 +307,24 @@
       </view>
     </uni-section>
   </view>
-  <view id="buttons">
+  <view class="preview" v-show="currentTab === 2">
+    <uni-section
+      id="preview-card"
+      class="priest"
+      title="预览名片"
+      :subTitle="`上次更新：${cardData?.updated_at}`"
+      type="line"
+      titleFontSize="14px"
+    >
+      <TagCard v-if="cardData" :data="cardData" preview />
+    </uni-section>
+    <!-- <view class="preview-header">
+      <view class="preview-header__title"
+        >上次更新：{{ cardData?.updated_at }}</view
+      >
+    </view> -->
+  </view>
+  <view id="buttons" v-if="[0, 1].includes(currentTab)">
     <view class="submit-btn" @click="submit">{{
       isEdit ? '更新' : '注册'
     }}</view>
@@ -413,6 +430,7 @@ import { computed, reactive, ref } from 'vue';
 import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
 import CustomTag from '@/components/CustomTag.vue';
+import TagCard from '@/components/TagCard.vue';
 
 const userStore = useUserStore();
 const wowOptions = computed(() => userStore.userTagOptions.wowOptions);
@@ -420,8 +438,8 @@ const commonOptions = computed(() => userStore.userTagOptions.commonOptions);
 const specOptions = computed(() => userStore.userTagOptions.specs);
 
 //#region 分段器
-const currentTab = ref(0);
-const tabs = ref(['基本信息', '其他(选填)']);
+const currentTab = ref(2);
+const tabs = ref(['基本信息', '其他(选填)', '我的名片']);
 function switchTab(e) {
   if (currentTab.value !== e.currentIndex) {
     currentTab.value = e.currentIndex;
@@ -739,9 +757,12 @@ async function submit() {
 }
 //#endregion
 
+const cardData = ref();
 onLoad(async () => {
   await userStore.getFriendOptions();
   const data = await queryUserTagById();
+  cardData.value = JSON.parse(JSON.stringify(data));
+
   isEdit.value = Boolean(data?.wow_tag || data?.common_tag);
 
   battlenetId.value = data?.battlenet_id;
@@ -964,11 +985,10 @@ onLoad(async () => {
   }
 
   .switch-list {
-    padding: 14rpx 0;
+    padding-bottom: 14rpx;
     background-color: $uni-bg-color-grey;
 
     .switch-lits-item {
-      padding: 10rpx 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -995,6 +1015,16 @@ onLoad(async () => {
     text-align: center;
     font-size: 32rpx;
     font-weight: bold;
+    color: #fff;
+  }
+}
+
+.preview {
+  // padding: 24rpx;
+  .preview-header {
+    margin-bottom: 20rpx;
+    text-align: center;
+    font-size: 28rpx;
     color: #fff;
   }
 }

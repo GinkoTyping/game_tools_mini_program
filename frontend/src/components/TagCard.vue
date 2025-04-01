@@ -182,6 +182,10 @@ const props = defineProps({
     required: true,
     default: () => ({}),
   },
+  preview: {
+    type: Boolean,
+    default: false,
+  },
 });
 const emit = defineEmits(['cell-update']);
 
@@ -241,7 +245,7 @@ const getBgURL = computed(() => {
 
 //#region 按钮
 async function requestBattlenet() {
-  if (!wowTag.value?.privacy) {
+  if (!wowTag.value?.privacy || props.preview) {
     return;
   }
 
