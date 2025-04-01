@@ -234,27 +234,33 @@
       titleFontSize="16px"
     >
       <template v-slot:right>
-        <view class="right-slot">
+        <!-- TODO: 待完善 -->
+        <!-- <view class="right-slot" @click="showPrivacyNote">
           <text>信息如何被使用？是否安全</text>
           <uni-icons type="help-filled" size="30" color="#007aff"></uni-icons>
-        </view>
+        </view> -->
       </template>
-      <uni-easyinput
-        class="contact-input"
-        type="password"
-        v-model="battlenetId"
-        placeholder="战网昵称或者邮箱"
-      ></uni-easyinput>
       <view class="switch-list">
         <view class="switch-lits-item">
-          <view class="switch-lits-item__label">获取战网信息时需要我同意</view>
+          <view class="switch-lits-item__label">通过名片公开战网信息</view>
           <switch
-            :checked="wowForm.privacy.needConfirm"
+            :checked="!wowForm.privacy.needConfirm"
+            @change="onPrivacyChange"
             color="#007aff"
             style="transform: scale(0.7)"
           />
         </view>
       </view>
+      <uni-easyinput
+        class="battlenet-input"
+        type="password"
+        v-model="battlenetId"
+        placeholder="战网昵称或者邮箱"
+        v-if="!wowForm.privacy.needConfirm"
+      ></uni-easyinput>
+      <view v-if="wowForm.privacy.needConfirm"
+        >即将推出“申请”获取战网信息功能，只展示战网信息给您同意的用户。敬请期待</view
+      >
     </uni-section>
   </view>
   <view class="common-wrap" v-show="currentTab === 1">
@@ -442,9 +448,21 @@ const wowForm = reactive<IWowTag>({
   gameStyle: [],
   communication: [],
   activeTime: [getBasicTimeValues('工作日'), getBasicTimeValues('休息日')],
-  privacy: { needConfirm: true },
+  privacy: { needConfirm: false },
 });
 const battlenetId = ref('');
+//#endregion
+
+//#region 隐私
+function onPrivacyChange(e) {
+  wowForm.privacy.needConfirm = !e.detail.value;
+}
+function showPrivacyNote() {
+  uni.showToast({
+    title: '',
+    icon: 'none',
+  });
+}
 //#endregion
 
 //#region 职责
@@ -630,35 +648,55 @@ function comfirmInfoDialog() {
   infoDialog.value?.close?.();
 }
 function validate() {
+  let error;
   const isJobsValid = wowForm.jobs.length;
   const isSpecValid = wowForm.spec.length;
   const isClassesValid = wowForm.classes.length;
   const isGameStyleValid = wowForm.gameStyle.length;
+  const isCommunicationValid = wowForm.communication.length;
   const isActiveTimeValid = wowForm.activeTime.reduce((pre, cur) => {
     const selected = cur.values.filter(item => item.selected);
     pre.push(...selected);
     return pre;
   }, [] as any).length;
+  let isPrivacyValid;
+  if (wowForm.privacy.needConfirm) {
+    isPrivacyValid = true;
+  } else {
+    isPrivacyValid = battlenetId.value?.length > 0;
+    if (!isPrivacyValid) {
+      error =
+        '如果选择“公开战网信息”需要填写您的战网昵称或者邮箱。\n如果忘记了战网信息，可以先选择“不公开战网信息”。';
+    }
+  }
+
   console.log({
     isJobsValid,
     isSpecValid,
     isClassesValid,
     isGameStyleValid,
     isActiveTimeValid,
+    isPrivacyValid,
+    isCommunicationValid,
   });
-  return (
-    isJobsValid &&
-    isSpecValid &&
-    isClassesValid &&
-    isGameStyleValid &&
-    isActiveTimeValid
-  );
+
+  return {
+    isValid:
+      isJobsValid &&
+      isSpecValid &&
+      isClassesValid &&
+      isGameStyleValid &&
+      isActiveTimeValid &&
+      isPrivacyValid &&
+      isCommunicationValid,
+    error,
+  };
 }
 function checkIsCommonTagEmpty() {
   return Object.values(commonForm).filter(value => value.length)?.length === 0;
 }
 async function submit() {
-  const isValid = validate();
+  const { isValid, error } = validate();
   if (isValid) {
     uni.showLoading({
       title: '提交中...',
@@ -693,8 +731,9 @@ async function submit() {
     }
   } else {
     uni.showToast({
-      title: '基本信息未填写',
-      icon: 'error',
+      title: error ?? '基本信息未填写',
+      icon: error ? 'none' : 'error',
+      duration: 5000,
     });
   }
 }
@@ -936,6 +975,9 @@ onLoad(async () => {
       color: #fff;
     }
   }
+}
+::v-deep #privacy .uni-easyinput {
+  padding-bottom: 14rpx;
 }
 
 #buttons {

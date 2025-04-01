@@ -81,8 +81,6 @@ const handleClick = () => {
   &.dark {
     &:not(.spec):not(.spec-reverse):not(.active) {
       color: black;
-    }
-    &:not(.spec):not(.spec-reverse) {
       border-color: #999;
     }
     &:not(.spec-reverse) {
@@ -92,8 +90,6 @@ const handleClick = () => {
   &.light {
     &:not(.spec):not(.spec-reverse):not(.active) {
       color: #bbb;
-    }
-    &:not(.spec):not(.spec-reverse) {
       border-color: #262629;
     }
     &:not(.spec-reverse) {

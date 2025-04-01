@@ -801,7 +801,7 @@ export async function queryUserTagById(params?: {
       finalParams.userIds = [params.userId];
     }
   } else {
-    finalParams.ids = [userId];
+    finalParams.userIds = [userId];
   }
 
   const res: any = await proxyRequest({
