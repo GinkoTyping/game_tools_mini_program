@@ -220,11 +220,14 @@ async function getUserTagByIds(ids, whereKey, hasBattlenetId) {
 
 function generateFilterSql(filterParams) {
   return Object.entries(filterParams)
-    .filter(([key, value]) => value.filter((item) => item?.length)?.length)
+    .filter(
+      ([key, value]) =>
+        value.filter((item) => typeof item === 'number' || item?.length)?.length
+    )
     .reduce(
       (pre, [column, value]) => {
         const sql = value
-          .filter((item) => item?.length)
+          .filter((item) => typeof item === 'number' || item?.length)
           .reduce((child, item, index) => {
             child += `${column} LIKE ?`;
             if (index !== value.length - 1) {

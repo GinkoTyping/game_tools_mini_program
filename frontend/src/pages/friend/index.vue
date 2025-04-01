@@ -93,6 +93,10 @@ const featureFilters = ref([
     value: 'all',
   },
   {
+    title: '公开',
+    value: 'public',
+  },
+  {
     title: '大秘境',
     value: 'mythic',
   },
@@ -114,11 +118,17 @@ function switchFeature(value: string) {
 }
 
 const filterParams = reactive<IFilterParams>({
-  filter: { wow_game_style: [], wow_jobs: [] },
+  filter: { wow_game_style: [], wow_jobs: [], wow_privacy_need_confirm: [] },
   lastId: -1,
   lastUpdatedAt: '',
 });
 async function setGameStyleFilter() {
+  // 重置参数
+  filterParams.filter.wow_privacy_need_confirm = [];
+  filterParams.filter.wow_game_style = [];
+  filterParams.lastId = -1;
+  filterParams.lastUpdatedAt = '';
+
   let output;
   switch (currentFeature.value) {
     case 'all':
@@ -129,15 +139,13 @@ async function setGameStyleFilter() {
     case 'delves':
       output = [currentFeature.value];
       break;
+    case 'public':
+      filterParams.filter.wow_privacy_need_confirm = [0];
     default:
       output = [];
       break;
   }
   filterParams.filter.wow_game_style = output;
-
-  // 重置分页参数
-  filterParams.lastId = -1;
-  filterParams.lastUpdatedAt = '';
 
   vListRef.value?.reload?.();
 }
@@ -266,6 +274,7 @@ $header-bg-color: #1d1d1f;
 .card-list {
   padding: 20rpx;
   padding-top: 0;
+
   .card-item {
     padding-bottom: 36rpx;
   }

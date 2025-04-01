@@ -1,6 +1,6 @@
 export default {
   server: {
-    index: 6,
+    index: 0,
     text: '服务器',
     value: 'wow_server',
     max: 1,
@@ -21,6 +21,44 @@ export default {
       {
         text: '欧服',
         value: 'europe',
+      },
+    ],
+  },
+  communication: {
+    index: 1,
+    text: '交流方式',
+    value: 'wow_communication',
+    max: 1,
+    filterMax: 3,
+    options: [
+      {
+        text: '语音交流',
+        value: 'mic',
+      },
+      {
+        text: '打字交流',
+        value: 'message',
+      },
+      {
+        text: '安静打本',
+        value: 'silence',
+      },
+    ],
+  },
+  privacy: {
+    index: 2,
+    text: '隐私设置',
+    value: 'wow_privacy_need_confirm',
+    max: 1,
+    filterMax: 1,
+    options: [
+      {
+        text: '公开',
+        value: 0,
+      },
+      {
+        text: '不公开',
+        value: 1,
       },
     ],
   },
@@ -220,27 +258,6 @@ export default {
             value: 'weekend_early_morning',
           },
         ],
-      },
-    ],
-  },
-  communication: {
-    index: 5,
-    text: '交流方式',
-    value: 'wow_communication',
-    max: 1,
-    filterMax: 3,
-    options: [
-      {
-        text: '语音交流',
-        value: 'mic',
-      },
-      {
-        text: '打字交流',
-        value: 'message',
-      },
-      {
-        text: '安静打本',
-        value: 'silence',
       },
     ],
   },

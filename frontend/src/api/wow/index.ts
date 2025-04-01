@@ -835,7 +835,11 @@ export interface ITagCardItem {
   avatarUrl: string;
 }
 export interface IFilterParams {
-  filter: { wow_game_style: string[]; wow_jobs: string[] };
+  filter: {
+    wow_game_style: string[];
+    wow_jobs: string[];
+    wow_privacy_need_confirm: number[];
+  };
   lastId: number;
   lastUpdatedAt: string;
 }
