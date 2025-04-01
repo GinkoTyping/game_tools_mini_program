@@ -25,7 +25,11 @@
             >
           </view>
           <view class="right-drop-down">
-            <CustomTag title="筛选" @click="onSwitchFilterPage">
+            <CustomTag
+              title="筛选"
+              @click="onSwitchFilterPage"
+              :type="isDetailFiltering ? 'active' : ''"
+            >
               <template v-slot:suffix>
                 <view>↓</view>
               </template>
@@ -104,6 +108,7 @@ const featureFilters = ref([
 function switchFeature(value: string) {
   if (currentFeature.value !== value) {
     currentFeature.value = value;
+    isDetailFiltering.value = false;
     setGameStyleFilter();
   }
 }
@@ -136,29 +141,28 @@ async function setGameStyleFilter() {
 
   vListRef.value?.reload?.();
 }
-async function onFilterOptionChange(params) {
-  filterParams.filter = params;
-  filterParams.lastId = -1;
-  filterParams.lastUpdatedAt = '';
-  currentFeature.value = 'all';
-  vListRef.value?.reload?.();
-}
-//#endregion
-
-//#region 加载
-let cardList: ITagCardItem[] = [];
-const cardCount = ref<number>();
 //#endregion
 
 //#region 过滤页面
 const showFilterPage = ref(false);
 const filterOptions = ref();
+const isDetailFiltering = ref(false);
 function onSwitchFilterPage() {
   showFilterPage.value = !showFilterPage.value;
+}
+async function onFilterOptionChange(params) {
+  filterParams.filter = params;
+  filterParams.lastId = -1;
+  filterParams.lastUpdatedAt = '';
+  currentFeature.value = 'all';
+  isDetailFiltering.value = true;
+  vListRef.value?.reload?.();
 }
 //#endregion
 
 //#region 虚拟列表
+let cardList: ITagCardItem[] = [];
+const cardCount = ref<number>();
 const virtualList = ref();
 
 function virtualListChange(vList) {
