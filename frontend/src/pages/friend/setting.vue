@@ -713,13 +713,13 @@ function validateBattlenetId(value: string) {
     return {
       isValid: false,
       message:
-        '请填写战网昵称或者邮箱！如果忘记了战网信息，可以先选择“不公开战网信息”。',
+        '请填写战网昵称或者邮箱！或选择“不公开战网信息”。',
     };
   }
   if (!value.includes('#') && !value.includes('@')) {
     return {
       isValid: false,
-      message: `战网格式异常。战网昵称需要包含'#', 邮箱需要包含'@''`,
+      message: `战网格式异常.昵称需要包含'#',邮箱需要包含'@''`,
     };
   }
   return {
@@ -1061,6 +1061,7 @@ onLoad(async () => {
     color: #fff;
   }
 }
+
 #privacy {
   .right-slot {
     display: flex;
