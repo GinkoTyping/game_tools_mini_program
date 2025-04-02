@@ -731,7 +731,7 @@ function validateBattlenetId(value: string) {
   };
 }
 function validate() {
-  let error;
+  const isServerValid = wowForm.server.length;
   const isJobsValid = wowForm.jobs.length;
   const isSpecValid = wowForm.spec.length;
   const isClassesValid = wowForm.classes.length;
@@ -742,9 +742,26 @@ function validate() {
     pre.push(...selected);
     return pre;
   }, [] as any).length;
+
+  const leastFilled = [
+    isServerValid,
+    isJobsValid,
+    isSpecValid,
+    isClassesValid,
+    isGameStyleValid,
+    isCommunicationValid,
+    isActiveTimeValid,
+  ].filter(item => item);
+
+  return {
+    isValid: leastFilled.length >= 4,
+    error: leastFilled.length >= 4 ? '' : '请至少填写4项基本信息',
+  };
+}
+function handleBattlenet() {
   let isPrivacyValid;
   if (wowForm.privacy.needConfirm) {
-    isPrivacyValid = true;
+    return;
   } else {
     const { isValid: isBattlenetValid, message } = validateBattlenetId(
       battlenetId.value
@@ -752,36 +769,18 @@ function validate() {
     isPrivacyValid = isBattlenetValid;
     battlenetStatus.value = isBattlenetValid;
     if (!isPrivacyValid) {
-      error = message;
+      // 不阻塞用户提交表单
+      wowForm.privacy.needConfirm = true;
+      return message;
     }
   }
-
-  console.log({
-    isJobsValid,
-    isSpecValid,
-    isClassesValid,
-    isGameStyleValid,
-    isActiveTimeValid,
-    isPrivacyValid,
-    isCommunicationValid,
-  });
-
-  return {
-    isValid:
-      isJobsValid &&
-      isSpecValid &&
-      isClassesValid &&
-      isGameStyleValid &&
-      isPrivacyValid &&
-      isCommunicationValid,
-    error,
-  };
 }
 function checkIsCommonTagEmpty() {
   return Object.values(commonForm).filter(value => value.length)?.length === 0;
 }
 async function submit() {
   const { isValid, error } = validate();
+  const battlenetMsg = handleBattlenet();
   if (isValid) {
     uni.showLoading({
       title: '银子处理中...',
@@ -803,9 +802,17 @@ async function submit() {
         userStore.notification.fillCommonUserTag = true;
         infoDialog.value?.open?.();
       } else {
+        let successMsg;
+        if (message) {
+          successMsg = battlenetMsg ? `${message} 但${battlenetMsg}` : message;
+        } else {
+          successMsg = '请求成功';
+        }
+
         uni.showToast({
-          title: message ?? '请求成功',
-          icon: isSuccess ? 'success' : 'error',
+          title: successMsg,
+          icon: battlenetMsg ? 'none' : 'success',
+          duration: battlenetMsg ? 5000 : 2000,
         });
       }
     } else {
