@@ -6,5 +6,10 @@ const patchMapper = usePatchMapper(db);
 
 export async function queryPatchList(req, res) {
   const data = await patchMapper.getPactchList();
-  res.json(data.slice(0, 5));
+  res.json(
+    data.slice(0, 5).map((item) => ({
+      ...item,
+      images: item.images ? JSON.parse(item.images) : null,
+    }))
+  );
 }

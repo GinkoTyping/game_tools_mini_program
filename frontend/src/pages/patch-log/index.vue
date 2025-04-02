@@ -2,8 +2,19 @@
   <uni-section class="shaman" title="更新日志">
     <uni-card>
       <uni-collapse ref="adviceCollapse" title-border="none" :border="false">
-        <uni-collapse-item v-for="(patch, index) in patchNotes" :key="patch.id" :title="patch.date" :open="index === 0">
+        <uni-collapse-item
+          v-for="(patch, index) in patchNotes"
+          :key="patch.id"
+          :title="patch.date"
+          :open="index === 0"
+        >
           <view class="log-content">{{ patch.text }}</view>
+          <image
+            v-for="(img, index) in patch.images"
+            :key="index"
+            :src="`https://ginkolearn.cyou/api/common/assets/patch/${img}`"
+            mode="widthFix"
+          ></image>
         </uni-collapse-item>
       </uni-collapse>
     </uni-card>
