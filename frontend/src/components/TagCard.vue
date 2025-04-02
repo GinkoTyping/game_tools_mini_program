@@ -71,11 +71,20 @@
             v-for="item in commonTag?.[propKey]"
             :key="item.value"
             :title="item.text"
+            :wow-class="getTagSetting(propKey, item.value).wowClass"
+            :theme="getTagSetting(propKey, item.value).theme"
+            :type="getTagSetting(propKey, item.value).type"
+            :prefix-icon="getTagSetting(propKey, item.value).icon"
+            :prefix-icon-color="getTagSetting(propKey, item.value).color"
             size="small"
-            theme="dark"
           />
         </template>
-        <CustomTag :title="getUpdatedTime" size="small" theme="light" type="active" />
+        <CustomTag
+          :title="getUpdatedTime"
+          size="small"
+          theme="light"
+          type="active"
+        />
       </view>
       <!-- 时间 -->
       <view
@@ -329,6 +338,24 @@ const getBgURL = computed(() => {
       formatClass = roleClass;
     }
     return `url(https://ginkolearn.cyou/api/wow/assets/class-bgs/${formatClass}-${classSpec}-spec-background.webp)`;
+  };
+});
+
+const getTagSetting = computed(() => {
+  return (key: string, keyValue: string) => {
+    const setting = {
+      icon: '',
+      color: '',
+      type: '',
+      wowClass: '',
+      theme: 'dark',
+    };
+    if (key === 'status' && keyValue === '可网恋') {
+      setting.wowClass = 'paladin';
+      setting.type = 'spec';
+      setting.theme = 'light';
+    }
+    return setting;
   };
 });
 //#endregion

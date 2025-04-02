@@ -10,11 +10,17 @@
     ]"
     @click="handleClick"
   >
+    <uni-icons
+      v-if="props.prefixIcon"
+      :type="props.prefixIcon"
+      :color="props.prefixIconColor"
+      size="12"
+    ></uni-icons>
     <text>{{ props.title }}</text>
     <uni-icons
       v-if="props.suffixIcon"
       :type="props.suffixIcon"
-      color="#fff"
+      :color="props.suffixIconColor"
       size="12"
     ></uni-icons>
     <slot name="suffix"></slot>
@@ -29,6 +35,15 @@ const props = defineProps({
   type: String,
   wowClass: String,
   suffixIcon: String,
+  suffixIconColor: {
+    type: String,
+    default: '#fff',
+  },
+  prefixIcon: String,
+  prefixIconColor: {
+    type: String,
+    default: '#fff',
+  },
   size: {
     type: String,
     default: 'normal',
