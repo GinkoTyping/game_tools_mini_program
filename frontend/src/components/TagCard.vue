@@ -91,7 +91,7 @@
             v-model="activeTime[item]"
             mode="display"
             :show-time="item === 'workDay'"
-            :default-display-time="[0, 12]"
+            :default-display-time="[0, 6, 12, 18]"
             width="100vw - 80rpx - 80rpx"
           />
         </view>

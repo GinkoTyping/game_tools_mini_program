@@ -135,7 +135,9 @@ const times = defineModel({
 let displayTimer;
 const currentClickTime = ref<number>();
 function onClickTimeItem(item) {
-  item.selected = !item.selected;
+  if (props.mode === 'edit') {
+    item.selected = !item.selected;
+  }
   clearTimeout(displayTimer);
   currentClickTime.value = item.value;
   displayTimer = setTimeout(() => {
@@ -150,7 +152,9 @@ const timeLabelClass = computed(() => {
         : 'time-label--left-top';
     }
     if ([6, 18].includes(value)) {
-      return 'time-label--center-top';
+      return props.mode === 'display'
+        ? 'time-label--left-top--align-center'
+        : 'time-label--center-top';
     }
     if ([11, 23].includes(value)) {
       return 'time-label--right-top';
@@ -162,7 +166,7 @@ const isDisplayTime = computed(
   () => (value: number) =>
     ((props.showTime || props.mode === 'edit') &&
       props.defaultDisplayTime.includes(value)) ||
-    (currentClickTime.value === value && ![1, 7, 13, 19].includes(value))
+    (currentClickTime.value === value)
 );
 </script>
 <style lang="scss" scoped>
