@@ -10,13 +10,19 @@
     ]"
     @click="handleClick"
   >
+    <text
+      v-if="props.iconfontIcon"
+      class="iconfont"
+      :class="props.iconfontIcon"
+      :style="{ color: props.iconfontIconColor }"
+    ></text>
     <uni-icons
       v-if="props.prefixIcon"
       :type="props.prefixIcon"
       :color="props.prefixIconColor"
       size="12"
     ></uni-icons>
-    <text>{{ props.title }}</text>
+    <text :style="{ color: props.iconfontIconColor }">{{ props.title }}</text>
     <uni-icons
       v-if="props.suffixIcon"
       :type="props.suffixIcon"
@@ -43,6 +49,10 @@ const props = defineProps({
   prefixIconColor: {
     type: String,
     default: '#fff',
+  },
+  iconfontIcon: String,
+  iconfontIconColor: {
+    type: String,
   },
   size: {
     type: String,
@@ -85,11 +95,17 @@ const handleClick = () => {
   &.normal {
     padding: 10rpx 20rpx;
     font-size: 26rpx;
+    .iconfont {
+      font-size: 26rpx;
+    }
   }
   &.small {
     padding: 0 20rpx;
     font-size: 24rpx;
     line-height: 36rpx;
+    .iconfont {
+      font-size: 24rpx;
+    }
   }
 
   // THEME

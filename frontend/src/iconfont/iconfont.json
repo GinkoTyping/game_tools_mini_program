@@ -1,0 +1,170 @@
+{
+  "id": "4880115",
+  "name": "银子的搜罗坊",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "9719155",
+      "name": "dota2",
+      "font_class": "dota",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "9911964",
+      "name": "炉石传说",
+      "font_class": "lushichuanshuo",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "12184416",
+      "name": "王者荣耀",
+      "font_class": "wangzherongyao",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "13908867",
+      "name": "icons8-apex-legends",
+      "font_class": "icons-apex-legends",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "43489335",
+      "name": "原神-黑",
+      "font_class": "yuanshen-hei",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "10772397",
+      "name": "World-of Warcraft",
+      "font_class": "World-ofWarcraft",
+      "unicode": "ed75",
+      "unicode_decimal": 60789
+    },
+    {
+      "icon_id": "1318767",
+      "name": "league of legends",
+      "font_class": "lol-positive",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "14599639",
+      "name": "counter_strike",
+      "font_class": "counter_strike",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "21720909",
+      "name": "守望先锋",
+      "font_class": "overwatch",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "42229923",
+      "name": "Valorant",
+      "font_class": "Valorant",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "12004358",
+      "name": "Heart",
+      "font_class": "Heart",
+      "unicode": "ea97",
+      "unicode_decimal": 60055
+    },
+    {
+      "icon_id": "22272680",
+      "name": "constellation-libra",
+      "font_class": "constellation-libra",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "22272753",
+      "name": "constellation-gemini",
+      "font_class": "constellation-gemini",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "22272755",
+      "name": "constellation-leo",
+      "font_class": "constellation-leo",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "22272756",
+      "name": "constellation-virgo",
+      "font_class": "constellation-virgo",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "22272757",
+      "name": "constellation-scorpio",
+      "font_class": "constellation-scorpio",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "22272758",
+      "name": "constellation-taurus",
+      "font_class": "constellation-taurus",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "22272761",
+      "name": "constellation-sagittarius",
+      "font_class": "constellation-sagittarius",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "22272762",
+      "name": "constellation-aquarius",
+      "font_class": "constellation-aquarius",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "22272763",
+      "name": "constellation-cancer",
+      "font_class": "constellation-cancer",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "22272764",
+      "name": "constellation-aries",
+      "font_class": "constellation-aries",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "22272773",
+      "name": "constellation-capricorn",
+      "font_class": "constellation-capricorn",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "22272835",
+      "name": "constellation-pisces",
+      "font_class": "constellation-pisces",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    }
+  ]
+}

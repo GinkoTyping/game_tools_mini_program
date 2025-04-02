@@ -120,7 +120,7 @@ const featureFilters = ref([
   },
 ]);
 function switchFeature(value: string) {
-  if (currentFeature.value !== value) {
+  if (currentFeature.value !== value || isDetailFiltering.value) {
     currentFeature.value = value;
     isDetailFiltering.value = false;
     setGameStyleFilter();
@@ -135,8 +135,11 @@ const filterParams = reactive<IFilterParams>({
 });
 async function setGameStyleFilter() {
   // 重置参数
-  filterParams.filter.wow_privacy_need_confirm = [];
-  filterParams.filter.wow_game_style = [];
+  filterParams.filter = {
+    wow_game_style: [],
+    wow_jobs: [],
+    wow_privacy_need_confirm: [],
+  };
   filterParams.lastId = -1;
   filterParams.lastUpdatedAt = '';
 

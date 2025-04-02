@@ -74,8 +74,10 @@
             :wow-class="getTagSetting(propKey, item.value).wowClass"
             :theme="getTagSetting(propKey, item.value).theme"
             :type="getTagSetting(propKey, item.value).type"
-            :prefix-icon="getTagSetting(propKey, item.value).icon"
-            :prefix-icon-color="getTagSetting(propKey, item.value).color"
+            :iconfont-icon="getTagSetting(propKey, item.value).iconfontIcon"
+            :iconfont-icon-color="
+              getTagSetting(propKey, item.value).iconfontIconColor
+            "
             size="small"
           />
         </template>
@@ -188,6 +190,7 @@ import localeLabels from '@/data/zh.json';
 import { ITagCardItem, queryUserTagById } from '@/api/wow';
 import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
 import CustomTag from '@/components/CustomTag.vue';
+import { mapIconfont } from '@/utils/iconfont-map';
 
 const type = defineModel('type', {
   type: String,
@@ -342,18 +345,25 @@ const getBgURL = computed(() => {
 });
 
 const getTagSetting = computed(() => {
-  return (key: string, keyValue: string) => {
+  return (key: string, value: string) => {
+    const { icon, color } = mapIconfont(key, value);
+
     const setting = {
-      icon: '',
-      color: '',
+      iconfontIcon: icon,
+      iconfontIconColor: color,
       type: '',
       wowClass: '',
       theme: 'dark',
+      color: '',
     };
-    if (key === 'status' && keyValue === '可网恋') {
+    if (key === 'status' && value === '可网恋') {
       setting.wowClass = 'paladin';
       setting.type = 'spec';
       setting.theme = 'light';
+    }
+    if (key === 'personality' && /^[\u4E00-\u9FA5]+$/.test(value)) {
+      setting.theme = 'light';
+      setting.color = color;
     }
     return setting;
   };

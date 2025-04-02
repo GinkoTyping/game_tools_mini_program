@@ -1,5 +1,6 @@
 import './static/css/index.scss';
 import './static/css/animate.css';
+import './iconfont/iconfont.css';
 import { createSSRApp } from 'vue';
 import { createPinia } from 'pinia';
 import App from './App.vue';
