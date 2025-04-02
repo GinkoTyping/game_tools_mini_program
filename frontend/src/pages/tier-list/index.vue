@@ -6,7 +6,7 @@
     color="#2979FF"
     background-color="#EAF2FF"
     more-text="想看详细统计数据？点我"
-    text="专精图标可点击哟"
+    :text="hasTranslatedDesc ? '专精图标可点击哟' : ''"
     @click="navigator.toSpecPopularity"
   />
   <uni-collapse ref="collapse">
@@ -20,7 +20,7 @@
           <text class="collapse-title__tier">{{ item.tier }}</text>
           <text class="collapse-title__tier--suffix">级</text>
           <text class="update-note" v-show="index === 0"
-            >({{ tierList.created_at }} 更新)</text
+            >({{ tierList?.created_at }} 更新)</text
           >
         </view>
       </template>
@@ -108,7 +108,7 @@
 <script lang="ts" setup>
 import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { queryTierList } from '@/api/wow/index';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 import SpellCard from '@/components/SpellCard.vue';
 import { getClassIconURL } from '@/hooks/imageGenerator';
@@ -139,6 +139,10 @@ onLoad(async (options: any) => {
     activityType: activityType,
     role: role,
   });
+});
+
+const hasTranslatedDesc = computed(() => {
+  return tierList.value?.tier_data?.[0].children?.[0].descZH;
 });
 
 function getTierListIcons(options: any) {
@@ -180,11 +184,13 @@ onShareAppMessage(() => {
 
 const detailPopup = ref();
 async function onClickSpec(spec: ITierSpecDetail) {
-  currentSpec.value = spec;
-  currentSpells.value = await querySpellsInTip(
-    spec.spells.map(spell => spell.spellId)
-  );
-  detailPopup.value?.open?.();
+  if (currentSpec.value?.descZH) {
+    currentSpec.value = spec;
+    currentSpells.value = await querySpellsInTip(
+      spec.spells.map(spell => spell.spellId)
+    );
+    detailPopup.value?.open?.();
+  }
 }
 
 const alertDialog = ref();
@@ -256,7 +262,7 @@ function dialogClose() {
   .update-note {
     font-size: small;
     margin-left: 20rpx;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   }
 }
 $card-right-margin: 0.4rem;

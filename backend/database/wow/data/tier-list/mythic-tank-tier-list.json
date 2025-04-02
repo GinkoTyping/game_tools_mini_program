@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025/03/15",
+  "updatedAt": "2025/03/23",
   "activityType": "MYTHIC",
   "role": "TANK",
   "versionId": "11.1",
@@ -14,8 +14,7 @@
           "dataChange": "-",
           "desc": "Vengeance Demon Hunter is entering Season 2 in a much better spot compared to the previous season. One of the biggest changes is the buff to the durability toolkit of the spec, allowing you to have less \"kiting\" tanking than before. The spec still possesses one of the best mob controls across any tanking spec in Mythic+, which will turn valuable for any team looking for a tank. One of their biggest advantages is having one of the highest damage profiles across all tank specs (even after the bug fixes), extremely high self-sustain and great mob-control, which are the mains reason why we believe their current performance warrants S-tier.",
           "spells": [],
-          "fullNameZH": "复仇 恶魔猎手",
-          "descZH": "第2赛季的复仇恶魔猎手相比上赛季的处境好了很多。最大的改动之一是该专精的生存能力套装得到了加强，使得你需要比之前更少的“风筝”式坦克策略。该专精在史诗+中仍然拥有所有坦克专精中最好的聚怪控制能力之一，这对任何需要坦克的队伍来说都很有价值。他们最大的优势之一是在所有坦克专精中拥有最高的伤害输出（即使在修复了bug之后），极高的自疗能力以及出色的聚怪控制，这些是我们认为他们目前表现值得S级评价的主要原因。"
+          "fullNameZH": "复仇 恶魔猎手"
         }
       ]
     },
@@ -29,8 +28,7 @@
           "dataChange": "-",
           "desc": "Protection Paladin is looking yet again incredibly strong, with them already being one of the most durable tanks on PTR, they will also retain their signature overpowered utility. Although the recent nerfs will lower their durability and DPS numbers, they will still have one of the highest outputs across all tanks. In addition, they have incredible mob control which is another reason why the spec is so highly desired. Overall, they are currently ranked as one of the better tank entering Season 2.",
           "spells": [],
-          "fullNameZH": "防护 圣骑士",
-          "descZH": "防护圣骑士再次显得非常强势，他们已经是最耐打的坦克之一，同时保留了标志性的强力功能性。尽管最近的削弱会降低生存能力和DPS数值，但他们仍然拥有所有坦克中最高的输出之一。此外，他们拥有令人难以置信的聚怪控制能力，这也是该专精如此受欢迎的另一原因。总体而言，他们目前被列为进入第2赛季的更好坦克之一。"
+          "fullNameZH": "防护 圣骑士"
         }
       ]
     },
@@ -38,33 +36,27 @@
       "tier": "A",
       "children": [
         {
-          "fullNameEN": "Protection Warrior",
-          "roleClass": "warrior",
-          "classSpec": "protection",
-          "dataChange": "up",
-          "desc": "Protection Warrior has a ton of attention leading to the next season, primarily changing the spell priority and the focus of the class rotation (with the bread-and-butter basics staying the same). Luckily, the compensation buffs that came, (% flat damage adjustments, stronger [无视苦痛], and better self-sustain thanks to more Rage) which makes up for all the other nerfs. In addition, a new recent build has been discovered, making their single-target and AoE damage their strongest asset, which immensely improves their performance. Although, it has been confirmed that a small portion of that is due to unintentional buff that should have only affected Arms warriors ( [崩摧]) and is soon likely to be hotfixed (which will result in a minor damage loss). In addition, the spec will continue to have durability troubles at time (especially against continuous magical damage), which may require more healer attention than other tanks.",
-          "spells": [
-            {
-              "spellId": 190456,
-              "spellName": "Ignore Pain"
-            },
-            {
-              "spellId": 436358,
-              "spellName": "Demolish"
-            }
-          ],
-          "fullNameZH": "防护 战士",
-          "descZH": "防护战士在第二赛季中受到了大量关注，主要改变了技能优先级和职业循环的重点（同时保留了核心的基礎机制）。幸运的是，随之而来的补偿性增强（%固定伤害调整、更强的[无视苦痛]以及由于更多怒气带来的更好的自疗能力）弥补了所有其他削弱。此外，最近发现了一种新的构建，使他们的单体和AoE伤害成为其最强优势，这极大地提升了他们的表现。不过，已经确认其中一小部分是由于本应只影响武器战士的[崩摧]的意外增强，并且可能很快会被热修复（这将导致轻微的伤害损失）。此外，该专精在特定情况下仍然会有生存问题（尤其是面对持续的魔法伤害时），这可能需要比其他坦克更多的治疗者关注。"
-        },
-        {
           "fullNameEN": "Blood Death Knight",
           "roleClass": "death-knight",
           "classSpec": "blood",
           "dataChange": "-",
           "desc": "Unfortunately, for Blood Death Knight there are not a lot of changes leading to the Season 2 of Mythic+. They are getting a new tier set supported by a hefty amount of RNG and arguably worse than what the Season 1 set had to offer. In addition, defensively and offensively are at a disadvantage compared to the top-ranked tanks, further pushing them down the list. Overall, it is still early to have a final estimate of how the spec will rank. Still, preliminary thoughts are that the spec performance is much better on the lower level keys (the main factory is the highest self-sustain) compared to the higher level ones, where you might struggle when tanking several packs together.",
           "spells": [],
-          "fullNameZH": "鲜血 死亡骑士",
-          "descZH": "不幸的是，鲜血死亡骑士在即将到来的史诗+第2赛季中并没有太多变化。他们获得了一套新的套装，需要大量随机性支持，可以说比第1赛季的套装更差。此外，在防御和进攻方面，与排名靠前的坦克相比处于劣势，这进一步将他们推到了排名下游。总体而言，现在要最终评估该专精的排名还为时过早。不过，初步看法是该专精在较低层数的秘境中表现更好（主要优势在于最高的自疗能力），而在较高层数中，当同时坦克多个怪群时可能会遇到困难。"
+          "fullNameZH": "鲜血 死亡骑士"
+        },
+        {
+          "fullNameEN": "Protection Warrior",
+          "roleClass": "warrior",
+          "classSpec": "protection",
+          "dataChange": "-",
+          "desc": "Protection Warrior has a ton of attention leading to the next season, primarily changing the spell priority and the focus of the class rotation (with the bread-and-butter basics staying the same). Luckily, the compensation buffs that came, (% flat damage adjustments, stronger [无视苦痛], and better self-sustain thanks to more Rage) which makes up for all the other nerfs. In addition, a new recent build has been discovered, making their single-target and AoE damage their strongest asset, which immensely improves their performance. In addition, the spec will continue to have durability troubles at time (especially against continuous magical damage), which may require more healer attention than other tanks.",
+          "spells": [
+            {
+              "spellId": 190456,
+              "spellName": "Ignore Pain"
+            }
+          ],
+          "fullNameZH": "防护 战士"
         }
       ]
     },
@@ -78,8 +70,7 @@
           "dataChange": "-",
           "desc": "Guardian Druid received a complete shuffle on the general talent tree, which will positively impact them. They have introduced some new cool talents (like Symbiotic Relationship and further increased their damage performance. Although their damage profile appears to be just fine (depending on the talent choices), durability is still an issue for the spec as it fails to compete against the higher-rated tanks at this stage of PTR.",
           "spells": [],
-          "fullNameZH": "守护 德鲁伊",
-          "descZH": "守护德鲁伊的通用天赋树进行了全面调整，这将对他们产生积极影响。他们引入了一些新的强力天赋（如共生关系），并进一步提升了伤害表现。尽管他们的伤害输出看起来不错（取决于天赋选择），但在目前的阶段，生存能力仍然是该专精的问题，无法与排名较高的坦克竞争。"
+          "fullNameZH": "守护 德鲁伊"
         }
       ]
     },
@@ -93,8 +84,7 @@
           "dataChange": "-",
           "desc": "Unfortunately for Brewmaster Monk, received no major changes leading up to Season 2. Their performance is currently better than what it was in Season 1 as the durability aspect of the spec has been improved. But, usual issues yet remain to be solved: not enough self-sustain, which often relies on much more \"babysitting\" from your healer. On top of this, they are one of the most difficult tanks to master, further pushing the barrier of entry higher and higher (especially with that many buttons in your rotation). We expect further tuning to hit PTR and hopefully, we can revisit the rankings.",
           "spells": [],
-          "fullNameZH": "酒仙 武僧",
-          "descZH": "不幸的是，酒仙武僧在即将到来的第2赛季中没有获得重大改动。由于该专精的生存能力有所提升，他们目前的表现比第1赛季更好。但老问题仍然存在：自疗能力不足，常常需要治疗者更多的“关照”。此外，他们是最难掌握的坦克之一，进一步提高了入门门槛（尤其是技能循环中有那么多技能）。我们期望后续的调整，并希望能重新评估排名。"
+          "fullNameZH": "酒仙 武僧"
         }
       ]
     }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2025/03/15",
+  "updatedAt": "2025/03/23",
   "activityType": "MYTHIC",
   "role": "HEALER",
   "versionId": "11.1",
@@ -12,8 +12,7 @@
           "roleClass": "priest",
           "classSpec": "discipline",
           "dataChange": "-",
-          "desc": "Discipline Priest is likely the healer with the most amount of changes coming into Season 2, from removal of [全神贯注] cooldown, to redesigning how [虚空召唤师] plays out (degenerate [惩击] playstyle is now no more) getting a passive CDR rather than having it interact with any spells. Their healing/damage output still appears to be great, which is the most important factor when rankings specs. In addition, they will retain their strong external utility packages such as 2x [痛苦压制] and [真言术：障]. Further tuning will tell how they turn out, but as of now, they remain as one of the best healers.",
-          "descZH": "戒律牧师可能是第二赛季中变化最多的治疗者，从[全神贯注]的移除，到重新设计[虚空召唤师]的玩法（退化的[惩击]玩法已不复存在），现在它获得了一个被动的冷却缩减效果，而不是与任何法术互动。他们的治疗/伤害输出仍然表现出色，这是排名专精时最重要的因素。此外，他们将保留强大的外部功能性套装，例如2次[痛苦压制]和[真言术：障]。进一步的调整将决定他们的表现，但目前他们仍然是最佳治疗者之一。",
+          "desc": "Discipline Priest is likely the healer with the most amount of changes coming into Season 2, from removal of [全神贯注] cooldown, to redesigning how [虚空召唤师] plays out (degenerate [惩击] playstyle is now no more) getting a passive CDR rather than having it interact with any spells. Their healing/damage output still appears to be great, which is the most important factor when rankings specs. In addition, they will retain their strong external utility packages such as 2x [痛苦压制] and [真言术：障]. Although their healing output from [救赎] has been recently nerfed, we believe that they will still be one of the best healing choices in Season 2.",
           "spells": [
             {
               "spellId": 47536,
@@ -34,9 +33,22 @@
             {
               "spellId": 62618,
               "spellName": "Power Word: Barrier"
+            },
+            {
+              "spellId": 81749,
+              "spellName": "Atonement"
             }
           ],
           "fullNameZH": "戒律 牧师"
+        },
+        {
+          "fullNameEN": "Restoration Druid",
+          "roleClass": "druid",
+          "classSpec": "restoration",
+          "dataChange": "up",
+          "desc": "Restoration Druid has gotten their fair share of changes leading up to Season 2, most notably changes done to their Mastery effect. Although their current rotation plays similar to what we are used to in Season 1, there have been numerous quality-of-life changes that will ease your life in Mythic+ (like interrupting a target), with a bigger emphasis on committing to either \"Owl weaving\" or \"Cat weaving\". There are a few more survivability notes that could strengthen their durability further while keeping your incredible party-wide utility unchanged. Both their damage and healing profiles are in a good state, so watch out for this spec, this could be the dark horse of the season.",
+          "spells": [],
+          "fullNameZH": "恢复 德鲁伊"
         }
       ]
     },
@@ -48,8 +60,7 @@
           "roleClass": "monk",
           "classSpec": "mistweaver",
           "dataChange": "-",
-          "desc": "Mistweaver Monk received quite a few changes in the upcoming patch, leading to improvement in their Mythic+ performance for Season 2. One of the best things to ever happen to the spec is the introduction of [青玉赋能] which allows your [碎玉闪电] do to a ton of single-target/priority-target and AoE damage while also healing you allies (like an extra minor cooldown). That in combination with how great [翡翠羁绊] talent has been (especially the CDR thanks to [朱鹤下凡]) makes them crazy good. Mistweaver's current HPS profile is amazing as it can easily tackle any given encounter in Mythic+ while contributing to the team with its great damage profile (yes, most of your damage still requires you to be in melee). All of this combined plays well with the strong utility package they offer, cementing them as one of the best healers for Season 2.",
-          "descZH": "织雾武僧在即将到来的补丁中经历了不少变化，这些变化提升了他们在第二赛季史诗钥石中的表现。该专精最令人兴奋的变化之一是[青玉赋能]的引入，它使你的[碎玉闪电]能够造成大量单体/优先级目标和AOE伤害，同时还能治疗盟友（就像一个额外的小冷却技能）。结合[翡翠羁绊]天赋的强大效果（尤其是[朱鹤下凡]提供的冷却缩减），使他们变得非常出色。织雾武僧当前的治疗输出表现惊人，能够轻松应对史诗钥石中的任何战斗，同时凭借其出色的伤害输出为团队做出贡献（是的，大部分伤害仍然需要你近战）。所有这些与他们提供的强大功能性套装相结合，使他们成为第二赛季最佳治疗者之一。",
+          "desc": "Mistweaver Monk received quite a few changes in the upcoming patch, leading to improvement in their Mythic+ performance for Season 2. One of the best things to ever happen to the spec is the introduction of [青玉赋能] which allows your [碎玉闪电] do to a ton of single-target/priority-target and AoE damage while also healing you allies (like an extra minor cooldown). That in combination with how great [翡翠羁绊] talent has been (especially the CDR thanks to [朱鹤下凡]) makes them crazy good. Mistweaver's current HPS profile is amazing as it can easily tackle any given encounter in Mythic+ while contributing to the team with its great damage profile (yes, even after the most recent nerfs). All of this combined plays well with the strong utility package they offer, cementing them to be a great healing choice for Season 2.",
           "spells": [
             {
               "spellId": 467316,
@@ -76,46 +87,11 @@
       "tier": "A",
       "children": [
         {
-          "fullNameEN": "Restoration Druid",
-          "roleClass": "druid",
-          "classSpec": "restoration",
-          "dataChange": "-",
-          "desc": "Restoration Druid has gotten their fair share of changes leading up to Season 2, most notably changes done to their Mastery effect. Although their current rotation plays similar to what we are used to in Season 1, there have been numerous quality-of-life changes that will ease your life in Mythic+ (like interrupting a target), with a bigger emphasis on committing to either \"Owl weaving\" or \"Cat weaving\". There are a few more survivability notes that could strengthen their durability further while keeping your incredible party-wide utility unchanged. Both their damage and healing profiles are in a good state, so watch out for this spec, this could be the dark horse of the season.",
-          "descZH": "恢复德鲁伊在第二赛季前经历了一些调整，其中最显著的是对其精通效果的改动。尽管他们当前的输出循环与第一赛季相似，但有许多生活质量改进将使你在史诗钥石中的体验更加轻松（例如打断目标），同时更强调选择“枭兽编织”或“猫形态编织”。还有一些生存能力的调整可能会进一步增强他们的耐久性，同时保持其强大的团队功能性不变。他们的伤害和治疗表现都处于良好状态，因此请密切关注这个专精，它可能是本赛季的黑马。",
-          "spells": [],
-          "fullNameZH": "恢复 德鲁伊"
-        }
-      ]
-    },
-    {
-      "tier": "B+",
-      "children": [
-        {
-          "fullNameEN": "Restoration Shaman",
-          "roleClass": "shaman",
-          "classSpec": "restoration",
-          "dataChange": "up",
-          "desc": "Restoration Shaman received its fair share of changes, including the removal of some of their minor cooldowns like [先祖指引] and [法力之潮图腾] to name a few, which will have a minor impact on your gameplay. They will however retain their incredibly party-wide utility and healing capabilities, but it seems this time around to be much more mana \"hungry\" than the rest of the specialization, as well as having lower damage output.",
-          "descZH": "恢复萨满经历了一些调整，包括移除了一些小冷却技能，例如[先祖指引]和[法力之潮图腾]，这些变化对你的玩法影响较小。然而，他们将保留其强大的团队功能性和治疗能力，但这次他们似乎比其他专精更“耗蓝”，并且伤害输出较低。",
-          "spells": [
-            {
-              "spellId": 108281,
-              "spellName": "Ancestral Guidance"
-            },
-            {
-              "spellId": 16191,
-              "spellName": "Mana Tide Totem"
-            }
-          ],
-          "fullNameZH": "恢复 萨满"
-        },
-        {
           "fullNameEN": "Holy Paladin",
           "roleClass": "paladin",
           "classSpec": "holy",
-          "dataChange": "-",
-          "desc": "Holy Paladin received quite a bit of changes, with the most notable being beefing up the [神圣震击] healing/damage output which creates further synergy with their tier-set, giving further damage amps during [[圣洁鸣钟]] windows. All of this combined allows [[圣洁鸣钟]] to have a shorter cooldown which makes it easier to tackle hard healing checks which come frequently. So both healing and damage output at the moment are better than what they were in the previous season. Their toolkit remains the same - one of the best party-wide utilities paired with strong defensiveness (even immunity), and excellent mob control. Overall, we expect them to continue to be a solid choice for a healer going into Season 2, but further output buffs must be implemented before we rank them higher.",
-          "descZH": "神圣圣骑士经历了不少变化，其中最显著的是增强了[神圣震击]的治疗/伤害输出，这进一步增强了与套装的协同效果，在[[圣洁鸣钟]]期间提供更高的伤害增幅。所有这些变化使[[圣洁鸣钟]]的冷却时间缩短，从而更容易应对频繁出现的治疗压力。因此，当前的治疗和伤害输出都比上赛季更好。他们的工具包保持不变——拥有最佳的团队功能性、强大的防御能力（甚至免疫）以及出色的怪物控制能力。总体而言，我们预计他们将继续成为第二赛季的坚实治疗选择，但在排名提升之前需要进一步的输出增强。",
+          "dataChange": "up",
+          "desc": "Holy Paladin received quite a bit of changes, with the most notable being beefing up the [神圣震击] healing/damage output which creates further synergy with their tier-set, giving further damage amps during [[圣洁鸣钟]] windows. All of this combined allows [[圣洁鸣钟]] to have a shorter cooldown which makes it easier to tackle hard healing checks which come frequently. The most recent buffs to their output (both healing and DPS) will positively affect their rankings. Their toolkit remains the same - one of the best party-wide utilities paired with strong defensiveness (even immunity), and excellent mob control. Overall, we expect them to continue to be a solid choice for a healer going into Season 2, especially after the most recent output buffs.",
           "spells": [
             {
               "spellId": 20473,
@@ -133,14 +109,22 @@
           "fullNameZH": "神圣 圣骑士"
         },
         {
-          "fullNameEN": "Preservation Evoker",
-          "roleClass": "evoker",
-          "classSpec": "preservation",
+          "fullNameEN": "Restoration Shaman",
+          "roleClass": "shaman",
+          "classSpec": "restoration",
           "dataChange": "-",
-          "desc": "Preservation Evoker has received its fair share of changes, more specifically focusing on making Flameshaper builds a lot more competitive in PvE environment. They still have the shortest offensive and defensive ability range among all healers, which is a massive issue. Their performance, more specifically their damage and healing output, has been great, making it a great pick up with any group composition. Overall, they do not stand out as the best healing option for Mythic+ simply because of how hard it is to make them work in a pug environment and inability to compete with the top healing specs for pure output. The group awareness must be present for them to understand how your healing profile works so you can unlock your full potential.",
-          "descZH": "恩护唤魔师经历了一些调整，更具体地说，重点是使火焰塑形者构建在PvE环境中更具竞争力。他们仍然是所有治疗者中攻击和防御技能范围最短的，这是一个巨大的问题。他们的表现，尤其是伤害和治疗输出，非常出色，使其成为任何团队组合中的优秀选择。总体而言，他们并不是史诗钥石中的最佳治疗选择，主要是因为他们在随机团队环境中难以发挥作用，并且无法在纯输出方面与顶级治疗专精竞争。团队必须了解他们的治疗机制，才能充分发挥其潜力。",
-          "spells": [],
-          "fullNameZH": "恩护 唤魔师"
+          "desc": "Restoration Shaman received its fair share of changes, including the removal of some of their minor cooldowns like [先祖指引] and [法力之潮图腾] to name a few, which will have a minor impact on your gameplay. They will however retain their incredibly party-wide utility and healing capabilities, but it seems this time around to be much more mana \"hungry\" than the rest of the specialization, as well as having lower damage output. If either of those issues are being targeted, we believe they will rise in swiftly rise in rankings.",
+          "spells": [
+            {
+              "spellId": 108281,
+              "spellName": "Ancestral Guidance"
+            },
+            {
+              "spellId": 16191,
+              "spellName": "Mana Tide Totem"
+            }
+          ],
+          "fullNameZH": "恢复 萨满"
         }
       ]
     },
@@ -151,11 +135,19 @@
           "fullNameEN": "Holy Priest",
           "roleClass": "priest",
           "classSpec": "holy",
-          "dataChange": "-",
+          "dataChange": "up",
           "desc": " Unfortunately for Holy Priest, received its fair share of changes leading up to Season 2, which will not cause a significant shift of gameplay of what you are already used to. They will maintain their decent DPS and HPS profiles, which output is not enough to rank them higher on the tierlist compared to the rest of the healing specs. In addition, they will continue to face the same limitations as in Season 1 - low mobility and insufficient mob control (just like Discipline Priest). Additionally, they are one of the few healing specializations lacking an interrupt spell, which makes their mob-control one of the weakest, compared to the rest of the healing specs. However, it is noteworthy that this specialization is considered one of the easier healing options due to its reactive healing capabilities, which are adept at addressing any form of incoming or sustained HPS challenges, complemented by robust spot-healing.",
-          "descZH": "不幸的是，神圣牧师在第二赛季前经历了一些调整，但这些调整不会对你已经习惯的玩法产生重大影响。他们将保持其不错的DPS和HPS表现，但这些输出不足以使他们在治疗专精排名中高于其他专精。此外，他们将继续面临与第一赛季相同的限制——低机动性和不足的怪物控制能力（就像戒律牧师一样）。此外，他们是少数缺乏打断技能的治疗专精之一，这使得他们的怪物控制能力在所有治疗专精中最弱。然而，值得注意的是，由于他们的反应性治疗能力，该专精被认为是较容易上手的治疗选择，能够应对任何形式的突发或持续治疗压力，并辅以强大的单体治疗能力。",
           "spells": [],
           "fullNameZH": "神圣 牧师"
+        },
+        {
+          "fullNameEN": "Preservation Evoker",
+          "roleClass": "evoker",
+          "classSpec": "preservation",
+          "dataChange": "-",
+          "desc": "Preservation Evoker has received its fair share of changes, more specifically focusing on making Flameshaper builds a lot more competitive in PvE environment. They still have the shortest offensive and defensive ability range among all healers, which is a massive issue. Their performance, more specifically their damage and healing output, has been great, making it a great pick up with any group composition. Overall, they do not stand out as the best healing option for Mythic+ simply because of how hard it is to make them work in a pug environment and inability to compete with the top healing specs for pure output. The group awareness must be present for them to understand how your healing profile works so you can unlock your full potential.",
+          "spells": [],
+          "fullNameZH": "恩护 唤魔师"
         }
       ]
     }
