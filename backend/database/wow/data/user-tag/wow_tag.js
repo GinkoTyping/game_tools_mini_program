@@ -32,7 +32,7 @@ export default {
     filterMax: 3,
     options: [
       {
-        text: '语音交流',
+        text: '语音连麦',
         value: 'mic',
       },
       {
