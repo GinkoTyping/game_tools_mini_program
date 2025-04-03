@@ -835,7 +835,9 @@ export interface ITagCardItem {
   type: string;
   nickName: string;
   avatarUrl: string;
+  relation_status: string;
   isAd?: boolean;
+  battlenet_id?: string;
 }
 export interface IFilterParams {
   filter: {
@@ -848,10 +850,12 @@ export interface IFilterParams {
   pageSize: number;
 }
 export async function queryUserTagByFilter(params?) {
+  const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
     url: `/wow/user-tag/list`,
     method: 'POST',
     data: {
+      applicantUserId: userId,
       filter: params?.filter,
       pageSize: params?.pageSize ?? 10,
       lastId: params?.lastId,
