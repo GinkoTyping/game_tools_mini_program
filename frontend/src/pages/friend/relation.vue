@@ -8,6 +8,14 @@
     @virtualListChange="virtualListChange"
     @query="queryList"
   >
+    <template #top>
+      <FilterHeader
+        v-model:current="currentFeature"
+        v-model:filters="featureFilters"
+        @change="switchFeature"
+      >
+      </FilterHeader>
+    </template>
     <view class="card-list">
       <view
         :id="`zp-id-${item.zp_index}`"
@@ -29,34 +37,53 @@
 
 <script lang="ts" setup>
 import { onLoad } from '@dcloudio/uni-app';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 import {
   queryUserTagByIds,
   queryUserTagRelationByApplicantId,
 } from '@/api/wow';
-import FriendFooter from '@/components/FriendFooter.vue';
 import { IRelationItem } from '@/interface/IUserTag';
+import FilterHeader from '@/components/FilterHeader.vue';
+import FriendFooter from '@/components/FriendFooter.vue';
 import TagCard from '@/components/TagCard.vue';
 
 const vListRef = ref();
-const relationList = ref<IRelationItem[]>();
+const applicantRelations = ref<IRelationItem[]>();
 onLoad(async () => {
-  relationList.value = await queryUserTagRelationByApplicantId();
+  applicantRelations.value = await queryUserTagRelationByApplicantId();
   vListRef.value?.reload?.();
+});
+
+const currentRelations = computed(() => {
+  if (['accepted', 'interested'].includes(currentFeature.value)) {
+    const validStatus =
+      currentFeature.value === 'accepted'
+        ? ['accepted']
+        : ['pending', 'rejected'];
+    return (
+      applicantRelations.value?.filter(item =>
+        validStatus.includes(item.status)
+      ) ?? []
+    );
+  }
+
+  // TODO targetUserId
+  return [];
 });
 
 async function queryList(pageNo: number, pageSize: number, from: string) {
   console.log('Querying list with params:', pageNo, pageSize, from);
-  if (!relationList.value) {
-    return;
+  if (currentRelations.value?.length) {
+    const data = await queryUserTagByIds({
+      ids: currentRelations.value
+        .slice((pageNo - 1) * pageSize, pageNo * pageSize)
+        .map(item => item.tagId),
+    });
+    vListRef.value?.complete(data);
+  } else {
+    vListRef.value?.complete([]);
   }
-  const data = await queryUserTagByIds({
-    ids: relationList.value
-      .slice((pageNo - 1) * pageSize, pageNo * pageSize)
-      .map(item => item.tagId),
-  });
-  vListRef.value?.complete(data);
 }
 
 const virtualList = ref();
@@ -66,13 +93,46 @@ function virtualListChange(vList) {
 function handleCellUpdate(index: number) {
   vListRef.value?.didUpdateVirtualListCell?.(index);
 }
+
+//#region  过滤栏
+const currentFeature = ref('accepted');
+const featureFilters = ref([
+  {
+    title: '已获取',
+    value: 'accepted',
+  },
+  {
+    title: '我感兴趣的',
+    value: 'interested',
+  },
+  {
+    title: '对我感兴趣的',
+    value: 'interestedByMe',
+  },
+]);
+
+function switchFeature() {
+  vListRef.value?.reload?.();
+}
+//#endregion
 </script>
 
 <style lang="scss" scoped>
+::v-deep .header-filter {
+  height: 100rpx;
+}
+
 .card-list {
   display: flex;
   flex-direction: column;
   padding: 20rpx;
   gap: 30rpx;
+}
+
+::v-deep .z-paging-content {
+  .zp-scroll-view-container {
+    top: 100rpx;
+    height: calc(100% - 100rpx - 140rpx);
+  }
 }
 </style>

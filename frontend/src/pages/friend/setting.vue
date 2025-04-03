@@ -219,7 +219,7 @@
             ></uni-icons>
           </view>
           <view class="active-time-item_content">
-            <ActiveTimeBar v-model="item.values" showTime mode="edit"/>
+            <ActiveTimeBar v-model="item.values" showTime mode="edit" />
           </view>
         </view>
       </view>

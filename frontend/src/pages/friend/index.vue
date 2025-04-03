@@ -9,22 +9,12 @@
       @query="queryList"
     >
       <template #top>
-        <view class="header-filter">
-          <view class="left-feature">
-            <text
-              v-for="feature in featureFilters"
-              :key="feature.value"
-              class="feature-label"
-              :class="[
-                currentFeature === feature.value
-                  ? ' feature-label--active'
-                  : '',
-              ]"
-              @click="() => switchFeature(feature.value)"
-              >{{ feature.title }}</text
-            >
-          </view>
-          <view class="right-drop-down">
+        <FilterHeader
+          v-model:current="currentFeature"
+          v-model:filters="featureFilters"
+          @change="switchFeature"
+        >
+          <template #right>
             <CustomTag
               title="筛选"
               @click="onSwitchFilterPage"
@@ -34,8 +24,8 @@
                 <view>↓</view>
               </template>
             </CustomTag>
-          </view>
-        </view>
+          </template>
+        </FilterHeader>
       </template>
 
       <view class="card-list">
@@ -87,6 +77,7 @@ import {
 } from '@/api/wow';
 import TagCard from '@/components/TagCard.vue';
 import CustomTag from '@/components/CustomTag.vue';
+import FilterHeader from '@/components/FilterHeader.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
 import FilterPage from '@/components/FilterPage.vue';
 import CustomToast from '@/components/CustomToast.vue';
@@ -121,11 +112,8 @@ const featureFilters = ref([
   },
 ]);
 function switchFeature(value: string) {
-  if (currentFeature.value !== value || isDetailFiltering.value) {
-    currentFeature.value = value;
-    isDetailFiltering.value = false;
-    setGameStyleFilter();
-  }
+  isDetailFiltering.value = false;
+  setGameStyleFilter();
 }
 
 const filterParams = reactive<IFilterParams>({
@@ -177,7 +165,7 @@ async function onFilterOptionChange(params) {
   filterParams.filter = params;
   filterParams.lastId = -1;
   filterParams.lastUpdatedAt = '';
-  currentFeature.value = 'all';
+  currentFeature.value = '';
   isDetailFiltering.value = true;
   vListRef.value?.reload?.();
 }
