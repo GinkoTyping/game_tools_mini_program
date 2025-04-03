@@ -244,25 +244,42 @@ function generateFilterSql(filterParams) {
 }
 
 async function getUserTagByFilter(params) {
-  const { filter, pageSize = 10, lastId = -1, lastUpdatedAt } = params;
+  const {
+    applicantUserId,
+    filter,
+    pageSize = 10,
+    lastId = -1,
+    lastUpdatedAt,
+  } = params;
 
   const { condition, filterParams } = generateFilterSql(filter);
   const baseWhere = `
-    id != ? 
-    AND updated_at ${lastUpdatedAt ? '<= ?' : '>= ?'}
+    ${TABLE_NAME}.id != ? 
+    AND ${TABLE_NAME}.updated_at ${lastUpdatedAt ? '<= ?' : '>= ?'}
     ${condition}
   `;
 
   const countWhere = `
-    id != -1
+    ${TABLE_NAME}.id != -1
     ${condition}
   `;
 
   const dataSql = `
-    SELECT id, user_id, wow_tag, common_tag, updated_at
+    SELECT
+      ${TABLE_NAME}.id,
+      ${TABLE_NAME}.user_id,
+      ${TABLE_NAME}.wow_tag,
+      ${TABLE_NAME}.common_tag,
+      ${TABLE_NAME}.updated_at,
+      wow_dynamic_user_tag_relations.status as relation_status,
+      wow_dynamic_user_tag_relations.id as relation_id
     FROM ${TABLE_NAME}
+    LEFT JOIN wow_dynamic_user_tag_relations 
+    ON ${TABLE_NAME}.user_id = wow_dynamic_user_tag_relations.target_user_id
+      AND ${TABLE_NAME}.id = wow_dynamic_user_tag_relations.tag_id
+      AND wow_dynamic_user_tag_relations.applicant_user_id = ?
     WHERE ${baseWhere}
-    ORDER BY updated_at DESC 
+    ORDER BY ${TABLE_NAME}.updated_at DESC 
     LIMIT ?`;
   const countSql = `
     SELECT COUNT(*) as total
@@ -270,11 +287,17 @@ async function getUserTagByFilter(params) {
     WHERE ${countWhere}`;
 
   // 构建参数数组
-  const baseParams = [lastId, lastUpdatedAt?.toString() ?? '', ...filterParams];
+  const baseParams = [
+    applicantUserId,
+    lastId,
+    lastUpdatedAt?.toString() ?? '',
+    ...filterParams,
+    pageSize,
+  ];
 
   // 并行执行两个查询
   const [dataResult, countResult] = await Promise.all([
-    db.all(dataSql, [...baseParams, pageSize]),
+    db.all(dataSql, baseParams),
     db.get(countSql, filterParams),
   ]);
 
