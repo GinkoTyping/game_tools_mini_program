@@ -92,5 +92,9 @@ export const useUserStore = defineStore('user', {
       this.notViewedRelations = await queryNotViewedRelation();
     },
   },
-  getters: {},
+  getters: {
+    unreadTagRelationCount(state) {
+      return state.notViewedRelations?.count ?? 0;
+    },
+  },
 });

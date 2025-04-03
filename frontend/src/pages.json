@@ -20,6 +20,12 @@
 			}
 		},
 		{
+			"path": "pages/friend/relation",
+			"style": {
+				"navigationBarTitleText": "艾泽拉斯名片"
+			}
+		},
+		{
 			"path": "pages/friend/setting",
 			"style": {
 				"navigationBarTitleText": "艾泽拉斯名片"

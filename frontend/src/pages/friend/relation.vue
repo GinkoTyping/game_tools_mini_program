@@ -34,6 +34,7 @@
           :display-battlenet-id="
             ['accepted', 'interestedByMe'].includes(currentFeature)
           "
+          :unread="isUnread(item.user_id)"
           v-model:type="item.type"
           @cell-update="() => handleCellUpdate(item.zp_index)"
         />
@@ -50,6 +51,7 @@ import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
 import {
+  queryUpdateLastViewRelation,
   queryUserTagByIds,
   queryUserTagRelationByApplicantId,
   queryUserTagRelationByTargetId,
@@ -59,14 +61,23 @@ import FilterHeader from '@/components/FilterHeader.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
 import TagCard from '@/components/TagCard.vue';
 import CustomToast from '@/components/CustomToast.vue';
+import { useUserStore } from '@/store/wowStore';
 
+const store = useUserStore();
 const vListRef = ref();
 const toastRef = ref();
 const applicantRelations = ref<IRelationItem[]>();
 const targetRelations = ref<IRelationItem[]>();
 onLoad(async () => {
-  applicantRelations.value = await queryUserTagRelationByApplicantId();
-  targetRelations.value = await queryUserTagRelationByTargetId();
+  const results: any = await Promise.allSettled([
+    queryUserTagRelationByApplicantId(),
+    queryUserTagRelationByTargetId(),
+  ]);
+
+  [applicantRelations.value, targetRelations.value] = results.map(
+    result => result.value ?? null
+  );
+
   vListRef.value?.reload?.();
 });
 
@@ -117,7 +128,7 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
   currentPageNo.value = pageNo;
   currentPageSize.value = pageSize;
 
-  if (relationParams.value) {
+  if (relationParams.value?.count) {
     const data = await queryUserTagByIds(relationParams.value);
     if (from !== 'load-more' && data.length) {
       toastRef.value.showToast(
@@ -146,7 +157,9 @@ const featureFilters = ref([
     value: 'accepted',
   },
   {
-    title: '对我感兴趣的',
+    title: `对我感兴趣的${
+      store.unreadTagRelationCount ? `(+${store.unreadTagRelationCount})` : ''
+    }`,
     value: 'interestedByMe',
   },
   // TODO: 申请的功能待完成
@@ -156,9 +169,31 @@ const featureFilters = ref([
   // },
 ]);
 
-function switchFeature() {
+async function switchFeature() {
   vListRef.value?.reload?.();
+
+  // 用户查看后，清空未读的消息计数
+  if (
+    currentFeature.value === 'interestedByMe' &&
+    store.unreadTagRelationCount
+  ) {
+    await queryUpdateLastViewRelation();
+    store.notViewedRelations.count = 0;
+  }
 }
+//#endregion
+
+//#region 文字样式
+const isUnread = computed(() => {
+  return (tagUserId: number) => {
+    return (
+      currentFeature.value === 'interestedByMe' &&
+      store.notViewedRelations?.list?.some(
+        item => item.applicantUserId === tagUserId
+      )
+    );
+  };
+});
 //#endregion
 </script>
 

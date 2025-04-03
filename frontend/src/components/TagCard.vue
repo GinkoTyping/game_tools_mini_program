@@ -9,6 +9,9 @@
           color="#007aff"
         ></uni-icons>
       </view>
+      <view class="unread-dot" v-show="props.unread">
+        <CustomTag title="未读" size="small" type="active" />
+      </view>
       <!-- 顶部 -->
       <view class="main-spec">
         <image
@@ -213,6 +216,9 @@ const props = defineProps({
   displayBattlenetId: {
     type: Boolean,
     default: false,
+  },
+  unread: {
+    type: Boolean,
   },
 });
 const emit = defineEmits(['cell-update']);
@@ -474,7 +480,11 @@ $label-margin-bottom: 12rpx;
   flex-direction: column;
   justify-content: flex-end;
   box-shadow: 0px 2px 5px 2px rgba(255, 255, 255, 0.2);
-
+  .unread-dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
   // 公共
   .spec-image {
     width: 100rpx;

@@ -7,16 +7,23 @@
       :class="[activeMenu === menu.value ? 'menu-item--active' : '']"
       @click="() => switchMenu(menu)"
     >
-      <button
-        class="button-wrap"
-        :open-type="menu.value === 'share' ? 'share' : ''"
+      <uni-badge
+        class="uni-badge-left-margin"
+        :text="menu.value === 'relation' && store.unreadTagRelationCount"
+        absolute="rightTop"
+        size="small"
       >
-        <uni-icons
-          :type="menu.icon"
-          size="24"
-          :color="activeMenu === menu.value ? '#007aff' : '#bbb'"
-        ></uni-icons>
-      </button>
+        <button
+          class="button-wrap"
+          :open-type="menu.value === 'share' ? 'share' : ''"
+        >
+          <uni-icons
+            :type="menu.icon"
+            size="24"
+            :color="activeMenu === menu.value ? '#007aff' : '#bbb'"
+          ></uni-icons>
+        </button>
+      </uni-badge>
       <view>{{ menu.title }}</view>
     </view>
   </view>
@@ -26,7 +33,9 @@
 import { reactive } from 'vue';
 import { useNavigator } from '@/hooks/navigator';
 import { onShow } from '@dcloudio/uni-app';
+import { useUserStore } from '@/store/wowStore';
 
+const store = useUserStore();
 const activeMenu = defineModel('menu', { type: String, default: 'relation' });
 const menus = reactive([
   {

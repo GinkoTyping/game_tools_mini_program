@@ -208,20 +208,19 @@ export async function queryNotViewedRelations(req, res) {
 
   const results = await Promise.allSettled([
     userTagMapper.getLastViewRelation(userId),
-    userTagRelationMapper.getRelationsByApplicant(userId),
     userTagRelationMapper.getRelationsByTargetUser(userId),
   ]);
-  const [lastViewData, applicantRelations, targetRelastions] = results.map(
+  const [lastViewData, targetRelastions] = results.map(
     (item) => item.value
   );
 
   let notViewList;
   if (lastViewData.last_view_relation_at) {
-    notViewList = [...applicantRelations, ...targetRelastions].filter(
+    notViewList = [...targetRelastions].filter(
       (item) => item.updated_at > lastViewData.last_view_relation_at
     );
   } else {
-    notViewList = [...applicantRelations, ...targetRelastions];
+    notViewList = [...targetRelastions];
   }
   res.json({
     last: lastViewData.last_view_relation_at,
