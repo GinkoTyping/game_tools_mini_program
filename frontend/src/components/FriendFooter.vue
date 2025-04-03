@@ -36,7 +36,7 @@ const menus = reactive([
     page: '/pages/friend/index',
   },
   {
-    title: '申请',
+    title: '卡包',
     value: 'relation',
     icon: 'personadd-filled',
     page: '/pages/friend/relation',
