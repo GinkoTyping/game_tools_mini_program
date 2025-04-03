@@ -198,7 +198,7 @@ function normalizeRelation(record) {
   };
 }
 
-export function useRelationMapper(database) {
+export function useUserTagRelationMapper(database) {
   if (!database) throw new Error('DB instance required');
   db = database;
 

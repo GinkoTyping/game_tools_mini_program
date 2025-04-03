@@ -231,7 +231,7 @@ CREATE INDEX idx_active_time_updated ON wow_dynamic_user_tag (wow_active_time, u
 
 -- user user tag
 CREATE TABLE
-  wow_dynamic_user_tag_relations (
+  IF NOT EXISTS wow_dynamic_user_tag_relations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     -- 申请人（主动发起动作的用户）
     applicant_user_id INTEGER NOT NULL,

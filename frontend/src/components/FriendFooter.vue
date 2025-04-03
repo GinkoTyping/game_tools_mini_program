@@ -25,9 +25,9 @@
 <script lang="ts" setup>
 import { reactive } from 'vue';
 import { useNavigator } from '@/hooks/navigator';
-import { onShareAppMessage, onShow } from '@dcloudio/uni-app';
+import { onShow } from '@dcloudio/uni-app';
 
-const activeMenu = defineModel('menu', { type: String, default: 'index' });
+const activeMenu = defineModel('menu', { type: String, default: 'relation' });
 const menus = reactive([
   {
     title: '大厅',
@@ -35,12 +35,12 @@ const menus = reactive([
     icon: 'map-filled',
     page: '/pages/friend/index',
   },
-  // {
-  //   title: '申请',
-  //   value: 'invites',
-  //   icon: 'personadd-filled',
-  //   page: '/pages/friend/index',
-  // },
+  {
+    title: '申请',
+    value: 'relation',
+    icon: 'personadd-filled',
+    page: '/pages/friend/relation',
+  },
   {
     title: '分享',
     value: 'share',
@@ -48,7 +48,7 @@ const menus = reactive([
     page: '/pages/friend/index',
   },
   {
-    title: '返回主页',
+    title: '主页',
     value: 'home',
     icon: 'home-filled',
     page: '/pages/index/index',
