@@ -112,11 +112,11 @@
       <view class="buttons">
         <view class="button-item" @click="requestBattlenet">
           <uni-icons
-            :type="isActiveButton ? 'personadd-filled' : 'auth-filled'"
+            :type="isInactiveButton ? 'personadd-filled' : 'auth-filled'"
             size="30"
-            :color="isActiveButton ? '#777777' : '#007aff'"
+            :color="isInactiveButton ? '#777777' : '#007aff'"
           ></uni-icons>
-          <text :class="isActiveButton ? '' : 'available'">{{
+          <text :class="isInactiveButton ? '' : 'available'">{{
             dynamicButtonText
           }}</text>
         </view>
@@ -210,6 +210,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  displayBattlenetId: {
+    type: Boolean,
+    default: false,
+  },
 });
 const emit = defineEmits(['cell-update']);
 
@@ -251,7 +255,7 @@ watch(
 const isUserSelf = computed(() => {
   return uni.getStorageSync('userId') === props.data.user_id;
 });
-const isActiveButton = computed(() => {
+const isInactiveButton = computed(() => {
   return wowTag.value?.privacy?.needConfirm && !isUserSelf.value;
 });
 const getNickName = computed(() => {
@@ -328,7 +332,8 @@ const dynamicButtonText = computed(() => {
 
   if (
     battlenetId.value ||
-    (props.data.relation_status === 'accepted' && props.data.battlenet_id)
+    (props.data.relation_status === 'accepted' && props.data.battlenet_id) ||
+    props.displayBattlenetId
   ) {
     return `已获取: ${battlenetId.value ?? props.data.battlenet_id}`;
   }

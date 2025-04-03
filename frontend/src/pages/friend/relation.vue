@@ -16,6 +16,12 @@
       >
       </FilterHeader>
     </template>
+    <view
+      class="hint"
+      v-show="currentFeature === 'interestedByMe' && targetRelations?.length"
+      >有收到他们的好友邀请吗？<br />
+      如果觉得不错的话，可以主动添加试试噢!</view
+    >
     <view class="card-list">
       <view
         :id="`zp-id-${item.zp_index}`"
@@ -25,6 +31,9 @@
       >
         <TagCard
           :data="item"
+          :display-battlenet-id="
+            ['accepted', 'interestedByMe'].includes(currentFeature)
+          "
           v-model:type="item.type"
           @cell-update="() => handleCellUpdate(item.zp_index)"
         />
@@ -33,6 +42,7 @@
   </z-paging>
 
   <FriendFooter />
+  <CustomToast ref="toastRef" />
 </template>
 
 <script lang="ts" setup>
@@ -42,45 +52,78 @@ import { computed, ref } from 'vue';
 import {
   queryUserTagByIds,
   queryUserTagRelationByApplicantId,
+  queryUserTagRelationByTargetId,
 } from '@/api/wow';
 import { IRelationItem } from '@/interface/IUserTag';
 import FilterHeader from '@/components/FilterHeader.vue';
 import FriendFooter from '@/components/FriendFooter.vue';
 import TagCard from '@/components/TagCard.vue';
+import CustomToast from '@/components/CustomToast.vue';
 
 const vListRef = ref();
+const toastRef = ref();
 const applicantRelations = ref<IRelationItem[]>();
+const targetRelations = ref<IRelationItem[]>();
 onLoad(async () => {
   applicantRelations.value = await queryUserTagRelationByApplicantId();
+  targetRelations.value = await queryUserTagRelationByTargetId();
   vListRef.value?.reload?.();
 });
 
-const currentRelations = computed(() => {
+const relationParams = computed(() => {
   if (['accepted', 'interested'].includes(currentFeature.value)) {
     const validStatus =
       currentFeature.value === 'accepted'
         ? ['accepted']
         : ['pending', 'rejected'];
-    return (
-      applicantRelations.value?.filter(item =>
-        validStatus.includes(item.status)
-      ) ?? []
+    const total = applicantRelations.value?.filter(item =>
+      validStatus.includes(item.status)
     );
+    return {
+      ids:
+        total
+          ?.slice(
+            (currentPageNo.value - 1) * currentPageSize.value,
+            currentPageNo.value * currentPageSize.value
+          )
+          ?.map(item => item.tagId) ?? [],
+      requireRelation: true,
+      count: total?.length,
+    };
   }
-
+  if (currentFeature.value === 'interestedByMe') {
+    const total = targetRelations.value?.filter(
+      item => item.status === 'accepted'
+    );
+    return {
+      userIds:
+        total
+          ?.slice(
+            (currentPageNo.value - 1) * currentPageSize.value,
+            currentPageNo.value * currentPageSize.value
+          )
+          ?.map(item => item.applicantUserId) ?? [],
+      requireRelation: false,
+      count: total?.length,
+    };
+  }
   // TODO 申请功能待完善
-  return [];
+  return null;
 });
 
+const currentPageNo = ref(1);
+let currentPageSize = ref(10);
 async function queryList(pageNo: number, pageSize: number, from: string) {
-  console.log('Querying list with params:', pageNo, pageSize, from);
-  if (currentRelations.value?.length) {
-    const data = await queryUserTagByIds({
-      ids: currentRelations.value
-        .slice((pageNo - 1) * pageSize, pageNo * pageSize)
-        .map(item => item.tagId),
-      requireRelation: true,
-    });
+  currentPageNo.value = pageNo;
+  currentPageSize.value = pageSize;
+
+  if (relationParams.value) {
+    const data = await queryUserTagByIds(relationParams.value);
+    if (from !== 'load-more' && data.length) {
+      toastRef.value.showToast(
+        `获取了${relationParams.value?.count ?? 0}张名片`
+      );
+    }
     vListRef.value?.complete(data);
   } else {
     vListRef.value?.complete([]);
@@ -99,7 +142,7 @@ function handleCellUpdate(index: number) {
 const currentFeature = ref('accepted');
 const featureFilters = ref([
   {
-    title: '已获取',
+    title: '我获取的',
     value: 'accepted',
   },
   {
@@ -122,6 +165,14 @@ function switchFeature() {
 <style lang="scss" scoped>
 ::v-deep .header-filter {
   height: 100rpx;
+}
+
+.hint {
+  padding: 20rpx;
+  padding-bottom: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 26rpx;
 }
 
 .card-list {

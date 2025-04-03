@@ -14,6 +14,16 @@ export async function queryRelationByApplicantUserId(req, res) {
   res.json(data);
 }
 
+export async function queryRelationByTargetUserId(req, res) {
+  const { userId, status } = req.body;
+  const data = await userTagRelationMapper.getRelationsByTargetUser(
+    userId,
+    status
+  );
+
+  res.json(data);
+}
+
 export async function queryAddRelationStatusByApplicantId(req, res) {
   try {
     const data = await userTagRelationMapper.insertRelation(req.body);

@@ -805,6 +805,7 @@ export async function queryUserTagByIds(params?: {
   id?: number;
   userId?: number;
   ids?: number[];
+  userIds?: number[];
   requireRelation?: boolean;
 }) {
   const { userId } = await auth.getUserInfo();
@@ -818,6 +819,8 @@ export async function queryUserTagByIds(params?: {
     }
   } else if (params?.ids) {
     finalParams.ids = params.ids;
+  } else if (params?.userIds) {
+    finalParams.userIds = params.userIds;
   } else {
     finalParams.userIds = [userId];
   }
@@ -831,7 +834,11 @@ export async function queryUserTagByIds(params?: {
     method: 'POST',
     data: finalParams,
   });
-  return params?.ids ? res?.data : res?.data?.[0];
+
+  if (!params || params?.id) {
+    return res?.data?.[0];
+  }
+  return res?.data;
 }
 
 export interface ITagCardItem {
@@ -915,6 +922,21 @@ export async function queryUserTagRelationByApplicantId(
   const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
     url: `/wow/user-tag/relation/applicant`,
+    method: 'POST',
+    data: {
+      userId,
+      status,
+    },
+  });
+  return res.data as IRelationItem[];
+}
+
+export async function queryUserTagRelationByTargetId(
+  status?: 'pending' | 'accept' | 'reject'
+) {
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/wow/user-tag/relation/target`,
     method: 'POST',
     data: {
       userId,
