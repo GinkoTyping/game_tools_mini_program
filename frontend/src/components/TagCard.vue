@@ -33,16 +33,38 @@
           </view>
           <view class="main-spec__content-other">
             <view class="game-style label-list">
-              <CustomTag
+              <template
+                v-for="propKey in ['communication', 'gameStyle']"
+                :key="propKey"
+              >
+                <CustomTag
+                  v-for="item in wowTag?.[propKey]"
+                  :key="item.value"
+                  :iconfont-icon="
+                    getTagSetting(propKey, item.value).iconfontIcon
+                  "
+                  :iconfont-icon-color="
+                    getTagSetting(propKey, item.value).iconfontIconColor
+                  "
+                  :title="item.text"
+                  size="small"
+                  theme="dark"
+                />
+              </template>
+              <!-- <CustomTag
                 v-for="item in [
                   ...(wowTag?.communication ?? []),
                   ...(wowTag?.gameStyle ?? []),
                 ]"
+                :iconfont-icon="getTagSetting(propKey, item.value).iconfontIcon"
+                :iconfont-icon-color="
+                  getTagSetting(propKey, item.value).iconfontIconColor
+                "
                 :key="item.value"
                 :title="item.text"
                 size="small"
                 theme="dark"
-              />
+              /> -->
             </view>
           </view>
         </view>
@@ -480,11 +502,13 @@ $label-margin-bottom: 12rpx;
   flex-direction: column;
   justify-content: flex-end;
   box-shadow: 0px 2px 5px 2px rgba(255, 255, 255, 0.2);
+
   .unread-dot {
     position: absolute;
     top: 0;
     right: 0;
   }
+
   // 公共
   .spec-image {
     width: 100rpx;

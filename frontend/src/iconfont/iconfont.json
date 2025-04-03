@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "11349165",
+      "name": "mic-f",
+      "font_class": "mic-f",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "11981689",
+      "name": "keyboard",
+      "font_class": "keyboard",
+      "unicode": "e96b",
+      "unicode_decimal": 59755
+    },
+    {
       "icon_id": "39482308",
       "name": "未读-01",
       "font_class": "weidu-01",

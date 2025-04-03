@@ -99,7 +99,7 @@ export function mapIconfont(key: string, value: string) {
       case '射手座':
         return {
           icon: 'icon-constellation-sagittarius',
-          color: '#4B0082', // 靛蓝色
+          color: '#c58def', // 靛蓝色
         };
       case '水瓶座':
         return {
@@ -130,6 +130,23 @@ export function mapIconfont(key: string, value: string) {
         break; // 或根据需求返回默认值
     }
   }
+  if (key === 'communication') {
+    switch (value) {
+      case 'mic':
+        return {
+          icon: 'icon-mic-f',
+          color: 'black', // 粉红色
+        };
+      case 'message':
+        return {
+          icon: 'icon-keyboard',
+          color: 'black', // 粉红色
+        };
+      default:
+        break;
+    }
+  }
+
   return {
     icon: '',
     color: '',

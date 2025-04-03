@@ -81,7 +81,7 @@ const handleClick = () => {
   border-width: 1px;
   border-style: solid;
   box-sizing: border-box;
-  gap: 10rpx;
+  gap: 4rpx;
   &.spec-reverse {
     color: black;
   }
