@@ -33,7 +33,7 @@ async function silenceLogin(isRefresh: boolean = false) {
   const res = await uni.login({
     provider: 'weixin', //使用微信登录
   });
-  const { token, refreshToken, userId, error } = await queryLogin(res.code);
+  let { token, refreshToken, userId, error } = await queryLogin(res.code);
   if (error) {
     uni.showToast({ title: error, icon: 'error' });
   } else {

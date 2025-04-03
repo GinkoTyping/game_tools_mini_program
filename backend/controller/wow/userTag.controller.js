@@ -4,9 +4,11 @@ import { useUserTagMapper } from '../../database/wow/mapper/dynamic/userTag.mapp
 import { getTrendData } from './bisController.js';
 import { useScheduleCheck } from '../../util/use-schedule-check.js';
 import { useAuthMapper } from '../../database/auth/mapper/authMapper.js';
+import { useUserTagRelationMapper } from '../../database/wow/mapper/dynamic/userTagRelation.mapper.js';
 
 const db = await getDynamicDB();
 const userTagMapper = useUserTagMapper(db);
+const userTagRelationMapper = useUserTagRelationMapper(db);
 
 const authDb = await getAuthDB();
 const authMapper = useAuthMapper(authDb);
@@ -91,7 +93,7 @@ export async function queryUserTagByIds(req, res) {
       ids ?? userIds,
       whereKey,
       true,
-      applicantUserId,
+      applicantUserId
     );
     list = await mapUserProfileInfo(list);
     res.json(list);
@@ -186,4 +188,44 @@ export async function queryFilterDetails(req, res) {
   const data = await userTagMapper.getTagOptions();
   const filters = await mapFilterDetail(data.wowOptions, data.commonOptions);
   res.json(filters);
+}
+
+export async function queryUpdateLastViewRelation(req, res) {
+  try {
+    const result = await userTagMapper.updateLastViewRelation(req.body.userId);
+    if (result.changes) {
+      res.json({ message: '更新成功！' });
+    } else {
+      res.status(500).json({ message: '更新失败' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: '更新失败', error: error.code });
+  }
+}
+
+export async function queryNotViewedRelations(req, res) {
+  const { userId } = req.body;
+
+  const results = await Promise.allSettled([
+    userTagMapper.getLastViewRelation(userId),
+    userTagRelationMapper.getRelationsByApplicant(userId),
+    userTagRelationMapper.getRelationsByTargetUser(userId),
+  ]);
+  const [lastViewData, applicantRelations, targetRelastions] = results.map(
+    (item) => item.value
+  );
+
+  let notViewList;
+  if (lastViewData.last_view_relation_at) {
+    notViewList = [...applicantRelations, ...targetRelastions].filter(
+      (item) => item.updated_at > lastViewData.last_view_relation_at
+    );
+  } else {
+    notViewList = [...applicantRelations, ...targetRelastions];
+  }
+  res.json({
+    last: lastViewData.last_view_relation_at,
+    list: notViewList,
+    count: notViewList.length,
+  });
 }

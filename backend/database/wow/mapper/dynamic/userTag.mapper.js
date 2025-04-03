@@ -242,7 +242,9 @@ async function getUserTagByIds(ids, whereKey, hasBattlenetId, applicantUserId) {
   }
 
   // 构建WHERE条件
-  const whereClauses = ids.map(() => `${tableAlias}.${whereKey} = ?`).join(' OR ');
+  const whereClauses = ids
+    .map(() => `${tableAlias}.${whereKey} = ?`)
+    .join(' OR ');
   sql += ` WHERE ${whereClauses}`;
 
   // 排序逻辑
@@ -251,15 +253,15 @@ async function getUserTagByIds(ids, whereKey, hasBattlenetId, applicantUserId) {
   }
 
   // 参数处理（保证顺序正确）
-  const params = applicantUserId 
-    ? [applicantUserId, ...ids]  // 第一个参数是 applicantUserId
+  const params = applicantUserId
+    ? [applicantUserId, ...ids] // 第一个参数是 applicantUserId
     : [...ids];
 
   // 执行查询
   const data = await db.all(sql, params);
 
   // 结果处理
-  return data.map(item => ({
+  return data.map((item) => ({
     ...item,
     wow_tag: JSON.parse(item.wow_tag ?? 'null'),
     common_tag: JSON.parse(item.common_tag ?? 'null'),
@@ -370,6 +372,20 @@ async function getTotalTagCardCount(params) {
   return data?.total ?? 0;
 }
 
+async function updateLastViewRelation(userId) {
+  return db.run(
+    `UPDATE ${TABLE_NAME} SET last_view_relation_at = ? WHERE user_id = ?`,
+    [formatDateByMinute(), userId]
+  );
+}
+
+async function getLastViewRelation(userId) {
+  return db.get(
+    `SELECT last_view_relation_at FROM ${TABLE_NAME} WHERE user_id = ?`,
+    [userId]
+  );
+}
+
 export function useUserTagMapper(database) {
   if (database) {
     db = database;
@@ -386,5 +402,8 @@ export function useUserTagMapper(database) {
     getUserTagByIds,
     getUserTagByFilter,
     getTotalTagCardCount,
+
+    getLastViewRelation,
+    updateLastViewRelation,
   };
 }

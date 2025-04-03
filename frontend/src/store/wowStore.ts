@@ -10,6 +10,7 @@ import {
   queryCheckDrawTarot,
   queryDrawTarot,
   queryFriendOptions,
+  queryNotViewedRelation,
   queryUserMarks,
 } from '@/api/wow';
 
@@ -71,6 +72,7 @@ export const useUserStore = defineStore('user', {
     notification: {
       fillCommonUserTag: false,
     },
+    notViewedRelations: {},
   }),
   actions: {
     async updateUserMarks() {
@@ -84,6 +86,10 @@ export const useUserStore = defineStore('user', {
     },
     async getFriendOptions() {
       this.userTagOptions = await queryFriendOptions();
+    },
+
+    async getNotViewedRelations() {
+      this.notViewedRelations = await queryNotViewedRelation();
     },
   },
   getters: {},

@@ -894,6 +894,30 @@ export async function queryUserTagFilterOptions() {
   return res.data;
 }
 
+export async function queryUpdateLastViewRelation() {
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/wow/user-tag/update-view-relation`,
+    method: 'POST',
+    data: {
+      userId,
+    },
+  });
+  return res.data;
+}
+
+export async function queryNotViewedRelation() {
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/wow/user-tag/get-view-relation`,
+    method: 'POST',
+    data: {
+      userId,
+    },
+  });
+  return res.data;
+}
+
 // 关系表
 export async function queryAddUserTagRelation(params: {
   targetUserId: number;
@@ -945,4 +969,5 @@ export async function queryUserTagRelationByTargetId(
   });
   return res.data as IRelationItem[];
 }
+
 //#endregion

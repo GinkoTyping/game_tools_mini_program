@@ -102,6 +102,9 @@
     >
       <view class="narrow-card_info">
         <view class="icon icon-right-bottom">
+          <text v-show="notViewedRelationCount" style="color: rgb(244, 123, 0)"
+            >({{ notViewedRelationCount }}条未读)</text
+          >
           <uni-icons color="#bbb" type="image" size="20"></uni-icons>
           <text>{{ homeViewData?.tagCardCount }}</text>
         </view>
@@ -215,6 +218,7 @@ import labels from '@/data/zh.json';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { queryScorllInfo } from '@/api/shared';
+import { useUserStore } from '@/store/wowStore';
 
 const navigator = useNavigator();
 onShareAppMessage(() => ({
@@ -225,9 +229,12 @@ onShareAppMessage(() => ({
 const homeViewData = ref<IHomeViewDTO>();
 const currentSwipper = ref(0);
 const scrollText = ref('');
+const store = useUserStore();
+const notViewedRelationCount = computed(() => store.notViewedRelations?.count);
 onLoad(async () => {
-  homeViewData.value = await queryHomeView();
+  store.getNotViewedRelations();
 
+  homeViewData.value = await queryHomeView();
   // TODO: 待后端新增custom轮播图
   homeViewData.value.carousels = homeViewData.value.carousels.filter(
     item => !item.custom
