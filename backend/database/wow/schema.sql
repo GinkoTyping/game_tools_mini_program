@@ -228,6 +228,9 @@ CREATE INDEX idx_game_style_updated ON wow_dynamic_user_tag (wow_game_style, upd
 
 CREATE INDEX idx_active_time_updated ON wow_dynamic_user_tag (wow_active_time, updated_at DESC);
 
+-- user user tag
+
+
 -- daily tables
 CREATE TABLE
   IF NOT EXISTS wow_daily_spec_popularity (
