@@ -272,7 +272,13 @@ async function getUserTagByFilter(params) {
       ${TABLE_NAME}.common_tag,
       ${TABLE_NAME}.updated_at,
       wow_dynamic_user_tag_relations.status as relation_status,
-      wow_dynamic_user_tag_relations.id as relation_id
+      wow_dynamic_user_tag_relations.id as relation_id,
+      -- 动态返回 battlenet_id(仅当状态为 accepted 时)
+      CASE 
+        WHEN wow_dynamic_user_tag_relations.status = 'accepted' 
+        THEN ${TABLE_NAME}.battlenet_id 
+        ELSE NULL 
+      END AS battlenet_id
     FROM ${TABLE_NAME}
     LEFT JOIN wow_dynamic_user_tag_relations 
     ON ${TABLE_NAME}.user_id = wow_dynamic_user_tag_relations.target_user_id
