@@ -321,8 +321,11 @@ const getUpdatedTime = computed(() => {
 });
 const battlenetId = ref();
 const dynamicButtonText = computed(() => {
-  if (battlenetId.value) {
-    return `${battlenetId.value}(点击复制)`;
+  if (
+    battlenetId.value ||
+    (props.data.relation_status === 'accepted' && props.data.battlenet_id)
+  ) {
+    return `已获取: ${battlenetId.value ?? props.data.battlenet_id}`;
   }
   return wowTag.value.privacy.needConfirm ? '申请战网' : '获取战网';
 });
@@ -380,9 +383,24 @@ async function requestBattlenet() {
     return;
   }
 
+  let clipText;
   if (wowTag.value?.privacy?.needConfirm) {
     uni.showToast({
-      title: '用户目前还没有公开战网信息噢',
+      title: 'TA目前还没有公开战网信息噢',
+      icon: 'none',
+      duration: 3000,
+    });
+  } else if (props.data.relation_status === 'accepted') {
+    clipText = props.data.battlenet_id;
+  } else if (props.data.relation_status === 'pending') {
+    uni.showToast({
+      title: 'TA还没有同意你的申请',
+      icon: 'none',
+      duration: 3000,
+    });
+  } else if (props.data.relation_status === 'rejected') {
+    uni.showToast({
+      title: 'TA拒绝了你的申请',
       icon: 'none',
       duration: 3000,
     });
@@ -397,17 +415,20 @@ async function requestBattlenet() {
         isAutoApproved: 1,
       });
       battlenetId.value = data.battlenet_id;
-      uni.setClipboardData({
-        data: data.battlenet_id,
-        success: function () {
-          uni.showToast({
-            title: '已复制战网至粘贴板',
-            icon: 'none',
-            duration: 3000,
-          });
-        },
-      });
+      clipText = data.battlenet_id;
     }
+  }
+  if (clipText) {
+    uni.setClipboardData({
+      data: clipText,
+      success: function () {
+        uni.showToast({
+          title: '已复制战网至粘贴板',
+          icon: 'none',
+          duration: 3000,
+        });
+      },
+    });
   }
 }
 

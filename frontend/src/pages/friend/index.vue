@@ -37,6 +37,7 @@
           </view>
         </view>
       </template>
+
       <view class="card-list">
         <view
           :id="`zp-id-${item.zp_index}`"
@@ -271,7 +272,6 @@ function handleCellUpdate(index: number) {
 //#endregion
 
 onLoad(async () => {
-  vListRef.value?.reload?.();
   filterOptions.value = await queryUserTagFilterOptions();
 });
 </script>
