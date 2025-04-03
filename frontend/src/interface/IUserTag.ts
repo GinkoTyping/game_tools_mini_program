@@ -33,3 +33,15 @@ export interface ICommonTag {
   personality: IOptionItem[];
   role: IOptionItem[];
 }
+
+export interface IRelationItem {
+  id: number;
+  applicantUserId: number;
+  targetUserId: number;
+  tagId: number;
+  status: string;
+  rejectReason: string;
+  isAutoApproved: boolean;
+  createdAt: string;
+  updatedAt: string;
+}

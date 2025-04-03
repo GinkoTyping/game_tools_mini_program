@@ -425,7 +425,7 @@
 <script lang="ts" setup>
 import {
   querySubmitUserTag,
-  queryUserTagById,
+  queryUserTagByIds,
   updateUserProfile,
 } from '@/api/wow';
 import {
@@ -841,7 +841,7 @@ const previewText = computed(() => {
 //#endregion
 onLoad(async () => {
   await userStore.getFriendOptions();
-  const data = await queryUserTagById();
+  const data = await queryUserTagByIds();
   if (data) {
     cardData.value = JSON.parse(JSON.stringify(data));
   }

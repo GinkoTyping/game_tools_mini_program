@@ -4,7 +4,7 @@ import { proxyRequest } from '../config';
 import colorMap from '@/utils/color-map';
 import localeName from '@/data/zh.json';
 import { useAuth } from '@/hooks/auth';
-import { ICommonTag, IWowTag } from '@/interface/IUserTag';
+import { ICommonTag, IRelationItem, IWowTag } from '@/interface/IUserTag';
 
 const localeNameMap: any = localeName;
 const auth = useAuth();
@@ -801,9 +801,10 @@ export async function querySubmitUserTag(params) {
   const isSuccess = res.statusCode === 200;
   return { isSuccess, message: res?.data?.message };
 }
-export async function queryUserTagById(params?: {
+export async function queryUserTagByIds(params?: {
   id?: number;
   userId?: number;
+  ids?: number[];
 }) {
   const { userId } = await auth.getUserInfo();
 
@@ -814,6 +815,8 @@ export async function queryUserTagById(params?: {
     } else {
       finalParams.userIds = [params.userId];
     }
+  } else if (params?.ids) {
+    finalParams.ids = params.ids;
   } else {
     finalParams.userIds = [userId];
   }
@@ -823,7 +826,7 @@ export async function queryUserTagById(params?: {
     method: 'POST',
     data: finalParams,
   });
-  return res?.data?.[0];
+  return params?.ids ? res?.data : res?.data?.[0];
 }
 
 export interface ITagCardItem {
@@ -913,6 +916,6 @@ export async function queryUserTagRelationByApplicantId(
       status,
     },
   });
-  return res.data;
+  return res.data as IRelationItem[];
 }
 //#endregion

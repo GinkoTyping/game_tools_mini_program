@@ -190,7 +190,7 @@ import localeLabels from '@/data/zh.json';
 import {
   ITagCardItem,
   queryAddUserTagRelation,
-  queryUserTagById,
+  queryUserTagByIds,
 } from '@/api/wow';
 import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
 import CustomTag from '@/components/CustomTag.vue';
@@ -405,7 +405,7 @@ async function requestBattlenet() {
       duration: 3000,
     });
   } else {
-    const data = await queryUserTagById({ id: props.data.id });
+    const data = await queryUserTagByIds({ id: props.data.id });
     if (data?.battlenet_id) {
       // TODO: loading状态？ 防止连续触发
       await queryAddUserTagRelation({
