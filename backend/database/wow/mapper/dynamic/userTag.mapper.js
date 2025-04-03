@@ -192,29 +192,77 @@ async function updateUserTag(params) {
   ]);
 }
 
-async function getUserTagByIds(ids, whereKey, hasBattlenetId) {
-  let selectSql =
-    'id, user_id, wow_tag, common_tag, updated_at' +
-    `${hasBattlenetId ? ',battlenet_id' : ''}`;
-
+async function getUserTagByIds(ids, whereKey, hasBattlenetId, applicantUserId) {
+  // 参数校验
   if (!['id', 'user_id'].includes(whereKey)) {
-    throw new Error('invalid where key');
+    throw new Error('Invalid where key');
   }
 
-  const sql = ids.reduce((pre, cur, index) => {
-    if (index === 0) {
-      pre += `${whereKey}=?${index + 1} `;
-    } else {
-      pre += `OR ${whereKey}=?${index + 1} `;
-    }
-    return pre;
-  }, `SELECT ${selectSql} FROM ${TABLE_NAME} WHERE `);
-  const data = await db.all(sql, ids);
+  // 使用表别名提升可读性
+  const tableAlias = 't';
+  const relationAlias = 'r';
 
-  return data.map((item) => ({
+  // 构建基础查询
+  let sql = `
+    SELECT 
+      ${tableAlias}.id,
+      ${tableAlias}.user_id,
+      ${tableAlias}.wow_tag,
+      ${tableAlias}.common_tag,
+      ${tableAlias}.updated_at
+  `;
+
+  if (hasBattlenetId) {
+    sql += `, ${tableAlias}.battlenet_id`;
+  }
+
+  // 动态字段处理
+  if (applicantUserId) {
+    sql += `,
+      ${relationAlias}.status AS relation_status,
+      ${relationAlias}.id AS relation_id,
+      CASE 
+        WHEN ${relationAlias}.status = 'accepted' 
+        THEN ${tableAlias}.battlenet_id 
+        ELSE NULL 
+      END AS battlenet_id
+    `;
+  }
+
+  // 表连接
+  sql += ` FROM ${TABLE_NAME} AS ${tableAlias}`;
+
+  if (applicantUserId) {
+    sql += `
+      LEFT JOIN wow_dynamic_user_tag_relations AS ${relationAlias}
+        ON ${tableAlias}.user_id = ${relationAlias}.target_user_id
+        AND ${tableAlias}.id = ${relationAlias}.tag_id
+        AND ${relationAlias}.applicant_user_id = ?
+    `;
+  }
+
+  // 构建WHERE条件
+  const whereClauses = ids.map(() => `${tableAlias}.${whereKey} = ?`).join(' OR ');
+  sql += ` WHERE ${whereClauses}`;
+
+  // 排序逻辑
+  if (applicantUserId) {
+    sql += ` ORDER BY ${relationAlias}.updated_at DESC`;
+  }
+
+  // 参数处理（保证顺序正确）
+  const params = applicantUserId 
+    ? [applicantUserId, ...ids]  // 第一个参数是 applicantUserId
+    : [...ids];
+
+  // 执行查询
+  const data = await db.all(sql, params);
+
+  // 结果处理
+  return data.map(item => ({
     ...item,
-    wow_tag: JSON.parse(item.wow_tag ?? null),
-    common_tag: JSON.parse(item.common_tag ?? null),
+    wow_tag: JSON.parse(item.wow_tag ?? 'null'),
+    common_tag: JSON.parse(item.common_tag ?? 'null'),
   }));
 }
 

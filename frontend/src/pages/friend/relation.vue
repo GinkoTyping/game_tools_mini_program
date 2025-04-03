@@ -68,7 +68,7 @@ const currentRelations = computed(() => {
     );
   }
 
-  // TODO targetUserId
+  // TODO 申请功能待完善
   return [];
 });
 
@@ -79,6 +79,7 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
       ids: currentRelations.value
         .slice((pageNo - 1) * pageSize, pageNo * pageSize)
         .map(item => item.tagId),
+      requireRelation: true,
     });
     vListRef.value?.complete(data);
   } else {
@@ -101,14 +102,15 @@ const featureFilters = ref([
     title: '已获取',
     value: 'accepted',
   },
-  {
-    title: '我感兴趣的',
-    value: 'interested',
-  },
-  {
-    title: '对我感兴趣的',
-    value: 'interestedByMe',
-  },
+  // TODO: 申请的功能待完成
+  // {
+  //   title: '我感兴趣的',
+  //   value: 'interested',
+  // },
+  // {
+  //   title: '对我感兴趣的',
+  //   value: 'interestedByMe',
+  // },
 ]);
 
 function switchFeature() {

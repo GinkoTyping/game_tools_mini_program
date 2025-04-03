@@ -84,13 +84,14 @@ export async function queryUpdateUserTag(req, res) {
 
 export async function queryUserTagByIds(req, res) {
   try {
-    const { ids, userIds } = req.body;
+    const { ids, userIds, applicantUserId } = req.body;
     const whereKey = ids ? 'id' : 'user_id';
 
     let list = await userTagMapper.getUserTagByIds(
       ids ?? userIds,
       whereKey,
-      true
+      true,
+      applicantUserId,
     );
     list = await mapUserProfileInfo(list);
     res.json(list);

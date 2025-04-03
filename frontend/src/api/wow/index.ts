@@ -805,6 +805,7 @@ export async function queryUserTagByIds(params?: {
   id?: number;
   userId?: number;
   ids?: number[];
+  requireRelation?: boolean;
 }) {
   const { userId } = await auth.getUserInfo();
 
@@ -819,6 +820,10 @@ export async function queryUserTagByIds(params?: {
     finalParams.ids = params.ids;
   } else {
     finalParams.userIds = [userId];
+  }
+
+  if (userId && params?.requireRelation) {
+    finalParams.applicantUserId = userId;
   }
 
   const res: any = await proxyRequest({
