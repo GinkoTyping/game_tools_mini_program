@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "39482308",
+      "name": "未读-01",
+      "font_class": "weidu-01",
+      "unicode": "ec9e",
+      "unicode_decimal": 60574
+    },
+    {
       "icon_id": "9719155",
       "name": "dota2",
       "font_class": "dota",
