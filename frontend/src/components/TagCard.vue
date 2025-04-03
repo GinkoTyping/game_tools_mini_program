@@ -112,13 +112,11 @@
       <view class="buttons">
         <view class="button-item" @click="requestBattlenet">
           <uni-icons
-            :type="
-              wowTag.privacy.needConfirm ? 'personadd-filled' : 'auth-filled'
-            "
+            :type="isActiveButton ? 'personadd-filled' : 'auth-filled'"
             size="30"
-            :color="wowTag.privacy.needConfirm ? '#777777' : '#007aff'"
+            :color="isActiveButton ? '#777777' : '#007aff'"
           ></uni-icons>
-          <text :class="wowTag.privacy.needConfirm ? '' : 'available'">{{
+          <text :class="isActiveButton ? '' : 'available'">{{
             dynamicButtonText
           }}</text>
         </view>
@@ -253,6 +251,9 @@ watch(
 const isUserSelf = computed(() => {
   return uni.getStorageSync('userId') === props.data.user_id;
 });
+const isActiveButton = computed(() => {
+  return wowTag.value?.privacy?.needConfirm && !isUserSelf.value;
+});
 const getNickName = computed(() => {
   return (roleClass: string, classSpec: string) =>
     wowTag.value?.privacy?.displayWxProfile && props.data?.nickName
@@ -321,6 +322,10 @@ const getUpdatedTime = computed(() => {
 });
 const battlenetId = ref();
 const dynamicButtonText = computed(() => {
+  if (isUserSelf.value) {
+    return '我的战网';
+  }
+
   if (
     battlenetId.value ||
     (props.data.relation_status === 'accepted' && props.data.battlenet_id)
@@ -350,7 +355,6 @@ const getBgURL = computed(() => {
     return `url(https://ginkolearn.cyou/api/wow/assets/class-bgs/${formatClass}-${classSpec}-spec-background.webp)`;
   };
 });
-
 const getTagSetting = computed(() => {
   return (key: string, value: string) => {
     const { icon, color } = mapIconfont(key, value);
@@ -381,6 +385,14 @@ const getTagSetting = computed(() => {
 async function requestBattlenet() {
   if (!wowTag.value?.privacy || props.preview) {
     return;
+  }
+
+  if (isUserSelf.value) {
+    return uni.showToast({
+      title: '这是您自己的名片',
+      icon: 'none',
+      duration: 3000,
+    });
   }
 
   let clipText;
