@@ -13,3 +13,17 @@ export async function queryRelationByApplicantUserId(req, res) {
 
   res.json(data);
 }
+
+export async function queryAddRelationStatusByApplicantId(req, res) {
+  try {
+    const data = await userTagRelationMapper.insertRelation(req.body);
+
+    if (data.changes) {
+      res.json({ message: '修改成功！' });
+    } else {
+      res.status(500).json({ message: '修改失败' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}

@@ -82,6 +82,9 @@ onShow(() => {
     case 'pages/friend/setting':
       activeMenu.value = 'setting';
       break;
+    case 'pages/friend/relation':
+      activeMenu.value = 'relation';
+      break;
     default:
       activeMenu.value = 'index';
       console.warn('异常的页面路径');

@@ -187,7 +187,11 @@ import { computed, nextTick, reactive, ref, watch } from 'vue';
 
 import { IActiveTimeBar } from '@/interface/IUserTag';
 import localeLabels from '@/data/zh.json';
-import { ITagCardItem, queryUserTagById } from '@/api/wow';
+import {
+  ITagCardItem,
+  queryAddUserTagRelation,
+  queryUserTagById,
+} from '@/api/wow';
 import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
 import CustomTag from '@/components/CustomTag.vue';
 import { mapIconfont } from '@/utils/iconfont-map';
@@ -318,7 +322,7 @@ const getUpdatedTime = computed(() => {
 const battlenetId = ref();
 const dynamicButtonText = computed(() => {
   if (battlenetId.value) {
-    return battlenetId.value;
+    return `${battlenetId.value}(点击复制)`;
   }
   return wowTag.value.privacy.needConfirm ? '申请战网' : '获取战网';
 });
@@ -385,6 +389,13 @@ async function requestBattlenet() {
   } else {
     const data = await queryUserTagById({ id: props.data.id });
     if (data?.battlenet_id) {
+      // TODO: loading状态？ 防止连续触发
+      await queryAddUserTagRelation({
+        targetUserId: props.data.user_id,
+        tagId: props.data.id,
+        status: 'accepted',
+        isAutoApproved: 1,
+      });
       battlenetId.value = data.battlenet_id;
       uni.setClipboardData({
         data: data.battlenet_id,

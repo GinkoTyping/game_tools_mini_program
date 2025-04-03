@@ -874,4 +874,41 @@ export async function queryUserTagFilterOptions() {
   });
   return res.data;
 }
+
+// 关系表
+export async function queryAddUserTagRelation(params: {
+  targetUserId: number;
+  tagId: number;
+  status?: 'accepted' | 'reject' | 'pending';
+  isAutoApproved?: number;
+}) {
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/wow/user-tag/relation/add`,
+    method: 'POST',
+    data: {
+      applicantUserId: userId,
+      targetUserId: params.targetUserId,
+      tagId: params.tagId,
+      status: params.status ?? 'accepted',
+      isAutoApproved: params.isAutoApproved ?? 0,
+    },
+  });
+  return res.data;
+}
+
+export async function queryUserTagRelationByApplicantId(
+  status?: 'pending' | 'accept' | 'reject'
+) {
+  const { userId } = await auth.getUserInfo();
+  const res: any = await proxyRequest({
+    url: `/wow/user-tag/relation/applicant`,
+    method: 'POST',
+    data: {
+      userId,
+      status,
+    },
+  });
+  return res.data;
+}
 //#endregion
