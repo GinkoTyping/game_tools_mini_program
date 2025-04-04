@@ -31,7 +31,7 @@
     class="poe2-btn"
     @click="navigator.redirectToPoeLadders"
   >
-    <image src="/static/images/poe/poe-2-icon.webp" mode="widthFix" />
+    <image src="/static/images/poe/poe-2-icon.png" mode="widthFix" />
     <view class="badage"> </view>
   </button>
 

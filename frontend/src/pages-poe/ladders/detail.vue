@@ -4,6 +4,7 @@
     :auto="false"
     use-virtual-list
     cell-height-mode="fixed"
+    fixed-cell-height="68rpx"
     :default-page-size="30"
     :force-close-inner-list="true"
     @virtualListChange="virtualListChange"
@@ -78,9 +79,10 @@ function virtualListChange(vList) {
 const tableCache = ref();
 async function queryList(pageNo: number, pageSize: number, from: string) {
   if (options.type) {
+    const lastRank = from === 'load-more' ? tableCache.value?.data?.slice(-1)[0].rank : 0
     const data = await queryLadder({
       pageSize,
-      lastRank: tableCache.value?.data?.slice(-1)[0].rank,
+      lastRank,
       type: options.type,
     });
 
@@ -90,6 +92,8 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
       tableCache.value = data;
     }
 
+    console.log(from, data.data);
+    
     // 不深拷贝会造成更新异常
     vListRef.value?.complete([...data.data]);
   }
@@ -101,13 +105,13 @@ $light-border: rgb(68, 68, 68);
 
 :deep(.custom-table) {
   background-color: rgb(40, 40, 40) !important;
-  border-radius: 10rpx;
   box-sizing: border-box;
 }
 
 .tr {
   display: table-row;
   box-sizing: border-box;
+  height: 68rpx;
 }
 
 .uni-table-th,
@@ -160,7 +164,7 @@ $light-border: rgb(68, 68, 68);
 
   &:nth-child(2) {
     view {
-      width: calc(100vw - 200px - 24px) !important;
+      width: calc(100vw - 200px) !important;
     }
   }
 
