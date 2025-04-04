@@ -21,6 +21,11 @@ export async function queryLadderData(req, res) {
   }
 }
 
+const BASIC_TABLE = {
+  columnDisplay: [1, 1, 0, 1, 1, 0],
+  columns: ['排名', '账号', '角色名', '职业', '等级', '经验'],
+  rowDisplay: ['rank', 'account_name', 'class_name', 'level'],
+};
 export async function queryLadderTop(req, res) {
   try {
     const results = await Promise.allSettled(
@@ -30,10 +35,8 @@ export async function queryLadderTop(req, res) {
     );
     const [standard, hc, ssf, hcSsf] = results.map((item) => item.value);
     res.status(200).json({
+      ...BASIC_TABLE,
       time: formatDateByMinute(),
-      columnDisplay: [1, 1, 0, 1, 1, 0],
-      columns: ['排名', '账号', '角色名', '职业', '等级', '经验'],
-      rowDisplay: ['rank', 'account_name', 'class_name', 'level'],
       data: [
         {
           label: '标准模式',
@@ -57,6 +60,20 @@ export async function queryLadderTop(req, res) {
         },
       ],
     });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+export async function queryLadderByTypeAndPaging(req, res) {
+  try {
+    const { pageSize, pageNo, type } = req.body;
+    const data = await ladderMapper.getLaddersByTypeAndPaging({
+      pageSize,
+      pageNo,
+      type,
+    });
+    res.json({ ...BASIC_TABLE, time: formatDateByMinute(), data });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

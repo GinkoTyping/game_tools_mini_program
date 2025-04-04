@@ -49,6 +49,14 @@ async function getLaddersTop(type) {
   );
 }
 
+async function getLaddersByTypeAndPaging(params) {
+  const { type, pageSize, pageNo } = params;
+  return db.all(
+    `SELECT * FROM ${TABLE_NAME} WHERE type=? AND rank > ? ORDER BY rank ASC LIMIT ?`,
+    [type, (pageNo - 1) * pageSize, pageSize]
+  );
+}
+
 async function insertLadders(type, params) {
   try {
     const [
@@ -145,6 +153,7 @@ export function useLadderMapper(database) {
     getLaddersTop,
     getLaddersByAccountName,
     getLaddersByRankType,
+    getLaddersByTypeAndPaging,
 
     insertLadders,
     insertLaddersByList,
