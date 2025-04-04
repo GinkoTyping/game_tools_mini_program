@@ -73,3 +73,14 @@ export async function getDailyDB() {
   }
   return _dailyDB;
 }
+
+let _dynamicPoeDB = null;
+export async function getDynamicPoeDB() {
+  if (!_dynamicPoeDB) {
+    _dynamicPoeDB = await open({
+      filename: path.resolve(__dirname, '../poe2/dynamic.db'),
+      driver: sqlite3.verbose().Database,
+    });
+  }
+  return _dynamicPoeDB;
+}
