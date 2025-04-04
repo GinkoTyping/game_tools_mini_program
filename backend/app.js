@@ -34,10 +34,30 @@ app.use(
   '/api/wow/assets',
   express.static(path.resolve(__dirname, 'assets/wow'))
 );
+
 app.use(
   '/api/poe/assets',
   express.static(path.resolve(__dirname, 'assets/poe'))
 );
+// 未匹配到头像时，使用默认头像
+app.use('/api/poe/assets', (req, res, next) => {
+  if (req.url.includes('class-thumb')) {
+    const imagePath = path.resolve(__dirname, `assets/poe${req.url}`);
+
+    // 设置默认图片的路径
+    const defaultImagePath = path.resolve(
+      __dirname,
+      'assets/poe/class-thumb/poe2-default-class-icon.webp'
+    );
+    fs.access(imagePath, fs.constants.F_OK, (err) => {
+      if (err) {
+        res.sendFile(defaultImagePath);
+      }
+    });
+  } else {
+    next();
+  }
+});
 
 app.use(
   '/api/common/assets',
