@@ -52,7 +52,8 @@ export async function queryLadderTop(req, res) {
     ] = results.map((item) => item.value);
     res.status(200).json({
       ...BASIC_TABLE,
-      time: formatDateByMinute(),
+      // 每个表单独统计？
+      time: DotH_standard?.[0]?.updated_at,
       data: [
         {
           label: '狩猎黎明 标准模式',
