@@ -59,7 +59,7 @@ const displayValues = computed(() => {
 
 <style lang="scss" scoped>
 .table-container {
-  padding: 20rpx;
+  padding: 0 20rpx;
 }
 
 $light-border: rgb(68, 68, 68);
@@ -75,6 +75,7 @@ $light-border: rgb(68, 68, 68);
   .uni-table-th {
     font-weight: normal;
     font-size: 26rpx !important;
+    padding: 16rpx 4rpx !important;
     color: #bbb;
   }
   .uni-table-td {
@@ -94,8 +95,8 @@ $light-border: rgb(68, 68, 68);
       }
     }
     &:nth-child(2) {
-      color: rgb(163, 53, 238) !important;
       view {
+        color: rgb(163, 53, 238) !important;
         width: calc(100vw - 200px - 24px) !important;
       }
     }
