@@ -38,3 +38,5 @@ backend/database/wow/data/dps-rank/cache
 backend/database/common/dynamic-database.db
 media/assets
 
+crawler/poe2/cache
+
