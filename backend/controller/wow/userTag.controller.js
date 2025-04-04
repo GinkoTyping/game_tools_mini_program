@@ -210,12 +210,10 @@ export async function queryNotViewedRelations(req, res) {
     userTagMapper.getLastViewRelation(userId),
     userTagRelationMapper.getRelationsByTargetUser(userId),
   ]);
-  const [lastViewData, targetRelastions] = results.map(
-    (item) => item.value
-  );
+  const [lastViewData, targetRelastions] = results.map((item) => item.value);
 
   let notViewList;
-  if (lastViewData.last_view_relation_at) {
+  if (lastViewData?.last_view_relation_at) {
     notViewList = [...targetRelastions].filter(
       (item) => item.updated_at > lastViewData.last_view_relation_at
     );
@@ -223,7 +221,7 @@ export async function queryNotViewedRelations(req, res) {
     notViewList = [...targetRelastions];
   }
   res.json({
-    last: lastViewData.last_view_relation_at,
+    last: lastViewData?.last_view_relation_at ?? null,
     list: notViewList,
     count: notViewList.length,
   });
