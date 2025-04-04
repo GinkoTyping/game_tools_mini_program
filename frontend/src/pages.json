@@ -110,6 +110,27 @@
 			}
 		}
 	],
+	"subPackages": [
+		{
+			"root": "pages-poe",
+			"pages": [
+				{
+					"path": "ladders/index",
+					"style": {
+						"navigationBarTitleText": "流放之路2 天梯"
+					}
+				}
+			]
+		}
+	],
+	"preloadRule": {
+		"pages/index/index": {
+			"network": "all",
+			"packages": [
+				"pages-poe"
+			]
+		}
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app",

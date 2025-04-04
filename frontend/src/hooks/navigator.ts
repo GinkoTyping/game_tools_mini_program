@@ -130,6 +130,12 @@ function redirectToPage(page: string) {
   });
 }
 
+function redirectToPoeLadders() {
+  uni.redirectTo({
+    url: `/pages-poe/ladders/index`,
+  });
+}
+
 export function useNavigator() {
   return {
     toHome,
@@ -151,5 +157,8 @@ export function useNavigator() {
     toFrindIndex,
     toFrindSetting,
     redirectToPage,
+
+    // POE
+    redirectToPoeLadders,
   };
 }

@@ -26,6 +26,15 @@
     </button>
   </view>
 
+  <button
+    v-if="props.showPoe"
+    class="poe2-btn"
+    @click="navigator.redirectToPoeLadders"
+  >
+    <image src="/static/images/poe/poe-2-icon.webp" mode="widthFix" />
+    <view class="badage"> </view>
+  </button>
+
   <uni-popup ref="adPopup" type="dialog">
     <uni-popup-dialog
       type="success"
@@ -141,10 +150,16 @@ import { queryAdCount, queryUpdateAdCount } from '@/api/shared';
 import { ref, onUnmounted } from 'vue';
 
 import { useUserStore } from '@/store/wowStore';
+import { useNavigator } from '@/hooks/navigator';
 
+const navigator = useNavigator();
 const props = defineProps({
   tierListIcons: {
     type: Array<any>,
+  },
+  showPoe: {
+    type: Boolean,
+    default: false,
   },
 });
 let rewardedVideoAd: any = null;
@@ -244,6 +259,31 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.poe2-btn {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 110rpx;
+  width: 110rpx;
+  background-color: #000000;
+  border: 4rpx solid $uni-color-primary;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  image {
+    width: 90rpx;
+  }
+  .badage {
+    right: 4rpx;
+    top: 4rpx;
+    height: 20rpx;
+    width: 20rpx;
+    background-color: #fff;
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.21);
+  }
+}
+
 .share-btns {
   position: fixed;
   bottom: 22px;
@@ -260,43 +300,46 @@ onUnmounted(() => {
     white-space: nowrap;
     font-size: 20px;
   }
-  button {
-    height: 40px;
-    width: 40px;
-    overflow: visible;
+}
+
+button {
+  height: 40px;
+  width: 40px;
+  overflow: visible;
+  border-radius: 50%;
+  padding: 0;
+  margin-left: 0.4rem;
+  background-color: #007aff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%);
+  position: relative;
+  box-sizing: border-box;
+  .badage {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    background-color: $color-s-tier;
+    height: 20rpx;
+    width: 20rpx;
     border-radius: 50%;
-    padding: 0;
-    margin-left: 0.4rem;
-    background-color: #007aff;
     display: flex;
-    align-items: center;
     justify-content: center;
-    box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%);
-    position: relative;
-    .badage {
-      position: absolute;
-      right: 0;
-      top: 0;
-      color: #fff;
-      background-color: $color-s-tier;
-      height: 20rpx;
-      width: 20rpx;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2;
-      text {
-        font-size: 10px;
-        line-height: 32rpx;
-      }
-    }
-    image {
-      width: 50%;
-      height: 50%;
+    align-items: center;
+    z-index: 2;
+    text {
+      font-size: 10px;
+      line-height: 32rpx;
     }
   }
+  image {
+    width: 50%;
+    height: 50%;
+  }
 }
+
 .main {
   text-align: center;
   font-size: 14px;

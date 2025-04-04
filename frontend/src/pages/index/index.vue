@@ -205,7 +205,7 @@
 
   <view class="footer"></view>
 
-  <ShareIcon />
+  <ShareIcon show-poe/>
 </template>
 
 <script setup lang="ts">
