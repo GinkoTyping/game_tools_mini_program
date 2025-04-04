@@ -21,7 +21,16 @@ async function updateLadderItem(type, item) {
 }
 
 function mapLadderType(index) {
-  const types = ['standard', 'hc', 'ssf', 'hc_ssf'];
+  const types = [
+    'DotH_standard',
+    'DotH_hc',
+    'DotH_ssf',
+    'DotH_hc_ssf',
+    'standard',
+    'hc',
+    'ssf',
+    'hc_ssf',
+  ];
   return types[index];
 }
 

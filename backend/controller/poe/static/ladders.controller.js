@@ -29,15 +29,56 @@ const BASIC_TABLE = {
 export async function queryLadderTop(req, res) {
   try {
     const results = await Promise.allSettled(
-      ['standard', 'hc', 'ssf', 'hc_ssf'].map((item) =>
-        ladderMapper.getLaddersTop(item)
-      )
+      [
+        'DotH_standard',
+        'DotH_hc',
+        'DotH_ssf',
+        'DotH_hc_ssf',
+        'standard',
+        'hc',
+        'ssf',
+        'hc_ssf',
+      ].map((item) => ladderMapper.getLaddersTop(item))
     );
-    const [standard, hc, ssf, hcSsf] = results.map((item) => item.value);
+    const [
+      DotH_standard,
+      DotH_hc,
+      DotH_ssf,
+      DotH_hc_ssf,
+      standard,
+      hc,
+      ssf,
+      hcSsf,
+    ] = results.map((item) => item.value);
     res.status(200).json({
       ...BASIC_TABLE,
       time: formatDateByMinute(),
       data: [
+        {
+          label: '狩猎黎明 标准模式',
+          desc: '',
+          key: 'DotH_standard',
+          data: DotH_standard,
+        },
+        {
+          label: '狩猎黎明 硬核模式',
+          desc: '一命',
+          key: 'DotH_hc',
+          data: DotH_hc,
+        },
+        {
+          label: '狩猎黎明 SSF模式',
+          desc: '无法组队、交易',
+          key: 'DotH_ssf',
+          data: DotH_ssf,
+        },
+        {
+          label: '狩猎黎明 硬核SSF模式',
+          desc: '一命且无法组队、交易',
+          key: 'DotH_hc_ssf',
+          data: DotH_hc_ssf,
+        },
+
         {
           label: '标准模式',
           desc: '',

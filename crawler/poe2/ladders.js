@@ -79,6 +79,11 @@ async function collectByType(type) {
 }
 
 const types = [
+  'Dawn%2520of%2520the%2520Hunt',
+  'HC%2520Dawn%2520of%2520the%2520Hunt',
+  'SSF%2520Dawn%2520of%2520the%2520Hunt',
+  'HC%2520SSF%2520Dawn%2520of%2520the%2520Hunt',
+
   'Standard',
   'Hardcore',
   'Solo%2520Self-Found',
@@ -99,15 +104,24 @@ async function collectAll() {
       return collectByType(type);
     })
   );
-  const [standard, hardcore, soloSelfFound, hardcoreSoloSelfFound] =
-    results.map((result, index) => {
-      if (result.status === 'fulfilled') {
-        return result.value;
-      } else {
-        console.error(`Error collecting ${types[index]}:`, result.reason);
-        return null;
-      }
-    });
+  const [
+    standardDoTH,
+    hardcoreDoTH,
+    soloSelfFoundDoTH,
+    hardcoreSoloSelfFoundDoTH,
+
+    standard,
+    hardcore,
+    soloSelfFound,
+    hardcoreSoloSelfFound,
+  ] = results.map((result, index) => {
+    if (result.status === 'fulfilled') {
+      return result.value;
+    } else {
+      console.error(`Error collecting ${types[index]}:`, result.reason);
+      return null;
+    }
+  });
 
   const data = {
     time: formatDateByMinute(),
@@ -115,22 +129,43 @@ async function collectAll() {
     columns: ['排名', '账号', '角色名', '职业', '等级', '经验'],
     data: [
       {
-        label: '标准模式',
+        label: '狩猎黎明 标准模式',
+        desc: '',
+        data: standardDoTH,
+      },
+      {
+        label: '狩猎黎明 硬核模式',
+        desc: '一命',
+        data: hardcoreDoTH,
+      },
+      {
+        label: '狩猎黎明 SSF模式',
+        desc: '无法组队和交易',
+        data: soloSelfFoundDoTH,
+      },
+      {
+        label: '狩猎黎明 硬核SSF模式',
+        desc: '',
+        data: hardcoreSoloSelfFoundDoTH,
+      },
+
+      {
+        label: '永久服 标准模式',
         desc: '',
         data: standard,
       },
       {
-        label: '硬核模式',
+        label: '永久服 硬核模式',
         desc: '一命',
         data: hardcore,
       },
       {
-        label: 'SSF模式',
+        label: '永久服 SSF模式',
         desc: '无法组队和交易',
         data: soloSelfFound,
       },
       {
-        label: '硬核SSF模式',
+        label: '永久服 硬核SSF模式',
         desc: '',
         data: hardcoreSoloSelfFound,
       },
