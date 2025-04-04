@@ -4,9 +4,9 @@ import fs from 'fs';
 import path from 'path';
 
 // 配置参数
-const inputDir = '../../backend/assets/wow/dungeon-o';    // 输入目录
-const outputDir = '../../backend/assets/wow/dungeon';  // 输出目录
-const targetWidth = 400;      // 目标宽度
+const inputDir = '../../backend/assets/poe/class';    // 输入目录
+const outputDir = '../../backend/assets/poe/class-thumb';  // 输出目录
+const targetWidth = 50;      // 目标宽度
 
 // 确保输出目录存在
 if (!fs.existsSync(outputDir)) {

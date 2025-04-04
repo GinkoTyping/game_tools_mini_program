@@ -1,10 +1,9 @@
 import fs from 'fs';
-import path, { format } from 'path';
+import path from 'path';
 import { fileURLToPath } from 'url';
 
 import '../util/set-env.js';
 import { getCheerioByPuppeteer } from '../util/run-puppeteer.js';
-import { time } from 'console';
 import { formatDateByMinute } from '../util/time.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -54,19 +53,23 @@ function mapClassName(key) {
   return labels[key.toLowerCase()] || key;
 }
 function collectLadderTable(context) {
-  const $ = context;
-  const data = [];
-  $('table tbody tr').each((index, ele) => {
-    const row = $(ele)
-      .children('td')
-      .map((tdIdx, tdEle) => {
-        return mapClassName($(tdEle).text());
-      })
-      .get();
-    data.push(row);
-  });
+  try {
+    const $ = context;
+    const data = [];
+    $('table tbody tr').each((index, ele) => {
+      const row = $(ele)
+        .children('td')
+        .map((tdIdx, tdEle) => {
+          return mapClassName($(tdEle).text());
+        })
+        .get();
+      data.push(row);
+    });
 
-  return data;
+    return data;
+  } catch (error) {
+    return [];
+  }
 }
 async function collectByType(type) {
   const $ = await getCheerioByPuppeteer(getStaticFilePath(type), getUrl(type));
@@ -106,22 +109,27 @@ async function collectAll() {
 
   const data = {
     time: formatDateByMinute(),
+    showIndex: [1, 1, 0, 1, 1, 0],
     columns: ['排名', '账号', '角色名', '职业', '等级', '经验'],
     data: [
       {
-        label: '标准',
+        label: '标准模式',
+        desc: '',
         data: standard,
       },
       {
-        label: '硬核',
+        label: '硬核模式',
+        desc: '一命',
         data: hardcore,
       },
       {
-        label: 'SSF',
+        label: 'SSF模式',
+        desc: '无法组队和交易',
         data: soloSelfFound,
       },
       {
-        label: '硬核SSF',
+        label: '硬核SSF模式',
+        desc: '',
         data: hardcoreSoloSelfFound,
       },
     ],

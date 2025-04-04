@@ -19,6 +19,8 @@ import userTagRoutes from './routes/wow/userTag.route.js';
 import commonBisRoutes from './routes/common/commonRoutes.js';
 import authRoutes from './routes/auth/authRoutes.js';
 
+import poeStaticRoutes from './routes/poe/static.route.js';
+
 const app = express();
 const port = 3000;
 
@@ -58,6 +60,8 @@ app.use('/api/common/assets', (req, res, next) => {
 });
 
 // 挂载用户路由
+app.use('/api/poe', poeStaticRoutes);
+
 app.use('/api/wow', npcRoutes);
 app.use('/api/wow', userTagRoutes);
 app.use('/api/wow', wowBisRoutes);
