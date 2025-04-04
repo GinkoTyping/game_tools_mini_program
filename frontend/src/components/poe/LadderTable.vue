@@ -4,7 +4,10 @@
       <uni-tr>
         <uni-th
           align="center"
-          v-for="(column, index) in displayColumns"
+          v-for="(column, index) in displayColumns(
+            props.columns,
+            props.columnDisplay
+          )"
           :key="column"
           width="30"
           >{{ column }}</uni-th
@@ -31,7 +34,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
+import { useLadderTable } from '@/hooks/poe/ladderTable';
 
 const tableData = defineModel('data', { type: Array });
 const props = defineProps({
@@ -39,35 +42,7 @@ const props = defineProps({
   rowDisplay: Array<String>,
   columnDisplay: Array<String>,
 });
-
-const accountColor = computed(() => {
-  return rank => {
-    if (rank === 0) {
-      return '#d32121';
-    } else if (rank <= 2) {
-      return '#e37e00';
-    } else if (rank <= 5) {
-      return '#f3d037';
-    } else if (rank <= 10) {
-      return '#c4ff6b';
-    } else if (rank <= 20) {
-      return '#8092f1';
-    } else {
-      return 'rgb(221, 221, 221)';
-    }
-  };
-});
-
-const displayColumns = computed(() => {
-  return props.columns?.filter((column, index) => props.columnDisplay?.[index]);
-});
-
-const classIconUrl = computed(() => {
-  return className =>
-    `https://ginkolearn.cyou/api/poe/assets/class-thumb/${className
-      .toLowerCase()
-      .replaceAll(' ', '-')}.webp`;
-});
+const { accountColor, classIconUrl, displayColumns } = useLadderTable();
 </script>
 
 <style lang="scss" scoped>

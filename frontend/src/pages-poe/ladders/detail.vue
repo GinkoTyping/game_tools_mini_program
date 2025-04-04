@@ -52,7 +52,7 @@
 
 <script lang="ts" setup>
 import { onLoad } from '@dcloudio/uni-app';
-import { computed, nextTick, reactive, ref } from 'vue';
+import { nextTick, reactive, ref } from 'vue';
 
 import { queryLadder } from '@/api/poe';
 import { useLadderTable } from '@/hooks/poe/ladderTable';

@@ -13,7 +13,8 @@
       <template v-slot:right>
         <view class="slot-right">
           <text class="iconfont icon-weidu-01"></text>
-          <view @click="() => navigator.toPoeDeatilLadder(ladder.key, ladder.label)"
+          <view
+            @click="() => navigator.toPoeDeatilLadder(ladder.key, ladder.label)"
             >查看更多</view
           >
         </view>
@@ -81,6 +82,7 @@ const relativeUpdateTime = computed(() => {
     display: flex;
     align-items: center;
     gap: 8rpx;
+
     > view {
       padding: 14rpx 0;
     }
