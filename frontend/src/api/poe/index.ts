@@ -13,3 +13,17 @@ export async function getTopLadders() {
   });
   return res.data as ILadderData;
 }
+
+export async function queryLadder(params) {
+  const { pageSize, pageNo, type } = params;
+  const res = await proxyRequest({
+    url: `/poe/static/ladder`,
+    method: 'POST',
+    data: {
+      pageSize: pageSize ?? 10,
+      pageNo: pageNo ?? 1,
+      type,
+    },
+  });
+  return res.data;
+}

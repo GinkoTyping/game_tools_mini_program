@@ -130,9 +130,15 @@ function redirectToPage(page: string) {
   });
 }
 
+// POE 天梯
 function redirectToPoeLadders() {
   uni.redirectTo({
     url: `/pages-poe/ladders/index`,
+  });
+}
+function toPoeDeatilLadder(type: string, name: string) {
+  uni.navigateTo({
+    url: `/pages-poe/ladders/detail?type=${type}&name=${name}`,
   });
 }
 
@@ -160,5 +166,6 @@ export function useNavigator() {
 
     // POE
     redirectToPoeLadders,
+    toPoeDeatilLadder,
   };
 }

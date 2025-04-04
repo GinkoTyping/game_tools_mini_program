@@ -41,21 +41,25 @@ export async function queryLadderTop(req, res) {
         {
           label: '标准模式',
           desc: '',
+          key: 'standard',
           data: standard,
         },
         {
           label: '硬核模式',
           desc: '一命',
+          key: 'hc',
           data: hc,
         },
         {
           label: 'SSF模式',
           desc: '无法组队、交易',
+          key: 'ssf',
           data: ssf,
         },
         {
           label: '硬核SSF模式',
           desc: '一命且无法组队、交易',
+          key: 'hc_ssf',
           data: hcSsf,
         },
       ],

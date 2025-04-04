@@ -13,11 +13,14 @@
       <template v-slot:right>
         <view class="slot-right">
           <text class="iconfont icon-weidu-01"></text>
-          <view>查看更多</view>
+          <view @click="() => navigator.toPoeDeatilLadder(ladder.key, ladder.label)"
+            >查看更多</view
+          >
         </view>
       </template>
       <LadderTable
         v-model:data="ladder.data"
+        :columns="ladders.columns"
         :row-display="ladders.rowDisplay"
         :column-display="ladders.columnDisplay"
       />
@@ -36,10 +39,12 @@ import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
 import { getTopLadders } from '@/api/poe';
-import ShareIcon from '@/components/ShareIcon.vue';
 import { calculateRelativeTime } from '@/utils/time';
+import { useNavigator } from '@/hooks/navigator';
+import ShareIcon from '@/components/ShareIcon.vue';
 import LadderTable from '@/components/poe/LadderTable.vue';
 
+const navigator = useNavigator();
 const ladders = ref();
 onLoad(async () => {
   ladders.value = await getTopLadders();
@@ -76,6 +81,9 @@ const relativeUpdateTime = computed(() => {
     display: flex;
     align-items: center;
     gap: 8rpx;
+    > view {
+      padding: 14rpx 0;
+    }
   }
 }
 

@@ -119,6 +119,12 @@
 					"style": {
 						"navigationBarTitleText": "流放之路2 天梯"
 					}
+				},
+				{
+					"path": "ladders/detail",
+					"style": {
+						"navigationBarTitleText": "流放之路2 天梯"
+					}
 				}
 			]
 		}

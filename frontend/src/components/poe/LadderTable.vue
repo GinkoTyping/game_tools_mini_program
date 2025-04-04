@@ -77,7 +77,7 @@ const classIconUrl = computed(() => {
 
 $light-border: rgb(68, 68, 68);
 
-::v-deep .uni-table {
+:deep(.uni-table) {
   background-color: rgb(40, 40, 40) !important;
   border: 2px $light-border solid;
   box-sizing: border-box;
