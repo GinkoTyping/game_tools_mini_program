@@ -246,10 +246,9 @@ const props = defineProps({
 const emit = defineEmits(['cell-update']);
 
 const onImageLoad = () => {
-  // TODO 不使用 setTimeout 会造成 z-paging 获取不到node
-  setTimeout(() => {
+  nextTick(() => {
     emit('cell-update');
-  }, 500);
+  });
 };
 
 const wowTag = computed(() => {

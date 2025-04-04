@@ -67,7 +67,7 @@
 
 <script lang="ts" setup>
 import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
-import { reactive, ref } from 'vue';
+import { nextTick, reactive, ref } from 'vue';
 
 import {
   IFilterParams,
@@ -255,7 +255,10 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
   vListRef.value?.complete(data);
 }
 function handleCellUpdate(index: number) {
-  vListRef.value?.didUpdateVirtualListCell?.(index);
+  // 为了确保在触发didUpdateVirtualListCell时虚拟列表的高度缓存已就绪
+  nextTick(() => {
+    vListRef.value?.updateVirtualListCell?.(index);
+  });
 }
 //#endregion
 
