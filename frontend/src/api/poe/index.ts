@@ -5,13 +5,6 @@ export interface ILadderData {
   columns: string[];
   data: { label: string; data: string[] }[];
 }
-export async function getLadders() {
-  const res = await proxyRequest({
-    url: `/poe/static/ladders`,
-    method: 'GET',
-  });
-  return res.data as ILadderData;
-}
 
 export async function getTopLadders() {
   const res = await proxyRequest({

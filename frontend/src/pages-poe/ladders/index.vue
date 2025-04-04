@@ -28,18 +28,18 @@
             >
           </uni-tr>
           <uni-tr
-            v-for="(item, index) in ladder.data.slice(0, 10)"
+            v-for="(item, index) in ladder.data"
             :key="index"
           >
             <uni-td
-              v-for="(value, valueIdx) in displayValues(item)"
+              v-for="propKey in ladders.rowDisplay"
               align="center"
-              :key="valueIdx"
+              :key="propKey"
             >
               <view
-                :class="[`td-${valueIdx}`, 'ellipsis']"
+                :class="['ellipsis']"
                 :style="{ color: accountColor(index) }"
-                >{{ value }}</view
+                >{{ item[propKey] }}</view
               >
             </uni-td>
           </uni-tr>
@@ -59,29 +59,24 @@
 import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
-import { getLadders } from '@/api/poe';
+import { getTopLadders } from '@/api/poe';
 import ShareIcon from '@/components/ShareIcon.vue';
 
 const ladders = ref();
 onLoad(async () => {
-  ladders.value = await getLadders();
+  ladders.value = await getTopLadders();
 });
 
 const displayColumns = computed(() => {
   return ladders.value?.columns.filter(
-    (column, index) => ladders.value?.showIndex[index]
+    (column, index) => ladders.value?.columnDisplay[index]
   );
-});
-const displayValues = computed(() => {
-  return row => {
-    return row.filter((value, idx) => ladders.value?.showIndex[idx]);
-  };
 });
 const accountColor = computed(() => {
   return index => {
     if (index === 0) {
       return '#d32121';
-    } else if (index <= 3) {
+    } else if (index <= 2) {
       return '#e37e00';
     } else if (index <= 5) {
       return '#f3d037';
@@ -103,8 +98,10 @@ const accountColor = computed(() => {
   left: 40rpx;
   z-index: 2;
 }
+
 .ladders-container {
   padding-bottom: 230rpx;
+
   .slot-right {
     color: $uni-color-primary;
     display: flex;
@@ -112,15 +109,18 @@ const accountColor = computed(() => {
     gap: 8rpx;
   }
 }
+
 .table-container {
   padding: 0 20rpx;
 }
 
 $light-border: rgb(68, 68, 68);
+
 ::v-deep .uni-table {
   background-color: rgb(40, 40, 40) !important;
   border: 2px $light-border solid;
   box-sizing: border-box;
+
   .uni-table-th,
   .uni-table-td {
     border-bottom: 1px $uni-bg-color solid !important;
@@ -132,9 +132,11 @@ $light-border: rgb(68, 68, 68);
     padding: 16rpx 4rpx !important;
     color: #bbb;
   }
+
   .uni-table-td {
     font-weight: 400;
     padding: 0 !important;
+
     > view {
       font-size: 26rpx !important;
       padding: 8rpx 4rpx !important;
@@ -142,17 +144,20 @@ $light-border: rgb(68, 68, 68);
       text-align: center;
       color: rgb(221, 221, 221);
     }
+
     &:first-child,
     &:nth-child(4) {
       view {
         width: 50px !important;
       }
     }
+
     &:nth-child(2) {
       view {
         width: calc(100vw - 200px - 24px) !important;
       }
     }
+
     &:nth-child(3) {
       view {
         width: 100px !important;
