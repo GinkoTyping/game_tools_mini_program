@@ -1,9 +1,23 @@
 import { proxyRequest } from '../config';
 
-export interface ILadderData {
+interface ILadderTableConfig {
   time: string;
   columns: string[];
-  data: { label: string; data: string[] }[];
+  columnDisplay: string[];
+  rowDisplay: string[];
+}
+
+export interface ITopLadders extends ILadderTableConfig {
+  data: {
+    label: string;
+    desc: string;
+    key: string;
+    data: { [key: string]: string }[];
+  }[];
+}
+
+export interface IDetailLadder extends ILadderTableConfig {
+  data: { [key: string]: string }[];
 }
 
 export async function getTopLadders() {
@@ -11,7 +25,7 @@ export async function getTopLadders() {
     url: `/poe/static/top-ladders`,
     method: 'GET',
   });
-  return res.data as ILadderData;
+  return res.data as ITopLadders;
 }
 
 export async function queryLadder(params) {
@@ -25,5 +39,5 @@ export async function queryLadder(params) {
       type,
     },
   });
-  return res.data;
+  return res.data as IDetailLadder;
 }

@@ -84,11 +84,11 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
       type: options.type,
     });
     tableCache.value = data;
-    vListRef.value?.complete(data.data);
+
+    // 不深拷贝会造成更新异常
+    vListRef.value?.complete([...data.data]);
   }
 }
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -99,10 +99,12 @@ $light-border: rgb(68, 68, 68);
   border-radius: 10rpx;
   box-sizing: border-box;
 }
+
 .tr {
   display: table-row;
   box-sizing: border-box;
 }
+
 .uni-table-th,
 .td {
   display: table-cell;
