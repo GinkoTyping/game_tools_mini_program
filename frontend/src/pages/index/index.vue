@@ -92,7 +92,7 @@
   <view class="divide-section">
     <view class="prefix">
       <view class="icon"></view>
-      <view class="title">魔兽式“相♂亲”</view>
+      <view class="title">战网集结令</view>
     </view>
   </view>
   <view class="narrow-card-container">
