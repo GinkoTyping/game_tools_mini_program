@@ -6,7 +6,7 @@
       id="server"
       class="priest"
       :title="ladder.label"
-      :subTitle="ladder.desc"
+      :subTitle="relativeUpdateTime"
       type="line"
       titleFontSize="16px"
     >
@@ -27,20 +27,20 @@
               >{{ column }}</uni-th
             >
           </uni-tr>
-          <uni-tr
-            v-for="(item, index) in ladder.data"
-            :key="index"
-          >
+          <uni-tr v-for="(item, index) in ladder.data" :key="index">
             <uni-td
               v-for="propKey in ladders.rowDisplay"
               align="center"
               :key="propKey"
             >
-              <view
-                :class="['ellipsis']"
-                :style="{ color: accountColor(index) }"
-                >{{ item[propKey] }}</view
-              >
+              <view :style="{ color: accountColor(index) }">
+                <image
+                  v-if="propKey === 'class_name'"
+                  :src="classIconUrl(item['class_name_en'])"
+                  mode="widthFix"
+                />
+                <text class="ellipsis">{{ item[propKey] }}</text>
+              </view>
             </uni-td>
           </uni-tr>
         </uni-table>
@@ -61,12 +61,14 @@ import { computed, ref } from 'vue';
 
 import { getTopLadders } from '@/api/poe';
 import ShareIcon from '@/components/ShareIcon.vue';
+import { calculateRelativeTime } from '@/utils/time';
 
 const ladders = ref();
 onLoad(async () => {
   ladders.value = await getTopLadders();
 });
 
+//#region 样式
 const displayColumns = computed(() => {
   return ladders.value?.columns.filter(
     (column, index) => ladders.value?.columnDisplay[index]
@@ -89,6 +91,19 @@ const accountColor = computed(() => {
     }
   };
 });
+const classIconUrl = computed(() => {
+  return className =>
+    `https://ginkolearn.cyou/api/poe/assets/class-thumb/${className
+      .toLowerCase()
+      .replaceAll(' ', '-')}.webp`;
+});
+const relativeUpdateTime = computed(() => {
+  if (ladders.value?.time) {
+    return `更新: ${calculateRelativeTime(ladders.value.time)}`;
+  }
+  return null;
+});
+//#endregion
 </script>
 
 <style lang="scss" scoped>
@@ -136,13 +151,22 @@ $light-border: rgb(68, 68, 68);
   .uni-table-td {
     font-weight: 400;
     padding: 0 !important;
-
+    vertical-align: middle;
+    text-align: center;
     > view {
       font-size: 26rpx !important;
       padding: 8rpx 4rpx !important;
       box-sizing: border-box;
       text-align: center;
       color: rgb(221, 221, 221);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10rpx;
+      image {
+        width: 50rpx;
+        border-radius: 10rpx;
+      }
     }
 
     &:first-child,
@@ -160,6 +184,7 @@ $light-border: rgb(68, 68, 68);
 
     &:nth-child(3) {
       view {
+        justify-content: flex-start !important;
         width: 100px !important;
       }
     }
