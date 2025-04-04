@@ -34,6 +34,10 @@ app.use(
   '/api/wow/assets',
   express.static(path.resolve(__dirname, 'assets/wow'))
 );
+app.use(
+  '/api/poe/assets',
+  express.static(path.resolve(__dirname, 'assets/poe'))
+);
 
 app.use(
   '/api/common/assets',
