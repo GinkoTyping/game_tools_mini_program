@@ -1,6 +1,7 @@
 import { promises as fs } from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import { formatDateByMinute } from '../../../../util/time.js';
 
 let db;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -61,7 +62,7 @@ async function insertLadders(type, params) {
     ] = params;
 
     return db.run(
-      `INSERT OR REPLACE INTO ${TABLE_NAME} (rank, account_name, character_name, class_name, class_name_en, level, experience, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT OR REPLACE INTO ${TABLE_NAME} (rank, account_name, character_name, class_name, class_name_en, level, experience, type, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         rank,
         account_name,
@@ -71,12 +72,32 @@ async function insertLadders(type, params) {
         level,
         experience,
         type,
+        formatDateByMinute(),
       ]
     );
   } catch (err) {
     console.error('读取JSON文件失败:', err);
     throw err;
   }
+}
+
+async function insertLaddersByList(rows) {
+  const placeholders = rows.map(() => '(?, ?, ?, ?, ?, ?, ?, ?, ?)').join(',');
+  const values = rows.flatMap((row) => [
+    row[0],
+    row[1],
+    row[2],
+    row[3],
+    row[4],
+    row[5],
+    row[6],
+    row[7],
+    row[8],
+  ]);
+  return db.run(
+    `INSERT OR REPLACE INTO ${TABLE_NAME} (rank, account_name, character_name, class_name, class_name_en, level, experience, type, updated_at) VALUES ${placeholders}`,
+    values
+  );
 }
 
 async function updateLadders(type, params) {
@@ -126,6 +147,7 @@ export function useLadderMapper(database) {
     getLaddersByRankType,
 
     insertLadders,
+    insertLaddersByList,
     updateLadders,
   };
 }
