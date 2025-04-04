@@ -80,10 +80,15 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
   if (options.type) {
     const data = await queryLadder({
       pageSize,
-      pageNo,
+      lastRank: tableCache.value?.data?.slice(-1)[0].rank,
       type: options.type,
     });
-    tableCache.value = data;
+
+    if (from === 'load-more' && tableCache.value?.data) {
+      tableCache.value.data.push(...data.data);
+    } else {
+      tableCache.value = data;
+    }
 
     // 不深拷贝会造成更新异常
     vListRef.value?.complete([...data.data]);

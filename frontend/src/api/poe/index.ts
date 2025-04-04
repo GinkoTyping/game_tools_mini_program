@@ -29,13 +29,13 @@ export async function getTopLadders() {
 }
 
 export async function queryLadder(params) {
-  const { pageSize, pageNo, type } = params;
+  const { pageSize, lastRank, type } = params;
   const res = await proxyRequest({
     url: `/poe/static/ladder`,
     method: 'POST',
     data: {
       pageSize: pageSize ?? 10,
-      pageNo: pageNo ?? 1,
+      lastRank: lastRank ?? 0,
       type,
     },
   });

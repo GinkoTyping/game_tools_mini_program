@@ -50,10 +50,10 @@ async function getLaddersTop(type) {
 }
 
 async function getLaddersByTypeAndPaging(params) {
-  const { type, pageSize, pageNo } = params;
+  const { type, pageSize, lastRank } = params;
   return db.all(
     `SELECT * FROM ${TABLE_NAME} WHERE type=? AND rank > ? ORDER BY rank ASC LIMIT ?`,
-    [type, (pageNo - 1) * pageSize, pageSize]
+    [type, lastRank, pageSize]
   );
 }
 

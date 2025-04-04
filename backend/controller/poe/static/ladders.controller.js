@@ -71,10 +71,10 @@ export async function queryLadderTop(req, res) {
 
 export async function queryLadderByTypeAndPaging(req, res) {
   try {
-    const { pageSize, pageNo, type } = req.body;
+    const { pageSize, lastRank, type } = req.body;
     const data = await ladderMapper.getLaddersByTypeAndPaging({
       pageSize,
-      pageNo,
+      lastRank,
       type,
     });
     res.json({ ...BASIC_TABLE, time: formatDateByMinute(), data });
