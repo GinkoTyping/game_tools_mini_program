@@ -1,6 +1,9 @@
 import { useLadderMapper } from '../../../database/poe2/mapper/static/ladder.mapper.js';
+import { getDynamicPoeDB } from '../../../database/utils/index.js';
+import { formatDateByMinute } from '../../../util/time.js';
 
-const ladderMapper = useLadderMapper();
+const db = await getDynamicPoeDB();
+const ladderMapper = useLadderMapper(db);
 
 export async function queryLadderData(req, res) {
   try {
@@ -15,5 +18,46 @@ export async function queryLadderData(req, res) {
   } catch (error) {
     console.error('Error fetching ladder data:', error);
     res.status(500).json({ error: 'Failed to fetch ladder data' });
+  }
+}
+
+export async function queryLadderTop(req, res) {
+  try {
+    const results = await Promise.allSettled(
+      ['standard', 'hc', 'ssf', 'hc_ssf'].map((item) =>
+        ladderMapper.getLaddersTop(item)
+      )
+    );
+    const [standard, hc, ssf, hcSsf] = results.map((item) => item.value);
+    res.status(200).json({
+      time: formatDateByMinute(),
+      columnDisplay: [1, 1, 0, 1, 1, 0],
+      columns: ['排名', '账号', '角色名', '职业', '等级', '经验'],
+      rowDisplay: ['rank', 'account_name', 'class_name', 'level'],
+      data: [
+        {
+          label: '标准模式',
+          desc: '',
+          data: standard,
+        },
+        {
+          label: '硬核模式',
+          desc: '一命',
+          data: hc,
+        },
+        {
+          label: 'SSF模式',
+          desc: '无法组队、交易',
+          data: ssf,
+        },
+        {
+          label: '硬核SSF模式',
+          desc: '一命且无法组队、交易',
+          data: hcSsf,
+        },
+      ],
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 }

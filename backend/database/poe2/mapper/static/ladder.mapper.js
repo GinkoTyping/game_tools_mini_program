@@ -41,6 +41,13 @@ async function getLaddersByRankType(type, rank) {
   return null;
 }
 
+async function getLaddersTop(type) {
+  return db.all(
+    `SELECT * FROM ${TABLE_NAME} WHERE type = ? ORDER BY rank ASC LIMIT 10`,
+    [type]
+  );
+}
+
 async function insertLadders(type, params) {
   try {
     const [rank, account_name, character_name, class_name, level, experience] =
@@ -81,7 +88,8 @@ export function useLadderMapper(database) {
 
   return {
     getData,
-
+    
+    getLaddersTop,
     getLaddersByAccountName,
     getLaddersByRankType,
 

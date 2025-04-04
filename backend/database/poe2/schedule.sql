@@ -10,4 +10,4 @@ CREATE TABLE
     experience INTEGER NOT NULL
   );
 
-CREATE INDEX IF NOT EXISTS idx_type_rank ON poe_dynamic_ladders (type, rank);
+CREATE INDEX IF NOT EXISTS idx_type_rank ON poe_dynamic_ladders (type, rank ASC);

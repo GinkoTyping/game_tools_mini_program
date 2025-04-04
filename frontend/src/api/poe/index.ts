@@ -12,3 +12,11 @@ export async function getLadders() {
   });
   return res.data as ILadderData;
 }
+
+export async function getTopLadders() {
+  const res = await proxyRequest({
+    url: `/poe/static/top-ladders`,
+    method: 'GET',
+  });
+  return res.data as ILadderData;
+}
