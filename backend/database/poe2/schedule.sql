@@ -6,6 +6,7 @@ CREATE TABLE
     account_name TEXT NOT NULL,
     character_name TEXT NOT NULL,
     class_name TEXT NOT NULL,
+    class_name_en TEXT NOT NULL,
     level INTEGER NOT NULL,
     experience INTEGER NOT NULL
   );

@@ -50,12 +50,28 @@ async function getLaddersTop(type) {
 
 async function insertLadders(type, params) {
   try {
-    const [rank, account_name, character_name, class_name, level, experience] =
-      params;
+    const [
+      rank,
+      account_name,
+      character_name,
+      class_name,
+      class_name_en,
+      level,
+      experience,
+    ] = params;
 
     return db.run(
-      `INSERT OR REPLACE INTO ${TABLE_NAME} (rank, account_name, character_name, class_name, level, experience, type) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [rank, account_name, character_name, class_name, level, experience, type]
+      `INSERT OR REPLACE INTO ${TABLE_NAME} (rank, account_name, character_name, class_name, class_name_en, level, experience, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        rank,
+        account_name,
+        character_name,
+        class_name,
+        class_name_en,
+        level,
+        experience,
+        type,
+      ]
     );
   } catch (err) {
     console.error('读取JSON文件失败:', err);
@@ -65,12 +81,28 @@ async function insertLadders(type, params) {
 
 async function updateLadders(type, params) {
   try {
-    const [rank, account_name, character_name, class_name, level, experience] =
-      params;
+    const [
+      rank,
+      account_name,
+      character_name,
+      class_name,
+      class_name_en,
+      level,
+      experience,
+    ] = params;
 
     return db.run(
-      `UPDATE ${TABLE_NAME} SET account_name=?, character_name=?, class_name=?, level=?, experience=? WHERE rank=? AND type=?`,
-      [account_name, character_name, class_name, level, experience, rank, type]
+      `UPDATE ${TABLE_NAME} SET account_name=?, character_name=?, class_name=?, class_name_en=?, level=?, experience=? WHERE rank=? AND type=?`,
+      [
+        account_name,
+        character_name,
+        class_name,
+        class_name_en,
+        level,
+        experience,
+        rank,
+        type,
+      ]
     );
   } catch (err) {
     console.error('失败:', err);
@@ -88,7 +120,7 @@ export function useLadderMapper(database) {
 
   return {
     getData,
-    
+
     getLaddersTop,
     getLaddersByAccountName,
     getLaddersByRankType,

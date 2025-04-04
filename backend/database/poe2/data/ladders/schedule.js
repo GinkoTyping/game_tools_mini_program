@@ -11,16 +11,13 @@ const laddersData = JSON.parse(rawData);
 
 const db = await getDynamicPoeDB();
 const laddersMapper = useLadderMapper(db);
-async function updateLadderItem(type, item) {
-  const existingItem = await laddersMapper.getLaddersByRankType(
-    type,
-    Number(item[0])
-  );
+let current = 0;
+let total = 0;
 
-  if (existingItem) {
-    return laddersMapper.updateLadders(type, item);
-  }
-  return laddersMapper.insertLadders(type, item);
+async function updateLadderItem(type, item) {
+  const result = await laddersMapper.insertLadders(type, item);
+  current++;
+  console.log(`${result.changes ? '成功' : '失败'}: ${current}/ ${total}`);
 }
 
 function mapLadderType(index) {
@@ -31,12 +28,18 @@ function mapLadderType(index) {
 async function updateLadderData() {
   try {
     const lists = laddersData.data.map((item, index) => {
-      const request = item.data.map((row) =>
-        laddersMapper.insertLadders(mapLadderType(index), row)
-      );
+      const request = item.data.map((row) => {
+        const className = row[3].split('|')[0];
+        const classNameEn = row[3].split('|')[1];
+        row.splice(3, 1, className, classNameEn);
+        return updateLadderItem(mapLadderType(index), row);
+      });
       return request;
     });
-    const results = await Promise.allSettled(lists.flat());
+
+    const allList = lists.flat();
+    total = allList.length;
+    const results = await Promise.allSettled(allList);
     const errors = results.filter((item) => item.status !== 'fulfilled');
     if (errors) {
       console.log('失败:' + errors.length);

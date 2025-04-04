@@ -60,7 +60,9 @@ function collectLadderTable(context) {
       const row = $(ele)
         .children('td')
         .map((tdIdx, tdEle) => {
-          return mapClassName($(tdEle).text());
+          return tdIdx === 3
+            ? `${mapClassName($(tdEle).text())}|${$(tdEle).text()}`
+            : $(tdEle).text();
         })
         .get();
       data.push(row);
