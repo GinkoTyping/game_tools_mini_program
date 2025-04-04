@@ -10,7 +10,12 @@
       type="line"
       titleFontSize="16px"
     >
-      <template v-slot:right>查看更多</template>
+      <template v-slot:right>
+        <view class="slot-right">
+          <text class="iconfont icon-weidu-01"></text>
+          <view>查看更多</view>
+        </view>
+      </template>
       <view class="table-container">
         <uni-table ref="table" emptyText="暂无更多数据">
           <uni-tr>
@@ -48,7 +53,6 @@
   </view>
 
   <ShareIcon />
-  
 </template>
 
 <script lang="ts" setup>
@@ -100,7 +104,13 @@ const accountColor = computed(() => {
   z-index: 2;
 }
 .ladders-container {
-  padding-bottom: 200rpx;
+  padding-bottom: 230rpx;
+  .slot-right {
+    color: $uni-color-primary;
+    display: flex;
+    align-items: center;
+    gap: 8rpx;
+  }
 }
 .table-container {
   padding: 0 20rpx;
