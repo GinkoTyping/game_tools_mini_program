@@ -73,8 +73,8 @@ function collectLadderTable(context) {
     return [];
   }
 }
-async function collectByType(type) {
-  const $ = await getCheerioByPuppeteer(getStaticFilePath(type), getUrl(type));
+async function collectByType(type, useCache) {
+  const $ = await getCheerioByPuppeteer(getStaticFilePath(type), getUrl(type), useCache);
   return collectLadderTable($);
 }
 
@@ -84,10 +84,10 @@ const types = [
   'SSF%2520Dawn%2520of%2520the%2520Hunt',
   'HC%2520SSF%2520Dawn%2520of%2520the%2520Hunt',
 
-  'Standard',
-  'Hardcore',
-  'Solo%2520Self-Found',
-  'Hardcore%2520SSF',
+  // 'Standard',
+  // 'Hardcore',
+  // 'Solo%2520Self-Found',
+  // 'Hardcore%2520SSF',
 ];
 function saveFile(data) {
   const filePath = path.resolve(__dirname, `./output/ladders.json`);
@@ -98,10 +98,10 @@ function saveFile(data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
   fs.writeFileSync(serverPath, JSON.stringify(data, null, 2), 'utf-8');
 }
-async function collectAll() {
+async function collectAll(useCahce) {
   const results = await Promise.allSettled(
     types.map((type) => {
-      return collectByType(type);
+      return collectByType(type, useCahce);
     })
   );
   const [
@@ -110,10 +110,10 @@ async function collectAll() {
     soloSelfFoundDoTH,
     hardcoreSoloSelfFoundDoTH,
 
-    standard,
-    hardcore,
-    soloSelfFound,
-    hardcoreSoloSelfFound,
+    // standard,
+    // hardcore,
+    // soloSelfFound,
+    // hardcoreSoloSelfFound,
   ] = results.map((result, index) => {
     if (result.status === 'fulfilled') {
       return result.value;
@@ -149,30 +149,30 @@ async function collectAll() {
         data: hardcoreSoloSelfFoundDoTH,
       },
 
-      {
-        label: '永久服 标准模式',
-        desc: '',
-        data: standard,
-      },
-      {
-        label: '永久服 硬核模式',
-        desc: '一命',
-        data: hardcore,
-      },
-      {
-        label: '永久服 SSF模式',
-        desc: '无法组队和交易',
-        data: soloSelfFound,
-      },
-      {
-        label: '永久服 硬核SSF模式',
-        desc: '',
-        data: hardcoreSoloSelfFound,
-      },
+      // {
+      //   label: '永久服 标准模式',
+      //   desc: '',
+      //   data: standard,
+      // },
+      // {
+      //   label: '永久服 硬核模式',
+      //   desc: '一命',
+      //   data: hardcore,
+      // },
+      // {
+      //   label: '永久服 SSF模式',
+      //   desc: '无法组队和交易',
+      //   data: soloSelfFound,
+      // },
+      // {
+      //   label: '永久服 硬核SSF模式',
+      //   desc: '',
+      //   data: hardcoreSoloSelfFound,
+      // },
     ],
   };
 
   saveFile(data);
 }
 
-collectAll();
+collectAll(false);

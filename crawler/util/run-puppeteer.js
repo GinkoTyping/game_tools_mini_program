@@ -10,11 +10,11 @@ import '../util/set-env.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export async function getCheerioByPuppeteer(staticFilePath, urlPath) {
+export async function getCheerioByPuppeteer(staticFilePath, urlPath, useCache) {
   let browser;
   try {
     let html;
-    if (fs.existsSync(path.resolve(__dirname, staticFilePath))) {
+    if (fs.existsSync(path.resolve(__dirname, staticFilePath)) && useCache) {
       html = fs.readFileSync(path.resolve(__dirname, staticFilePath), 'utf-8');
     } else {
       browser = await puppeteer.launch({
