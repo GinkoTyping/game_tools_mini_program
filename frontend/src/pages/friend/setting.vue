@@ -264,7 +264,7 @@
       <uni-easyinput
         v-if="!wowForm.privacy.needConfirm"
         class="battlenet-input"
-        type="password"
+        type="text"
         v-model="battlenetId"
         :placeholder="battlenetDisplayInfo.placeholder"
         :errorMessage="battlenetDisplayInfo.isError"
