@@ -73,22 +73,63 @@ function collectLadderTable(context) {
     return [];
   }
 }
-async function collectByType(type, useCache) {
-  const $ = await getCheerioByPuppeteer(getStaticFilePath(type), getUrl(type), useCache);
-  return collectLadderTable($);
+async function collectByType(typeItem, useCache) {
+  const $ = await getCheerioByPuppeteer(
+    getStaticFilePath(typeItem.key),
+    getUrl(typeItem.key),
+    useCache
+  );
+  const data = collectLadderTable($);
+  return {
+    ...typeItem,
+    data,
+  };
 }
 
 const types = [
-  'Dawn%2520of%2520the%2520Hunt',
-  'HC%2520Dawn%2520of%2520the%2520Hunt',
-  'SSF%2520Dawn%2520of%2520the%2520Hunt',
-  'HC%2520SSF%2520Dawn%2520of%2520the%2520Hunt',
+  {
+    key: 'Dawn%2520of%2520the%2520Hunt',
+    desc: '',
+    label: '狩猎黎明 标准模式',
+  },
+  {
+    key: 'HC%2520Dawn%2520of%2520the%2520Hunt',
+    desc: '一命',
+    label: '狩猎黎明 硬核模式',
+  },
+  {
+    key: 'SSF%2520Dawn%2520of%2520the%2520Hunt',
+    desc: '无法组队和交易',
+    label: '狩猎黎明 SSF模式',
+  },
+  {
+    key: 'HC%2520SSF%2520Dawn%2520of%2520the%2520Hunt',
+    desc: '',
+    label: '狩猎黎明 硬核SSF模式',
+  },
 
-  // 'Standard',
-  // 'Hardcore',
-  // 'Solo%2520Self-Found',
-  // 'Hardcore%2520SSF',
+  // {
+  //   key: 'Standard',
+  //   desc: '',
+  //   label: '标准模式',
+  // },
+  // {
+  //   key: 'Hardcore',
+  //   desc: '一命',
+  //   label: '硬核模式',
+  // },
+  // {
+  //   key: 'Solo%2520Self-Found',
+  //   desc: '无法组队和交易',
+  //   label: 'SSF模式',
+  // },
+  // {
+  //   key: 'Hardcore%2520SSF',
+  //   desc: '',
+  //   label: '硬核SSF模式',
+  // },
 ];
+
 function saveFile(data) {
   const filePath = path.resolve(__dirname, `./output/ladders.json`);
   const serverPath = path.resolve(
@@ -104,17 +145,7 @@ async function collectAll(useCahce) {
       return collectByType(type, useCahce);
     })
   );
-  const [
-    standardDoTH,
-    hardcoreDoTH,
-    soloSelfFoundDoTH,
-    hardcoreSoloSelfFoundDoTH,
-
-    // standard,
-    // hardcore,
-    // soloSelfFound,
-    // hardcoreSoloSelfFound,
-  ] = results.map((result, index) => {
+  const finalData = results.map((result, index) => {
     if (result.status === 'fulfilled') {
       return result.value;
     } else {
@@ -127,49 +158,7 @@ async function collectAll(useCahce) {
     time: formatDateByMinute(),
     showIndex: [1, 1, 0, 1, 1, 0],
     columns: ['排名', '账号', '角色名', '职业', '等级', '经验'],
-    data: [
-      {
-        label: '狩猎黎明 标准模式',
-        desc: '',
-        data: standardDoTH,
-      },
-      {
-        label: '狩猎黎明 硬核模式',
-        desc: '一命',
-        data: hardcoreDoTH,
-      },
-      {
-        label: '狩猎黎明 SSF模式',
-        desc: '无法组队和交易',
-        data: soloSelfFoundDoTH,
-      },
-      {
-        label: '狩猎黎明 硬核SSF模式',
-        desc: '',
-        data: hardcoreSoloSelfFoundDoTH,
-      },
-
-      // {
-      //   label: '永久服 标准模式',
-      //   desc: '',
-      //   data: standard,
-      // },
-      // {
-      //   label: '永久服 硬核模式',
-      //   desc: '一命',
-      //   data: hardcore,
-      // },
-      // {
-      //   label: '永久服 SSF模式',
-      //   desc: '无法组队和交易',
-      //   data: soloSelfFound,
-      // },
-      // {
-      //   label: '永久服 硬核SSF模式',
-      //   desc: '',
-      //   data: hardcoreSoloSelfFound,
-      // },
-    ],
+    data: finalData,
   };
 
   saveFile(data);
