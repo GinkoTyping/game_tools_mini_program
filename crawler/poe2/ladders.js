@@ -1,3 +1,5 @@
+import pLimit from 'p-limit';
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -139,10 +141,11 @@ function saveFile(data) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
   fs.writeFileSync(serverPath, JSON.stringify(data, null, 2), 'utf-8');
 }
+const limit = pLimit(2);
 async function collectAll(useCahce) {
   const results = await Promise.allSettled(
     types.map((type) => {
-      return collectByType(type, useCahce);
+      return limit(() => collectByType(type, useCahce));
     })
   );
   const finalData = results.map((result, index) => {
