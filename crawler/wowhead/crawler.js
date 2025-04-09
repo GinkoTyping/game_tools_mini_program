@@ -10,7 +10,7 @@ import '../util/set-env.js';
 async function collectSpellById(id) {
   const browser = await puppeteer.launch({
     timeout: 600000, // 60 秒超时
-    headless: false,
+    headless: true,
 
     args: [
       // '--proxy-server=http://127.0.0.1:7897',
@@ -27,7 +27,7 @@ async function collectSpellById(id) {
   });
 
   const html = await page.content();
-
+  console.log(html)
   await browser.close();
 }
 collectSpellById();
