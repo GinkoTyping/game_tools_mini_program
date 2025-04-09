@@ -14,6 +14,8 @@ async function collectSpellById(id) {
 
     args: [
       // '--proxy-server=http://127.0.0.1:7897',
+      '--no-sandbox', // 禁用沙盒
+      '--disable-setuid-sandbox', // 禁用 setuid 沙盒
       '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36',
     ],
   });
@@ -27,7 +29,7 @@ async function collectSpellById(id) {
   });
 
   const html = await page.content();
-  console.log(html)
+  console.log(html);
   await browser.close();
 }
 collectSpellById();
