@@ -12,7 +12,7 @@ module.exports = {
     },
     {
       name: 'task', // 自定义应用名称
-      script: './task/poe/ladders.js', // 主入口文件路径
+      script: './tasks/poe/ladders.js', // 主入口文件路径
       instances: 1, // 必须设置为 1（防止定时任务重复执行）
       autorestart: true, // 异常退出时自动重启
       watch: false, // 关闭文件监听（避免误重启）
