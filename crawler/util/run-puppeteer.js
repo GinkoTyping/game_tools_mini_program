@@ -20,6 +20,9 @@ export async function getCheerioByPuppeteer(staticFilePath, urlPath, useCache) {
       browser = await puppeteer.launch({
         headless: true,
         args: [
+          // 适配 centos 使用：禁用沙盒 ,禁用 setuid 沙盒
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
           '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36',
         ],
       });

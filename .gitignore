@@ -39,4 +39,8 @@ backend/database/common/dynamic-database.db
 media/assets
 
 crawler/poe2/cache
+crawler/poe2/output
+
+backend/database/poe2/data/ladders/cache/*
+backend/database/poe2/data/ladders/output/*
 

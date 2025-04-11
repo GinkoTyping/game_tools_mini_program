@@ -103,3 +103,11 @@ export async function tryTranslateSpell(spell) {
     return spell;
   }
 }
+
+export async function queryUpdateLadders(data) {
+  const res = await axios.post(
+    `${process.env.DEV_URL}/apistatic/update-ladders`,
+    { data }
+  );
+  return res.data;
+}
