@@ -20,11 +20,6 @@ export function generateRefreshToken(userId) {
 
 export const validateAdmin = async (req, res, next) => {
   try {
-    // (1) 验证 IP 白名单
-    if (!isLocal(req)) {
-      return res.status(403).json({ message: 'IP not allowed' });
-    }
-
     // (2) 验证 JWT 中的用户身份
     const token = req.headers.authorization?.split(' ')[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
