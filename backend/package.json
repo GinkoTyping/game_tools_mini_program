@@ -8,9 +8,10 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "md5": "^2.3.0",
+    "node-schedule": "^2.1.1",
+    "puppeteer": "^24.2.0",
     "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7",
-    "puppeteer": "^24.2.0"
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "axios": "^1.7.9",
