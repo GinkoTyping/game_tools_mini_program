@@ -34,9 +34,9 @@ function mapLadderType(index) {
   return types[index];
 }
 
-async function updateLadderData() {
+export async function updateLadderData(rawData) {
   try {
-    const lists = laddersData.data.map((item, index) => {
+    const lists = rawData.map((item, index) => {
       const request = item.data.map((row) => {
         const className = row[3].split('|')[0];
         const classNameEn = row[3].split('|')[1];
@@ -58,5 +58,3 @@ async function updateLadderData() {
     throw err;
   }
 }
-
-updateLadderData();

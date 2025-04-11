@@ -124,3 +124,12 @@ export async function queryLadderByTypeAndPaging(req, res) {
     res.status(500).json({ error: error.message });
   }
 }
+
+export async function queryUpdateLadders(req, res) {
+  try {
+    await ladderMapper.updateLadersByCrawler(req.body.data);
+    res.json({ message: '更新OK' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
