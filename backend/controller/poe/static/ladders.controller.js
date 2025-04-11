@@ -1,3 +1,4 @@
+import { collectAll } from '../../../database/poe2/data/ladders/crawler.js';
 import { useLadderMapper } from '../../../database/poe2/mapper/static/ladder.mapper.js';
 import { getDynamicPoeDB } from '../../../database/utils/index.js';
 import { formatDateByMinute } from '../../../util/time.js';
@@ -126,9 +127,41 @@ export async function queryLadderByTypeAndPaging(req, res) {
 }
 
 export async function queryUpdateLadders(req, res) {
+  function mapLadderType(index) {
+    const types = [
+      'DotH_standard',
+      'DotH_hc',
+      'DotH_ssf',
+      'DotH_hc_ssf',
+      'standard',
+      'hc',
+      'ssf',
+      'hc_ssf',
+    ];
+    return types[index];
+  }
   try {
-    await ladderMapper.updateLadersByCrawler(req.body.data);
-    res.json({ message: '更新OK' });
+    const rawData = await collectAll(req.body.useCache);
+    const lists = rawData.data.map((item, index) => {
+      const request = item.data.map((row) => {
+        const className = row[3].split('|')[0];
+        const classNameEn = row[3].split('|')[1];
+        row.splice(3, 1, className, classNameEn);
+        return ladderMapper.insertLadders(mapLadderType(index), row);
+      });
+      return request;
+    });
+
+    const allList = lists.flat();
+    const total = allList.length;
+    const results = await Promise.allSettled(allList);
+    const errors = results.filter(
+      (item) => item.status !== 'fulfilled'
+    )?.length;
+    if (errors?.length) {
+      throw new Error(`更新失败：${errors?.length}条`);
+    }
+    res.json({ message: `更新OK: ${total}条` });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

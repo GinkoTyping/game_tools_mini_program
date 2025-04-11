@@ -9,13 +9,13 @@ const jsonPath = path.join(__dirname, '../../data/ladders/ladders.json');
 const rawData = await fs.readFile(jsonPath, 'utf8');
 const laddersData = JSON.parse(rawData);
 
-const db = await getDynamicPoeDB();
-const laddersMapper = useLadderMapper(db);
+// const db = await getDynamicPoeDB();
+// const laddersMapper = useLadderMapper(db);
 let current = 0;
 let total = 0;
 
-async function updateLadderItem(type, item) {
-  const result = await laddersMapper.insertLadders(type, item);
+async function updateLadderItem(type, item, mapper) {
+  const result = await mapper.insertLadders(type, item);
   current++;
   console.log(`${result.changes ? '成功' : '失败'}: ${current}/ ${total}`);
 }
@@ -34,14 +34,14 @@ function mapLadderType(index) {
   return types[index];
 }
 
-export async function updateLadderData(rawData) {
+export async function updateLadderData(rawData, mapper) {
   try {
     const lists = rawData.map((item, index) => {
       const request = item.data.map((row) => {
         const className = row[3].split('|')[0];
         const classNameEn = row[3].split('|')[1];
         row.splice(3, 1, className, classNameEn);
-        return updateLadderItem(mapLadderType(index), row);
+        return updateLadderItem(mapLadderType(index), row, mapper);
       });
       return request;
     });

@@ -4,7 +4,7 @@ import '../util/set-env.js';
 
 export function isLocal(req) {
   const clientIP = req.ip || req.headers['x-forwarded-for'];
-  const allowedIPs = new Set(['127.0.0.1', '::1', 'localhost']);
+  const allowedIPs = new Set(['127.0.0.1', '::1', 'localhost', process.env.DEV_IP]);
   return allowedIPs.has(clientIP);
 }
 

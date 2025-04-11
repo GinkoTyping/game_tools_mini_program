@@ -142,7 +142,7 @@ async function updateLadders(type, params) {
 
 async function updateLadersByCrawler(rawData) {
   try {
-    await updateLadderData(rawData);
+    await updateLadderData(rawData, this);
   } catch (error) {}
 }
 
