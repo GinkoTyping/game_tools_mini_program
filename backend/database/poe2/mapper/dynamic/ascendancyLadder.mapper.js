@@ -23,7 +23,8 @@ export async function getByType(rankType) {
   data = await db.all(`SELECT * FROM ${TABLE_NAME}`);
   return data?.map((item) => ({
     ...item,
-    rank_data: JSON.parse(item.rank_data),
+    rank_data: undefined,
+    rankData: JSON.parse(item.rank_data)?.data,
   }));
 }
 
