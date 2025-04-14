@@ -22,7 +22,6 @@ $priest: rgb(255, 255, 255);
   background-color: $warrior;
 }
 
-
 .evoker {
   color: $evoker;
   border-color: $evoker;
@@ -118,7 +117,7 @@ $priest: rgb(255, 255, 255);
 .druid::before {
   background-color: $druid;
 }
-.druid-bg{
+.druid-bg {
   background-color: $druid;
 }
 
@@ -191,4 +190,33 @@ $priest: rgb(255, 255, 255);
 
 .spell-popup .uni-card {
   background-color: $uni-bg-color-grey-light !important;
+}
+
+// poe
+.poe-warrior-bg {
+  background-color: rgb(175, 90, 50);
+}
+
+.poe-ranger-bg {
+  background-color: rgb(124,179,118);
+}
+
+.poe-huntress-bg {
+  background-color: rgb(124,179,118);
+}
+
+.poe-witch-bg {
+  background-color: rgb(154,195,201);
+}
+
+.poe-sorceress-bg {
+  background-color: rgb(154,195,201);
+}
+
+.poe-mercenary-bg {
+  background-color: rgb(150,175,200)
+}
+
+.poe-monk-bg {
+  background-color: rgb(114,129,141);
 }

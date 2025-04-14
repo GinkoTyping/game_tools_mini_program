@@ -46,6 +46,7 @@ export interface IAscendancyLadderData {
   type: string;
   updated_at: string;
   rankData: {
+    class: string;
     ascendancy: string;
     ascendancyEn: string;
     count: number;

@@ -36,6 +36,23 @@
         :row-display="ladders.rowDisplay"
         :column-display="ladders.columnDisplay"
       />
+
+      <view v-show="displayType(ladder.key) === 'rank'" class="ascendancy">
+        <view
+          class="ascendancy-row"
+          v-for="item in getAscendancyByType(ladder.key)"
+        >
+          <image :src="classIconUrl(item.ascendancyEn)" mode="widthFix" />
+          <view class="ascendancy-row__bg">
+            <view
+              class="ascendancy-row__bg-fill"
+              :class="`poe-${item.class}-bg`"
+              :style="{ width: item.percentage }"
+              >{{ item.ascendancy }}({{ item.count }}人)</view
+            >
+          </view>
+        </view>
+      </view>
     </uni-section>
   </view>
 
@@ -59,6 +76,7 @@ import { calculateRelativeTime } from '@/utils/time';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 import LadderTable from '@/components/poe/LadderTable.vue';
+import { useLadderTable } from '@/hooks/poe/ladderTable';
 
 const navigator = useNavigator();
 const ladders = ref();
@@ -89,6 +107,11 @@ const displayType = computed(() => {
       ? 'rank'
       : 'table';
 });
+const getAscendancyByType = computed(() => {
+  return (key: string) =>
+    ascendancyRank.value?.find(item => item.type === key)?.rankData as any;
+});
+const { classIconUrl } = useLadderTable();
 //#endregion
 
 function switchDisplayType(key: string) {
@@ -190,6 +213,31 @@ $light-border: rgb(68, 68, 68);
       view {
         justify-content: flex-start !important;
         width: 100px !important;
+      }
+    }
+  }
+}
+
+.ascendancy {
+  padding: 0 20rpx;
+  .ascendancy-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px $uni-bg-color solid !important;
+    image {
+      width: 50rpx;
+    }
+    .ascendancy-row__bg {
+      height: 50rpx;
+      line-height: 50rpx;
+      flex: 1;
+      background-color: $uni-bg-color-grey-lighter;
+      .ascendancy-row__bg-fill {
+        padding: 0 10rpx;
+        box-sizing: border-box;
+
+        overflow: visible;
+        white-space: nowrap;
       }
     }
   }
