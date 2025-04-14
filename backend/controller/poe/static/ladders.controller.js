@@ -1,5 +1,5 @@
 import { collectAll } from '../../../database/poe2/data/ladders/crawler.js';
-import { useLadderMapper } from '../../../database/poe2/mapper/static/ladder.mapper.js';
+import { useLadderMapper } from '../../../database/poe2/mapper/dynamic/ladder.mapper.js';
 import { getDynamicPoeDB } from '../../../database/utils/index.js';
 import { formatDateByMinute } from '../../../util/time.js';
 

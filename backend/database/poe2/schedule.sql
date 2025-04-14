@@ -22,3 +22,22 @@ CREATE TABLE
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (type, rank)
   );
+
+CREATE TABLE
+  IF NOT EXISTS poe_dynamic_ascendancy_ladders (
+    id INTEGER PRIMARY KEY,
+    type TEXT NOT NULL CHECK (
+      type IN (
+        'DotH_standard',
+        'DotH_hc',
+        'DotH_ssf',
+        'DotH_hc_ssf',
+        'standard',
+        'hc',
+        'ssf',
+        'hc_ssf'
+      )
+    ),
+    rank_data TEXT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
