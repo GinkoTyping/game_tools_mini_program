@@ -2,7 +2,6 @@ import { promises as fs } from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { formatDateByMinute } from '../../../../util/time.js';
-import { updateLadderData } from '../../data/ladders/schedule.js';
 
 let db;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -140,12 +139,6 @@ async function updateLadders(type, params) {
   }
 }
 
-async function updateLadersByCrawler(rawData) {
-  try {
-    await updateLadderData(rawData, this);
-  } catch (error) {}
-}
-
 export function useLadderMapper(database) {
   if (database) {
     db = database;
@@ -165,6 +158,5 @@ export function useLadderMapper(database) {
     insertLadders,
     insertLaddersByList,
     updateLadders,
-    updateLadersByCrawler,
   };
 }
