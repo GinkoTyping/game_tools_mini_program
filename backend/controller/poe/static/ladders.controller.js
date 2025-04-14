@@ -170,11 +170,35 @@ function mapAscendancy(dataItem) {
     }, [])
     .sort((a, b) => b.count - a.count);
   const maxCount = sortedData[0].count;
+  function mapAscendancyBaseClass(ascendancy) {
+    if (['titan', 'warbringer', 'smith of kitava'].includes(ascendancy)) {
+      return 'warrior';
+    }
+    if (['deadeye', 'pathfinder'].includes(ascendancy)) {
+      return 'ranger';
+    }
+    if (['amazon', 'ritualist'].includes(ascendancy)) {
+      return 'huntress';
+    }
+    if (['infernalist', 'blood mage', 'lich'].includes(ascendancy)) {
+      return 'witch';
+    }
+    if (['stormweaver', 'chronomancer'].includes(ascendancy)) {
+      return 'sorceress';
+    }
+    if (['tactician', 'witchhunter', 'gemling legionnaire'].includes(ascendancy)) {
+      return 'mercenary';
+    }
+    if (['invoker', 'acolyte of chayula'].includes(ascendancy)) {
+      return 'monk';
+    }
+  }
   return {
     ...dataItem,
     data: sortedData.map((item) => ({
       ...item,
       percentage: `${((item.count / maxCount) * 100).toFixed(1)}%`,
+      class: mapAscendancyBaseClass(item.ascendancyEn.toLowerCase()),
     })),
   };
 }
