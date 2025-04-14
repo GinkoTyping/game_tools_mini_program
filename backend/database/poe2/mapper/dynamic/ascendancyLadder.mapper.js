@@ -14,7 +14,17 @@ export async function addByType(rankType, rankData) {
 }
 
 export async function getByType(rankType) {
-  return db.get(`SELECT * FROM ${TABLE_NAME} WHERE type = ?`, [rankType]);
+  let data;
+  if (rankType) {
+    data = await db.all(`SELECT * FROM ${TABLE_NAME} WHERE type = ?`, [
+      rankType,
+    ]);
+  }
+  data = await db.all(`SELECT * FROM ${TABLE_NAME}`);
+  return data?.map((item) => ({
+    ...item,
+    rank_data: JSON.parse(item.rank_data),
+  }));
 }
 
 export function useAscendancyLadderMapper(database) {

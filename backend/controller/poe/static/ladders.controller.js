@@ -113,6 +113,16 @@ export async function queryLadderTop(req, res) {
     res.status(500).json({ error: error.message });
   }
 }
+export async function queryAscendancyRanks(req, res) {
+  try {
+    const data = await ascendancyLadderMapper.getByType(
+      req.params.type === 'all' ? '' : req.params.type
+    );
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
 
 export async function queryLadderByTypeAndPaging(req, res) {
   try {

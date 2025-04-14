@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  queryAscendancyRanks,
   queryLadderByTypeAndPaging,
   queryLadderData,
   queryLadderTop,
@@ -11,6 +12,7 @@ const router = express.Router();
 
 router.get('/static/ladders', queryLadderData);
 router.get('/static/top-ladders', queryLadderTop);
+router.get('/static/top-ascendancies/:type', queryAscendancyRanks);
 router.post('/static/ladder', queryLadderByTypeAndPaging);
 router.post('/static/update-ladders', validateAdmin, queryUpdateLadders);
 
