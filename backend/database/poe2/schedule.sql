@@ -26,7 +26,7 @@ CREATE TABLE
 CREATE TABLE
   IF NOT EXISTS poe_dynamic_ascendancy_ladders (
     id INTEGER PRIMARY KEY,
-    type TEXT NOT NULL CHECK (
+    type TEXT UNIQUE NOT NULL CHECK (
       type IN (
         'DotH_standard',
         'DotH_hc',

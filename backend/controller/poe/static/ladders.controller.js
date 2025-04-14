@@ -1,10 +1,12 @@
 import { collectAll } from '../../../database/poe2/data/ladders/crawler.js';
+import { useAscendancyLadderMapper } from '../../../database/poe2/mapper/dynamic/ascendancyLadder.mapper.js';
 import { useLadderMapper } from '../../../database/poe2/mapper/dynamic/ladder.mapper.js';
 import { getDynamicPoeDB } from '../../../database/utils/index.js';
 import { formatDateByMinute } from '../../../util/time.js';
 
 const db = await getDynamicPoeDB();
 const ladderMapper = useLadderMapper(db);
+const ascendancyLadderMapper = useAscendancyLadderMapper(db);
 
 export async function queryLadderData(req, res) {
   try {
@@ -126,22 +128,66 @@ export async function queryLadderByTypeAndPaging(req, res) {
   }
 }
 
-export async function queryUpdateLadders(req, res) {
-  function mapLadderType(index) {
-    const types = [
-      'DotH_standard',
-      'DotH_hc',
-      'DotH_ssf',
-      'DotH_hc_ssf',
-      'standard',
-      'hc',
-      'ssf',
-      'hc_ssf',
-    ];
-    return types[index];
+function mapLadderType(index) {
+  const types = [
+    'DotH_standard',
+    'DotH_hc',
+    'DotH_ssf',
+    'DotH_hc_ssf',
+    'standard',
+    'hc',
+    'ssf',
+    'hc_ssf',
+  ];
+  return types[index];
+}
+function mapAscendancy(dataItem) {
+  const sortedData = dataItem.data
+    .reduce((pre, cur) => {
+      const ascendancy = cur[3].split('|')[0];
+      const ascendancyEn = cur[3].split('|')[1];
+      const existed = pre.find((item) => item.ascendancyEn === ascendancyEn);
+      if (existed) {
+        existed.count++;
+      } else {
+        pre.push({
+          ascendancy,
+          ascendancyEn,
+          count: 1,
+        });
+      }
+      return pre;
+    }, [])
+    .sort((a, b) => b.count - a.count);
+  const maxCount = sortedData[0].count;
+  return {
+    ...dataItem,
+    data: sortedData.map((item) => ({
+      ...item,
+      percentage: `${((item.count / maxCount) * 100).toFixed(1)}%`,
+    })),
+  };
+}
+async function updateAscendancyLadders(dataByType) {
+  const rankDataList = dataByType.map((item) => mapAscendancy(item));
+  const results = await Promise.allSettled(
+    rankDataList.map((item) =>
+      ascendancyLadderMapper.addByType(item.type, item)
+    )
+  );
+  const errors = results.filter((item) => item.status !== 'fulfilled')?.length;
+  if (errors?.length) {
+    throw new Error(`更新升华排名失败：${errors?.length}条`);
   }
+}
+export async function queryUpdateLadders(req, res) {
   try {
     const rawData = await collectAll(req.body.useCache);
+
+    // 更新 按升华的排名
+    await updateAscendancyLadders(rawData.data);
+
+    // 更新 按游戏用户的排名
     const lists = rawData.data.map((item, index) => {
       const request = item.data.map((row) => {
         const className = row[3].split('|')[0];
