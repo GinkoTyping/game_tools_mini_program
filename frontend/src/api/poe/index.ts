@@ -41,3 +41,22 @@ export async function queryLadder(params) {
   });
   return res.data as IDetailLadder;
 }
+
+export interface IAscendancyLadderData {
+  type: string;
+  updated_at: string;
+  rankData: {
+    ascendancy: string;
+    ascendancyEn: string;
+    count: number;
+    percentage: string;
+  };
+  display: boolean;
+}
+export async function queryAscendancyLadders() {
+  const res = await proxyRequest({
+    url: `/poe/static/top-ascendancies/all`,
+    method: 'GET',
+  });
+  return res.data as IAscendancyLadderData[];
+}

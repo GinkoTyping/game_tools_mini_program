@@ -12,14 +12,25 @@
     >
       <template v-slot:right>
         <view class="slot-right">
-          <text class="iconfont icon-weidu-01"></text>
           <view
-            @click="() => navigator.toPoeDeatilLadder(ladder.key, ladder.label)"
-            >查看更多</view
+            v-if="hasAscendancyRank(ladder.key)"
+            class="icon-wrap"
+            @click="() => switchDisplayType(ladder.key)"
           >
+            <text class="iconfont icon-rankfill"></text>
+            <view>升华</view>
+          </view>
+          <view
+            class="icon-wrap"
+            @click="() => navigator.toPoeDeatilLadder(ladder.key, ladder.label)"
+          >
+            <text class="iconfont icon-weidu-01"></text>
+            <view>更多</view>
+          </view>
         </view>
       </template>
       <LadderTable
+        v-show="displayType(ladder.key) === 'table'"
         v-model:data="ladder.data"
         :columns="ladders.columns"
         :row-display="ladders.rowDisplay"
@@ -39,7 +50,11 @@
 import { onLoad } from '@dcloudio/uni-app';
 import { computed, ref } from 'vue';
 
-import { getTopLadders } from '@/api/poe';
+import {
+  getTopLadders,
+  IAscendancyLadderData,
+  queryAscendancyLadders,
+} from '@/api/poe';
 import { calculateRelativeTime } from '@/utils/time';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
@@ -47,8 +62,10 @@ import LadderTable from '@/components/poe/LadderTable.vue';
 
 const navigator = useNavigator();
 const ladders = ref();
+const ascendancyRank = ref<IAscendancyLadderData[]>();
 onLoad(async () => {
   ladders.value = await getTopLadders();
+  ascendancyRank.value = await queryAscendancyLadders();
 });
 
 //#region 样式
@@ -63,7 +80,23 @@ const relativeUpdateTime = computed(() => {
   }
   return null;
 });
+const hasAscendancyRank = computed(() => {
+  return (key: string) => ascendancyRank.value?.some(item => item.type === key);
+});
+const displayType = computed(() => {
+  return (key: string) =>
+    ascendancyRank.value?.find(item => item.type === key)?.display
+      ? 'rank'
+      : 'table';
+});
 //#endregion
+
+function switchDisplayType(key: string) {
+  const found = ascendancyRank.value?.find(item => item.type === key);
+  if (found) {
+    found.display = !found.display;
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -81,10 +114,15 @@ const relativeUpdateTime = computed(() => {
     color: $uni-color-primary;
     display: flex;
     align-items: center;
-    gap: 8rpx;
+    gap: 16rpx;
 
     > view {
       padding: 14rpx 0;
+    }
+    .icon-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8rpx;
     }
   }
 }

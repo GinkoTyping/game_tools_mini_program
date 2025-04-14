@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "90853",
+      "name": "rank_fill",
+      "font_class": "rankfill",
+      "unicode": "e721",
+      "unicode_decimal": 59169
+    },
+    {
       "icon_id": "11349165",
       "name": "mic-f",
       "font_class": "mic-f",
