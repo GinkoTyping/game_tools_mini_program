@@ -88,7 +88,6 @@ export async function queryHomeView(req, res) {
         value: 'rating',
         icon: 'map-filled',
         page: '/pages/spec-list/index',
-        feature: true,
         color: '#e37e00',
       },
       {
@@ -96,8 +95,7 @@ export async function queryHomeView(req, res) {
         value: 'rating',
         icon: 'wallet-filled',
         page: '/pages/question/index',
-        feature: true,
-        color: '#e37e00',
+        feature: false,
       },
       {
         label: '大秘境',
