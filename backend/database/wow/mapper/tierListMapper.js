@@ -17,17 +17,22 @@ async function updateTierList(params) {
     UPDATE 
       wow_tier_list
     SET 
-      tier_data = ?1
+      tier_data = ?,
+      created_at = ?
     WHERE 
-      version_id = ?2
+      version_id = ?
     AND
-      activity_type = ?3
+      activity_type = ?
     AND
-      role = ?4    
-    AND
-      created_at = ?5
+      role = ?
       `,
-    [tierData, versionId, activityType, role, createdAt]
+    [
+      typeof tierData === 'string' ? tierData : JSON.stringify(tierData),
+      createdAt,
+      versionId,
+      activityType,
+      role,
+    ]
   );
 }
 

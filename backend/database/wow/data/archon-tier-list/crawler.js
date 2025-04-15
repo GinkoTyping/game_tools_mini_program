@@ -24,15 +24,16 @@ export async function collectMythicTierList(useCache) {
   $('.builds-tier-list-section__tiers')
     .children()
     .each((tierIdx, rowEle) => {
-      const tier = $(rowEle).children().first().text();
-      const tierItem = {
-        tier,
-        children: [],
-      };
+      const tier = $(rowEle).children().first().text()?.split(' ')[0];
 
       $(rowEle)
         .children('ul')
         .each((roleIdx, roleEle) => {
+          const tierItem = {
+            tier,
+            children: [],
+          };
+
           $(roleEle)
             .children('li')
             .each((specIdx, specEle) => {
@@ -40,7 +41,7 @@ export async function collectMythicTierList(useCache) {
                 .attr('title')
                 .toLowerCase()
                 .split(' ');
-              if (classSpec === 'beast') {
+              if (classSpec === 'beastmastery') {
                 classSpec = 'beast-mastery';
                 roleClass = 'hunter';
               } else if (roleClass === 'deathknight') {
@@ -72,18 +73,21 @@ export async function collectMythicTierList(useCache) {
     versionId: '11.1',
     activityType: 'MYTHIC',
   };
-  return {
-    dpsTier: {
+  return [
+    {
       ...basic,
+      role: 'DPS',
       tierData: dpsTier,
     },
-    tankTier: {
+    {
       ...basic,
+      role: 'TANK',
       tierData: tankTier,
     },
-    healerTier: {
+    {
       ...basic,
+      role: 'HEALER',
       tierData: healerTier,
     },
-  };
+  ];
 }
