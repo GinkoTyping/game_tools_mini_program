@@ -22,9 +22,10 @@ export async function useCheerioContext(staticFilePath, url, useCache) {
       html = res.data;
 
       if (!fs.existsSync(staticFilePath)) {
-        const arr = staticFilePath.split('\\');
+        const identifier = staticFilePath.includes('/') ? '/' : '\\';
+        const arr = staticFilePath.split(identifier);
         arr.pop();
-        fs.mkdirSync(arr.join('\\'), { recursive: true });
+        fs.mkdirSync(arr.join(identifier), { recursive: true });
       }
       fs.writeFileSync(staticFilePath, html, 'utf-8');
     }
