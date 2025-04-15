@@ -1,19 +1,18 @@
 <template>
-  <uni-notice-bar
-    single
-    show-icon
-    show-get-more
-    color="#2979FF"
-    background-color="#EAF2FF"
-    more-text="想看详细统计数据？点我"
-    :text="hasTranslatedDesc ? '专精图标可点击哟' : ''"
-    @click="navigator.toSpecPopularity"
-  />
+  <view class="header">
+    <uni-segmented-control
+      :current="currentTab"
+      :values="tabs"
+      style-type="button"
+      active-color="#007aff"
+      @clickItem="switchMenu"
+    />
+  </view>
   <uni-collapse ref="collapse">
     <uni-collapse-item
       v-for="(item, index) in tierList?.tier_data"
       :key="item.tier"
-      :open="index <= 2 || query.role.toUpperCase() !== 'DPS'"
+      open
     >
       <template v-slot:title>
         <view class="collapse-title">
@@ -102,11 +101,13 @@
       @close="dialogClose"
     ></uni-popup-dialog>
   </uni-popup>
-  <ShareIcon :tier-list-icons="tierListIcons" />
+  <ShareIcon />
+
+  <view class="footer"></view>
 </template>
 
 <script lang="ts" setup>
-import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage, onShow } from '@dcloudio/uni-app';
 import { queryTierList } from '@/api/wow/index';
 import { computed, ref } from 'vue';
 
@@ -141,6 +142,44 @@ onLoad(async (options: any) => {
   });
 });
 
+onShow(() => {
+  switch (query.value?.role) {
+    case 'dps':
+      currentTab.value = 0;
+      break;
+    case 'tank':
+      currentTab.value = 1;
+      break;
+    case 'healer':
+      currentTab.value = 2;
+      break;
+    default:
+      break;
+  }
+});
+
+//#region 顶部menu
+const currentTab = ref(0);
+const tabs = ref(['输出', '坦克', '治疗', '输出排行']);
+function switchMenu(e) {
+  if (currentTab.value !== e.currentIndex) {
+    if (e.currentIndex != 3) {
+      currentTab.value = e.currentIndex;
+    }
+    const roles = ['dps', 'tank', 'healer'];
+    if (e.currentIndex === 3) {
+      navigator.toSpecPopularity();
+    } else {
+      navigator.toTierList({
+        version_id: '11.1',
+        activity_type: query.value.activityType,
+        role: roles[e.currentIndex],
+      });
+    }
+  }
+}
+//#endregion
+
 const hasTranslatedDesc = computed(() => {
   return tierList.value?.tier_data?.[0].children?.[0].descZH;
 });
@@ -171,7 +210,7 @@ function getPageTitle(options: any) {
   } else {
     roleText = '坦克专精';
   }
-  return `${roleText}${title}排行 ${versionId}`;
+  return `${title} ${roleText} 综合排行`;
 }
 
 onShareAppMessage(() => {
@@ -213,6 +252,10 @@ function dialogClose() {
 </script>
 
 <style lang="scss" scoped>
+.header {
+  padding: 20rpx;
+}
+
 // TODO 和 index/index 页面的样式有冗余
 ::v-deep uni-collapse-item {
   &:nth-child(1) {
@@ -233,7 +276,7 @@ function dialogClose() {
   .uni-collapse-item__title.uni-collapse-item-border {
     line-height: 40px;
     border-bottom: 4px solid $uni-bg-color-grey;
-    padding-left: 32px;
+    padding-left: 10px;
     box-sizing: border-box;
     font-size: 16px;
     .uni-collapse-item--animation text {
@@ -254,9 +297,9 @@ function dialogClose() {
   display: flex;
   align-items: baseline;
   .collapse-title__tier {
-    min-width: 20px;
+    min-width: 10px;
     font-size: large;
-    margin-right: 0.2rem;
+    margin-right: 4rpx;
     display: block;
   }
   .update-note {
@@ -270,7 +313,7 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
 .collapse-content {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 1rem;
+  margin: 0 10px;
   padding: 0.4rem 0;
   .collapse-content__card {
     margin-right: $card-right-margin;
@@ -382,5 +425,9 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
   .pupup-container__close-btn {
     margin-right: 0.6rem;
   }
+}
+
+.footer {
+  height: 140rpx;
 }
 </style>
