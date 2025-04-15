@@ -16,8 +16,8 @@ function getUrl() {
   return 'https://www.archon.gg/wow';
 }
 
-async function collectMythicTierList() {
-  const $ = await useCheerioContext(getStaticFilePath(), getUrl(), true);
+export async function collectMythicTierList(useCache) {
+  const $ = await useCheerioContext(getStaticFilePath(), getUrl(), useCache);
   const dpsTier = [];
   const tankTier = [];
   const healerTier = [];
@@ -87,5 +87,3 @@ async function collectMythicTierList() {
     },
   };
 }
-
-collectMythicTierList();
