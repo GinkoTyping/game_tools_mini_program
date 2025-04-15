@@ -170,11 +170,14 @@ function switchMenu(e) {
     if (e.currentIndex === 3) {
       navigator.toSpecPopularity();
     } else {
-      navigator.toTierList({
-        version_id: '11.1',
-        activity_type: query.value.activityType,
-        role: roles[e.currentIndex],
-      });
+      navigator.toTierList(
+        {
+          version_id: '11.1',
+          activity_type: query.value.activityType,
+          role: roles[e.currentIndex],
+        },
+        true
+      );
     }
   }
 }
