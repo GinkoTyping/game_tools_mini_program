@@ -44,3 +44,4 @@ crawler/poe2/output
 backend/database/poe2/data/ladders/cache/*
 backend/database/poe2/data/ladders/output/*
 
+backend/database/wow/data/archon-tier-list/cache
