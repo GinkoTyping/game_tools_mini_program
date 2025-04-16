@@ -33,6 +33,10 @@ interface IBisDataDTO {
   bis_items: { items: Array<IBisItem>; title: string }[];
   bis_type: BisType;
   stats_priority: IStatPriority[];
+  archon_stats_priority: {
+    priority: { key: string; label: string; value: string }[];
+    relation: number[];
+  };
   updated_at: string;
   comment: string;
   ratings: { label: string; rating: number }[];
@@ -146,6 +150,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
     classSpec,
     detailedStatsPriority: mapDetailStats(data.detailed_stats_priority),
     statsPriority: data.stats_priority,
+    archonStatsPriority: data.archon_stats_priority,
     updatedAt: data.updated_at,
     trinkets: mapTrinks(data.bis_trinkets),
     bisItems: mapBisItem(data),

@@ -89,35 +89,35 @@
     <uni-card class="section-card" v-show="statSource === 'maxroll'">
       <view class="stats">
         <view class="stats__item">
-          <text>{{ currentData?.statsPriority.priority[0].label }}</text>
-          <text>{{ currentData?.statsPriority.priority[0].value }}</text>
+          <text>{{ currentData?.archonStatsPriority.priority[0].label }}</text>
+          <text>{{ currentData?.archonStatsPriority.priority[0].value }}</text>
         </view>
         <image
           :src="`/static/icon/${relationIcon(
-            currentData?.statsPriority.relations[0]
+            currentData?.archonStatsPriority.relations[0]
           )}.svg`"
         ></image>
         <view class="stats__item">
-          <text>{{ currentData?.statsPriority.priority[1].label }}</text>
-          <text>{{ currentData?.statsPriority.priority[1].value }}</text>
+          <text>{{ currentData?.archonStatsPriority.priority[1].label }}</text>
+          <text>{{ currentData?.archonStatsPriority.priority[1].value }}</text>
         </view>
         <image
           :src="`/static/icon/${relationIcon(
-            currentData?.statsPriority.relations[1]
+            currentData?.archonStatsPriority.relations[1]
           )}.svg`"
         ></image>
         <view class="stats__item">
-          <text>{{ currentData?.statsPriority.priority[2].label }}</text>
-          <text>{{ currentData?.statsPriority.priority[2].value }}</text>
+          <text>{{ currentData?.archonStatsPriority.priority[2].label }}</text>
+          <text>{{ currentData?.archonStatsPriority.priority[2].value }}</text>
         </view>
         <image
           :src="`/static/icon/${relationIcon(
-            currentData?.statsPriority.relations[2]
+            currentData?.archonStatsPriority.relations[2]
           )}.svg`"
         ></image>
         <view class="stats__item">
-          <text>{{ currentData?.statsPriority.priority[3].label }}</text>
-          <text>{{ currentData?.statsPriority.priority[3].value }}</text>
+          <text>{{ currentData?.archonStatsPriority.priority[3].label }}</text>
+          <text>{{ currentData?.archonStatsPriority.priority[3].value }}</text>
         </view>
       </view>
     </uni-card>
