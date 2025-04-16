@@ -131,6 +131,9 @@ async function mapBisItems(bisItems) {
     return {
       ...data,
       source: JSON.parse(data.source),
+
+      // 减少冗余的字段
+      preview: undefined,
     };
   }
   async function mapBisItemsByType(bisItemsByType) {
@@ -156,8 +159,10 @@ async function mapBisItems(bisItems) {
     return {
       ...bisItemsByType,
       title: bisItemsByType.title,
-      items: data.map((item) => item.value),
-      enhancements,
+      items: data.map((item, index) => ({
+        ...item.value,
+        enhancements: enhancements?.[index],
+      })),
     };
   }
   const promises = bisItems.map((item) => mapBisItemsByType(item));
