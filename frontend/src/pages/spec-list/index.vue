@@ -1,11 +1,7 @@
 <template>
-  <view class="header">
-    <FilterMenu v-model:data="menus" align="center" @change="onSwitchOrder" />
-  </view>
   <uni-collapse ref="collapse" accordion>
     <template v-for="item in displayData" :key="item.role_class">
-      <ad-custom v-if="item.isAd" unit-id="adunit-84c43763a4fcb5e9"></ad-custom>
-      <uni-collapse-item v-else>
+      <uni-collapse-item>
         <template v-slot:title>
           <view class="slot-title">
             <view :class="[item.role_class, 'menu-title']">
@@ -16,9 +12,6 @@
                 src="/static/icon/fire.svg"
               ></image>
             </view>
-            <view class="update-label"
-              >更新于：{{ getDateLable(item.updated_at) }}</view
-            >
           </view>
         </template>
         <view
@@ -48,9 +41,6 @@
           <text v-show="specItem.access_count" class="access-count-spec">{{
             specItem.access_count
           }}</text>
-          <text class="spec-update-at"
-            >更新于：{{ getDateLable(specItem.updated_at) }}</text
-          >
         </view>
       </uni-collapse-item>
     </template>
@@ -58,19 +48,11 @@
 
   <view class="footer"></view>
 
+  <view class="ad-container">
+    <ad-custom unit-id="adunit-6de8608075fb2574"></ad-custom>
+  </view>
+
   <ShareIcon />
-  <!-- <view :class="popoverClass">
-    <image
-      class="popup-icon"
-      src="/static/images/common/a-sahua1.png"
-      style="transform: scaleX(-1)"
-    ></image>
-    <text
-      >银子的搜罗坊，本日已被访问
-      <text style="font-weight: bolder">{{ accessCount }}</text> 次</text
-    >
-    <image class="popup-icon" src="/static/images/common/a-sahua1.png"></image>
-  </view> -->
 </template>
 
 <script setup lang="ts">
@@ -129,8 +111,6 @@ function getSortData() {
     );
   }
 
-  output.splice(8, 0, { isAd: true, role_class: 'ad' });
-
   return output;
 }
 function onSwitchOrder(order) {
@@ -170,6 +150,13 @@ const getDateLable = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+.ad-container {
+  position: fixed;
+  bottom: 42rpx;
+  left: 40rpx;
+  z-index: 2;
+}
+
 .header {
   margin: 0 32px;
 }
@@ -268,7 +255,7 @@ const getDateLable = computed(() => {
 }
 
 .footer {
-  height: 5rem;
+  height: 240rpx;
   width: 1vw;
 }
 </style>
