@@ -138,10 +138,26 @@ async function mapBisItems(bisItems) {
       .split('@')
       .map((item) => queryItem(item));
     const data = await Promise.allSettled(promises);
+
+    let enhancementIds = [];
+    if (bisItemsByType.enhancements) {
+      enhancementIds = [...new Set(bisItemsByType.enhancements.flat())];
+    }
+    const enhancementData = (
+      await Promise.allSettled(
+        enhancementIds.map((enhancementId) => queryItem(enhancementId))
+      )
+    ).map((item) => item.value);
+    const enhancements = bisItemsByType.enhancements?.map((item) =>
+      item.map((enhancementId) =>
+        enhancementData.find((item) => item.id === enhancementId)
+      )
+    );
     return {
       ...bisItemsByType,
       title: bisItemsByType.title,
       items: data.map((item) => item.value),
+      enhancements,
     };
   }
   const promises = bisItems.map((item) => mapBisItemsByType(item));
