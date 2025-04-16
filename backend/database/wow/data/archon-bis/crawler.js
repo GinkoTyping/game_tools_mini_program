@@ -1,10 +1,7 @@
-import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { useCheerioContext } from '../../../../util/run-browser.js';
-import classLocale from '../../../../util/classLocale.js';
-import { formatDate } from '../../../../util/time.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,7 +10,7 @@ function getStaticFilePath(classSpec, roleClass) {
   return path.resolve(__dirname, `./cache/${classSpec}-${roleClass}.html`);
 }
 function getUrl(classSpec, roleClass) {
-  return `https://www.archon.gg/wow/builds/${classSpec}/${roleClass}/mythic-plus/gear-and-tier-set/high-keys/all-dungeons/this-week`;
+  return `https://www.archon.gg/wow/builds/${classSpec}/${roleClass}/mythic-plus/overview/high-keys/all-dungeons/this-week`;
 }
 function getIdByUrl(url) {
   return Number(url.split('item=')?.pop());
@@ -41,7 +38,30 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
     getUrl(classSpec, roleClass),
     useCache
   );
-  const output = $('#gear-overview .builds-best-in-slot-gear-section__gear')
+  const stats = $(
+    '#stats .builds-stat-priority-section>.builds-stat-priority-section__container'
+  )
+    .children('div')
+    .map((idx, ele) => {
+      const key = $(ele)
+        .find('.builds-stat-priority-section__container__stat-box')
+        .text();
+      const value = $(ele)
+        .find(
+          '.builds-stat-priority-section__container__stat-box__value-wrapper'
+        )
+        .text();
+      return {
+        key,
+        label: mapStat(key),
+        value,
+      };
+    })
+    .get();
+  // 不需要展示主属性
+  stats.shift();
+
+  const overview = $('#gear-overview .builds-best-in-slot-gear-section__gear')
     .children()
     .map((idx, ele) => {
       const item = $(ele).find('.gear-icon__item-name a').last();
@@ -69,7 +89,8 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
       };
     })
     .get();
-  return output;
+  return {
+    stats,
+    overview,
+  };
 }
-
-collectBisOverview('balance', 'druid', true);
