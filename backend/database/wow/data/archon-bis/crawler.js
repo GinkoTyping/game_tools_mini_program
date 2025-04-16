@@ -1,0 +1,75 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+import { useCheerioContext } from '../../../../util/run-browser.js';
+import classLocale from '../../../../util/classLocale.js';
+import { formatDate } from '../../../../util/time.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+function getStaticFilePath(classSpec, roleClass) {
+  return path.resolve(__dirname, `./cache/${classSpec}-${roleClass}.html`);
+}
+function getUrl(classSpec, roleClass) {
+  return `https://www.archon.gg/wow/builds/${classSpec}/${roleClass}/mythic-plus/gear-and-tier-set/high-keys/all-dungeons/this-week`;
+}
+function getIdByUrl(url) {
+  return Number(url.split('item=')?.pop());
+}
+
+function mapStat(val) {
+  const lowercase = val.toLowerCase();
+  switch (lowercase) {
+    case 'haste':
+      return '急速';
+    case 'mastery':
+      return '精通';
+    case 'crit':
+      return '暴击';
+    case 'vers':
+      return '全能';
+    default:
+      break;
+  }
+}
+
+export async function collectBisOverview(classSpec, roleClass, useCache) {
+  const $ = await useCheerioContext(
+    getStaticFilePath(classSpec, roleClass),
+    getUrl(classSpec, roleClass),
+    useCache
+  );
+  const output = $('#gear-overview .builds-best-in-slot-gear-section__gear')
+    .children()
+    .map((idx, ele) => {
+      const item = $(ele).find('.gear-icon__item-name a').last();
+      const name = item.text().trim();
+      const id = Number(item.attr('href').split('item=').pop());
+      const enhancements = $(ele)
+        .find('.gear-icon__item-meta__gems')
+        .children()
+        .map((gemIdx, gemEle) => {
+          return getIdByUrl($(gemEle).attr('href'));
+        })
+        .get();
+      const stats = $(ele)
+        .find('.gear-icon__item-meta__stats')
+        .children('span')
+        .map((statIdx, statEle) => {
+          return mapStat($(statEle).text());
+        })
+        .get();
+      return {
+        id,
+        name,
+        enhancements,
+        stats,
+      };
+    })
+    .get();
+  return output;
+}
+
+collectBisOverview('balance', 'druid', true);
