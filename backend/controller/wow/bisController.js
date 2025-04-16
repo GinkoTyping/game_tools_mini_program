@@ -72,8 +72,8 @@ export async function getItemPreviewById(req, res) {
         itemMapper.updateItemPreivewById(req.params.id, data);
       } else {
         const insertResult = await db.run(
-          `INSERT INTO wow_item(id, name, preview) VALUES(?1, ?2, ?3)`,
-          [data.id, data.name, JSON.stringify(data)]
+          `INSERT INTO wow_item(id, slot, name, preview) VALUES(?1, ?2, ?3)`,
+          [data.id, data.inventory_type?.name, data.name, JSON.stringify(data)]
         );
         console.log(
           `新增物品${insertResult?.changes ? '成功' : '失败'}: ${data.id},${
@@ -285,6 +285,10 @@ export async function queryUpdateArchonBisOverview(req, res) {
                   pre.push(enhancement);
                 }
               });
+
+              if (cur.id && !pre.includes(cur.id)) {
+                pre.push(cur.id);
+              }
 
               return pre;
             }, [])
