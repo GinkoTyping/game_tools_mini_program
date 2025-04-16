@@ -30,6 +30,10 @@ router.post('/item/add', validateAdmin, queryRegisterItem);
 router.post('/bis/popularity', queryPolularityByCondition);
 router.post('/bis/dps-rank', querySpecDpsRank);
 
-router.post('/bis/archon-overview', queryUpdateArchonBisOverview);
+router.post(
+  '/bis/archon-overview',
+  validateAdmin,
+  queryUpdateArchonBisOverview
+);
 
 export default router;

@@ -78,6 +78,10 @@ async function getBlankSourceItem() {
   return db.all(`SELECT id, source FROM wow_item WHERE source IS NULL`);
 }
 
+async function getBlankImageItem() {
+  return db.all(`SELECT id, image FROM wow_item WHERE image IS NULL`);
+}
+
 export function useItemMapper(database) {
   if (database) {
     db = database;
@@ -93,6 +97,7 @@ export function useItemMapper(database) {
     getUntranslated,
     updateItemById,
     getBlankSourceItem,
+    getBlankImageItem,
     updateItemPreivewById,
   };
 }

@@ -78,8 +78,10 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
       const item = $(ele).find('.gear-icon__item-name a').last();
       const name = item.text().trim();
       const id = Number(item.attr('href').split('item=').pop());
-      const enhancements = $(ele)
-        .find('.gear-icon__item-meta__gems')
+      const enhancementEle = $(ele).find('.gear-icon__item-meta__gems')?.length
+        ? $(ele).find('.gear-icon__item-meta__gems')
+        : $(ele).find('.gear-icon__item-meta__enchant');
+      const enhancements = enhancementEle
         .children()
         .map((gemIdx, gemEle) => {
           return getIdByUrl($(gemEle).attr('href'));

@@ -227,6 +227,15 @@ export async function queryRegisterItem(req, res) {
   }
 }
 
+async function checkEnhancements(enhancements) {
+  if (enhancements?.length) {
+    return Promise.allSettled(
+      enhancements.map((item) =>
+        getItemPreviewById({ params: { id: item } }, { json: function () {} })
+      )
+    );
+  }
+}
 const limit = pLimit(5);
 export async function queryUpdateArchonBisOverview(req, res) {
   try {
@@ -247,6 +256,17 @@ export async function queryUpdateArchonBisOverview(req, res) {
             item.classSpec,
             item.roleClass,
             req.body.useCache
+          );
+          await checkEnhancements(
+            data.overview.reduce((pre, cur) => {
+              cur.enhancements.forEach((enhancement) => {
+                if (enhancement && !pre.includes(enhancement)) {
+                  pre.push(enhancement);
+                }
+              });
+
+              return pre;
+            }, [])
           );
           return bisMapper.updateOverviewBis(
             item.roleClass,
