@@ -99,7 +99,7 @@ async function updateBisByClassAndSpec(data) {
 async function updateOverviewBis(roleClass, classSpec, data) {
   const existed = await db.get(
     `
-    SELECT bis_items 
+    SELECT bis_items, stats_priority
     FROM ${TABLE_NAME} 
     WHERE role_class=? AND class_spec=?`,
     [roleClass, classSpec]
@@ -110,15 +110,19 @@ async function updateOverviewBis(roleClass, classSpec, data) {
       if (item.title === '汇总') {
         item.items = data.overview.map((bisItem) => bisItem.id).join('@');
         item.enhancements = data.enhancements;
-        item.stats = data.stats;
       }
     });
     return db.run(
       `
       UPDATE ${TABLE_NAME}
-      SET bis_items=?
+      SET bis_items=?,stats_priority=?
       WHERE role_class=? AND class_spec=?`,
-      [JSON.stringify(bisData), roleClass, classSpec]
+      [
+        JSON.stringify(bisData),
+        JSON.stringify(data.stats),
+        roleClass,
+        classSpec,
+      ]
     );
   }
   return null;
