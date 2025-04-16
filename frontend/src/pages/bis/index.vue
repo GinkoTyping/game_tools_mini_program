@@ -88,31 +88,31 @@
 
     <uni-card class="section-card" v-show="statSource === 'maxroll'">
       <view class="stats">
-        <text>{{ currentData?.statsPriority[0].stats[0] }}</text>
+        <view class="stats__item">
+          <text>{{ currentData?.statsPriority[0].label }}</text>
+          <text>{{ currentData?.statsPriority[0].value }}</text>
+        </view>
         <image
-          :src="`/static/icon/${relationIcon(
-            currentData?.statsPriority[0].relations[0] ?? Relation.Greater
-          )}.svg`"
+          src="/static/icon/dayu.svg"
         ></image>
-        <text>{{ currentData?.statsPriority[0].stats[1] }}</text>
+        <view class="stats__item">
+          <text>{{ currentData?.statsPriority[1].label }}</text>
+          <text>{{ currentData?.statsPriority[1].value }}</text>
+        </view>
         <image
-          :src="`/static/icon/${relationIcon(
-            currentData?.statsPriority[0].relations[1] ?? Relation.Greater
-          )}.svg`"
+          src="/static/icon/dayu.svg"
         ></image>
-        <text>{{ currentData?.statsPriority[0].stats[2] }}</text>
+        <view class="stats__item">
+          <text>{{ currentData?.statsPriority[2].label }}</text>
+          <text>{{ currentData?.statsPriority[2].value }}</text>
+        </view>
         <image
-          :src="`/static/icon/${relationIcon(
-            currentData?.statsPriority[0].relations[2] ?? Relation.Greater
-          )}.svg`"
+          src="/static/icon/dayu.svg"
         ></image>
-        <text>{{ currentData?.statsPriority[0].stats[3] }}</text>
-        <image
-          :src="`/static/icon/${relationIcon(
-            currentData?.statsPriority[0].relations[3] ?? Relation.Greater
-          )}.svg`"
-        ></image>
-        <text>{{ currentData?.statsPriority[0].stats[4] }}</text>
+        <view class="stats__item">
+          <text>{{ currentData?.statsPriority[3].label }}</text>
+          <text>{{ currentData?.statsPriority[3].value }}</text>
+        </view>
       </view>
     </uni-card>
   </uni-section>
@@ -673,7 +673,7 @@ const relationIcon = computed(() => {
     }
   };
 });
-const statSource = ref('wowhead');
+const statSource = ref('maxroll');
 const statSourceText = computed(() =>
   statSource.value === 'wowhead' ? '点击查看简略版' : '点击查看详细版'
 );
@@ -1013,6 +1013,17 @@ function toHotSpot() {
   padding: 0 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  .stats__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text:last-child {
+      line-height: 14px;
+      font-size: 12px;
+      font-weight: normal;
+    }
+  }
   text {
     font-size: 16px;
     color: #fff;
