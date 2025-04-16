@@ -6,7 +6,7 @@
     color="#2979FF"
     background-color="#EAF2FF"
     more-text="去看看"
-    text="新增了专精附魔推荐"
+    text="完善BIS配装的宝石、附魔"
     @click="() => toHotSpot()"
   />
   <view>
@@ -454,7 +454,7 @@
     >
       <text class="name">{{ currentDetails?.name }}</text>
       <text class="qulity">{{ currentDetails.quality?.name }}</text>
-      // TODO 显示的装等和版本不一致 有误导性
+      <!-- TODO 显示的装等和版本不一致 有误导性 -->
       <!-- <text class="item-level">物品等级：{{ currentDetails.level }}</text> -->
       <text class="binding">{{
         currentDetails.preview_item?.binding?.name
@@ -1007,7 +1007,7 @@ const enhancementImage = computed(() => {
   };
 });
 function toHotSpot() {
-  uni.pageScrollTo({ selector: '#enhancement' });
+  uni.pageScrollTo({ selector: '.bis' });
 }
 //#endregion
 </script>
@@ -1169,8 +1169,7 @@ $light-border: rgb(68, 68, 68);
   }
   .qulity,
   .bonus-stat,
-  .spell
-  .modified-crafting {
+  .spell .modified-crafting {
     color: $color-uncommon;
   }
   .item-level,
