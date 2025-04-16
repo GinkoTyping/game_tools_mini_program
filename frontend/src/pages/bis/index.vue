@@ -89,29 +89,35 @@
     <uni-card class="section-card" v-show="statSource === 'maxroll'">
       <view class="stats">
         <view class="stats__item">
-          <text>{{ currentData?.statsPriority[0].label }}</text>
-          <text>{{ currentData?.statsPriority[0].value }}</text>
+          <text>{{ currentData?.statsPriority.priority[0].label }}</text>
+          <text>{{ currentData?.statsPriority.priority[0].value }}</text>
         </view>
         <image
-          src="/static/icon/dayu.svg"
+          :src="`/static/icon/${relationIcon(
+            currentData?.statsPriority.relations[0]
+          )}.svg`"
         ></image>
         <view class="stats__item">
-          <text>{{ currentData?.statsPriority[1].label }}</text>
-          <text>{{ currentData?.statsPriority[1].value }}</text>
+          <text>{{ currentData?.statsPriority.priority[1].label }}</text>
+          <text>{{ currentData?.statsPriority.priority[1].value }}</text>
         </view>
         <image
-          src="/static/icon/dayu.svg"
+          :src="`/static/icon/${relationIcon(
+            currentData?.statsPriority.relations[1]
+          )}.svg`"
         ></image>
         <view class="stats__item">
-          <text>{{ currentData?.statsPriority[2].label }}</text>
-          <text>{{ currentData?.statsPriority[2].value }}</text>
+          <text>{{ currentData?.statsPriority.priority[2].label }}</text>
+          <text>{{ currentData?.statsPriority.priority[2].value }}</text>
         </view>
         <image
-          src="/static/icon/dayu.svg"
+          :src="`/static/icon/${relationIcon(
+            currentData?.statsPriority.relations[2]
+          )}.svg`"
         ></image>
         <view class="stats__item">
-          <text>{{ currentData?.statsPriority[3].label }}</text>
-          <text>{{ currentData?.statsPriority[3].value }}</text>
+          <text>{{ currentData?.statsPriority.priority[3].label }}</text>
+          <text>{{ currentData?.statsPriority.priority[3].value }}</text>
         </view>
       </view>
     </uni-card>

@@ -38,10 +38,9 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
     getUrl(classSpec, roleClass),
     useCache
   );
-  const stats = $(
-    '#stats .builds-stat-priority-section>.builds-stat-priority-section__container'
+  const priority = $(
+    '#stats .builds-stat-priority-section>.builds-stat-priority-section__container .builds-stat-priority-section__container__inner'
   )
-    .children('div')
     .map((idx, ele) => {
       const key = $(ele)
         .find('.builds-stat-priority-section__container__stat-box')
@@ -59,7 +58,19 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
     })
     .get();
   // 不需要展示主属性
-  stats.shift();
+  priority.shift();
+
+  const relations = [];
+  priority.forEach((item, index) => {
+    if (index > 0) {
+      relations.push(
+        Math.abs(priority[index].value - priority[index - 1].value) >
+          Math.max(priority[index].value, priority[index - 1].value) / 10
+          ? 1
+          : 10
+      );
+    }
+  });
 
   const overview = $('#gear-overview .builds-best-in-slot-gear-section__gear')
     .children()
@@ -92,7 +103,12 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
   return {
     classSpec,
     roleClass,
-    stats,
     overview,
+    stats: {
+      priority,
+      relations,
+    },
   };
 }
+
+collectBisOverview('frost', 'death-knight', true);

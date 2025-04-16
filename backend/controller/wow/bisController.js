@@ -138,6 +138,7 @@ async function mapBisItems(bisItems) {
       .map((item) => queryItem(item));
     const data = await Promise.allSettled(promises);
     return {
+      ...bisItemsByType,
       title: bisItemsByType.title,
       items: data.map((item) => item.value),
     };
@@ -239,7 +240,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
     );
 
     const results = await Promise.allSettled(
-      flatSpecs.slice(0, 1).map((item) =>
+      flatSpecs.map((item) =>
         limit(async () => {
           const data = await collectBisOverview(
             item.classSpec,

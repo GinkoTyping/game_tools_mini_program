@@ -1,3 +1,5 @@
+import { formatDate } from "../../../util/time.js";
+
 let db;
 const TABLE_NAME = 'wow_bis';
 
@@ -106,20 +108,23 @@ async function updateOverviewBis(roleClass, classSpec, data) {
   );
   if (existed?.bis_items) {
     const bisData = JSON.parse(existed.bis_items);
+    const date = formatDate();
     bisData.forEach((item) => {
       if (item.title === '汇总') {
         item.items = data.overview.map((bisItem) => bisItem.id).join('@');
-        item.enhancements = data.enhancements;
+        item.enhancements = data.overview.map((bisItem) => bisItem.enhancements);
       }
     });
     return db.run(
       `
       UPDATE ${TABLE_NAME}
-      SET bis_items=?,stats_priority=?
+      SET bis_items=?,stats_priority=?,updated_at=?,collected_at=?
       WHERE role_class=? AND class_spec=?`,
       [
         JSON.stringify(bisData),
         JSON.stringify(data.stats),
+        date,
+        date,
         roleClass,
         classSpec,
       ]
