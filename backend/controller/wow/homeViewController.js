@@ -75,6 +75,7 @@ export async function queryHomeView(req, res) {
         icon: 'auth-filled',
         page: '/pages/tier-list/index?versionId=11.1&activityType=MYTHIC&role=DPS',
         feature: false,
+        feature: true,
       },
       {
         label: '专精数据',
