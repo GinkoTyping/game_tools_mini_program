@@ -39,6 +39,7 @@ CREATE TABLE
     version TEXT,
     stats_priority TEXT NOT NULL,
     detailed_stats_priority TEXT,
+    archon_stats_priority TEXT,
     ratings TEXT NOT NULL,
     talents TEXT,
     bis_items TEXT NOT NULL,

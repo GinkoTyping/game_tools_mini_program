@@ -101,7 +101,7 @@ async function updateBisByClassAndSpec(data) {
 async function updateOverviewBis(roleClass, classSpec, data) {
   const existed = await db.get(
     `
-    SELECT bis_items, stats_priority
+    SELECT bis_items
     FROM ${TABLE_NAME} 
     WHERE role_class=? AND class_spec=?`,
     [roleClass, classSpec]
@@ -118,7 +118,7 @@ async function updateOverviewBis(roleClass, classSpec, data) {
     return db.run(
       `
       UPDATE ${TABLE_NAME}
-      SET bis_items=?,stats_priority=?,updated_at=?,collected_at=?
+      SET bis_items=?,archon_stats_priority=?,updated_at=?,collected_at=?
       WHERE role_class=? AND class_spec=?`,
       [
         JSON.stringify(bisData),

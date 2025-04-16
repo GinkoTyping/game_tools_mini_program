@@ -1,0 +1,1 @@
+ALTER TABLE wow_bis ADD COLUMN archon_stats_priority TEXT;
