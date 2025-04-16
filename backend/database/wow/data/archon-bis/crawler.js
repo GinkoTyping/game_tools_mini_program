@@ -90,6 +90,8 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
     })
     .get();
   return {
+    classSpec,
+    roleClass,
     stats,
     overview,
   };

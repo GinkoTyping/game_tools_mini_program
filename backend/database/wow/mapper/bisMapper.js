@@ -96,6 +96,34 @@ async function updateBisByClassAndSpec(data) {
   );
 }
 
+async function updateOverviewBis(roleClass, classSpec, data) {
+  const existed = await db.get(
+    `
+    SELECT bis_items 
+    FROM ${TABLE_NAME} 
+    WHERE role_class=? AND class_spec=?`,
+    [roleClass, classSpec]
+  );
+  if (existed?.bis_items) {
+    const bisData = JSON.parse(existed.bis_items);
+    bisData.forEach((item) => {
+      if (item.title === '汇总') {
+        item.items = data.overview.map((bisItem) => bisItem.id).join('@');
+        item.enhancements = data.enhancements;
+        item.stats = data.stats;
+      }
+    });
+    return db.run(
+      `
+      UPDATE ${TABLE_NAME}
+      SET bis_items=?
+      WHERE role_class=? AND class_spec=?`,
+      [JSON.stringify(bisData), roleClass, classSpec]
+    );
+  }
+  return null;
+}
+
 async function insertBis(data) {
   const {
     roleClass,
@@ -150,5 +178,7 @@ export function useBisMapper(database) {
     getAllBisDateInfo,
     updateBisByClassAndSpec,
     insertBis,
+
+    updateOverviewBis,
   };
 }

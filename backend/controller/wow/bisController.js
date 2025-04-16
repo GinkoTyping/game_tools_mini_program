@@ -1,4 +1,5 @@
 import { BlizzAPI } from 'blizzapi';
+import pLimit from 'p-limit';
 import { configDotenv } from 'dotenv';
 
 import path from 'path';
@@ -12,6 +13,8 @@ import { useItemMapper } from '../../database/wow/mapper/itemMapper.js';
 import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
 import { isLocal } from '../../auth/validateAdmin.js';
 import spriteMap from '../../assets/wow/sprites/sprite-map.js';
+import { classSpecMap } from '../../util/wow.js';
+import { collectBisOverview } from '../../database/wow/data/archon-bis/crawler.js';
 
 let api;
 const database = await getDB();
@@ -219,6 +222,46 @@ export async function queryRegisterItem(req, res) {
   } catch (error) {
     console.log(error);
     res.status(400).json(error);
+  }
+}
+
+const limit = pLimit(5);
+export async function queryUpdateArchonBisOverview(req, res) {
+  try {
+    const flatSpecs = Object.entries(classSpecMap).reduce(
+      (pre, [roleClass, specs]) => {
+        specs.forEach((spec) => {
+          pre.push({ roleClass, classSpec: spec });
+        });
+        return pre;
+      },
+      []
+    );
+
+    const results = await Promise.allSettled(
+      flatSpecs.slice(0, 1).map((item) =>
+        limit(async () => {
+          const data = await collectBisOverview(
+            item.classSpec,
+            item.roleClass,
+            req.body.useCache
+          );
+          return bisMapper.updateOverviewBis(
+            item.roleClass,
+            item.classSpec,
+            data
+          );
+        })
+      )
+    );
+    const errors = results.filter((item) => item.status !== 'fulfilled');
+    if (errors.length) {
+      res.json({ message: '更新 ARCHON OVERVIEW 失败。' });
+    } else {
+      res.json({ message: '更新 ARCHON OVERVIEW 成功。' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error?.message });
   }
 }
 //#endregion

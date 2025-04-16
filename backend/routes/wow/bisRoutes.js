@@ -5,6 +5,7 @@ import {
   queryBisTrends,
   queryBlankSourceItem,
   queryRegisterItem,
+  queryUpdateArchonBisOverview,
   queryUpdateItem,
 } from '../../controller/wow/bisController.js';
 import {
@@ -28,5 +29,7 @@ router.post('/item/add', validateAdmin, queryRegisterItem);
 
 router.post('/bis/popularity', queryPolularityByCondition);
 router.post('/bis/dps-rank', querySpecDpsRank);
+
+router.post('/bis/archon-overview', queryUpdateArchonBisOverview);
 
 export default router;
