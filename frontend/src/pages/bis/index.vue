@@ -213,24 +213,47 @@
           <uni-td>{{ item.slot }}</uni-td>
           <uni-td>
             <view class="slot-container">
-              <img
-                :src="`https://ginkolearn.cyou/api/wow/assets/items/${item.image}`"
-                alt=""
-                srcset=""
-                style="width: 14px; height: 14px"
-              />
+              <view class="slot-container__item">
+                <img
+                  :src="`https://ginkolearn.cyou/api/wow/assets/items/${item.image}`"
+                  alt=""
+                  srcset=""
+                  style="width: 14px; height: 14px"
+                />
+                <view
+                  class="ellipsis"
+                  style="flex: 1"
+                  :class="[item.wrap ? 'disale-ellipsis' : '']"
+                  @click="
+                    () => {
+                      switchDetail(true, item);
+                      switchWrap(item);
+                    }
+                  "
+                  >{{ item.name }}</view
+                >
+              </view>
               <view
-                class="ellipsis"
-                style="flex: 1"
-                :class="[item.wrap ? 'disale-ellipsis' : '']"
-                @click="
-                  () => {
-                    switchDetail(true, item);
-                    switchWrap(item);
-                  }
-                "
-                >{{ item.name }}</view
+                class="slot-container__enhancement"
+                v-for="enhancement in item.enhancements"
+                :key="enhancement.id"
               >
+                <img
+                  :src="`https://ginkolearn.cyou/api/wow/assets/items/${enhancement.image}`"
+                  style="width: 14px; height: 14px"
+                />
+                <view
+                  class="ellipsis"
+                  style="flex: 1"
+                  :class="[item.wrap ? 'disale-ellipsis' : '']"
+                  @click="
+                    () => {
+                      switchDetail(true, enhancement, 'item');
+                    }
+                  "
+                  >{{ enhancement.name }}</view
+                >
+              </view>
             </view>
           </uni-td>
           <uni-td>
@@ -431,9 +454,16 @@
     >
       <text class="name">{{ currentDetails?.name }}</text>
       <text class="qulity">{{ currentDetails.quality?.name }}</text>
-      <text class="item-level">物品等级：{{ currentDetails.level }}</text>
+      // TODO 显示的装等和版本不一致 有误导性
+      <!-- <text class="item-level">物品等级：{{ currentDetails.level }}</text> -->
       <text class="binding">{{
         currentDetails.preview_item?.binding?.name
+      }}</text>
+      <text class="gem">{{
+        currentDetails.preview_item?.gem_properties?.effect
+      }}</text>
+      <text class="modified-crafting">{{
+        currentDetails.modified_crafting?.description
       }}</text>
       <view class="type">
         <text>{{ currentDetails.preview_item?.inventory_type?.name }}</text>
@@ -779,7 +809,7 @@ const popup = ref<any>('');
 const currentDetails = ref<any>({});
 const status = ref('loading');
 const currentItem = ref<
-  IBisItem | { image: string; id: number; source?: string }
+  IBisItem | { image: string; id: number; source?: string; type?: string }
 >();
 const messagePopup = ref();
 const messageType = ref('success');
@@ -803,7 +833,8 @@ const currentImageSrc = computed(() => {
 
 async function switchDetail(
   isShow: boolean,
-  item: { image: string; id: number; type: string }
+  item: { image: string; id: number; type: string },
+  forceType?: string
 ) {
   if (item.type === 'spell') {
     displaySpells([item]);
@@ -814,6 +845,9 @@ async function switchDetail(
       popup.value.open();
 
       currentItem.value = item;
+      if (forceType) {
+        currentItem.value.type = forceType;
+      }
       const { data, statusCode } = await queryItemPreview(item.id);
       if (statusCode === 200) {
         currentDetails.value = data;
@@ -1135,7 +1169,8 @@ $light-border: rgb(68, 68, 68);
   }
   .qulity,
   .bonus-stat,
-  .spell {
+  .spell
+  .modified-crafting {
     color: $color-uncommon;
   }
   .item-level,
@@ -1171,10 +1206,15 @@ $light-border: rgb(68, 68, 68);
     border-bottom: 1px $uni-bg-color solid !important;
     .slot-container {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       image {
         margin-right: 4px;
       }
+    }
+    .slot-container__item,
+    .slot-container__enhancement {
+      display: flex;
+      align-items: center;
     }
   }
 
