@@ -215,7 +215,7 @@
             <view class="slot-container">
               <view class="slot-container__item">
                 <img
-                  :src="`https://ginkolearn.cyou/api/wow/assets/items/${item.image}`"
+                  :src="currentImageSrc(item)"
                   alt=""
                   srcset=""
                   style="width: 14px; height: 14px"
@@ -239,7 +239,7 @@
                 :key="enhancement.id"
               >
                 <img
-                  :src="`https://ginkolearn.cyou/api/wow/assets/items/${enhancement.image}`"
+                  :src="currentImageSrc(enhancement)"
                   style="width: 14px; height: 14px"
                 />
                 <view
@@ -816,16 +816,11 @@ const messageType = ref('success');
 const messageText = ref('默认文本');
 const currentImageSrc = computed(() => {
   return (item: any) => {
-    if (item?.type === 'item') {
-      return `https://ginkolearn.cyou/api/wow/assets/items/${item.image}`;
-    }
     if (item?.type === 'spell') {
       return `https://ginkolearn.cyou/api/wow/assets/spellIcon/${item.image}`;
     }
     if (item?.image) {
-      return `https://ginkolearn.cyou/api/wow/assets/${
-        item?.source ? 'items' : 'trinkets'
-      }/${item?.image}`;
+      return `https://ginkolearn.cyou/api/wow/assets/blizz-media-image/${item?.image}`;
     }
     return '';
   };
