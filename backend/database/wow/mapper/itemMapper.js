@@ -1,3 +1,7 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 let db;
 
 async function insertItem(itemData) {
@@ -86,6 +90,27 @@ async function getBlankSlotItem() {
   return db.all(`SELECT id, preview FROM wow_item WHERE slot IS NULL`);
 }
 
+async function getInvalidImageItem() {
+  const data = await db.all(`SELECT id, image FROM wow_item`);
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  return data.filter((item) => {
+    if (
+      item.image &&
+      fs.existsSync(
+        path.resolve(
+          __dirname,
+          `../../../assets/wow/blizz-media-image/${item.image}`
+        )
+      )
+    ) {
+      return false;
+    }
+    return true;
+  });
+}
+
 export function useItemMapper(database) {
   if (database) {
     db = database;
@@ -100,6 +125,7 @@ export function useItemMapper(database) {
     getItemByName,
     getUntranslated,
     getBlankSlotItem,
+    getInvalidImageItem,
     updateItemById,
     getBlankSourceItem,
     getBlankImageItem,

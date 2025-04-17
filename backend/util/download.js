@@ -20,7 +20,7 @@ export async function downloadSingle(
     const response = await axios({
       url,
       responseType: 'stream',
-      timeout: 10000,
+      timeout: 600000,
     });
 
     // 创建可写流
@@ -31,10 +31,12 @@ export async function downloadSingle(
 
     return new Promise((resolve, reject) => {
       writer.on('finish', () => resolve(savePath));
-      writer.on('error', reject);
+      writer.on('error', (e) =>
+        reject({ message: `下载失败：${url}, ${e?.message}` })
+      );
     });
   } catch (err) {
-    console.error(`单独下载失败: ${url}`, err.message);
+    console.error(`下载失败: ${url}`, err.message);
     throw err;
   }
 }

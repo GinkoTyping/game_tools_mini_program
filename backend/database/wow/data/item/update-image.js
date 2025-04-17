@@ -16,31 +16,35 @@ const itemMapper = useItemMapper(db);
 const api = setBlizzAPI();
 
 async function updateItemImage(id) {
-  const data = await api.query(`/data/wow/media/item/${id}`, {
-    params: {
-      namespace: 'static-us',
-      locale: 'zh_CN',
-    },
-  });
-  if (data.assets?.[0]?.value) {
-    const iamge = data.assets[0].value.split('/').pop();
-    await downloadSingle(
-      data.assets[0].value,
-      path.resolve(
-        __dirname,
-        `../../../../assets/wow/blizz-media-image/${iamge}`
-      )
-    );
+  try {
+    const data = await api.query(`/data/wow/media/item/${id}`, {
+      params: {
+        namespace: 'static-us',
+        locale: 'zh_CN',
+      },
+    });
+    if (data.assets?.[0]?.value) {
+      const image = data.assets[0].value.split('/').pop();
+      await downloadSingle(
+        data.assets[0].value,
+        path.resolve(
+          __dirname,
+          `../../../../assets/wow/blizz-media-image/${image}`
+        )
+      );
 
-    itemMapper.updateItemById({ id: id, itemIcon: iamge });
+      itemMapper.updateItemById({ id: id, itemIcon: image });
+    }
+  } catch (error) {
+    return Promise.reject(error);
   }
 }
 
 const limiter = new Bottleneck({
-  minTime: 20, // 20ms间隔 → 50次/秒
+  minTime: 50, // 50ms间隔 → 20次/秒
 });
 export async function main() {
-  const data = await itemMapper.getBlankImageItem();
+  const data = await itemMapper.getInvalidImageItem();
   const results = await Promise.allSettled(
     data.map((item) => limiter.schedule(() => updateItemImage(item.id)))
   );
