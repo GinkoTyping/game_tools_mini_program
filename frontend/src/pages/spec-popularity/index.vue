@@ -435,6 +435,7 @@ const rankWeekOptions = ref(
       };
     })
     .reverse()
+    .slice(0, 5)
 );
 
 const currentWeek = ref<number>();
