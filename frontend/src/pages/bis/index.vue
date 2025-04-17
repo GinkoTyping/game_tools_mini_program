@@ -197,7 +197,7 @@
         </view>
         <view class="to-enhancement" @click="toHotSpot">
           <image
-            src="https://ginkolearn.cyou/api/wow/assets/items/463531.webp"
+            src="https://ginkolearn.cyou/api/wow/assets/blizz-media-image/inv_misc_enchantedscroll.jpg"
           />
           <text>查看附魔</text>
         </view>
@@ -285,7 +285,7 @@
           >
             <img
               @click="() => switchDetail(true, trinket)"
-              :src="`https://ginkolearn.cyou/api/wow/assets/trinkets/${trinket.image}`"
+              :src="currentImageSrc(trinket)"
               alt=""
               srcset=""
             />
@@ -309,26 +309,28 @@
               <view
                 class="slot-container"
                 v-for="child in item.items"
-                :key="child.id"
+                :key="child?.id"
               >
-                <img
-                  :src="enhancementImage(child)"
-                  alt=""
-                  srcset=""
-                  style="width: 14px; height: 14px"
-                />
-                <view
-                  class="ellipsis"
-                  style="flex: 1; width: auto !important"
-                  :class="[child.wrap ? 'disale-ellipsis' : '']"
-                  @click="
-                    () => {
-                      switchDetail(true, child);
-                      switchWrap(child);
-                    }
-                  "
-                  >{{ child.name_zh }}</view
-                >
+                <view class="slot-container__item">
+                  <img
+                    :src="currentImageSrc(child)"
+                    alt=""
+                    srcset=""
+                    style="width: 14px; height: 14px"
+                  />
+                  <view
+                    class="ellipsis"
+                    style="flex: 1; width: auto !important"
+                    :class="[child?.wrap ? 'disale-ellipsis' : '']"
+                    @click="
+                      () => {
+                        switchDetail(true, child);
+                        switchWrap(child);
+                      }
+                    "
+                    >{{ child?.name_zh }}</view
+                  >
+                </view>
               </view>
             </view>
           </uni-td>
@@ -604,7 +606,7 @@ import { onLoad, onShow, onPageScroll, onHide } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, nextTick, ref } from 'vue';
 
-import { ISpceBIS, IBisItem, Relation } from '@/interface/IWow';
+import { IBisItem, Relation } from '@/interface/IWow';
 import {
   queryBis,
   queryItemPreview,
@@ -678,20 +680,6 @@ const getBarColor = computed(() => {
     } else {
       return '';
     }
-  };
-});
-const getRatingText = computed(() => {
-  return (score: number) => {
-    if (score === 5) {
-      return '暴力';
-    }
-    if (score === 4) {
-      return '强力';
-    }
-    if (score > 1) {
-      return '还行';
-    }
-    return '路边一条';
   };
 });
 
@@ -993,14 +981,8 @@ onPageScroll(e => {
     isShowFab.value = false;
   }
 });
+
 //#region 附魔
-const enhancementImage = computed(() => {
-  return item => {
-    return item.type === 'item'
-      ? `https://ginkolearn.cyou/api/wow/assets/items/${item.image}`
-      : `https://ginkolearn.cyou/api/wow/assets/spellIcon/${item.image}`;
-  };
-});
 function toHotSpot() {
   uni.pageScrollTo({ selector: '.bis' });
 }

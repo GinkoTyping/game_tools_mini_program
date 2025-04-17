@@ -91,12 +91,41 @@ export async function getItemPreviewById(req, res) {
   }
 }
 
+async function mapBisTrinket(dataList, propKey) {
+  async function mapByTier(tierItem) {
+    const data = await Promise.allSettled(
+      tierItem[propKey]?.map(async (item) => {
+        const existedItem = await itemMapper.getItemById(item.id);
+        return {
+          ...item,
+          image: existedItem?.image,
+        };
+      })
+    );
+    return {
+      ...tierItem,
+      [propKey]: data.map((item) => item.value),
+    };
+  }
+  const allData = await Promise.allSettled(
+    dataList.map((item) => mapByTier(item))
+  );
+  return allData.map((item) => item.value);
+}
 export async function getBisBySpec(req, res) {
   const roleClass = req.params.roleClass;
   const classSpec = req.params.classSpec;
 
   const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
   const bis_items = await mapBisItems(JSON.parse(bisData.bis_items));
+  const bis_trinkets = await mapBisTrinket(
+    JSON.parse(bisData.bis_trinkets),
+    'trinkets'
+  );
+  const enhancement = await mapBisTrinket(
+    JSON.parse(bisData.enhancement),
+    'items'
+  );
 
   // 避免本地调测时，引起本地的数据和服务器不一致
   if (!isLocal(req)) {
@@ -110,13 +139,13 @@ export async function getBisBySpec(req, res) {
   res.json({
     ...bisData,
     bis_items,
+    bis_trinkets,
+    enhancement,
     stats_priority: JSON.parse(bisData.stats_priority),
     detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
     archon_stats_priority: JSON.parse(bisData.archon_stats_priority),
     ratings: JSON.parse(bisData.ratings),
-    bis_trinkets: JSON.parse(bisData.bis_trinkets),
     talents: JSON.parse(bisData.talents),
-    enhancement: JSON.parse(bisData.enhancement),
   });
 }
 
