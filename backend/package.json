@@ -2,6 +2,7 @@
   "type": "module",
   "dependencies": {
     "archiver": "^7.0.1",
+    "axios-retry": "^4.5.0",
     "blizzapi": "^2.6.5",
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",

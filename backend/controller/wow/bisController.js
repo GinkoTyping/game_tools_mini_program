@@ -289,7 +289,10 @@ async function checkEnhancements(enhancements) {
 }
 const limit = pLimit(5);
 const limiter = new Bottleneck({
-  minTime: 1500, // 50ms间隔 → 20次/秒
+  minTime: 3000, // 拉大基础间隔
+  maxConcurrent: 2, // 限制同时请求数
+  highWater: 10, // 队列容量限制
+  penalty: 10000,
 });
 export async function queryUpdateArchonBisOverview(req, res) {
   try {
@@ -314,7 +317,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
             req.body.useCache,
             1200000
           );
-          doneCount++
+          doneCount++;
           console.log(`更新BIS进度: ${doneCount}/${totalCount}`);
           await checkEnhancements(
             data.overview.reduce((pre, cur) => {

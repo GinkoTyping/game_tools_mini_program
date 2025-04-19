@@ -1,9 +1,18 @@
 import * as cheerio from 'cheerio';
+import axiosRetry from 'axios-retry';
 import axios from 'axios';
 import https from 'https';
 
 import fs from 'fs';
 
+const axiosInstance = axios.create();
+axiosRetry(axiosInstance, {
+  retries: 3,
+  retryDelay: (retryCount) => retryCount * 2000,
+  retryCondition: (error) => 
+    error.code === 'ECONNRESET' || 
+    error.code === 'ETIMEDOUT'
+});
 export async function useCheerioContext(
   staticFilePath,
   url,
@@ -24,7 +33,7 @@ export async function useCheerioContext(
         keepAlive: false,
       });
 
-      const res = await axios.get(url, {
+      const res = await axiosRetry.get(url, {
         headers: {
           'User-Agent':
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
