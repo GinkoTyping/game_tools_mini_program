@@ -16,7 +16,7 @@ export async function useCheerioContext(staticFilePath, url, useCache) {
     } else {
       const httpsAgent = new https.Agent({
         family: 4, // 仅使用 IPv4
-        keepAlive: true,
+        keepAlive: false,
       });
 
       const res = await axios.get(url, {
@@ -25,7 +25,7 @@ export async function useCheerioContext(staticFilePath, url, useCache) {
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         },
         httpsAgent: httpsAgent,
-        timeout: 60000, // 15秒超时
+        timeout: 1200000, // 15秒超时
       });
 
       html = res.data;
