@@ -311,13 +311,14 @@ export async function queryUpdateArchonBisOverview(req, res) {
     const results = await Promise.allSettled(
       flatSpecs.map((item) =>
         limiter.schedule(async () => {
+          console.log(`获取${item.classSpec} ${item.roleClass}...`)
           const data = await collectBisOverview(
             item.classSpec,
             item.roleClass,
             req.body.useCache
           );
           doneCount++;
-          console.log(`更新BIS进度: ${doneCount}/${totalCount}`);
+          console.log(`更新BIS进度: ${doneCount}/${totalCount}, ${item.classSpec} ${item.roleClass}`);
           await checkEnhancements(
             data.overview.reduce((pre, cur) => {
               cur.enhancements.forEach((enhancement) => {
