@@ -36,7 +36,8 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
   const $ = await useCheerioContext(
     getStaticFilePath(classSpec, roleClass),
     getUrl(classSpec, roleClass),
-    useCache
+    useCache,
+    1200000
   );
   const priority = $(
     '#stats .builds-stat-priority-section>.builds-stat-priority-section__container .builds-stat-priority-section__container__inner'
