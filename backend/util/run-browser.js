@@ -45,7 +45,7 @@ export async function useCheerioContext(
     }
     return cheerio.load(html);
   } catch (error) {
-    console.log(error);
+    console.log(error?.message);
     return null;
   }
 }
