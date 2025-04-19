@@ -298,6 +298,8 @@ export async function queryUpdateArchonBisOverview(req, res) {
       },
       []
     );
+    let doneCount = 0;
+    let totalCount = flatSpecs.length;
 
     const results = await Promise.allSettled(
       flatSpecs.map((item) =>
@@ -307,6 +309,8 @@ export async function queryUpdateArchonBisOverview(req, res) {
             item.roleClass,
             req.body.useCache
           );
+          doneCount++
+          console.log(`更新BIS进度: ${doneCount}/${totalCount}`);
           await checkEnhancements(
             data.overview.reduce((pre, cur) => {
               cur.enhancements.forEach((enhancement) => {
