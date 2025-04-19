@@ -1,4 +1,5 @@
 import { BlizzAPI } from 'blizzapi';
+import Bottleneck from 'bottleneck';
 import pLimit from 'p-limit';
 import { configDotenv } from 'dotenv';
 
@@ -287,6 +288,9 @@ async function checkEnhancements(enhancements) {
   }
 }
 const limit = pLimit(5);
+const limiter = new Bottleneck({
+  minTime: 1500, // 50ms间隔 → 20次/秒
+});
 export async function queryUpdateArchonBisOverview(req, res) {
   try {
     const flatSpecs = Object.entries(classSpecMap).reduce(
@@ -303,7 +307,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
 
     const results = await Promise.allSettled(
       flatSpecs.map((item) =>
-        limit(async () => {
+        limiter.schedule(async () => {
           const data = await collectBisOverview(
             item.classSpec,
             item.roleClass,
