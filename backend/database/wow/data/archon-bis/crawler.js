@@ -112,5 +112,3 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
     },
   };
 }
-
-collectBisOverview('frost', 'death-knight', true);
