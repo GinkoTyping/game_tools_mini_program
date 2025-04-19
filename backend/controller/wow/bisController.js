@@ -307,7 +307,8 @@ export async function queryUpdateArchonBisOverview(req, res) {
           const data = await collectBisOverview(
             item.classSpec,
             item.roleClass,
-            req.body.useCache
+            req.body.useCache,
+            1200000
           );
           doneCount++
           console.log(`更新BIS进度: ${doneCount}/${totalCount}`);

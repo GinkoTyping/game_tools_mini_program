@@ -4,7 +4,12 @@ import https from 'https';
 
 import fs from 'fs';
 
-export async function useCheerioContext(staticFilePath, url, useCache) {
+export async function useCheerioContext(
+  staticFilePath,
+  url,
+  useCache,
+  timeout
+) {
   try {
     let html;
     if (fs.existsSync(staticFilePath) && useCache) {
@@ -25,7 +30,7 @@ export async function useCheerioContext(staticFilePath, url, useCache) {
             'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         },
         httpsAgent: httpsAgent,
-        timeout: 1200000, // 15秒超时
+        timeout: timeout ?? 30000, // 15秒超时
       });
 
       html = res.data;
