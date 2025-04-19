@@ -290,7 +290,7 @@ async function checkEnhancements(enhancements) {
 const limit = pLimit(5);
 const limiter = new Bottleneck({
   minTime: 2000, // 拉大基础间隔
-  maxConcurrent: 3, // 限制同时请求数
+  maxConcurrent: 2, // 限制同时请求数
 });
 export async function queryUpdateArchonBisOverview(req, res) {
   try {
