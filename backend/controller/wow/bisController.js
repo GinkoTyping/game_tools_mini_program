@@ -292,7 +292,7 @@ const limiter = new Bottleneck({
   minTime: 2000, // 拉大基础间隔
   maxConcurrent: 2, // 限制同时请求数
   highWater: 10, // 队列容量限制
-  penalty: 3000,
+  penalty: 1000,
 });
 export async function queryUpdateArchonBisOverview(req, res) {
   try {

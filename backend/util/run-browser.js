@@ -8,10 +8,12 @@ import fs from 'fs';
 const axiosInstance = axios.create();
 axiosRetry(axiosInstance, {
   retries: 3,
-  retryDelay: (retryCount) => retryCount * 2000,
-  retryCondition: (error) => 
-    error.code === 'ECONNRESET' || 
-    error.code === 'ETIMEDOUT'
+  retryDelay: (retryCount, error) => {
+    console.log(`重试第${retryCount}次触发: ${error?.config?.url}`);
+    return retryCount * 2000;
+  },
+  retryCondition: (error) =>
+    error.code === 'ECONNRESET' || error.code === 'ETIMEDOUT',
 });
 export async function useCheerioContext(
   staticFilePath,
