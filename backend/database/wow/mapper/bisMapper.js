@@ -1,4 +1,4 @@
-import { formatDate } from "../../../util/time.js";
+import { formatDate } from '../../../util/time.js';
 
 let db;
 const TABLE_NAME = 'wow_bis';
@@ -112,7 +112,9 @@ async function updateOverviewBis(roleClass, classSpec, data) {
     bisData.forEach((item) => {
       if (item.title === '汇总') {
         item.items = data.overview.map((bisItem) => bisItem.id).join('@');
-        item.enhancements = data.overview.map((bisItem) => bisItem.enhancements);
+        item.enhancements = data.overview.map(
+          (bisItem) => bisItem.enhancements
+        );
       }
     });
     return db.run(
@@ -173,6 +175,19 @@ async function getAllBisDateInfo() {
   return db.all(`SELECT role_class, class_spec, updated_at FROM ${TABLE_NAME}`);
 }
 
+async function getOutdatedBIS() {
+  const latest = formatDate();
+  const data = await db.all(
+    `
+    SELECT role_class, class_spec FROM ${TABLE_NAME} WHERE updated_at != ?`,
+    [latest]
+  );
+  return data.map((item) => ({
+    classSpec: item?.class_spec,
+    roleClass: item?.role_class,
+  }));
+}
+
 export function useBisMapper(database) {
   if (database) {
     db = database;
@@ -185,6 +200,7 @@ export function useBisMapper(database) {
     getBisByClassAndSpec,
     getAllBis,
     getAllBisDateInfo,
+    getOutdatedBIS,
     updateBisByClassAndSpec,
     insertBis,
 

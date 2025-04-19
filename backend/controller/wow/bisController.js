@@ -290,21 +290,12 @@ async function checkEnhancements(enhancements) {
 const limit = pLimit(5);
 const limiter = new Bottleneck({
   minTime: 2000, // 拉大基础间隔
-  maxConcurrent: 2, // 限制同时请求数
-  highWater: 10, // 队列容量限制
-  penalty: 1000,
+  maxConcurrent: 3, // 限制同时请求数
 });
 export async function queryUpdateArchonBisOverview(req, res) {
   try {
-    const flatSpecs = Object.entries(classSpecMap).reduce(
-      (pre, [roleClass, specs]) => {
-        specs.forEach((spec) => {
-          pre.push({ roleClass, classSpec: spec });
-        });
-        return pre;
-      },
-      []
-    );
+
+    const flatSpecs = await bisMapper.getOutdatedBIS();
     let doneCount = 0;
     let totalCount = flatSpecs.length;
 
