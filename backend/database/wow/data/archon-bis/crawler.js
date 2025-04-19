@@ -37,7 +37,7 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
     getStaticFilePath(classSpec, roleClass),
     getUrl(classSpec, roleClass),
     useCache,
-    30000
+    15000
   );
   const priority = $(
     '#stats .builds-stat-priority-section>.builds-stat-priority-section__container .builds-stat-priority-section__container__inner'
