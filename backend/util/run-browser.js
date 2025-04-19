@@ -10,7 +10,7 @@ axiosRetry(axiosInstance, {
   retries: 3,
   retryDelay: (retryCount, error) => {
     console.log(`重试第${retryCount}次触发: ${error?.config?.url}`);
-    return retryCount * 2000;
+    return retryCount * 500;
   },
   retryCondition: (error) =>
     error.code === 'ECONNRESET' || error.code === 'ETIMEDOUT',
