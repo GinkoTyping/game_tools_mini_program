@@ -179,7 +179,7 @@ async function getOutdatedBIS() {
   const latest = formatDate();
   const data = await db.all(
     `
-    SELECT role_class, class_spec FROM ${TABLE_NAME} WHERE updated_at != ?`,
+    SELECT role_class, class_spec FROM ${TABLE_NAME} WHERE updated_at != ? ORDER BY updated_at ASC`,
     [latest]
   );
   return data.map((item) => ({
