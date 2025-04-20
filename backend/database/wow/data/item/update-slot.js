@@ -10,10 +10,11 @@ const api = setBlizzAPI();
 
 async function updateItemSlot(id, preview) {
   let slot;
+  let data;
   if (preview?.inventory_type?.name) {
     slot = preview.inventory_type.name;
   } else {
-    const data = await api.query(`/data/wow/item/${id}`, {
+    data = await api.query(`/data/wow/item/${id}`, {
       params: {
         namespace: 'static-us',
         locale: 'zh_CN',
@@ -22,15 +23,22 @@ async function updateItemSlot(id, preview) {
     slot = data.inventory_type?.name;
   }
   if (slot) {
-    itemMapper.updateItemById({ id: id, slot });
+    itemMapper.updateItemById({ id: id, slot, preview: data });
   }
+
+  current++;
+  console.log(`已完成 ${current}/${total}`);
 }
 
 const limiter = new Bottleneck({
-  minTime: 20, // 20ms间隔 → 50次/秒
+  minTime: 15, // 20ms间隔 → 50次/秒
+  maxConcurrent: 50,
 });
+let total = 0;
+let current = 0;
 export async function main() {
   const data = await itemMapper.getBlankSlotItem();
+  total = data.length;
   const results = await Promise.allSettled(
     data.map((item) =>
       limiter.schedule(() => updateItemSlot(item.id, item.preview))

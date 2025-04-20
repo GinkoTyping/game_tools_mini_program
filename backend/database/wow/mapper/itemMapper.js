@@ -60,7 +60,14 @@ async function updateItemById(itemData) {
       END
     WHERE id=?6
     `,
-    [slot, item, JSON.stringify(source), itemIcon, preview, id]
+    [
+      slot,
+      item,
+      JSON.stringify(source),
+      itemIcon,
+      typeof preview === 'string' ? preview : JSON.stringify(preview),
+      id,
+    ]
   );
 }
 
