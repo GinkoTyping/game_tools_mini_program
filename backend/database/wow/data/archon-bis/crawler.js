@@ -172,7 +172,10 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
   return {
     classSpec,
     roleClass,
-    overview,
+
+    // TODO 奶龙和奶德 没有BIS数据, 所以用热度数据代替
+    overview: overview.length ? overview : popularityItems,
+
     popularityItems,
     stats,
   };

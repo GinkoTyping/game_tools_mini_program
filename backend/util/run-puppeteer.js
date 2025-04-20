@@ -40,9 +40,16 @@ export async function getCheerioByPuppeteer(
         timeout: 90000,
         waitUntil: ['domcontentloaded'],
       });
+
+      // 即使 Selectior 获取失败了，也不阻塞
       if (waitForSelector) {
-        await page.waitForSelector(waitForSelector);
+        try {
+          await page.waitForSelector(waitForSelector);
+        } catch (error) {
+          console.error(`等待选择器失败: ${waitForSelector}`, error.message);
+        }
       }
+
       html = await page.content();
       fs.writeFileSync(path.resolve(__dirname, staticFilePath), html, 'utf-8');
     }
