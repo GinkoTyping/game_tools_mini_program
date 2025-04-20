@@ -14,7 +14,6 @@ import { useItemMapper } from '../../database/wow/mapper/itemMapper.js';
 import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
 import { isLocal } from '../../auth/validateAdmin.js';
 import spriteMap from '../../assets/wow/sprites/sprite-map.js';
-import { classSpecMap } from '../../util/wow.js';
 import { collectBisOverview } from '../../database/wow/data/archon-bis/crawler.js';
 
 let api;
@@ -73,7 +72,7 @@ export async function getItemPreviewById(req, res) {
         itemMapper.updateItemPreivewById(req.params.id, data);
       } else {
         const insertResult = await db.run(
-          `INSERT INTO wow_item(id, slot, name, preview) VALUES(?1, ?2, ?3)`,
+          `INSERT INTO wow_item(id, slot, name, preview) VALUES(?, ?, ?, ?)`,
           [data.id, data.inventory_type?.name, data.name, JSON.stringify(data)]
         );
         console.log(
@@ -85,9 +84,8 @@ export async function getItemPreviewById(req, res) {
 
       res.json(data);
     } catch (error) {
-      console.log(error?.config?.url, error.response.statusText);
-      res.statusCode = 404;
-      res.json({ message: '获取物品信息失败' });
+      console.log(error?.config?.url, error?.message);
+      res.status(500).json({ message: '获取物品信息失败' });
     }
   }
 }
@@ -113,6 +111,30 @@ async function mapBisTrinket(dataList, propKey) {
   );
   return allData.map((item) => item.value);
 }
+async function mapEnhancements(enhancements) {
+  async function mapEnhancementItem(item) {
+    const { slot } = await itemMapper.getItemById(item.id);
+
+    const items = await Promise.allSettled(
+      item.enhancements.map((id) => itemMapper.getItemById(id))
+    );
+    return {
+      ...item,
+      slot,
+      items: items.map((enhancement) => ({
+        ...enhancement.value,
+        // TODO: 适配目前前端的字段
+        name_zh: enhancement.value?.name,
+      })),
+    };
+  }
+  const results = await Promise.allSettled(
+    enhancements.map((item) => mapEnhancementItem(item))
+  );
+  return results
+    .map((result) => result.value)
+    .filter((item) => item.enhancements?.length);
+}
 export async function getBisBySpec(req, res) {
   const roleClass = req.params.roleClass;
   const classSpec = req.params.classSpec;
@@ -123,9 +145,8 @@ export async function getBisBySpec(req, res) {
     JSON.parse(bisData.bis_trinkets),
     'trinkets'
   );
-  const enhancement = await mapBisTrinket(
-    JSON.parse(bisData.enhancement),
-    'items'
+  const enhancement = await mapEnhancements(
+    JSON.parse(bisData.popularity_items)
   );
 
   // 避免本地调测时，引起本地的数据和服务器不一致
@@ -287,14 +308,13 @@ async function checkEnhancements(enhancements) {
     );
   }
 }
-const limit = pLimit(5);
+
 const limiter = new Bottleneck({
   minTime: 2000, // 拉大基础间隔
   maxConcurrent: 2, // 限制同时请求数
 });
 export async function queryUpdateArchonBisOverview(req, res) {
   try {
-
     const flatSpecs = await bisMapper.getOutdatedBIS();
     let doneCount = 0;
     let totalCount = flatSpecs.length;
@@ -302,16 +322,18 @@ export async function queryUpdateArchonBisOverview(req, res) {
     const results = await Promise.allSettled(
       flatSpecs.map((item) =>
         limiter.schedule(async () => {
-          console.log(`获取${item.classSpec} ${item.roleClass}...`)
+          console.log(`获取${item.classSpec} ${item.roleClass}...`);
           const data = await collectBisOverview(
             item.classSpec,
             item.roleClass,
             req.body.useCache
           );
           doneCount++;
-          console.log(`更新BIS进度: ${doneCount}/${totalCount}, ${item.classSpec} ${item.roleClass}`);
-          await checkEnhancements(
-            data.overview.reduce((pre, cur) => {
+          console.log(
+            `更新BIS进度: ${doneCount}/${totalCount}, ${item.classSpec} ${item.roleClass}`
+          );
+          const checkResults = await checkEnhancements(
+            data.popularityItems.reduce((pre, cur) => {
               cur.enhancements.forEach((enhancement) => {
                 if (enhancement && !pre.includes(enhancement)) {
                   pre.push(enhancement);

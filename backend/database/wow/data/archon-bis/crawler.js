@@ -2,6 +2,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { useCheerioContext } from '../../../../util/run-browser.js';
+import { getCheerioByPuppeteer } from '../../../../util/run-puppeteer.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,10 +11,21 @@ function getStaticFilePath(classSpec, roleClass) {
   return path.resolve(__dirname, `./cache/${classSpec}-${roleClass}.html`);
 }
 function getUrl(classSpec, roleClass) {
-  return `https://www.archon.gg/wow/builds/${classSpec}/${roleClass}/mythic-plus/overview/high-keys/all-dungeons/this-week`;
+  return `https://www.archon.gg/wow/builds/${classSpec}/${roleClass}/mythic-plus/gear-and-tier-set/high-keys/all-dungeons/this-week`;
 }
+
+function getOverviewUrl(classSpec, roleClass) {
+  return `https://www.archon.gg/wow/builds/${classSpec}/${roleClass}/mythic-plus/overview/high-keys/all-dungeons/this-week#stats`;
+}
+function getOverviewStaticFilePath(classSpec, roleClass) {
+  return path.resolve(
+    __dirname,
+    `./cache/${classSpec}-${roleClass}-overview.html`
+  );
+}
+
 function getIdByUrl(url) {
-  return Number(url.split('item=')?.pop());
+  return Number(url?.split('item=')?.pop());
 }
 
 function mapStat(val) {
@@ -32,10 +44,10 @@ function mapStat(val) {
   }
 }
 
-export async function collectBisOverview(classSpec, roleClass, useCache) {
+async function getStatsOverview(classSpec, roleClass, useCache) {
   const $ = await useCheerioContext(
-    getStaticFilePath(classSpec, roleClass),
-    getUrl(classSpec, roleClass),
+    getOverviewStaticFilePath(classSpec, roleClass),
+    getOverviewUrl(classSpec, roleClass),
     useCache,
     20000
   );
@@ -60,7 +72,6 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
     .get();
   // 不需要展示主属性
   priority.shift();
-
   const relations = [];
   priority.forEach((item, index) => {
     if (index > 0) {
@@ -72,16 +83,56 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
       );
     }
   });
+  return {
+    priority,
+    relations,
+  };
+}
 
-  const overview = $('#gear-overview .builds-best-in-slot-gear-section__gear')
+async function getBisOverview(classSpec, roleClass, useCache) {
+  const $ = await getCheerioByPuppeteer(
+    getStaticFilePath(classSpec, roleClass),
+    getUrl(classSpec, roleClass),
+    useCache,
+    '#gear-tables .builds-gear-tables-section__group a a[data-disable-wowhead-tooltip=true]'
+  );
+
+  const overview = [];
+  $('#gear-tables .builds-gear-tables-section__group')
+    .children()
+    .each((idx, slotWrap) => {
+      $(slotWrap)
+        .find('tbody tr')
+        .each((trIdx, trEle) => {
+          if ($(trEle).find('a[data-disable-wowhead-tooltip]')?.length) {
+            overview.push({
+              id: getIdByUrl($(trEle).find('a').first().attr('href')),
+              name: $(trEle)
+                .find('td')
+                .first()
+                .find('span')
+                .last()
+                .text()
+                .trim(),
+            });
+          }
+        });
+    });
+
+  const popularityItems = $(
+    '#gear-overview .builds-best-in-slot-gear-section__gear'
+  )
     .children()
     .map((idx, ele) => {
       const item = $(ele).find('.gear-icon__item-name a').last();
       const name = item.text().trim();
       const id = Number(item.attr('href').split('item=').pop());
-      const enhancementEle = $(ele).find('.gear-icon__item-meta__gems')?.length
-        ? $(ele).find('.gear-icon__item-meta__gems')
-        : $(ele).find('.gear-icon__item-meta__enchant');
+
+      const enhancementEle = $(ele)
+        .find('.gear-icon__item-meta')
+        .children()
+        .first();
+
       const enhancements = enhancementEle
         .children()
         .map((gemIdx, gemEle) => {
@@ -103,13 +154,26 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
       };
     })
     .get();
+
+  return {
+    overview,
+    popularityItems,
+  };
+}
+
+export async function collectBisOverview(classSpec, roleClass, useCache) {
+  const stats = await getStatsOverview(classSpec, roleClass, useCache);
+  const { overview, popularityItems } = await getBisOverview(
+    classSpec,
+    roleClass,
+    useCache
+  );
+
   return {
     classSpec,
     roleClass,
     overview,
-    stats: {
-      priority,
-      relations,
-    },
+    popularityItems,
+    stats,
   };
 }

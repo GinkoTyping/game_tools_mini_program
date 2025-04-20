@@ -10,7 +10,12 @@ import './set-env.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export async function getCheerioByPuppeteer(staticFilePath, urlPath, useCache) {
+export async function getCheerioByPuppeteer(
+  staticFilePath,
+  urlPath,
+  useCache,
+  waitForSelector
+) {
   let browser;
   try {
     let html;
@@ -33,8 +38,11 @@ export async function getCheerioByPuppeteer(staticFilePath, urlPath, useCache) {
       await page.setViewport({ width: 1280, height: 800 });
       await page.goto(urlPath, {
         timeout: 90000,
-        waitUntil: ['domcontentloaded', 'networkidle0'],
+        waitUntil: ['domcontentloaded'],
       });
+      if (waitForSelector) {
+        await page.waitForSelector(waitForSelector);
+      }
       html = await page.content();
       fs.writeFileSync(path.resolve(__dirname, staticFilePath), html, 'utf-8');
     }

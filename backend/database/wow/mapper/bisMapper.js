@@ -112,19 +112,22 @@ async function updateOverviewBis(roleClass, classSpec, data) {
     bisData.forEach((item) => {
       if (item.title === '汇总') {
         item.items = data.overview.map((bisItem) => bisItem.id).join('@');
-        item.enhancements = data.overview.map(
-          (bisItem) => bisItem.enhancements
-        );
+        item.enhancements = data.overview
+          .map((bisItem) => bisItem.enhancements)
+
+          // 个别装备栏位没有附魔和宝石
+          .filter((item) => item);
       }
     });
     return db.run(
       `
       UPDATE ${TABLE_NAME}
-      SET bis_items=?,archon_stats_priority=?,updated_at=?,collected_at=?
+      SET bis_items=?,archon_stats_priority=?,popularity_items=?,updated_at=?,collected_at=?
       WHERE role_class=? AND class_spec=?`,
       [
         JSON.stringify(bisData),
         JSON.stringify(data.stats),
+        JSON.stringify(data.popularityItems),
         date,
         date,
         roleClass,
