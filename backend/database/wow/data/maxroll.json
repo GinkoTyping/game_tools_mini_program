@@ -5868,7 +5868,7 @@
           "frost-death-knight-0-hero.jpg",
           "frost-death-knight-0-spec.jpg"
         ],
-        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAAzMjZMGDzYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAYssNwAWALDTgxCmZmxM"
+        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAgZmZMjxYYYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAYssNwAWALDTgxCmZmxM"
       },
       {
         "talent": "Riders ‍Shattering Blade",
@@ -5877,7 +5877,7 @@
           "frost-death-knight-1-hero.jpg",
           "frost-death-knight-1-spec.jpg"
         ],
-        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAAzMjZMGDzYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAAsZ2MMwAzGDNshZGjZG"
+        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAgZmZMjxYYYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAAsZ2MMwAzGDNshZGjZG"
       },
       {
         "talent": "Deathbringer ‍Breath of Sindragosa",
@@ -5886,7 +5886,7 @@
           "frost-death-knight-2-hero.jpg",
           "frost-death-knight-2-spec.jpg"
         ],
-        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgMGAzMjZMGDzYmZmZGmZmJzYMjBMzYMjZmZmZmZxMAAAAAAAAAAAAjltBGwCYZYCMWwMMmB"
+        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgMGgZmZMjxYYYmZmZGmZmJzYMjBMzYMjZmZmZmZxMAAAAAAAAAAAAjltBGwCYZYCMWwMMmB"
       }
     ],
     "enhancement": [
@@ -15526,7 +15526,7 @@
           "balance-druid-0-hero.jpg",
           "balance-druid-0-spec.jpg"
         ],
-        "code": "CaGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmFzyMLzMbzMzMzMLmlxwgNswAMW2mZDjZbAMBAAAYxMjBYzAD"
+        "code": "CaGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmFzyMLzMbzMzMzMLmlxwgNsAgxy2MbYMbDgJAAAALmZMAbGGD"
       },
       {
         "talent": "Keeper of the Grove",
@@ -15535,7 +15535,7 @@
           "balance-druid-1-hero.jpg",
           "balance-druid-1-spec.jpg"
         ],
-        "code": "CaGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmNzyMLzMLjZmZmZxsMGGjNswAMAbbjFMNzsMAAAAYzMjBYzAD"
+        "code": "CaGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmNzyMLzMLjZmZmZxsMGGjNsAgBYbbsgpZmlBAAAAbmZMAbGGD"
       }
     ],
     "enhancement": [
@@ -18002,11 +18002,11 @@
       },
       {
         "label": "AOE",
-        "rating": 4
+        "rating": 3
       },
       {
         "label": "功能性",
-        "rating": 3
+        "rating": 4
       },
       {
         "label": "生存能力",
@@ -20186,7 +20186,7 @@
           "restoration-druid-0-hero.jpg",
           "restoration-druid-0-spec.jpg"
         ],
-        "code": "CmGA6LGMrrHkyvBy43UPp_aXLvxMzYjZmZmFz2AMLLjtFbzAAAAAAAAAAAAYZQz2gJDzgZhlZGmxMAAAAAADYAzAAAAAAz2MbNLzsZjZmBmxsYQD"
+        "code": "CmGA6LGMrrHkyvBy43UPp_aXLvxMDLbzMzMziZbAjllZ2WsNDAAAAAAAAAAAglBNbGmmhBmlZWmZGzYGDAAAAAAAMAAAAAgZbmtmlZ2sxMzADzCoBA"
       }
     ],
     "enhancement": [
@@ -20385,11 +20385,11 @@
     "ratings": [
       {
         "label": "单体",
-        "rating": 3
+        "rating": 5
       },
       {
         "label": "AOE",
-        "rating": 4
+        "rating": 3
       },
       {
         "label": "功能性",
@@ -23706,7 +23706,7 @@
           "arcane-mage-0-hero.jpg",
           "arcane-mage-0-spec.jpg"
         ],
-        "code": "C6DAqjba-UdlK8weD5clEvnetZGMbzCmxMmFDjZGGTjZZGAAAAAAGAAAYmZbZZZmJWAAAAAAAALjhZmlZZYYmZGmZmZmZMjx"
+        "code": "C6DAqjba-UdlK8weD5clEvnetNzgZbWwMMzs4BYMzMGTjxMAAAAAAMAAAwMz2yyyMTsAAAAAAwCALjhZmlZZYYmZGmZmZmZMjxA"
       }
     ],
     "enhancement": [
@@ -51045,13 +51045,13 @@
     ],
     "talents": [
       {
-        "talent": "Fatebound ‍Hidden Opportunity",
+        "talent": "Trickster ‍Hidden Opportunity",
         "url": [
           "outlaw-rogue-0-class.jpg",
           "outlaw-rogue-0-hero.jpg",
           "outlaw-rogue-0-spec.jpg"
         ],
-        "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAMwwiZmBzMDzwwMzMzMmZmWmxsMDAAAAAAz2yMzgZmxyYmlZbAAAAYmBYgNYGjGzGgtBWM"
+        "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAM2mZYxMzMMMMDzYmxMzYmZaZGzyMAAAAAAMbbzMDmZGLwysMAAAAMzMAYMbGGYgZhFahNDA"
       },
       {
         "talent": "Fatebound ‍Keep it Rolling",
@@ -51061,6 +51061,15 @@
           "outlaw-rogue-1-spec.jpg"
         ],
         "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAM2mBLmZmZmZMMDDzMzwMzMTLzY2mBAAAAAgZbZmZwMzYBWmlBAAAgZGgB2gZMaMbA2GYx"
+      },
+      {
+        "talent": "Trickster ‍Keep it Rolling Variation",
+        "url": [
+          "outlaw-rogue-2-class.jpg",
+          "outlaw-rogue-2-hero.jpg",
+          "outlaw-rogue-2-spec.jpg"
+        ],
+        "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAM2mBMzYmZGDzwMmZmhZmZmWmxsNDAAAAAAz22MzgZmxCsMLDAAAAzMDAGzmhBGYWYhWYz"
       }
     ],
     "enhancement": [
@@ -53115,13 +53124,13 @@
         "code": "CWQAdb1wyGO40AKBNMUREAeV7DAM2mBAAAAAgZZMWmgFegZmZMzMzYmxMzY2GDzstNzMmZmBMWmtBAAAgZwwmZZgBsAWGmAzCMA"
       },
       {
-        "talent": "Trickster - The Rotten",
+        "talent": "Trickster",
         "url": [
           "subtlety-rogue-1-class.jpg",
           "subtlety-rogue-1-hero.jpg",
           "subtlety-rogue-1-spec.jpg"
         ],
-        "code": "CWQAMVe3xrRHPkKTYiUEC_OcZDAM2mBAAAAAgZZMWmGzYmxMzYMDzMjhxsNLGzstMzMmZmBMWmtBAAAgZwAYMbGGYgZhFaxGMA"
+        "code": "CWQAMVe3xrRHPkKTYiUEC_OcZDAM2mBAAAAAgZZMWmGzYMmZGjZ8AzMjhxsNLGzstMzMmZmBMWmtBAAAgZwAYMbGGYgZhFaxGMA"
       }
     ],
     "enhancement": [
@@ -56766,7 +56775,7 @@
           "enhancement-shaman-1-hero.jpg",
           "enhancement-shaman-1-spec.jpg"
         ],
-        "code": "CeQASHuZkIHv38g8oMaVB9ZkOOzMjZwMDzMmZmhZsNmBAAAAAAAAAALwCMjFN2GAzA2AwsMZGYZhxMDmZmtxsMzMZhlxyYmBAYG"
+        "code": "CeQASHuZkIHv38g8oMaVB9ZkOOzMjZwMYmxMzMbmx2YGAAAAAAAAAAsAbwMW0YbAMDYDAzykZglFGzMYmZ2GzyMzkFWGLjZGAgZA"
       }
     ],
     "enhancement": [
@@ -73896,11 +73905,11 @@
     "ratings": [
       {
         "label": "单体",
-        "rating": 2
+        "rating": 3
       },
       {
         "label": "AOE",
-        "rating": 2
+        "rating": 5
       },
       {
         "label": "功能性",
@@ -76977,6 +76986,15 @@
           "devastation-evoker-1-spec.jpg"
         ],
         "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAmZGYGmxMDMMGz0wMTmtZWmxMzMzYmtZAzMzsNmZMmBGYMYBWGjGbDgZQwGG"
+      },
+      {
+        "talent": "Flameshaper AoE",
+        "url": [
+          "devastation-evoker-2-class.jpg",
+          "devastation-evoker-2-hero.jpg",
+          "devastation-evoker-2-spec.jpg"
+        ],
+        "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAGzYmxsMzYmBGGDTDzMZ2GLDmZYMzyMgZmZ2GzMbzMDmBmxMwGYDMDTgFwyw"
       }
     ],
     "enhancement": [
@@ -80708,7 +80726,7 @@
           "augmentation-evoker-0-hero.jpg",
           "augmentation-evoker-0-spec.jpg"
         ],
-        "code": "CGcBa_dBDR2Sk9CtVQj0riEBqNMLzsNzMzwAzsMjZmxMbAAAAAAAAYmBzwYM1wMzAAAAAjZ2GzMGzMwMbGDWglxoxyAYGEbYMD"
+        "code": "CGcBa_dBDR2Sk9CtVQj0riEBqNMLzsNzMzwAzsMjZmxMbAAAAAAAAYmBzwYM1wMzAAAAAjZ2GzMGzMwMbGYMbWYBGYGGagFMmB"
       },
       {
         "talent": "Scalecommander",
@@ -82839,7 +82857,7 @@
       },
       {
         "label": "AOE",
-        "rating": 3
+        "rating": 4
       },
       {
         "label": "功能性",
@@ -85244,7 +85262,7 @@
           "marksmanship-hunter-0-hero.jpg",
           "marksmanship-hunter-0-spec.jpg"
         ],
-        "code": "C6PAgWVPuq-o0KoEvwTpSX5hCzADsMGNWGAzG2AAAAAAAAAAAAAAYGzYGmZGzoZGjhZGGzYGzgtZmx2YZ2MjxgHYmZmZmZmFjBLD"
+        "code": "C6PAgWVPuq-o0KoEvwTpSX5hCzADsMGNWGAzG2AAAAAAAAAAAAAAYGzYGmZGzoZGjhZGGzYGzgtZmx2MLz22MGDMzMmZmZWMGsM"
       }
     ],
     "enhancement": [

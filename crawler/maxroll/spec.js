@@ -86,7 +86,7 @@ async function collectBySpec(roleClass, classSpec) {
 
         //  勿使用代理
         await page.goto(getURL(), {
-          timeout: 90000,
+          timeout: 60000,
           waitUntil: ['domcontentloaded', 'networkidle0'],
         });
 
@@ -133,7 +133,7 @@ async function collectBySpec(roleClass, classSpec) {
       enhancement,
     };
   } catch (error) {
-    console.error(error);
+    console.error(`获取失败：${classSpec} ${roleClass} - ${error}`);
   } finally {
     currentCount++;
     console.log(
@@ -145,7 +145,7 @@ async function collectBySpec(roleClass, classSpec) {
 }
 
 // 控制并发数量
-const limit = pLimit(5);
+const limit = pLimit(3);
 async function crawler() {
   const crawlerPromises = Object.entries(specs).reduce(
     (pre, [roleClass, classSpecs]) => {

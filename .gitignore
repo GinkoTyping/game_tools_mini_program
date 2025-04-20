@@ -40,6 +40,7 @@ media/assets
 
 crawler/poe2/cache
 crawler/poe2/output
+crawler/maxroll/cache/spec
 
 backend/database/poe2/data/ladders/cache/*
 backend/database/poe2/data/ladders/output/*
