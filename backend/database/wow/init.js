@@ -84,11 +84,11 @@ async function updateWowheadData() {
             items: mapItems(spec.overall),
           },
           {
-            title: '大秘境',
+            title: '大秘境获取',
             items: mapItems(spec.bisItemMythic),
           },
           {
-            title: '团本',
+            title: '团本获取',
             items: mapItems(spec.bisItemRaid),
           },
         ];
