@@ -102,6 +102,11 @@ async function getBisOverview(classSpec, roleClass, useCache) {
   $('#gear-tables .builds-gear-tables-section__group')
     .children()
     .each((idx, slotWrap) => {
+      const slotLabel = $(slotWrap)
+        .find('tbody thead th')
+        .first()
+        ?.text()
+        ?.trim();
       $(slotWrap)
         .find('tbody tr')
         .each((trIdx, trEle) => {
@@ -116,6 +121,9 @@ async function getBisOverview(classSpec, roleClass, useCache) {
                 .text()
                 .trim(),
             });
+
+            // 如果不是 戒指 或者 饰品，只收集使用度最高的装备
+            return ['Rings', 'Trinket'].includes(slotLabel);
           }
         });
     });

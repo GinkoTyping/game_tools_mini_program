@@ -377,7 +377,9 @@ const limiter = new Bottleneck({
 });
 export async function queryUpdateArchonBisOverview(req, res) {
   try {
-    const flatSpecs = await bisMapper.getOutdatedBIS();
+    const flatSpecs = req.body.forceUpdate
+      ? await bisMapper.getAllBisDateInfo()
+      : await bisMapper.getOutdatedBIS();
     let doneCount = 0;
     let totalCount = flatSpecs.length;
 

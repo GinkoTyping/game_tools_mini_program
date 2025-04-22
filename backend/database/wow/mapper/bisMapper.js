@@ -144,7 +144,14 @@ async function getAllBis() {
 }
 
 async function getAllBisDateInfo() {
-  return db.all(`SELECT role_class, class_spec, updated_at FROM ${TABLE_NAME}`);
+  const data = await db.all(
+    `SELECT role_class, class_spec, updated_at FROM ${TABLE_NAME}`
+  );
+  return data.map((item) => ({
+    ...item,
+    classSpec: item?.class_spec,
+    roleClass: item?.role_class,
+  }));
 }
 
 async function getOutdatedBIS() {
