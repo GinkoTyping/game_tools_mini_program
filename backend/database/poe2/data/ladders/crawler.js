@@ -76,12 +76,12 @@ function collectLadderTable(context) {
   }
 }
 async function collectByType(typeItem, useCache) {
-  const $ = await getCheerioByPuppeteer(
-    getStaticFilePath(typeItem.key),
-    getUrl(typeItem.key),
-    useCache,
-    'table tbody tr'
-  );
+  const $ = await getCheerioByPuppeteer({
+    staticFilePath: getStaticFilePath(typeItem.key),
+    urlPath: getUrl(typeItem.key),
+    useCache: useCache,
+    waitForSelector: 'table tbody tr',
+  });
   const data = collectLadderTable($);
   return {
     ...typeItem,

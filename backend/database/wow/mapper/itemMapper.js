@@ -23,19 +23,11 @@ async function getItemById(id) {
   );
 }
 
-async function getItemByName(name) {
+async function getItemByName(name, locale) {
+  const nameKey = locale === 'en_US' ? 'name_en' : 'name';
   return db.get(
     `
-    SELECT * FROM wow_item WHERE name=?1
-    `,
-    [name]
-  );
-}
-
-async function getItemByNameEn(name) {
-  return db.get(
-    `
-    SELECT * FROM wow_item WHERE name_en=?1
+    SELECT * FROM wow_item WHERE ${nameKey}=?1
     `,
     [name]
   );
@@ -145,7 +137,6 @@ export function useItemMapper(database) {
     insertItem,
     getItemById,
     getItemByName,
-    getItemByNameEn,
     getUntranslated,
     getBlankSlotItem,
     getBlankEnItem,

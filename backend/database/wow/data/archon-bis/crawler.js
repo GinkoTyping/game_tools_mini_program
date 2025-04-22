@@ -90,12 +90,13 @@ async function getStatsOverview(classSpec, roleClass, useCache) {
 }
 
 async function getBisOverview(classSpec, roleClass, useCache) {
-  const $ = await getCheerioByPuppeteer(
-    getStaticFilePath(classSpec, roleClass),
-    getUrl(classSpec, roleClass),
+  const $ = await getCheerioByPuppeteer({
+    staticFilePath: getStaticFilePath(classSpec, roleClass),
+    urlPath: getUrl(classSpec, roleClass),
     useCache,
-    '#gear-tables .builds-gear-tables-section__group a a[data-disable-wowhead-tooltip=true]'
-  );
+    waitForSelector:
+      '#gear-tables .builds-gear-tables-section__group a a[data-disable-wowhead-tooltip=true]',
+  });
 
   const overview = [];
   $('#gear-tables .builds-gear-tables-section__group')

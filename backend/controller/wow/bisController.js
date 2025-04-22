@@ -1,6 +1,5 @@
 import { BlizzAPI } from 'blizzapi';
 import Bottleneck from 'bottleneck';
-import pLimit from 'p-limit';
 import { configDotenv } from 'dotenv';
 
 import path from 'path';

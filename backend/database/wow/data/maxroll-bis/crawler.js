@@ -2,66 +2,48 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { getCheerioByPuppeteer } from '../../../../util/run-puppeteer.js';
-import { queryWowItemById } from '../../../../api/index.js';
+import { getDB } from '../../../utils/index.js';
+import { useItemMapper } from '../../mapper/itemMapper.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const db = await getDB();
+const itemMapper = useItemMapper(db);
 
 function getStaticFilePath(classSpec, roleClass) {
   return path.resolve(__dirname, `./cache/${classSpec}-${roleClass}.html`);
+}
+function getStaticResponsePath(classSpec, roleClass) {
+  return path.resolve(__dirname, `./cache/${classSpec}-${roleClass}.json`);
 }
 function getUrl(classSpec, roleClass) {
   return `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-mythic-plus-guide`;
 }
 
 const CONTAINER_SELECTOR = 'div[data-wow-type=paperdoll]';
-async function mapSlotLabel(slotsClass, index, itemId) {
-  if (slotsClass === 'mxt-left') {
-    switch (index) {
-      case 0:
-        return '头部';
-      case 1:
-        return '颈部';
-      case 2:
-        return '肩部';
-      case 3:
-        return '背部';
-      case 4:
-        return '胸部';
-      case 5:
-        return '衬衫';
-      case 6:
-        return '战袍';
-      case 7:
-        return '腕部';
-      default:
-        return 'N/A';
-    }
-  } else if (slotsClass === 'mxt-right') {
-    switch (index) {
-      case 0:
-        return '手部';
-      case 1:
-        return '腰部';
-      case 2:
-        return '腿部';
-      case 3:
-        return '脚部';
-      case 4:
-      case 5:
-        return '戒指';
-      case 6:
-      case 7:
-        return '饰品';
-      default:
-        return 'N/A';
-    }
+function getDate(dateString) {
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
-    // 武器的种类不确定，也没法获取装备ID
-  } else {
-    const res = await queryWowItemById(itemId, 'en_US');
-    return res?.data?.inventory_type?.name;
-  }
+  const parts = dateString.split(', ');
+  const monthName = parts[0].trim().split(' ')[0];
+  const day = parseInt(parts[0].trim().split(' ')[1]);
+  const year = parseInt(parts[1]);
+
+  const monthIndex = monthNames.indexOf(monthName) + 1;
+  return `${year}/${monthIndex}/${day}`;
 }
 function getIconIdByCss(cssLine) {
   const urlStart = cssLine.indexOf('url(') + 4;
@@ -71,11 +53,11 @@ function getIconIdByCss(cssLine) {
   // 2. 提取文件名
   return rawUrl.split('/').pop().split(/[?#]/)[0]; // 处理可能存在的参数
 }
-function getEnhancements(context) {
+function getRawBis(context) {
   const $ = context;
   const container = $(CONTAINER_SELECTOR).first();
-  return ['.mxt-left', '.mxt-right', '.mxt-middle'].reduce(
-    (pre, slotsClass) => {
+  return ['.mxt-left', '.mxt-right', '.mxt-middle']
+    .reduce((pre, slotsClass) => {
       const slots = container
         .find(slotsClass)
         .children()
@@ -83,7 +65,7 @@ function getEnhancements(context) {
           return {
             name: $(slotEle).find('.mxt-name')?.text()?.trim(),
             enhancements: $(slotEle)
-              .find('.mxt-mxt-bonuses')
+              .find('.mxt-bonuses')
               .children()
               .map((iconIdx, iconEle) => {
                 return getIconIdByCss($(iconEle).attr('style'));
@@ -94,21 +76,70 @@ function getEnhancements(context) {
         .get();
       pre.push(...slots);
       return pre;
-    },
-    []
+    }, [])
+    .filter((item) => item.name);
+}
+function mapEnhancementId(icon) {
+  switch (icon) {
+    // 213491
+    case '5931393.webp':
+      return 213491;
+
+    // 顶峰渎神玉
+    case '348538.webp':
+      return 213743;
+
+    // 精湛红宝石
+    case '5931399.webp':
+      return 213458;
+
+    // 精湛蓝玉
+    case '5931402.webp':
+      return 213473;
+
+    // 附魔卷轴 - 不统计
+    case '463531.webp':
+      return null;
+
+    default:
+      return icon;
+  }
+}
+async function mapBis(rawData) {
+  async function mapItem(item) {
+    const itemData = await itemMapper.getItemByName(item.name, 'en_US');
+    if (!itemData) {
+      console.log(`Not Found: ${item.name}`);
+    }
+    return {
+      slot: itemData.slot,
+      id: itemData.id,
+      enhancements: item.enhancements
+        .map(mapEnhancementId)
+        .filter((item) => item),
+    };
+  }
+  const mappedData = await Promise.allSettled(
+    rawData.map((item) => mapItem(item))
   );
+  return mappedData.map((item) => item.value);
 }
 
 // maxroll 的 bis 不如 wowhead ，只采集 宝石附魔 的数据
 export async function collectMaxrollBis(classSpec, roleClass, useCache) {
-  const $ = await getCheerioByPuppeteer(
-    getStaticFilePath(classSpec, roleClass),
-    getUrl(classSpec, roleClass),
+  const $ = await getCheerioByPuppeteer({
+    staticFilePath: getStaticFilePath(classSpec, roleClass),
+    staticResponsePath: getStaticResponsePath(classSpec, roleClass),
+    urlPath: getUrl(classSpec, roleClass),
     useCache,
-    `${CONTAINER_SELECTOR} .mx-left`
-  );
-  const rawData = getEnhancements($);
-  console.log(rawData);
+    waitForSelector: `${CONTAINER_SELECTOR} .mx-left`,
+  });
+  const rawData = getRawBis($);
+  const data = await mapBis(rawData);
+  return {
+    updatedAt: getDate($('main>div:nth-child(2) .italic:nth-child(2)').text()),
+    items: data,
+  };
 }
 
 collectMaxrollBis('retribution', 'paladin', true);

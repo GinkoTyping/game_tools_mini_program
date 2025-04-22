@@ -10,12 +10,12 @@ import './set-env.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export async function getCheerioByPuppeteer(
+export async function getCheerioByPuppeteer({
   staticFilePath,
   urlPath,
   useCache,
-  waitForSelector
-) {
+  waitForSelector,
+}) {
   let browser;
   try {
     let html;
