@@ -26,59 +26,27 @@ async function updateBisByClassAndSpec(data) {
     talents,
     detailedStats,
     enhancement,
+    maxrollBis,
   } = data;
   return db.run(
     `
     UPDATE wow_bis
-    SET stats_priority = CASE
-      WHEN ?1 IS NOT NULL THEN ?1
-      ELSE stats_priority
-    END,
-    ratings = CASE
-      WHEN ?2 IS NOT NULL THEN ?2
-      ELSE ratings
-    END,
-    bis_items = CASE
-      WHEN ?3 IS NOT NULL THEN ?3
-      ELSE bis_items
-    END,
-    bis_trinkets = CASE
-      WHEN ?4 IS NOT NULL THEN ?4
-      ELSE bis_trinkets
-    END,
-    sort = CASE
-      WHEN ?5 IS NOT NULL THEN ?5
-      ELSE sort
-    END,
-    spec_sort = CASE
-      WHEN ?6 IS NOT NULL THEN ?6
-      ELSE spec_sort
-    END,
-    access_count = CASE
-      WHEN ?7 IS NOT NULL THEN ?7
-      ELSE access_count
-    END,
-    updated_at = CASE
-      WHEN ?8 IS NOT NULL THEN ?8
-      ELSE updated_at
-    END,
-    collected_at = CASE
-      WHEN ?9 IS NOT NULL THEN ?9
-      ELSE collected_at
-    END,
-    talents = CASE
-      WHEN ?10 IS NOT NULL THEN ?10
-      ELSE talents
-    END,
-    detailed_stats_priority = CASE
-      WHEN ?11 IS NOT NULL THEN ?11
-      ELSE detailed_stats_priority
-    END,
-    enhancement = CASE
-      WHEN ?12 IS NOT NULL THEN ?12
-      ELSE enhancement
-    END
-    WHERE role_class = ?13 AND class_spec= ?14`,
+  SET
+    stats_priority = COALESCE(?, stats_priority),
+    ratings = COALESCE(?, ratings),
+    bis_items = COALESCE(?, bis_items),
+    bis_trinkets = COALESCE(?, bis_trinkets),
+    sort = COALESCE(?, sort),
+    spec_sort = COALESCE(?, spec_sort),
+    access_count = COALESCE(?, access_count),
+    updated_at = COALESCE(?, updated_at),
+    collected_at = COALESCE(?, collected_at),
+    talents = COALESCE(?, talents),
+    detailed_stats_priority = COALESCE(?, detailed_stats_priority),
+    enhancement = COALESCE(?, enhancement),
+    maxroll_bis = COALESCE(?, maxroll_bis)
+  WHERE
+    role_class = ? AND class_spec = ?`,
     [
       JSON.stringify(stats),
       JSON.stringify(ratings),
@@ -92,6 +60,7 @@ async function updateBisByClassAndSpec(data) {
       JSON.stringify(talents),
       JSON.stringify(detailedStats),
       JSON.stringify(enhancement),
+      JSON.stringify(maxrollBis),
       roleClass,
       classSpec,
     ]
@@ -191,6 +160,14 @@ async function getOutdatedBIS() {
   }));
 }
 
+async function getMaxrollBis() {
+  return db.all(`
+    SELECT
+      id, role_class, class_spec, maxroll_bis
+    FROM ${TABLE_NAME}
+      `);
+}
+
 export function useBisMapper(database) {
   if (database) {
     db = database;
@@ -203,6 +180,7 @@ export function useBisMapper(database) {
     getBisByClassAndSpec,
     getAllBis,
     getAllBisDateInfo,
+    getMaxrollBis,
     getOutdatedBIS,
     updateBisByClassAndSpec,
     insertBis,

@@ -14,6 +14,7 @@ import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMap
 import { isLocal } from '../../auth/validateAdmin.js';
 import spriteMap from '../../assets/wow/sprites/sprite-map.js';
 import { collectBisOverview } from '../../database/wow/data/archon-bis/crawler.js';
+import { collectMaxrollBis } from '../../database/wow/data/maxroll-bis/crawler.js';
 
 let api;
 const database = await getDB();
@@ -350,6 +351,77 @@ export async function queryUpdateArchonBisOverview(req, res) {
       res.json({ message: '更新 ARCHON OVERVIEW 失败。' });
     } else {
       res.json({ message: '更新 ARCHON OVERVIEW 成功。' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error?.message });
+  }
+}
+
+export async function queryUpdateMaxrollBisOverview(req, res) {
+  try {
+    const flatSpecs = await bisMapper.getMaxrollBis();
+    const results = await Promise.allSettled(
+      flatSpecs.map((item) =>
+        limiter.schedule(async () => {
+          const data = await collectMaxrollBis(
+            item.class_spec,
+            item.role_class,
+            req.body.useCache,
+            req.body.ignoreLastUpdate
+              ? ''
+              : JSON.parse(item.maxroll_bis)?.updatedAt
+          );
+
+          const output = {
+            roleClass: item.role_class,
+            classSpec: item.class_spec,
+          };
+
+          if (data) {
+            if (data.items?.length) {
+              const updatedResult = await bisMapper.updateBisByClassAndSpec({
+                roleClass: item.role_class,
+                classSpec: item.class_spec,
+                maxrollBis: data,
+              });
+              output.updateStatus = updatedResult.changes;
+              output.message = `获取 MAXROLL BIS 成功：${item.class_spec} ${item.role_class}`;
+            } else {
+              output.updateStatus = -1;
+              output.message = `获取 MAXROLL BIS 失败：${item.class_spec} ${item.role_class}`;
+            }
+          } else {
+            output.updateStatus = 0;
+            output.message = `当前 MAXROLL BIS 已最新：${item.class_spec} ${item.role_class}`;
+          }
+
+          console.log(output.message);
+          return {
+            roleClass: item.role_class,
+            classSpec: item.class_spec,
+            ...output,
+          };
+        })
+      )
+    );
+    const errors = results.filter((item) => item.status !== 'fulfilled');
+    if (errors.length) {
+      const info = errors
+        .map((item) => `${item.reason.classSpec} ${item.reason.roleClass}`)
+        .join(',');
+      res.json({ message: `更新 MAXROLL BIS 失败: ${info}` });
+    } else {
+      const info = results
+        .filter(
+          (item) => item.status === 'fulfilled' && item.value.updateStatus === 1
+        )
+        .map((item) => `${item.value.classSpec} ${item.value.roleClass}`)
+        .join(',');
+      if (info) {
+        res.json({ message: `更新 MAXROLL BIS 成功：${info}` });
+      } else {
+        res.json({ message: `MAXROLL BIS 已经是最新数据` });
+      }
     }
   } catch (error) {
     res.status(500).json({ error: error?.message });

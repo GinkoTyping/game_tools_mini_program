@@ -7,6 +7,7 @@ import {
   queryRegisterItem,
   queryUpdateArchonBisOverview,
   queryUpdateItem,
+  queryUpdateMaxrollBisOverview,
 } from '../../controller/wow/bisController.js';
 import {
   queryPolularity,
@@ -34,6 +35,11 @@ router.post(
   '/bis/archon-overview',
   validateAdmin,
   queryUpdateArchonBisOverview
+);
+router.post(
+  '/bis/update-maxroll-bis',
+  validateAdmin,
+  queryUpdateMaxrollBisOverview
 );
 
 export default router;

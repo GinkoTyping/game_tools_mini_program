@@ -13,9 +13,6 @@ const itemMapper = useItemMapper(db);
 function getStaticFilePath(classSpec, roleClass) {
   return path.resolve(__dirname, `./cache/${classSpec}-${roleClass}.html`);
 }
-function getStaticResponsePath(classSpec, roleClass) {
-  return path.resolve(__dirname, `./cache/${classSpec}-${roleClass}.json`);
-}
 function getUrl(classSpec, roleClass) {
   return `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-mythic-plus-guide`;
 }
@@ -54,8 +51,33 @@ function getIconIdByCss(cssLine) {
   return rawUrl.split('/').pop().split(/[?#]/)[0]; // 处理可能存在的参数
 }
 function getRawBis(context) {
+  function getBisTable() {
+    const bisTableHeader = $('#gear-header')
+      .parentsUntil('#main-article')
+      .last();
+    let bisTableEle = bisTableHeader.next();
+    while (!bisTableEle?.find('figure table')?.length) {
+      bisTableEle = bisTableEle.next();
+    }
+    return bisTableEle;
+  }
+
   const $ = context;
   const container = $(CONTAINER_SELECTOR).first();
+  const bisTableEle = getBisTable();
+  const bisItems = bisTableEle
+    .find('table tbody')
+    .first()
+    .children()
+    .map((idx, row) => {
+      const itemEle = $(row).find('span[data-wow-item]').first();
+      return {
+        id: Number(itemEle.attr('data-wow-item')?.split(':')?.[0]),
+        name: itemEle.text().trim(),
+      };
+    })
+    .get();
+
   return ['.mxt-left', '.mxt-right', '.mxt-middle']
     .reduce((pre, slotsClass) => {
       const slots = container
@@ -63,6 +85,7 @@ function getRawBis(context) {
         .children()
         .map((idx, slotEle) => {
           return {
+            id: bisItems[idx].id,
             name: $(slotEle).find('.mxt-name')?.text()?.trim(),
             enhancements: $(slotEle)
               .find('.mxt-bonuses')
@@ -105,11 +128,19 @@ function mapEnhancementId(icon) {
       return icon;
   }
 }
-async function mapBis(rawData) {
+async function mapBis(rawData, classSpec, roleClass) {
   async function mapItem(item) {
-    const itemData = await itemMapper.getItemByName(item.name, 'en_US');
+    const itemData = await itemMapper.getItemById(item.id);
     if (!itemData) {
-      console.log(`Not Found: ${item.name}`);
+      const insertResult = await itemMapper.insertItem({
+        id: item.id,
+        item: item.name,
+      });
+      console.log(
+        `Not Found: ${item.name} - ${classSpec} ${roleClass}. Registered: ${
+          insertResult.changes ? '√' : 'X'
+        }`
+      );
     }
     return {
       slot: itemData.slot,
@@ -126,20 +157,29 @@ async function mapBis(rawData) {
 }
 
 // maxroll 的 bis 不如 wowhead ，只采集 宝石附魔 的数据
-export async function collectMaxrollBis(classSpec, roleClass, useCache) {
+export async function collectMaxrollBis(
+  classSpec,
+  roleClass,
+  useCache,
+  lastUpdatedAt
+) {
   const $ = await getCheerioByPuppeteer({
     staticFilePath: getStaticFilePath(classSpec, roleClass),
-    staticResponsePath: getStaticResponsePath(classSpec, roleClass),
     urlPath: getUrl(classSpec, roleClass),
     useCache,
-    waitForSelector: `${CONTAINER_SELECTOR} .mx-left`,
+    waitForSelector: `${CONTAINER_SELECTOR} .mxt-left`,
   });
-  const rawData = getRawBis($);
-  const data = await mapBis(rawData);
-  return {
-    updatedAt: getDate($('main>div:nth-child(2) .italic:nth-child(2)').text()),
-    items: data,
-  };
+  const updatedAt = getDate(
+    $('main>div:nth-child(2) .italic:nth-child(2)').text()
+  );
+  const needUpdate = lastUpdatedAt !== updatedAt;
+  if (needUpdate) {
+    const rawData = getRawBis($);
+    const data = await mapBis(rawData, classSpec, roleClass);
+    return {
+      updatedAt,
+      items: data,
+    };
+  }
+  return null;
 }
-
-collectMaxrollBis('retribution', 'paladin', true);

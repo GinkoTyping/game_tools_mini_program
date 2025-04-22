@@ -1,7 +1,10 @@
 // TODO: 手动获取 blizz 数据库中的物品信息，更新数据库
 import { queryBlizzItemById } from '../../../../controller/wow/bisController.js';
-import { useItemMapper } from './mapper/itemMapper.js';
-const itemMapper = useItemMapper(database);
+import { getDB } from '../../../utils/index.js';
+import { useItemMapper } from '../../mapper/itemMapper.js';
+
+const db = await getDB();
+const itemMapper = useItemMapper(db);
 
 async function updateItemDataByBlizz() {
   const data = await itemMapper.getUntranslated();
