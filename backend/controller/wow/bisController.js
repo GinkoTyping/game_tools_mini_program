@@ -135,54 +135,6 @@ async function mapEnhancements(enhancements, needSlot) {
     .map((result) => result.value)
     .filter((item) => item.enhancements?.length);
 }
-export async function getBisBySpec(req, res) {
-  const roleClass = req.params.roleClass;
-  const classSpec = req.params.classSpec;
-
-  const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
-  const archonEnhancements = await mapEnhancements(
-    JSON.parse(bisData.popularity_items),
-    true
-  );
-  const maxrollEnhancements = await mapEnhancements(
-    JSON.parse(bisData.maxroll_bis).items
-  );
-  const bis_items = await mapBisItems(
-    JSON.parse(bisData.bis_items),
-    maxrollEnhancements,
-    archonEnhancements
-  );
-  const bis_trinkets = await mapBisTrinket(
-    JSON.parse(bisData.bis_trinkets),
-    'trinkets'
-  );
-  const seperateEnhancement = await mapBisTrinket(
-    JSON.parse(bisData.enhancement),
-    'items'
-  );
-
-  // 避免本地调测时，引起本地的数据和服务器不一致
-  if (!isLocal(req)) {
-    // 访问次数 +1
-    await specBisCountMapper.addSpecBisCountByClassAndSpec({
-      roleClass,
-      classSpec,
-    });
-  }
-
-  res.json({
-    ...bisData,
-    bis_items,
-    bis_trinkets,
-    enhancement: seperateEnhancement,
-    stats_priority: JSON.parse(bisData.stats_priority),
-    detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
-    archon_stats_priority: JSON.parse(bisData.archon_stats_priority),
-    ratings: JSON.parse(bisData.ratings),
-    talents: JSON.parse(bisData.talents),
-  });
-}
-
 // maxroll bis获取宝石，archon popularity bis获取宝石以外的
 const CYRCES_CIRCLET_ID = 228411;
 function combineEnhancement(item, maxrollEnhancements, archonEnhancements) {
@@ -268,11 +220,56 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
       }),
     };
   }
-  const promises = bisItems.map((item) =>
-    mapBisItemsByType(item)
-  );
+  const promises = bisItems.map((item) => mapBisItemsByType(item));
   const bisItemResult = await Promise.allSettled(promises);
   return bisItemResult.map((item) => item.value);
+}
+export async function getBisBySpec(req, res) {
+  const roleClass = req.params.roleClass;
+  const classSpec = req.params.classSpec;
+
+  const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
+  const archonEnhancements = await mapEnhancements(
+    JSON.parse(bisData.popularity_items),
+    true
+  );
+  const maxrollEnhancements = await mapEnhancements(
+    JSON.parse(bisData.maxroll_bis).items
+  );
+  const bis_items = await mapBisItems(
+    JSON.parse(bisData.bis_items),
+    maxrollEnhancements,
+    archonEnhancements
+  );
+  const bis_trinkets = await mapBisTrinket(
+    JSON.parse(bisData.bis_trinkets),
+    'trinkets'
+  );
+  const seperateEnhancement = await mapBisTrinket(
+    JSON.parse(bisData.enhancement),
+    'items'
+  );
+
+  // 避免本地调测时，引起本地的数据和服务器不一致
+  if (!isLocal(req)) {
+    // 访问次数 +1
+    await specBisCountMapper.addSpecBisCountByClassAndSpec({
+      roleClass,
+      classSpec,
+    });
+  }
+
+  res.json({
+    ...bisData,
+    bis_items,
+    bis_trinkets,
+    enhancement: seperateEnhancement,
+    stats_priority: JSON.parse(bisData.stats_priority),
+    detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
+    archon_stats_priority: JSON.parse(bisData.archon_stats_priority),
+    ratings: JSON.parse(bisData.ratings),
+    talents: JSON.parse(bisData.talents),
+  });
 }
 
 export async function getTrendData() {
