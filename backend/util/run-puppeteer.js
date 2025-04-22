@@ -47,16 +47,26 @@ export async function getCheerioByPuppeteer({
       });
 
       // 即使 Selectior 获取失败了，也不阻塞
+      let hasGetSelector = false;
       if (waitForSelector) {
         try {
-          await page.waitForSelector(waitForSelector);
+          await page.waitForSelector(waitForSelector, { timeout: 60000 });
+          hasGetSelector = true;
         } catch (error) {
           console.error(`等待选择器失败: ${waitForSelector}`, error.message);
         }
       }
 
       html = await page.content();
-      fs.writeFileSync(path.resolve(__dirname, staticFilePath), html, 'utf-8');
+
+      // 没有获取到指定selector时，表面页面其实是异常的，不应该缓存
+      if (!waitForSelector || (waitForSelector && hasGetSelector)) {
+        fs.writeFileSync(
+          path.resolve(__dirname, staticFilePath),
+          html,
+          'utf-8'
+        );
+      }
     }
 
     const $ = cheerio.load(html);
