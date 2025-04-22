@@ -185,7 +185,11 @@ function combineEnhancement(item, maxrollEnhancements, archonEnhancements) {
         }) ?? [];
   }
 
-  return [...enhancementsByMaxroll, ...enhancementsByArchon];
+  return [...enhancementsByMaxroll, ...enhancementsByArchon].map((item) => ({
+    ...item,
+    preview: undefined,
+    preview_en: undefined,
+  }));
 }
 async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
   async function queryItem(id) {
@@ -216,7 +220,12 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
           archonEnhancements
         );
 
-        return { ...item.value, enhancements };
+        return {
+          ...item.value,
+          enhancements,
+          preview: undefined,
+          preview_en: undefined,
+        };
       }),
     };
   }
@@ -269,6 +278,8 @@ export async function getBisBySpec(req, res) {
     archon_stats_priority: JSON.parse(bisData.archon_stats_priority),
     ratings: JSON.parse(bisData.ratings),
     talents: JSON.parse(bisData.talents),
+    maxroll_bis: undefined,
+    popularity_items: undefined,
   });
 }
 
