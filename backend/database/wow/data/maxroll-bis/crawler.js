@@ -65,18 +65,21 @@ function getRawBis(context) {
   const $ = context;
   const container = $(CONTAINER_SELECTOR).first();
   const bisTableEle = getBisTable();
-  const bisItems = bisTableEle
+  const bisItems = [];
+  bisTableEle
     .find('table tbody')
     .first()
     .children()
-    .map((idx, row) => {
-      const itemEle = $(row).find('span[data-wow-item]').first();
-      return {
-        id: Number(itemEle.attr('data-wow-item')?.split(':')?.[0]),
-        name: itemEle.text().trim(),
-      };
-    })
-    .get();
+    .each((idx, row) => {
+      $(row)
+        .find('span[data-wow-item]')
+        .each((itemIdx, itemEle) => {
+          bisItems.push({
+            id: Number($(itemEle).attr('data-wow-item')?.split(':')?.[0]),
+            name: $(itemEle).text().trim(),
+          });
+        });
+    });
 
   const items = ['.mxt-left', '.mxt-right', '.mxt-middle']
     .reduce((pre, slotsClass) => {
@@ -257,3 +260,5 @@ export async function collectMaxrollBis(
   }
   return null;
 }
+
+collectMaxrollBis('havoc', 'demon-hunter', true, '');

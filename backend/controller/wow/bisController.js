@@ -104,20 +104,27 @@ async function mapBisTrinket(dataList, propKey) {
   );
   return allData.map((item) => item.value);
 }
-async function mapEnhancements(enhancements) {
+async function mapEnhancements(enhancements, needSlot) {
   async function mapEnhancementItem(item) {
-    const { slot } = await itemMapper.getItemById(item.id);
+    const slotObj = {};
+    if (needSlot) {
+      const { slot } = await itemMapper.getItemById(item.id);
+      slotObj.slot = slot;
+    }
 
     const items = await Promise.allSettled(
       item.enhancements.map((id) => itemMapper.getItemById(id))
     );
     return {
       ...item,
-      slot,
+      ...slotObj,
       items: items.map((enhancement) => ({
         ...enhancement.value,
+
         // TODO: 适配目前前端的字段
         name_zh: enhancement.value?.name,
+
+        item_class: JSON.parse(enhancement.value?.preview)?.item_class?.name,
       })),
     };
   }
@@ -133,16 +140,25 @@ export async function getBisBySpec(req, res) {
   const classSpec = req.params.classSpec;
 
   const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
+  const archonEnhancements = await mapEnhancements(
+    JSON.parse(bisData.popularity_items),
+    true
+  );
+  const maxrollEnhancements = await mapEnhancements(
+    JSON.parse(bisData.maxroll_bis).items
+  );
   const bis_items = await mapBisItems(
     JSON.parse(bisData.bis_items),
-    JSON.parse(bisData.maxroll_bis)
+    maxrollEnhancements,
+    archonEnhancements
   );
   const bis_trinkets = await mapBisTrinket(
     JSON.parse(bisData.bis_trinkets),
     'trinkets'
   );
-  const enhancement = await mapEnhancements(
-    JSON.parse(bisData.popularity_items)
+  const seperateEnhancement = await mapBisTrinket(
+    JSON.parse(bisData.enhancement),
+    'items'
   );
 
   // 避免本地调测时，引起本地的数据和服务器不一致
@@ -158,7 +174,7 @@ export async function getBisBySpec(req, res) {
     ...bisData,
     bis_items,
     bis_trinkets,
-    enhancement,
+    enhancement: seperateEnhancement,
     stats_priority: JSON.parse(bisData.stats_priority),
     detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
     archon_stats_priority: JSON.parse(bisData.archon_stats_priority),
@@ -167,7 +183,59 @@ export async function getBisBySpec(req, res) {
   });
 }
 
-async function mapBisItems(bisItems, maxrollBis) {
+// maxroll bis获取宝石，archon popularity bis获取宝石以外的
+const CYRCES_CIRCLET_ID = 228411;
+function combineEnhancement(item, maxrollEnhancements, archonEnhancements) {
+  const cloneArchonData = [...archonEnhancements];
+  const cloneMaxrollData = [...maxrollEnhancements];
+
+  // 从 archon 获取 其他
+  let enhancementsByMaxroll = [];
+  let enhancementsByArchon = [];
+  if (item.slot === '手指') {
+    let spliceIndex = -1;
+    const isCyrcesCirclet = item.id === CYRCES_CIRCLET_ID;
+    const cyrcesCirclet = cloneArchonData.find(
+      (enhancement) => enhancement.id === CYRCES_CIRCLET_ID
+    );
+
+    if (isCyrcesCirclet && cyrcesCirclet) {
+      enhancementsByArchon = cyrcesCirclet.items;
+    } else {
+      const spliceIndex = cloneMaxrollData.findIndex(
+        (enhancement) => enhancement.slot === '手指'
+      );
+      if (spliceIndex !== -1) {
+        enhancementsByArchon = cloneMaxrollData.splice(spliceIndex, 1)[0].items;
+      }
+    }
+  } else {
+    // 从 maxroll 获取 宝石
+    enhancementsByMaxroll =
+      maxrollEnhancements.find((maxrollItem) => maxrollItem.slot === item.slot)
+        ?.items ?? [];
+
+    enhancementsByArchon =
+      cloneArchonData
+        .find((enhancement) => enhancement.slot === item.slot)
+        ?.items.filter((enhancement) => {
+          // 使用maxroll的宝石数据
+          if (enhancement.item_class === '宝石') {
+            return false;
+          }
+
+          // 公函类型的道具只能强化制造装备
+          if (enhancement.item_class === '商业技能') {
+            return item.source?.source === '制造装备';
+          }
+
+          return true;
+        }) ?? [];
+  }
+
+  return [...enhancementsByMaxroll, ...enhancementsByArchon];
+}
+async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
   async function queryItem(id) {
     // 避免返回的data为null，导致前台报错
     const data = (await itemMapper.getItemById(id)) ?? {
@@ -178,48 +246,31 @@ async function mapBisItems(bisItems, maxrollBis) {
     return {
       ...data,
       source: JSON.parse(data.source),
-
-      // 减少冗余的字段
-      preview: undefined,
     };
   }
-  async function mapBisItemsByType(bisItemsByType, maxrollEnhancement) {
+  async function mapBisItemsByType(bisItemsByType) {
     const promises = bisItemsByType.items
       .split('@')
       .map((item) => queryItem(item));
     const data = await Promise.allSettled(promises);
 
-    let enhancementIds = [];
-    if (bisItemsByType.enhancements?.length) {
-      enhancementIds = [...new Set(bisItemsByType.enhancements.flat())];
-    } else if (bisItemsByType.title === '汇总' && maxrollEnhancement) {
-      enhancementIds = [
-        ...new Set(maxrollBis.items.map((item) => item.enhancements).flat()),
-      ];
-    }
-    const enhancementData = (
-      await Promise.allSettled(
-        enhancementIds.map((enhancementId) => queryItem(enhancementId))
-      )
-    ).map((item) => item.value);
     return {
       ...bisItemsByType,
       title: bisItemsByType.title,
       items: data.map((item, index) => {
-        const maxrollItem = maxrollBis.items.find(
-          (maxrollItem) => maxrollItem.slot === item.value.slot
+        const enhancements = combineEnhancement(
+          item.value,
+          maxrollEnhancements,
+          archonEnhancements
         );
-        const enhancements = maxrollItem?.enhancements?.map((enhancement) =>
-          enhancementData?.find((dataItem) => dataItem.id === enhancement)
-        );
-        return {
-          ...item.value,
-          enhancements,
-        };
+
+        return { ...item.value, enhancements };
       }),
     };
   }
-  const promises = bisItems.map((item) => mapBisItemsByType(item, maxrollBis));
+  const promises = bisItems.map((item) =>
+    mapBisItemsByType(item)
+  );
   const bisItemResult = await Promise.allSettled(promises);
   return bisItemResult.map((item) => item.value);
 }
