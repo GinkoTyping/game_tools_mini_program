@@ -102,7 +102,7 @@ function getRawBis(context) {
     }, [])
     .filter((item) => item.name);
 }
-function mapEnhancementId(icon) {
+function mapEnhancementId(icon, classSpec, roleClass) {
   switch (icon) {
     // 213491
     case '5931393.webp':
@@ -120,11 +120,81 @@ function mapEnhancementId(icon) {
     case '5931402.webp':
       return 213473;
 
-    // 附魔卷轴 - 不统计
+    // 致命蓝玉
+    case '5931403.webp':
+      return 213467;
+
+    // 灵动渎神玉
+    case '630620.webp':
+      return 213746;
+
+    // 万能红宝石
+    case '5931400.webp':
+      return 213461;
+
+    // 万能翡翠
+    case '5931389.webp':
+      return 213485;
+
+    // 迅捷玛瑙
+    case '5931394.webp':
+      return 213494;
+
+    // 迅捷蓝玉
+    case '5931404.webp':
+      return 213470;
+
+    // 精湛翡翠
+    case '5931391.webp':
+      return 213482;
+
+    // 万能玛瑙
+    case '5931392.webp':
+      return 213497;
+
+    // 迅捷红宝石
+    case '5931401.webp':
+      return 213453;
+
+    // 致命翡翠
+    case '5931390.webp':
+      return 213479;
+
+    // 附魔卷轴/铭文/等宝石以外的 - 不统计
     case '463531.webp':
+    case '4549173.webp':
+    case '4644002.webp':
+    case '5975854.webp':
+    case '4559235.webp':
+    case '4549168.webp':
+    case '5975753.webp':
+    case '135957.webp':
+    case '4549251.webp':
+    case '4549296.webp':
+    case '5976899.webp':
+    case '4549161.webp':
+    case '3717598.webp':
+    case '3717599.webp':
+    case '3717603.webp':
+    case '4549158.webp':
+    case '4549287.webp':
+    case '4549170.webp':
+    case '3717596.webp':
+    case '463526.webp':
+    case '4549172.webp':
+    case '4549171.webp':
+    case '135842.webp':
+
+    // 海妖岛戒指采用wowhead
+    case '6215529.webp':
+    case '6215532.webp':
+    case '6215534.webp':
+    case '6215530.webp':
+    case '6215536.webp':
       return null;
 
     default:
+      console.log(`Not found: ${icon} - ${classSpec} ${roleClass}`);
       return icon;
   }
 }
@@ -146,7 +216,7 @@ async function mapBis(rawData, classSpec, roleClass) {
       slot: itemData.slot,
       id: itemData.id,
       enhancements: item.enhancements
-        .map(mapEnhancementId)
+        .map((item) => mapEnhancementId(item, classSpec, roleClass))
         .filter((item) => item),
     };
   }

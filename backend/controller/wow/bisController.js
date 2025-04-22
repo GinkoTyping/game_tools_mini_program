@@ -54,7 +54,9 @@ export async function getItemPreviewById(req, res) {
   const item = await itemMapper.getItemById(req.params.id);
   if (item?.preview) {
     res.json({
-      ...JSON.parse(locale === 'en_US' ? item.preview_en : item.preview),
+      ...JSON.parse(
+        req.query?.locale === 'en_US' ? item.preview_en : item.preview
+      ),
       source: JSON.parse(item.source),
       image: item.image,
     });
@@ -131,7 +133,10 @@ export async function getBisBySpec(req, res) {
   const classSpec = req.params.classSpec;
 
   const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
-  const bis_items = await mapBisItems(JSON.parse(bisData.bis_items));
+  const bis_items = await mapBisItems(
+    JSON.parse(bisData.bis_items),
+    JSON.parse(bisData.maxroll_bis)
+  );
   const bis_trinkets = await mapBisTrinket(
     JSON.parse(bisData.bis_trinkets),
     'trinkets'
@@ -162,7 +167,7 @@ export async function getBisBySpec(req, res) {
   });
 }
 
-async function mapBisItems(bisItems) {
+async function mapBisItems(bisItems, maxrollBis) {
   async function queryItem(id) {
     // 避免返回的data为null，导致前台报错
     const data = (await itemMapper.getItemById(id)) ?? {
@@ -178,36 +183,43 @@ async function mapBisItems(bisItems) {
       preview: undefined,
     };
   }
-  async function mapBisItemsByType(bisItemsByType) {
+  async function mapBisItemsByType(bisItemsByType, maxrollEnhancement) {
     const promises = bisItemsByType.items
       .split('@')
       .map((item) => queryItem(item));
     const data = await Promise.allSettled(promises);
 
     let enhancementIds = [];
-    if (bisItemsByType.enhancements) {
+    if (bisItemsByType.enhancements?.length) {
       enhancementIds = [...new Set(bisItemsByType.enhancements.flat())];
+    } else if (bisItemsByType.title === '汇总' && maxrollEnhancement) {
+      enhancementIds = [
+        ...new Set(maxrollBis.items.map((item) => item.enhancements).flat()),
+      ];
     }
     const enhancementData = (
       await Promise.allSettled(
         enhancementIds.map((enhancementId) => queryItem(enhancementId))
       )
     ).map((item) => item.value);
-    const enhancements = bisItemsByType.enhancements?.map((item) =>
-      item.map((enhancementId) =>
-        enhancementData.find((item) => item.id === enhancementId)
-      )
-    );
     return {
       ...bisItemsByType,
       title: bisItemsByType.title,
-      items: data.map((item, index) => ({
-        ...item.value,
-        enhancements: enhancements?.[index],
-      })),
+      items: data.map((item, index) => {
+        const maxrollItem = maxrollBis.items.find(
+          (maxrollItem) => maxrollItem.slot === item.value.slot
+        );
+        const enhancements = maxrollItem?.enhancements?.map((enhancement) =>
+          enhancementData?.find((dataItem) => dataItem.id === enhancement)
+        );
+        return {
+          ...item.value,
+          enhancements,
+        };
+      }),
     };
   }
-  const promises = bisItems.map((item) => mapBisItemsByType(item));
+  const promises = bisItems.map((item) => mapBisItemsByType(item, maxrollBis));
   const bisItemResult = await Promise.allSettled(promises);
   return bisItemResult.map((item) => item.value);
 }
