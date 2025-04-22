@@ -79,7 +79,8 @@ async function collectByType(typeItem, useCache) {
   const $ = await getCheerioByPuppeteer(
     getStaticFilePath(typeItem.key),
     getUrl(typeItem.key),
-    useCache
+    useCache,
+    'table tbody tr'
   );
   const data = collectLadderTable($);
   return {

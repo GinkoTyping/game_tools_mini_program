@@ -29,6 +29,9 @@ schedule.scheduleJob(complexRule, () => {
         },
       }
     )
+    .then((res) => {
+      console.log(res?.data?.message);
+    })
     .catch((error) => {
       // 结构化错误日志
       const errorInfo = {

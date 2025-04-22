@@ -22,6 +22,10 @@ export async function getCheerioByPuppeteer(
     if (fs.existsSync(path.resolve(__dirname, staticFilePath)) && useCache) {
       html = fs.readFileSync(path.resolve(__dirname, staticFilePath), 'utf-8');
     } else {
+      if (!waitForSelector) {
+        throw new Error('Empty selector!');
+      }
+
       browser = await puppeteer.launch({
         headless: true,
         args: [

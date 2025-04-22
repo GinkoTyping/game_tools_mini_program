@@ -239,9 +239,9 @@ export async function queryUpdateLadders(req, res) {
       (item) => item.status !== 'fulfilled'
     )?.length;
     if (errors?.length) {
-      throw new Error(`更新失败：${errors?.length}条`);
+      throw new Error(`更新POE LADDERS失败：${errors?.length}条`);
     }
-    res.json({ message: `更新OK: ${total}条` });
+    res.json({ message: `更新POE LADDERS 成功: ${total}条` });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
