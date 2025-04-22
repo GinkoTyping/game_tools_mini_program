@@ -32,33 +32,30 @@ async function getItemByName(name) {
   );
 }
 
+async function getItemByNameEn(name) {
+  return db.get(
+    `
+    SELECT * FROM wow_item WHERE name_en=?1
+    `,
+    [name]
+  );
+}
+
 async function updateItemById(itemData) {
-  const { id, slot, item, source, itemIcon, preview } = itemData;
+  const { id, slot, item, source, itemIcon, preview, name_en, preview_en } =
+    itemData;
   return db.run(
     `
     UPDATE wow_item
     SET
-      slot = CASE
-        WHEN ?1 IS NOT NULL THEN ?1
-        ELSE slot
-      END,
-      name = CASE
-        WHEN ?2 IS NOT NULL THEN ?2
-        ELSE name
-      END,
-      source = CASE
-        WHEN ?3 IS NOT NULL THEN ?3
-        ELSE source
-      END,
-      image = CASE
-        WHEN ?4 IS NOT NULL THEN ?4
-        ELSE image
-      END,
-      preview = CASE
-        WHEN ?5 IS NOT NULL THEN ?5
-        ELSE preview
-      END
-    WHERE id=?6
+      slot = COALESCE(?, slot),
+      name = COALESCE(?, name),
+      source = COALESCE(?, source),
+      image = COALESCE(?, image),
+      preview = COALESCE(?, preview),
+      name_en = COALESCE(?, name_en),
+      preview_en = COALESCE(?, preview_en)
+    WHERE id=?
     `,
     [
       slot,
@@ -66,17 +63,29 @@ async function updateItemById(itemData) {
       JSON.stringify(source),
       itemIcon,
       typeof preview === 'string' ? preview : JSON.stringify(preview),
+      name_en,
+      typeof preview_en === 'string' ? preview_en : JSON.stringify(preview_en),
       id,
     ]
   );
 }
 
-async function updateItemPreivewById(id, preview) {
-  return db.run(`UPDATE wow_item SET preview=?1, name=?2 WHERE id=?3`, [
-    JSON.stringify(preview),
-    preview.name,
-    id,
-  ]);
+async function addOrUpdatePreviewById(id, preview, locale) {
+  const previewKey = locale === 'en_US' ? 'preview_en' : 'preview';
+  const nameKey = locale === 'en_US' ? 'name_en' : 'name';
+  return db.run(
+    `INSERT OR REPLACE INTO wow_item(id, ${previewKey}, ${nameKey}) VALUES(?, ?, ?)`,
+    [id, JSON.stringify(preview), preview.name]
+  );
+}
+
+async function updateItemPreivewById(id, preview, locale) {
+  const previewKey = locale === 'en_US' ? 'preview_en' : 'preview';
+  const nameKey = locale === 'en_US' ? 'name_en' : 'name';
+  return db.run(
+    `UPDATE wow_item SET ${previewKey}=?1, ${nameKey}=?2 WHERE id=?3`,
+    [JSON.stringify(preview), preview.name, id]
+  );
 }
 
 async function getUntranslated() {
@@ -95,6 +104,12 @@ async function getBlankImageItem() {
 
 async function getBlankSlotItem() {
   return db.all(`SELECT id, preview FROM wow_item WHERE slot IS NULL`);
+}
+
+async function getBlankEnItem() {
+  return db.all(
+    `SELECT id, name_en, preview_en FROM wow_item WHERE name_en IS NULL AND preview_en is NULL`
+  );
 }
 
 async function getInvalidImageItem() {
@@ -130,12 +145,15 @@ export function useItemMapper(database) {
     insertItem,
     getItemById,
     getItemByName,
+    getItemByNameEn,
     getUntranslated,
     getBlankSlotItem,
+    getBlankEnItem,
     getInvalidImageItem,
     updateItemById,
     getBlankSourceItem,
     getBlankImageItem,
+    addOrUpdatePreviewById,
     updateItemPreivewById,
   };
 }

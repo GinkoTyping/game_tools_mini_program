@@ -36,11 +36,11 @@ function setBlizzAPI() {
 }
 setBlizzAPI();
 
-export async function queryBlizzItemById(id) {
+export async function queryBlizzItemById(id, locale) {
   return api.query(`/data/wow/item/${id}`, {
     params: {
       namespace: 'static-us',
-      locale: 'zh_CN',
+      locale: locale ?? 'zh_CN',
     },
   });
 }
@@ -51,36 +51,27 @@ export async function getItemPreviewById(req, res) {
     return;
   }
 
-  const db = await getDB();
-  const item = await db.get(
-    `
-  SELECT preview,source,image FROM wow_item WHERE id=?1`,
-    [req.params.id]
-  );
+  const item = await itemMapper.getItemById(req.params.id);
   if (item?.preview) {
     res.json({
-      ...JSON.parse(item.preview),
+      ...JSON.parse(locale === 'en_US' ? item.preview_en : item.preview),
       source: JSON.parse(item.source),
       image: item.image,
     });
   } else {
     try {
-      const data = await queryBlizzItemById(req.params.id);
+      const data = await queryBlizzItemById(req.params.id, req.query?.locale);
 
-      if (item) {
-        // 如果之前的装备名称是英文，也可以把英文名称更新为中文
-        itemMapper.updateItemPreivewById(req.params.id, data);
-      } else {
-        const insertResult = await db.run(
-          `INSERT INTO wow_item(id, slot, name, preview) VALUES(?, ?, ?, ?)`,
-          [data.id, data.inventory_type?.name, data.name, JSON.stringify(data)]
-        );
-        console.log(
-          `新增物品${insertResult?.changes ? '成功' : '失败'}: ${data.id},${
-            data.name
-          }`
-        );
-      }
+      const insertResult = await addOrUpdatePreviewById(
+        req.params.id,
+        data,
+        req.query?.locale
+      );
+      console.log(
+        `更新物品${insertResult?.changes ? '成功' : '失败'}: ${data.id},${
+          data.name
+        }`
+      );
 
       res.json(data);
     } catch (error) {
