@@ -22,6 +22,7 @@ export async function getCheerioByPuppeteer(
     if (fs.existsSync(path.resolve(__dirname, staticFilePath)) && useCache) {
       html = fs.readFileSync(path.resolve(__dirname, staticFilePath), 'utf-8');
     } else {
+      // puppeteer的waitUntil没有设置networkidle0 networkidle2 等，会导致异步加载的DOM无法获取，所以必须设置 selector
       if (!waitForSelector) {
         throw new Error('Empty selector!');
       }

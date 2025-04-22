@@ -43,3 +43,5 @@ schedule.scheduleJob(complexRule, () => {
       console.error('API请求失败:', JSON.stringify(errorInfo, null, 2));
     });
 });
+
+console.log('自动化任务：更新archon tier list', new Date().toLocaleString());
