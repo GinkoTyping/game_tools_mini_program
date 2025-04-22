@@ -11,16 +11,32 @@ configDotenv({ path: path.resolve(__dirname, '../../.env') });
 
 const complexRule = {
   hour: [0, 6, 10, 17, 22],
+  minute: 0,
   tz: 'Asia/Shanghai',
 };
 
 schedule.scheduleJob(complexRule, () => {
   console.log('定时任务 更新poe ladders:', new Date().toLocaleString());
-  axios.post('https://ginkolearn.cyou/api/poe/static/update-ladders', {
-    useCache: false,
-  }, {
-    headers: {
-      Authorization: `Bearer ${process.env.ADMIN_TOKEN}`
-    }
-  });
+  axios
+    .post(
+      'https://ginkolearn.cyou/api/poe/static/update-ladders',
+      {
+        useCache: false,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
+        },
+      }
+    )
+    .catch((error) => {
+      // 结构化错误日志
+      const errorInfo = {
+        message: error.message,
+        code: error.code,
+        status: error.response?.status,
+        url: error.config?.url,
+      };
+      console.error('API请求失败:', JSON.stringify(errorInfo, null, 2));
+    });
 });
