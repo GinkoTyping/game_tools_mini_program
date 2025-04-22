@@ -195,11 +195,15 @@
             >{{ bis.title }}</text
           >
         </view>
-        <view class="to-enhancement" @click="toHotSpot">
+        <view
+          class="to-enhancement"
+          @click="displayEnhancement = !displayEnhancement"
+        >
+          <text>{{ switchEnhancementText }}</text>
+
           <image
             src="https://ginkolearn.cyou/api/wow/assets/blizz-media-image/inv_misc_enchantedscroll.jpg"
           />
-          <text>查看附魔</text>
         </view>
       </view>
 
@@ -233,27 +237,29 @@
                   >{{ item.name }}</view
                 >
               </view>
-              <view
-                class="slot-container__enhancement"
-                v-for="enhancement in item.enhancements"
-                :key="enhancement.id"
-              >
-                <img
-                  :src="currentImageSrc(enhancement)"
-                  style="width: 14px; height: 14px"
-                />
+              <template v-if="displayEnhancement">
                 <view
-                  class="ellipsis"
-                  style="flex: 1"
-                  :class="[item.wrap ? 'disale-ellipsis' : '']"
-                  @click="
-                    () => {
-                      switchDetail(true, enhancement, 'item');
-                    }
-                  "
-                  >{{ enhancement.name }}</view
+                  class="slot-container__enhancement"
+                  v-for="enhancement in item.enhancements"
+                  :key="enhancement.id"
                 >
-              </view>
+                  <img
+                    :src="currentImageSrc(enhancement)"
+                    style="width: 14px; height: 14px"
+                  />
+                  <view
+                    class="ellipsis"
+                    style="flex: 1"
+                    :class="[item.wrap ? 'disale-ellipsis' : '']"
+                    @click="
+                      () => {
+                        switchDetail(true, enhancement, 'item');
+                      }
+                    "
+                    >{{ enhancement.name }}</view
+                  >
+                </view>
+              </template>
             </view>
           </uni-td>
           <uni-td>
@@ -792,6 +798,10 @@ function setNaviTitle(title: string) {
 function switchWrap(item: IBisItem) {
   item.wrap = !item.wrap;
 }
+const displayEnhancement = ref(true);
+const switchEnhancementText = computed(() =>
+  displayEnhancement.value ? '隐藏' : '显示'
+);
 
 const popup = ref<any>('');
 const currentDetails = ref<any>({});
@@ -1298,10 +1308,10 @@ $light-border: rgb(68, 68, 68);
     color: $uni-text-color-inverse;
     font-weight: bold;
     margin-right: 6px;
+    gap: 6px;
     image {
       width: 20px;
       height: 20px;
-      margin-right: 6px;
     }
   }
 }
