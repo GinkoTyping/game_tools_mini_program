@@ -1,7 +1,7 @@
 import { useAuth } from '@/hooks/auth';
 
-export const BASE_URL = 'http://localhost:3000/api';
-// export const BASE_URL = 'https://ginkolearn.cyou/api';
+// export const BASE_URL = 'http://localhost:3000/api';
+export const BASE_URL = 'https://ginkolearn.cyou/api';
 
 let auth;
 export const proxyRequest = async (options: any) => {

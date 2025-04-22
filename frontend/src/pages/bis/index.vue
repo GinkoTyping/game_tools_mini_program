@@ -984,7 +984,7 @@ onPageScroll(e => {
 
 //#region 附魔
 function toHotSpot() {
-  uni.pageScrollTo({ selector: '.bis' });
+  uni.pageScrollTo({ selector: '#enhancement' });
 }
 //#endregion
 </script>
