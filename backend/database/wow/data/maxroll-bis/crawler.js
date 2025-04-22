@@ -78,14 +78,14 @@ function getRawBis(context) {
     })
     .get();
 
-  return ['.mxt-left', '.mxt-right', '.mxt-middle']
+  const items = ['.mxt-left', '.mxt-right', '.mxt-middle']
     .reduce((pre, slotsClass) => {
       const slots = container
         .find(slotsClass)
         .children()
+        .filter((idx, slotEle) => $(slotEle).find('.mxt-name')?.text()?.trim())
         .map((idx, slotEle) => {
           return {
-            id: bisItems[idx].id,
             name: $(slotEle).find('.mxt-name')?.text()?.trim(),
             enhancements: $(slotEle)
               .find('.mxt-bonuses')
@@ -101,6 +101,10 @@ function getRawBis(context) {
       return pre;
     }, [])
     .filter((item) => item.name);
+  return items.map((item, index) => ({
+    ...item,
+    id: bisItems[index].id,
+  }));
 }
 function mapEnhancementId(icon, classSpec, roleClass) {
   switch (icon) {
