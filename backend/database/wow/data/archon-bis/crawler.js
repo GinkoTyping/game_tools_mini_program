@@ -103,7 +103,7 @@ async function getBisOverview(classSpec, roleClass, useCache) {
     .children()
     .each((idx, slotWrap) => {
       const slotLabel = $(slotWrap)
-        .find('tbody thead th')
+        .find('table thead th')
         .first()
         ?.text()
         ?.trim();
