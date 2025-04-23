@@ -319,7 +319,7 @@
       </view>
       <view
         class="advice-item"
-        v-for="(item, index) in currentData.wowheadBis
+        v-for="(item, index) in currentData?.wowheadBis
           ?.puzzlingCartelChipAdvice"
         :key="item.id"
         @click="() => switchDetail(true, item)"

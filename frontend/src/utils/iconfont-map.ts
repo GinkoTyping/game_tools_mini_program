@@ -6,7 +6,11 @@ export function mapIconfont(key: string, value: string) {
           icon: 'icon-Heart',
           color: '#f48cba',
         };
-
+      case 'MDI观光':
+        return {
+          icon: 'icon-Crown-',
+          color: '#f48cba',
+        };
       default:
         break;
     }

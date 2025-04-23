@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "6807837",
+      "name": "Crown-1",
+      "font_class": "Crown-",
+      "unicode": "ecc9",
+      "unicode_decimal": 60617
+    },
+    {
       "icon_id": "90853",
       "name": "rank_fill",
       "font_class": "rankfill",

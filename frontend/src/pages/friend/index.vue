@@ -99,6 +99,11 @@ const featureFilters = ref([
     value: 'public',
   },
   {
+    title: 'MDI观光',
+    value: 'mdi',
+    highlight: true,
+  },
+  {
     title: '大秘境',
     value: 'mythic',
   },
@@ -117,7 +122,12 @@ function switchFeature(value: string) {
 }
 
 const filterParams = reactive<IFilterParams>({
-  filter: { wow_game_style: [], wow_jobs: [], wow_privacy_need_confirm: [] },
+  filter: {
+    wow_game_style: [],
+    wow_jobs: [],
+    wow_privacy_need_confirm: [],
+    common_status: [],
+  },
   lastId: -1,
   lastUpdatedAt: '',
   pageSize: 10,
@@ -128,11 +138,12 @@ async function setGameStyleFilter() {
     wow_game_style: [],
     wow_jobs: [],
     wow_privacy_need_confirm: [],
+    common_status: [],
   };
   filterParams.lastId = -1;
   filterParams.lastUpdatedAt = '';
 
-  let output;
+  let output: any = [];
   switch (currentFeature.value) {
     case 'all':
       output = [];
@@ -144,6 +155,10 @@ async function setGameStyleFilter() {
       break;
     case 'public':
       filterParams.filter.wow_privacy_need_confirm = [0];
+      break;
+    case 'mdi':
+      filterParams.filter.common_status = ['MDI观光'];
+      break;
     default:
       output = [];
       break;

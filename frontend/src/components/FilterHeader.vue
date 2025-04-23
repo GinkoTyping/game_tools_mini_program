@@ -7,6 +7,7 @@
         class="feature-label"
         :class="[
           currentFeature === feature.value ? ' feature-label--active' : '',
+          feature.highlight ? 'feature-label--highlight' : '',
         ]"
         @click="() => switchFeature(feature.value)"
         >{{ feature.title }}</text
@@ -29,7 +30,7 @@ const currentFeature = defineModel('current', {
   type: String,
 });
 const featureFilters = defineModel('filters', {
-  type: Array<{ title: string; value: string }>,
+  type: Array<{ title: string; value: string; highlight?: boolean }>,
   default: () => [],
 });
 
@@ -67,6 +68,20 @@ $header-bg-color: #1d1d1f;
     .feature-label--active {
       color: #fff;
       font-size: 26rpx;
+    }
+    
+    .feature-label--highlight {
+      position: relative;
+      &::after {
+        content: '';
+        width: 10rpx;
+        height: 10rpx;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+        right: -8rpx;
+        top: -2rpx;
+      }
     }
   }
 

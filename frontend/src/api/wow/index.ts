@@ -869,6 +869,7 @@ export interface IFilterParams {
     wow_game_style: string[];
     wow_jobs: string[];
     wow_privacy_need_confirm: number[];
+    common_status: any[];
   };
   lastId: number;
   lastUpdatedAt: string;

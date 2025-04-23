@@ -404,6 +404,11 @@ const getTagSetting = computed(() => {
       setting.type = 'spec';
       setting.theme = 'light';
     }
+    if (key === 'status' && value === 'MDI观光') {
+      setting.wowClass = 'paladin';
+      setting.type = 'spec';
+      setting.theme = 'light';
+    }
     if (key === 'personality' && /^[\u4E00-\u9FA5]+$/.test(value)) {
       setting.theme = 'light';
       setting.color = color;

@@ -65,6 +65,8 @@ export default {
     max: 3,
     value: 'common_status',
     options: [
+      'MDI观光',
+
       // 进阶挑战
       '大秘境冲层',
       '练小号',
