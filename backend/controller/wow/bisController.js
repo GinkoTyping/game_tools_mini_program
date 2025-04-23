@@ -214,11 +214,14 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
       ...bisItemsByType,
       title: bisItemsByType.title,
       items: data.map((item, index) => {
-        const enhancements = combineEnhancement(
-          item.value,
-          maxrollEnhancements,
-          archonEnhancements
-        );
+        let enhancements = [];
+        if (bisItemsByType.title === '汇总') {
+          enhancements = combineEnhancement(
+            item.value,
+            maxrollEnhancements,
+            archonEnhancements
+          );
+        }
 
         return {
           ...item.value,
