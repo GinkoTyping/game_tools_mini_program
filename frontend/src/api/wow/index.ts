@@ -50,6 +50,10 @@ interface IBisDataDTO {
     slot: string;
     items: { id: number; name_zh: string; image: string }[];
   }[];
+  wowhead_bis: {
+    updated_at: string;
+    puzzlingCartelChipAdvice: IBisItem[];
+  };
 }
 
 function mapRatings(rating: number) {
@@ -163,6 +167,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
     version: data.version,
     talents: data.talents,
     enhancement: data.enhancement,
+    wowheadBis: data.wowhead_bis,
   };
 }
 

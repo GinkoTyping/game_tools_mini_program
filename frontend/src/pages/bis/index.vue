@@ -302,47 +302,32 @@
     </uni-card>
   </uni-section>
 
-  <uni-section id="enhancement" :class="[classKey]" title="附魔推荐">
+  <uni-section
+    id="puzzling-cartel-chip-advice"
+    :class="[classKey]"
+    title="团本兑换代币"
+    :sub-title="`更新于: ${currentData?.wowheadBis?.updatedAt}`"
+  >
     <uni-card class="section-card">
-      <uni-table ref="table" stripe emptyText="暂无更多数据">
-        <uni-tr>
-          <uni-th align="left">部位</uni-th>
-          <uni-th align="left">装备强化</uni-th>
-        </uni-tr>
-        <uni-tr v-for="(item, index) in currentData?.enhancement" :key="index">
-          <uni-td>{{ item.slot }}</uni-td>
-          <uni-td>
-            <view class="items">
-              <view
-                class="slot-container"
-                v-for="child in item.items"
-                :key="child?.id"
-              >
-                <view class="slot-container__item">
-                  <img
-                    :src="currentImageSrc(child)"
-                    alt=""
-                    srcset=""
-                    style="width: 14px; height: 14px"
-                  />
-                  <view
-                    class="ellipsis"
-                    style="flex: 1; width: auto !important"
-                    :class="[child?.wrap ? 'disale-ellipsis' : '']"
-                    @click="
-                      () => {
-                        switchDetail(true, child);
-                        switchWrap(child);
-                      }
-                    "
-                    >{{ child?.name_zh }}</view
-                  >
-                </view>
-              </view>
-            </view>
-          </uni-td>
-        </uni-tr>
-      </uni-table>
+      <view class="advice-text">
+        <image
+          src="https://ginkolearn.cyou/api/wow/assets/blizz-media-image/inv_misc_curiouscoin.jpg"
+          mode="widthFix"
+        />
+        <view class="druid">令人费解的财阀凭证</view>
+        <view>兑换优先级推荐</view>
+      </view>
+      <view
+        class="advice-item"
+        v-for="(item, index) in currentData.wowheadBis
+          ?.puzzlingCartelChipAdvice"
+        :key="item.id"
+        @click="() => switchDetail(true, item)"
+      >
+        <view class="advice-item__index">{{ index + 1 }}.</view>
+        <image :src="currentImageSrc(item)" mode="widthFix" />
+        <view class="advice-item__name">{{ item.name }}</view>
+      </view>
     </uni-card>
   </uni-section>
 
@@ -995,7 +980,7 @@ onPageScroll(e => {
 
 //#region 附魔
 function toHotSpot() {
-  uni.pageScrollTo({ selector: '#enhancement' });
+  uni.pageScrollTo({ selector: '#puzzling-cartel-chip-advice' });
 }
 //#endregion
 </script>
@@ -1659,6 +1644,34 @@ $light-border: rgb(68, 68, 68);
     height: 0.4rem;
     border-radius: 50%;
     background: #fff;
+  }
+}
+
+#puzzling-cartel-chip-advice {
+  .advice-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+    image {
+      width: 36rpx;
+    }
+  }
+  .advice-item {
+    display: flex;
+    font-size: 30rpx;
+    gap: 12rpx;
+    margin-bottom: 12rpx;
+    .advice-item__index {
+      color: $color-legend;
+    }
+    image {
+      width: 36rpx;
+    }
+    .advice-item__name {
+      color: $color-mythic;
+    }
   }
 }
 </style>
