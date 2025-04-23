@@ -107,6 +107,8 @@ async function getBisOverview(classSpec, roleClass, useCache) {
         .first()
         ?.text()
         ?.trim();
+      let collectCount = 0;
+      let COLLECT_MAX = 2;
       $(slotWrap)
         .find('tbody tr')
         .each((trIdx, trEle) => {
@@ -122,8 +124,13 @@ async function getBisOverview(classSpec, roleClass, useCache) {
                 .trim(),
             });
 
-            // 如果不是 戒指 或者 饰品，只收集使用度最高的装备
-            return ['Rings', 'Trinket'].includes(slotLabel);
+            collectCount++;
+            return (
+              // 部分bis数据 收录了2个以上的饰品，只收集前2
+              collectCount < COLLECT_MAX &&
+              // 如果不是 戒指 或者 饰品，只收集使用度最高的装备
+              ['Rings', 'Trinket'].includes(slotLabel)
+            );
           }
         });
     });
