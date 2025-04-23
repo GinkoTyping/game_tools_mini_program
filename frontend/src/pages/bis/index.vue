@@ -209,8 +209,8 @@
 
       <uni-table ref="table" stripe emptyText="暂无更多数据">
         <uni-tr>
-          <uni-th width="45" align="left">部位</uni-th>
-          <uni-th width="160" align="left">装备</uni-th>
+          <uni-th width="42" align="left">部位</uni-th>
+          <uni-th align="left">装备</uni-th>
           <uni-th width="100" align="left">来源</uni-th>
         </uni-tr>
         <uni-tr v-for="(item, index) in tableData" :key="index">
@@ -225,7 +225,7 @@
                   style="width: 14px; height: 14px"
                 />
                 <view
-                  class="ellipsis bis-item"
+                  class="ellipsis"
                   style="flex: 1"
                   :class="[item.wrap ? 'disale-ellipsis' : '']"
                   @click="
@@ -248,12 +248,13 @@
                     style="width: 14px; height: 14px"
                   />
                   <view
-                    class="ellipsis bis-item"
+                    class="ellipsis"
                     style="flex: 1"
                     :class="[item.wrap ? 'disale-ellipsis' : '']"
                     @click="
                       () => {
                         switchDetail(true, enhancement, 'item');
+                        switchWrap(item);
                       }
                     "
                     >{{ enhancement.name }}</view
@@ -1004,6 +1005,7 @@ function toHotSpot() {
   margin-bottom: 6px;
   padding: 6px;
   padding-bottom: 0;
+
   .label {
     color: #fff;
     font-size: 16px;
@@ -1011,51 +1013,62 @@ function toHotSpot() {
     display: flex;
     justify-content: space-between;
   }
+
   .sub-label {
     color: rgb(149, 152, 155);
     font-size: 14px;
   }
+
   .bars {
     margin: 4px 0;
     display: flex;
     justify-content: space-between;
+
     .bar {
       width: 18%;
       height: 12px;
       border-radius: 6px;
       background-color: rgb(43, 44, 44);
     }
+
     .green-bar {
       background-color: rgb(25, 159, 47);
     }
+
     .orange-bar {
       background-color: rgb(240, 154, 24);
     }
+
     .red-bar {
       background-color: #bd2625;
     }
   }
 }
+
 .stats {
   padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   .stats__item {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     text:last-child {
       line-height: 14px;
       font-size: 12px;
       font-weight: normal;
     }
   }
+
   text {
     font-size: 16px;
     color: #fff;
     font-weight: bolder;
   }
+
   image {
     width: 20px;
     height: 20px;
@@ -1063,16 +1076,20 @@ function toHotSpot() {
 }
 
 $light-border: rgb(68, 68, 68);
+
 ::v-deep .uni-section {
   .uni-section-header {
     background-color: $uni-bg-color-grey !important;
     color: inherit !important;
+
     .uni-section-header__content {
       color: inherit !important;
+
       .uni-section-header__content-sub {
         color: inherit !important;
         text-align: center;
       }
+
       .uni-section__content-title {
         color: inherit !important;
         text-align: center;
@@ -1080,6 +1097,7 @@ $light-border: rgb(68, 68, 68);
         font-size: 18px !important;
         display: inline-block;
         box-sizing: border-box;
+
         &::before,
         &::after {
           content: '';
@@ -1089,10 +1107,12 @@ $light-border: rgb(68, 68, 68);
           height: 2px;
           background-color: rgb(68, 68, 68);
         }
+
         &::before {
           left: 0;
           top: 50%;
         }
+
         &::after {
           right: 0;
           top: 50%;
@@ -1100,6 +1120,7 @@ $light-border: rgb(68, 68, 68);
       }
     }
   }
+
   .uni-section-content {
     background-color: $uni-bg-color-grey;
   }
@@ -1120,6 +1141,7 @@ $light-border: rgb(68, 68, 68);
   display: flex;
   justify-content: space-between;
 }
+
 ::v-deep .preview-image {
   width: 10vw;
   height: 10vw;
@@ -1129,51 +1151,64 @@ $light-border: rgb(68, 68, 68);
   width: 70vw !important;
   border: 1px solid #ffffff !important;
   margin-bottom: 10px !important;
+
   text {
     color: #fff;
   }
+
   .uni-card__content {
     display: flex;
     flex-direction: column;
   }
+
   .spell-name {
     font-size: 16px;
   }
+
   .spell-prop {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
     text {
       width: 45%;
+
       &:nth-child(3),
       &:nth-child(5) {
         text-align: right;
       }
     }
   }
+
   .name {
     color: $color-mythic;
   }
+
   .qulity,
   .bonus-stat,
   .spell .modified-crafting {
     color: $color-uncommon;
   }
+
   .item-level,
   .description {
     color: $uni-text-color-inverse;
+
     text {
       color: $uni-text-color-inverse;
       font-weight: bold;
     }
   }
+
   .price {
     display: flex;
+
     view {
       display: flex;
       align-items: center;
       margin-right: 4px;
     }
+
     image {
       width: 16px;
       height: 16px;
@@ -1185,18 +1220,24 @@ $light-border: rgb(68, 68, 68);
 ::v-deep .uni-table {
   background-color: rgb(40, 40, 40) !important;
   border: 2px $light-border solid;
+  table-layout: fixed;
+  width: 100%;
+
   .uni-table-th,
   .uni-table-td {
     padding-left: 4px !important;
     padding-right: 4px !important;
     border-bottom: 1px $uni-bg-color solid !important;
+
     .slot-container {
       display: flex;
       flex-direction: column;
+
       image {
         margin-right: 4px;
       }
     }
+
     .slot-container__item,
     .slot-container__enhancement {
       display: flex;
@@ -1208,39 +1249,43 @@ $light-border: rgb(68, 68, 68);
     font-weight: 800;
     color: #ffffff;
   }
+
   .uni-table-td {
     font-weight: 400;
+
     &:first-child {
       color: rgb(221, 221, 221);
     }
+
     &:nth-child(2) {
       color: rgb(163, 53, 238);
-      view.bis-item {
-        width: 160px !important;
-      }
     }
+
     &:nth-child(3) {
       color: rgb(221, 221, 221);
-      view {
-        width: 100px !important;
-      }
+      width: 100px !important;
     }
   }
+
   .is-loot {
     color: $uni-text-color-inverse !important;
   }
 }
+
 ::v-deep .uni-collapse {
   background-color: rgb(40, 40, 40) !important;
   border-radius: 10px;
+
   .uni-collapse-item__title {
     border-bottom-color: $uni-bg-color !important;
   }
+
   .uni-collapse-item__title-box {
     border-radius: 10px;
     background-color: rgb(40, 40, 40) !important;
     color: $uni-color-primary;
     font-weight: bold;
+
     .uni-collapse-item__title-text {
       font-size: 16px !important;
     }
@@ -1250,9 +1295,11 @@ $light-border: rgb(68, 68, 68);
     background-color: rgb(40, 40, 40) !important;
     color: #fff;
     border-bottom-color: $uni-bg-color-grey-light !important;
+
     .list-style,
     .list-style-empty {
       position: relative;
+
       &::before {
         content: '';
         position: absolute;
@@ -1264,24 +1311,29 @@ $light-border: rgb(68, 68, 68);
         border: 1px solid #fff;
       }
     }
+
     .list-style {
       &::before {
         background-color: #fff;
       }
     }
+
     .ul .li {
       margin-left: 16px;
       color: #fff;
       font-weight: normal;
       position: relative;
     }
+
     & > .ul {
       padding: 0 12px;
       font-size: 14px;
       font-weight: bold;
       color: $uni-color-primary;
+
       > .li > .ul {
         margin-left: 16px;
+
         & > .li > .ul {
           margin-left: 16px;
         }
@@ -1289,9 +1341,11 @@ $light-border: rgb(68, 68, 68);
     }
   }
 }
+
 .disale-ellipsis {
   white-space: normal !important;
 }
+
 .ellipsis {
   white-space: nowrap;
   overflow: hidden;
@@ -1301,6 +1355,7 @@ $light-border: rgb(68, 68, 68);
 .menu-container {
   display: flex;
   justify-content: space-between;
+
   .to-enhancement {
     display: flex;
     align-items: center;
@@ -1309,6 +1364,7 @@ $light-border: rgb(68, 68, 68);
     font-weight: bold;
     margin-right: 6px;
     gap: 6px;
+
     image {
       width: 20px;
       height: 20px;
@@ -1320,8 +1376,10 @@ $light-border: rgb(68, 68, 68);
 .talent .menu,
 .bis .menu {
   margin-bottom: 10px;
+
   .menu_active {
     color: #ffffff;
+
     &::before {
       content: '';
       width: calc(100% - 10px);
@@ -1333,15 +1391,18 @@ $light-border: rgb(68, 68, 68);
       transform: translateX(-50%);
     }
   }
+
   text {
     padding: 0 10px;
     font-weight: 800;
     line-height: 30px;
     height: 30px;
     position: relative;
+
     &:first-child {
       // padding-left: 6px;
     }
+
     &:not(:last-child)::after {
       content: '';
       position: absolute;
@@ -1354,15 +1415,18 @@ $light-border: rgb(68, 68, 68);
     }
   }
 }
+
 .talent-menu {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+
   .menu_active {
     &::before {
       bottom: 0 !important;
     }
   }
+
   text {
     max-width: 50%;
     flex: 1;
@@ -1374,11 +1438,14 @@ $light-border: rgb(68, 68, 68);
 ::v-deep .dungeon .uni-card .uni-card__content {
   padding-bottom: 2rem;
 }
+
 .dungeon .menu {
   display: flex;
   flex-wrap: wrap;
+
   .menu_active {
     color: #ffffff;
+
     // border-bottom: 4px red solid;
     &::before {
       content: '';
@@ -1391,6 +1458,7 @@ $light-border: rgb(68, 68, 68);
       transform: translateX(-50%);
     }
   }
+
   text {
     width: 19%;
     margin-bottom: 10px;
@@ -1399,6 +1467,7 @@ $light-border: rgb(68, 68, 68);
     line-height: 30px;
     height: 30px;
     position: relative;
+
     &:not(:last-child):not(:nth-child(4))::after {
       content: '';
       position: absolute;
@@ -1415,6 +1484,7 @@ $light-border: rgb(68, 68, 68);
 .tier {
   margin-bottom: 8px;
   display: flex;
+
   .tier-label {
     width: 90px;
     min-height: 80px;
@@ -1425,24 +1495,30 @@ $light-border: rgb(68, 68, 68);
     justify-content: center;
     align-items: center;
     color: #ffffff;
+
     &[data-label='0'] {
       background-color: $color-legend;
     }
+
     &[data-label='1'] {
       background-color: $color-mythic;
     }
+
     &[data-label='2'] {
       background-color: $color-rare;
     }
+
     &[data-label='3'] {
       background-color: $color-uncommon;
     }
   }
+
   .trink-container {
     margin-left: 10px;
     flex: 1;
     display: flex;
     flex-wrap: wrap;
+
     image {
       height: 40px;
       width: 40px;
@@ -1457,28 +1533,34 @@ $light-border: rgb(68, 68, 68);
   transform: scale(0.727) !important;
   top: -4px;
 }
+
 .fab-active {
   ::v-deep .uni-fab {
     top: -24px !important;
   }
 }
+
 ::v-deep .uni-fab__circle {
   transform: scale(0.75) !important;
   top: -4px;
   box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%) !important;
+
   image {
     width: 24px !important;
     height: 24px !important;
   }
+
   text {
     font-size: 14px !important;
     line-height: 14px !important;
   }
+
   .uni-icons {
     font-size: 24px !important;
     line-height: 24px !important;
   }
 }
+
 .fab-disabled {
   display: none;
 }
@@ -1487,10 +1569,13 @@ $light-border: rgb(68, 68, 68);
   text-align: center;
   margin-bottom: 2rem;
 }
+
 .talent-card {
   margin-top: 1rem;
-  width: 100%; /* 或者你想要的固定宽度 */
+  width: 100%;
+  /* 或者你想要的固定宽度 */
   box-sizing: border-box;
+
   view {
     color: inherit;
     font-size: medium;
@@ -1498,20 +1583,25 @@ $light-border: rgb(68, 68, 68);
     margin-bottom: 0.2rem;
   }
 }
+
 .talent-image {
-  width: 100%; /* 或者你想要的固定宽度 */
+  width: 100%;
+  /* 或者你想要的固定宽度 */
   object-fit: cover;
 }
+
 .talent-export {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0.8rem 0 0.2rem 0;
+
   .talent-export__title {
     font-size: 14px;
     font-weight: bold;
     margin-left: 15px;
   }
+
   text {
     margin-left: 0.4rem;
     color: $uni-color-primary;
@@ -1520,12 +1610,15 @@ $light-border: rgb(68, 68, 68);
 
 ::v-deep .uni-list {
   background-color: transparent !important;
+
   .uni-list--border-top,
   .uni-list--border-bottom {
     height: 0 !important;
   }
+
   .uni-list-item {
     background-color: transparent !important;
+
     .uni-list-item__content {
       text {
         color: $uni-color-primary;
@@ -1533,6 +1626,7 @@ $light-border: rgb(68, 68, 68);
         font-size: 16px;
       }
     }
+
     .uni-list-item__extra {
       text {
         color: #bbb;
@@ -1541,6 +1635,7 @@ $light-border: rgb(68, 68, 68);
     }
   }
 }
+
 .ad-container {
   margin-top: 2rem;
 }
@@ -1554,6 +1649,7 @@ $light-border: rgb(68, 68, 68);
   margin-left: 1.6rem;
   margin-right: 1rem;
   position: relative;
+
   &::before {
     content: '';
     position: absolute;
