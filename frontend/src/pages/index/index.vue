@@ -101,6 +101,9 @@
       @click="() => navigator.toFrindIndex()"
     >
       <view class="narrow-card_info">
+        <view class="icon">
+          <view>MDI观光</view>
+        </view>
         <view class="icon icon-right-bottom">
           <text v-show="notViewedRelationCount" style="color: rgb(244, 123, 0)"
             >({{ notViewedRelationCount }}条未读)</text

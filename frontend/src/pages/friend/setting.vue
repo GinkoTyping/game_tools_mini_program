@@ -1,4 +1,12 @@
 <template>
+  <uni-notice-bar
+    single
+    show-icon
+    color="#2979FF"
+    background-color="#EAF2FF"
+    showClose
+    text="'其他(选填)' / '状态' 中可设置 'MDI观光'"
+  />
   <view class="header">
     <uni-segmented-control
       :current="currentTab"
