@@ -1,0 +1,448 @@
+{
+  "death-knight": [
+    {
+      "spec": "blood",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/10",
+      "advice": [
+        231265,
+        232526,
+        230198
+      ]
+    },
+    {
+      "spec": "frost",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/12",
+      "advice": [
+        231265,
+        230027,
+        230198
+      ]
+    },
+    {
+      "spec": "unholy",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/17",
+      "advice": [
+        230027,
+        232526,
+        231265,
+        230198
+      ]
+    }
+  ],
+  "demon-hunter": [
+    {
+      "spec": "havoc",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/17",
+      "advice": [
+        231265,
+        232804,
+        230027,
+        230198
+      ]
+    },
+    {
+      "spec": "vengeance",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/26",
+      "advice": [
+        231265,
+        232804
+      ]
+    }
+  ],
+  "druid": [
+    {
+      "spec": "balance",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/18",
+      "advice": [
+        232805,
+        231265,
+        230027,
+        230198
+      ]
+    },
+    {
+      "spec": "feral",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/08",
+      "advice": [
+        232526,
+        231265,
+        230198
+      ]
+    },
+    {
+      "spec": "guardian",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/08",
+      "advice": [
+        232526,
+        230198,
+        230194,
+        228843
+      ]
+    },
+    {
+      "spec": "restoration",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/21",
+      "advice": [
+        231265,
+        232805,
+        230198
+      ]
+    }
+  ],
+  "mage": [
+    {
+      "spec": "arcane",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/16",
+      "advice": [
+        230192,
+        231265,
+        230198,
+        168973
+      ]
+    },
+    {
+      "spec": "fire",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/26",
+      "advice": [
+        230027,
+        230198,
+        230192,
+        231265,
+        228843,
+        228896
+      ]
+    },
+    {
+      "spec": "frost",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/19",
+      "advice": [
+        230198,
+        230192,
+        230193,
+        228844,
+        231265
+      ]
+    }
+  ],
+  "monk": [
+    {
+      "spec": "brewmaster",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/19",
+      "advice": [
+        232804,
+        228899,
+        231265,
+        230198,
+        228844
+      ]
+    },
+    {
+      "spec": "mistweaver",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/31",
+      "advice": [
+        230186,
+        230198,
+        231268
+      ]
+    },
+    {
+      "spec": "windwalker",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/19",
+      "advice": [
+        230027,
+        230198,
+        231265
+      ]
+    }
+  ],
+  "paladin": [
+    {
+      "spec": "holy",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/14",
+      "advice": [
+        230198,
+        231265,
+        228901,
+        228889
+      ]
+    },
+    {
+      "spec": "protection",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/18",
+      "advice": [
+        231265,
+        230027,
+        228889,
+        230198,
+        230029
+      ]
+    },
+    {
+      "spec": "retribution",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/18",
+      "advice": [
+        231265,
+        232526,
+        230198
+      ]
+    }
+  ],
+  "rogue": [
+    {
+      "spec": "assassination",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/13",
+      "advice": [
+        231265,
+        230027,
+        230198
+      ]
+    },
+    {
+      "spec": "outlaw",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/29",
+      "advice": [
+        228899,
+        232804,
+        230198,
+        230199
+      ]
+    },
+    {
+      "spec": "subtlety",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/18",
+      "advice": [
+        230027,
+        231265,
+        230198
+      ]
+    }
+  ],
+  "shaman": [
+    {
+      "spec": "elemental",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/18",
+      "advice": [
+        230198,
+        231265,
+        232805,
+        230027
+      ]
+    },
+    {
+      "spec": "enhancement",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/18",
+      "advice": [
+        230198,
+        230027,
+        231265,
+        228899
+      ]
+    },
+    {
+      "spec": "restoration",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/20",
+      "advice": [
+        230186,
+        230198,
+        230192,
+        228889,
+        228843
+      ]
+    }
+  ],
+  "warlock": [
+    {
+      "spec": "affliction",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/18",
+      "advice": [
+        230027,
+        230192,
+        231265,
+        230198
+      ]
+    },
+    {
+      "spec": "demonology",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/15",
+      "advice": [
+        230027,
+        230192,
+        231265,
+        228896,
+        230198
+      ]
+    },
+    {
+      "spec": "destruction",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/18",
+      "advice": [
+        230198,
+        230192,
+        231265
+      ]
+    }
+  ],
+  "warrior": [
+    {
+      "spec": "arms",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/19",
+      "advice": [
+        232526,
+        231265,
+        230198
+      ]
+    },
+    {
+      "spec": "fury",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/19",
+      "advice": [
+        232526,
+        231265,
+        230198,
+        228891
+      ]
+    },
+    {
+      "spec": "protection",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/18",
+      "advice": [
+        230198,
+        228889,
+        231265,
+        230027
+      ]
+    }
+  ],
+  "evoker": [
+    {
+      "spec": "devastation",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/14",
+      "advice": [
+        232805,
+        230027,
+        230192,
+        231265,
+        230198
+      ]
+    },
+    {
+      "spec": "preservation",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/22",
+      "advice": [
+        231265,
+        230027,
+        230198
+      ]
+    },
+    {
+      "spec": "augmentation",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/18",
+      "advice": [
+        231265,
+        232805,
+        230198,
+        230192,
+        228844
+      ]
+    }
+  ],
+  "hunter": [
+    {
+      "spec": "beast-mastery",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/23",
+      "advice": [
+        230198,
+        228893,
+        231265,
+        228844
+      ]
+    },
+    {
+      "spec": "marksmanship",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/18",
+      "advice": [
+        230027,
+        231265,
+        228893
+      ]
+    },
+    {
+      "spec": "survival",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/22",
+      "advice": [
+        231265,
+        230198,
+        228844,
+        230027
+      ]
+    }
+  ],
+  "priest": [
+    {
+      "spec": "shadow",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/12",
+      "advice": [
+        230198,
+        231265,
+        228901
+      ]
+    },
+    {
+      "spec": "discipline",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/11",
+      "advice": [
+        230192,
+        230027,
+        231265
+      ]
+    },
+    {
+      "spec": "holy",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/16",
+      "advice": [
+        230198,
+        230186,
+        231265
+      ]
+    }
+  ]
+}

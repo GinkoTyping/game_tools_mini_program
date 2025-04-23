@@ -27,6 +27,7 @@ async function updateBisByClassAndSpec(data) {
     detailedStats,
     enhancement,
     maxrollBis,
+    wowheadBis,
   } = data;
   return db.run(
     `
@@ -44,7 +45,8 @@ async function updateBisByClassAndSpec(data) {
     talents = COALESCE(?, talents),
     detailed_stats_priority = COALESCE(?, detailed_stats_priority),
     enhancement = COALESCE(?, enhancement),
-    maxroll_bis = COALESCE(?, maxroll_bis)
+    maxroll_bis = COALESCE(?, maxroll_bis),
+    wowhead_bis = COALESCE(?, wowhead_bis)
   WHERE
     role_class = ? AND class_spec = ?`,
     [
@@ -61,6 +63,7 @@ async function updateBisByClassAndSpec(data) {
       JSON.stringify(detailedStats),
       JSON.stringify(enhancement),
       JSON.stringify(maxrollBis),
+      JSON.stringify(wowheadBis),
       roleClass,
       classSpec,
     ]
