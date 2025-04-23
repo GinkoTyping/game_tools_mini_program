@@ -18,7 +18,7 @@ const flatList = Object.entries(puzzlingCartelChipData).reduce(
         roleClass: roleClass,
         classSpec: item.spec,
         updatedAt: item.updatedAt,
-        advice: item.advice,
+        puzzlingCartelChipAdvice: item.advice,
       });
     });
 
@@ -35,7 +35,7 @@ async function updateItem(item) {
     classSpec: item.classSpec,
     wowheadBis: {
       updatedAt: item.updatedAt,
-      advice: item.advice,
+      puzzlingCartelChipAdvice: item.puzzlingCartelChipAdvice,
     },
   });
 }

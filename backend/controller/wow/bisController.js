@@ -233,6 +233,29 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
   const bisItemResult = await Promise.allSettled(promises);
   return bisItemResult.map((item) => item.value);
 }
+async function mapSimpleItems(items) {
+  const data = await Promise.allSettled(
+    items.map(async (item) => {
+      const itemData = await itemMapper.getItemById(item);
+      return {
+        ...itemData,
+        preview: undefined,
+        preview_en: undefined,
+      };
+    })
+  );
+  return data.map((item) => item.value);
+}
+async function mapWowheadBis(wowheadBis) {
+  const puzzlingCartelChipAdvice = await mapSimpleItems(
+    wowheadBis.puzzlingCartelChipAdvice
+  );
+  return {
+    ...wowheadBis,
+    puzzlingCartelChipAdvice,
+  };
+}
+
 export async function getBisBySpec(req, res) {
   const roleClass = req.params.roleClass;
   const classSpec = req.params.classSpec;
@@ -259,6 +282,8 @@ export async function getBisBySpec(req, res) {
     'items'
   );
 
+  const wowheadBis = await mapWowheadBis(JSON.parse(bisData.wowhead_bis));
+
   // 避免本地调测时，引起本地的数据和服务器不一致
   if (!isLocal(req)) {
     // 访问次数 +1
@@ -280,6 +305,7 @@ export async function getBisBySpec(req, res) {
     talents: JSON.parse(bisData.talents),
     maxroll_bis: undefined,
     popularity_items: undefined,
+    wowhead_bis: wowheadBis,
   });
 }
 
