@@ -104,28 +104,38 @@ async function mapBisTrinket(dataList, propKey) {
   );
   return allData.map((item) => item.value);
 }
-async function mapEnhancements(enhancements, needSlot) {
+async function mapEnhancements(enhancements, needDetail) {
   async function mapEnhancementItem(item) {
     const slotObj = {};
-    if (needSlot) {
-      const { slot } = await itemMapper.getItemById(item.id);
+    if (needDetail) {
+      const { slot, name, source, image } = await itemMapper.getItemById(
+        item.id
+      );
+      slotObj.name = name;
       slotObj.slot = slot;
+      slotObj.source = JSON.parse(source);
+      slotObj.image = image;
     }
 
-    const items = await Promise.allSettled(
-      item.enhancements.map((id) => itemMapper.getItemById(id))
-    );
+    const items = (
+      await Promise.allSettled(
+        item.enhancements.map((id) => itemMapper.getItemById(id))
+      )
+    )?.map((enhancement) => ({
+      ...enhancement.value,
+
+      // TODO: 适配目前前端的字段
+      name_zh: enhancement.value?.name,
+
+      item_class: JSON.parse(enhancement.value?.preview)?.item_class?.name,
+      preview: undefined,
+      preview_en: undefined,
+    }));
     return {
       ...item,
       ...slotObj,
-      items: items.map((enhancement) => ({
-        ...enhancement.value,
-
-        // TODO: 适配目前前端的字段
-        name_zh: enhancement.value?.name,
-
-        item_class: JSON.parse(enhancement.value?.preview)?.item_class?.name,
-      })),
+      items,
+      enhancements: items,
     };
   }
   const results = await Promise.allSettled(
@@ -271,11 +281,21 @@ export async function getBisBySpec(req, res) {
   const maxrollEnhancements = await mapEnhancements(
     JSON.parse(bisData.maxroll_bis).items
   );
-  const bis_items = await mapBisItems(
+  let bis_items = await mapBisItems(
     JSON.parse(bisData.bis_items),
     maxrollEnhancements,
     archonEnhancements
   );
+
+  const popularity_items = await mapEnhancements(
+    JSON.parse(bisData.popularity_items),
+    true
+  );
+  // 团本获取的BIS目前很鸡肋
+  bis_items = bis_items.filter((item) => item.title !== '团本获取');
+  // 展示archon上按热门度的配装
+  bis_items.splice(1, 0, { title: '按热门度', items: popularity_items });
+
   const bis_trinkets = await mapBisTrinket(
     JSON.parse(bisData.bis_trinkets),
     'trinkets'
