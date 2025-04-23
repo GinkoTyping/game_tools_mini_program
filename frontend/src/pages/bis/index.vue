@@ -225,7 +225,7 @@
                   style="width: 14px; height: 14px"
                 />
                 <view
-                  class="ellipsis"
+                  class="ellipsis bis-item"
                   style="flex: 1"
                   :class="[item.wrap ? 'disale-ellipsis' : '']"
                   @click="
@@ -248,7 +248,7 @@
                     style="width: 14px; height: 14px"
                   />
                   <view
-                    class="ellipsis"
+                    class="ellipsis bis-item"
                     style="flex: 1"
                     :class="[item.wrap ? 'disale-ellipsis' : '']"
                     @click="
