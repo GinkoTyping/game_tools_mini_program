@@ -260,5 +260,3 @@ export async function collectMaxrollBis(
   }
   return null;
 }
-
-collectMaxrollBis('havoc', 'demon-hunter', true, '');
