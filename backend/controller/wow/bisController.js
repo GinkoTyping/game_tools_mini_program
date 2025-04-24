@@ -141,9 +141,7 @@ async function mapEnhancements(enhancements, needDetail) {
   const results = await Promise.allSettled(
     enhancements.map((item) => mapEnhancementItem(item))
   );
-  return results
-    .map((result) => result.value)
-    .filter((item) => item.enhancements?.length);
+  return results.map((result) => result.value);
 }
 // maxroll bis获取宝石，archon popularity bis获取宝石以外的
 const CYRCES_CIRCLET_ID = 228411;
@@ -270,66 +268,70 @@ async function mapWowheadBis(wowheadBis) {
 }
 
 export async function getBisBySpec(req, res) {
-  const roleClass = req.params.roleClass;
-  const classSpec = req.params.classSpec;
+  try {
+    const roleClass = req.params.roleClass;
+    const classSpec = req.params.classSpec;
 
-  const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
-  const archonEnhancements = await mapEnhancements(
-    JSON.parse(bisData.popularity_items),
-    true
-  );
-  const maxrollEnhancements = await mapEnhancements(
-    JSON.parse(bisData.maxroll_bis).items
-  );
-  let bis_items = await mapBisItems(
-    JSON.parse(bisData.bis_items),
-    maxrollEnhancements,
-    archonEnhancements
-  );
+    const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
+    const archonEnhancements = await mapEnhancements(
+      JSON.parse(bisData.popularity_items),
+      true
+    );
+    const maxrollEnhancements = await mapEnhancements(
+      JSON.parse(bisData.maxroll_bis).items
+    );
+    let bis_items = await mapBisItems(
+      JSON.parse(bisData.bis_items),
+      maxrollEnhancements,
+      archonEnhancements
+    );
 
-  const popularity_items = await mapEnhancements(
-    JSON.parse(bisData.popularity_items),
-    true
-  );
-  // 团本获取的BIS目前很鸡肋
-  bis_items = bis_items.filter((item) => item.title !== '团本获取');
-  // 展示archon上按热门度的配装
-  bis_items.splice(1, 0, { title: '按热门度', items: popularity_items });
+    const popularity_items = await mapEnhancements(
+      JSON.parse(bisData.popularity_items),
+      true
+    );
+    // 团本获取的BIS目前很鸡肋
+    bis_items = bis_items.filter((item) => item.title !== '团本获取');
+    // 展示archon上按热门度的配装
+    bis_items.splice(1, 0, { title: '按热门度', items: popularity_items });
 
-  const bis_trinkets = await mapBisTrinket(
-    JSON.parse(bisData.bis_trinkets),
-    'trinkets'
-  );
-  const seperateEnhancement = await mapBisTrinket(
-    JSON.parse(bisData.enhancement),
-    'items'
-  );
+    const bis_trinkets = await mapBisTrinket(
+      JSON.parse(bisData.bis_trinkets),
+      'trinkets'
+    );
+    const seperateEnhancement = await mapBisTrinket(
+      JSON.parse(bisData.enhancement),
+      'items'
+    );
 
-  const wowheadBis = await mapWowheadBis(JSON.parse(bisData.wowhead_bis));
+    const wowheadBis = await mapWowheadBis(JSON.parse(bisData.wowhead_bis));
 
-  // 避免本地调测时，引起本地的数据和服务器不一致
-  if (!isLocal(req)) {
-    // 访问次数 +1
-    await specBisCountMapper.addSpecBisCountByClassAndSpec({
-      roleClass,
-      classSpec,
+    // 避免本地调测时，引起本地的数据和服务器不一致
+    if (!isLocal(req)) {
+      // 访问次数 +1
+      await specBisCountMapper.addSpecBisCountByClassAndSpec({
+        roleClass,
+        classSpec,
+      });
+    }
+
+    res.json({
+      ...bisData,
+      bis_items,
+      bis_trinkets,
+      enhancement: seperateEnhancement,
+      stats_priority: JSON.parse(bisData.stats_priority),
+      detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
+      archon_stats_priority: JSON.parse(bisData.archon_stats_priority),
+      ratings: JSON.parse(bisData.ratings),
+      talents: JSON.parse(bisData.talents),
+      maxroll_bis: undefined,
+      popularity_items: undefined,
+      wowhead_bis: wowheadBis,
     });
+  } catch (error) {
+    res.status(500).json({ error: error?.message });
   }
-
-  res.json({
-    ...bisData,
-    bis_items,
-    bis_trinkets,
-    enhancement: seperateEnhancement,
-    stats_priority: JSON.parse(bisData.stats_priority),
-    detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
-    archon_stats_priority: JSON.parse(bisData.archon_stats_priority),
-    ratings: JSON.parse(bisData.ratings),
-    talents: JSON.parse(bisData.talents),
-    maxroll_bis: undefined,
-    popularity_items: undefined,
-    wowhead_bis: wowheadBis,
-  });
 }
 
 export async function getTrendData() {
@@ -433,7 +435,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
     let totalCount = flatSpecs.length;
 
     const results = await Promise.allSettled(
-      flatSpecs.map((item) =>
+      flatSpecs.slice(0, 1).map((item) =>
         limiter.schedule(async () => {
           console.log(`获取${item.classSpec} ${item.roleClass}...`);
           const data = await collectBisOverview(
