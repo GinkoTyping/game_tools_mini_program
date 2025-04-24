@@ -244,6 +244,32 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
   const bisItemResult = await Promise.allSettled(promises);
   return bisItemResult.map((item) => item.value);
 }
+function sortBisItems(bisItems) {
+  return bisItems.map((tier) => {
+    const sortedItems = tier.items
+      .reduce(
+        (pre, cur) => {
+          const [commonItems, rings, trinkets, weapons] = pre;
+          if (cur.slot === '手指') {
+            rings.push(cur);
+          } else if (cur.slot === '饰品') {
+            trinkets.push(cur);
+          } else if (cur.slot.includes('部')) {
+            commonItems.push(cur);
+          } else {
+            weapons.push(cur);
+          }
+          return [commonItems, rings, trinkets, weapons];
+        },
+        [[], [], [], []]
+      )
+      .flat();
+    return {
+      ...tier,
+      items: sortedItems,
+    };
+  });
+}
 async function mapSimpleItems(items) {
   const data = await Promise.allSettled(
     items.map(async (item) => {
@@ -272,6 +298,7 @@ export async function getBisBySpec(req, res) {
     const roleClass = req.params.roleClass;
     const classSpec = req.params.classSpec;
 
+    // BIS 装备
     const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
     const archonEnhancements = await mapEnhancements(
       JSON.parse(bisData.popularity_items),
@@ -285,7 +312,6 @@ export async function getBisBySpec(req, res) {
       maxrollEnhancements,
       archonEnhancements
     );
-
     const popularity_items = await mapEnhancements(
       JSON.parse(bisData.popularity_items),
       true
@@ -294,6 +320,7 @@ export async function getBisBySpec(req, res) {
     bis_items = bis_items.filter((item) => item.title !== '团本获取');
     // 展示archon上按热门度的配装
     bis_items.splice(1, 0, { title: '按热门度', items: popularity_items });
+    bis_items = sortBisItems(bis_items);
 
     const bis_trinkets = await mapBisTrinket(
       JSON.parse(bisData.bis_trinkets),
