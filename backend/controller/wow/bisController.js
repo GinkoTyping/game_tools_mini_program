@@ -64,7 +64,7 @@ export async function getItemPreviewById(req, res) {
     try {
       const data = await queryBlizzItemById(req.params.id, req.query?.locale);
 
-      const insertResult = await addOrUpdatePreviewById(
+      const insertResult = await itemMapper.addOrUpdatePreviewById(
         req.params.id,
         data,
         req.query?.locale
@@ -453,7 +453,7 @@ export async function queryRegisterItem(req, res) {
   }
 }
 
-async function checkEnhancements(enhancements) {
+async function checkValidItems(enhancements) {
   if (enhancements?.length) {
     return Promise.allSettled(
       enhancements.map((item) =>
@@ -488,7 +488,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
           console.log(
             `更新BIS进度: ${doneCount}/${totalCount}, ${item.classSpec} ${item.roleClass}`
           );
-          const checkResults = await checkEnhancements(
+          const checkResults = await checkValidItems(
             data.popularityItems.reduce((pre, cur) => {
               cur.enhancements.forEach((enhancement) => {
                 if (enhancement && !pre.includes(enhancement)) {
@@ -503,6 +503,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
               return pre;
             }, [])
           );
+          await checkValidItems(data.popularTrinkets.map((item) => item.id));
           return bisMapper.updateOverviewBis(
             item.roleClass,
             item.classSpec,
