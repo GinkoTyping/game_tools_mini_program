@@ -94,11 +94,10 @@ async function updateOverviewBis(roleClass, classSpec, data) {
     return db.run(
       `
       UPDATE ${TABLE_NAME}
-      SET bis_items=?,archon_stats_priority=?,popularity_items=?,archon_bis=?,updated_at=?,collected_at=?
+      SET bis_items=?,popularity_items=?,archon_bis=?,updated_at=?,collected_at=?
       WHERE role_class=? AND class_spec=?`,
       [
         JSON.stringify(bisData),
-        JSON.stringify(data.stats),
         JSON.stringify(data.popularityItems),
         JSON.stringify({
           updatedAt: date,
