@@ -333,6 +333,19 @@ export async function getBisBySpec(req, res) {
 
     const wowheadBis = await mapWowheadBis(JSON.parse(bisData.wowhead_bis));
 
+    const archonBis = JSON.parse(bisData.archon_bis);
+    const popularMythicDungeonTrinkets = (
+      await Promise.allSettled(
+        archonBis.popularTrinkets.map(async (item) => {
+          const itemData = await itemMapper.getItemById(item.id, true);
+          return {
+            ...item,
+            ...itemData,
+          };
+        })
+      )
+    ).map((result) => result.value);
+
     // 避免本地调测时，引起本地的数据和服务器不一致
     if (!isLocal(req)) {
       // 访问次数 +1
@@ -349,12 +362,13 @@ export async function getBisBySpec(req, res) {
       enhancement: seperateEnhancement,
       stats_priority: JSON.parse(bisData.stats_priority),
       detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
-      archon_stats_priority: JSON.parse(bisData.archon_stats_priority),
+      archon_stats_priority: archonBis?.stats,
       ratings: JSON.parse(bisData.ratings),
       talents: JSON.parse(bisData.talents),
       maxroll_bis: undefined,
       popularity_items: undefined,
       wowhead_bis: wowheadBis,
+      popular_mythic_dungeon_trinkets: popularMythicDungeonTrinkets,
     });
   } catch (error) {
     res.status(500).json({ error: error?.message });

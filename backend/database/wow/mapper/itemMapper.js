@@ -14,13 +14,20 @@ async function insertItem(itemData) {
   );
 }
 
-async function getItemById(id) {
-  return db.get(
+async function getItemById(id, deletePreview) {
+  const item = await db.get(
     `
     SELECT * FROM wow_item WHERE id=?1
     `,
     [id]
   );
+  return deletePreview
+    ? {
+        ...item,
+        preview: undefined,
+        preview_en: undefined,
+      }
+    : item;
 }
 
 async function getItemByName(name, locale) {

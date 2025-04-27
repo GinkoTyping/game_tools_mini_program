@@ -99,6 +99,7 @@ async function getBisOverview(classSpec, roleClass, useCache) {
   });
 
   const overview = [];
+  const popularTrinkets = [];
   $('#gear-tables .builds-gear-tables-section__group')
     .children()
     .each((idx, slotWrap) => {
@@ -108,12 +109,22 @@ async function getBisOverview(classSpec, roleClass, useCache) {
         ?.text()
         ?.trim();
       let collectCount = 0;
-      let COLLECT_MAX = 2;
+      let RING_COLLECT_MAX = 2;
+      let TRINKET_COLLECT_MAX = 5;
       $(slotWrap)
         .find('tbody tr')
         .each((trIdx, trEle) => {
-          if ($(trEle).find('a[data-disable-wowhead-tooltip]')?.length) {
-            overview.push({
+          let isPush = false;
+          if (slotLabel === 'Trinket' && collectCount < TRINKET_COLLECT_MAX) {
+            isPush = true;
+          } else {
+            if ($(trEle).find('a[data-disable-wowhead-tooltip]')?.length) {
+              isPush = true;
+            }
+          }
+
+          if (isPush) {
+            const item = {
               id: getIdByUrl($(trEle).find('a').first().attr('href')),
               name: $(trEle)
                 .find('td')
@@ -122,16 +133,30 @@ async function getBisOverview(classSpec, roleClass, useCache) {
                 .last()
                 .text()
                 .trim(),
-            });
+              popularity: $(trEle)
+                .find('td')
+                .last()
+                .find('span')
+                .first()
+                .text()
+                .trim(),
+            };
+            if (slotLabel === 'Trinket') {
+              popularTrinkets.push(item);
+            } else {
+              overview.push(item);
+            }
 
             collectCount++;
             return (
-              // 部分bis数据 收录了2个以上的饰品，只收集前2
-              collectCount < COLLECT_MAX &&
-              // 如果不是 戒指 或者 饰品，只收集使用度最高的装备
-              ['Rings', 'Trinket'].includes(slotLabel)
+              // 戒指部位 收录了2个以上的戒指，只收集前2
+              (slotLabel === 'Rings' && collectCount < RING_COLLECT_MAX) ||
+              // 饰品部位 需要展示不同流行度的饰品，统计5个
+              (slotLabel === 'Trinket' && collectCount < TRINKET_COLLECT_MAX)
             );
           }
+
+          return true;
         });
     });
 
@@ -173,13 +198,14 @@ async function getBisOverview(classSpec, roleClass, useCache) {
 
   return {
     overview,
+    popularTrinkets,
     popularityItems,
   };
 }
 
 export async function collectBisOverview(classSpec, roleClass, useCache) {
   const stats = await getStatsOverview(classSpec, roleClass, useCache);
-  const { overview, popularityItems } = await getBisOverview(
+  const { overview, popularityItems, popularTrinkets } = await getBisOverview(
     classSpec,
     roleClass,
     useCache
@@ -191,7 +217,7 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
 
     // TODO 奶龙和奶德 没有BIS数据, 所以用热度数据代替
     overview: overview.length ? overview : popularityItems,
-
+    popularTrinkets,
     popularityItems,
     stats,
   };
