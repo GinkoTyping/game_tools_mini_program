@@ -462,7 +462,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
     let totalCount = flatSpecs.length;
 
     const results = await Promise.allSettled(
-      flatSpecs.slice(0, 1).map((item) =>
+      flatSpecs.map((item) =>
         limiter.schedule(async () => {
           console.log(`获取${item.classSpec} ${item.roleClass}...`);
           const data = await collectBisOverview(
