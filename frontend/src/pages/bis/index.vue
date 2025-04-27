@@ -278,25 +278,62 @@
       </uni-table>
     </uni-card>
   </uni-section>
-  <uni-section :class="[classKey]" title="饰品">
+  <uni-section class="trinkets" :class="[classKey]" title="饰品">
     <uni-card class="section-card">
-      <view class="tier" v-for="(tier, index) in currentData?.trinkets">
-        <view class="tier-label" :data-label="index">
-          <text>{{ tier.label }}</text>
-        </view>
-        <view class="trink-container">
-          <view
-            class="trink"
-            v-for="trinket in tier.trinkets"
-            :key="trinket.image"
-          >
-            <img
-              @click="() => switchDetail(true, trinket)"
-              :src="currentImageSrc(trinket)"
-              alt=""
-              srcset=""
-            />
+      <uni-segmented-control
+        :class="[classKey]"
+        :current="currentTrinketTab"
+        :values="trinketTabs"
+        style-type="text"
+        @clickItem="switchTrinketTab"
+      />
+      <template v-if="currentTrinketTab === 0">
+        <view
+          class="tier"
+          v-for="(tier, index) in currentData?.trinkets"
+          :key="tier.label"
+        >
+          <view class="tier-label" :data-label="index">
+            <text>{{ tier.label }}</text>
           </view>
+          <view class="trink-container">
+            <view
+              class="trink"
+              v-for="trinket in tier.trinkets"
+              :key="trinket.image"
+            >
+              <img
+                @click="() => switchDetail(true, trinket)"
+                :src="currentImageSrc(trinket)"
+                alt=""
+                srcset=""
+              />
+            </view>
+          </view>
+        </view>
+      </template>
+      <view class="popular-trinkets" v-if="currentTrinketTab === 1">
+        <view
+          class="popular-trinkets__item"
+          v-for="item in currentData?.popularMythicDungeonTrinkets"
+          :key="item.id"
+        >
+          <view
+            class="popular-trinkets__item-left"
+            @click="() => switchDetail(true, item)"
+          >
+            <image
+              class="popular-trinkets__item-left__icon"
+              :src="currentImageSrc(item)"
+              mode="widthFix"
+            />
+            <view class="popular-trinkets__item-left__name">{{
+              item.name
+            }}</view>
+          </view>
+          <view class="popular-trinkets__item-right">{{
+            item.popularity
+          }}</view>
         </view>
       </view>
     </uni-card>
@@ -840,6 +877,16 @@ async function switchDetail(
     }
   }
 }
+
+//#region 饰品
+const currentTrinketTab = ref(0);
+const trinketTabs = ['总体排名', '大秘境使用率排行'];
+function switchTrinketTab(e) {
+  if (currentTrinketTab.value != e.currentIndex) {
+    currentTrinketTab.value = e.currentIndex;
+  }
+}
+//#endregion
 
 //#region 大秘境TIPS
 const dungeons = ref<IDungeonDTO[]>([]);
@@ -1513,6 +1560,38 @@ $light-border: rgb(68, 68, 68);
   }
 }
 
+// trikets
+.popular-trinkets {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  .popular-trinkets__item {
+    display: flex;
+    justify-content: space-between;
+    .popular-trinkets__item-left {
+      display: flex;
+      align-items: center;
+      gap: 12rpx;
+      // color: $color-mythic;
+      font-weight: bold;
+      image {
+        width: 60rpx;
+        border-radius: 10rpx;
+      }
+    }
+    .popular-trinkets__item-right {
+      font-weight: bold;
+    }
+    &:nth-child(1),
+    &:nth-child(2) {
+      color: $color-legend;
+    }
+    &:nth-child(3),
+    &:nth-child(4) {
+      color: $color-rare;
+    }
+  }
+}
 // 悬浮按钮
 ::v-deep .uni-fab {
   transform: scale(0.727) !important;
@@ -1671,6 +1750,23 @@ $light-border: rgb(68, 68, 68);
     }
     .advice-item__name {
       color: $color-mythic;
+    }
+  }
+}
+
+// 分段器
+::v-deep .segmented-control {
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+  .segmented-control__item {
+    flex: none !important;
+    .segmented-control__text {
+      font-size: small;
+      color: inherit !important;
+    }
+    .segmented-control__item--text {
+      font-weight: bold;
+      color: #fff !important;
     }
   }
 }
