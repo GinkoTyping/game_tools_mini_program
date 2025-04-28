@@ -169,6 +169,16 @@
                       }
                     ],
                     "children": []
+                  },
+                  {
+                    "totalText": "Taste Tester - [‍Free Samples?]",
+                    "spells": [
+                      {
+                        "id": 441242,
+                        "title": "‍Free Samples?"
+                      }
+                    ],
+                    "children": []
                   }
                 ]
               },
@@ -300,6 +310,16 @@
                 "spells": [],
                 "children": [
                   {
+                    "totalText": "Royal Wicklighter - [‍Wicklighter Bolt]",
+                    "spells": [
+                      {
+                        "id": 423479,
+                        "title": "‍Wicklighter Bolt"
+                      }
+                    ],
+                    "children": []
+                  },
+                  {
                     "totalText": "Blazing Fiends - [‍Explosive Flame]",
                     "spells": [
                       {
@@ -315,16 +335,6 @@
                       {
                         "id": 422541,
                         "title": "‍Drain Light"
-                      }
-                    ],
-                    "children": []
-                  },
-                  {
-                    "totalText": "Royal Wicklighter - [‍Flashpoint]",
-                    "spells": [
-                      {
-                        "id": 428019,
-                        "title": "‍Flashpoint"
                       }
                     ],
                     "children": []
@@ -436,16 +446,6 @@
                         "spells": [],
                         "children": [
                           {
-                            "totalText": "Casts [‍Repentance], make sure to interrupt.",
-                            "spells": [
-                              {
-                                "id": 32779,
-                                "title": "‍Repentance"
-                              }
-                            ],
-                            "children": []
-                          },
-                          {
                             "totalText": "Adds another tank ability with [‍Divine Judgment].",
                             "spells": [
                               {
@@ -466,6 +466,26 @@
                             "children": []
                           }
                         ]
+                      },
+                      {
+                        "totalText": "Adds another tank ability with [‍Divine Judgment].",
+                        "spells": [
+                          {
+                            "id": 448515,
+                            "title": "‍Divine Judgment"
+                          }
+                        ],
+                        "children": []
+                      },
+                      {
+                        "totalText": "[‍Holy Radiance] deals groupwide AoE damage.",
+                        "spells": [
+                          {
+                            "id": 424431,
+                            "title": "‍Holy Radiance"
+                          }
+                        ],
+                        "children": []
                       },
                       {
                         "totalText": "Sergeant Shaynemail alive:",
@@ -522,36 +542,6 @@
                             "children": []
                           }
                         ]
-                      },
-                      {
-                        "totalText": "Casts [‍Repentance], make sure to interrupt.",
-                        "spells": [
-                          {
-                            "id": 32779,
-                            "title": "‍Repentance"
-                          }
-                        ],
-                        "children": []
-                      },
-                      {
-                        "totalText": "Adds another tank ability with [‍Divine Judgment].",
-                        "spells": [
-                          {
-                            "id": 448515,
-                            "title": "‍Divine Judgment"
-                          }
-                        ],
-                        "children": []
-                      },
-                      {
-                        "totalText": "[‍Holy Radiance] deals groupwide AoE damage.",
-                        "spells": [
-                          {
-                            "id": 424431,
-                            "title": "‍Holy Radiance"
-                          }
-                        ],
-                        "children": []
                       },
                       {
                         "totalText": "Make sure to dodge [‍Brutal Smash] on the ground as it stuns you and does fatal damage when hit.",
@@ -661,16 +651,6 @@
                 "spells": [],
                 "children": [
                   {
-                    "totalText": "Devout Priest - [‍Inner Fire]",
-                    "spells": [
-                      {
-                        "id": 427346,
-                        "title": "‍Inner Fire"
-                      }
-                    ],
-                    "children": []
-                  },
-                  {
                     "totalText": "Devout Priest - [‍Greater Heal]",
                     "spells": [
                       {
@@ -681,11 +661,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "Forge Master Damian - [‍Heat Wave]",
+                    "totalText": "Risen Mage - [‍Fireball Volley]",
                     "spells": [
                       {
-                        "id": 427897,
-                        "title": "‍Heat Wave"
+                        "id": 444743,
+                        "title": "‍Fireball Volley"
                       }
                     ],
                     "children": []
@@ -849,31 +829,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "Unruly Stormrook - [‍Energized Barrage]",
+                    "totalText": "Corrupted Oracle - [‍Void Bolt]",
                     "spells": [
                       {
-                        "id": 427616,
-                        "title": "‍Energized Barrage"
-                      }
-                    ],
-                    "children": []
-                  },
-                  {
-                    "totalText": "Cursed Rooktender - [‍Lightning Surge]",
-                    "spells": [
-                      {
-                        "id": 427260,
-                        "title": "‍Lightning Surge"
-                      }
-                    ],
-                    "children": []
-                  },
-                  {
-                    "totalText": "Void Ascendant - [‍Feasting Void]",
-                    "spells": [
-                      {
-                        "id": 1214523,
-                        "title": "‍Feasting Void"
+                        "id": 430238,
+                        "title": "‍Void Bolt"
                       }
                     ],
                     "children": []
@@ -1009,6 +969,16 @@
                       {
                         "id": 1214464,
                         "title": "‍Trickshot"
+                      }
+                    ],
+                    "children": []
+                  },
+                  {
+                    "totalText": "Venture Co. Surveyor - [‍Surveying Beam]",
+                    "spells": [
+                      {
+                        "id": 462771,
+                        "title": "‍Surveying Beam"
                       }
                     ],
                     "children": []
@@ -6278,7 +6248,7 @@
     "ratings": [
       {
         "label": "单体",
-        "rating": 2
+        "rating": 3
       },
       {
         "label": "AOE",
@@ -17998,7 +17968,7 @@
     "ratings": [
       {
         "label": "单体",
-        "rating": 3
+        "rating": 4
       },
       {
         "label": "AOE",
@@ -23826,12 +23796,12 @@
         "slot": "戒指",
         "items": [
           {
-            "id": 223674,
-            "name": "‍Enchant Ring - Radiant Haste",
+            "id": 223680,
+            "name": "‍Enchant Ring - Radiant Versatility",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔戒指 - 绚灿急速"
+            "name_zh": "附魔戒指 - 绚灿全能"
           },
           {
             "id": 213777,
@@ -23847,12 +23817,12 @@
         "slot": "戒指",
         "items": [
           {
-            "id": 223674,
-            "name": "‍Enchant Ring - Radiant Haste",
+            "id": 223680,
+            "name": "‍Enchant Ring - Radiant Versatility",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔戒指 - 绚灿急速"
+            "name_zh": "附魔戒指 - 绚灿全能"
           },
           {
             "id": 213777,
@@ -23868,12 +23838,12 @@
         "slot": "武器",
         "items": [
           {
-            "id": 223784,
-            "name": "‍Enchant Weapon - Authority of the Depths",
+            "id": 223781,
+            "name": "‍Enchant Weapon - Authority of Radiant Power",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔武器 - 邃渊威权"
+            "name_zh": "附魔武器 - 灿能威权"
           }
         ]
       }
@@ -30833,6 +30803,16 @@
                       }
                     ],
                     "children": []
+                  },
+                  {
+                    "totalText": "Taste Tester - [‍Free Samples?]",
+                    "spells": [
+                      {
+                        "id": 441242,
+                        "title": "‍Free Samples?"
+                      }
+                    ],
+                    "children": []
                   }
                 ]
               },
@@ -30964,6 +30944,16 @@
                 "spells": [],
                 "children": [
                   {
+                    "totalText": "Royal Wicklighter - [‍Wicklighter Bolt]",
+                    "spells": [
+                      {
+                        "id": 423479,
+                        "title": "‍Wicklighter Bolt"
+                      }
+                    ],
+                    "children": []
+                  },
+                  {
                     "totalText": "Blazing Fiends - [‍Explosive Flame]",
                     "spells": [
                       {
@@ -30979,16 +30969,6 @@
                       {
                         "id": 422541,
                         "title": "‍Drain Light"
-                      }
-                    ],
-                    "children": []
-                  },
-                  {
-                    "totalText": "Royal Wicklighter - [‍Flashpoint]",
-                    "spells": [
-                      {
-                        "id": 428019,
-                        "title": "‍Flashpoint"
                       }
                     ],
                     "children": []
@@ -31100,16 +31080,6 @@
                         "spells": [],
                         "children": [
                           {
-                            "totalText": "Casts [‍Repentance], make sure to interrupt.",
-                            "spells": [
-                              {
-                                "id": 32779,
-                                "title": "‍Repentance"
-                              }
-                            ],
-                            "children": []
-                          },
-                          {
                             "totalText": "Adds another tank ability with [‍Divine Judgment].",
                             "spells": [
                               {
@@ -31130,6 +31100,26 @@
                             "children": []
                           }
                         ]
+                      },
+                      {
+                        "totalText": "Adds another tank ability with [‍Divine Judgment].",
+                        "spells": [
+                          {
+                            "id": 448515,
+                            "title": "‍Divine Judgment"
+                          }
+                        ],
+                        "children": []
+                      },
+                      {
+                        "totalText": "[‍Holy Radiance] deals groupwide AoE damage.",
+                        "spells": [
+                          {
+                            "id": 424431,
+                            "title": "‍Holy Radiance"
+                          }
+                        ],
+                        "children": []
                       },
                       {
                         "totalText": "Sergeant Shaynemail alive:",
@@ -31186,36 +31176,6 @@
                             "children": []
                           }
                         ]
-                      },
-                      {
-                        "totalText": "Casts [‍Repentance], make sure to interrupt.",
-                        "spells": [
-                          {
-                            "id": 32779,
-                            "title": "‍Repentance"
-                          }
-                        ],
-                        "children": []
-                      },
-                      {
-                        "totalText": "Adds another tank ability with [‍Divine Judgment].",
-                        "spells": [
-                          {
-                            "id": 448515,
-                            "title": "‍Divine Judgment"
-                          }
-                        ],
-                        "children": []
-                      },
-                      {
-                        "totalText": "[‍Holy Radiance] deals groupwide AoE damage.",
-                        "spells": [
-                          {
-                            "id": 424431,
-                            "title": "‍Holy Radiance"
-                          }
-                        ],
-                        "children": []
                       },
                       {
                         "totalText": "Make sure to dodge [‍Brutal Smash] on the ground as it stuns you and does fatal damage when hit.",
@@ -31325,16 +31285,6 @@
                 "spells": [],
                 "children": [
                   {
-                    "totalText": "Devout Priest - [‍Inner Fire]",
-                    "spells": [
-                      {
-                        "id": 427346,
-                        "title": "‍Inner Fire"
-                      }
-                    ],
-                    "children": []
-                  },
-                  {
                     "totalText": "Devout Priest - [‍Greater Heal]",
                     "spells": [
                       {
@@ -31345,11 +31295,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "Forge Master Damian - [‍Heat Wave]",
+                    "totalText": "Risen Mage - [‍Fireball Volley]",
                     "spells": [
                       {
-                        "id": 427897,
-                        "title": "‍Heat Wave"
+                        "id": 444743,
+                        "title": "‍Fireball Volley"
                       }
                     ],
                     "children": []
@@ -31513,31 +31463,11 @@
                     "children": []
                   },
                   {
-                    "totalText": "Unruly Stormrook - [‍Energized Barrage]",
+                    "totalText": "Corrupted Oracle - [‍Void Bolt]",
                     "spells": [
                       {
-                        "id": 427616,
-                        "title": "‍Energized Barrage"
-                      }
-                    ],
-                    "children": []
-                  },
-                  {
-                    "totalText": "Cursed Rooktender - [‍Lightning Surge]",
-                    "spells": [
-                      {
-                        "id": 427260,
-                        "title": "‍Lightning Surge"
-                      }
-                    ],
-                    "children": []
-                  },
-                  {
-                    "totalText": "Void Ascendant - [‍Feasting Void]",
-                    "spells": [
-                      {
-                        "id": 1214523,
-                        "title": "‍Feasting Void"
+                        "id": 430238,
+                        "title": "‍Void Bolt"
                       }
                     ],
                     "children": []
@@ -31673,6 +31603,16 @@
                       {
                         "id": 1214464,
                         "title": "‍Trickshot"
+                      }
+                    ],
+                    "children": []
+                  },
+                  {
+                    "totalText": "Venture Co. Surveyor - [‍Surveying Beam]",
+                    "spells": [
+                      {
+                        "id": 462771,
+                        "title": "‍Surveying Beam"
                       }
                     ],
                     "children": []
@@ -39294,7 +39234,7 @@
           "windwalker-monk-0-hero.jpg",
           "windwalker-monk-0-spec.jpg"
         ],
-        "code": "C2QA-pJ7Grnr5hyxxdg2eJ6ffOzYAMjZ2mZGzMDAAAAAAAAAAAWWGGxMDjZgtFmx2MzMMLMzws8ATAAsMmhZmhtZAAsBAmlZpZmZWAMD"
+        "code": "C2QAPioB1A7GH6F2cCZLbx1UmOzYAMjZ2mZGLzMDAAAAAAAAAAAWWGGxMDjZgtFmx2MzMMLMzws8ATAAsMmhZmhtZAAsBAmlZpZmZWAL"
       },
       {
         "talent": "Conduit of the Celestials",
@@ -39303,7 +39243,7 @@
           "windwalker-monk-1-hero.jpg",
           "windwalker-monk-1-spec.jpg"
         ],
-        "code": "C2QA-pJ7Grnr5hyxxdg2eJ6ffOzYmBjZYMzMmZGAAAAAAAAAAAssMMiZGGzAbLMjtZmZYWYmhZ5BmAAYZMzghZbGAALLzyysMzMBAAMD"
+        "code": "C2QAPioB1A7GH6F2cCZLbx1UmOzYmBjZYMzMWmZGAAAAAAAAAAAssMMiZGGzAbLMjtZmZYWYmhZ5BmAAYZMzAMbzAAYZZWWmlZmJAAML"
       }
     ],
     "enhancement": [
@@ -41618,7 +41558,7 @@
           "holy-paladin-0-hero.jpg",
           "holy-paladin-0-spec.jpg"
         ],
-        "code": "CGEAXUWXc0nH7IjwCQtYHbTlVAAAAYAAzAAAMAbjZYmxMziZMLzMjlZAbbz0WMDjZmhBmtMAgBAbAbMzMzMzysNzMbNAAAALAzAMYYG"
+        "code": "CGEA-TOZV1BbFf6iE8Mzn-l9fCAAAYAAzAAAMALjZmZmxMzCjZhhlZMGbbz0WjZMjZmhBmtMAgBGYDYjZZmxMLz2Mzs1AAAAsAAWYghZ"
       }
     ],
     "enhancement": [
@@ -41839,7 +41779,7 @@
       },
       {
         "label": "生存能力",
-        "rating": 5
+        "rating": 4
       },
       {
         "label": "移动性",
@@ -46962,7 +46902,7 @@
     "ratings": [
       {
         "label": "单体",
-        "rating": 3
+        "rating": 2
       },
       {
         "label": "AOE",
@@ -48902,13 +48842,13 @@
     ],
     "talents": [
       {
-        "talent": "Deathstalker Double Vanish",
+        "talent": "Deathstalker Bleed Build",
         "url": [
           "assassination-rogue-0-class.jpg",
           "assassination-rogue-0-hero.jpg",
           "assassination-rogue-0-spec.jpg"
         ],
-        "code": "COQAdb1wyGO40AKBNMUREAeV7PzMzMzwMAAAAAAAzyMmtZAAAAAAotlZmBzMYmZWmlxYwMzMzgxMbbLjZA2MLDMgFwywEYYZ"
+        "code": "COQAMVe3xrRHPkKTYiUEC_OcZbmZMzMmBAAAAAAYWmxsNDAAAAAAttMzMYmBzMzysMYMmZmZmZmZYzyYGgNzyADYBsMMBGWG"
       },
       {
         "talent": "Fatebound Variation",
@@ -62684,7 +62624,7 @@
           "affliction-warlock-0-hero.jpg",
           "affliction-warlock-0-spec.jpg"
         ],
-        "code": "CmQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZY2GAAAwMzMzyMjx2MzMLMzMDAYmxyyADYAzwWghtZAAAAAAAAwMsA"
+        "code": "CmQAEfShhvywku87nu5zHE-yxCzMzMzMjY2MMmNzMDz2AAAAmZMzyMjx2MzMLMzMDAYmxyyADYAzwWghtZAAAAAAAAwMsA"
       },
       {
         "talent": "Hellcaller",
@@ -62693,7 +62633,7 @@
           "affliction-warlock-1-hero.jpg",
           "affliction-warlock-1-spec.jpg"
         ],
-        "code": "CmQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZY2GAAAwMzMzyMjxyMzMLmxMDAYGLwAziRjZAMLglZAAAAAAAAwMsA"
+        "code": "CmQAEfShhvywku87nu5zHE-yxCjZmZmZEzmhZmNzMDz2AAAAmZMzyMjxyMzMLmxMDAYGLwAziRjZAMLglZAAAAAAAAwMsA"
       }
     ],
     "enhancement": [
@@ -64889,7 +64829,7 @@
           "demonology-warlock-0-hero.jpg",
           "demonology-warlock-0-spec.jpg"
         ],
-        "code": "CqQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZYWGAAAAAAAAAAzAGzYYBGYZYhGWYGmZ2GzsZmZmZMmZGmZGzAzM"
+        "code": "CqQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZYWGAAAAAAAAAAzAGzYYBGYZYhGWYmxMz2YmNzMzMjxMzgxMzYwM"
       }
     ],
     "enhancement": [
@@ -65009,12 +64949,12 @@
         "slot": "戒指",
         "items": [
           {
-            "id": 223674,
-            "name": "‍Enchant Ring - Radiant Haste",
+            "id": 223680,
+            "name": "‍Enchant Ring - Radiant Versatility",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔戒指 - 绚灿急速"
+            "name_zh": "附魔戒指 - 绚灿全能"
           },
           {
             "id": 213777,
@@ -65030,12 +64970,12 @@
         "slot": "戒指",
         "items": [
           {
-            "id": 223674,
-            "name": "‍Enchant Ring - Radiant Haste",
+            "id": 223680,
+            "name": "‍Enchant Ring - Radiant Versatility",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔戒指 - 绚灿急速"
+            "name_zh": "附魔戒指 - 绚灿全能"
           },
           {
             "id": 213777,
@@ -68631,12 +68571,12 @@
         "slot": "戒指",
         "items": [
           {
-            "id": 223662,
-            "name": "‍Enchant Ring - Radiant Critical Strike",
+            "id": 223674,
+            "name": "‍Enchant Ring - Radiant Haste",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔戒指 - 绚灿爆击"
+            "name_zh": "附魔戒指 - 绚灿急速"
           },
           {
             "id": 213777,
@@ -68652,12 +68592,12 @@
         "slot": "戒指",
         "items": [
           {
-            "id": 223662,
-            "name": "‍Enchant Ring - Radiant Critical Strike",
+            "id": 223674,
+            "name": "‍Enchant Ring - Radiant Haste",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔戒指 - 绚灿爆击"
+            "name_zh": "附魔戒指 - 绚灿急速"
           },
           {
             "id": 213777,
@@ -70079,7 +70019,7 @@
           "arms-warrior-0-hero.jpg",
           "arms-warrior-0-spec.jpg"
         ],
-        "code": "CeEAoKbnaMpm0FjYnlHLlZnHoAGmZmZGzYegZZ2WWGzAAAAwgphxsMmhZWGmZsYmZYGeghBAAAAAAgZMbjxAsFALmxwCMwMsRDYB"
+        "code": "CeEAoKbnaMpm0FjYnlHLlZnHoAGmZGzYGzMbz2yyYGAAAAGMNMmlxMMWGmZsYmZYGeghBAAAAAAgZMbDGgtYALmxwCMwMsRDDLA"
       },
       {
         "talent": "Slayer Talents",
@@ -70289,7 +70229,7 @@
       },
       {
         "label": "AOE",
-        "rating": 4
+        "rating": 3
       },
       {
         "label": "功能性",
@@ -73697,7 +73637,7 @@
           "protection-warrior-0-hero.jpg",
           "protection-warrior-0-spec.jpg"
         ],
-        "code": "CmEAoKbnaMpm0FjYnlHLlZnHooxAAAAwMzMmZmhZ2mZZmZmNMGjGzyMzwYZghlZmhZmxwAAAAAAAzAAYZbDgB2glFjGzAY2gZD"
+        "code": "CmEAoKbnaMpm0FjYnlHLlZnHooxAAAAwMzMmZmhZWmZZmZmNMGjGzyMzwYZghlZmhZmxwAAAAAAAGDAYZbDgB2glFjGzAYWgZD"
       },
       {
         "talent": "Colossus Mythic+ Build",
@@ -73706,7 +73646,7 @@
           "protection-warrior-1-hero.jpg",
           "protection-warrior-1-spec.jpg"
         ],
-        "code": "CmEAoKbnaMpm0FjYnlHLlZnHooZGAAAAmZmxMzMMjZWmZmZjZMGNmlZmhxyADLzMDzYMMAAAAAAwMAAW22AA2MjhFYgZYhGmFA"
+        "code": "CmEAoKbnaMpm0FjYnlHLlZnHooxAAAAwMzMmZmhZWmxMzMbLMGjGzyMzwYhZmhlZmhZwwAAAAAAAGDAYZbDAYzMGWgBmhFaYWA"
       }
     ],
     "enhancement": [
@@ -73826,12 +73766,12 @@
         "slot": "戒指",
         "items": [
           {
-            "id": 223680,
-            "name": "‍Enchant Ring - Radiant Versatility",
+            "id": 223662,
+            "name": "‍Enchant Ring - Radiant Critical Strike",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔戒指 - 绚灿全能"
+            "name_zh": "附魔戒指 - 绚灿爆击"
           },
           {
             "id": 213777,
@@ -73868,12 +73808,12 @@
         "slot": "武器",
         "items": [
           {
-            "id": 223759,
-            "name": "‍Enchant Weapon - Council's Guile",
+            "id": 223768,
+            "name": "‍Enchant Weapon - Oathsworn's Tenacity",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔武器 - 议会之诡"
+            "name_zh": "附魔武器 - 圣誓之韧"
           }
         ]
       }
@@ -76994,7 +76934,7 @@
           "devastation-evoker-2-hero.jpg",
           "devastation-evoker-2-spec.jpg"
         ],
-        "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAGzYmxsMzYmBGGDTDzMZ2GLDmZYMzyMgZmZ2GzMbzMDmBmxMwGYDMDTgFwyw"
+        "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAmxYmxsMzYmBmxYYaYmJz2YZGmZYMzyMgZmx2wMLzMDmBMmB2AbgZYCsAWGmBA"
       }
     ],
     "enhancement": [
@@ -82650,13 +82590,22 @@
     ],
     "talents": [
       {
-        "talent": "Pack Leader",
+        "talent": "Pack Leader ‍Call of the Wild",
         "url": [
           "beast-mastery-hunter-0-class.jpg",
           "beast-mastery-hunter-0-hero.jpg",
           "beast-mastery-hunter-0-spec.jpg"
         ],
-        "code": "C2PAgWVPuq-o0KoEvwTpSX5hCDMmxwCsBzwQDbAAAAAAYMzsNjxMDYmxMsYmxMjxMzMZGGzMzMGzMMMGzMDzyMwMDbA"
+        "code": "C2PAgWVPuq-o0KoEvwTpSX5hCDMmxwCsBzwQDbAAAAAAYMzsNjxMDYmxMsYmxMjxMzMZGzYmZmxYmhhxYGDzyMwMDbA"
+      },
+      {
+        "talent": "Pack Leader No Cooldowns",
+        "url": [
+          "beast-mastery-hunter-1-class.jpg",
+          "beast-mastery-hunter-1-hero.jpg",
+          "beast-mastery-hunter-1-spec.jpg"
+        ],
+        "code": "C2PAgWVPuq-o0KoEvwTpSX5hCDMmxwCsBzwQDbAAAAAAYYGzMzyMjBzMzMsYMmZMmxMZGzYmxMMzMmhxYGDzyMYZGsA"
       }
     ],
     "enhancement": [
@@ -87294,9 +87243,9 @@
         "stats": [
           "智力",
           "急速",
-          "全能",
           "暴击",
-          "精通"
+          "精通",
+          "全能"
         ],
         "relations": [
           1,
@@ -87318,11 +87267,11 @@
       },
       {
         "label": "功能性",
-        "rating": 3
+        "rating": 4
       },
       {
         "label": "生存能力",
-        "rating": 2
+        "rating": 4
       },
       {
         "label": "移动性",
@@ -89412,7 +89361,7 @@
           "discipline-priest-0-hero.jpg",
           "discipline-priest-0-spec.jpg"
         ],
-        "code": "CCQAdDBIBTZArso-1144n4ZMvAA2mZmxYMGzMjZ2MLzMzMzAAAAAAAAAAAYWsMbDmZGjZhxMGjBLsNTzMxCwyMAQAmtZbDM2sB"
+        "code": "CCQAdDBIBTZArso-1144n4ZMvADw2MmxYMGzgZ2mZbmZGzMzAAAAAAAAAAAYZ2YMzMYWMjZMGDWMbz0YiFDgZWwChxsMAjNs"
       }
     ],
     "enhancement": [
@@ -89532,12 +89481,12 @@
         "slot": "戒指",
         "items": [
           {
-            "id": 223674,
-            "name": "‍Enchant Ring - Radiant Haste",
+            "id": 223662,
+            "name": "‍Enchant Ring - Radiant Critical Strike",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔戒指 - 绚灿急速"
+            "name_zh": "附魔戒指 - 绚灿爆击"
           },
           {
             "id": 213777,
@@ -89553,12 +89502,12 @@
         "slot": "戒指",
         "items": [
           {
-            "id": 223674,
-            "name": "‍Enchant Ring - Radiant Haste",
+            "id": 223662,
+            "name": "‍Enchant Ring - Radiant Critical Strike",
             "type": "item",
             "image": "463531.webp",
             "imageSrc": "https://assets-ng.maxroll.gg/wow/icons/463531.webp",
-            "name_zh": "附魔戒指 - 绚灿急速"
+            "name_zh": "附魔戒指 - 绚灿爆击"
           },
           {
             "id": 213777,
