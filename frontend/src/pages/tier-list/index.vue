@@ -226,13 +226,8 @@ onShareAppMessage(() => {
 
 const detailPopup = ref();
 async function onClickSpec(spec: ITierSpecDetail) {
-  if (currentSpec.value?.descZH) {
-    currentSpec.value = spec;
-    currentSpells.value = await querySpellsInTip(
-      spec.spells.map(spell => spell.spellId)
-    );
-    detailPopup.value?.open?.();
-  }
+  currentSpec.value = spec;
+  comfirmToSpecDetail();
 }
 
 const alertDialog = ref();

@@ -39,6 +39,7 @@ interface IBisDataDTO {
   };
   updated_at: string;
   comment: string;
+  popular_mythic_dungeon_trinkets: string;
   ratings: { label: string; rating: number }[];
   version: string;
   talents: { talent: string; code: string }[];
@@ -168,6 +169,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
     talents: data.talents,
     enhancement: data.enhancement,
     wowheadBis: data.wowhead_bis,
+    popularMythicDungeonTrinkets: data.popular_mythic_dungeon_trinkets,
   };
 }
 
