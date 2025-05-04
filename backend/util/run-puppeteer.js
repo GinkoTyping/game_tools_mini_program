@@ -42,7 +42,8 @@ export async function getCheerioByPuppeteer({
       );
       await page.setViewport({ width: 1280, height: 800 });
       await page.goto(urlPath, {
-        timeout: 90000,
+        // 缩短超时时间 避免软任务运行过长
+        timeout: 30000,
         waitUntil: ['domcontentloaded'],
       });
 
