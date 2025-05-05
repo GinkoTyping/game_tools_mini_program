@@ -326,10 +326,6 @@ export async function getBisBySpec(req, res) {
       JSON.parse(bisData.bis_trinkets),
       'trinkets'
     );
-    const seperateEnhancement = await mapBisTrinket(
-      JSON.parse(bisData.enhancement),
-      'items'
-    );
 
     const wowheadBis = await mapWowheadBis(JSON.parse(bisData.wowhead_bis));
 
@@ -359,16 +355,17 @@ export async function getBisBySpec(req, res) {
       ...bisData,
       bis_items,
       bis_trinkets,
-      enhancement: seperateEnhancement,
-      stats_priority: JSON.parse(bisData.stats_priority),
       detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
       archon_stats_priority: archonBis?.stats,
       ratings: JSON.parse(bisData.ratings),
       talents: JSON.parse(bisData.talents),
-      maxroll_bis: undefined,
-      popularity_items: undefined,
       wowhead_bis: wowheadBis,
       popular_mythic_dungeon_trinkets: popularMythicDungeonTrinkets,
+      maxroll_bis: undefined,
+      archon_bis: undefined,
+      enhancement: undefined,
+      stats_priority: undefined,
+      popularity_items: undefined,
     });
   } catch (error) {
     res.status(500).json({ error: error?.message });

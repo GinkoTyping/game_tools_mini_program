@@ -154,7 +154,6 @@ export async function queryBis(roleClass: string, classSpec: string) {
     roleClass,
     classSpec,
     detailedStatsPriority: mapDetailStats(data.detailed_stats_priority),
-    statsPriority: data.stats_priority,
     archonStatsPriority: data.archon_stats_priority,
     updatedAt: data.updated_at,
     trinkets: mapTrinks(data.bis_trinkets),
@@ -167,7 +166,6 @@ export async function queryBis(roleClass: string, classSpec: string) {
     })),
     version: data.version,
     talents: data.talents,
-    enhancement: data.enhancement,
     wowheadBis: data.wowhead_bis,
     popularMythicDungeonTrinkets: data.popular_mythic_dungeon_trinkets,
   };
