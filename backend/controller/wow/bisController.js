@@ -5,7 +5,7 @@ import { configDotenv } from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { getDB } from '../../database/utils/index.js';
+import { getDailyDB, getDB } from '../../database/utils/index.js';
 import { getDynamicDB } from '../../database/utils/index.js';
 
 import { useBisMapper } from '../../database/wow/mapper/bisMapper.js';
@@ -16,6 +16,7 @@ import spriteMap from '../../assets/wow/sprites/sprite-map.js';
 import { collectBisOverview } from '../../database/wow/data/archon-bis/crawler.js';
 import { collectMaxrollBis } from '../../database/wow/data/maxroll-bis/crawler.js';
 import { useTierListMapper } from '../../database/wow/mapper/tierListMapper.js';
+import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
 
 let api;
 const database = await getDB();
@@ -25,6 +26,9 @@ const tierListMapper = useTierListMapper(database);
 
 const dynamicDB = await getDynamicDB();
 const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
+
+const dailyDB = await getDailyDB();
+const specStatMapper = useSpecStatMapper(dailyDB);
 
 function setBlizzAPI() {
   const __filename = fileURLToPath(import.meta.url);
@@ -344,7 +348,12 @@ export async function getBisBySpec(req, res) {
       )
     ).map((result) => result.value);
 
-    const mythicOverallTier = await tierListMapper.getSpec(classSpec, roleClass);
+    // 排名的信息
+    const mythicDpsTier = await specStatMapper.getSpec(classSpec, roleClass);
+    const mythicOverallTier = await tierListMapper.getSpec(
+      classSpec,
+      roleClass
+    );
 
     // 避免本地调测时，引起本地的数据和服务器不一致
     if (!isLocal(req)) {
@@ -366,6 +375,7 @@ export async function getBisBySpec(req, res) {
       wowhead_bis: wowheadBis,
       popular_mythic_dungeon_trinkets: popularMythicDungeonTrinkets,
       mythicOverallTier,
+      mythicDpsTier,
       maxroll_bis: undefined,
       archon_bis: undefined,
       enhancement: undefined,

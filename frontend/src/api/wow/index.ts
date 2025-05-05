@@ -43,6 +43,7 @@ interface IBisDataDTO {
   ratings: { label: string; rating: number }[];
   version: string;
   mythicOverallTier: any;
+  mythicDpsTier: any;
   talents: { talent: string; code: string }[];
   detailed_stats_priority: {
     best: { name: string; priorityList: string[] }[];
@@ -170,6 +171,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
     wowheadBis: data.wowhead_bis,
     popularMythicDungeonTrinkets: data.popular_mythic_dungeon_trinkets,
     mythicOverallTier: data.mythicOverallTier,
+    mythicDpsTier: data.mythicDpsTier,
   };
 }
 

@@ -36,6 +36,26 @@ async function updateSpecDpsRank(params) {
   ]);
 }
 
+async function getSpec(classSpec, roleClass) {
+  const list = await db.get(
+    `SELECT * FROM wow_daily_spec_dps_rank ORDER BY week_id DESC LIMIT 1`
+  );
+  let output;
+  if (list?.data) {
+    JSON.parse(list.data)?.data.find((item) => {
+      const hasFound = item.rank.find(
+        (spec) => spec.classSpec === classSpec && spec.roleClass === roleClass
+      );
+      if (hasFound) {
+        output = hasFound;
+      }
+      return hasFound;
+    });
+  }
+
+  return output;
+}
+
 export function useSpecStatMapper(database) {
   if (database) {
     db = database;
@@ -49,6 +69,7 @@ export function useSpecStatMapper(database) {
     getSpecPopularity,
     insertSpecDpsRank,
     getSpecDpsRank,
+    getSpec,
     updateSpecDpsRank,
   };
 }
