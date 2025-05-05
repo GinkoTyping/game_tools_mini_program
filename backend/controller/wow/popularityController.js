@@ -8,6 +8,7 @@ import { getDB, getDailyDB } from '../../database/utils/index.js';
 import { useClassSpecMapper } from '../../database/wow/mapper/classSpecMapper.js';
 import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
 import spriteMap from '../../assets/wow/sprites/sprite-map.js';
+import { getWeekCount } from '../../util/wow.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -68,6 +69,7 @@ async function mapPopularityData(data) {
 
 export async function queryPolularityByCondition(req, res) {
   const currentDate = getDate();
+  const weekCountMax = getWeekCount();
   const { minMythicLevel = 2, maxMythicLevel = 99 } = req.body;
 
   const key = `${minMythicLevel}-${maxMythicLevel}`;
@@ -83,32 +85,38 @@ export async function queryPolularityByCondition(req, res) {
       sprite: spriteMap,
     });
   } else {
-    const response = await axios.get(
-      `https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=${minMythicLevel}&maxMythicLevel=${maxMythicLevel}&seasonWeekStart=1&seasonWeekEnd=2&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity`
-    );
+    try {
+      const response = await axios.get(
+        `https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=${minMythicLevel}&maxMythicLevel=${maxMythicLevel}&seasonWeekStart=${weekCountMax}&seasonWeekEnd=${weekCountMax}&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity`
+      );
 
-    if (response?.data?.data) {
-      const newDate = getDate(response.data.aggregated_at);
-      const mapData = await mapPopularityData(response.data.data);
-      const output = {
-        aggregated_at: currentDate,
-        data: mapData,
-      };
-      await specStatMapper.insertSpecPopularity({
-        date: currentDate,
-        level_range: key,
-        data: JSON.stringify(output),
-      });
+      if (response?.data?.data) {
+        const newDate = getDate(response.data.aggregated_at);
+        const mapData = await mapPopularityData(response.data.data);
+        const output = {
+          aggregated_at: currentDate,
+          data: mapData,
+        };
+        await specStatMapper.insertSpecPopularity({
+          date: currentDate,
+          level_range: key,
+          data: JSON.stringify(output),
+        });
 
-      res.json({
-        ...output,
-        sprite: spriteMap,
-      });
-    } else {
-      res.json({
-        aggregated_at: currentDate,
-        data: [],
-        sprite: spriteMap,
+        res.json({
+          ...output,
+          sprite: spriteMap,
+        });
+      } else {
+        res.json({
+          aggregated_at: currentDate,
+          data: [],
+          sprite: spriteMap,
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
+        error: 'Failed to fetch data from Raider.IO API',
       });
     }
   }

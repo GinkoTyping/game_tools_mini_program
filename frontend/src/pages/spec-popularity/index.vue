@@ -20,7 +20,9 @@
         type="h4"
         :title="`仅${currentRankLevel}的数据 ${
           currentWeek === thisWeek
-            ? `,持续更新中(${currentRankUpdatedAt ?? '加载中'})...`
+            ? `, 上次更新: ${
+                calculateRelativeTime(currentRankUpdatedAt) ?? '加载中...'
+              }`
             : ''
         }`"
         align="center"
@@ -119,7 +121,7 @@
     <uni-card v-show="currentMenu === 'popular'">
       <uni-title
         type="h4"
-        :title="`持续更新中(${dataDate})...`"
+        :title="`本周CD的数据, 上次更新: ${relativeTime(dataDate)}`"
         align="center"
         color="#fff"
       ></uni-title>
@@ -264,6 +266,7 @@ import { querySpecDpsRank, querySpecPopularity } from '@/api/wow/index';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { getWeekCount } from '@/utils/wow';
 import { useNavigator } from '@/hooks/navigator';
+import { calculateRelativeTime } from '@/utils/time';
 
 const navigator = useNavigator();
 onShareAppMessage(() => ({
@@ -292,6 +295,9 @@ function dialogConfirm() {
     currentSpec.value.classSpec
   );
 }
+const relativeTime = computed(() => {
+  return (time: string) => calculateRelativeTime(time);
+});
 
 //#region 专精热门度
 const popularityData: any = reactive({
