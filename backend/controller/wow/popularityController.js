@@ -85,15 +85,12 @@ export async function queryPolularityByCondition(req, res) {
       sprite: spriteMap,
     });
   } else {
-    console.log(
-      `https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=${minMythicLevel}&maxMythicLevel=${maxMythicLevel}&seasonWeekStart=${weekCountMax}&seasonWeekEnd=${weekCountMax}&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity`
-    );
     try {
       const response = await axios.get(
         `https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=${minMythicLevel}&maxMythicLevel=${maxMythicLevel}&seasonWeekStart=${weekCountMax}&seasonWeekEnd=${weekCountMax}&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity`,
         {
           family: 4,
-          timeout: 10000,
+          timeout: 15000,
         }
       );
 
@@ -122,7 +119,6 @@ export async function queryPolularityByCondition(req, res) {
         });
       }
     } catch (error) {
-      console.error('Error fetching data from Raider.IO API:', error);
       res.status(500).json({
         error: 'Failed to fetch data from Raider.IO API',
       });
