@@ -57,7 +57,7 @@
             />
           </template>
         </view>
-        <uni-collapse ref="collapse">
+        <uni-collapse ref="statDetailCollapse">
           <uni-collapse-item
             title="属性说明 (可点击技能)"
             :open="currentData?.detailedStatsPriority"
@@ -629,7 +629,6 @@
     v-model:type="messageType"
     v-model:message="messageText"
   />
-
 </template>
 
 <script lang="ts" setup>
@@ -721,6 +720,7 @@ const relationIcon = computed(() => {
   };
 });
 const statSource = ref('maxroll');
+const statDetailCollapse = ref();
 const statSourceText = computed(() =>
   statSource.value === 'wowhead' ? '点击查看简略版' : '点击查看详细版'
 );
@@ -729,6 +729,9 @@ function switchStatSource() {
     statSource.value = 'maxroll';
   } else {
     statSource.value = 'wowhead';
+    nextTick(() => {
+      statDetailCollapse.value?.resize?.();
+    });
   }
 }
 const isTalentImageLoad = ref(false);
