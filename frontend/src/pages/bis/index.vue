@@ -1,250 +1,240 @@
 <template>
-  <uni-notice-bar
-    single
-    show-icon
-    show-get-more
-    color="#2979FF"
-    background-color="#EAF2FF"
-    more-text="去看看"
-    text="完善BIS配装的宝石、附魔"
-    @click="() => toHotSpot()"
-  />
-  <view>
-    <ShareIcon />
-  </view>
-  <uni-section
-    id="overview"
-    :class="[classKey]"
-    title="总览"
-    :sub-title="`已更新：${currentData?.updatedAt}`"
-  >
-    <uni-card class="section-card">
-      <view
-        class="rating-item"
-        v-for="item in currentData?.ratings"
-        :key="item.label"
-      >
-        <view class="label">
-          <text>{{ item.label }}</text>
-          <text class="sub-label">({{ item.comment }})</text>
-        </view>
-        <view class="bars">
-          <view
-            :class="['bar', getBarColor(item.ratingScore, bar)]"
-            v-for="(bar, index) in item.rating"
-            :key="index"
-          >
+  <template v-if="activeMenu === 'index'">
+    <uni-section
+      id="overview"
+      :class="[classKey]"
+      title="总览"
+      :sub-title="`已更新：${currentData?.updatedAt}`"
+    >
+      <uni-card class="section-card">
+        <view
+          class="rating-item"
+          v-for="item in currentData?.ratings"
+          :key="item.label"
+        >
+          <view class="label">
+            <text>{{ item.label }}</text>
+            <text class="sub-label">({{ item.comment }})</text>
+          </view>
+          <view class="bars">
+            <view
+              :class="['bar', getBarColor(item.ratingScore, bar)]"
+              v-for="(bar, index) in item.rating"
+              :key="index"
+            >
+            </view>
           </view>
         </view>
-      </view>
-    </uni-card>
-  </uni-section>
+      </uni-card>
+    </uni-section>
 
-  <uni-section
-    :class="[classKey]"
-    title="属性优先级"
-    @click="switchStatSource"
-    :sub-title="statSourceText"
-  >
-    <uni-card class="section-card" v-show="statSource === 'wowhead'">
-      <view class="menu stat-menu">
-        <text
-          v-for="(type, index) in currentData?.detailedStatsPriority?.best"
-          :key="type.name"
-          class="ellipsis"
-          @click="() => switchStatType(index)"
-          :class="[classKey, currentStatType === index ? 'menu_active' : '']"
-          >{{ type.name }}</text
-        >
-      </view>
-      <view class="stats" style="margin: 1rem 0">
-        <template v-for="(statText, index) in currentStatList" :key="statText">
-          <text>{{ statText }}</text>
-          <image
-            v-show="index !== currentStatList.length - 1"
-            src="/static/icon/dayu.svg"
-          />
-        </template>
-      </view>
-      <uni-collapse ref="collapse">
-        <uni-collapse-item
-          title="属性说明 (可点击技能)"
-          :open="currentData?.detailedStatsPriority"
-        >
-          <view
-            class="stat-info"
-            v-for="(info, index) in currentData?.detailedStatsPriority
-              ?.overview"
-            :key="index"
-          >
-            <rich-text
-              :nodes="renderTip(info.text)"
-              @click="() => displaySpells(info.spells)"
-            ></rich-text>
-          </view>
-        </uni-collapse-item>
-      </uni-collapse>
-    </uni-card>
-
-    <uni-card class="section-card" v-show="statSource === 'maxroll'">
-      <view class="stats">
-        <view class="stats__item">
-          <text>{{ currentData?.archonStatsPriority.priority[0].label }}</text>
-          <text>{{ currentData?.archonStatsPriority.priority[0].value }}</text>
-        </view>
-        <image
-          :src="`/static/icon/${relationIcon(
-            currentData?.archonStatsPriority.relations[0]
-          )}.svg`"
-        ></image>
-        <view class="stats__item">
-          <text>{{ currentData?.archonStatsPriority.priority[1].label }}</text>
-          <text>{{ currentData?.archonStatsPriority.priority[1].value }}</text>
-        </view>
-        <image
-          :src="`/static/icon/${relationIcon(
-            currentData?.archonStatsPriority.relations[1]
-          )}.svg`"
-        ></image>
-        <view class="stats__item">
-          <text>{{ currentData?.archonStatsPriority.priority[2].label }}</text>
-          <text>{{ currentData?.archonStatsPriority.priority[2].value }}</text>
-        </view>
-        <image
-          :src="`/static/icon/${relationIcon(
-            currentData?.archonStatsPriority.relations[2]
-          )}.svg`"
-        ></image>
-        <view class="stats__item">
-          <text>{{ currentData?.archonStatsPriority.priority[3].label }}</text>
-          <text>{{ currentData?.archonStatsPriority.priority[3].value }}</text>
-        </view>
-      </view>
-    </uni-card>
-  </uni-section>
-
-  <uni-section class="talent" :class="[classKey]" title="天赋">
-    <uni-card class="section-card">
-      <view class="menu talent-menu">
-        <text
-          v-for="(item, index) in currentData?.talents"
-          :key="item.talent"
-          class="ellipsis"
-          @click="() => switchTalent(index)"
-          :class="[classKey, currentTalentIndex === index ? 'menu_active' : '']"
-          >{{ item.talent }}</text
-        >
-      </view>
-      <view class="talent-export" @click="exportTalentCode">
-        <text class="talent-export__title"
-          >当前：{{ currentData?.talents[currentTalentIndex]?.talent }}</text
-        >
-        <view>
-          <uni-icons
-            type="download-filled"
-            color="#007aff"
-            size="30"
-          ></uni-icons>
-          <text>复制代码</text>
-        </view>
-      </view>
-
-      <uni-collapse ref="collapse">
-        <uni-collapse-item
-          v-for="(url, index) in currentData?.talents[currentTalentIndex]?.url"
-          :key="index"
-          :open="isTalentImageLoad && index === 2"
-        >
-          <template v-slot:title>
-            <uni-list>
-              <uni-list-item
-                class="dungeon_tip-title"
-                :title="getTalentType(index)"
-                rightText="点击任意位置"
-              >
-              </uni-list-item>
-            </uni-list>
-          </template>
-          <image
-            class="talent-image"
-            mode="widthFix"
-            lazy-load
-            :src="getTalentImage(url)"
-            @load="() => onImageLoad(currentTalentIndex, index)"
-            @click="() => preiviewImage(index)"
-          />
-        </uni-collapse-item>
-      </uni-collapse>
-    </uni-card>
-  </uni-section>
-
-  <ad-custom unit-id="adunit-43dfd4fbca02d516" class="ad-container"></ad-custom>
-
-  <uni-section class="bis" :class="[classKey]" title="BIS配装">
-    <uni-card class="section-card">
-      <view class="menu-container">
-        <view class="menu">
+    <uni-section
+      :class="[classKey]"
+      title="属性优先级"
+      @click="switchStatSource"
+      :sub-title="statSourceText"
+    >
+      <uni-card class="section-card" v-show="statSource === 'wowhead'">
+        <view class="menu stat-menu">
           <text
-            v-for="bis in currentData?.bisItems"
-            :key="bis.title"
-            @click="() => switchBisTable(bis.title)"
+            v-for="(type, index) in currentData?.detailedStatsPriority?.best"
+            :key="type.name"
+            class="ellipsis"
+            @click="() => switchStatType(index)"
+            :class="[classKey, currentStatType === index ? 'menu_active' : '']"
+            >{{ type.name }}</text
+          >
+        </view>
+        <view class="stats" style="margin: 1rem 0">
+          <template
+            v-for="(statText, index) in currentStatList"
+            :key="statText"
+          >
+            <text>{{ statText }}</text>
+            <image
+              v-show="index !== currentStatList.length - 1"
+              src="/static/icon/dayu.svg"
+            />
+          </template>
+        </view>
+        <uni-collapse ref="collapse">
+          <uni-collapse-item
+            title="属性说明 (可点击技能)"
+            :open="currentData?.detailedStatsPriority"
+          >
+            <view
+              class="stat-info"
+              v-for="(info, index) in currentData?.detailedStatsPriority
+                ?.overview"
+              :key="index"
+            >
+              <rich-text
+                :nodes="renderTip(info.text)"
+                @click="() => displaySpells(info.spells)"
+              ></rich-text>
+            </view>
+          </uni-collapse-item>
+        </uni-collapse>
+      </uni-card>
+
+      <uni-card class="section-card" v-show="statSource === 'maxroll'">
+        <view class="stats">
+          <view class="stats__item">
+            <text>{{
+              currentData?.archonStatsPriority.priority[0].label
+            }}</text>
+            <text>{{
+              currentData?.archonStatsPriority.priority[0].value
+            }}</text>
+          </view>
+          <image
+            :src="`/static/icon/${relationIcon(
+              currentData?.archonStatsPriority.relations[0]
+            )}.svg`"
+          ></image>
+          <view class="stats__item">
+            <text>{{
+              currentData?.archonStatsPriority.priority[1].label
+            }}</text>
+            <text>{{
+              currentData?.archonStatsPriority.priority[1].value
+            }}</text>
+          </view>
+          <image
+            :src="`/static/icon/${relationIcon(
+              currentData?.archonStatsPriority.relations[1]
+            )}.svg`"
+          ></image>
+          <view class="stats__item">
+            <text>{{
+              currentData?.archonStatsPriority.priority[2].label
+            }}</text>
+            <text>{{
+              currentData?.archonStatsPriority.priority[2].value
+            }}</text>
+          </view>
+          <image
+            :src="`/static/icon/${relationIcon(
+              currentData?.archonStatsPriority.relations[2]
+            )}.svg`"
+          ></image>
+          <view class="stats__item">
+            <text>{{
+              currentData?.archonStatsPriority.priority[3].label
+            }}</text>
+            <text>{{
+              currentData?.archonStatsPriority.priority[3].value
+            }}</text>
+          </view>
+        </view>
+      </uni-card>
+    </uni-section>
+  </template>
+
+  <template v-if="activeMenu === 'talent'">
+    <uni-section class="talent" :class="[classKey]" title="天赋">
+      <uni-card class="section-card">
+        <view class="menu talent-menu">
+          <text
+            v-for="(item, index) in currentData?.talents"
+            :key="item.talent"
+            class="ellipsis"
+            @click="() => switchTalent(index)"
             :class="[
               classKey,
-              currentTableName === bis.title ? 'menu_active' : '',
+              currentTalentIndex === index ? 'menu_active' : '',
             ]"
-            >{{ bis.title }}</text
+            >{{ item.talent }}</text
           >
         </view>
-        <view
-          class="to-enhancement"
-          @click="displayEnhancement = !displayEnhancement"
-        >
-          <text>{{ switchEnhancementText }}</text>
-
-          <image
-            src="https://ginkolearn.cyou/api/wow/assets/blizz-media-image/inv_misc_enchantedscroll.jpg"
-          />
+        <view class="talent-export" @click="exportTalentCode">
+          <text class="talent-export__title"
+            >当前：{{ currentData?.talents[currentTalentIndex]?.talent }}</text
+          >
+          <view>
+            <uni-icons
+              type="download-filled"
+              color="#007aff"
+              size="30"
+            ></uni-icons>
+            <text>复制代码</text>
+          </view>
         </view>
-      </view>
 
-      <uni-table ref="table" stripe emptyText="暂无更多数据">
-        <uni-tr>
-          <uni-th width="42" align="left">部位</uni-th>
-          <uni-th align="left">装备</uni-th>
-          <uni-th width="100" align="left">来源</uni-th>
-        </uni-tr>
-        <uni-tr v-for="(item, index) in tableData" :key="index">
-          <uni-td>{{ item.slot }}</uni-td>
-          <uni-td>
-            <view class="slot-container">
-              <view class="slot-container__item">
-                <img
-                  :src="currentImageSrc(item)"
-                  alt=""
-                  srcset=""
-                  style="width: 14px; height: 14px"
-                />
-                <view
-                  class="ellipsis"
-                  style="flex: 1"
-                  :class="[item.wrap ? 'disale-ellipsis' : '']"
-                  @click="
-                    () => {
-                      switchDetail(true, item);
-                      switchWrap(item);
-                    }
-                  "
-                  >{{ item.name }}</view
+        <uni-collapse ref="collapse">
+          <uni-collapse-item
+            v-for="(url, index) in currentData?.talents[currentTalentIndex]
+              ?.url"
+            :key="index"
+            :open="isTalentImageLoad && index === 2"
+          >
+            <template v-slot:title>
+              <uni-list>
+                <uni-list-item
+                  class="dungeon_tip-title"
+                  :title="getTalentType(index)"
+                  rightText="点击任意位置"
                 >
-              </view>
-              <template v-if="displayEnhancement">
-                <view
-                  class="slot-container__enhancement"
-                  v-for="enhancement in item.enhancements"
-                  :key="enhancement.id"
-                >
+                </uni-list-item>
+              </uni-list>
+            </template>
+            <image
+              class="talent-image"
+              mode="widthFix"
+              lazy-load
+              :src="getTalentImage(url)"
+              @load="() => onImageLoad(currentTalentIndex, index)"
+              @click="() => preiviewImage(index)"
+            />
+          </uni-collapse-item>
+        </uni-collapse>
+      </uni-card>
+    </uni-section>
+  </template>
+
+  <template v-if="activeMenu === 'bis'">
+    <uni-section class="bis" :class="[classKey]" title="BIS配装">
+      <uni-card class="section-card">
+        <view class="menu-container">
+          <view class="menu">
+            <text
+              v-for="bis in currentData?.bisItems"
+              :key="bis.title"
+              @click="() => switchBisTable(bis.title)"
+              :class="[
+                classKey,
+                currentTableName === bis.title ? 'menu_active' : '',
+              ]"
+              >{{ bis.title }}</text
+            >
+          </view>
+          <view
+            class="to-enhancement"
+            @click="displayEnhancement = !displayEnhancement"
+          >
+            <text>{{ switchEnhancementText }}</text>
+
+            <image
+              src="https://ginkolearn.cyou/api/wow/assets/blizz-media-image/inv_misc_enchantedscroll.jpg"
+            />
+          </view>
+        </view>
+
+        <uni-table ref="table" stripe emptyText="暂无更多数据">
+          <uni-tr>
+            <uni-th width="42" align="left">部位</uni-th>
+            <uni-th align="left">装备</uni-th>
+            <uni-th width="100" align="left">来源</uni-th>
+          </uni-tr>
+          <uni-tr v-for="(item, index) in tableData" :key="index">
+            <uni-td>{{ item.slot }}</uni-td>
+            <uni-td>
+              <view class="slot-container">
+                <view class="slot-container__item">
                   <img
-                    :src="currentImageSrc(enhancement)"
+                    :src="currentImageSrc(item)"
+                    alt=""
+                    srcset=""
                     style="width: 14px; height: 14px"
                   />
                   <view
@@ -253,218 +243,251 @@
                     :class="[item.wrap ? 'disale-ellipsis' : '']"
                     @click="
                       () => {
-                        switchDetail(true, enhancement, 'item');
+                        switchDetail(true, item);
                         switchWrap(item);
                       }
                     "
-                    >{{ enhancement.name }}</view
+                    >{{ item.name }}</view
                   >
                 </view>
-              </template>
-            </view>
-          </uni-td>
-          <uni-td>
-            <view
-              class="ellipsis bis-item"
-              :class="[
-                item.wrap ? 'disale-ellipsis' : '',
-                item.source.isLoot ? 'is-loot' : '',
-              ]"
-              @click="() => switchWrap(item)"
-              >{{ item.source.source }}</view
-            >
-          </uni-td>
-        </uni-tr>
-      </uni-table>
-    </uni-card>
-  </uni-section>
-  <uni-section class="trinkets" :class="[classKey]" title="饰品">
-    <uni-card class="section-card">
-      <uni-segmented-control
-        :class="[classKey]"
-        :current="currentTrinketTab"
-        :values="trinketTabs"
-        style-type="text"
-        @clickItem="switchTrinketTab"
-      />
-      <template v-if="currentTrinketTab === 0">
-        <view
-          class="tier"
-          v-for="(tier, index) in currentData?.trinkets"
-          :key="tier.label"
-        >
-          <view class="tier-label" :data-label="index">
-            <text>{{ tier.label }}</text>
-          </view>
-          <view class="trink-container">
-            <view
-              class="trink"
-              v-for="trinket in tier.trinkets"
-              :key="trinket.image"
-            >
-              <img
-                @click="() => switchDetail(true, trinket)"
-                :src="currentImageSrc(trinket)"
-                alt=""
-                srcset=""
-              />
-            </view>
-          </view>
-        </view>
-      </template>
-      <view class="popular-trinkets" v-if="currentTrinketTab === 1">
-        <view
-          class="popular-trinkets__item"
-          v-for="item in currentData?.popularMythicDungeonTrinkets"
-          :key="item.id"
-        >
+                <template v-if="displayEnhancement">
+                  <view
+                    class="slot-container__enhancement"
+                    v-for="enhancement in item.enhancements"
+                    :key="enhancement.id"
+                  >
+                    <img
+                      :src="currentImageSrc(enhancement)"
+                      style="width: 14px; height: 14px"
+                    />
+                    <view
+                      class="ellipsis"
+                      style="flex: 1"
+                      :class="[item.wrap ? 'disale-ellipsis' : '']"
+                      @click="
+                        () => {
+                          switchDetail(true, enhancement, 'item');
+                          switchWrap(item);
+                        }
+                      "
+                      >{{ enhancement.name }}</view
+                    >
+                  </view>
+                </template>
+              </view>
+            </uni-td>
+            <uni-td>
+              <view
+                class="ellipsis bis-item"
+                :class="[
+                  item.wrap ? 'disale-ellipsis' : '',
+                  item.source.isLoot ? 'is-loot' : '',
+                ]"
+                @click="() => switchWrap(item)"
+                >{{ item.source.source }}</view
+              >
+            </uni-td>
+          </uni-tr>
+        </uni-table>
+      </uni-card>
+    </uni-section>
+    <uni-section class="trinkets" :class="[classKey]" title="饰品">
+      <uni-card class="section-card">
+        <uni-segmented-control
+          :class="[classKey]"
+          :current="currentTrinketTab"
+          :values="trinketTabs"
+          style-type="text"
+          @clickItem="switchTrinketTab"
+        />
+        <template v-if="currentTrinketTab === 0">
           <view
-            class="popular-trinkets__item-left"
-            @click="() => switchDetail(true, item)"
+            class="tier"
+            v-for="(tier, index) in currentData?.trinkets"
+            :key="tier.label"
           >
-            <image
-              class="popular-trinkets__item-left__icon"
-              :src="currentImageSrc(item)"
-              mode="widthFix"
-            />
-            <view class="popular-trinkets__item-left__name">{{
-              item.name
+            <view class="tier-label" :data-label="index">
+              <text>{{ tier.label }}</text>
+            </view>
+            <view class="trink-container">
+              <view
+                class="trink"
+                v-for="trinket in tier.trinkets"
+                :key="trinket.image"
+              >
+                <img
+                  @click="() => switchDetail(true, trinket)"
+                  :src="currentImageSrc(trinket)"
+                  alt=""
+                  srcset=""
+                />
+              </view>
+            </view>
+          </view>
+        </template>
+        <view class="popular-trinkets" v-if="currentTrinketTab === 1">
+          <view
+            class="popular-trinkets__item"
+            v-for="item in currentData?.popularMythicDungeonTrinkets"
+            :key="item.id"
+          >
+            <view
+              class="popular-trinkets__item-left"
+              @click="() => switchDetail(true, item)"
+            >
+              <image
+                class="popular-trinkets__item-left__icon"
+                :src="currentImageSrc(item)"
+                mode="widthFix"
+              />
+              <view class="popular-trinkets__item-left__name">{{
+                item.name
+              }}</view>
+            </view>
+            <view class="popular-trinkets__item-right">{{
+              item.popularity
             }}</view>
           </view>
-          <view class="popular-trinkets__item-right">{{
-            item.popularity
-          }}</view>
         </view>
-      </view>
-    </uni-card>
-  </uni-section>
+      </uni-card>
+    </uni-section>
 
-  <uni-section
-    id="puzzling-cartel-chip-advice"
-    :class="[classKey]"
-    title="团本兑换代币"
-    :sub-title="`更新于: ${currentData?.wowheadBis?.updatedAt}`"
-  >
-    <uni-card class="section-card">
-      <view class="advice-text">
-        <image
-          src="https://ginkolearn.cyou/api/wow/assets/blizz-media-image/inv_misc_curiouscoin.jpg"
-          mode="widthFix"
-        />
-        <view class="druid">令人费解的财阀凭证</view>
-        <view>兑换优先级推荐</view>
-      </view>
-      <view
-        class="advice-item"
-        v-for="(item, index) in currentData?.wowheadBis
-          ?.puzzlingCartelChipAdvice"
-        :key="item.id"
-        @click="() => switchDetail(true, item)"
-      >
-        <view class="advice-item__index">{{ index + 1 }}.</view>
-        <image :src="currentImageSrc(item)" mode="widthFix" />
-        <view class="advice-item__name">{{ item.name }}</view>
-      </view>
-    </uni-card>
-  </uni-section>
-
-  <ad-custom unit-id="adunit-43dfd4fbca02d516" class="ad-container"></ad-custom>
-
-  <uni-section class="dungeon" :class="[classKey]" title="一句话大秘境">
-    <uni-card class="section-card">
-      <view class="menu">
-        <text
-          v-for="dungeon in dungeons"
-          :key="dungeon.id"
-          @click="() => switchDungeon(dungeon.id)"
-          :class="[
-            'ellipsis',
-            classKey,
-            currentDungeonId === dungeon.id ? 'menu_active' : '',
-          ]"
-          >{{ dungeon.name_zh }}</text
+    <uni-section
+      id="puzzling-cartel-chip-advice"
+      :class="[classKey]"
+      title="团本兑换代币"
+      :sub-title="`更新于: ${currentData?.wowheadBis?.updatedAt}`"
+    >
+      <uni-card class="section-card">
+        <view class="advice-text">
+          <image
+            src="https://ginkolearn.cyou/api/wow/assets/blizz-media-image/inv_misc_curiouscoin.jpg"
+            mode="widthFix"
+          />
+          <view class="druid">令人费解的财阀凭证</view>
+          <view>兑换优先级推荐</view>
+        </view>
+        <view
+          class="advice-item"
+          v-for="(item, index) in currentData?.wowheadBis
+            ?.puzzlingCartelChipAdvice"
+          :key="item.id"
+          @click="() => switchDetail(true, item)"
         >
-      </view>
-      <view class="dungeon_empty" v-show="tipMessage?.length">{{
-        tipMessage
-      }}</view>
-      <uni-collapse ref="dungeonCollapse" v-model="tipCollapseIndex">
-        <uni-collapse-item
-          v-for="(tipKind, index) in dungeonTip?.children"
-          :key="tipKind.title"
-          :open="index === 0"
-        >
-          <template v-slot:title>
-            <uni-list>
-              <uni-list-item
-                class="dungeon_tip-title"
-                :title="tipKind.title"
-                rightText="点击任意位置"
-              >
-              </uni-list-item>
-            </uni-list>
-          </template>
-          <view
-            class="ul"
-            v-for="(l1Child, l1Index) in tipKind.children"
-            :key="l1Index"
+          <view class="advice-item__index">{{ index + 1 }}.</view>
+          <image :src="currentImageSrc(item)" mode="widthFix" />
+          <view class="advice-item__name">{{ item.name }}</view>
+        </view>
+      </uni-card>
+    </uni-section>
+  </template>
+
+  <template v-if="activeMenu === 'mythic'">
+    <uni-section class="dungeon" :class="[classKey]" title="一句话大秘境">
+      <uni-card class="section-card">
+        <view class="menu">
+          <text
+            v-for="dungeon in dungeons"
+            :key="dungeon.id"
+            @click="() => switchDungeon(dungeon.id)"
+            :class="[
+              'ellipsis',
+              classKey,
+              currentDungeonId === dungeon.id ? 'menu_active' : '',
+            ]"
+            >{{ dungeon.name_zh }}</text
           >
-            <text v-if="l1Child.children.length">{{
-              l1Child.title || l1Child.totalText
-            }}</text>
-            <rich-text
-              v-if="!l1Child.children.length"
-              :nodes="renderTip(l1Child.title || l1Child.totalText)"
-            ></rich-text>
+        </view>
+        <view class="dungeon_empty" v-show="tipMessage?.length">{{
+          tipMessage
+        }}</view>
+        <uni-collapse ref="dungeonCollapse" v-model="tipCollapseIndex">
+          <uni-collapse-item
+            v-for="(tipKind, index) in dungeonTip?.children"
+            :key="tipKind.title"
+            :open="index === 0"
+          >
+            <template v-slot:title>
+              <uni-list>
+                <uni-list-item
+                  class="dungeon_tip-title"
+                  :title="tipKind.title"
+                  rightText="点击任意位置"
+                >
+                </uni-list-item>
+              </uni-list>
+            </template>
             <view
-              class="li list-style"
-              v-for="(l2Child, l2Index) in l1Child.children"
-              :key="l2Index"
+              class="ul"
+              v-for="(l1Child, l1Index) in tipKind.children"
+              :key="l1Index"
             >
+              <text v-if="l1Child.children.length">{{
+                l1Child.title || l1Child.totalText
+              }}</text>
               <rich-text
-                :nodes="renderTip(l2Child.totalText)"
-                @click="() => displaySpells(l2Child.spells)"
+                v-if="!l1Child.children.length"
+                :nodes="renderTip(l1Child.title || l1Child.totalText)"
               ></rich-text>
               <view
-                class="ul list-style-empty"
-                v-show="l2Child.children?.length"
-                v-for="(l3Child, l3Index) in l2Child.children"
-                :key="l3Index"
+                class="li list-style"
+                v-for="(l2Child, l2Index) in l1Child.children"
+                :key="l2Index"
               >
                 <rich-text
-                  :nodes="renderTip(l3Child.totalText)"
-                  @click="() => displaySpells(l3Child.spells)"
+                  :nodes="renderTip(l2Child.totalText)"
+                  @click="() => displaySpells(l2Child.spells)"
                 ></rich-text>
                 <view
-                  class="li list-style-empty"
-                  v-show="l3Child.children?.length"
-                  v-for="(l4Child, l4Index) in l3Child.children"
-                  :key="l4Index"
+                  class="ul list-style-empty"
+                  v-show="l2Child.children?.length"
+                  v-for="(l3Child, l3Index) in l2Child.children"
+                  :key="l3Index"
                 >
                   <rich-text
-                    :nodes="renderTip(l4Child.totalText)"
-                    @click="() => displaySpells(l4Child.spells)"
+                    :nodes="renderTip(l3Child.totalText)"
+                    @click="() => displaySpells(l3Child.spells)"
                   ></rich-text>
                   <view
-                    class="ul list-style-empty"
-                    v-show="l4Child.children?.length"
-                    v-for="(l5Child, l5Index) in l4Child.children"
-                    :key="l5Index"
+                    class="li list-style-empty"
+                    v-show="l3Child.children?.length"
+                    v-for="(l4Child, l4Index) in l3Child.children"
+                    :key="l4Index"
                   >
                     <rich-text
-                      :nodes="renderTip(l5Child.totalText)"
-                      @click="() => displaySpells(l5Child.spells)"
+                      :nodes="renderTip(l4Child.totalText)"
+                      @click="() => displaySpells(l4Child.spells)"
                     ></rich-text>
+                    <view
+                      class="ul list-style-empty"
+                      v-show="l4Child.children?.length"
+                      v-for="(l5Child, l5Index) in l4Child.children"
+                      :key="l5Index"
+                    >
+                      <rich-text
+                        :nodes="renderTip(l5Child.totalText)"
+                        @click="() => displaySpells(l5Child.spells)"
+                      ></rich-text>
+                    </view>
                   </view>
                 </view>
               </view>
             </view>
-          </view>
-        </uni-collapse-item>
-      </uni-collapse>
-    </uni-card>
-  </uni-section>
+          </uni-collapse-item>
+        </uni-collapse>
+      </uni-card>
+    </uni-section>
+  </template>
+
+  <ad-custom unit-id="adunit-43dfd4fbca02d516" class="ad-container"></ad-custom>
+
   <view class="footer"></view>
+
+  <SpecFooter
+    v-model="activeMenu"
+    :menus="footerMenus"
+    @change="onMenuChange"
+  />
 
   <uni-popup ref="popup">
     <uni-load-more
@@ -607,26 +630,6 @@
     v-model:message="messageText"
   />
 
-  <view
-    ref="fabContainerRef"
-    :class="[
-      'animate__animated',
-      isInitPage ? 'fab-disabled' : '',
-      isShowFab ? 'animate__fadeIn' : 'animate__fadeOut',
-    ]"
-  >
-    <uni-fab
-      ref="uniFabRef"
-      :class="[isOpenFab ? 'fab-active' : '']"
-      :pattern="pattern"
-      :content="fabContent"
-      horizontal="right"
-      vertical="top"
-      direction="vertical"
-      @trigger="onClickFabIcon"
-      @fabClick="onSwitchFabIcon"
-    />
-  </view>
 </template>
 
 <script lang="ts" setup>
@@ -646,6 +649,7 @@ import {
 } from '@/api/wow';
 import ShareIcon from '@/components/ShareIcon.vue';
 import TopMessage from '@/components/TopMessage.vue';
+import SpecFooter from '@/components/SpecFooter.vue';
 
 const classKey = ref('');
 const specKey = ref('');
@@ -669,16 +673,6 @@ onLoad(async (options: any) => {
   uni.hideLoading();
 
   setNaviTitle(`${options.title} ${currentData.value.version}`);
-});
-onShow(() => {
-  isOpenFab.value = false;
-});
-
-// 避免悬浮的展开的菜单UI异常
-onHide(() => {
-  if (uniFabRef.value?.isShow) {
-    uniFabRef.value.close?.();
-  }
 });
 
 async function getBasicBisData() {
@@ -952,83 +946,37 @@ async function displaySpells(params: any) {
   }
 }
 //#endregion
-const pattern = ref({
-  color: '#7A7E83',
-  backgroundColor: '#fff',
-  selectedColor: '#007AFF',
-  buttonColor: '#007AFF',
-  iconColor: '#fff',
-});
-const fabContent = ref([
+
+//#region
+const activeMenu = ref('index');
+const footerMenus = [
   {
-    iconPath: '/static/icon/rating.svg',
-    selectedIconPath: '/static/icon/rating.svg',
-    text: '总览',
-    active: false,
+    title: '总览',
+    value: 'index',
+    icon: 'icon-Crown-',
   },
   {
-    iconPath: '/static/icon/tree.svg',
-    selectedIconPath: '/static/icon/tree.svg',
-    text: '天赋',
-    active: false,
+    title: '天赋',
+    value: 'talent',
+    icon: 'icon-tree',
   },
   {
-    iconPath: '/static/icon/leg-armor.svg',
-    selectedIconPath: '/static/icon/leg-armor.svg',
-    text: '配装',
-    active: false,
+    title: '分享',
+    value: 'share',
+    icon: 'icon-share',
   },
   {
-    iconPath: '/static/icon/textile-products.svg',
-    selectedIconPath: '/static/icon/textile-products.svg',
-    text: '攻略',
-    active: false,
+    title: '配装',
+    value: 'bis',
+    icon: 'icon-leg-armor',
   },
-]);
-const isOpenFab = ref(false);
-const isShowFab = ref(false);
-const isInitPage = ref(true);
-const fabContainerRef = ref<any>();
-const uniFabRef = ref<any>();
-function onClickFabIcon(e: { index: number }) {
-  let selector = '';
-
-  switch (e.index) {
-    case 0:
-      selector = '#overview';
-      break;
-    case 1:
-      selector = '.talent';
-      break;
-    case 2:
-      selector = '.bis';
-      break;
-    case 3:
-      selector = '.dungeon';
-      break;
-    default:
-      break;
-  }
-
-  uni.pageScrollTo({ selector });
-}
-function onSwitchFabIcon() {
-  isOpenFab.value = !isOpenFab.value;
-}
-
-onPageScroll(e => {
-  if (e.scrollTop > 300 && !isShowFab.value) {
-    isInitPage.value = false;
-    isShowFab.value = true;
-  } else if (e.scrollTop <= 300 && isShowFab.value) {
-    isShowFab.value = false;
-  }
-});
-
-//#region 附魔
-function toHotSpot() {
-  uni.pageScrollTo({ selector: '#puzzling-cartel-chip-advice' });
-}
+  {
+    title: '大秘境',
+    value: 'mythic',
+    icon: 'icon-dungeon',
+  },
+];
+function onMenuChange(menuValue) {}
 //#endregion
 </script>
 
@@ -1705,7 +1653,7 @@ $light-border: rgb(68, 68, 68);
 }
 
 .footer {
-  height: 4rem;
+  height: 150rpx;
   width: 1vw;
 }
 
