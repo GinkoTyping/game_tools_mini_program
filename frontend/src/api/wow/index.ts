@@ -42,6 +42,7 @@ interface IBisDataDTO {
   popular_mythic_dungeon_trinkets: string;
   ratings: { label: string; rating: number }[];
   version: string;
+  mythicOverallTier: any;
   talents: { talent: string; code: string }[];
   detailed_stats_priority: {
     best: { name: string; priorityList: string[] }[];
@@ -168,6 +169,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
     talents: data.talents,
     wowheadBis: data.wowhead_bis,
     popularMythicDungeonTrinkets: data.popular_mythic_dungeon_trinkets,
+    mythicOverallTier: data.mythicOverallTier,
   };
 }
 
@@ -227,7 +229,7 @@ export async function querySpecPopularity(
     } else if (num >= 1000 && num < 1000000) {
       return (num / 1000).toFixed(0) + 'K';
     } else {
-      return (num / 1000000).toFixed(0) + 'M';
+      return (num / 1000000).toFixed(1) + 'M';
     }
   }
 

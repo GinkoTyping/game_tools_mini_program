@@ -365,7 +365,7 @@ export async function getBisBySpec(req, res) {
       talents: JSON.parse(bisData.talents),
       wowhead_bis: wowheadBis,
       popular_mythic_dungeon_trinkets: popularMythicDungeonTrinkets,
-      specTier: mythicOverallTier,
+      mythicOverallTier,
       maxroll_bis: undefined,
       archon_bis: undefined,
       enhancement: undefined,
