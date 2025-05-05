@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "432067",
+      "name": "tree",
+      "font_class": "tree",
+      "unicode": "e815",
+      "unicode_decimal": 59413
+    },
+    {
+      "icon_id": "6353293",
+      "name": "share",
+      "font_class": "share",
+      "unicode": "e86e",
+      "unicode_decimal": 59502
+    },
+    {
+      "icon_id": "11398837",
+      "name": "dungeon",
+      "font_class": "dungeon",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "40166003",
+      "name": "leg-armor",
+      "font_class": "leg-armor",
+      "unicode": "eaf8",
+      "unicode_decimal": 60152
+    },
+    {
       "icon_id": "6807837",
       "name": "Crown-1",
       "font_class": "Crown-",
