@@ -116,6 +116,7 @@ export async function queryPolularityByCondition(req, res) {
         });
       }
     } catch (error) {
+      console.error('Error fetching data from Raider.IO API:', error);
       res.status(500).json({
         error: 'Failed to fetch data from Raider.IO API',
       });
