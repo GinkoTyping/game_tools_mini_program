@@ -27,12 +27,22 @@
         </view>
 
         <view class="tiers">
-          <view class="tier-bar">
+          <view
+            class="tier-bar"
+            @click="
+              () =>
+                navigator.toTierList({
+                  version_id: '11.1',
+                  activity_type: 'MYTHIC',
+                  role: 'dps',
+                })
+            "
+          >
             <view class="tier-prefix">
               <view
                 class="tier-icon"
                 :class="[`${currentData?.mythicOverallTier?.tier}-tier`]"
-                >{{ currentData?.mythicDpsTier?.tier }}</view
+                >{{ currentData?.mythicOverallTier?.tier }}</view
               >
               <view class="tier-text">大秘境 综合排行</view>
             </view>
@@ -42,7 +52,7 @@
             </view>
           </view>
 
-          <view class="tier-bar">
+          <view class="tier-bar" @click="() => navigator.toSpecPopularity()">
             <view class="tier-prefix">
               <view
                 class="tier-icon"
@@ -125,6 +135,7 @@
             }}</text>
           </view>
           <image
+            v-if="currentData?.archonStatsPriority.relations.length"
             :src="`/static/icon/${relationIcon(
               currentData?.archonStatsPriority.relations[0]
             )}.svg`"
@@ -138,6 +149,7 @@
             }}</text>
           </view>
           <image
+            v-if="currentData?.archonStatsPriority.relations.length"
             :src="`/static/icon/${relationIcon(
               currentData?.archonStatsPriority.relations[1]
             )}.svg`"
@@ -151,6 +163,7 @@
             }}</text>
           </view>
           <image
+            v-if="currentData?.archonStatsPriority.relations.length"
             :src="`/static/icon/${relationIcon(
               currentData?.archonStatsPriority.relations[2]
             )}.svg`"
@@ -686,11 +699,13 @@ import {
 import ShareIcon from '@/components/ShareIcon.vue';
 import TopMessage from '@/components/TopMessage.vue';
 import SpecFooter from '@/components/SpecFooter.vue';
+import { useNavigator } from '@/hooks/navigator';
 
 const classKey = ref('');
 const specKey = ref('');
 const currentData = ref<any>();
 const query = ref<any>({});
+const navigator = useNavigator();
 onLoad(async (options: any) => {
   query.value = options;
   classKey.value = options.classKey ?? 'death-knight';
@@ -743,7 +758,7 @@ const getBarColor = computed(() => {
 });
 const getDiffText = computed(() => {
   return (diff: string) => {
-    if (diff.includes('↑') || diff.includes('↓')) {
+    if (diff?.includes('↑') || diff?.includes('↓')) {
       return `(${diff}名)`;
     } else {
       return '';
