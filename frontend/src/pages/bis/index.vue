@@ -25,6 +25,43 @@
             </view>
           </view>
         </view>
+
+        <view class="tiers">
+          <view class="tier-bar">
+            <view class="tier-prefix">
+              <view
+                class="tier-icon"
+                :class="[`${currentData?.mythicOverallTier?.tier}-tier`]"
+                >{{ currentData?.mythicDpsTier?.tier }}</view
+              >
+              <view class="tier-text">大秘境 综合排行</view>
+            </view>
+            <view class="tier-suffix">
+              <view>更多</view>
+              <view class="iconfont icon-more"></view>
+            </view>
+          </view>
+
+          <view class="tier-bar">
+            <view class="tier-prefix">
+              <view
+                class="tier-icon"
+                :class="[`${currentData?.mythicDpsTier?.tier}-tier`]"
+                >{{ currentData?.mythicDpsTier?.tier }}</view
+              >
+              <view class="tier-text">
+                <view>大秘境 输出排行</view>
+                <view class="tier-text__diff">{{
+                  getDiffText(currentData?.mythicDpsTier?.diff)
+                }}</view>
+              </view>
+            </view>
+            <view class="tier-suffix">
+              <view>更多</view>
+              <view class="iconfont icon-more"></view>
+            </view>
+          </view>
+        </view>
       </uni-card>
     </uni-section>
 
@@ -704,6 +741,15 @@ const getBarColor = computed(() => {
     }
   };
 });
+const getDiffText = computed(() => {
+  return (diff: string) => {
+    if (diff.includes('↑') || diff.includes('↓')) {
+      return `(${diff}名)`;
+    } else {
+      return '';
+    }
+  };
+});
 
 // 属性优先级
 const relationIcon = computed(() => {
@@ -991,7 +1037,7 @@ function onMenuChange(menuValue) {}
 
   .label {
     color: #fff;
-    font-size: 16px;
+    font-size: 30rpx;
     font-weight: bold;
     display: flex;
     justify-content: space-between;
@@ -1025,6 +1071,67 @@ function onMenuChange(menuValue) {}
     .red-bar {
       background-color: #bd2625;
     }
+  }
+}
+
+.tiers {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 12rpx;
+  margin: 30rpx 0;
+  gap: 24rpx;
+}
+.tier-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60rpx;
+  background-color: $uni-bg-color-grey-lighter;
+  border-radius: 30rpx;
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: bold;
+  .tier-icon {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60rpx;
+    font-weight: bold;
+  }
+  .tier-prefix,
+  .tier-suffix {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    .tier-text {
+      display: flex;
+      align-items: center;
+      gap: 8rpx;
+      .tier-text__diff {
+        font-weight: normal;
+      }
+    }
+  }
+  .tier-suffix {
+    padding-right: 10rpx;
+    color: $uni-color-primary;
+  }
+  .S-tier {
+    background-color: $color-s-tier;
+  }
+  .A-tier {
+    background-color: $color-a-tier;
+  }
+  .B-tier {
+    background-color: $color-b-tier;
+  }
+  .C-tier {
+    background-color: $color-c-tier;
+  }
+  .D-tier {
+    background-color: $color-d-tier;
   }
 }
 
