@@ -25,7 +25,9 @@
             </view>
           </view>
         </view>
+      </uni-card>
 
+      <uni-card class="section-card tiers-card">
         <view class="tiers">
           <view
             class="tier-bar"
@@ -1088,15 +1090,17 @@ function onMenuChange(menuValue) {}
     }
   }
 }
-
+::v-deep .tiers-card .uni-card {
+  margin-top: 20rpx !important;
+}
 .tiers {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 0 12rpx;
-  margin: 30rpx 0;
   gap: 24rpx;
 }
+
 .tier-bar {
   display: flex;
   justify-content: space-between;
@@ -1107,6 +1111,7 @@ function onMenuChange(menuValue) {}
   color: #fff;
   font-size: 30rpx;
   font-weight: bold;
+
   .tier-icon {
     width: 60rpx;
     height: 60rpx;
@@ -1115,36 +1120,45 @@ function onMenuChange(menuValue) {}
     line-height: 60rpx;
     font-weight: bold;
   }
+
   .tier-prefix,
   .tier-suffix {
     display: flex;
     align-items: center;
     gap: 6px;
+
     .tier-text {
       display: flex;
       align-items: center;
       gap: 8rpx;
+
       .tier-text__diff {
         font-weight: normal;
       }
     }
   }
+
   .tier-suffix {
     padding-right: 10rpx;
     color: $uni-color-primary;
   }
+
   .S-tier {
     background-color: $color-s-tier;
   }
+
   .A-tier {
     background-color: $color-a-tier;
   }
+
   .B-tier {
     background-color: $color-b-tier;
   }
+
   .C-tier {
     background-color: $color-c-tier;
   }
+
   .D-tier {
     background-color: $color-d-tier;
   }
@@ -1638,33 +1652,40 @@ $light-border: rgb(68, 68, 68);
   display: flex;
   flex-direction: column;
   gap: 12rpx;
+
   .popular-trinkets__item {
     display: flex;
     justify-content: space-between;
+
     .popular-trinkets__item-left {
       display: flex;
       align-items: center;
       gap: 12rpx;
       // color: $color-mythic;
       font-weight: bold;
+
       image {
         width: 60rpx;
         border-radius: 10rpx;
       }
     }
+
     .popular-trinkets__item-right {
       font-weight: bold;
     }
+
     &:nth-child(1),
     &:nth-child(2) {
       color: $color-legend;
     }
+
     &:nth-child(3),
     &:nth-child(4) {
       color: $color-rare;
     }
   }
 }
+
 // 悬浮按钮
 ::v-deep .uni-fab {
   transform: scale(0.727) !important;
@@ -1806,21 +1827,26 @@ $light-border: rgb(68, 68, 68);
     align-items: center;
     font-size: 30rpx;
     margin-bottom: 20rpx;
+
     image {
       width: 36rpx;
     }
   }
+
   .advice-item {
     display: flex;
     font-size: 30rpx;
     gap: 12rpx;
     margin-bottom: 12rpx;
+
     .advice-item__index {
       color: $color-legend;
     }
+
     image {
       width: 36rpx;
     }
+
     .advice-item__name {
       color: $color-mythic;
     }
@@ -1831,8 +1857,10 @@ $light-border: rgb(68, 68, 68);
 ::v-deep .segmented-control {
   gap: 20rpx;
   margin-bottom: 20rpx;
+
   .segmented-control__item {
     flex: none !important;
+
     .segmented-control__text {
       font-size: small;
       color: inherit !important;
