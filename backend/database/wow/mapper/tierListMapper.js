@@ -56,6 +56,36 @@ function getAllTierList() {
   return db.all(`SELECT version_id, activity_type, role FROM wow_tier_list`);
 }
 
+async function getSpec(classSpec, roleClass) {
+  const list = await db.get(
+    `SELECT * 
+    FROM wow_tier_list 
+    WHERE 
+      INSTR(tier_data, '"classSpec":"' || ? || '"') > 0
+      AND INSTR(tier_data, '"roleClass":"' || ? || '"') > 0;`,
+    [classSpec, roleClass]
+  );
+  let output;
+  if (list?.tier_data) {
+    JSON.parse(list.tier_data).find((tier) => {
+      const hasFound = tier.children.find((child) => {
+        if (child.classSpec === classSpec && child.roleClass === roleClass) {
+          output = {
+            ...child,
+            ...tier,
+            id: undefined,
+            children: undefined,
+          };
+          return true;
+        }
+        return false;
+      });
+      return hasFound;
+    });
+  }
+  return output;
+}
+
 export function useTierListMapper(database) {
   if (database) {
     db = database;
@@ -66,6 +96,7 @@ export function useTierListMapper(database) {
 
   return {
     insertTierList,
+    getSpec,
     getTierListByVersion,
     getAllTierList,
     updateTierList,

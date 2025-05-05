@@ -15,11 +15,13 @@ import { isLocal } from '../../auth/validateAdmin.js';
 import spriteMap from '../../assets/wow/sprites/sprite-map.js';
 import { collectBisOverview } from '../../database/wow/data/archon-bis/crawler.js';
 import { collectMaxrollBis } from '../../database/wow/data/maxroll-bis/crawler.js';
+import { useTierListMapper } from '../../database/wow/mapper/tierListMapper.js';
 
 let api;
 const database = await getDB();
 const bisMapper = useBisMapper(database);
 const itemMapper = useItemMapper(database);
+const tierListMapper = useTierListMapper(database);
 
 const dynamicDB = await getDynamicDB();
 const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
@@ -342,6 +344,8 @@ export async function getBisBySpec(req, res) {
       )
     ).map((result) => result.value);
 
+    const mythicOverallTier = await tierListMapper.getSpec(classSpec, roleClass);
+
     // 避免本地调测时，引起本地的数据和服务器不一致
     if (!isLocal(req)) {
       // 访问次数 +1
@@ -361,6 +365,7 @@ export async function getBisBySpec(req, res) {
       talents: JSON.parse(bisData.talents),
       wowhead_bis: wowheadBis,
       popular_mythic_dungeon_trinkets: popularMythicDungeonTrinkets,
+      specTier: mythicOverallTier,
       maxroll_bis: undefined,
       archon_bis: undefined,
       enhancement: undefined,
