@@ -88,7 +88,7 @@ const sectionSetting = computed(() => {
         color: inherit !important;
         text-align: center;
         font-weight: 800;
-        font-size: 18px !important;
+        font-size: 32rpx !important;
         display: inline-block;
         box-sizing: border-box;
         &::before,

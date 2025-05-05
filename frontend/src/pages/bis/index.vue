@@ -1177,13 +1177,13 @@ function onMenuChange(menuValue) {}
 
     text:last-child {
       line-height: 14px;
-      font-size: 12px;
+      font-size: 24rpx;
       font-weight: normal;
     }
   }
 
   text {
-    font-size: 16px;
+    font-size: 30rpx;
     color: #fff;
     font-weight: bolder;
   }
@@ -1213,7 +1213,7 @@ $light-border: rgb(68, 68, 68);
         color: inherit !important;
         text-align: center;
         font-weight: 800;
-        font-size: 18px !important;
+        font-size: 32rpx !important;
         display: inline-block;
         box-sizing: border-box;
 
