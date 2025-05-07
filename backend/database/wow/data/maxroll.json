@@ -1721,7 +1721,7 @@
           "blood-death-knight-0-hero.jpg",
           "blood-death-knight-0-spec.jpg"
         ],
-        "code": "CqPAx-s_ii_mj_N7LYTG0GwJggxMmZGjZmxMDzYmZmmhhZGzYAAAAAwwMzMzwsNzMjBAAwMzMzMAAAAjttBGwCYZYCMsAwMYDA"
+        "code": "CoPAAAAAAAAAAAAAAAAAAAAAAgxMmZGjZmxMDzYmZmmhhZGzYAAAAAwwMzMzwsNzMjBAAwMzMzMAAAAjttBGwCYZYCMsAwMYDA"
       }
     ],
     "enhancement": [
@@ -5838,7 +5838,7 @@
           "frost-death-knight-0-hero.jpg",
           "frost-death-knight-0-spec.jpg"
         ],
-        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAgZmZMjxYYYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAYssNwAWALDTgxCmZmxM"
+        "code": "CsPAAAAAAAAAAAAAAAAAAAAAAAgZmZMjxYYYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAYssNwAWALDTgxCmZmxM"
       },
       {
         "talent": "Riders ‍Shattering Blade",
@@ -5847,7 +5847,7 @@
           "frost-death-knight-1-hero.jpg",
           "frost-death-knight-1-spec.jpg"
         ],
-        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgAgZmZMjxYYYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAAsZ2MMwAzGDNshZGjZG"
+        "code": "CsPAAAAAAAAAAAAAAAAAAAAAAAgZmZMjxYYYmZmZGmZmJzYYYGMzYmhZmZmZmZZmBAAAAAAAAAAAAsZ2MMwAzGDNshZGjZG"
       },
       {
         "talent": "Deathbringer ‍Breath of Sindragosa",
@@ -5856,7 +5856,7 @@
           "frost-death-knight-2-hero.jpg",
           "frost-death-knight-2-spec.jpg"
         ],
-        "code": "CuPAx-s_ii_mj_N7LYTG0GwJgMGgZmZMjxYYYmZmZGmZmJzYMjBMzYMjZmZmZmZxMAAAAAAAAAAAAjltBGwCYZYCMWwMMmB"
+        "code": "CsPAAAAAAAAAAAAAAAAAAAAAAMGgZmZMjxYYYmZmZGmZmJzYMjBMzYMjZmZmZmZxMAAAAAAAAAAAAjltBGwCYZYCMWwMMmB"
       }
     ],
     "enhancement": [
@@ -10142,31 +10142,13 @@
     ],
     "talents": [
       {
-        "talent": "San'laynFull AoE",
+        "talent": "San'layn",
         "url": [
           "unholy-death-knight-0-class.jpg",
           "unholy-death-knight-0-hero.jpg",
           "unholy-death-knight-0-spec.jpg"
         ],
-        "code": "CyPAx-s_ii_mj_N7LYTG0GwJgAgZGjZMGDzMzMzMNMmZGzYAAAAAAAAAgZGDjZmZAgZzMMLDzMz8AzMzYgBmxoxyGgtBbAwM"
-      },
-      {
-        "talent": "RidersFull AoE",
-        "url": [
-          "unholy-death-knight-1-class.jpg",
-          "unholy-death-knight-1-hero.jpg",
-          "unholy-death-knight-1-spec.jpg"
-        ],
-        "code": "CyPAx-s_ii_mj_N7LYTG0GwJgAgZGjZMGDzMzMzMNMmZGzYAAAAAAAAAgZGDzMzMDAMbmhZBzMz8AzMzA2MbGGYgZjhGLAwM"
-      },
-      {
-        "talent": "RidersBalanced",
-        "url": [
-          "unholy-death-knight-2-class.jpg",
-          "unholy-death-knight-2-hero.jpg",
-          "unholy-death-knight-2-spec.jpg"
-        ],
-        "code": "CyPAx-s_ii_mj_N7LYTG0GwJgAgZGjZMGDzMzMzMNMmZGzYAAAAAAAAAgZGDjZmZAgZzMMLGzMzMjZGwmZzwADMbM0YBAmB"
+        "code": "CwPAAAAAAAAAAAAAAAAAAAAAAAgZGjZMGjlhxMz0wMzMzMjBAAAAAAAAAmhZmxMzMAwsZGmlhZmZegZGjBGYGjGLLA2GsBAz"
       }
     ],
     "enhancement": [
@@ -13768,7 +13750,7 @@
           "vengeance-demon-hunter-0-hero.jpg",
           "vengeance-demon-hunter-0-spec.jpg"
         ],
-        "code": "CWkA7H9y3xiKN8OoKpcDb7Q1KCAmZMzMjhZkZmhZYmZbwYsNDzMjZMGz2MzwMjZGmBAAAgZbGMMW2YCDmZYs"
+        "code": "CUkAAAAAAAAAAAAAAAAAAAAAAAAmZMzMjhZkZmhZYmZbwYsNDzMjZMGz2MzwMjZGmBAAAgZbGMMW2YCDmZYs"
       },
       {
         "talent": "High Keys ‍Last Resort ‍Aldrachi Reaver",
@@ -13777,7 +13759,7 @@
           "vengeance-demon-hunter-1-hero.jpg",
           "vengeance-demon-hunter-1-spec.jpg"
         ],
-        "code": "CWkA7H9y3xiKN8OoKpcDb7Q1KCAmZMzMjhZkZmhZYGLDmZsNDzMzMjBz2MzwMjZGmBAAAgZbGMMW2YCDmZYs"
+        "code": "CUkAAAAAAAAAAAAAAAAAAAAAAAAmZMzMjhZkZmhZYGLDmZsNDzMzMjBz2MzwMjZGmBAAAgZbGMMW2YCDmZYs"
       },
       {
         "talent": "Low Keys ‍Fel-Scarred",
@@ -13786,7 +13768,7 @@
           "vengeance-demon-hunter-2-hero.jpg",
           "vengeance-demon-hunter-2-spec.jpg"
         ],
-        "code": "CWkA7H9y3xiKN8OoKpcDb7Q1KCAGMzMjhZkZmhZYmZbwYsNDzMzMjBz2MzYMjZGmBAAAAYbWMjhZhpBmZMjN"
+        "code": "CUkAAAAAAAAAAAAAAAAAAAAAAAAGMzMjhZkZmhZYmZbwYsNDzMzMjBz2MzYMjZGmBAAAAYbWMjhZhpBmZMjN"
       }
     ],
     "enhancement": [
@@ -15496,7 +15478,7 @@
           "balance-druid-0-hero.jpg",
           "balance-druid-0-spec.jpg"
         ],
-        "code": "CaGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmFzyMLzMbzMzMzMLmlxwgNsAgxy2MbYMbDgJAAAALmZMAbGGD"
+        "code": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmFzyMLzMbzMzMzMLmlxwgNsAgxy2MbYMbDgJAAAALmZMAbGGD"
       },
       {
         "talent": "Keeper of the Grove",
@@ -15505,7 +15487,7 @@
           "balance-druid-1-hero.jpg",
           "balance-druid-1-spec.jpg"
         ],
-        "code": "CaGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmNzyMLzMLjZmZmZxsMGGjNsAgBYbbsgpZmlBAAAAbmZMAbGGD"
+        "code": "CYGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALUmtmxYmBYWYZmZWYYmNzyMLzMLjZmZmZxsMGGjNsAgBYbbsgpZmlBAAAAbmZMAbGGD"
       }
     ],
     "enhancement": [
@@ -15837,7 +15819,7 @@
           "feral-druid-0-hero.jpg",
           "feral-druid-0-spec.jpg"
         ],
-        "code": "CeGA6LGMrrHkyvBy43UPp_aXLDAAAAAAmZb2MzCzMzMbzGjlZmZmHYmBAAAAAYJY2MwMjaGzCLzMzyYGDAAAAAAYAAAAAAAz2MbNLzstBzMDgFGM"
+        "code": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZb2MzCzMzMbzGjlZmZmHYmBAAAAAYJY2MwMjaGzCLzMzyYGDAAAAAAYAAAAAAAz2MbNLzstBzMDgFGM"
       },
       {
         "talent": "Druid of the Claw",
@@ -15846,7 +15828,7 @@
           "feral-druid-1-hero.jpg",
           "feral-druid-1-spec.jpg"
         ],
-        "code": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZb2MzCzMzMbzGjlZmZmHYmBAAAAAYJY2MwMjaGzCLzMzyYGzAAAAAAADAAAAQzsMLzMbDIwCMzAwCDG"
+        "code": "CcGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZb2MzCzMzMbzGjlZmZmHYmBAAAAAYJY2MwMjaGzCLzMzyYGzAAAAAAADAAAAQzsMLzMbDAYBmZAYhBD"
       }
     ],
     "enhancement": [
@@ -17769,7 +17751,7 @@
           "guardian-druid-0-hero.jpg",
           "guardian-druid-0-spec.jpg"
         ],
-        "code": "CiGA6LGMrrHkyvBy43UPp_aXLDAAAAAAAAAAAAzYmhZWmZMjZMzYhZGmFLDMbGGNRzMzyMLzMjxMAAAAAAghxAW2mZDjZZAMBAAAsBDAbmZY"
+        "code": "CgGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzYmhZWmZMjZMzYhZGmFLDMbGGNRzMzyMLzMjxMAAAAAAghxAW2mZDjZZAMBAAAsBDAbmZY"
       }
     ],
     "enhancement": [
@@ -20156,7 +20138,7 @@
           "restoration-druid-0-hero.jpg",
           "restoration-druid-0-spec.jpg"
         ],
-        "code": "CmGA6LGMrrHkyvBy43UPp_aXLvxMDLbzMzMziZbAjllZ2WsNDAAAAAAAAAAAglBNbGmmhBmlZWmZGzYGDAAAAAAAMAAAAAgZbmtmlZ2sxMzADzCoBA"
+        "code": "CkGAAAAAAAAAAAAAAAAAAAAAAsxMDLbzMzMziZbAjllZ2WsNDAAAAAAAAAAAglBNbGmmhBmlZWmZGzYGDAAAAAAAMAAAAAgZbmtmlZ2sxMzADzCoBA"
       }
     ],
     "enhancement": [
@@ -23676,7 +23658,7 @@
           "arcane-mage-0-hero.jpg",
           "arcane-mage-0-spec.jpg"
         ],
-        "code": "C6DAqjba-UdlK8weD5clEvnetNzgZbWwMMzs4BYMzMGTjxMAAAAAAMAAAwMz2yyyMTsAAAAAAwCALjhZmlZZYYmZGmZmZmZMjxA"
+        "code": "C4DAAAAAAAAAAAAAAAAAAAAAAMzgZbWwMMzs4BYMzMGTjxMAAAAAAMAAAwMz2yyyMTsAAAAAAwCALjhZmlZZYYmZGmZmZmZMjxA"
       }
     ],
     "enhancement": [
@@ -27063,7 +27045,7 @@
           "fire-mage-0-hero.jpg",
           "fire-mage-0-spec.jpg"
         ],
-        "code": "C-DAdtfC4fDh_vCojwUh17fH6OzgZzCmhZmFDPgZmx0YMmZAAAAAAMAgZmplZZZGAgNzMjZGmxMzYxYmh5BsNzsNjFzC"
+        "code": "C8DAAAAAAAAAAAAAAAAAAAAAAMzgZzCmhZmFDPgZmx0YMmZAAAAAAMAgZmplZZZGAgNzMjZGmxMzYxYmh5BsNzsNjFzC"
       }
     ],
     "enhancement": [
@@ -30450,7 +30432,7 @@
           "frost-mage-0-hero.jpg",
           "frost-mage-0-spec.jpg"
         ],
-        "code": "CCEAqjba-UdlK8weD5clEvnetNzYzsZBzMmZWAmZmGj5BGzMzwwM4BmZmZmZmZmZGzMzYmZZmmZWmFAAAYBAAAAAAzC"
+        "code": "CAEAAAAAAAAAAAAAAAAAAAAAAMzYzsZBzMmZWAmZmGj5BGzMzwwM4BmZmZmZmZmZGzMzYmZZmmZWmFAAAYBAAAAAAzC"
       }
     ],
     "enhancement": [
@@ -32355,7 +32337,7 @@
           "brewmaster-monk-0-hero.jpg",
           "brewmaster-monk-0-spec.jpg"
         ],
-        "code": "CyQA-pJ7Grnr5hyxxdg2eJ6ffCAAAgZMGzAzyM2GzMjBAAAAAAYZBjYmBmhxCw2MmhZbMzYbWmptlHYz2MzwsAAALzy0ysNzyAAAAMmhNA"
+        "code": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZMGzAzyM2GzMjBAAAAAAYZBjYmBmhxCw2MmhZbMzYbWmptlHYz2MzwsAAALzy0ysNzyAAAAMmhNA"
       },
       {
         "talent": "Shado-Pan Build",
@@ -32364,7 +32346,7 @@
           "brewmaster-monk-1-hero.jpg",
           "brewmaster-monk-1-spec.jpg"
         ],
-        "code": "CyQA-pJ7Grnr5hyxxdg2eJ6ffCAAAgZMGzAzyM2GzMjBAAAAAAYZBjYmBmhxCw2MmhZbMzYbWmptlHYz2MzwsAAAbAAAAz2s0MzMLjZYDA"
+        "code": "CwQAAAAAAAAAAAAAAAAAAAAAAAAAAgZMGzAzyM2GzMjBAAAAAAYZBjYmBmhxCw2MmhZbMzYbWmptlHYz2MzwsAAAbAAAAz2s0MzMLjZYDA"
       }
     ],
     "enhancement": [
@@ -34648,7 +34630,7 @@
           "mistweaver-monk-0-hero.jpg",
           "mistweaver-monk-0-spec.jpg"
         ],
-        "code": "C6QA-pJ7Grnr5hyxxdg2eJ6ffCAAAAAAAADLWmZZMLmtZmZshtllZb8AY2sMzsswMamZGYGmBw2MmhZjZGmlHYCAAAAwsNtNbzsMbAAAAwG"
+        "code": "C4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADLWmZZMLmtZmZshtllZb8AY2sMzsswMamZGYGmBw2MmhZjZGmlHYCAAAAwsNtNbzsMbAAAAwG"
       }
     ],
     "enhancement": [
@@ -39234,7 +39216,7 @@
           "windwalker-monk-0-hero.jpg",
           "windwalker-monk-0-spec.jpg"
         ],
-        "code": "C2QAPioB1A7GH6F2cCZLbx1UmOzYAMjZ2mZGLzMDAAAAAAAAAAAWWGGxMDjZgtFmx2MzMMLMzws8ATAAsMmhZmhtZAAsBAmlZpZmZWAL"
+        "code": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYAMjZ2mZGLzMDAAAAAAAAAAAWWGGxMDjZgtFmx2MzMMLMzws8ATAAsMmhZmhtZAAsBAmlZpZmZWAL"
       },
       {
         "talent": "Conduit of the Celestials",
@@ -39243,7 +39225,7 @@
           "windwalker-monk-1-hero.jpg",
           "windwalker-monk-1-spec.jpg"
         ],
-        "code": "C2QAPioB1A7GH6F2cCZLbx1UmOzYmBjZYMzMWmZGAAAAAAAAAAAssMMiZGGzAbLMjtZmZYWYmhZ5BmAAYZMzAMbzAAYZZWWmlZmJAAML"
+        "code": "C0QAAAAAAAAAAAAAAAAAAAAAAMzYmBjZYMzMWmZGAAAAAAAAAAAssMMiZGGzAbLMjtZmZYWYmhZ5BmAAYZMzAMbzAAYZZWWmlZmJAAML"
       }
     ],
     "enhancement": [
@@ -41558,7 +41540,7 @@
           "holy-paladin-0-hero.jpg",
           "holy-paladin-0-spec.jpg"
         ],
-        "code": "CGEA-TOZV1BbFf6iE8Mzn-l9fCAAAYAAzAAAMALjZmZmxMzCjZhhlZMGbbz0WjZMjZmhBmtMAgBGYDYjZZmxMLz2Mzs1AAAAsAAWYghZ"
+        "code": "CEEAAAAAAAAAAAAAAAAAAAAAAAAAAYAAzAAAMALjZmZmxMzCjZhhlZMGbbz0WjZMjZmhBmtMAgBGYDYjZZmxMLz2Mzs1AAAAsAAWYghZ"
       }
     ],
     "enhancement": [
@@ -43468,7 +43450,7 @@
           "protection-paladin-0-hero.jpg",
           "protection-paladin-0-spec.jpg"
         ],
-        "code": "CKEAXUWXc0nH7IjwCQtYHbTlVsZMYWGLzMzMjZZbmZGzsNmxAAAMAAAAAAA0WmZWMMzwYG2aDAGDMAAbDAAwMTbzysNDAwGDGAGMzGG"
+        "code": "CIEAAAAAAAAAAAAAAAAAAAAAAsZMYWGLzMzMjZZbmZGzsNmxAAAMAAAAAAA0WmZWMMzwYG2aDAGDMAAbDAAwMTbzysNDAwGDGAGMzGG"
       },
       {
         "talent": "Lightsmith Build",
@@ -43477,7 +43459,7 @@
           "protection-paladin-1-hero.jpg",
           "protection-paladin-1-spec.jpg"
         ],
-        "code": "CKEAXUWXc0nH7IjwCQtYHbTlVsZMYWGLzMzMzMLbzYGzsNzMGAAgBAAAAAAg2yMzihZGGzwWbAADMAAbDAAAAYmZZbplZGLMYAYwMbYA"
+        "code": "CIEAAAAAAAAAAAAAAAAAAAAAAsZMYWGLzMzMzMLbzYGzsNzMGAAgBAAAAAAg2yMzihZGGzwWbAADMAAbDAAAAYmZZbplZGLMYAYwMbYA"
       }
     ],
     "enhancement": [
@@ -46668,7 +46650,7 @@
           "retribution-paladin-0-hero.jpg",
           "retribution-paladin-0-spec.jpg"
         ],
-        "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAgRmttZmtltZGLmZ2WMbDAAAAAAjmmhhZGbzgZbY2mlZW2YGMDDLLsBAAAzMtNLz2MAgNgBAMmhB"
+        "code": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAYAgRmttZmtltZGLmZ2WMbDAAAAAAjmmhhZGbzgZbY2mlZW2YGMDDLLsBAAAzMtNLz2MAgNgBAMmhB"
       },
       {
         "talent": "ST‍Templar",
@@ -46677,7 +46659,7 @@
           "retribution-paladin-1-hero.jpg",
           "retribution-paladin-1-spec.jpg"
         ],
-        "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAAamltZmtltxYbMz22MbAAAAAAY00MMMzYbGMbDjZZGGGMjZYZhNAAAYmptZZ2mBAsBMAYMmhZ"
+        "code": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAYAAamltZmtltxYbMz22MbAAAAAAY00MMMzYbGMbDjZZGGGMjZYZhNAAAYmptZZ2mBAsBMAYMmhZ"
       },
       {
         "talent": "Aoe ‍Herald of the Sun",
@@ -46686,7 +46668,7 @@
           "retribution-paladin-2-hero.jpg",
           "retribution-paladin-2-spec.jpg"
         ],
-        "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAgRstNzstsNzYzM2WMbDAAAAAAzWTzwwMjtZwsNMmlZW2GzgZYYZhNAwsMbzMzWDAAAsAMAgxMMA"
+        "code": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAYAgRstNzstsNzYzM2WMbDAAAAAAzWTzwwMjtZwsNMmlZW2GzgZYYZhNAwsMbzMzWDAAAsAMAgxMMA"
       },
       {
         "talent": "ST‍Herald of the Sun",
@@ -46695,7 +46677,7 @@
           "retribution-paladin-3-hero.jpg",
           "retribution-paladin-3-spec.jpg"
         ],
-        "code": "CaEAXUWXc0nH7IjwCQtYHbTlVAAAAYAAassNzstsNGbjZ22mZDAAAAAAjmmhhZGbzgZbYWmlZYYwMmhlF2AAzysNzMbNAAAwCwAgxYGmBA"
+        "code": "CYEAAAAAAAAAAAAAAAAAAAAAAAAAAYAAassNzstsNGbjZ22mZDAAAAAAjmmhhZGbzgZbYWmlZYYwMmhlF2AAzysNzMbNAAAwCwAgxYGmBA"
       }
     ],
     "enhancement": [
@@ -48848,7 +48830,7 @@
           "assassination-rogue-0-hero.jpg",
           "assassination-rogue-0-spec.jpg"
         ],
-        "code": "COQAMVe3xrRHPkKTYiUEC_OcZbmZMzMmBAAAAAAYWmxsNDAAAAAAttMzMYmBzMzysMYMmZmZmZmZYzyYGgNzyADYBsMMBGWG"
+        "code": "CMQAAAAAAAAAAAAAAAAAAAAAAYmZMzMmBAAAAAAYWmxsNDAAAAAAttMzMYmBzMzysMYMmZmZmZmZYzyYGgNzyADYBsMMBGWG"
       },
       {
         "talent": "Fatebound Variation",
@@ -48857,7 +48839,7 @@
           "assassination-rogue-1-hero.jpg",
           "assassination-rogue-1-spec.jpg"
         ],
-        "code": "COQAdb1wyGO40AKBNMUREAeV7PjZmZGmBAAAAAAYWmxsNDAAAAAAttMzM8AzMYmZWmlxYwMzMzgZmZbbZMDgBWgZMaMbA2GwGA"
+        "code": "CMQAAAAAAAAAAAAAAAAAAAAAAMjZmZGmBAAAAAAYWmxsNDAAAAAAttMzM8AzMYmZWmlxYwMzMzgZmZbbZMDgBWgZMaMbA2GwGA"
       },
       {
         "talent": "Deathstalker Hybrid",
@@ -48866,7 +48848,7 @@
           "assassination-rogue-2-hero.jpg",
           "assassination-rogue-2-spec.jpg"
         ],
-        "code": "COQAMVe3xrRHPkKTYiUEC_OcZPjZmZGmBAAAAAAYWmxsNDAAAAAAttMzM8AzMYmZWmlxYwMzMzgZmZbbZMDwmZZgBsAWGmADLA"
+        "code": "CMQAAAAAAAAAAAAAAAAAAAAAAMjZmZGmBAAAAAAYWmxsNDAAAAAAttMzM8AzMYmZWmlxYwMzMzgZmZbbZMDwmZZgBsAWGmADLA"
       }
     ],
     "enhancement": [
@@ -50991,7 +50973,7 @@
           "outlaw-rogue-0-hero.jpg",
           "outlaw-rogue-0-spec.jpg"
         ],
-        "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAM2mZYxMzMMMMDzYmxMzYmZaZGzyMAAAAAAMbbzMDmZGLwysMAAAAMzMAYMbGGYgZhFahNDA"
+        "code": "CQQAAAAAAAAAAAAAAAAAAAAAAAAM2mZYxMzMMMMDzYmxMzYmZaZGzyMAAAAAAMbbzMDmZGLwysMAAAAMzMAYMbGGYgZhFahNDA"
       },
       {
         "talent": "Fatebound ‍Keep it Rolling",
@@ -51000,7 +50982,7 @@
           "outlaw-rogue-1-hero.jpg",
           "outlaw-rogue-1-spec.jpg"
         ],
-        "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAM2mBLmZmZmZMMDDzMzwMzMTLzY2mBAAAAAgZbZmZwMzYBWmlBAAAgZGgB2gZMaMbA2GYx"
+        "code": "CQQAAAAAAAAAAAAAAAAAAAAAAAAM2mBLmZmZmZMMDDzMzwMzMTLzY2mBAAAAAgZbZmZwMzYBWmlBAAAgZGgB2gZMaMbA2GYx"
       },
       {
         "talent": "Trickster ‍Keep it Rolling Variation",
@@ -51009,7 +50991,7 @@
           "outlaw-rogue-2-hero.jpg",
           "outlaw-rogue-2-spec.jpg"
         ],
-        "code": "CSQAMVe3xrRHPkKTYiUEC_OcZDAM2mBMzYmZGDzwMmZmhZmZmWmxsNDAAAAAAz22MzgZmxCsMLDAAAAzMDAGzmhBGYWYhWYz"
+        "code": "CQQAAAAAAAAAAAAAAAAAAAAAAAAM2mBMzYmZGDzwMmZmhZmZmWmxsNDAAAAAAz22MzgZmxCsMLDAAAAzMDAGzmhBGYWYhWYz"
       }
     ],
     "enhancement": [
@@ -53061,7 +53043,7 @@
           "subtlety-rogue-0-hero.jpg",
           "subtlety-rogue-0-spec.jpg"
         ],
-        "code": "CWQAdb1wyGO40AKBNMUREAeV7DAM2mBAAAAAgZZMWmgFegZmZMzMzYmxMzY2GDzstNzMmZmBMWmtBAAAgZwwmZZgBsAWGmAzCMA"
+        "code": "CUQAAAAAAAAAAAAAAAAAAAAAAAAM2mBAAAAAgZZMWmgFegZmZMzMzYmxMzY2GDzstNzMmZmBMWmtBAAAgZwwmZZgBsAWGmAzCMA"
       },
       {
         "talent": "Trickster",
@@ -53070,7 +53052,7 @@
           "subtlety-rogue-1-hero.jpg",
           "subtlety-rogue-1-spec.jpg"
         ],
-        "code": "CWQAMVe3xrRHPkKTYiUEC_OcZDAM2mBAAAAAgZZMWmGzYMmZGjZ8AzMjhxsNLGzstMzMmZmBMWmtBAAAgZwAYMbGGYgZhFaxGMA"
+        "code": "CUQAAAAAAAAAAAAAAAAAAAAAAAAM2mBAAAAAgZZMWmGzYMmZGjZ8AzMjhxsNLGzstMzMmZmBMWmtBAAAgZwAYMbGGYgZhFaxGMA"
       }
     ],
     "enhancement": [
@@ -54856,7 +54838,7 @@
           "elemental-shaman-0-hero.jpg",
           "elemental-shaman-0-spec.jpg"
         ],
-        "code": "CaQASHuZkIHv38g8oMaVB9ZkOCAAAAAYbW2mZmZGzysMzAMDDAAAAAYzMG2gFYGGasBAGTzA2WYmphZmZ2mxyMmxmZZwyMzMzYYmtB"
+        "code": "CYQAAAAAAAAAAAAAAAAAAAAAAAAAAAAYbW2mZmZGzysMzAMDDAAAAAYzMG2gFYGGasBAGTzA2WYmphZmZ2mxyMmxmZZwyMzMzYYmtB"
       }
     ],
     "enhancement": [
@@ -56706,7 +56688,7 @@
           "enhancement-shaman-0-hero.jpg",
           "enhancement-shaman-0-spec.jpg"
         ],
-        "code": "CeQASHuZkIHv38g8oMaVB9ZkOOzwCmZmx2MzMD2mZsNbDAAAAAAAAAwGgNzYYDWgZYoBLAYWmMDssMGzMYmZ2GWmZmsxyYZMzAAMGA"
+        "code": "CcQAAAAAAAAAAAAAAAAAAAAAAMzwCmZmx2MzMD2mZsNbDAAAAAAAAAwGgNzYYDWgZYoBLAYWmMDssMGzMYmZ2GWmZmsxyYZMzAAMGA"
       },
       {
         "talent": "Totemic",
@@ -56715,7 +56697,7 @@
           "enhancement-shaman-1-hero.jpg",
           "enhancement-shaman-1-spec.jpg"
         ],
-        "code": "CeQASHuZkIHv38g8oMaVB9ZkOOzMjZwMYmxMzMbmx2YGAAAAAAAAAAsAbwMW0YbAMDYDAzykZglFGzMYmZ2GzyMzkFWGLjZGAgZA"
+        "code": "CcQAAAAAAAAAAAAAAAAAAAAAAMzMjZwMYmxMzMbmx2YGAAAAAAAAAAsAbwMW0YbAMDYDAzykZglFGzMYmZ2GzyMzkFWGLjZGAgZA"
       }
     ],
     "enhancement": [
@@ -58986,7 +58968,7 @@
           "restoration-shaman-0-hero.jpg",
           "restoration-shaman-0-spec.jpg"
         ],
-        "code": "CiQASHuZkIHv38g8oMaVB9ZkOCAAAAAGAAAAAzMzMLzsMzMzMLsNDDYB2gZsoxyAYGYjZGLWMLzMzIz2CzMNmZMDsMjZwsMMLjB"
+        "code": "CgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAzMzMLzsMzMzMLsNDDYB2gZsoxyAYGYjZGLWMLzMzIz2CzMNmZMDsMjZwsMMLjB"
       }
     ],
     "enhancement": [
@@ -62624,7 +62606,7 @@
           "affliction-warlock-0-hero.jpg",
           "affliction-warlock-0-spec.jpg"
         ],
-        "code": "CmQAEfShhvywku87nu5zHE-yxCzMzMzMjY2MMmNzMDz2AAAAmZMzyMjx2MzMLMzMDAYmxyyADYAzwWghtZAAAAAAAAwMsA"
+        "code": "CkQAAAAAAAAAAAAAAAAAAAAAAAzMzMzMjY2MMmNzMDz2AAAAmZMzyMjx2MzMLMzMDAYmxyyADYAzwWghtZAAAAAAAAwMsA"
       },
       {
         "talent": "Hellcaller",
@@ -62633,7 +62615,7 @@
           "affliction-warlock-1-hero.jpg",
           "affliction-warlock-1-spec.jpg"
         ],
-        "code": "CmQAEfShhvywku87nu5zHE-yxCjZmZmZEzmhZmNzMDz2AAAAmZMzyMjxyMzMLmxMDAYGLwAziRjZAMLglZAAAAAAAAwMsA"
+        "code": "CkQAAAAAAAAAAAAAAAAAAAAAAAjZmZmZEzmhZmNzMDz2AAAAmZMzyMjxyMzMLmxMDAYGLwAziRjZAMLglZAAAAAAAAwMsA"
       }
     ],
     "enhancement": [
@@ -64829,7 +64811,7 @@
           "demonology-warlock-0-hero.jpg",
           "demonology-warlock-0-spec.jpg"
         ],
-        "code": "CqQAEfShhvywku87nu5zHE-yxCmZmZmZEzmhxsZmZYWGAAAAAAAAAAzAGzYYBGYZYhGWYmxMz2YmNzMzMjxMzgxMzYwM"
+        "code": "CoQAAAAAAAAAAAAAAAAAAAAAAAmZmZmZEzmhxsZmZYWGAAAAAAAAAAzAGzYYBGYZYhGWYmxMz2YmNzMzMjxMzgxMzYwM"
       }
     ],
     "enhancement": [
@@ -68442,7 +68424,7 @@
           "destruction-warlock-0-hero.jpg",
           "destruction-warlock-0-spec.jpg"
         ],
-        "code": "CuQAEfShhvywku87nu5zHE-yxOMMmZmZEzmhxsZmZY2mNjxMzsY2MLLmZAAAAghZ2WmZWmBMmxwCMw2wGNWwAAAAAAAYGjZA"
+        "code": "CsQAAAAAAAAAAAAAAAAAAAAAAMMMmZmZEzmhxsZmZY2mNjxMzsY2MLLmZAAAAghZ2WmZWmBMmxwCMw2wGNWwAAAAAAAYGjZA"
       },
       {
         "talent": "Hellcaller Channel Demonfire",
@@ -68451,7 +68433,7 @@
           "destruction-warlock-1-hero.jpg",
           "destruction-warlock-1-spec.jpg"
         ],
-        "code": "CuQAEfShhvywku87nu5zHE-yxOMMmZmZEzmhxsZmZY2mNjxMzsY2MLLmZAAAAghZ2WmZWmxCMwsY0YGAzG2wAAAAAAAYGjZA"
+        "code": "CsQAAAAAAAAAAAAAAAAAAAAAAMMMmZmZEzmhxsZmZY2mNjxMzsY2MLLmZAAAAghZ2WmZWmxCMwsY0YGAzG2wAAAAAAAYGjZA"
       }
     ],
     "enhancement": [
@@ -70019,7 +70001,7 @@
           "arms-warrior-0-hero.jpg",
           "arms-warrior-0-spec.jpg"
         ],
-        "code": "CeEAoKbnaMpm0FjYnlHLlZnHoAGmZGzYGzMbz2yyYGAAAAGMNMmlxMMWGmZsYmZYGeghBAAAAAAgZMbDGgtYALmxwCMwMsRDDLA"
+        "code": "CcEAAAAAAAAAAAAAAAAAAAAAAAGmZGzYGzMbz2yyYGAAAAGMNMmlxMMWGmZsYmZYGeghBAAAAAAgZMbDGgtYALmxwCMwMsRDDLA"
       },
       {
         "talent": "Slayer Talents",
@@ -70028,7 +70010,7 @@
           "arms-warrior-1-hero.jpg",
           "arms-warrior-1-spec.jpg"
         ],
-        "code": "CeEAoKbnaMpm0FjYnlHLlZnHoAGmZmZGzYegZZ2WWGzAAAAwgphxsMmhZWGmZsYmZYGeghBAAAAAAgZMLjxAsFGbbDsAGwMMBGYD"
+        "code": "CcEAAAAAAAAAAAAAAAAAAAAAAAGmZmZGzYegZZ2WWGzAAAAwgphxsMmhZWGmZsYmZYGeghBAAAAAAgZMLjxAsFGbbDsAGwMMBGYD"
       }
     ],
     "enhancement": [
@@ -71596,7 +71578,7 @@
           "fury-warrior-0-hero.jpg",
           "fury-warrior-0-spec.jpg"
         ],
-        "code": "CiEAoKbnaMpm0FjYnlHLlZnHoAAAAAAAAAA0YYMLjZYsMYmFmZmxMMDzssNzYmZ2wMzMzwMzsMgHYGDAAAEGYDW2MaMDgZBGLA"
+        "code": "CgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0YYMLjZYsMYmFmZmxMMDzssNzYmZ2wMzMzwMzsMgHYGDAAAEGYDW2MaMDgZBGLA"
       }
     ],
     "enhancement": [
@@ -73637,7 +73619,7 @@
           "protection-warrior-0-hero.jpg",
           "protection-warrior-0-spec.jpg"
         ],
-        "code": "CmEAoKbnaMpm0FjYnlHLlZnHooxAAAAwMzMmZmhZWmZZmZmNMGjGzyMzwYZghlZmhZmxwAAAAAAAGDAYZbDgB2glFjGzAYWgZD"
+        "code": "CkEAAAAAAAAAAAAAAAAAAAAAAoxAAAAwMzMmZmhZWmZZmZmNMGjGzyMzwYZghlZmhZmxwAAAAAAAGDAYZbDgB2glFjGzAYWgZD"
       },
       {
         "talent": "Colossus Mythic+ Build",
@@ -73646,7 +73628,7 @@
           "protection-warrior-1-hero.jpg",
           "protection-warrior-1-spec.jpg"
         ],
-        "code": "CmEAoKbnaMpm0FjYnlHLlZnHooxAAAAwMzMmZmhZWmxMzMbLMGjGzyMzwYhZmhlZmhZwwAAAAAAAGDAYZbDAYzMGWgBmhFaYWA"
+        "code": "CkEAAAAAAAAAAAAAAAAAAAAAAoxAAAAwMzMmZmhZWmxMzMbLMGjGzyMzwYhZmhlZmhZwwAAAAAAAGDAYZbDAYzMGWgBmhFaYWA"
       }
     ],
     "enhancement": [
@@ -76916,7 +76898,7 @@
           "devastation-evoker-0-hero.jpg",
           "devastation-evoker-0-spec.jpg"
         ],
-        "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAmZGwYmxMDMMGz0wMTmtZWmhZmZGzsNDYmZmtxMjxMwAjBLwyY0YbAMDC2wA"
+        "code": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZGwYmxMDMMGz0wMTmtZWmhZmZGzsNDYmZmtxMjxMwAjBLwyY0YbAMDC2wA"
       },
       {
         "talent": "Scalecommander Single-Target Focused",
@@ -76925,7 +76907,7 @@
           "devastation-evoker-1-hero.jpg",
           "devastation-evoker-1-spec.jpg"
         ],
-        "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAmZGYGmxMDMMGz0wMTmtZWmxMzMzYmtZAzMzsNmZMmBGYMYBWGjGbDgZQwGG"
+        "code": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmZGYGmxMDMMGz0wMTmtZWmxMzMzYmtZAzMzsNmZMmBGYMYBWGjGbDgZQwGG"
       },
       {
         "talent": "Flameshaper AoE",
@@ -76934,7 +76916,7 @@
           "devastation-evoker-2-hero.jpg",
           "devastation-evoker-2-spec.jpg"
         ],
-        "code": "CubBa_dBDR2Sk9CtVQj0riEBqBAAAAAAAAAAAmxYmxsMzYmBmxYYaYmJz2YZGmZYMzyMgZmx2wMLzMDmBMmB2AbgZYCsAWGmBA"
+        "code": "CsbBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmxYmxsMzYmBmxYYaYmJz2YZGmZYMzyMgZmx2wMLzMDmBMmB2AbgZYCsAWGmBA"
       }
     ],
     "enhancement": [
@@ -79192,7 +79174,7 @@
           "preservation-evoker-0-hero.jpg",
           "preservation-evoker-0-spec.jpg"
         ],
-        "code": "CybBh8jXR8NbnJbP4P7tuPl9MDAAAAAmZmZ2GDwMzMziZmxAAAgZGzYGjhZiZmBAAAMzMTGbzMGjZAAYMbWYBGYGGawYBGA"
+        "code": "CwbBAAAAAAAAAAAAAAAAAAAAAAAAAAAmZmZ2GDwMzMziZmxAAAgZGzYGjhZiZmBAAAMzMTGbzMGjZAAYMbWYBGYGGawYBGA"
       }
     ],
     "enhancement": [
@@ -80666,7 +80648,7 @@
           "augmentation-evoker-0-hero.jpg",
           "augmentation-evoker-0-spec.jpg"
         ],
-        "code": "CGcBa_dBDR2Sk9CtVQj0riEBqNMLzsNzMzwAzsMjZmxMbAAAAAAAAYmBzwYM1wMzAAAAAjZ2GzMGzMwMbGYMbWYBGYGGagFMmB"
+        "code": "CEcBAAAAAAAAAAAAAAAAAAAAAMMLzsNzMzwAzsMjZmxMbAAAAAAAAYmBzwYM1wMzAAAAAjZ2GzMGzMwMbGYMbWYBGYGGagFMmB"
       },
       {
         "talent": "Scalecommander",
@@ -80675,7 +80657,7 @@
           "augmentation-evoker-1-hero.jpg",
           "augmentation-evoker-1-spec.jpg"
         ],
-        "code": "CGcBa_dBDR2Sk9CtVQj0riEBqNMLzsNzMzwAzsMjZmxMbAAAAAAAAYmBzwYM1wMzAAAAAjZ2GzMGzMwMbGDWglxoxyAYGEbYMD"
+        "code": "CEcBAAAAAAAAAAAAAAAAAAAAAMMLzsNzMzwAzsMjZmxMbAAAAAAAAYmBzwYM1wMzAAAAAjZ2GzMGzMwMbGDWglxoxyAYGEbYMD"
       }
     ],
     "enhancement": [
@@ -82596,7 +82578,7 @@
           "beast-mastery-hunter-0-hero.jpg",
           "beast-mastery-hunter-0-spec.jpg"
         ],
-        "code": "C2PAgWVPuq-o0KoEvwTpSX5hCDMmxwCsBzwQDbAAAAAAYMzsNjxMDYmxMsYmxMjxMzMZGzYmZmxYmhhxYGDzyMwMDbA"
+        "code": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsBzwQDbAAAAAAYMzsNjxMDYmxMsYmxMjxMzMZGzYmZmxYmhhxYGDzyMwMDbA"
       },
       {
         "talent": "Pack Leader No Cooldowns",
@@ -82605,7 +82587,7 @@
           "beast-mastery-hunter-1-hero.jpg",
           "beast-mastery-hunter-1-spec.jpg"
         ],
-        "code": "C2PAgWVPuq-o0KoEvwTpSX5hCDMmxwCsBzwQDbAAAAAAYYGzMzyMjBzMzMsYMmZMmxMZGzYmxMMzMmhxYGDzyMYZGsA"
+        "code": "C0PAAAAAAAAAAAAAAAAAAAAAAAMmxwCsBzwQDbAAAAAAYYGzMzyMjBzMzMsYMmZMmxMZGzYmxMMzMmhxYGDzyMYZGsA"
       }
     ],
     "enhancement": [
@@ -85211,7 +85193,7 @@
           "marksmanship-hunter-0-hero.jpg",
           "marksmanship-hunter-0-spec.jpg"
         ],
-        "code": "C6PAgWVPuq-o0KoEvwTpSX5hCzADsMGNWGAzG2AAAAAAAAAAAAAAYGzYGmZGzoZGjhZGGzYGzgtZmx2MLz22MGDMzMmZmZWMGsM"
+        "code": "C4PAAAAAAAAAAAAAAAAAAAAAAwADsMGNWGAzG2AAAAAAAAAAAAAAYGzYGmZGzoZGjhZGGzYGzgtZmx2MLz22MGDMzMmZmZWMGsM"
       }
     ],
     "enhancement": [
@@ -87060,7 +87042,7 @@
           "survival-hunter-0-hero.jpg",
           "survival-hunter-0-spec.jpg"
         ],
-        "code": "C-PAgWVPuq-o0KoEvwTpSX5hCPGYglxoxyAY2AbzMWmZmZmZMjZmxYMGzMmFAAAAAAAoZYMjZmZMDzwYYmhxMmxMYDAAAAAY"
+        "code": "C8PAAAAAAAAAAAAAAAAAAAAAAMGYglxoxyAY2AbzMWmZmZmZMjZmxYMGzMmFAAAAAAAoZYMjZmZMDzwYYmhxMmxMYDAAAAAY"
       }
     ],
     "enhancement": [
@@ -89361,7 +89343,7 @@
           "discipline-priest-0-hero.jpg",
           "discipline-priest-0-spec.jpg"
         ],
-        "code": "CCQAdDBIBTZArso-1144n4ZMvADw2MmxYMGzgZ2mZbmZGzMzAAAAAAAAAAAYZ2YMzMYWMjZMGDWMbz0YiFDgZWwChxsMAjNs"
+        "code": "CAQAAAAAAAAAAAAAAAAAAAAAAADw2MmxYMGzgZ2mZbmZGzMzAAAAAAAAAAAYZ2YMzMYWMjZMGDWMbz0YiFDgZWwChxsMAjNs"
       }
     ],
     "enhancement": [
@@ -91641,7 +91623,7 @@
           "holy-priest-0-hero.jpg",
           "holy-priest-0-spec.jpg"
         ],
-        "code": "CGQAdDBIBTZArso-1144n4ZMvwYAAAAAAAMbGGzyYGmZMzDMDjlZmZGAAAAYML2G2mZGMbMLzwMgF2YmZqZBAYmFLDzmBgMGshxy"
+        "code": "CEQAAAAAAAAAAAAAAAAAAAAAAwYAAAAAAAMbGGzyYGmZMzDMDjlZmZGAAAAYML2G2mZGMbMLzwMgF2YmZqZBAYmFLDzmBgMGshxy"
       }
     ],
     "enhancement": [
@@ -94546,7 +94528,7 @@
           "shadow-priest-0-hero.jpg",
           "shadow-priest-0-spec.jpg"
         ],
-        "code": "CKQAwfz7tLuHeTH7cEfyUU8NRPMYAAAAAAAAAAAAAwYmFzYmZ2GjZmZmtxMLDmNmZmZMbMwYMMLmtpmZwCmBwMbWGmFDAZMW"
+        "code": "CIQAAAAAAAAAAAAAAAAAAAAAAMMYAAAAAAAAAAAAAwYmFzYmZ2GjZmZmtxMLDmNmZmZMbMwYMMLmtpmZwCmBwMbWGmFDAZMW"
       },
       {
         "talent": "Voidweaver Dark Ascension",
@@ -94555,7 +94537,7 @@
           "shadow-priest-1-hero.jpg",
           "shadow-priest-1-spec.jpg"
         ],
-        "code": "CKQAwfz7tLuHeTH7cEfyUU8NRPgZGAAAAAAAAAAAAAGzs4BYmZWmtxMzY2mZmlBzCzMzMmNGYMGmFz2UzMYBGLzAABY2mlNwsxG"
+        "code": "CIQAAAAAAAAAAAAAAAAAAAAAAMgZGAAAAAAAAAAAAAGzs4BYmZWmtxMzY2mZmlBzCzMzMmNGYMGmFz2UzMYBGLzAABY2mlNwsxG"
       }
     ],
     "enhancement": [
