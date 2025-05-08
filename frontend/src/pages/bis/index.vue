@@ -939,8 +939,13 @@ const footerMenus = [
 
 async function onMenuChange(menuValue: string) {
   if (menuValue === 'mythic' && !dungeons.value?.length) {
+    uni.showLoading({
+      title: '银子加载中...',
+      mask: true,
+    });
     await getSeasonDungeons();
     await getDungeonTip();
+    uni.hideLoading();
   }
 }
 //#endregion
