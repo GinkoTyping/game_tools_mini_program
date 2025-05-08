@@ -97,6 +97,7 @@ async function mapBisTrinket(dataList, propKey) {
         return {
           ...item,
           image: existedItem?.image,
+          fullImageURL: undefined,
         };
       })
     );
@@ -130,17 +131,18 @@ async function mapEnhancements(enhancements, needDetail) {
     )?.map((enhancement) => ({
       ...enhancement.value,
 
-      // TODO: 适配目前前端的字段
-      name_zh: enhancement.value?.name,
-
       item_class: JSON.parse(enhancement.value?.preview)?.item_class?.name,
       preview: undefined,
       preview_en: undefined,
+      name_en: undefined,
+      slot: undefined,
+      source: undefined,
     }));
     return {
       ...item,
       ...slotObj,
-      items,
+      name_en: undefined,
+      items: undefined,
       enhancements: items,
     };
   }
@@ -166,25 +168,26 @@ function combineEnhancement(item, maxrollEnhancements, archonEnhancements) {
     );
 
     if (isCyrcesCirclet && cyrcesCirclet) {
-      enhancementsByArchon = cyrcesCirclet.items;
+      enhancementsByArchon = cyrcesCirclet.enhancements;
     } else {
       const spliceIndex = cloneMaxrollData.findIndex(
         (enhancement) => enhancement.slot === '手指'
       );
       if (spliceIndex !== -1) {
-        enhancementsByArchon = cloneMaxrollData.splice(spliceIndex, 1)[0].items;
+        enhancementsByArchon = cloneMaxrollData.splice(spliceIndex, 1)[0]
+          .enhancements;
       }
     }
   } else {
     // 从 maxroll 获取 宝石
     enhancementsByMaxroll =
       maxrollEnhancements.find((maxrollItem) => maxrollItem.slot === item.slot)
-        ?.items ?? [];
+        ?.enhancements ?? [];
 
     enhancementsByArchon =
       cloneArchonData
         .find((enhancement) => enhancement.slot === item.slot)
-        ?.items.filter((enhancement) => {
+        ?.enhancements.filter((enhancement) => {
           // 使用maxroll的宝石数据
           if (enhancement.item_class === '宝石') {
             return false;
@@ -215,6 +218,7 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
     };
     return {
       ...data,
+      name_en: undefined,
       source: JSON.parse(data.source),
     };
   }
@@ -284,6 +288,9 @@ async function mapSimpleItems(items) {
         ...itemData,
         preview: undefined,
         preview_en: undefined,
+        source: undefined,
+        name_en: undefined,
+        slot: undefined,
       };
     })
   );
@@ -343,6 +350,9 @@ export async function getBisBySpec(req, res) {
           return {
             ...item,
             ...itemData,
+            name_en: undefined,
+            source: undefined,
+            slot: undefined,
           };
         })
       )
