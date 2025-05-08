@@ -542,7 +542,11 @@
   />
 
   <uni-popup ref="popup">
-    <ItemPopover :status="status" :itemDetail="currentDetails" :image-src="currentImageSrc(currentItem)" />
+    <ItemPopover
+      :status="status"
+      :itemDetail="currentDetails"
+      :image-src="currentImageSrc(currentItem)"
+    />
   </uni-popup>
 
   <uni-popup ref="spellpopup">
@@ -612,8 +616,6 @@ onLoad(async (options: any) => {
 
   // TODO 加载页面完成前，需要展示loading
   await getBasicBisData();
-  await getSeasonDungeons();
-  await getDungeonTip();
 
   uni.hideLoading();
 
@@ -934,7 +936,13 @@ const footerMenus = [
     icon: 'icon-dungeon',
   },
 ];
-function onMenuChange(menuValue) {}
+
+async function onMenuChange(menuValue: string) {
+  if (menuValue === 'mythic' && !dungeons.value?.length) {
+    await getSeasonDungeons();
+    await getDungeonTip();
+  }
+}
 //#endregion
 </script>
 
@@ -982,9 +990,11 @@ function onMenuChange(menuValue) {}
     }
   }
 }
+
 ::v-deep .tiers-card .uni-card {
   margin-top: 20rpx !important;
 }
+
 .tiers {
   display: flex;
   flex-direction: column;
