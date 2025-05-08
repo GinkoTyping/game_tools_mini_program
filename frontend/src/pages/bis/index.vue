@@ -542,115 +542,7 @@
   />
 
   <uni-popup ref="popup">
-    <uni-load-more
-      v-show="status === 'loading'"
-      color="#007AFF"
-      :status="status"
-    />
-    <img
-      v-show="currentItem?.image && status !== 'loading'"
-      lazy-load
-      class="preview-image"
-      :src="currentImageSrc(currentItem)"
-      alt=""
-    />
-    <uni-card
-      v-show="status !== 'loading' && currentDetails"
-      class="previw-popup"
-    >
-      <text class="name">{{ currentDetails?.name }}</text>
-      <text class="qulity">{{ currentDetails.quality?.name }}</text>
-      <!-- TODO 显示的装等和版本不一致 有误导性 -->
-      <!-- <text class="item-level">物品等级：{{ currentDetails.level }}</text> -->
-      <text class="binding">{{
-        currentDetails.preview_item?.binding?.name
-      }}</text>
-      <text class="gem">{{
-        currentDetails.preview_item?.gem_properties?.effect
-      }}</text>
-      <text class="modified-crafting">{{
-        currentDetails.modified_crafting?.description
-      }}</text>
-      <view class="type">
-        <text>{{ currentDetails.preview_item?.inventory_type?.name }}</text>
-        <text v-show="currentDetails.item_class?.id === 2">{{
-          currentDetails.preview_item?.item_subclass?.name
-        }}</text>
-      </view>
-      <view
-        class="damage justify-between"
-        v-show="currentDetails.preview_item?.weapon"
-      >
-        <text>{{
-          currentDetails.preview_item?.weapon?.damage?.display_string
-        }}</text>
-        <text>{{
-          currentDetails.preview_item?.weapon?.attack_speed?.display_string
-        }}</text>
-      </view>
-      <text class="damage-dps">{{
-        currentDetails.preview_item?.weapon?.dps?.display_string
-      }}</text>
-      <text
-        class="non-bonus-stat"
-        v-for="stat in currentDetails.preview_item?.stats?.filter((item: any) => !item.is_equip_bonus)"
-      >
-        {{ stat.display.display_string }}
-      </text>
-      <text
-        class="bonus-stat"
-        v-for="stat in currentDetails.preview_item?.stats?.filter((item: any) => item.is_equip_bonus)"
-      >
-        {{ stat.display.display_string }}
-      </text>
-      <text
-        class="spell"
-        v-show="currentDetails.preview_item?.spells?.length"
-        v-for="spell in currentDetails.preview_item?.spells"
-        :key="spell.spell.id"
-        >{{ spell.description }}</text
-      >
-
-      <text class="durability">{{
-        currentDetails.preview_item?.durability?.display_string
-      }}</text>
-      <text
-        class="requirements"
-        v-show="currentDetails.preview_item?.requirements"
-        >{{
-          currentDetails.preview_item?.requirements?.level.display_string
-        }}</text
-      >
-      <text class="description" v-show="currentDetails.source?.source"
-        >来源：<text>{{ currentDetails.source?.source }}</text></text
-      >
-      <text v-show="currentDetails?.description" class="description"
-        >“{{ currentDetails.description }}”</text
-      >
-      <view class="price" v-if="currentDetails.preview_item?.sell_price">
-        <view>
-          <text>售价：</text>
-        </view>
-        <view>
-          <img src="/static/images/wow/money-gold.gif" alt="" srcset="" />
-          <text>{{
-            currentDetails.preview_item?.sell_price?.display_strings.gold
-          }}</text>
-        </view>
-        <view>
-          <img src="/static/images/wow/money-silver.gif" alt="" srcset="" />
-          <text>{{
-            currentDetails.preview_item?.sell_price?.display_strings.silver
-          }}</text>
-        </view>
-        <view>
-          <img src="/static/images/wow/money-copper.gif" alt="" srcset="" />
-          <text>{{
-            currentDetails.preview_item?.sell_price?.display_strings.copper
-          }}</text>
-        </view>
-      </view>
-    </uni-card>
+    <ItemPopover :status="status" :itemDetail="currentDetails" :image-src="currentImageSrc(currentItem)" />
   </uni-popup>
 
   <uni-popup ref="spellpopup">
@@ -685,7 +577,7 @@
 
 <script lang="ts" setup>
 // TODO 新增对应专精的图片
-import { onLoad, onShow, onPageScroll, onHide } from '@dcloudio/uni-app';
+import { onLoad } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, nextTick, ref } from 'vue';
 
@@ -698,9 +590,9 @@ import {
   queryDungeonTip,
   querySpellsInTip,
 } from '@/api/wow';
-import ShareIcon from '@/components/ShareIcon.vue';
 import TopMessage from '@/components/TopMessage.vue';
 import SpecFooter from '@/components/SpecFooter.vue';
+import ItemPopover from '@/components/ItemPopover.vue';
 import { useNavigator } from '@/hooks/navigator';
 
 const classKey = ref('');

@@ -251,7 +251,10 @@
         <uni-tr v-for="(item, index) in currentLootTable" :key="index">
           <uni-td>{{ item.type }}</uni-td>
           <uni-td>
-            <view class="slot-container">
+            <view
+              class="slot-container"
+              @click="() => switchDetail(true, item)"
+            >
               <img :src="item.imageSrc" style="width: 14px; height: 14px" />
               <view class="ellipsis" style="flex: 1">{{ item.name }}</view>
             </view>
@@ -304,6 +307,15 @@
       ></uni-list-item>
     </uni-list>
   </uni-popup>
+
+  <uni-popup ref="itemPopup">
+    <ItemPopover
+      :status="status"
+      :itemDetail="currentDetails"
+      :image-src="currentItem.imageSrc"
+    />
+  </uni-popup>
+
   <view class="meun-switch" @click="() => switchMenuPopup(true)">
     <uni-icons type="list" color="#fff" size="22"></uni-icons>
   </view>
@@ -318,12 +330,40 @@ import { queryMythicDungeonById, queryUpdateMarkStatus } from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
 import Rating from '@/components/rating.vue';
 import ShareIcon from '@/components/ShareIcon.vue';
+import ItemPopover from '@/components/ItemPopover.vue';
 import { useUserStore } from '@/store/wowStore';
+import { queryItemPreview } from '@/api/wow';
 
 const mythicDungeonData = ref();
 const dungeonId = ref();
 const userStore = useUserStore();
 const { marks }: { marks: any } = storeToRefs(userStore);
+
+//#region 装备悬浮提示栏
+const itemPopup = ref<any>('');
+const currentDetails = ref<any>({});
+const currentItem = ref<any>({});
+const status = ref('loading');
+async function switchDetail(
+  isShow: boolean,
+  item: { image: string; id: number; type: string }
+) {
+  currentDetails.value = {};
+  if (isShow) {
+    status.value = 'loading';
+    itemPopup.value.open();
+
+    currentItem.value = item;
+    const { data, statusCode } = await queryItemPreview(item.id);
+    if (statusCode === 200) {
+      currentDetails.value = data;
+      status.value = '';
+    } else {
+      itemPopup.value.close();
+    }
+  }
+}
+//#endregion
 
 //#region 跳转到指定TIP
 const jumpParams = ref<{ type: string; guideId: number }>();

@@ -72,12 +72,14 @@ export function mapBisItems(items: IBisItem[]) {
 }
 
 export function mapTrinks(list: ITrinks[]) {
-  return list.reduce((pre: ITrinks[], cur: ITrinks) => {
-    if (pre.length < 4 && cur.trinkets?.length) {
-      pre.push({...cur, label: cur.label.replace(/\s+/g, '')});
-      return pre;
-    }
+  return (
+    list?.reduce((pre: ITrinks[], cur: ITrinks) => {
+      if (pre.length < 4 && cur.trinkets?.length) {
+        pre.push({ ...cur, label: cur.label.replace(/\s+/g, '') });
+        return pre;
+      }
 
-    return pre;
-  }, []);
+      return pre;
+    }, []) ?? []
+  );
 }
