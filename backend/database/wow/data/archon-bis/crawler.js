@@ -100,6 +100,13 @@ async function getBisOverview(classSpec, roleClass, useCache) {
 
   const overview = [];
   const popularTrinkets = [];
+  function buildItemByEle(ele) {
+    return {
+      id: getIdByUrl($(ele).find('a').first().attr('href')),
+      name: $(ele).find('td').first().find('span').last().text().trim(),
+      popularity: $(ele).find('td').last().find('span').first().text().trim(),
+    };
+  }
   $('#gear-tables .builds-gear-tables-section__group')
     .children()
     .each((idx, slotWrap) => {
@@ -124,23 +131,7 @@ async function getBisOverview(classSpec, roleClass, useCache) {
           }
 
           if (isPush) {
-            const item = {
-              id: getIdByUrl($(trEle).find('a').first().attr('href')),
-              name: $(trEle)
-                .find('td')
-                .first()
-                .find('span')
-                .last()
-                .text()
-                .trim(),
-              popularity: $(trEle)
-                .find('td')
-                .last()
-                .find('span')
-                .first()
-                .text()
-                .trim(),
-            };
+            const item = buildItemByEle(trEle);
             if (slotLabel === 'Trinket') {
               popularTrinkets.push(item);
             } else {
@@ -158,6 +149,11 @@ async function getBisOverview(classSpec, roleClass, useCache) {
 
           return true;
         });
+
+      // 如果没有找到 BIS 标签的装备，默认取第一个
+      if (collectCount === 0) {
+        overview.push(buildItemByEle($(slotWrap).find('tbody tr').first()));
+      }
     });
 
   const popularityItems = $(
