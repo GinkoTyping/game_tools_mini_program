@@ -15,6 +15,7 @@ export async function queryDungeonTipByCondition(req, res) {
   if (data) {
     res.json({
       ...data,
+      tips_en: undefined,
       tips: data.tips_en,
     });
   } else {

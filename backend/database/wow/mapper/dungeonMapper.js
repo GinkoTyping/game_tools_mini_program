@@ -41,7 +41,17 @@ async function getDungeonsById(params) {
     }
     return pre;
   }, 'SELECT * FROM wow_dungeon WHERE ');
-  return db.all(sql, ids);
+  const data = await db.all(sql, ids);
+  return data.map((item) => {
+    return {
+      ...item,
+      bosses: JSON.parse(item.bosses).map((boss) => ({
+        ...boss,
+        key: undefined,
+        name: { zh_CN: boss.name.zh_CN },
+      })),
+    };
+  });
 }
 
 async function getDungeonList() {
