@@ -260,7 +260,7 @@ function sortBisItems(bisItems) {
             rings.push(cur);
           } else if (cur.slot === '饰品') {
             trinkets.push(cur);
-          } else if (cur.slot.includes('部')) {
+          } else if (cur.slot?.includes('部')) {
             commonItems.push(cur);
           } else {
             weapons.push(cur);
