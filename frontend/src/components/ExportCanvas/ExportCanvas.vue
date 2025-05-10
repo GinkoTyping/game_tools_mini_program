@@ -113,6 +113,7 @@ const drawContent = async (rect) => {
   if (props.config.debug) {
     ctx.setStrokeStyle('rgb(68, 68, 68)');
     ctx.strokeRect(0, 0, rect.width, rect.height);
+    ctx.setTextBaseline('middle');
 
     drawTableHeader(ctx, rect.width);
     drawTableBody(ctx, rect.width);
@@ -159,27 +160,36 @@ function drawTableHeader(ctx, totalWidth) {
     } else {
       offset = SOURCE_OFFSET.value;
     }
-    ctx.fillText(header, offset, HEADER_HEIGHT / 2 + fontSize / 2);
+    ctx.fillText(header, offset, HEADER_HEIGHT / 2 - fontSize / 2);
 
   });
   drawLine(ctx, totalWidth, HEADER_HEIGHT);
 }
 
 function drawTableBody(ctx, totalWidth) {
-  const lineHeight = 14;
+  const lineHeight = 28;
   const fontSize = 14;
-  const paddingY = 12;
+  const paddingY = 14;
   let offsetY = HEADER_HEIGHT;
   props.data.forEach((row) => {
     // 部位
     ctx.font = `normal ${fontSize}px sans-serif`;
     ctx.setFillStyle('#606266');
-    offsetY += paddingY + lineHeight / 2 + fontSize / 2;
+    offsetY += paddingY + lineHeight / 2 - fontSize / 2;
     ctx.fillText(row.slot, SLOT_OFFSET, offsetY);
 
     // 来源
     ctx.setFillStyle(row.source.isLoot ? 'rgb(255, 209, 0)' : '#606266');
     ctx.fillText(row.source.source, SOURCE_OFFSET.value, offsetY);
+
+    // 宝石附魔
+    ctx.setFillStyle('rgb(163, 53, 238)');
+    row.enhancements.forEach((item, itemIdx) => {
+      ctx.fillText(item.name, ITEM_OFFSET, offsetY);
+      if (itemIdx !== row.enhancements.length - 1) {
+        offsetY += lineHeight - fontSize / 2;
+      }
+    });
 
     offsetY += paddingY;
     drawLine(ctx, totalWidth, offsetY);

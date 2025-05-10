@@ -6,6 +6,12 @@ export interface IBisItem {
   source: { source: string; isLoot: boolean };
   image: string;
   wrap?: boolean;
+  enhancements: {
+    id: number;
+    image: string;
+    item_class: string;
+    name: string;
+  }[];
 }
 
 export interface ITrinks {
@@ -37,6 +43,7 @@ export enum Relation {
   Greate_Greater = 2,
   Greater_Or_Equal = 10,
 }
+
 export interface IStatPriority {
   desc: string[];
   relations: Relation[];
