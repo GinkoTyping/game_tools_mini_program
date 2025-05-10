@@ -37,21 +37,25 @@
                 <view class="class-labels">
                   <view :class="[item.role_class]">
                     <text class="label-spec">{{
-                      localeLabels[item.role_class][item.class_spec]
-                    }}</text>
+                        localeLabels[item.role_class][item.class_spec]
+                      }}
+                    </text>
                     <text class="label-class">{{
-                      localeLabels.class[item.role_class]
-                    }}</text>
+                        localeLabels.class[item.role_class]
+                      }}
+                    </text>
                   </view>
                   <view class="info-type">大秘境输出: {{ item.avg }}</view>
                 </view>
               </view>
               <view class="tags">
                 <text class="tag-label"
-                  >大秘境输出排行
+                >大秘境输出排行
                   <text style="font-weight: bold"
-                    >NO.{{ index + 1 }}</text
-                  ></text
+                  >NO.{{ index + 1 }}
+                  </text
+                  >
+                </text
                 >
               </view>
             </view>
@@ -106,13 +110,14 @@
         </view>
         <view class="icon icon-right-bottom">
           <text v-show="notViewedRelationCount" style="color: rgb(244, 123, 0)"
-            >({{ notViewedRelationCount }}条未读)</text
+          >({{ notViewedRelationCount }}条未读)
+          </text
           >
           <uni-icons color="#bbb" type="image" size="20"></uni-icons>
           <text>{{ homeViewData?.tagCardCount }}</text>
         </view>
         <view class="info">
-          <view class="card-name"> 艾泽拉斯同好会 </view>
+          <view class="card-name"> 艾泽拉斯同好会</view>
           <view class="card-desc">标签即名片，相逢即战友</view>
         </view>
       </view>
@@ -139,7 +144,7 @@
           <text>{{ homeViewData?.mythicMarkCount }}</text>
         </view>
         <view class="info">
-          <view class="card-name"> 做题家 </view>
+          <view class="card-name"> 做题家</view>
           <view class="card-desc">大秘境开卷考</view>
         </view>
       </view>
@@ -181,14 +186,16 @@
     >
       <view class="card-info">
         <view class="spec-info">
-          <image :src="getClassIconURL(item.role_class, item.class_spec)" />
+          <image :src="getClassIconURL(item.role_class, item.class_spec)"/>
           <view class="labels">
             <text class="label-spec">{{
-              localeLabels[item.role_class][item.class_spec]
-            }}</text>
+                localeLabels[item.role_class][item.class_spec]
+              }}
+            </text>
             <text class="label-class">{{
-              localeLabels.class[item.role_class]
-            }}</text>
+                localeLabels.class[item.role_class]
+              }}
+            </text>
           </view>
         </view>
         <view class="spec-access-count">
@@ -222,6 +229,7 @@ import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { queryScorllInfo } from '@/api/shared';
 import { useUserStore } from '@/store/wowStore';
+import ExportCanvas from '@/components/ExportCanvas/ExportCanvas.vue';
 
 const navigator = useNavigator();
 onShareAppMessage(() => ({
@@ -240,7 +248,7 @@ onLoad(async () => {
   homeViewData.value = await queryHomeView();
   // TODO: 待后端新增custom轮播图
   homeViewData.value.carousels = homeViewData.value.carousels.filter(
-    item => !item.custom
+    item => !item.custom,
   );
 });
 onShow(async () => {
@@ -252,6 +260,7 @@ onShow(async () => {
 function onSwipperChange(e: any) {
   currentSwipper.value = e.detail.current;
 }
+
 const localeLabels = labels as ILocaleLabels;
 const dotsStyles = ref({
   backgroundColor: 'rgba(83, 200, 249,0.3)',
@@ -279,6 +288,7 @@ const getClassIconURL = computed(() => {
 });
 
 const isShowNotice = ref(true);
+
 function setNoticeBarCountdown() {
   let timer: any = setTimeout(() => {
     isShowNotice.value = false;
@@ -365,9 +375,9 @@ $simple-card-width: 43.5vw;
       background-size: cover;
       background-repeat: no-repeat;
       mask-image: linear-gradient(
-        90deg,
-        rgb(255, 255, 255) 50%,
-        transparent 90%
+          90deg,
+          rgb(255, 255, 255) 50%,
+          transparent 90%
       );
       border: 0.1rem solid #99999900;
       top: 0;
