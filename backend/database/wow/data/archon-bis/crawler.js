@@ -200,8 +200,13 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
   const {
           overview,
           popularityItems,
-          popularTrinkets
+          popularTrinkets,
         } = await getBisOverview(classSpec, roleClass, useCache);
+
+  if (!overview.length) {
+    console.log(
+      `${classSpec}${roleClass}: 获取BIS数据失败，将使用热门度排行替代`);
+  }
 
   return {
     classSpec,
