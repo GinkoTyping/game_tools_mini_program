@@ -12,11 +12,16 @@
 <script lang="ts" setup>
 import type { CSSProperties } from 'vue';
 import { ref, computed, getCurrentInstance } from 'vue';
+import type { IBisItem } from '@/interface/IWow';
 
 const props = defineProps({
   targetSelector: {
     type: String,
     required: true,
+  },
+  data: {
+    type: Array<IBisItem>,
+    default: () => [],
   },
   config: {
     type: Object,
@@ -34,15 +39,15 @@ const emit = defineEmits([ 'success', 'error', 'export-start' ]);
 
 const instance = getCurrentInstance();
 const canvasId = ref(`canvas_${Date.now()}`);
-const width = ref(0);
+const width = ref(Math.min(uni.getSystemInfoSync().safeArea?.width ?? 400, 400));
 const height = ref(0);
-
+console.log(uni.getSystemInfoSync());
 const canvasStyle = computed(() => ({
-  position: 'absolute',
-  left: '-9999px',
+  // position: 'absolute',
+  // left: '-9999px',
+  // opacity: 0,
   width: width.value + 'px',
-  height: height.value + 'px',
-  opacity: 0,
+  height: 200 + 'px',
 }));
 
 // 暴露给父组件的方法
@@ -52,7 +57,7 @@ const exportToImage = async () => {
 
     // 获取目标元素信息
     const rect: any = await getTargetRect();
-    width.value = rect.width;
+    // width.value = rect.width;
     height.value = rect.height;
 
     // 绘制内容
@@ -62,7 +67,7 @@ const exportToImage = async () => {
     const tempPath = await generateImage();
 
     // 保存到相册
-    await saveToAlbum(tempPath);
+    // await saveToAlbum(tempPath);
 
     emit('success', tempPath);
     return tempPath;
@@ -109,7 +114,8 @@ const drawContent = async (rect) => {
     ctx.setStrokeStyle('rgb(68, 68, 68)');
     ctx.strokeRect(0, 0, rect.width, rect.height);
 
-    drawHeader(ctx, rect.width);
+    drawTableHeader(ctx, rect.width);
+    drawTableBody(ctx, rect.width);
   }
 
   // 确保绘制完成
@@ -117,19 +123,66 @@ const drawContent = async (rect) => {
   return ctx;
 };
 
-function drawHeader(ctx, totalWidth) {
+function drawLine(ctx, totalWidth, startY) {
+  // 重置路径
+  ctx.beginPath();
+
+  // 设置线条样式
+  ctx.setStrokeStyle('rgb(16, 16, 16)');  // 线条颜色
+  ctx.setLineWidth(1);           // 线条宽度
+  ctx.setLineCap('round');       // 端点样式：round | square | butt
+
+  // 绘制路径
+  ctx.moveTo(0, startY);   // 起点坐标
+  ctx.lineTo(totalWidth, startY); // 终点坐标
+
+  ctx.stroke();
+}
+
+const SLOT_OFFSET = 10;
+const ITEM_OFFSET = 50;
+const SOURCE_OFFSET = computed(() => (width.value - ITEM_OFFSET) * 0.8);
+const HEADER_HEIGHT = 50;
+
+function drawTableHeader(ctx, totalWidth) {
   const headers = [ '部位', '装备', '来源' ];
-  let offset = 10;
+  const fontSize = 14;
   ctx.setLineWidth(2);
-  ctx.font = 'bold 14px sans-serif';
-  ctx.setFillStyle('#000000');
+  ctx.font = `bold ${fontSize}px sans-serif`;
+  ctx.setFillStyle('#fff');
   headers.forEach((header, index) => {
-    ctx.fillText(header, offset, 20);
+    let offset;
     if (index === 0) {
-      offset += 40;
+      offset = SLOT_OFFSET;
+    } else if (index === 1) {
+      offset = ITEM_OFFSET;
     } else {
-      offset += (totalWidth - offset) * 0.6;
+      offset = SOURCE_OFFSET.value;
     }
+    ctx.fillText(header, offset, HEADER_HEIGHT / 2 + fontSize / 2);
+
+  });
+  drawLine(ctx, totalWidth, HEADER_HEIGHT);
+}
+
+function drawTableBody(ctx, totalWidth) {
+  const lineHeight = 14;
+  const fontSize = 14;
+  const paddingY = 12;
+  let offsetY = HEADER_HEIGHT;
+  props.data.forEach((row) => {
+    // 部位
+    ctx.font = `normal ${fontSize}px sans-serif`;
+    ctx.setFillStyle('#606266');
+    offsetY += paddingY + lineHeight / 2 + fontSize / 2;
+    ctx.fillText(row.slot, SLOT_OFFSET, offsetY);
+
+    // 来源
+    ctx.setFillStyle(row.source.isLoot ? 'rgb(255, 209, 0)' : '#606266');
+    ctx.fillText(row.source.source, SOURCE_OFFSET.value, offsetY);
+
+    offsetY += paddingY;
+    drawLine(ctx, totalWidth, offsetY);
   });
 }
 
