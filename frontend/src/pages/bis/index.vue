@@ -636,9 +636,9 @@ onLoad(async (options: any) => {
   specKey.value = options.specKey ?? 'blood';
 
   uni.showLoading({
-                    title: '银子加载中...',
-                    mask: true,
-                  });
+    title: '银子加载中...',
+    mask: true,
+  });
 
   // TODO 加载页面完成前，需要展示loading
   await getBasicBisData();
@@ -655,10 +655,10 @@ async function getBasicBisData() {
 
 onShareAppMessage(() => {
   const {
-          title,
-          classKey,
-          specKey,
-        } = query.value;
+    title,
+    classKey,
+    specKey,
+  } = query.value;
 
   return {
     title: `${title}·属性配装和攻略`,
@@ -709,7 +709,7 @@ const relationIcon = computed(() => {
 const statSource = ref('maxroll');
 const statDetailCollapse = ref();
 const statSourceText = computed(() =>
-                                    statSource.value === 'wowhead' ? '点击查看简略版' : '点击查看详细版',
+    statSource.value === 'wowhead' ? '点击查看简略版' : '点击查看详细版',
 );
 
 function switchStatSource() {
@@ -767,13 +767,13 @@ function switchTalent(index: number) {
 
 function exportTalentCode() {
   uni.setClipboardData({
-                         data: currentData.value.talents[currentTalentIndex.value].code,
-                         success: function () {
-                           messageType.value = 'success';
-                           messageText.value = '已成功复制天赋代码到粘贴板。';
-                           messagePopup.value.open();
-                         },
-                       });
+    data: currentData.value.talents[currentTalentIndex.value].code,
+    success: function () {
+      messageType.value = 'success';
+      messageText.value = '已成功复制天赋代码到粘贴板。';
+      messagePopup.value.open();
+    },
+  });
 }
 
 function getTalentImage(url: string) {
@@ -785,11 +785,11 @@ function preiviewImage(imageIndex: number) {
       (item: string) => getTalentImage(item),
   );
   uni.previewImage({
-                     urls: urls,
-                     current: imageIndex,
-                     indicator: 'number',
-                     loop: true,
-                   });
+    urls: urls,
+    current: imageIndex,
+    indicator: 'number',
+    loop: true,
+  });
 }
 
 const currentTableName = ref('');
@@ -815,7 +815,7 @@ function switchWrap(item: IBisItem) {
 
 const displayEnhancement = ref(true);
 const switchEnhancementText = computed(() =>
-                                           displayEnhancement.value ? '隐藏' : '显示',
+    displayEnhancement.value ? '隐藏' : '显示',
 );
 
 const popup = ref<any>('');
@@ -857,9 +857,9 @@ async function switchDetail(
         currentItem.value.type = forceType;
       }
       const {
-              data,
-              statusCode,
-            } = await queryItemPreview(item.id);
+        data,
+        statusCode,
+      } = await queryItemPreview(item.id);
       if (statusCode === 200) {
         currentDetails.value = data;
         status.value = '';
@@ -913,13 +913,13 @@ const tipMessage = ref('');
 
 async function getDungeonTip() {
   const {
-          isSuccess,
-          data,
-        } = await queryDungeonTip({
-                                    roleClass: classKey.value,
-                                    classSpec: specKey.value,
-                                    dungeonId: currentDungeonId.value,
-                                  });
+    isSuccess,
+    data,
+  } = await queryDungeonTip({
+    roleClass: classKey.value,
+    classSpec: specKey.value,
+    dungeonId: currentDungeonId.value,
+  });
   if (isSuccess) {
     dungeonTip.value = data;
   } else {
@@ -993,9 +993,9 @@ const footerMenus = [
 async function onMenuChange(menuValue: string) {
   if (menuValue === 'mythic' && !dungeons.value?.length) {
     uni.showLoading({
-                      title: '银子加载中...',
-                      mask: true,
-                    });
+      title: '银子加载中...',
+      mask: true,
+    });
     await getSeasonDungeons();
     await getDungeonTip();
     uni.hideLoading();
