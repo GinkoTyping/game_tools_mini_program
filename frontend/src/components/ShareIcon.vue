@@ -6,7 +6,7 @@
       :key="item.role"
       @click="item.onClick"
     >
-      <image :src="`/static/images/wow/job-icons/role-icon-${item.role}.jpg`" />
+      <image :src="`/static/images/wow/job-icons/role-icon-${item.role}.jpg`"/>
     </button>
     <button @click="showAdDialog">
       <image
@@ -14,15 +14,16 @@
         src="/static/images/common/Food-Icons.png"
         style="height: 70%; width: 70%"
       />
-      <view class="badage" v-if="!userStore?.isFreeAd"> </view>
+      <view class="badage" v-if="!userStore?.isFreeAd"></view>
     </button>
     <view
       class="ad-tooltip animate__animated animate__fadeInDown"
       v-show="watchAdSuccess"
-      >🍗+1</view
+    >🍗+1
+    </view
     >
     <button open-type="share">
-      <image src="/static/icon/share.svg" />
+      <image src="/static/icon/share.svg"/>
     </button>
   </view>
 
@@ -31,8 +32,8 @@
     class="poe2-btn"
     @click="navigator.redirectToPoeLadders"
   >
-    <image src="/static/images/poe/poe-2-icon.png" mode="widthFix" />
-    <view class="badage"> </view>
+    <image src="/static/images/poe/poe-2-icon.png" mode="widthFix"/>
+    <view class="badage"></view>
   </button>
 
   <uni-popup ref="adPopup" type="dialog">
@@ -47,23 +48,32 @@
         <view class="ad-popup-container">
           <view class="not-wacth" v-show="!adInfo?.isFreeAd">
             <view class="main">
-              <text style="color: #dd524d">{{ adInfo?.count }}人</text
-              >观看了<text style="color: #dd524d">30秒</text>广告视频
+              <text style="color: #dd524d">{{ adInfo?.count }}人
+              </text
+              >
+              观看了
+              <text style="color: #dd524d">30秒</text>
+              广告视频
             </view>
             <view class="main">
               <view>给程序猿上了</view>
-              <view><text style="color: rgb(29, 245, 1)">24小时</text>的</view>
+              <view>
+                <text style="color: rgb(29, 245, 1)">24小时</text>
+                的
+              </view>
               <view
-                ><image src="/static/images/wow/food/ability_mage_timewarp.jpg"
-              /></view>
+              >
+                <image src="/static/images/wow/food/ability_mage_timewarp.jpg"
+                />
+              </view>
             </view>
             <view class="main">
               <view>还投喂了</view>
               <view>
-                <image src="/static/images/wow/food/shard.gif" />
+                <image src="/static/images/wow/food/shard.gif"/>
                 <text>大餐碎片</text>
               </view>
-              <view> x1！ </view>
+              <view> x1！</view>
             </view>
             <view class="main" v-if="adInfo?.lastUntil?.length">
               <view class="repeat-watch-info">
@@ -74,25 +84,33 @@
           <view class="wacthed" v-show="adInfo?.isFreeAd">
             <view class="main">
               <view>
-                <text style="color: #dd524d">感谢您</text>和其他伙伴<text
+                <text style="color: #dd524d">感谢您</text>
+                和其他伙伴
+                <text
                   style="color: #dd524d"
-                  >{{ adInfo?.count - 1 }}次</text
-                >的投喂🎉
+                >{{ adInfo?.count - 1 }}次
+                </text
+                >
+                的投喂🎉
               </view>
             </view>
-            <view class="main"> 程序猿更有干劲了！ </view>
+            <view class="main"> 程序猿更有干劲了！</view>
             <view class="main">
               <view>
                 <image
                   src="/static/images/wow/food/ability_mage_timewarp.jpg"
-                />剩余：<text style="color: rgb(29, 245, 1)">{{
-                  adInfo?.freeLeft
-                }}</text
-                >⏳
+                />
+                剩余：
+                <text style="color: rgb(29, 245, 1)">{{
+                    adInfo?.freeLeft
+                  }}
+                </text
+                >
+                ⏳
               </view>
             </view>
             <view class="main">
-              <view class="repeat-watch-info"> 在此期间重复观看 </view>
+              <view class="repeat-watch-info"> 在此期间重复观看</view>
             </view>
             <view class="main">
               <view class="repeat-watch-info">
@@ -106,8 +124,12 @@
           <view class="progress-container">
             <view class="progress-bars">
               <view
-                >大餐合成中(<text>{{ shardCount }}</text
-                >/10)：</view
+              >大餐合成中(
+                <text>{{ shardCount }}
+                </text
+                >
+                /10)：
+              </view
               >
               <view class="bars">
                 <image
@@ -136,8 +158,14 @@
             />
           </view>
           <view class="footer"
-            >视频有声音，建议<text> 静音 </text>或<text> 调低音量 </text
-            >观看</view
+          >视频有声音，建议
+            <text> 静音</text>
+            或
+            <text> 调低音量
+            </text
+            >
+            观看
+          </view
           >
         </view>
       </template>
@@ -174,6 +202,7 @@ const shardList = ref<number[]>();
 const chickenList = ref<string[]>();
 const watchAdSuccess = ref(false);
 let timer;
+
 function loadAd() {
   if (!rewardedVideoAd) {
     rewardedVideoAd = uni.createRewardedVideoAd({
@@ -185,9 +214,12 @@ function loadAd() {
       if (res.isEnded) {
         swicthWatchSuccessTip(true);
       }
+      // res.isEnded
+      //   ? giveReward()
+      //   : uni.showToast({ title: '没关系，有空再投喂吧~', icon: 'none' });
       res.isEnded
         ? giveReward()
-        : uni.showToast({ title: '没关系，有空再投喂吧~', icon: 'none' });
+        : giveReward();
     });
 
     rewardedVideoAd.onError((err: any) => {
@@ -196,6 +228,7 @@ function loadAd() {
     });
   }
 }
+
 async function showAdDialog() {
   loadAd();
 
@@ -217,6 +250,7 @@ async function showAdDialog() {
 
   adPopup.value?.open?.();
 }
+
 function showAd() {
   rewardedVideoAd?.show().catch(() => {
     rewardedVideoAd
@@ -227,6 +261,7 @@ function showAd() {
       });
   });
 }
+
 function swicthWatchSuccessTip(isShow: boolean) {
   if (isShow) {
     watchAdSuccess.value = true;
@@ -240,8 +275,9 @@ function swicthWatchSuccessTip(isShow: boolean) {
 }
 
 const userStore = useUserStore();
+
 async function giveReward() {
-  uni.showToast({ title: '感谢支持！' });
+  uni.showToast({ title: '谢谢哥! 过了命了!', icon: 'none', duration: 5000 });
   const data = await queryUpdateAdCount();
   if (data) {
     userStore.isFreeAd = data.isFreeAd;
@@ -271,9 +307,11 @@ onUnmounted(() => {
   z-index: 2;
   display: flex;
   align-items: center;
+
   image {
     width: 90rpx;
   }
+
   .badage {
     right: 4rpx;
     top: 4rpx;
@@ -290,6 +328,7 @@ onUnmounted(() => {
   right: 22px;
   z-index: 99;
   display: flex;
+
   .ad-tooltip {
     position: absolute;
     right: calc(36px + 0.4rem);
@@ -316,6 +355,7 @@ button {
   box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%);
   position: relative;
   box-sizing: border-box;
+
   .badage {
     position: absolute;
     right: 0;
@@ -329,11 +369,13 @@ button {
     justify-content: center;
     align-items: center;
     z-index: 2;
+
     text {
       font-size: 10px;
       line-height: 32rpx;
     }
   }
+
   image {
     width: 50%;
     height: 50%;
@@ -346,28 +388,35 @@ button {
   margin-bottom: 4px;
   display: flex;
   justify-content: center;
+
   image {
     margin: 0 2px;
   }
+
   .repeat-watch-info {
     font-size: 12px;
     color: #bbb;
+
     text {
       font-size: 12px !important;
       font-weight: bold;
       color: black;
     }
   }
+
   text {
     font-weight: bold;
   }
+
   view {
     display: flex;
     align-items: center;
+
     text {
       font-weight: bold;
       font-size: 16px;
     }
+
     image {
       border-radius: 30%;
       width: 20px;
@@ -375,15 +424,18 @@ button {
     }
   }
 }
+
 .sub {
   text-align: center;
   font-size: 12px;
   margin-bottom: 10px;
 }
+
 .progress-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .progress-bars {
     font-size: 12px;
     display: flex;
@@ -392,6 +444,7 @@ button {
     align-items: center;
     margin-bottom: 6px;
     width: 100%;
+
     .bars {
       margin-top: 6px;
       display: flex;
@@ -399,12 +452,14 @@ button {
       justify-content: space-between;
       align-items: center;
       width: 100%;
+
       image {
         width: calc((100% - 50px) / 10);
         margin: 1px;
         position: relative;
         border-radius: 30%;
       }
+
       .unfilled::after {
         content: '';
         top: 0;
@@ -416,6 +471,7 @@ button {
       }
     }
   }
+
   .down-arrow {
     width: 14px;
     height: 14px;
@@ -429,6 +485,7 @@ button {
   justify-content: center;
   margin-bottom: 12px;
   font-size: 14px;
+
   image {
     padding: 1px;
     border-radius: 30%;
@@ -436,10 +493,12 @@ button {
     max-width: 30px;
   }
 }
+
 .footer {
   text-align: center;
   font-size: 12px;
   color: #bbb;
+
   text {
     color: black;
     font-weight: bold;
