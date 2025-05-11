@@ -60,9 +60,13 @@ interface IBisDataDTO {
 }
 
 export function getImageSrc(image: string) {
+  // return {
+  //   item: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image/${image}`,
+  //   thumbItem: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image-thumb/${image}`,
+  // };
   return {
-    item: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image/${image}`,
-    thumbItem: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image-thumb/${image}`,
+    item: `http://localhost:3000/api/wow/assets/blizz-media-image/${image}`,
+    thumbItem: `http://localhost:3000/api/wow/assets/blizz-media-image-thumb/${image}`,
   };
 }
 

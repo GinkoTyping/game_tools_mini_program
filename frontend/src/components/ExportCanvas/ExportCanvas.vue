@@ -4,16 +4,26 @@
     <canvas
       :canvas-id="canvasId"
       :id="canvasId"
-      :style="{ width: width + 'px', height: height + 'px' }"
+      :style="{ width: CANVAS_WIDTH + 'px', height: calculateTotalHeight + 'px' }"
     ></canvas>
   </view>
 </template>
 
 <script lang="ts" setup>
-import type { CSSProperties } from 'vue';
+import type { CSSProperties, PropType } from 'vue';
 import { ref, computed, getCurrentInstance } from 'vue';
 import type { IBisItem } from '@/interface/IWow';
-import { getImageSrc } from '@/api/wow';
+import { getImageSrc, getRoleSpecSrc } from '@/api/wow';
+import { getRoleClassColor } from '@/utils/wow';
+import roleSpecLabelMap from '@/data/zh.json';
+
+interface IExportData {
+  title: string;
+  roleClass: string;
+  classSpec: string;
+  bisLabel: string;
+  bisItems: Array<IBisItem>;
+}
 
 const props = defineProps({
   targetSelector: {
@@ -21,8 +31,8 @@ const props = defineProps({
     required: true,
   },
   data: {
-    type: Array<IBisItem>,
-    default: () => [],
+    type: Object as PropType<IExportData>,
+    default: () => ({}),
   },
   config: {
     type: Object,
@@ -40,28 +50,33 @@ const emit = defineEmits([ 'success', 'error', 'export-start' ]);
 
 const instance = getCurrentInstance();
 const canvasId = ref(`canvas_${Date.now()}`);
-const width = ref(Math.min(uni.getSystemInfoSync().safeArea?.width ?? 400, 400));
-const height = ref(0);
-const canvasStyle = computed(() => ({
-  // position: 'absolute',
-  // left: '-9999px',
-  // opacity: 0,
-  width: width.value + 'px',
-  height: 200 + 'px',
-}));
+const CANVAS_WIDTH = 340;
+const calculateTotalHeight = computed(() => props.data?.bisItems.reduce((pre, cur) => {
+    pre += PADDING_Y + LINE_HEIGHT / 2 - FONT_SIZE / 2;
+    pre += cur.enhancements.length * (LINE_HEIGHT - FONT_SIZE / 2);
+    pre += PADDING_Y;
+    return pre;
+  }, TABLE_HEADER_OFFSET),
+);
+const canvasStyle = computed(() => {
+  return {
+    ...(props.config.debug ? {} : {
+      position: 'absolute',
+      left: '-9999px',
+      opacity: 0,
+    }),
+    width: CANVAS_WIDTH + 'px',
+    height: calculateTotalHeight.value + 'px',
+  };
+});
 
 // 暴露给父组件的方法
 const exportToImage = async () => {
   try {
     emit('export-start');
 
-    // 获取目标元素信息
-    const rect: any = await getTargetRect();
-    // width.value = rect.width;
-    height.value = rect.height;
-
     // 绘制内容
-    await drawContent(rect);
+    await drawContent();
 
     // 生成图片
     const tempPath = await generateImage();
@@ -77,47 +92,27 @@ const exportToImage = async () => {
   }
 };
 
-// 获取目标元素信息（跨组件版）
-const getTargetRect = () => {
-  return new Promise((resolve, reject) => {
-    const parentCtx: any = instance?.parent || instance; // 处理多层组件
-    if (parentCtx) {
-      uni.createSelectorQuery()
-        .in(parentCtx)
-        .select(props.targetSelector)
-        .boundingClientRect((rect: any) => {
-          if (!rect) return reject(new Error('目标元素未找到'));
-          resolve({
-            ...rect,
-            left: rect.left - (parentCtx.$scope ? parentCtx.$scope.$page.$getBoundingClientRect().left : 0),
-            top: rect.top - (parentCtx.$scope ? parentCtx.$scope.$page.$getBoundingClientRect().top : 0),
-          });
-        })
-        .exec();
-    }
-  });
-};
-
 // 核心绘制逻辑
-const drawContent = async (rect) => {
+const drawContent = async () => {
   const ctx = uni.createCanvasContext(canvasId.value, instance);
 
+  const totalHeight = calculateTotalHeight.value;
   // 清空画布
-  ctx.clearRect(0, 0, rect.width, rect.height);
+  ctx.clearRect(0, 0, CANVAS_WIDTH, totalHeight);
 
   // 绘制背景
   ctx.setFillStyle('#282828');
-  ctx.fillRect(0, 0, rect.width, rect.height);
+  ctx.fillRect(0, 0, CANVAS_WIDTH, totalHeight);
 
-  // 调试模式
-  if (props.config.debug) {
-    ctx.setStrokeStyle('rgb(68, 68, 68)');
-    ctx.strokeRect(0, 0, rect.width, rect.height);
-    ctx.setTextBaseline('middle');
+  ctx.setStrokeStyle('rgb(68, 68, 68)');
+  ctx.setLineWidth(2);
+  ctx.strokeRect(0, 0, CANVAS_WIDTH, totalHeight);
 
-    drawTableHeader(ctx, rect.width);
-    await drawTableBody(ctx, rect.width);
-  }
+  ctx.setTextBaseline('middle');
+
+  await drawCanvasHeader(ctx, CANVAS_WIDTH);
+  drawTableHeader(ctx, CANVAS_WIDTH);
+  await drawTableBody(ctx, CANVAS_WIDTH);
 
   // 确保绘制完成
   await new Promise(resolve => ctx.draw(false, resolve));
@@ -140,16 +135,51 @@ function drawLine(ctx, totalWidth, startY) {
   ctx.stroke();
 }
 
+const CANVAS_HEADER_HEIGHT = 50;
+const CANVAS_HEADER_FONT_SIZE = 16;
+const CANVAS_HEADER_PADDING_Y = 2;
+
+async function drawCanvasHeader(ctx, totalWidth) {
+  await drawImage(
+    ctx,
+    getRoleSpecSrc(props.data.classSpec, props.data.roleClass).specIcon,
+    0,
+    0,
+    CANVAS_HEADER_HEIGHT,
+  );
+
+  ctx.setTextBaseline('middle');
+  ctx.setFillStyle(getRoleClassColor(props.data.roleClass));
+  ctx.font = `bold ${CANVAS_HEADER_FONT_SIZE}px sans-serif`;
+  const SPEC_TEXT_PADDING_LEFT = 10;
+  const offsetX = CANVAS_HEADER_HEIGHT + SPEC_TEXT_PADDING_LEFT;
+  ctx.fillText(
+    `${roleSpecLabelMap[props.data.roleClass][props.data.classSpec]} ${roleSpecLabelMap.class[props.data.roleClass]}`,
+    offsetX,
+    CANVAS_HEADER_FONT_SIZE,
+  );
+  ctx.setFillStyle('#fff');
+  ctx.fillText(
+    `${props.data.bisLabel} 配装参考`,
+    offsetX,
+    CANVAS_HEADER_HEIGHT - CANVAS_HEADER_FONT_SIZE / 2 - CANVAS_HEADER_PADDING_Y,
+  );
+
+  drawLine(ctx, totalWidth, CANVAS_HEADER_HEIGHT);
+}
+
 const SLOT_OFFSET = 10;
-const ITEM_OFFSET = 50;
-const SOURCE_OFFSET = computed(() => (width.value - ITEM_OFFSET) * 0.8);
-const HEADER_HEIGHT = 50;
+const ITEM_OFFSET = 60;
+const SOURCE_OFFSET = 250;
+const TABLE_HEADER_HEIGHT = 50;
+const TABLE_HEADER_OFFSET = CANVAS_HEADER_HEIGHT + TABLE_HEADER_HEIGHT;
 
 function drawTableHeader(ctx, totalWidth) {
   const headers = [ '部位', '装备', '来源' ];
   ctx.setLineWidth(2);
   ctx.font = `bold ${FONT_SIZE}px sans-serif`;
   ctx.setFillStyle('#fff');
+  ctx.textAlign = 'left';
   headers.forEach((header, index) => {
     let offset;
     if (index === 0) {
@@ -157,62 +187,85 @@ function drawTableHeader(ctx, totalWidth) {
     } else if (index === 1) {
       offset = ITEM_OFFSET;
     } else {
-      offset = SOURCE_OFFSET.value;
+      offset = SOURCE_OFFSET;
     }
-    ctx.fillText(header, offset, HEADER_HEIGHT / 2);
+    ctx.fillText(header, offset, CANVAS_HEADER_HEIGHT + TABLE_HEADER_HEIGHT / 2);
 
   });
-  drawLine(ctx, totalWidth, HEADER_HEIGHT);
+  drawLine(ctx, totalWidth, TABLE_HEADER_OFFSET);
 }
 
 const LINE_HEIGHT = 28;
 const FONT_SIZE = 14;
 const PADDING_Y = 14;
 
+function drawMultilineText(ctx, text, x, y, lineHeight) {
+
+  // 按换行符分割段落
+  const paragraphs = text.replace(/(.{5})(?=.)/gs, '$1\n').split('\n');
+  const lineCount = paragraphs.length;
+  paragraphs.forEach(paragraph => {
+    // 逐行绘制
+    ctx.fillText(paragraph, x, y);
+    y += lineHeight; // 更新Y坐标
+  });
+
+  return lineCount;
+}
+
 async function drawTableBody(ctx, totalWidth) {
-  let offsetY = HEADER_HEIGHT;
-  for (const row of props.data) {
-    // 部位
-    ctx.font = `normal ${FONT_SIZE}px sans-serif`;
-    ctx.setFillStyle('#606266');
-    offsetY += PADDING_Y + LINE_HEIGHT / 2 - FONT_SIZE / 2;
-    ctx.fillText(row.slot, SLOT_OFFSET, offsetY);
+  let offsetY = TABLE_HEADER_OFFSET;
+  if (props.data?.bisItems) {
+    for (const row of props.data.bisItems) {
+      // 部位
+      ctx.font = `normal ${FONT_SIZE}px sans-serif`;
+      ctx.setFillStyle('#606266');
+      offsetY += PADDING_Y + LINE_HEIGHT / 2 - FONT_SIZE / 2;
+      ctx.fillText(row.slot, SLOT_OFFSET, offsetY);
 
-    // 来源
-    ctx.setFillStyle(row.source.isLoot ? 'rgb(255, 209, 0)' : '#606266');
-    ctx.fillText(row.source.source, SOURCE_OFFSET.value, offsetY);
+      // 来源
+      ctx.setFillStyle(row.source.isLoot ? 'rgb(255, 209, 0)' : '#606266');
+      const minWrapCount = drawMultilineText(
+        ctx,
+        row.source?.source,
+        SOURCE_OFFSET,
+        offsetY,
+        LINE_HEIGHT - FONT_SIZE / 2,
+      );
 
-    // 物品 宝石附魔
-    ctx.setFillStyle('rgb(163, 53, 238)');
-    await drawImage(ctx, getImageSrc(row.image).thumbItem, ITEM_OFFSET, offsetY - FONT_SIZE / 2, FONT_SIZE);
-    ctx.fillText(row.name, ITEM_OFFSET + 16, offsetY);
-    offsetY += LINE_HEIGHT - FONT_SIZE / 2;
+      // 物品 宝石附魔
+      ctx.setFillStyle('rgb(163, 53, 238)');
+      await drawImage(ctx, getImageSrc(row.image).thumbItem, ITEM_OFFSET, offsetY - FONT_SIZE / 2, FONT_SIZE);
+      ctx.fillText(row.name, ITEM_OFFSET + 16, offsetY);
 
-    for (let itemIndex = 0; itemIndex < row.enhancements.length; itemIndex++) {
-      const item = row.enhancements[itemIndex];
-      await drawImage(ctx, getImageSrc(item.image).thumbItem, ITEM_OFFSET, offsetY - FONT_SIZE / 2, FONT_SIZE);
-      ctx.fillText(item.name, ITEM_OFFSET + 16, offsetY);
-      if (itemIndex !== row.enhancements.length - 1) {
+      for (let itemIndex = 0; itemIndex < row.enhancements.length; itemIndex++) {
         offsetY += LINE_HEIGHT - FONT_SIZE / 2;
+        const item = row.enhancements[itemIndex];
+        await drawImage(ctx, getImageSrc(item.image).thumbItem, ITEM_OFFSET, offsetY - FONT_SIZE / 2, FONT_SIZE);
+        ctx.fillText(item.name, ITEM_OFFSET + 16, offsetY);
       }
+
+      // 处理 来源 换行的行数是row的最大行数的情况
+      if (minWrapCount > row.enhancements.length + 1) {
+        offsetY += (LINE_HEIGHT - FONT_SIZE / 2) * (minWrapCount - 1);
+      }
+
+      offsetY += PADDING_Y;
+      drawLine(ctx, totalWidth, offsetY);
     }
-
-
-    offsetY += PADDING_Y;
-    drawLine(ctx, totalWidth, offsetY);
   }
 }
 
-async function drawImage(ctx, src, offsetX, offsetY, size) {
+async function drawImage(ctx, url, offsetX, offsetY, size) {
   try {
     const imageRes: any = await new Promise((resolve, reject) => {
-      uni.getImageInfo({
-        src,
+      uni.downloadFile({
+        url,
         success: resolve,
         fail: reject,
       });
     });
-    ctx.drawImage(imageRes.path, offsetX, offsetY, size, size);
+    ctx.drawImage(imageRes.tempFilePath, offsetX, offsetY, size, size);
   } catch (err) {
     console.error('图片加载失败:', err);
   }
