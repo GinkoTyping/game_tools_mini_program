@@ -11,7 +11,7 @@ export function getRoleClassColor(roleClass: string) {
     mage: '#3fc7eb',
     warlock: '#8788ee',
     monk: '#00ff98',
-    druid: ' #ff7c0a',
+    druid: '#ff7c0a',
     'demon-hunter': '#a330c9',
     paladin: '#f48cba',
     rogue: '#fff468',

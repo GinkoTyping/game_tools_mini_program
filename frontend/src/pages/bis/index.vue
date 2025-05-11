@@ -294,8 +294,8 @@
             class="to-enhancement"
             @click="exportImage"
           >
-            <text>保存</text>
-            <uni-icons type="download-filled" color="rgb(255, 209, 0)" size="20"></uni-icons>
+            <text>{{ isExporting ? '保存中...' : '保存' }}</text>
+            <uni-icons v-show="!isExporting" type="download-filled" color="#007aff" size="20"></uni-icons>
           </view>
         </view>
         <view id="bis-table">
@@ -912,27 +912,24 @@ async function switchDetail(
 
 //#region BIS配装
 const exportRef = ref();
+const isExporting = ref(false);
 const exportImage = async () => {
   try {
-    uni.showLoading({
-      title: '银子操作中...',
-      mask: true,
-    });
+    isExporting.value = true;
     await exportRef.value.exportToImage();
   } catch (err: any) {
     await uni.showToast({ title: err.message, icon: 'none' });
   } finally {
-    uni.hideLoading();
+    isExporting.value = false;
   }
 };
 
 const handleSuccess = (path) => {
-  console.log('图片路径:', path.tempFilePath);
-  uni.showToast({ title: '保存成功' });
+  uni.showToast({ title: '保存成功!请查看相册', icon: 'none', duration: 5000 });
 };
 
 const handleError = (err) => {
-  console.error('导出错误:', err);
+  console.error('导出错误:', err?.message);
 };
 //#endregion
 
@@ -1507,7 +1504,7 @@ $light-border: rgb(68, 68, 68);
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    color: $uni-text-color-inverse;
+    color: $uni-color-primary;
     font-weight: bold;
     margin-right: 6px;
     gap: 6px;
