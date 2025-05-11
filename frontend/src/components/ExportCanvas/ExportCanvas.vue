@@ -50,10 +50,14 @@ const canvasId = ref(`canvas_${Date.now()}`);
 const CANVAS_WIDTH = 340;
 const calculateTotalHeight = computed(() => props.data?.bisItems.reduce((pre, cur) => {
     pre += PADDING_Y + LINE_HEIGHT / 2 - FONT_SIZE / 2;
-    pre += cur.enhancements.length * (LINE_HEIGHT - FONT_SIZE / 2);
+
+    const minWrapLineCount = Math.ceil(cur.source?.source?.length / 5) - 1;
+    const wrapLineCount = Math.max(minWrapLineCount, cur.enhancements.length);
+    pre += wrapLineCount * (LINE_HEIGHT - FONT_SIZE / 2);
+
     pre += PADDING_Y;
     return pre;
-  }, TABLE_HEADER_OFFSET + CANVAS_FOOTER_HEIGHT + 20),
+  }, TABLE_HEADER_OFFSET + CANVAS_FOOTER_HEIGHT),
 );
 const canvasStyle = computed(() => {
   return {
@@ -79,7 +83,7 @@ const exportToImage = async () => {
     const tempPath = await generateImage();
 
     // 保存到相册
-    // await saveToAlbum(tempPath);
+    await saveToAlbum(tempPath);
 
     emit('success', tempPath);
     return tempPath;
@@ -169,7 +173,7 @@ async function drawCanvasHeader(ctx, totalWidth) {
 const SLOT_OFFSET = 10;
 const ITEM_OFFSET = 60;
 const SOURCE_OFFSET = 250;
-const TABLE_HEADER_HEIGHT = 50;
+const TABLE_HEADER_HEIGHT = 40;
 const TABLE_HEADER_OFFSET = CANVAS_HEADER_HEIGHT + TABLE_HEADER_HEIGHT;
 
 function drawTableHeader(ctx, totalWidth) {
@@ -197,10 +201,14 @@ const LINE_HEIGHT = 28;
 const FONT_SIZE = 14;
 const PADDING_Y = 14;
 
+function mapSourceLabel(label) {
+  return label.replace(/(.{5})(?=.)/gs, '$1\n');
+}
+
 function drawMultilineText(ctx, text, x, y, lineHeight) {
 
   // 按换行符分割段落
-  const paragraphs = text.replace(/(.{5})(?=.)/gs, '$1\n').split('\n');
+  const paragraphs = mapSourceLabel(text).split('\n');
   const lineCount = paragraphs.length;
   paragraphs.forEach(paragraph => {
     // 逐行绘制
