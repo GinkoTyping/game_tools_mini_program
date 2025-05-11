@@ -56,7 +56,7 @@ const calculateTotalHeight = computed(() => props.data?.bisItems.reduce((pre, cu
     pre += cur.enhancements.length * (LINE_HEIGHT - FONT_SIZE / 2);
     pre += PADDING_Y;
     return pre;
-  }, TABLE_HEADER_OFFSET),
+  }, TABLE_HEADER_OFFSET + CANVAS_FOOTER_HEIGHT + 20),
 );
 const canvasStyle = computed(() => {
   return {
@@ -113,6 +113,7 @@ const drawContent = async () => {
   await drawCanvasHeader(ctx, CANVAS_WIDTH);
   drawTableHeader(ctx, CANVAS_WIDTH);
   await drawTableBody(ctx, CANVAS_WIDTH);
+  await drawCanvasFooter(ctx);
 
   // 确保绘制完成
   await new Promise(resolve => ctx.draw(false, resolve));
@@ -269,6 +270,39 @@ async function drawImage(ctx, url, offsetX, offsetY, size) {
   } catch (err) {
     console.error('图片加载失败:', err);
   }
+}
+
+const CANVAS_FOOTER_HEIGHT = 50;
+const CANVAS_FOOTER_FONT_SIZE = 14;
+
+async function drawCanvasFooter(ctx) {
+  await drawImage(
+    ctx,
+    'https://ginkolearn.cyou/api/common/assets/media/wx-icon-thumb.jpg',
+    0,
+    calculateTotalHeight.value - CANVAS_FOOTER_HEIGHT,
+    CANVAS_FOOTER_HEIGHT,
+  );
+  ctx.setTextBaseline('middle');
+  ctx.setFillStyle('#fff');
+  ctx.font = `normal ${CANVAS_FOOTER_FONT_SIZE}px sans-serif`;
+  const SPEC_TEXT_PADDING_LEFT = 10;
+  const offsetX = CANVAS_HEADER_HEIGHT + SPEC_TEXT_PADDING_LEFT;
+  ctx.fillText(
+    '微信小程序：银子的搜罗坊',
+    offsetX,
+    calculateTotalHeight.value - CANVAS_FOOTER_HEIGHT + CANVAS_HEADER_FONT_SIZE,
+  );
+
+  ctx.fillText(
+    `保存时间: ${new Intl.DateTimeFormat('zh-CN', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(Date.now())}`,
+    offsetX,
+    calculateTotalHeight.value - CANVAS_FOOTER_HEIGHT + CANVAS_HEADER_HEIGHT - CANVAS_HEADER_FONT_SIZE / 2 - CANVAS_HEADER_PADDING_Y,
+  );
 }
 
 // 生成临时图片
