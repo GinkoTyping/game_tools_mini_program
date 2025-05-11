@@ -59,6 +59,13 @@ interface IBisDataDTO {
   };
 }
 
+export function getImageSrc(image: string) {
+  return {
+    item: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image/${image}`,
+    thumbItem: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image-thumb/${image}`,
+  };
+}
+
 function mapRatings(rating: number) {
   let count = rating;
   let index = 0;
@@ -81,7 +88,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
   function mapRatingComment(label: string, score: number) {
     switch (score) {
       case 5:
-        if (['单体', 'AOE'].includes(label)) {
+        if ([ '单体', 'AOE' ].includes(label)) {
           return '暴力';
         } else if (label === '功能性') {
           return '顶级工具人';
@@ -120,7 +127,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
   // 个别装备栏位的介绍 仍然为英语
   function mapBisItem(data: IBisDataDTO) {
     data.bis_items = data.bis_items?.filter(
-      item => item.items?.length && item.items[0] !== null
+      item => item.items?.length && item.items[0] !== null,
     );
     data.bis_items?.forEach(
       (bisType: { items: Array<IBisItem>; title: string }) => {
@@ -130,7 +137,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
           }
           return item;
         });
-      }
+      },
     );
     return data.bis_items;
   }
@@ -143,7 +150,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
           return {
             ...item,
             priorityList: item.priorityList.map(item =>
-              item.replaceAll('=', '/')
+              item.replaceAll('=', '/'),
             ),
           };
         }),
@@ -196,7 +203,7 @@ export async function queryItemPreview(id: number) {
 
           return pre;
         },
-        []
+        [],
       );
     }
 
@@ -209,7 +216,7 @@ export async function queryItemPreview(id: number) {
 
 export async function querySpecPopularity(
   minMythicLevel: number,
-  maxMythicLevel: number
+  maxMythicLevel: number,
 ) {
   const res: any = await proxyRequest({
     url: `/wow/bis/popularity`,
@@ -225,6 +232,7 @@ export async function querySpecPopularity(
     }
     return name;
   }
+
   function formatNumber(num: number) {
     if (num < 1000) {
       return num.toString();
@@ -245,7 +253,7 @@ export async function querySpecPopularity(
       healer: 0,
     };
     maxCount.all = cacheData.sort(
-      (a, b) => b.quantity - a.quantity
+      (a, b) => b.quantity - a.quantity,
     )[0].quantity;
     maxCount.dps = cacheData
       .filter(item => item.role === 'dps')
@@ -277,7 +285,7 @@ export async function querySpecPopularity(
           name_zh: handleLongerSpecName(item.name_zh),
           color: (colorMap as any)[
             item.class_name_en.toLowerCase().replaceAll(' ', '-')
-          ],
+            ],
           ...widthConfig,
           quantityText: formatNumber(item.quantity),
           spritePosition: `${-res.data.sprite?.[roleClass][classSpec] * 20}px ${
@@ -338,6 +346,7 @@ export interface IDungeonDTO {
   name_zh: string;
   name_en: string;
 }
+
 export async function querySeasonDungeons() {
   try {
     const res = await proxyRequest({
@@ -443,6 +452,7 @@ export interface IHomeViewDTO {
   tarotCount: number;
   tagCardCount: number;
 }
+
 export async function queryHomeView() {
   try {
     const res: any = await proxyRequest({ url: `/wow/home-view` });
@@ -465,10 +475,12 @@ export interface ITierListDTO {
   created_at: string;
   tier_data: ITierDataItem[];
 }
+
 interface ITierDataItem {
   tier: string;
   children: ITierSpecDetail[];
 }
+
 export interface ITierSpecDetail {
   dataChange: string;
   classSpec: string;
@@ -479,6 +491,7 @@ export interface ITierSpecDetail {
   fullNameZH: string;
   spells: { spellId: number }[];
 }
+
 export async function queryTierList(params: {
   versionId: string;
   role: string;
@@ -509,6 +522,7 @@ export async function queryMythicDungeonById(id: number) {
   const res: any = await proxyRequest({
     url: `/wow/mythic-dungeon/${id}`,
   });
+
   function mapUtilityNeeds(data: any) {
     return data.map((item: any) => {
       return {
@@ -518,6 +532,7 @@ export async function queryMythicDungeonById(id: number) {
       };
     });
   }
+
   return {
     ...res.data,
     utilityNeeds: mapUtilityNeeds(res.data.utilityNeeds),
@@ -534,6 +549,7 @@ export async function queryMythicDunegonList() {
   const res: any = await proxyRequest({
     url: `/wow/mythic-dungeon/list`,
   });
+
   function mapTierText(tier: string) {
     switch (tier) {
       case 'S':
@@ -548,6 +564,7 @@ export async function queryMythicDunegonList() {
         break;
     }
   }
+
   return res.data.map((item: any) => ({
     ...item,
     tierText: mapTierText(item.tier),
@@ -620,6 +637,7 @@ export interface IQuestionItem {
     answer: { value: number; text: string };
   };
 }
+
 export async function queryQuestions(params: {
   dungeonId: number;
   showAvgCorrect?: boolean;
@@ -647,6 +665,7 @@ export async function queryQuestions(params: {
   }
   return {};
 }
+
 export async function queryUpdateUserQuestion(params) {
   const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
@@ -659,6 +678,7 @@ export async function queryUpdateUserQuestion(params) {
   });
   return res.data;
 }
+
 export interface IQuestionDungeon {
   id: number;
   name: string;
@@ -667,6 +687,7 @@ export interface IQuestionDungeon {
   totalQuestionCount: number;
   avgCorrect: string;
 }
+
 export async function queryQuestionDungeons() {
   const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
@@ -678,6 +699,7 @@ export async function queryQuestionDungeons() {
   });
   return res.data as IQuestionDungeon[];
 }
+
 export async function queryFinishQuestionDungeon(dungeonId) {
   return proxyRequest({
     url: `/wow/question/finish`,
@@ -687,6 +709,7 @@ export async function queryFinishQuestionDungeon(dungeonId) {
     },
   });
 }
+
 //#endregion
 
 //#region /tarot
@@ -700,6 +723,7 @@ export interface ITarot {
   positive_suggestion: string;
   positive_summary: string;
 }
+
 export interface IDrawTarotInfo {
   hasDraw: boolean;
   drawCardId: number;
@@ -707,6 +731,7 @@ export interface IDrawTarotInfo {
   totalCount: number;
   tarot: ITarot;
 }
+
 export async function queryCheckDrawTarot() {
   const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
@@ -730,6 +755,7 @@ export async function queryDrawTarot() {
   });
   return res.data;
 }
+
 //#endregion
 
 //#region /user-tag
@@ -750,6 +776,7 @@ export interface ITagOptionItem {
     options?: ITagOptionItem[];
   }[];
 }
+
 export interface IWowUserTagOptions {
   server: ITagOptionItem;
   jobs: ITagOptionItem;
@@ -759,6 +786,7 @@ export interface IWowUserTagOptions {
   communication: ITagOptionItem;
   spec: ITagOptionItem;
 }
+
 export interface ISpecTagOption {
   text: string;
   value: string;
@@ -773,6 +801,7 @@ export interface ICommonUserTagOptions {
   role: ITagOptionItem;
   status: ITagOptionItem;
 }
+
 export async function queryFriendOptions() {
   const res: any = await proxyRequest({
     url: `/wow/user-tag/options`,
@@ -784,6 +813,7 @@ export async function queryFriendOptions() {
     specs: ISpecTagOption[];
   };
 }
+
 export async function queryAddUserTag(params) {
   const { battlenetId, wowTag, commonTag } = params;
   const { userId } = await auth.getUserInfo();
@@ -799,6 +829,7 @@ export async function queryAddUserTag(params) {
   });
   return res;
 }
+
 export async function querySubmitUserTag(params) {
   const { battlenetId, wowTag, commonTag, isEdit } = params;
   const { userId } = await auth.getUserInfo();
@@ -815,6 +846,7 @@ export async function querySubmitUserTag(params) {
   const isSuccess = res.statusCode === 200;
   return { isSuccess, message: res?.data?.message };
 }
+
 export async function queryUserTagByIds(params?: {
   id?: number;
   userId?: number;
@@ -827,16 +859,16 @@ export async function queryUserTagByIds(params?: {
   const finalParams: any = {};
   if (params?.id || params?.userId) {
     if (params.id) {
-      finalParams.ids = [params.id];
+      finalParams.ids = [ params.id ];
     } else {
-      finalParams.userIds = [params.userId];
+      finalParams.userIds = [ params.userId ];
     }
   } else if (params?.ids) {
     finalParams.ids = params.ids;
   } else if (params?.userIds) {
     finalParams.userIds = params.userIds;
   } else {
-    finalParams.userIds = [userId];
+    finalParams.userIds = [ userId ];
   }
 
   if (userId && params?.requireRelation) {
@@ -868,6 +900,7 @@ export interface ITagCardItem {
   isAd?: boolean;
   battlenet_id?: string;
 }
+
 export interface IFilterParams {
   filter: {
     wow_game_style: string[];
@@ -879,6 +912,7 @@ export interface IFilterParams {
   lastUpdatedAt: string;
   pageSize: number;
 }
+
 export async function queryUserTagByFilter(params?) {
   const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
@@ -956,7 +990,7 @@ export async function queryAddUserTagRelation(params: {
 }
 
 export async function queryUserTagRelationByApplicantId(
-  status?: 'pending' | 'accept' | 'reject'
+  status?: 'pending' | 'accept' | 'reject',
 ) {
   const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({
@@ -971,7 +1005,7 @@ export async function queryUserTagRelationByApplicantId(
 }
 
 export async function queryUserTagRelationByTargetId(
-  status?: 'pending' | 'accept' | 'reject'
+  status?: 'pending' | 'accept' | 'reject',
 ) {
   const { userId } = await auth.getUserInfo();
   const res: any = await proxyRequest({

@@ -13,6 +13,7 @@
 import type { CSSProperties } from 'vue';
 import { ref, computed, getCurrentInstance } from 'vue';
 import type { IBisItem } from '@/interface/IWow';
+import { getImageSrc } from '@/api/wow';
 
 const props = defineProps({
   targetSelector: {
@@ -30,7 +31,7 @@ const props = defineProps({
       debug: false,
       quality: 1,
       textColor: '#000000',
-      fontSize: 16,
+      FONT_SIZE: 16,
     }),
   },
 });
@@ -41,7 +42,6 @@ const instance = getCurrentInstance();
 const canvasId = ref(`canvas_${Date.now()}`);
 const width = ref(Math.min(uni.getSystemInfoSync().safeArea?.width ?? 400, 400));
 const height = ref(0);
-console.log(uni.getSystemInfoSync());
 const canvasStyle = computed(() => ({
   // position: 'absolute',
   // left: '-9999px',
@@ -116,7 +116,7 @@ const drawContent = async (rect) => {
     ctx.setTextBaseline('middle');
 
     drawTableHeader(ctx, rect.width);
-    drawTableBody(ctx, rect.width);
+    await drawTableBody(ctx, rect.width);
   }
 
   // 确保绘制完成
@@ -147,9 +147,8 @@ const HEADER_HEIGHT = 50;
 
 function drawTableHeader(ctx, totalWidth) {
   const headers = [ '部位', '装备', '来源' ];
-  const fontSize = 14;
   ctx.setLineWidth(2);
-  ctx.font = `bold ${fontSize}px sans-serif`;
+  ctx.font = `bold ${FONT_SIZE}px sans-serif`;
   ctx.setFillStyle('#fff');
   headers.forEach((header, index) => {
     let offset;
@@ -160,57 +159,64 @@ function drawTableHeader(ctx, totalWidth) {
     } else {
       offset = SOURCE_OFFSET.value;
     }
-    ctx.fillText(header, offset, HEADER_HEIGHT / 2 - fontSize / 2);
+    ctx.fillText(header, offset, HEADER_HEIGHT / 2);
 
   });
   drawLine(ctx, totalWidth, HEADER_HEIGHT);
 }
 
-function drawTableBody(ctx, totalWidth) {
-  const lineHeight = 28;
-  const fontSize = 14;
-  const paddingY = 14;
+const LINE_HEIGHT = 28;
+const FONT_SIZE = 14;
+const PADDING_Y = 14;
+
+async function drawTableBody(ctx, totalWidth) {
   let offsetY = HEADER_HEIGHT;
-  props.data.forEach((row) => {
+  for (const row of props.data) {
     // 部位
-    ctx.font = `normal ${fontSize}px sans-serif`;
+    ctx.font = `normal ${FONT_SIZE}px sans-serif`;
     ctx.setFillStyle('#606266');
-    offsetY += paddingY + lineHeight / 2 - fontSize / 2;
+    offsetY += PADDING_Y + LINE_HEIGHT / 2 - FONT_SIZE / 2;
     ctx.fillText(row.slot, SLOT_OFFSET, offsetY);
 
     // 来源
     ctx.setFillStyle(row.source.isLoot ? 'rgb(255, 209, 0)' : '#606266');
     ctx.fillText(row.source.source, SOURCE_OFFSET.value, offsetY);
 
-    // 宝石附魔
+    // 物品 宝石附魔
     ctx.setFillStyle('rgb(163, 53, 238)');
-    row.enhancements.forEach((item, itemIdx) => {
-      ctx.fillText(item.name, ITEM_OFFSET, offsetY);
-      if (itemIdx !== row.enhancements.length - 1) {
-        offsetY += lineHeight - fontSize / 2;
+    await drawImage(ctx, getImageSrc(row.image).thumbItem, ITEM_OFFSET, offsetY - FONT_SIZE / 2, FONT_SIZE);
+    ctx.fillText(row.name, ITEM_OFFSET + 16, offsetY);
+    offsetY += LINE_HEIGHT - FONT_SIZE / 2;
+
+    for (let itemIndex = 0; itemIndex < row.enhancements.length; itemIndex++) {
+      const item = row.enhancements[itemIndex];
+      await drawImage(ctx, getImageSrc(item.image).thumbItem, ITEM_OFFSET, offsetY - FONT_SIZE / 2, FONT_SIZE);
+      ctx.fillText(item.name, ITEM_OFFSET + 16, offsetY);
+      if (itemIndex !== row.enhancements.length - 1) {
+        offsetY += LINE_HEIGHT - FONT_SIZE / 2;
       }
-    });
-
-    offsetY += paddingY;
-    drawLine(ctx, totalWidth, offsetY);
-  });
-}
-
-// 下载网络图片
-const downloadImage = (url) => {
-  return new Promise((resolve, reject) => {
-    if (!url.startsWith('http')) {
-      resolve(url); // 本地路径直接使用
-      return;
     }
 
-    uni.downloadFile({
-      url,
-      success: res => resolve(res.tempFilePath),
-      fail: reject,
+
+    offsetY += PADDING_Y;
+    drawLine(ctx, totalWidth, offsetY);
+  }
+}
+
+async function drawImage(ctx, src, offsetX, offsetY, size) {
+  try {
+    const imageRes: any = await new Promise((resolve, reject) => {
+      uni.getImageInfo({
+        src,
+        success: resolve,
+        fail: reject,
+      });
     });
-  });
-};
+    ctx.drawImage(imageRes.path, offsetX, offsetY, size, size);
+  } catch (err) {
+    console.error('图片加载失败:', err);
+  }
+}
 
 // 生成临时图片
 const generateImage = () => {
