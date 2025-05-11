@@ -37,11 +37,8 @@ const props = defineProps({
   config: {
     type: Object,
     default: () => ({
-      backgroundColor: '#282828',
       debug: false,
       quality: 1,
-      textColor: '#000000',
-      FONT_SIZE: 16,
     }),
   },
 });

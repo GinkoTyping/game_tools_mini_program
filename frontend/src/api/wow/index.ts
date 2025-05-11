@@ -1,10 +1,10 @@
-import { IBisItem, ITrinks, IStatPriority } from '@/interface/IWow';
+import type { IBisItem, ITrinks, IStatPriority } from '@/interface/IWow';
 import { mapTrinks } from '@/data/mapSpecData';
 import { proxyRequest } from '../config';
 import colorMap from '@/utils/color-map';
 import localeName from '@/data/zh.json';
 import { useAuth } from '@/hooks/auth';
-import { ICommonTag, IRelationItem, IWowTag } from '@/interface/IUserTag';
+import type { ICommonTag, IRelationItem, IWowTag } from '@/interface/IUserTag';
 
 const localeNameMap: any = localeName;
 const auth = useAuth();
@@ -60,13 +60,15 @@ interface IBisDataDTO {
 }
 
 export function getImageSrc(image: string) {
-  // return {
-  //   item: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image/${image}`,
-  //   thumbItem: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image-thumb/${image}`,
-  // };
   return {
-    item: `http://localhost:3000/api/wow/assets/blizz-media-image/${image}`,
-    thumbItem: `http://localhost:3000/api/wow/assets/blizz-media-image-thumb/${image}`,
+    item: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image/${image}`,
+    thumbItem: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image-thumb/${image}`,
+  };
+}
+
+export function getRoleSpecSrc(classSpec: string, roleClass: string) {
+  return {
+    specIcon: `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`,
   };
 }
 
