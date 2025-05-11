@@ -259,7 +259,6 @@
   </template>
 
   <template v-if="activeMenu === 'bis'">
-    <!-- 触发按钮 -->
     <ExportCanvas
       ref="exportRef"
       target-selector="#bis-table"
@@ -310,11 +309,10 @@
                     class="custom-header-item__button"
                     @click="displayEnhancement = !displayEnhancement"
                   >
-                    <text>{{ switchEnhancementText }}</text>
-
                     <image
                       src="https://ginkolearn.cyou/api/wow/assets/blizz-media-image/inv_misc_enchantedscroll.jpg"
                     />
+                    <text>{{ switchEnhancementText }}</text>
                   </view>
                 </view>
               </uni-th>
@@ -326,7 +324,7 @@
                 <view class="slot-container">
                   <view class="slot-container__item">
                     <img
-                      :src="currentImageSrc(item)"
+                      :src="currentThumbImageSrc(item)"
                       alt=""
                       srcset=""
                       style="width: 14px; height: 14px"
@@ -352,7 +350,7 @@
                       :key="enhancement.id"
                     >
                       <img
-                        :src="currentImageSrc(enhancement)"
+                        :src="currentThumbImageSrc(enhancement)"
                         style="width: 14px; height: 14px"
                       />
                       <view
@@ -391,6 +389,7 @@
       </uni-card>
     </uni-section>
     <uni-section class="trinkets" :class="[classKey]" title="饰品">
+
       <uni-card class="section-card">
         <uni-segmented-control
           :class="[classKey]"
@@ -476,7 +475,7 @@
           @click="() => switchDetail(true, item)"
         >
           <view class="advice-item__index">{{ index + 1 }}.</view>
-          <image :src="currentImageSrc(item)" mode="widthFix"/>
+          <image :src="currentThumbImageSrc(item)" mode="widthFix"/>
           <view class="advice-item__name">{{ item.name }}</view>
         </view>
       </uni-card>
@@ -641,7 +640,7 @@ import { computed, nextTick, ref } from 'vue';
 
 import type { IBisItem } from '@/interface/IWow';
 import { Relation } from '@/interface/IWow';
-import type { IDungeonDTO } from '@/api/wow';
+import { getImageSrc, type IDungeonDTO } from '@/api/wow';
 import {
   queryBis,
   queryItemPreview,
@@ -860,6 +859,9 @@ const currentItem = ref<
 const messagePopup = ref();
 const messageType = ref('success');
 const messageText = ref('默认文本');
+const currentThumbImageSrc = computed(() => {
+  return (item: any) => getImageSrc(item.image).thumbItem;
+});
 const currentImageSrc = computed(() => {
   return (item: any) => {
     if (item?.type === 'spell') {
@@ -912,9 +914,15 @@ async function switchDetail(
 const exportRef = ref();
 const exportImage = async () => {
   try {
+    uni.showLoading({
+      title: '银子操作中...',
+      mask: true,
+    });
     await exportRef.value.exportToImage();
   } catch (err: any) {
     await uni.showToast({ title: err.message, icon: 'none' });
+  } finally {
+    uni.hideLoading();
   }
 };
 
@@ -1516,7 +1524,7 @@ $light-border: rgb(68, 68, 68);
     align-items: center;
 
     color: $uni-text-color-inverse;
-    font-weight: bold;
+    font-weight: normal;
     gap: 6px;
 
     image {
