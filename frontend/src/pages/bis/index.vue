@@ -294,7 +294,7 @@
             class="to-enhancement"
             @click="exportImage"
           >
-            <text>{{ isExporting ? '保存中...' : '保存' }}</text>
+            <text>{{ isExporting ? '生成中...' : '保存' }}</text>
             <uni-icons v-show="!isExporting" type="download-filled" color="#007aff" size="20"></uni-icons>
           </view>
         </view>
@@ -925,7 +925,7 @@ const exportImage = async () => {
 };
 
 const handleSuccess = (path) => {
-  uni.showToast({ title: '保存成功!请查看相册', icon: 'none', duration: 5000 });
+  uni.showToast({ title: '长按可保存', icon: 'none', duration: 5000 });
 };
 
 const handleError = (err) => {

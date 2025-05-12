@@ -8,11 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const puzzlingCartelChipData = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, `./index.json`))
+  fs.readFileSync(path.resolve(__dirname, `./index.json`)),
 );
 
 const flatList = Object.entries(puzzlingCartelChipData).reduce(
-  (pre, [roleClass, specItems]) => {
+  (pre, [ roleClass, specItems ]) => {
     specItems.forEach((item) => {
       pre.push({
         roleClass: roleClass,
@@ -24,12 +24,24 @@ const flatList = Object.entries(puzzlingCartelChipData).reduce(
 
     return pre;
   },
-  []
+  [],
 );
 
 const db = await getDB();
 const bisMapper = useBisMapper(db);
+
 async function updateItem(item) {
+  const exisited = await bisMapper.getBisByClassAndSpec(
+    item.roleClass,
+    item.classSpec,
+  );
+  const lastUpdatedAt = exisited.wowheadBis?.updatedAt;
+  if (lastUpdatedAt === item.updatedAt) {
+    return null;
+  }
+
+  console.log(`更新${item.classSpec} ${item.roleClass}： ${lastUpdatedAt} => ${item.puzzlingCartelChipAdvice}`);
+
   return bisMapper.updateBisByClassAndSpec({
     roleClass: item.roleClass,
     classSpec: item.classSpec,
@@ -42,7 +54,7 @@ async function updateItem(item) {
 
 async function main() {
   const results = await Promise.allSettled(
-    flatList.map((item) => updateItem(item))
+    flatList.map((item) => updateItem(item)),
   );
   return results;
 }

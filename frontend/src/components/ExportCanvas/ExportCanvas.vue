@@ -83,7 +83,7 @@ const exportToImage = async () => {
     const tempPath = await generateImage();
 
     // 保存到相册
-    await saveToAlbum(tempPath);
+    previewImage(tempPath);
 
     emit('success', tempPath);
     return tempPath;
@@ -323,14 +323,9 @@ const generateImage = () => {
 };
 
 // 保存到相册
-const saveToAlbum = async (res) => {
-  await checkAuth();
-  return new Promise((resolve, reject) => {
-    uni.saveImageToPhotosAlbum({
-      filePath: res.tempFilePath,
-      success: resolve,
-      fail: err => reject(new Error('保存失败: ' + JSON.stringify(err))),
-    });
+const previewImage = (res) => {
+  uni.previewImage({
+    urls: [ res.tempFilePath ],
   });
 };
 
