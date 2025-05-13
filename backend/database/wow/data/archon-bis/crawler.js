@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 
 import { useCheerioContext } from '../../../../util/run-browser.js';
 import { getCheerioByPuppeteer } from '../../../../util/run-puppeteer.js';
+import { calculateStatRatio } from '../../../../util/wow.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,8 +21,10 @@ function getOverviewUrl(classSpec, roleClass) {
 }
 
 function getOverviewStaticFilePath(classSpec, roleClass) {
-  return path.resolve(__dirname,
-                      `./cache/${classSpec}-${roleClass}-overview.html`);
+  return path.resolve(
+    __dirname,
+    `./cache/${classSpec}-${roleClass}-overview.html`,
+  );
 }
 
 function getIdByUrl(url) {
@@ -44,10 +47,12 @@ function mapStat(val) {
   }
 }
 
+// TODO: 计算百分比 https://maxroll.gg/wow/resources/stat-diminishing-returns
 async function getStatsOverview(classSpec, roleClass, useCache) {
   const $ = await useCheerioContext(
     getOverviewStaticFilePath(classSpec, roleClass),
-    getOverviewUrl(classSpec, roleClass), useCache, 20000);
+    getOverviewUrl(classSpec, roleClass), useCache, 20000,
+  );
   const priority = $(
     '#stats .builds-stat-priority-section>.builds-stat-priority-section__container .builds-stat-priority-section__container__inner')
     .map((idx, ele) => {
@@ -62,6 +67,10 @@ async function getStatsOverview(classSpec, roleClass, useCache) {
         key,
         label: mapStat(key),
         value,
+        ratio: calculateStatRatio(
+          key,
+          value,
+        ),
       };
     })
     .get();
@@ -83,12 +92,12 @@ async function getStatsOverview(classSpec, roleClass, useCache) {
 
 async function getBisOverview(classSpec, roleClass, useCache) {
   const $ = await getCheerioByPuppeteer({
-                                          staticFilePath: getStaticFilePath(
-                                            classSpec, roleClass),
-                                          urlPath: getUrl(classSpec, roleClass),
-                                          useCache,
-                                          waitForSelector: '#gear-tables .builds-gear-tables-section__group a a[data-disable-wowhead-tooltip=true]',
-                                        });
+    staticFilePath: getStaticFilePath(
+      classSpec, roleClass),
+    urlPath: getUrl(classSpec, roleClass),
+    useCache,
+    waitForSelector: '#gear-tables .builds-gear-tables-section__group a a[data-disable-wowhead-tooltip=true]',
+  });
 
   const overview = [];
   const popularTrinkets = [];
@@ -198,10 +207,10 @@ async function getBisOverview(classSpec, roleClass, useCache) {
 export async function collectBisOverview(classSpec, roleClass, useCache) {
   const stats = await getStatsOverview(classSpec, roleClass, useCache);
   const {
-          overview,
-          popularityItems,
-          popularTrinkets,
-        } = await getBisOverview(classSpec, roleClass, useCache);
+    overview,
+    popularityItems,
+    popularTrinkets,
+  } = await getBisOverview(classSpec, roleClass, useCache);
 
   if (!overview.length) {
     console.log(
