@@ -184,5 +184,144 @@
         }
       ]
     }
+  ],
+  "demon-hunter": [
+    {
+      "spec": "havoc",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "第一优先级。它提高大量的额外属性，而且本身是主精通的戒指",
+                "id": 231265
+              },
+              {
+                "id": 232804,
+                "rarity": "mythic",
+                "info": "如果只能兑换英雄级别的话，优先级不如下面的大秘境饰品",
+                "index": 1
+              },
+              {
+                "id": 232541,
+                "rarity": "mythic",
+                "info": "第二优先级。",
+                "index": 2
+              },
+              {
+                "index": 3,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230027
+              },
+              {
+                "id": 219308,
+                "info": "",
+                "index": 4
+              },
+              {
+                "id": 230198,
+                "info": "",
+                "index": 5
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "vengeance",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/26",
+      "advice": [
+        {
+          "type": "raid",
+          "info": "",
+          "data": {
+            "filters": [
+              {
+                "type": "R7",
+                "values": [
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              },
+              {
+                "type": "R8",
+                "values": [
+                  2,
+                  4,
+                  5,
+                  6
+                ]
+              },
+              {
+                "type": "mythic",
+                "values": [
+                  0,
+                  1,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            ],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 219309
+              },
+              {
+                "id": 232541,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 231265,
+                "rarity": "mythic",
+                "info": "即使是主精通的戒指，依然比其他任何戒指好。而且尾王的掉率很低，所以是一个不错的兑换选择",
+                "index": 2
+              },
+              {
+                "index": 3,
+                "rarity": "mythic",
+                "info": "",
+                "id": 232804
+              },
+              {
+                "id": 230198,
+                "rarity": "heroic",
+                "info": "",
+                "index": 4
+              },
+              {
+                "id": 232804,
+                "rarity": "heroic",
+                "info": "",
+                "index": 5
+              },
+              {
+                "id": 231265,
+                "rarity": "heroic",
+                "info": "",
+                "index": 6
+              }
+            ]
+          }
+        }
+      ]
+    }
   ]
 }
