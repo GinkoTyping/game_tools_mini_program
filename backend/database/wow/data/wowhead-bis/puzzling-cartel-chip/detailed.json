@@ -1,0 +1,188 @@
+{
+  "death-knight": [
+    {
+      "spec": "blood",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/13",
+      "advice": [
+        {
+          "type": "all",
+          "info": "除了加斯特的宝钻以外的英雄级别物品都不值得兑换。假如你已经兑换了一件英雄级别的物品，而后面你又解锁了兑换神话版本物品的资格，你不得不再浪费一个兑换代币重新兑换一次",
+          "data": {
+            "filters": [
+              {
+                "type": "R6",
+                "values": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "type": "R8",
+                "values": [
+                  2,
+                  3
+                ]
+              },
+              {
+                "type": "mythic",
+                "values": [
+                  0
+                ]
+              }
+            ],
+            "options": [
+              {
+                "index": 0,
+                "info": "早换早享受",
+                "id": 219309
+              },
+              {
+                "id": 232526,
+                "info": "团本前期就能获得的装备，如果有能力的话可以省一个代币",
+                "index": 1
+              },
+              {
+                "id": 231265,
+                "info": "提供额外的1600左右的副属性。因为是戒指部位，所以装等没那么关键，即使是英雄级别也值得兑换",
+                "index": 2
+              },
+              {
+                "id": 230198,
+                "info": "长时间轴的战斗中表现突出。注意大秘境场景中，脱战时每2秒会掉1层。",
+                "index": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "frost",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [
+              {
+                "type": "R6",
+                "values": [
+                  0,
+                  1,
+                  5
+                ]
+              },
+              {
+                "type": "R8",
+                "values": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              {
+                "type": "mythic",
+                "values": [
+                  3,
+                  4,
+                  5
+                ]
+              }
+            ],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230027
+              },
+              {
+                "id": 231265,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 230198,
+                "rarity": "mythic",
+                "info": "",
+                "index": 2
+              },
+              {
+                "index": 3,
+                "rarity": "heroic",
+                "info": "",
+                "id": 230027
+              },
+              {
+                "id": 232541,
+                "info": "",
+                "index": 4
+              },
+              {
+                "id": 232526,
+                "info": "很适合冰龙吐息流。如果你经常邪和冰DK切着玩，这个武器也很适合",
+                "index": 5
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "unholy",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/13",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230027
+              },
+              {
+                "id": 232526,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 231265,
+                "rarity": "mythic",
+                "info": "",
+                "index": 2
+              },
+              {
+                "index": 3,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230198
+              },
+              {
+                "id": 230027,
+                "rarity": "heroic",
+                "info": "",
+                "index": 4
+              },
+              {
+                "id": 232541,
+                "rarity": "mythic",
+                "info": "",
+                "index": 5
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
