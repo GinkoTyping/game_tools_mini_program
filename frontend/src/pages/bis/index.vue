@@ -492,7 +492,7 @@
             </view>
             <view class="advice-item__more" v-if="item.info" @click="item.showInfo = !item.showInfo">
               <text class="iconfont icon-weidu-01"></text>
-              <text class="">{{ item.showInfo ? '查看解释' : '隐藏解释' }}</text>
+              <text class="">{{ item.showInfo ? '隐藏解释' : '查看解释' }}</text>
             </view>
           </view>
           <view class="data-info" v-show="item.showInfo">{{ item.info }}</view>
