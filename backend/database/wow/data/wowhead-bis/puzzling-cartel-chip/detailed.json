@@ -323,5 +323,2282 @@
         }
       ]
     }
+  ],
+  "druid": [
+    {
+      "spec": "balance",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 232805
+              },
+              {
+                "id": 231265,
+                "rarity": "mythic",
+                "info": "即使是英雄级别的，也推荐买",
+                "index": 1
+              },
+              {
+                "id": 230027,
+                "rarity": "mythic",
+                "info": "第二优先级。",
+                "index": 2
+              },
+              {
+                "index": 230192,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230027
+              },
+              {
+                "id": 230198,
+                "info": "打团本的话可以考虑",
+                "index": 4
+              },
+              {
+                "id": 219308,
+                "info": "M纸牌屋的下位替代",
+                "index": 5
+              },
+              {
+                "id": 219305,
+                "info": "M壮胆酒的下位替代",
+                "index": 6
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "feral",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [
+              {
+                "type": "R6",
+                "values": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "type": "R8",
+                "values": [
+                  0,
+                  5,
+                  6
+                ]
+              },
+              {
+                "type": "mythic",
+                "values": [
+                  3,
+                  4
+                ]
+              }
+            ],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 231265
+              },
+              {
+                "id": 232562,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 230027,
+                "rarity": "mythic",
+                "info": "",
+                "index": 2
+              },
+              {
+                "id": 219308,
+                "rarity": "mythic",
+                "info": "",
+                "index": 3
+              },
+              {
+                "index": 4,
+                "rarity": "mythic",
+                "info": "",
+                "id": 232541
+              },
+              {
+                "id": 230198,
+                "rarity": "mythic",
+                "info": "",
+                "index": 5
+              },
+              {
+                "id": 228844,
+                "rarity": "mythic",
+                "info": "",
+                "index": 6
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "guardian",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "info": "",
+                "id": 232562
+              },
+              {
+                "id": 219308,
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 230194,
+                "info": "",
+                "index": 2
+              },
+              {
+                "index": 3,
+                "info": "",
+                "id": 231265
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "restoration",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [
+              {
+                "type": "default",
+                "values": [
+                  3,
+                  4,
+                  5
+                ]
+              },
+              {
+                "type": "R5",
+                "values": [
+                  1,
+                  3,
+                  4
+                ]
+              },
+              {
+                "type": "R8",
+                "values": [
+                  3,
+                  4,
+                  5,
+                  6,
+                  7
+                ]
+              },
+              {
+                "type": "mythic",
+                "values": [
+                  3,
+                  4
+                ]
+              }
+            ],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 231265
+              },
+              {
+                "id": 230186,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 230198,
+                "rarity": "mythic",
+                "info": "",
+                "index": 2
+              },
+              {
+                "id": 230186,
+                "rarity": "heroic",
+                "info": "",
+                "index": 3
+              },
+              {
+                "id": 231265,
+                "rarity": "heroic",
+                "info": "",
+                "index": 4
+              },
+              {
+                "id": 230198,
+                "rarity": "heroic",
+                "info": "",
+                "index": 5
+              },
+              {
+                "id": 219305,
+                "rarity": "mythic",
+                "info": "",
+                "index": 6
+              },
+              {
+                "index": 7,
+                "rarity": "mythic",
+                "info": "",
+                "id": 219308
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "mage": [
+    {
+      "spec": "arcane",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230192
+              },
+              {
+                "id": 231265,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 230198,
+                "rarity": "mythic",
+                "info": "",
+                "index": 2
+              },
+              {
+                "id": 219269,
+                "rarity": "mythic",
+                "info": "",
+                "index": 3
+              },
+              {
+                "id": 219305,
+                "rarity": "mythic",
+                "info": "",
+                "index": 4
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "fire",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [
+              {
+                "type": "R6",
+                "values": [
+                  1
+                ]
+              },
+              {
+                "type": "R7",
+                "values": [
+                  0
+                ]
+              },
+              {
+                "type": "R8",
+                "values": [
+                  2,
+                  5
+                ]
+              },
+              {
+                "type": "mythic",
+                "values": [
+                  3,
+                  4
+                ]
+              }
+            ],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230192
+              },
+              {
+                "id": 230027,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 230198,
+                "rarity": "mythic",
+                "info": "",
+                "index": 2
+              },
+              {
+                "id": 219308,
+                "rarity": "mythic",
+                "info": "",
+                "index": 3
+              },
+              {
+                "id": 219305,
+                "rarity": "mythic",
+                "info": "",
+                "index": 4
+              },
+              {
+                "id": 231265,
+                "rarity": "mythic",
+                "info": "",
+                "index": 5
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "frost",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "团本等长时间战斗的场景优先选择。其他情况下，优先级一般",
+                "id": 230198
+              },
+              {
+                "id": 230192,
+                "rarity": "mythic",
+                "info": "团本和大秘境都适用",
+                "index": 1
+              },
+              {
+                "id": 230193,
+                "rarity": "mythic",
+                "info": "很强力的饰品。但是因为它的掉率并不低，所以用代币兑换的话会有些不甘心",
+                "index": 2
+              },
+              {
+                "id": 169344,
+                "rarity": "mythic",
+                "info": "",
+                "index": 3
+              },
+              {
+                "id": 219269,
+                "rarity": "mythic",
+                "info": "经过最近几次的热修后，表现蛮好。虽然需要主动去收集触发，但是收集难度比以前简单很多",
+                "index": 4
+              },
+              {
+                "id": 219305,
+                "rarity": "mythic",
+                "info": "不错的被动饰品。但是对站位有要求，有点烦",
+                "index": 5
+              },
+              {
+                "id": 219299,
+                "rarity": "mythic",
+                "info": "如果能经常切目标，快速打爆桶的话，这个饰品很强",
+                "index": 6
+              },
+              {
+                "id": 228844,
+                "rarity": "mythic",
+                "info": "装备本身不强。但是装备特效很有趣，大概率以后的版本还能继续使用。纯收集吧",
+                "index": 7
+              },
+              {
+                "id": 231265,
+                "rarity": "mythic",
+                "info": "不是很适合冰法，因为它提供的大量精通属性对于霜火冰法来说意义不大。不过考虑到后面属性优先级可能调整，可以提前备一个代币，随时能兑换它",
+                "index": 8
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "monk": [
+    {
+      "spec": "brewmaster",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "单体或者目标较少的场景时，对输出提升大",
+                "id": 219309
+              },
+              {
+                "id": 232541,
+                "rarity": "mythic",
+                "info": "适合多目标场景。如果你是大秘境玩家的话，早换早享受",
+                "index": 1
+              },
+              {
+                "id": 178811,
+                "rarity": "mythic",
+                "info": "",
+                "index": 2
+              },
+              {
+                "id": 169344,
+                "rarity": "mythic",
+                "info": "适合多目标场景的输出向的主动饰品",
+                "index": 3
+              },
+              {
+                "id": 232543,
+                "rarity": "mythic",
+                "info": "英雄级别的已经够用了。",
+                "index": 4
+              },
+              {
+                "id": 228905,
+                "rarity": "mythic",
+                "info": "毕业武器。但是相比于制造装备或者其他神话级别的武器，它的数值没有领先很多。",
+                "index": 5
+              },
+              {
+                "id": 231265,
+                "rarity": "heroic",
+                "info": "",
+                "index": 6
+              },
+              {
+                "id": 230198,
+                "rarity": "heroic",
+                "info": "",
+                "index": 7
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "mistweaver",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "raid",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230186
+              },
+              {
+                "id": 230192,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 230198,
+                "rarity": "mythic",
+                "info": "",
+                "index": 2
+              },
+              {
+                "id": 219308,
+                "rarity": "mythic",
+                "info": "",
+                "index": 3
+              }
+            ]
+          }
+        },
+        {
+          "type": "mythic",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230186
+              },
+              {
+                "id": 230192,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 219305,
+                "rarity": "mythic",
+                "info": "",
+                "index": 2
+              },
+              {
+                "id": 219308,
+                "rarity": "mythic",
+                "info": "",
+                "index": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "windwalker",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 219308,
+                "name": "隐修院印章",
+                "rarity": "mythic",
+                "info": "只有英雄天赋是影踪派时，才建议兑换"
+              },
+              {
+                "index": 3,
+                "id": 228905,
+                "name": "极巨大银行破拆者",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "heroic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "paladin": [
+    {
+      "spec": "holy",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230186,
+                "name": "助威先生",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 230186,
+                "name": "助威先生",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 230194,
+                "name": "混响播音机",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 8,
+                "id": 219305,
+                "name": "布雷炙孔琢蜡",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 9,
+                "id": 219308,
+                "name": "隐修院印章",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 10,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "heroic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "protection",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": "英雄级别的也行。都是第一优先级"
+              },
+              {
+                "index": 1,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 219309,
+                "name": "圣光虔敬魔典",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": "如果没有神话级别，建议兑换 隐修院印章"
+              },
+              {
+                "index": 4,
+                "id": 228889,
+                "name": "工业巨头",
+                "rarity": "mythic",
+                "info": "只考虑神话级别"
+              },
+              {
+                "index": 5,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 230029,
+                "name": "易燃铬武炸弹服",
+                "rarity": "",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "retribution",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 232526,
+                "name": "最上品",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "rogue": [
+    {
+      "spec": "assassination",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": "只适用于团本 5分钟以上的战斗"
+              },
+              {
+                "index": 2,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": "没有M印章的话，可以优先兑换"
+              },
+              {
+                "index": 3,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "heroic",
+                "info": "没有H印章的话，可以优先兑换"
+              },
+              {
+                "index": 5,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 219308,
+                "name": "隐修院印章",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "outlaw",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 232804,
+                "name": "小头目的熔火指虎",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 228899,
+                "name": "加里维克斯的铁拇指",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 230199,
+                "name": "兹伊的暴徒热线",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 232804,
+                "name": "小头目的熔火指虎",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 219304,
+                "name": "矿车员的蜡哨",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 219307,
+                "name": "黑暗之主残影",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 8,
+                "id": 228899,
+                "name": "加里维克斯的铁拇指",
+                "rarity": "heroic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "subtlety",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "如果只打大秘境的话，推荐先拿一个团本的饰品，优先推荐纸牌屋。如果你正在开荒团本，还没有过尾王，推荐先拿宝钻戒指",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "最好的团本饰品",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "搭配纸牌屋食用",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 219298,
+                "name": "贪食蜂鸣器",
+                "rarity": "备选。主动物品的使用方式不太友好。",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 219304,
+                "name": "矿车员的蜡哨",
+                "rarity": "",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "shaman": [
+    {
+      "spec": "elemental",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 232805,
+                "name": "最上品",
+                "rarity": "",
+                "info": "或者：暴利者的大头棒 + 工业巨头"
+              },
+              {
+                "index": 3,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "enhancement",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": "提供免费的副属性。且正常通过团本的获取难度高"
+              },
+              {
+                "index": 1,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": "使用于团本，大秘境不优先兑换"
+              },
+              {
+                "index": 2,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": "和升腾对齐。图腾 则优先兑换 临时制作的爆盐起搏器"
+              },
+              {
+                "index": 3,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "mythic",
+                "info": "风暴使者 则优先兑换 纸牌屋"
+              },
+              {
+                "index": 4,
+                "id": 228899,
+                "name": "加里维克斯的铁拇指",
+                "rarity": "mythic",
+                "info": "制造业的单手武器也不差，所以兑换优先级不高"
+              },
+              {
+                "index": 5,
+                "id": 219308,
+                "name": "隐修院印章",
+                "rarity": "mythic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "restoration",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 230186,
+                "name": "助威先生",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230186,
+                "name": "助威先生",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 232805,
+                "name": "最上品",
+                "rarity": "除非美化使用了 暗月徽记：扬升，否则不推荐兑换它",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 228889,
+                "name": "工业巨头",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 8,
+                "id": 219305,
+                "name": "布雷炙孔琢蜡",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 9,
+                "id": 219308,
+                "name": "隐修院印章",
+                "rarity": "",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "warlock": [
+    {
+      "spec": "affliction",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 219308,
+                "name": "隐修院印章",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 219296,
+                "name": "熵能斯卡丁之核",
+                "rarity": "mythic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "demonology",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": "英雄的也可以。或者先用隐修院印章代替"
+              },
+              {
+                "index": 1,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "mythic",
+                "info": "英雄的也可以。或者先用布雷炙孔琢蜡代替"
+              },
+              {
+                "index": 2,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": "英雄的也可以。"
+              },
+              {
+                "index": 3,
+                "id": 228896,
+                "name": "斯提克斯的金属探测器",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "destruction",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 219308,
+                "name": "隐修院印章",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 219296,
+                "name": "熵能斯卡丁之核",
+                "rarity": "mythic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "warrior": [
+    {
+      "spec": "arms",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 232526,
+                "name": "最上品",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "mythic",
+                "info": "大秘境"
+              },
+              {
+                "index": 4,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": "团本"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "fury",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 232526,
+                "name": "最上品",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": "或者 起搏器 / 科赞之眼(团本)"
+              },
+              {
+                "index": 3,
+                "id": 228891,
+                "name": "资本处刑锤",
+                "rarity": "mythic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "protection",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 228889,
+                "name": "工业巨头",
+                "rarity": "mythic",
+                "info": "只兑换神话级别"
+              },
+              {
+                "index": 1,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": "只兑换神话级别"
+              },
+              {
+                "index": 2,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": "只兑换神话级别"
+              },
+              {
+                "index": 3,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 219309,
+                "name": "圣光虔敬魔典",
+                "rarity": "mythic",
+                "info": "团本或者最求单体伤害。否则不需要M"
+              },
+              {
+                "index": 5,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 230029,
+                "name": "易燃铬武炸弹服",
+                "rarity": "heroic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "evoker": [
+    {
+      "spec": "devastation",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 232805,
+                "name": "最上品",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": "稀有掉落"
+              },
+              {
+                "index": 4,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 219305,
+                "name": "布雷炙孔琢蜡",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 219296,
+                "name": "熵能斯卡丁之核",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 232805,
+                "name": "最上品",
+                "rarity": "heroic",
+                "info": "如果你没有制造武器才兑换它"
+              },
+              {
+                "index": 8,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 9,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 10,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 11,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "heroic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "preservation",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "宝钻是BIS且掉落稀有，所以兑换第一优先级。如果是开荒团本的玩家，推荐兑换纸牌屋、科赞之眼和助威先生。如果是大秘境玩家的话，推荐兑换布雷炙孔琢蜡、H助威先生，如果你希望最大化治疗，也可以兑换H宝钻戒指。M最上品目前对于奶龙有bug，无法正常触发治疗特效并且触发率低。",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 230186,
+                "name": "助威先生",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 230186,
+                "name": "助威先生",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 219305,
+                "name": "布雷炙孔琢蜡",
+                "rarity": "mythic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "augmentation",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 1,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": "大部分场景都是第一兑换优先级。如何你的属性值的优先级是以急速暴击为主的话，可以再看看其他兑换项。"
+              },
+              {
+                "index": 2,
+                "id": 232805,
+                "name": "最上品",
+                "rarity": "mythic",
+                "info": "只考虑神话级别。H级别的最上品甚至不如制作武器和其他大秘境的神话武器。"
+              },
+              {
+                "index": 3,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": "只玩大秘境的话，可以不考虑"
+              },
+              {
+                "index": 7,
+                "id": 219299,
+                "name": "协同化酒器",
+                "rarity": "mythic",
+                "info": "能频繁的切换目标的话触发饰品伤害的话，是一个强力的饰品。"
+              },
+              {
+                "index": 8,
+                "id": 219305,
+                "name": "布雷炙孔琢蜡",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 9,
+                "id": 219296,
+                "name": "熵能斯卡丁之核",
+                "rarity": "mythic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "hunter": [
+    {
+      "spec": "beast-mastery",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 219308,
+                "name": "隐修院印章",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 228893,
+                "name": "“小朋友”",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 228900,
+                "name": "竞技弧光弓",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 8,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 9,
+                "id": 228844,
+                "name": "试飞员的出行包",
+                "rarity": "mythic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "marksmanship",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "mythic",
+                "info": "各种场景的B中BIS"
+              },
+              {
+                "index": 1,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": "各种场景的B中BIS"
+              },
+              {
+                "index": 2,
+                "id": 228893,
+                "name": "“小朋友”",
+                "rarity": "mythic",
+                "info": "如果你还没有神话武器的话可以兑换它。它即使和其他神话武器相比，也略微领先。武器触发特效在单目标大概值0.8%伤害提升，大秘境场景下0.2%伤害提升"
+              },
+              {
+                "index": 3,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": "黑暗游侠的毕业饰品"
+              },
+              {
+                "index": 4,
+                "id": 219308,
+                "name": "隐修院印章",
+                "rarity": "mythic",
+                "info": "哨兵的毕业饰品"
+              },
+              {
+                "index": 5,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "survival",
+      "collectedAt": "2025/05/14",
+      "updatedAt": "2025/05/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "",
+                "info": "属性领先其他戒指。单纯的数值。"
+              },
+              {
+                "index": 1,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "",
+                "info": "如果是团本的话，推荐 科赞之眼"
+              },
+              {
+                "index": 2,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "",
+                "info": "或者 印章。 二者很相似，硬要比的话：纸牌屋 和 协调进攻+哨兵的守望+共生急速 的连招对齐得更好一些。印章更适合短时间的战斗，纸牌屋适合更长时间的战斗"
+              },
+              {
+                "index": 3,
+                "id": 228844,
+                "name": "试飞员的出行包",
+                "rarity": "",
+                "info": "纯收藏"
+              },
+              {
+                "index": 4,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "priest": [
+    {
+      "spec": "shadow",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/03/12",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "",
+                "info": "第一优先级。白嫖的属性，且正常掉落率低、低保出货率低。"
+              },
+              {
+                "index": 1,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 219308,
+                "name": "隐修院印章",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 219305,
+                "name": "布雷炙孔琢蜡",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 228901,
+                "name": "暴利者的大头棒",
+                "rarity": "",
+                "info": "免费的额外伤害特效。如果上面的饰品都有了，可以考虑兑换它"
+              },
+              {
+                "index": 6,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "discipline",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/11",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 230186,
+                "name": "助威先生",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": "团本可以优先兑换，大秘境 优先穆格的壮胆壶"
+              },
+              {
+                "index": 2,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": "团本可以优先兑换，大秘境 优先穆格的壮胆壶"
+              },
+              {
+                "index": 3,
+                "id": 230186,
+                "name": "助威先生",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 230192,
+                "name": "穆格的壮胆壶",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 219305,
+                "name": "布雷炙孔琢蜡",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "spec": "holy",
+      "collectedAt": "2025/04/23",
+      "updatedAt": "2025/04/16",
+      "advice": [
+        {
+          "type": "all",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 230186,
+                "name": "助威先生",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 230198,
+                "name": "科赞之眼",
+                "rarity": "mythic",
+                "info": "大秘境可以略过"
+              },
+              {
+                "index": 2,
+                "id": 219305,
+                "name": "布雷炙孔琢蜡",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 230186,
+                "name": "助威先生",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 230188,
+                "name": "加乐宫整瓶服务",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 219305,
+                "name": "布雷炙孔琢蜡",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              }
+            ]
+          }
+        }
+      ]
+    }
   ]
 }
