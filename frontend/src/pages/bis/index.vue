@@ -467,17 +467,38 @@
           <view class="druid">令人费解的财阀凭证</view>
           <view>兑换优先级推荐</view>
         </view>
+
+        <uni-segmented-control
+          v-if="chipAdviceTabs?.length > 1"
+          :class="[classKey]"
+          :current="currentChipAdviceTab"
+          :values="chipAdviceTabs"
+          style-type="text"
+          @clickItem="switchChipAdviceTab"
+        />
         <view
           class="advice-item"
-          v-for="(item, index) in currentData?.wowheadBis
-            ?.puzzlingCartelChipAdvice"
+          v-for="(item, index) in displayAdviceData?.list"
           :key="item.id"
-          @click="() => switchDetail(true, item)"
+
         >
-          <view class="advice-item__index">{{ index + 1 }}.</view>
-          <image :src="currentThumbImageSrc(item)" mode="widthFix"/>
-          <view class="advice-item__name">{{ item.name }}</view>
+          <view class="data-item">
+            <view class="advice-item__index">{{ index + 1 }}.</view>
+            <image :src="currentThumbImageSrc(item)" mode="widthFix" />
+            <text :class="[getItemRarityClass(item.rarity)]">{{ getItemRarityName(item.rarity) }}</text>
+            <view class="advice-item__name"
+              :class="[getItemRarityClass(item.rarity)]"
+              @click="() => switchDetail(true, item)">{{ item.name }}
+            </view>
+            <view class="advice-item__more" v-if="item.info" @click="item.showInfo = !item.showInfo">
+              <text class="iconfont icon-weidu-01"></text>
+              <text class="">{{ item.showInfo ? '查看解释' : '隐藏解释' }}</text>
+            </view>
+          </view>
+          <view class="data-info" v-show="item.showInfo">{{ item.info }}</view>
         </view>
+
+        <text>{{ displayAdviceData?.info }}</text>
       </uni-card>
     </uni-section>
   </template>
@@ -800,7 +821,7 @@ function switchTalent(index: number) {
 function exportTalentCode() {
   uni.setClipboardData({
     data: currentData.value.talents[currentTalentIndex.value].code,
-    success: function () {
+    success: function() {
       messageType.value = 'success';
       messageText.value = '已成功复制天赋代码到粘贴板。';
       messagePopup.value.open();
@@ -880,7 +901,7 @@ async function switchDetail(
   forceType?: string,
 ) {
   if (item.type === 'spell') {
-    displaySpells([ item ]);
+    displaySpells([item]);
   } else {
     currentDetails.value = {};
     if (isShow) {
@@ -924,18 +945,42 @@ const exportImage = async () => {
   }
 };
 
-const handleSuccess = (path) => {
+const handleSuccess = () => {
   uni.showToast({ title: '长按可保存', icon: 'none', duration: 5000 });
 };
 
 const handleError = (err) => {
   console.error('导出错误:', err?.message);
 };
+
+const currentChipAdviceTab = ref(0);
+
+const chipAdviceTabs = computed(() => {
+  return currentData.value?.wowheadBis?.detailedPuzzlingCartelChipAdvice?.map(item => item.typeName);
+});
+const displayAdviceData = computed(() => {
+  const found = currentData.value?.wowheadBis?.detailedPuzzlingCartelChipAdvice?.[currentChipAdviceTab.value];
+  return {
+    info: found?.info,
+    list: found?.data?.options ?? [],
+  };
+});
+const getItemRarityClass = computed(() => (rarity: string) => {
+  return rarity === 'heroic' ? 'advice-item__name--heroic' : 'advice-item__name--mythic';
+});
+const getItemRarityName = computed(() => (rarity: string) => rarity?.[0]?.toUpperCase());
+
+function switchChipAdviceTab(e) {
+  if (currentChipAdviceTab.value != e.currentIndex) {
+    currentChipAdviceTab.value = e.currentIndex;
+  }
+}
+
 //#endregion
 
 //#region 饰品
 const currentTrinketTab = ref(0);
-const trinketTabs = [ '总体排名', '大秘境使用率排行' ];
+const trinketTabs = ['总体排名', '大秘境使用率排行'];
 
 function switchTrinketTab(e) {
   if (currentTrinketTab.value != e.currentIndex) {
@@ -949,7 +994,7 @@ function switchTrinketTab(e) {
 const dungeons = ref<IDungeonDTO[]>([]);
 const dungeonTip = ref<any>();
 const currentDungeonId = ref(-1);
-const tipCollapseIndex = ref([ '0' ]);
+const tipCollapseIndex = ref(['0']);
 
 // TODO: 引入hook替代
 const renderTip = computed(() => {
@@ -1874,10 +1919,19 @@ $light-border: rgb(68, 68, 68);
   }
 
   .advice-item {
-    display: flex;
+
     font-size: 30rpx;
-    gap: 12rpx;
+
     margin-bottom: 12rpx;
+
+    .data-item {
+      display: flex;
+      gap: 12rpx;
+    }
+
+    .data-info {
+      font-size: 26rpx;
+    }
 
     .advice-item__index {
       color: $color-legend;
@@ -1888,7 +1942,25 @@ $light-border: rgb(68, 68, 68);
     }
 
     .advice-item__name {
+      color: $color-rare;
+    }
+
+    .advice-item__name--heroic {
       color: $color-mythic;
+    }
+
+    .advice-item__name--mythic {
+      color: $color-legend;
+    }
+
+    .advice-item__more {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-left: 4rpx;
+      gap: 4rpx;
+      color: $uni-color-primary;
     }
   }
 }

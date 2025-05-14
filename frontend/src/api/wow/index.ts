@@ -56,6 +56,7 @@ interface IBisDataDTO {
   wowhead_bis: {
     updated_at: string;
     puzzlingCartelChipAdvice: IBisItem[];
+    detailedPuzzlingCartelChipAdvice: any;
   };
 }
 
