@@ -8,11 +8,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const puzzlingCartelChipData = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, `./index.json`)),
+  fs.readFileSync(path.resolve(__dirname, `./detailed.json`)),
 );
 
 const flatList = Object.entries(puzzlingCartelChipData).reduce(
-  (pre, [ roleClass, specItems ]) => {
+  (pre, [roleClass, specItems]) => {
     specItems.forEach((item) => {
       pre.push({
         roleClass: roleClass,
@@ -35,9 +35,10 @@ async function updateItem(item) {
     item.roleClass,
     item.classSpec,
   );
+  exisited.wowheadBis = JSON.parse(exisited.wowhead_bis)
   const lastUpdatedAt = exisited.wowheadBis?.updatedAt;
   if (lastUpdatedAt === item.updatedAt) {
-    return null;
+    // return null;
   }
 
   console.log(`更新${item.classSpec} ${item.roleClass}： ${lastUpdatedAt} => ${item.puzzlingCartelChipAdvice}`);
@@ -46,8 +47,9 @@ async function updateItem(item) {
     roleClass: item.roleClass,
     classSpec: item.classSpec,
     wowheadBis: {
+      ...exisited.wowheadBis,
       updatedAt: item.updatedAt,
-      puzzlingCartelChipAdvice: item.puzzlingCartelChipAdvice,
+      detailedPuzzlingCartelChipAdvice: item.puzzlingCartelChipAdvice,
     },
   });
 }

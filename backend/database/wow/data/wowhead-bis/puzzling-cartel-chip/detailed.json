@@ -320,6 +320,106 @@
               }
             ]
           }
+        },
+        {
+          "type": "mythic",
+          "info": "",
+          "data": {
+            "filters": [
+              {
+                "type": "R7",
+                "values": [
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              },
+              {
+                "type": "R8",
+                "values": [
+                  2,
+                  4,
+                  5,
+                  6
+                ]
+              },
+              {
+                "type": "mythic",
+                "values": [
+                  0,
+                  1,
+                  4,
+                  5,
+                  6
+                ]
+              }
+            ],
+            "options": [
+              {
+                "index": 0,
+                "id": 219309,
+                "name": "圣光虔敬魔典",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 3,
+                "id": null,
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 232804,
+                "name": "小头目的熔火指虎",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 230029,
+                "name": "易燃铬武炸弹服",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 232804,
+                "name": "小头目的熔火指虎",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 8,
+                "id": 230029,
+                "name": "易燃铬武炸弹服",
+                "rarity": "heroic",
+                "info": ""
+              }
+            ]
+          }
         }
       ]
     }
@@ -2485,6 +2585,7 @@
                 "index": 2,
                 "id": 231265,
                 "name": "加斯特的宝钻",
+                "rarity": "mythic",
                 "rarity": "mythic",
                 "info": "团本可以优先兑换，大秘境 优先穆格的壮胆壶"
               },

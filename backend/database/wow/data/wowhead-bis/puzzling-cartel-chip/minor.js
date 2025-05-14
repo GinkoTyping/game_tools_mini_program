@@ -1,5 +1,5 @@
 function collectIdByHref(href) {
-  return Number(href.split('item=')[1].split('/')[0]);
+  return Number(href.split('item=')[1]?.split('/')?.[0]);
 }
 
 function collectAdviceOptions(olEle) {
@@ -13,8 +13,8 @@ function collectAdviceOptions(olEle) {
     }
     return {
       index,
-      id: collectIdByHref(itemEle.href),
-      name: itemEle.innerText.trim(),
+      id: collectIdByHref(itemEle?.href ?? ''),
+      name: itemEle?.innerText?.trim(),
       rarity,
       info: '',
     };

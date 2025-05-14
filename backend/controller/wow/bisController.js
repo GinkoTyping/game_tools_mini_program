@@ -10,13 +10,21 @@ import { getDynamicDB } from '../../database/utils/index.js';
 
 import { useBisMapper } from '../../database/wow/mapper/bisMapper.js';
 import { useItemMapper } from '../../database/wow/mapper/itemMapper.js';
-import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
+import {
+  useSpecBisCountMapper,
+} from '../../database/wow/mapper/specBisCountMapper.js';
 import { isLocal } from '../../auth/validateAdmin.js';
 import spriteMap from '../../assets/wow/sprites/sprite-map.js';
-import { collectBisOverview } from '../../database/wow/data/archon-bis/crawler.js';
-import { collectMaxrollBis } from '../../database/wow/data/maxroll-bis/crawler.js';
+import {
+  collectBisOverview,
+} from '../../database/wow/data/archon-bis/crawler.js';
+import {
+  collectMaxrollBis,
+} from '../../database/wow/data/maxroll-bis/crawler.js';
 import { useTierListMapper } from '../../database/wow/mapper/tierListMapper.js';
-import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
+import {
+  useSpecStatMapper,
+} from '../../database/wow/mapper/daliy/specStatMapper.js';
 
 let api;
 const database = await getDB();
@@ -40,6 +48,7 @@ function setBlizzAPI() {
     clientSecret: process.env.CLIENT_SECRET,
   });
 }
+
 setBlizzAPI();
 
 export async function queryBlizzItemById(id, locale) {
@@ -61,7 +70,7 @@ export async function getItemPreviewById(req, res) {
   if (item?.preview) {
     res.json({
       ...JSON.parse(
-        req.query?.locale === 'en_US' ? item.preview_en : item.preview
+        req.query?.locale === 'en_US' ? item.preview_en : item.preview,
       ),
       source: JSON.parse(item.source),
       image: item.image,
@@ -73,12 +82,12 @@ export async function getItemPreviewById(req, res) {
       const insertResult = await itemMapper.addOrUpdatePreviewById(
         req.params.id,
         data,
-        req.query?.locale
+        req.query?.locale,
       );
       console.log(
         `更新物品${insertResult?.changes ? '成功' : '失败'}: ${data.id},${
           data.name
-        }`
+        }`,
       );
 
       res.json(data);
@@ -99,24 +108,26 @@ async function mapBisTrinket(dataList, propKey) {
           image: existedItem?.image,
           fullImageURL: undefined,
         };
-      })
+      }),
     );
     return {
       ...tierItem,
       [propKey]: data.map((item) => item.value),
     };
   }
+
   const allData = await Promise.allSettled(
-    dataList.map((item) => mapByTier(item))
+    dataList.map((item) => mapByTier(item)),
   );
   return allData.map((item) => item.value);
 }
+
 async function mapEnhancements(enhancements, needDetail) {
   async function mapEnhancementItem(item) {
     const slotObj = {};
     if (needDetail) {
       const { slot, name, source, image } = await itemMapper.getItemById(
-        item.id
+        item.id,
       );
       slotObj.name = name;
       slotObj.slot = slot;
@@ -126,7 +137,7 @@ async function mapEnhancements(enhancements, needDetail) {
 
     const items = (
       await Promise.allSettled(
-        item.enhancements.map((id) => itemMapper.getItemById(id))
+        item.enhancements.map((id) => itemMapper.getItemById(id)),
       )
     )?.map((enhancement) => ({
       ...enhancement.value,
@@ -146,13 +157,16 @@ async function mapEnhancements(enhancements, needDetail) {
       enhancements: items,
     };
   }
+
   const results = await Promise.allSettled(
-    enhancements.map((item) => mapEnhancementItem(item))
+    enhancements.map((item) => mapEnhancementItem(item)),
   );
   return results.map((result) => result.value);
 }
+
 // maxroll bis获取宝石，archon popularity bis获取宝石以外的
 const CYRCES_CIRCLET_ID = 228411;
+
 function combineEnhancement(item, maxrollEnhancements, archonEnhancements) {
   const cloneArchonData = [...archonEnhancements];
   const cloneMaxrollData = [...maxrollEnhancements];
@@ -164,14 +178,14 @@ function combineEnhancement(item, maxrollEnhancements, archonEnhancements) {
     let spliceIndex = -1;
     const isCyrcesCirclet = item.id === CYRCES_CIRCLET_ID;
     const cyrcesCirclet = cloneArchonData.find(
-      (enhancement) => enhancement.id === CYRCES_CIRCLET_ID
+      (enhancement) => enhancement.id === CYRCES_CIRCLET_ID,
     );
 
     if (isCyrcesCirclet && cyrcesCirclet) {
       enhancementsByArchon = cyrcesCirclet.enhancements;
     } else {
       const spliceIndex = cloneMaxrollData.findIndex(
-        (enhancement) => enhancement.slot === '手指'
+        (enhancement) => enhancement.slot === '手指',
       );
       if (spliceIndex !== -1) {
         enhancementsByArchon = cloneMaxrollData.splice(spliceIndex, 1)[0]
@@ -188,18 +202,18 @@ function combineEnhancement(item, maxrollEnhancements, archonEnhancements) {
       cloneArchonData
         .find((enhancement) => enhancement.slot === item.slot)
         ?.enhancements.filter((enhancement) => {
-          // 使用maxroll的宝石数据
-          if (enhancement.item_class === '宝石') {
-            return false;
-          }
+        // 使用maxroll的宝石数据
+        if (enhancement.item_class === '宝石') {
+          return false;
+        }
 
-          // 公函类型的道具只能强化制造装备
-          if (enhancement.item_class === '商业技能') {
-            return item.source?.source === '制造装备';
-          }
+        // 公函类型的道具只能强化制造装备
+        if (enhancement.item_class === '商业技能') {
+          return item.source?.source === '制造装备';
+        }
 
-          return true;
-        }) ?? [];
+        return true;
+      }) ?? [];
   }
 
   return [...enhancementsByMaxroll, ...enhancementsByArchon].map((item) => ({
@@ -208,6 +222,7 @@ function combineEnhancement(item, maxrollEnhancements, archonEnhancements) {
     preview_en: undefined,
   }));
 }
+
 async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
   async function queryItem(id) {
     // 避免返回的data为null，导致前台报错
@@ -222,6 +237,7 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
       source: JSON.parse(data.source),
     };
   }
+
   async function mapBisItemsByType(bisItemsByType) {
     const promises = bisItemsByType.items
       .split('@')
@@ -237,7 +253,7 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
           enhancements = combineEnhancement(
             item.value,
             maxrollEnhancements,
-            archonEnhancements
+            archonEnhancements,
           );
         }
 
@@ -250,10 +266,12 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
       }),
     };
   }
+
   const promises = bisItems.map((item) => mapBisItemsByType(item));
   const bisItemResult = await Promise.allSettled(promises);
   return bisItemResult.map((item) => item.value);
 }
+
 function sortBisItems(bisItems) {
   return bisItems.map((tier) => {
     const sortedItems = tier.items
@@ -271,7 +289,7 @@ function sortBisItems(bisItems) {
           }
           return [commonItems, rings, trinkets, weapons];
         },
-        [[], [], [], []]
+        [[], [], [], []],
       )
       .flat();
     return {
@@ -280,6 +298,7 @@ function sortBisItems(bisItems) {
     };
   });
 }
+
 async function mapSimpleItems(items) {
   const data = await Promise.allSettled(
     items.map(async (item) => {
@@ -292,17 +311,43 @@ async function mapSimpleItems(items) {
         name_en: undefined,
         slot: undefined,
       };
-    })
+    }),
   );
   return data.map((item) => item.value);
 }
+
 async function mapWowheadBis(wowheadBis) {
   const puzzlingCartelChipAdvice = await mapSimpleItems(
-    wowheadBis.puzzlingCartelChipAdvice
+    wowheadBis.puzzlingCartelChipAdvice,
+  );
+
+  function mapTypeName(name) {
+    if (name === 'all') {
+      return '总体';
+    }
+    return name === 'raid' ? '团本' : '大秘境';
+  }
+
+  const detailedPuzzlingCartelChipAdvice = await Promise.allSettled(wowheadBis.detailedPuzzlingCartelChipAdvice.map(
+    async kind => {
+      const itemResults = await Promise.allSettled(kind.data.options.map(async item => {
+          const itemData = await itemMapper.getItemById(item.id);
+          return {
+            ...item,
+            name: itemData.name,
+            image: itemData.image,
+          };
+        }),
+      );
+      kind.typeName = mapTypeName(kind.type);
+      kind.data.options = itemResults.map(result => result.value).filter(item => item)
+      return kind;
+    }),
   );
   return {
     ...wowheadBis,
     puzzlingCartelChipAdvice,
+    detailedPuzzlingCartelChipAdvice: detailedPuzzlingCartelChipAdvice.map(item => item.value),
   };
 }
 
@@ -315,19 +360,19 @@ export async function getBisBySpec(req, res) {
     const bisData = await bisMapper.getBisByClassAndSpec(roleClass, classSpec);
     const archonEnhancements = await mapEnhancements(
       JSON.parse(bisData.popularity_items),
-      true
+      true,
     );
     const maxrollEnhancements = await mapEnhancements(
-      JSON.parse(bisData.maxroll_bis).items
+      JSON.parse(bisData.maxroll_bis).items,
     );
     let bis_items = await mapBisItems(
       JSON.parse(bisData.bis_items),
       maxrollEnhancements,
-      archonEnhancements
+      archonEnhancements,
     );
     const popularity_items = await mapEnhancements(
       JSON.parse(bisData.popularity_items),
-      true
+      true,
     );
     // 团本获取的BIS目前很鸡肋
     bis_items = bis_items.filter((item) => item.title !== '团本获取');
@@ -337,7 +382,7 @@ export async function getBisBySpec(req, res) {
 
     const bis_trinkets = await mapBisTrinket(
       JSON.parse(bisData.bis_trinkets),
-      'trinkets'
+      'trinkets',
     );
 
     const wowheadBis = await mapWowheadBis(JSON.parse(bisData.wowhead_bis));
@@ -354,7 +399,7 @@ export async function getBisBySpec(req, res) {
             source: undefined,
             slot: undefined,
           };
-        })
+        }),
       )
     ).map((result) => result.value);
 
@@ -362,7 +407,7 @@ export async function getBisBySpec(req, res) {
     const mythicDpsTier = await specStatMapper.getSpec(classSpec, roleClass);
     const mythicOverallTier = await tierListMapper.getSpec(
       classSpec,
-      roleClass
+      roleClass,
     );
 
     // 避免本地调测时，引起本地的数据和服务器不一致
@@ -479,8 +524,11 @@ async function checkValidItems(enhancements) {
   if (enhancements?.length) {
     return Promise.allSettled(
       enhancements.map((item) =>
-        getItemPreviewById({ params: { id: item } }, { json: function () {} })
-      )
+        getItemPreviewById({ params: { id: item } }, {
+          json: function() {
+          },
+        }),
+      ),
     );
   }
 }
@@ -489,6 +537,7 @@ const limiter = new Bottleneck({
   minTime: 2000, // 拉大基础间隔
   maxConcurrent: 2, // 限制同时请求数
 });
+
 export async function queryUpdateArchonBisOverview(req, res) {
   try {
     const flatSpecs = req.body.forceUpdate
@@ -504,11 +553,11 @@ export async function queryUpdateArchonBisOverview(req, res) {
           const data = await collectBisOverview(
             item.classSpec,
             item.roleClass,
-            req.body.useCache
+            req.body.useCache,
           );
           doneCount++;
           console.log(
-            `更新BIS进度: ${doneCount}/${totalCount}, ${item.classSpec} ${item.roleClass}`
+            `更新BIS进度: ${doneCount}/${totalCount}, ${item.classSpec} ${item.roleClass}`,
           );
           const checkResults = await checkValidItems(
             data.popularityItems.reduce((pre, cur) => {
@@ -523,16 +572,16 @@ export async function queryUpdateArchonBisOverview(req, res) {
               }
 
               return pre;
-            }, [])
+            }, []),
           );
           await checkValidItems(data.popularTrinkets.map((item) => item.id));
           return bisMapper.updateOverviewBis(
             item.roleClass,
             item.classSpec,
-            data
+            data,
           );
-        })
-      )
+        }),
+      ),
     );
     const errors = results.filter((item) => item.status !== 'fulfilled');
     if (errors.length) {
@@ -557,7 +606,7 @@ export async function queryUpdateMaxrollBisOverview(req, res) {
             req.body.useCache,
             req.body.ignoreLastUpdate
               ? ''
-              : JSON.parse(item.maxroll_bis)?.updatedAt
+              : JSON.parse(item.maxroll_bis)?.updatedAt,
           );
 
           const output = {
@@ -589,8 +638,8 @@ export async function queryUpdateMaxrollBisOverview(req, res) {
             classSpec: item.class_spec,
             ...output,
           };
-        })
-      )
+        }),
+      ),
     );
     const errors = results.filter((item) => item.status !== 'fulfilled');
     if (errors.length) {
@@ -601,7 +650,7 @@ export async function queryUpdateMaxrollBisOverview(req, res) {
     } else {
       const info = results
         .filter(
-          (item) => item.status === 'fulfilled' && item.value.updateStatus === 1
+          (item) => item.status === 'fulfilled' && item.value.updateStatus === 1,
         )
         .map((item) => `${item.value.classSpec} ${item.value.roleClass}`)
         .join(',');
@@ -615,4 +664,5 @@ export async function queryUpdateMaxrollBisOverview(req, res) {
     res.status(500).json({ error: error?.message });
   }
 }
+
 //#endregion
