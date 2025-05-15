@@ -133,12 +133,12 @@
       <uni-card class="section-card" v-show="statSource === 'maxroll'">
         <view class="stats">
           <view class="stats__item">
-            <text>{{
-                currentData?.archonStatsPriority.priority[0].label
+            <text :style="{ color: getStatLabel(0).color }">{{
+                getStatLabel(0).label
               }}
             </text>
             <text>{{
-                currentData?.archonStatsPriority.priority[0].value
+                getStatValue(0)
               }}
             </text>
           </view>
@@ -149,12 +149,12 @@
             )}.svg`"
           ></image>
           <view class="stats__item">
-            <text>{{
-                currentData?.archonStatsPriority.priority[1].label
+            <text :style="{ color: getStatLabel(1).color }">{{
+                getStatLabel(1).label
               }}
             </text>
             <text>{{
-                currentData?.archonStatsPriority.priority[1].value
+                getStatValue(1)
               }}
             </text>
           </view>
@@ -165,12 +165,12 @@
             )}.svg`"
           ></image>
           <view class="stats__item">
-            <text>{{
-                currentData?.archonStatsPriority.priority[2].label
+            <text :style="{ color: getStatLabel(2).color }">{{
+                getStatLabel(2).label
               }}
             </text>
             <text>{{
-                currentData?.archonStatsPriority.priority[2].value
+                getStatValue(2)
               }}
             </text>
           </view>
@@ -181,12 +181,12 @@
             )}.svg`"
           ></image>
           <view class="stats__item">
-            <text>{{
-                currentData?.archonStatsPriority.priority[3].label
+            <text :style="{ color: getStatLabel(3).color }">{{
+                getStatLabel(3).label
               }}
             </text>
             <text>{{
-                currentData?.archonStatsPriority.priority[3].value
+                getStatValue(3)
               }}
             </text>
           </view>
@@ -484,7 +484,9 @@
         >
           <view class="data-item">
             <image :src="currentImageSrc(item)" mode="widthFix" />
-            <text class="data-item__name" :class="[getItemRarityClass(item.rarity)]">{{ getItemRarityName(item.rarity) }}</text>
+            <text class="data-item__name" :class="[getItemRarityClass(item.rarity)]">{{ getItemRarityName(item.rarity)
+              }}
+            </text>
             <view class="advice-item__name"
               :class="[getItemRarityClass(item.rarity)]"
               @click="() => switchDetail(true, item)">{{ item.name }}
@@ -761,6 +763,30 @@ const statDetailCollapse = ref();
 const statSourceText = computed(() =>
   statSource.value === 'wowhead' ? '点击查看简略版' : '点击查看详细版',
 );
+const getStatValue = computed(() => (index: number) => {
+  const value = currentData.value?.archonStatsPriority?.priority?.[index]?.value;
+  const ratio = currentData.value?.archonStatsPriority?.priority?.[index]?.ratio;
+  return `${value}${ratio ? ` | ${ratio}%` : ''}`;
+});
+const getStatLabel = computed(() => (index: number) => {
+  const label = currentData.value?.archonStatsPriority?.priority?.[index]?.label;
+  let color;
+  switch (label) {
+    case '急速':
+      color = '#3db67a';
+      break;
+    case '暴击':
+      color = '#bd2625';
+      break;
+    case '全能':
+      color = '#3baaf2';
+      break;
+    case '精通':
+      color = '#725cc2';
+      break;
+  }
+  return { label, color };
+});
 
 function switchStatSource() {
   if (statSource.value === 'wowhead') {
@@ -1927,6 +1953,7 @@ $light-border: rgb(68, 68, 68);
       display: flex;
       gap: 12rpx;
       align-items: center;
+
       .data-item__name {
         font-weight: bold;
       }
