@@ -432,14 +432,14 @@
       "advice": [
         {
           "type": "all",
-          "info": "",
+          "info": "如果你没有打团本，但是达成了全12层大秘境，建议兑换印章、蜡烛和H宝钻戒指",
           "data": {
             "filters": [],
             "options": [
               {
                 "index": 0,
                 "rarity": "mythic",
-                "info": "",
+                "info": "只有M最上品有兑换的必要性",
                 "id": 232805
               },
               {
@@ -456,7 +456,7 @@
               },
               {
                 "index": 230192,
-                "rarity": "mythic",
+                "rarity": "heroic",
                 "info": "",
                 "id": 230027
               },
@@ -574,23 +574,31 @@
             "options": [
               {
                 "index": 0,
-                "info": "",
-                "id": 232562
+                "id": 232526,
+                "name": "Best-in-Slots",
+                "rarity": "",
+                "info": ""
               },
               {
-                "id": 219308,
-                "info": "",
-                "index": 1
+                "index": 1,
+                "id": 219309,
+                "name": "Tome of Light's Devotion",
+                "rarity": "",
+                "info": ""
               },
               {
+                "index": 2,
                 "id": 230194,
-                "info": "",
-                "index": 2
+                "name": "Reverb Radio",
+                "rarity": "",
+                "info": ""
               },
               {
                 "index": 3,
-                "info": "",
-                "id": 231265
+                "id": 231265,
+                "name": "The Jastor Diamond",
+                "rarity": "",
+                "info": ""
               }
             ]
           }
@@ -2387,7 +2395,7 @@
       "advice": [
         {
           "type": "all",
-          "info": "",
+          "info": "如果你经常切换黑暗优先和哨兵英雄天赋，那么纸牌屋和印章都有兑换的必要。其中纸牌屋适合哨兵，而印章更适合黑暗游侠",
           "data": {
             "filters": [],
             "options": [
