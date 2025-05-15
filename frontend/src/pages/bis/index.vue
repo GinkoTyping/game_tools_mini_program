@@ -478,14 +478,13 @@
         />
         <view
           class="advice-item"
-          v-for="(item, index) in displayAdviceData?.list"
+          v-for="(item) in displayAdviceData?.list"
           :key="item.id"
 
         >
           <view class="data-item">
-            <view class="advice-item__index">{{ index + 1 }}.</view>
-            <image :src="currentThumbImageSrc(item)" mode="widthFix" />
-            <text :class="[getItemRarityClass(item.rarity)]">{{ getItemRarityName(item.rarity) }}</text>
+            <image :src="currentImageSrc(item)" mode="widthFix" />
+            <text class="data-item__name" :class="[getItemRarityClass(item.rarity)]">{{ getItemRarityName(item.rarity) }}</text>
             <view class="advice-item__name"
               :class="[getItemRarityClass(item.rarity)]"
               @click="() => switchDetail(true, item)">{{ item.name }}
@@ -1927,6 +1926,10 @@ $light-border: rgb(68, 68, 68);
     .data-item {
       display: flex;
       gap: 12rpx;
+      align-items: center;
+      .data-item__name {
+        font-weight: bold;
+      }
     }
 
     .data-info {
@@ -1938,7 +1941,8 @@ $light-border: rgb(68, 68, 68);
     }
 
     image {
-      width: 36rpx;
+      width: 60rpx;
+      border-radius: 10rpx;
     }
 
     .advice-item__name {
