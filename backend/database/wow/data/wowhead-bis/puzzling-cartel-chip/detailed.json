@@ -451,14 +451,14 @@
               {
                 "id": 230027,
                 "rarity": "mythic",
-                "info": "第二优先级。",
+                "info": "",
                 "index": 2
               },
               {
-                "index": 230192,
-                "rarity": "heroic",
+                "index": 3,
+                "rarity": "mythic",
                 "info": "",
-                "id": 230027
+                "id": 230192
               },
               {
                 "id": 230198,
