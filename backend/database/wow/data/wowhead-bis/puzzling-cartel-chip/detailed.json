@@ -915,51 +915,66 @@
             "options": [
               {
                 "index": 0,
+                "id": 219309,
+                "name": "圣光虔敬魔典",
                 "rarity": "mythic",
-                "info": "单体或者目标较少的场景时，对输出提升大",
-                "id": 219309
+                "info": "能带来最大单体提升的饰品"
               },
               {
+                "index": 1,
                 "id": 232541,
+                "name": "临时制作的爆盐起搏器",
                 "rarity": "mythic",
-                "info": "适合多目标场景。如果你是大秘境玩家的话，早换早享受",
-                "index": 1
+                "info": "如果主玩大秘境的话，更推荐优先兑换它！它在多目标场景下，表现很好"
               },
               {
-                "id": 178811,
-                "rarity": "mythic",
-                "info": "",
-                "index": 2
-              },
-              {
-                "id": 169344,
-                "rarity": "mythic",
-                "info": "适合多目标场景的输出向的主动饰品",
-                "index": 3
-              },
-              {
-                "id": 232543,
-                "rarity": "mythic",
-                "info": "英雄级别的已经够用了。",
-                "index": 4
-              },
-              {
-                "id": 228905,
-                "rarity": "mythic",
-                "info": "毕业武器。但是相比于制造装备或者其他神话级别的武器，它的数值没有领先很多。",
-                "index": 5
-              },
-              {
+                "index": 2,
                 "id": 231265,
-                "rarity": "heroic",
-                "info": "",
-                "index": 6
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": ""
               },
               {
-                "id": 230198,
+                "index": 3,
+                "id": 178811,
+                "name": "阴森法典",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 232543,
+                "name": "共鸣仪式泥浆",
+                "rarity": "mythic",
+                "info": "兑换不了M的话，英雄级别的也已经够用了"
+              },
+              {
+                "index": 5,
+                "id": 228905,
+                "name": "极巨大银行破拆者",
+                "rarity": "mythic",
+                "info": "本赛季的BIS。但是总体并不比制造武器或者其他神话双手强很多。"
+              },
+              {
+                "index": 6,
+                "id": 232804,
+                "name": "小头目的熔火指虎",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 7,
+                "id": 230197,
+                "name": "磨轮的备用钥匙",
+                "rarity": "",
+                "info": ""
+              },
+              {
+                "index": 8,
+                "id": 231265,
+                "name": "加斯特的宝钻",
                 "rarity": "heroic",
-                "info": "",
-                "index": 7
+                "info": ""
               }
             ]
           }
