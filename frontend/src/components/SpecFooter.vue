@@ -29,8 +29,6 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue';
-import { useNavigator } from '@/hooks/navigator';
 import { onShow } from '@dcloudio/uni-app';
 import { useUserStore } from '@/store/wowStore';
 
@@ -47,7 +45,6 @@ const props = defineProps({
 });
 const emits = defineEmits(['change']);
 
-const navigator = useNavigator();
 function switchMenu(menuItem) {
   if (menuItem.value !== 'share' && activeMenu.value !== menuItem.value) {
     activeMenu.value = menuItem.value;
@@ -57,13 +54,13 @@ function switchMenu(menuItem) {
 onShow(() => {
   const currentPage = getCurrentPages().slice(-1)?.[0].route;
   switch (currentPage) {
-    case 'pages/friend/index':
+    case 'pages-sub-wow/friend/index':
       activeMenu.value = 'index';
       break;
-    case 'pages/friend/setting':
+    case 'pages-sub-wow/friend/setting':
       activeMenu.value = 'setting';
       break;
-    case 'pages/friend/relation':
+    case 'pages-sub-wow/friend/relation':
       activeMenu.value = 'relation';
       break;
     default:

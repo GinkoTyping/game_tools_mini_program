@@ -42,19 +42,19 @@ const menus = reactive([
     title: '大厅',
     value: 'index',
     icon: 'map-filled',
-    page: '/pages/friend/index',
+    page: '/pages-sub-wow/friend/index',
   },
   {
     title: '卡包',
     value: 'relation',
     icon: 'personadd-filled',
-    page: '/pages/friend/relation',
+    page: '/pages-sub-wow/friend/relation',
   },
   {
     title: '分享',
     value: 'share',
     icon: 'redo-filled',
-    page: '/pages/friend/index',
+    page: '/pages-sub-wow/friend/index',
   },
   {
     title: '主页',
@@ -66,7 +66,7 @@ const menus = reactive([
     title: '我的',
     value: 'setting',
     icon: 'vip-filled',
-    page: '/pages/friend/setting',
+    page: '/pages-sub-wow/friend/setting',
   },
 ]);
 const navigator = useNavigator();

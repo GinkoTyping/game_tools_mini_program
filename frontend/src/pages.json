@@ -1,146 +1,151 @@
 {
-	"easycom": {
-		"autoscan": true,
-		"custom": {
-			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
-			"^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)": "z-paging/components/z-paging$1/z-paging$1.vue"
-		}
-	},
-	"pages": [
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "银子的搜罗坊"
-			}
-		},
-		{
-			"path": "pages/friend/index",
-			"style": {
-				"navigationBarTitleText": "艾泽拉斯同好会"
-			}
-		},
-		{
-			"path": "pages/friend/relation",
-			"style": {
-				"navigationBarTitleText": "艾泽拉斯名片"
-			}
-		},
-		{
-			"path": "pages/friend/setting",
-			"style": {
-				"navigationBarTitleText": "艾泽拉斯名片"
-			}
-		},
-		{
-			"path": "pages/divination/index",
-			"style": {
-				"navigationBarTitleText": "WOW 塔罗牌占卜"
-			}
-		},
-		{
-			"path": "pages/divination/result",
-			"style": {
-				"navigationBarTitleText": "WOW 塔罗牌占卜"
-			}
-		},
-		{
-			"path": "pages/question/index",
-			"style": {
-				"navigationBarTitleText": "大秘境做题家"
-			}
-		},
-		{
-			"path": "pages/question/each",
-			"style": {
-				"navigationBarTitleText": "大秘境做题家"
-			}
-		},
-		{
-			"path": "pages/question/result",
-			"style": {
-				"navigationBarTitleText": "大秘境做题家"
-			}
-		},
-		{
-			"path": "pages/raid-guide/index",
-			"style": {
-				"navigationBarTitleText": "解放安德麦"
-			}
-		},
-		{
-			"path": "pages/spec-popularity/index",
-			"style": {
-				"navigationBarTitleText": "专精数据统计"
-			}
-		},
-		{
-			"path": "pages/mythic-dungeon/list",
-			"style": {
-				"navigationBarTitleText": "大秘境"
-			}
-		},
-		{
-			"path": "pages/mythic-dungeon/index",
-			"style": {
-				"navigationBarTitleText": "大秘境"
-			}
-		},
-		{
-			"path": "pages/tier-list/index",
-			"style": {
-				"navigationBarTitleText": "专精排行"
-			}
-		},
-		{
-			"path": "pages/spec-list/index",
-			"style": {
-				"navigationBarTitleText": "专精列表"
-			}
-		},
-		{
-			"path": "pages/bis/index",
-			"style": {
-				"navigationBarTitleText": "职业配装"
-			}
-		},
-		{
-			"path": "pages/patch-log/index",
-			"style": {
-				"navigationBarTitleText": "版本信息"
-			}
-		}
-	],
-	"subPackages": [
-		{
-			"root": "pages-poe",
-			"pages": [
-				{
-					"path": "ladders/index",
-					"style": {
-						"navigationBarTitleText": "流放之路2 天梯"
-					}
-				},
-				{
-					"path": "ladders/detail",
-					"style": {
-						"navigationBarTitleText": "流放之路2 天梯"
-					}
-				}
-			]
-		}
-	],
-	"preloadRule": {
-		"pages/index/index": {
-			"network": "all",
-			"packages": [
-				"pages-poe"
-			]
-		}
-	},
-	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#181818",
-		"onReachBottomDistance": 800
-	}
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+      "^(?!z-paging-refresh|z-paging-load-more)z-paging(.*)": "z-paging/components/z-paging$1/z-paging$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "银子的搜罗坊"
+      }
+    },
+    {
+      "path": "pages/spec-popularity/index",
+      "style": {
+        "navigationBarTitleText": "专精数据统计"
+      }
+    },
+    {
+      "path": "pages/tier-list/index",
+      "style": {
+        "navigationBarTitleText": "专精排行"
+      }
+    },
+    {
+      "path": "pages/spec-list/index",
+      "style": {
+        "navigationBarTitleText": "专精列表"
+      }
+    },
+    {
+      "path": "pages/bis/index",
+      "style": {
+        "navigationBarTitleText": "职业配装"
+      }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "pages-poe",
+      "pages": [
+        {
+          "path": "ladders/index",
+          "style": {
+            "navigationBarTitleText": "流放之路2 天梯"
+          }
+        },
+        {
+          "path": "ladders/detail",
+          "style": {
+            "navigationBarTitleText": "流放之路2 天梯"
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages-sub-wow",
+      "pages": [
+        {
+          "path": "patch-log/index",
+          "style": {
+            "navigationBarTitleText": "版本信息"
+          }
+        },
+        {
+          "path": "mythic-dungeon/list",
+          "style": {
+            "navigationBarTitleText": "大秘境"
+          }
+        },
+        {
+          "path": "mythic-dungeon/index",
+          "style": {
+            "navigationBarTitleText": "大秘境"
+          }
+        },
+        {
+          "path": "raid-guide/index",
+          "style": {
+            "navigationBarTitleText": "解放安德麦"
+          }
+        },
+        {
+          "path": "question/index",
+          "style": {
+            "navigationBarTitleText": "大秘境做题家"
+          }
+        },
+        {
+          "path": "question/each",
+          "style": {
+            "navigationBarTitleText": "大秘境做题家"
+          }
+        },
+        {
+          "path": "question/result",
+          "style": {
+            "navigationBarTitleText": "大秘境做题家"
+          }
+        },
+        {
+          "path": "friend/index",
+          "style": {
+            "navigationBarTitleText": "艾泽拉斯同好会"
+          }
+        },
+        {
+          "path": "friend/relation",
+          "style": {
+            "navigationBarTitleText": "艾泽拉斯名片"
+          }
+        },
+        {
+          "path": "friend/setting",
+          "style": {
+            "navigationBarTitleText": "艾泽拉斯名片"
+          }
+        },
+        {
+          "path": "divination/index",
+          "style": {
+            "navigationBarTitleText": "WOW 塔罗牌占卜"
+          }
+        },
+        {
+          "path": "divination/result",
+          "style": {
+            "navigationBarTitleText": "WOW 塔罗牌占卜"
+          }
+        }
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "wifi",
+      "packages": [
+        "pages-sub-wow"
+      ]
+    }
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#181818",
+    "onReachBottomDistance": 800
+  }
 }
