@@ -6,7 +6,7 @@
       :key="item.role"
       @click="item.onClick"
     >
-      <image :src="`/static/images/wow/job-icons/role-icon-${item.role}.jpg`"/>
+      <image :src="`/static/images/wow/job-icons/role-icon-${item.role}.jpg`" />
     </button>
     <button @click="showAdDialog">
       <image
@@ -23,16 +23,16 @@
     </view
     >
     <button open-type="share">
-      <image src="/static/icon/share.svg"/>
+      <image src="/static/icon/share.svg" />
     </button>
   </view>
 
   <button
-    v-if="props.showPoe"
+    v-if="props.showChipEntry"
     class="poe2-btn"
-    @click="navigator.redirectToPoeLadders"
+    @click="() => navigator.toSpecsMenu({ menu: 'bis', scrollTo: '#puzzling-cartel-chip-advice' })"
   >
-    <image src="/static/images/poe/poe-2-icon.png" mode="widthFix"/>
+    <image :src="getImageSrc('inv_misc_curiouscoin.jpg').item" mode="widthFix" />
     <view class="badage"></view>
   </button>
 
@@ -70,7 +70,7 @@
             <view class="main">
               <view>还投喂了</view>
               <view>
-                <image src="/static/images/wow/food/shard.gif"/>
+                <image src="/static/images/wow/food/shard.gif" />
                 <text>大餐碎片</text>
               </view>
               <view> x1！</view>
@@ -179,13 +179,14 @@ import { ref, onUnmounted } from 'vue';
 
 import { useUserStore } from '@/store/wowStore';
 import { useNavigator } from '@/hooks/navigator';
+import { getImageSrc } from '@/api/wow';
 
 const navigator = useNavigator();
 const props = defineProps({
   tierListIcons: {
     type: Array<any>,
   },
-  showPoe: {
+  showChipEntry: {
     type: Boolean,
     default: false,
   },
@@ -310,6 +311,7 @@ onUnmounted(() => {
 
   image {
     width: 90rpx;
+    border-radius: 50%;
   }
 
   .badage {
@@ -317,7 +319,7 @@ onUnmounted(() => {
     top: 4rpx;
     height: 20rpx;
     width: 20rpx;
-    background-color: #fff;
+    background-color: red;
     box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.21);
   }
 }

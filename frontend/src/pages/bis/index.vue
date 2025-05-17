@@ -478,9 +478,9 @@
         />
         <view
           class="advice-item"
-          v-for="(item) in displayAdviceData?.list"
+          v-for="(item, index) in displayAdviceData?.list"
+          :class="[isSamePriorityChipItem(item, index) ? 'advice-item--same-priority' :'']"
           :key="item.id"
-
         >
           <view class="data-item">
             <image :src="currentImageSrc(item)" mode="widthFix" />
@@ -681,6 +681,21 @@ const specKey = ref('');
 const currentData = ref<any>();
 const query = ref<any>({});
 const navigator = useNavigator();
+
+function checkJumpTo() {
+  if (query.value?.menu) {
+    activeMenu.value = query.value.menu;
+    if (query.value?.scrollTo) {
+      nextTick(() => {
+        uni.pageScrollTo({
+          selector: query.value?.scrollTo,
+        });
+      });
+    }
+  }
+
+}
+
 onLoad(async (options: any) => {
   query.value = options;
   classKey.value = options.classKey ?? 'death-knight';
@@ -697,6 +712,8 @@ onLoad(async (options: any) => {
   uni.hideLoading();
 
   setNaviTitle(`${options.title} ${currentData.value.version}`);
+
+  checkJumpTo();
 });
 
 async function getBasicBisData() {
@@ -994,6 +1011,16 @@ const getItemRarityClass = computed(() => (rarity: string) => {
   return rarity === 'heroic' ? 'advice-item__name--heroic' : 'advice-item__name--mythic';
 });
 const getItemRarityName = computed(() => (rarity: string) => rarity?.[0]?.toUpperCase());
+const isSamePriorityChipItem = computed(() => {
+  return (item, index) => {
+    if (index === 0) {
+      return false;
+    }
+    const isSameIndex = item.index === displayAdviceData.value.list[index - 1].index;
+    const isFirstIndex = displayAdviceData.value.list.findIndex(child => child.index === index) === index;
+    return !isFirstIndex && isSameIndex;
+  };
+});
 
 function switchChipAdviceTab(e) {
   if (currentChipAdviceTab.value != e.currentIndex) {
@@ -1992,6 +2019,20 @@ $light-border: rgb(68, 68, 68);
       margin-left: 4rpx;
       gap: 4rpx;
       color: $uni-color-primary;
+    }
+  }
+
+  .advice-item--same-priority {
+    padding-left: 60rpx;
+    position: relative;
+
+    &:before {
+      content: '=';
+      color: #fff;
+      position: absolute;
+      left: 30rpx;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }

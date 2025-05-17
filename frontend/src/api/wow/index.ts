@@ -95,7 +95,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
   function mapRatingComment(label: string, score: number) {
     switch (score) {
       case 5:
-        if ([ '单体', 'AOE' ].includes(label)) {
+        if (['单体', 'AOE'].includes(label)) {
           return '暴力';
         } else if (label === '功能性') {
           return '顶级工具人';
@@ -455,6 +455,14 @@ export interface IHomeViewDTO {
     icon: string;
     color: string;
   }[];
+  newEntries: {
+    feature: boolean;
+    label: string;
+    page: string;
+    value: string;
+    icon: string;
+    color: string;
+  }[];
   mythicMarkCount: number;
   tarotCount: number;
   tagCardCount: number;
@@ -470,7 +478,8 @@ export async function queryHomeView() {
       return item;
     });
     return res.data as IHomeViewDTO;
-  } catch (error) {
+  } catch (e) {
+    console.log(e);
     return {} as IHomeViewDTO;
   }
 }
@@ -866,16 +875,16 @@ export async function queryUserTagByIds(params?: {
   const finalParams: any = {};
   if (params?.id || params?.userId) {
     if (params.id) {
-      finalParams.ids = [ params.id ];
+      finalParams.ids = [params.id];
     } else {
-      finalParams.userIds = [ params.userId ];
+      finalParams.userIds = [params.userId];
     }
   } else if (params?.ids) {
     finalParams.ids = params.ids;
   } else if (params?.userIds) {
     finalParams.userIds = params.userIds;
   } else {
-    finalParams.userIds = [ userId ];
+    finalParams.userIds = [userId];
   }
 
   if (userId && params?.requireRelation) {

@@ -78,7 +78,7 @@
   <view class="entries">
     <view
       class="entries-item"
-      v-for="entry in homeViewData?.entries"
+      v-for="entry in homeViewData?.newEntries"
       :key="entry.value"
       @click="navigator.toPage(entry.page)"
     >
@@ -186,7 +186,7 @@
     >
       <view class="card-info">
         <view class="spec-info">
-          <image :src="getClassIconURL(item.role_class, item.class_spec)"/>
+          <image :src="getClassIconURL(item.role_class, item.class_spec)" />
           <view class="labels">
             <text class="label-spec">{{
                 localeLabels[item.role_class][item.class_spec]
@@ -215,7 +215,7 @@
 
   <view class="footer"></view>
 
-  <ShareIcon show-poe/>
+  <ShareIcon show-chip-entry />
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 import labels from '@/data/zh.json';
-import { ILocaleLabels } from '@/interface/ILocaleLabels';
+import type { ILocaleLabels } from '@/interface/ILocaleLabels';
 
 const localeLabels = labels as ILocaleLabels;
 
@@ -11,23 +11,34 @@ function toHome() {
 }
 
 // 专精攻略
-function toSpecDetail(classKey: string, specKey: string) {
+function toSpecDetail(
+  classKey: string,
+  specKey: string,
+  menu: string = '',
+  scrollTo: string = '',
+) {
   uni.navigateTo({
-    url: `/pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${localeLabels[classKey][specKey]}${localeLabels.class[classKey]}`,
+    url: `/pages/bis/index?classKey=${classKey}&specKey=${specKey}&title=${localeLabels[classKey][specKey]}${localeLabels.class[classKey]}&menu=${menu}&scrollTo=${scrollTo}`,
   });
 }
 
 // 专精列表
-function toSpecsMenu() {
-  uni.navigateTo({
-    url: '/pages/spec-list/index',
-  });
+function toSpecsMenu(params) {
+  if (params.menu && params.scrollTo) {
+    uni.navigateTo({
+      url: `/pages/spec-list/index?menu=${params.menu}&scrollTo=${params.scrollTo}`,
+    });
+  } else {
+    uni.navigateTo({
+      url: `/pages/spec-list/index`,
+    });
+  }
 }
 
 // 更新日志
 function toPatchLog() {
   uni.navigateTo({
-    url: '/pages/patch-log/index',
+    url: '/pages-sub-wow/patch-log/index',
   });
 }
 
@@ -38,7 +49,7 @@ function toTierList(
     activity_type: string;
     role: string;
   },
-  isRedirect?: boolean
+  isRedirect?: boolean,
 ) {
   const { version_id, activity_type, role } = params;
   const url = `/pages/tier-list/index?versionId=${version_id}&activityType=${activity_type}&role=${role}`;
@@ -56,14 +67,14 @@ function toTierList(
 // 大秘境列表
 function toMythicDungeonList() {
   uni.navigateTo({
-    url: `/pages/mythic-dungeon/list`,
+    url: `/pages-sub-wow/mythic-dungeon/list`,
   });
 }
 
 // 大秘境攻略
 function toMythicDungeon(id: number, type?: string, guideId?: number) {
   uni.navigateTo({
-    url: `/pages/mythic-dungeon/index?id=${id}&type=${type}&guideId=${guideId}`,
+    url: `/pages-sub-wow/mythic-dungeon/index?id=${id}&type=${type}&guideId=${guideId}`,
   });
 }
 
@@ -77,54 +88,55 @@ function toSpecPopularity() {
 // 团本攻略
 function toRaidGuide() {
   uni.navigateTo({
-    url: `/pages/raid-guide/index`,
+    url: `/pages-sub-wow/raid-guide/index`,
   });
 }
 
 // 大秘境问卷
 function toQuestionDungeon(dungeonId, isRetry: boolean = false) {
   uni.navigateTo({
-    url: `/pages/question/each?dungeonId=${dungeonId}&isRetry=${isRetry}`,
+    url: `/pages-sub-wow/question/each?dungeonId=${dungeonId}&isRetry=${isRetry}`,
   });
 }
 
 // 大秘境问卷结果
 function toQuestionResult(dungeonId) {
   uni.navigateTo({
-    url: `/pages/question/result?dungeonId=${dungeonId}`,
+    url: `/pages-sub-wow/question/result?dungeonId=${dungeonId}`,
   });
 }
 
 // 大秘境问卷首页
 function toQuestionIndex() {
   uni.navigateTo({
-    url: `/pages/question/index`,
+    url: `/pages-sub-wow/question/index`,
   });
 }
 
 // 艾泽拉斯同好会 首页
 function toFrindIndex() {
   uni.navigateTo({
-    url: `/pages/friend/index`,
+    url: `/pages-sub-wow/friend/index`,
   });
 }
 
 // 艾泽拉斯同好会 个人设置
 function toFrindSetting() {
   uni.navigateTo({
-    url: `/pages/friend/setting`,
+    url: `/pages-sub-wow/friend/setting`,
   });
 }
 
 // 塔罗牌
 function toDivinationResult(tarotId: number = -1) {
   uni.navigateTo({
-    url: `/pages/divination/result?tarotId=${tarotId}`,
+    url: `/pages-sub-wow/divination/result?tarotId=${tarotId}`,
   });
 }
+
 function toDivinationIndex() {
   uni.navigateTo({
-    url: `/pages/divination/index`,
+    url: `/pages-sub-wow/divination/index`,
   });
 }
 
@@ -146,6 +158,7 @@ function redirectToPoeLadders() {
     url: `/pages-poe/ladders/index`,
   });
 }
+
 function toPoeDeatilLadder(type: string, name: string) {
   uni.navigateTo({
     url: `/pages-poe/ladders/detail?type=${type}&name=${name}`,
