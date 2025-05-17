@@ -748,6 +748,51 @@
               }
             ]
           }
+        },
+        {
+          "type": "NGA-凛冽寒风",
+          "info": "有678印章或665哈哈棱镜时降低纸牌屋优先级；如果用神经突触强化器就跳过纸牌屋",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230192
+              },
+              {
+                "id": 230192,
+                "rarity": "heroic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 230027,
+                "rarity": "mythic",
+                "info": "",
+                "index": 2
+              },
+              {
+                "id": 219305,
+                "rarity": "mythic",
+                "info": "",
+                "index": 3
+              },
+              {
+                "id": 219296,
+                "rarity": "mythic",
+                "info": "",
+                "index": 3
+              },
+              {
+                "id": 231265,
+                "rarity": "mythic",
+                "info": "",
+                "index": 3
+              }
+            ]
+          }
         }
       ]
     },
@@ -827,6 +872,57 @@
               }
             ]
           }
+        },
+        {
+          "type": "NGA-凛冽寒风",
+          "info": "有678印章或665哈哈棱镜时降低纸牌屋优先级",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230192
+              },
+              {
+                "id": 230027,
+                "rarity": "mythic",
+                "info": "",
+                "index": 0
+              },
+              {
+                "id": 230192,
+                "rarity": "heroic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 230027,
+                "rarity": "heroic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 219305,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 219296,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 231265,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              }
+            ]
+          }
         }
       ]
     },
@@ -894,6 +990,45 @@
                 "rarity": "mythic",
                 "info": "不是很适合冰法，因为它提供的大量精通属性对于霜火冰法来说意义不大。不过考虑到后面属性优先级可能调整，可以提前备一个代币，随时能兑换它",
                 "index": 8
+              }
+            ]
+          }
+        },
+        {
+          "type": "NGA-凛冽寒风",
+          "info": "",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230192
+              },
+              {
+                "id": 219305,
+                "rarity": "mythic",
+                "info": "",
+                "index": 0
+              },
+              {
+                "id": 219296,
+                "rarity": "mythic",
+                "info": "",
+                "index": 0
+              },
+              {
+                "id": 230027,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 231265,
+                "rarity": "mythic",
+                "info": "",
+                "index": 4
               }
             ]
           }

@@ -324,15 +324,17 @@ async function mapSimpleItems(items) {
 }
 
 async function mapWowheadBis(wowheadBis) {
-  const puzzlingCartelChipAdvice = await mapSimpleItems(
-    wowheadBis.puzzlingCartelChipAdvice,
-  );
-
   function mapTypeName(name) {
     if (name === 'all') {
-      return '总体';
+      return '外网推荐';
     }
-    return name === 'raid' ? '团本' : '大秘境';
+    if (name === 'raid') {
+      return '团本'
+    }
+    if (name === 'mythic') {
+      return '大秘境'
+    }
+    return name;
   }
 
   const detailedPuzzlingCartelChipAdvice = await Promise.allSettled(wowheadBis.detailedPuzzlingCartelChipAdvice.map(
@@ -353,7 +355,6 @@ async function mapWowheadBis(wowheadBis) {
   );
   return {
     ...wowheadBis,
-    puzzlingCartelChipAdvice,
     detailedPuzzlingCartelChipAdvice: detailedPuzzlingCartelChipAdvice.map(item => item.value),
   };
 }

@@ -278,5 +278,3 @@ export async function collectMaxrollBis(
   }
   return null;
 }
-
-collectMaxrollBis('discipline', 'priest', true);
