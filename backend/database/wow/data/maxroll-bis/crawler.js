@@ -13,11 +13,13 @@ const itemMapper = useItemMapper(db);
 function getStaticFilePath(classSpec, roleClass) {
   return path.resolve(__dirname, `./cache/${classSpec}-${roleClass}.html`);
 }
+
 function getUrl(classSpec, roleClass) {
   return `https://maxroll.gg/wow/class-guides/${classSpec}-${roleClass}-mythic-plus-guide`;
 }
 
 const CONTAINER_SELECTOR = 'div[data-wow-type=paperdoll]';
+
 function getDate(dateString) {
   const monthNames = [
     'January',
@@ -42,6 +44,7 @@ function getDate(dateString) {
   const monthIndex = monthNames.indexOf(monthName) + 1;
   return `${year}/${monthIndex}/${day}`;
 }
+
 function getIconIdByCss(cssLine) {
   const urlStart = cssLine.indexOf('url(') + 4;
   const urlEnd = cssLine.indexOf(')', urlStart);
@@ -50,6 +53,7 @@ function getIconIdByCss(cssLine) {
   // 2. 提取文件名
   return rawUrl.split('/').pop().split(/[?#]/)[0]; // 处理可能存在的参数
 }
+
 function getRawBis(context) {
   function getBisTable() {
     const bisTableHeader = $('#gear-header')
@@ -109,6 +113,7 @@ function getRawBis(context) {
     id: bisItems[index].id,
   }));
 }
+
 function mapEnhancementId(icon, classSpec, roleClass) {
   switch (icon) {
     // 213491
@@ -167,18 +172,28 @@ function mapEnhancementId(icon, classSpec, roleClass) {
     case '5931390.webp':
       return 213479;
 
+    case '5976899.webp':
+      return 226024;
+
+    case '4559235.webp':
+      return 219506;
+
+    case '4549251.webp':
+      return 222896;
+
+    case '5975854.webp':
+      return 219911;
+
+    case '5975753.webp':
+      return 219908;
+
     // 附魔卷轴/铭文/等宝石以外的 - 不统计
     case '463531.webp':
     case '4549173.webp':
     case '4644002.webp':
-    case '5975854.webp':
-    case '4559235.webp':
     case '4549168.webp':
-    case '5975753.webp':
     case '135957.webp':
-    case '4549251.webp':
     case '4549296.webp':
-    case '5976899.webp':
     case '4549161.webp':
     case '3717598.webp':
     case '3717599.webp':
@@ -205,6 +220,7 @@ function mapEnhancementId(icon, classSpec, roleClass) {
       return icon;
   }
 }
+
 async function mapBis(rawData, classSpec, roleClass) {
   async function mapItem(item) {
     const itemData = await itemMapper.getItemById(item.id);
@@ -216,7 +232,7 @@ async function mapBis(rawData, classSpec, roleClass) {
       console.log(
         `Not Found: ${item.name} - ${classSpec} ${roleClass}. Registered: ${
           insertResult.changes ? '√' : 'X'
-        }`
+        }`,
       );
     }
     return {
@@ -227,8 +243,9 @@ async function mapBis(rawData, classSpec, roleClass) {
         .filter((item) => item),
     };
   }
+
   const mappedData = await Promise.allSettled(
-    rawData.map((item) => mapItem(item))
+    rawData.map((item) => mapItem(item)),
   );
   return mappedData.map((item) => item.value);
 }
@@ -238,7 +255,7 @@ export async function collectMaxrollBis(
   classSpec,
   roleClass,
   useCache,
-  lastUpdatedAt
+  lastUpdatedAt,
 ) {
   const $ = await getCheerioByPuppeteer({
     staticFilePath: getStaticFilePath(classSpec, roleClass),
@@ -247,7 +264,7 @@ export async function collectMaxrollBis(
     waitForSelector: `${CONTAINER_SELECTOR} .mxt-left`,
   });
   const updatedAt = getDate(
-    $('main>div:nth-child(2) .italic:nth-child(2)').text()
+    $('main>div:nth-child(2) .italic:nth-child(2)').text(),
   );
   const needUpdate = lastUpdatedAt !== updatedAt;
   if (needUpdate) {
