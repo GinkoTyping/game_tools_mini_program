@@ -15,9 +15,11 @@ $priest: rgb(255, 255, 255);
   color: $warrior;
   border-color: $warrior;
 }
+
 .warrior::before {
   background-color: $warrior;
 }
+
 .warrior-bg {
   background-color: $warrior;
 }
@@ -26,9 +28,11 @@ $priest: rgb(255, 255, 255);
   color: $evoker;
   border-color: $evoker;
 }
+
 .evoker::before {
   background-color: $evoker;
 }
+
 .evoker-bg {
   background-color: $evoker;
 }
@@ -37,9 +41,11 @@ $priest: rgb(255, 255, 255);
   color: $hunter;
   border-color: $hunter;
 }
+
 .hunter::before {
   background-color: $hunter;
 }
+
 .hunter-bg {
   background-color: $hunter;
 }
@@ -48,9 +54,11 @@ $priest: rgb(255, 255, 255);
   color: $priest;
   border-color: $priest;
 }
+
 .priest::before {
   background-color: $priest;
 }
+
 .priest-bg {
   background-color: $priest;
 }
@@ -59,9 +67,11 @@ $priest: rgb(255, 255, 255);
   color: $death-knight;
   border-color: $death-knight;
 }
+
 .death-knight::before {
   background-color: $death-knight;
 }
+
 .death-knight-bg {
   background-color: $death-knight;
 }
@@ -70,9 +80,11 @@ $priest: rgb(255, 255, 255);
   color: $shaman;
   border-color: $shaman;
 }
+
 .shaman::before {
   background-color: $shaman;
 }
+
 .shaman-bg {
   background-color: $shaman;
 }
@@ -81,9 +93,11 @@ $priest: rgb(255, 255, 255);
   color: $mage;
   border-color: $mage;
 }
+
 .mage::before {
   background-color: $mage;
 }
+
 .mage-bg {
   background-color: $mage;
 }
@@ -92,9 +106,11 @@ $priest: rgb(255, 255, 255);
   color: $warlock;
   border-color: $warlock;
 }
+
 .warlock::before {
   background-color: $warlock;
 }
+
 .warlock-bg {
   background-color: $warlock;
 }
@@ -103,9 +119,11 @@ $priest: rgb(255, 255, 255);
   color: $monk;
   border-color: $monk;
 }
+
 .monk::before {
   background-color: $monk;
 }
+
 .monk-bg {
   background-color: $monk;
 }
@@ -114,9 +132,11 @@ $priest: rgb(255, 255, 255);
   color: $druid;
   border-color: $druid;
 }
+
 .druid::before {
   background-color: $druid;
 }
+
 .druid-bg {
   background-color: $druid;
 }
@@ -125,9 +145,11 @@ $priest: rgb(255, 255, 255);
   color: $demon-hunter;
   border-color: $demon-hunter;
 }
+
 .demon-hunter::before {
   background-color: $demon-hunter;
 }
+
 .demon-hunter-bg {
   background-color: $demon-hunter;
 }
@@ -136,9 +158,11 @@ $priest: rgb(255, 255, 255);
   color: $paladin;
   border-color: $paladin;
 }
+
 .paladin::before {
   background-color: $paladin;
 }
+
 .paladin-bg {
   background-color: $paladin;
 }
@@ -147,9 +171,11 @@ $priest: rgb(255, 255, 255);
   color: $rogue;
   border-color: $rogue;
 }
+
 .rogue::before {
   background-color: $rogue;
 }
+
 .rogue-bg {
   background-color: $rogue;
 }
@@ -170,13 +196,16 @@ $priest: rgb(255, 255, 255);
   .uni-section-header {
     background-color: $uni-bg-color-grey !important;
     color: inherit !important;
+
     .uni-section-header__content {
       color: inherit !important;
+
       .uni-section__content-title {
         color: inherit !important;
       }
     }
   }
+
   .uni-section-content {
     background-color: $uni-bg-color-grey;
   }
@@ -192,31 +221,31 @@ $priest: rgb(255, 255, 255);
   background-color: $uni-bg-color-grey-light !important;
 }
 
-// poe
+// components
 .poe-warrior-bg {
   background-color: rgb(175, 90, 50);
 }
 
 .poe-ranger-bg {
-  background-color: rgb(124,179,118);
+  background-color: rgb(124, 179, 118);
 }
 
 .poe-huntress-bg {
-  background-color: rgb(124,179,118);
+  background-color: rgb(124, 179, 118);
 }
 
 .poe-witch-bg {
-  background-color: rgb(154,195,201);
+  background-color: rgb(154, 195, 201);
 }
 
 .poe-sorceress-bg {
-  background-color: rgb(154,195,201);
+  background-color: rgb(154, 195, 201);
 }
 
 .poe-mercenary-bg {
-  background-color: rgb(150,175,200)
+  background-color: rgb(150, 175, 200)
 }
 
 .poe-monk-bg {
-  background-color: rgb(114,129,141);
+  background-color: rgb(114, 129, 141);
 }

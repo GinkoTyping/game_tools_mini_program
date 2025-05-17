@@ -222,14 +222,13 @@
 import { computed, ref } from 'vue';
 import { onLoad, onShow, onShareAppMessage } from '@dcloudio/uni-app';
 
-import { ILocaleLabels } from '@/interface/ILocaleLabels';
-import { queryHomeView, IHomeViewDTO } from '@/api/wow';
+import type { ILocaleLabels } from '@/interface/ILocaleLabels';
+import { queryHomeView, type IHomeViewDTO } from '@/api/wow';
 import labels from '@/data/zh.json';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { queryScorllInfo } from '@/api/shared';
 import { useUserStore } from '@/store/wowStore';
-import ExportCanvas from '@/components/ExportCanvas/ExportCanvas.vue';
 
 const navigator = useNavigator();
 onShareAppMessage(() => ({

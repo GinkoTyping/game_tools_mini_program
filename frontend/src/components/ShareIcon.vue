@@ -63,14 +63,14 @@
               </view>
               <view
               >
-                <image src="/static/images/wow/food/ability_mage_timewarp.jpg"
+                <image src="/static/images/wow/food_thumb/ability_mage_timewarp.jpg"
                 />
               </view>
             </view>
             <view class="main">
               <view>还投喂了</view>
               <view>
-                <image src="/static/images/wow/food/shard.gif" />
+                <image src="/static/images/wow/food_thumb/shard.gif" />
                 <text>大餐碎片</text>
               </view>
               <view> x1！</view>
@@ -98,7 +98,7 @@
             <view class="main">
               <view>
                 <image
-                  src="/static/images/wow/food/ability_mage_timewarp.jpg"
+                  src="/static/images/wow/food_thumb/ability_mage_timewarp.jpg"
                 />
                 剩余：
                 <text style="color: rgb(29, 245, 1)">{{
@@ -135,7 +135,7 @@
                 <image
                   v-for="(item, index) in shardList"
                   :key="index"
-                  :src="`/static/images/wow/food/${
+                  :src="`/static/images/wow/food_thumb/${
                     item ? 'shard.gif' : 'shard_a.gif'
                   }`"
                   mode="widthFix"
@@ -246,7 +246,7 @@ async function showAdDialog() {
   chickenCount.value = Math.floor(data.count / 10);
   chickenList.value = new Array(chickenCount.value).fill(1).map(item => {
     const index = Math.floor(Math.random() * 4) + 1;
-    return `/static/images/wow/food/${index}.jpg`;
+    return `/static/images/wow/food_thumb/${index}.jpg`;
   });
 
   adPopup.value?.open?.();

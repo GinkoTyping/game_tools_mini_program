@@ -24,11 +24,13 @@
         <view class="main-spec__content">
           <view class="main-spec__content-title" :class="[specInfo.roleClass]">
             <view class="class-spec">{{
-              getNickName(specInfo.roleClass, specInfo.classSpec).main
-            }}</view>
+                getNickName(specInfo.roleClass, specInfo.classSpec).main
+              }}
+            </view>
             <view class="role-class">{{
-              getNickName(specInfo.roleClass, specInfo.classSpec).sub
-            }}</view>
+                getNickName(specInfo.roleClass, specInfo.classSpec).sub
+              }}
+            </view>
             <text class="role-class">{{ serverName }}</text>
           </view>
           <view class="main-spec__content-other">
@@ -121,8 +123,9 @@
         :class="[item === 'workDay' ? 'time-range__work-day' : '']"
       >
         <view class="time-range__label">{{
-          item === 'workDay' ? '工作日' : '休息日'
-        }}</view>
+            item === 'workDay' ? '工作日' : '休息日'
+          }}
+        </view>
         <view class="time-range__bars">
           <ActiveTimeBar
             v-model="activeTime[item]"
@@ -142,8 +145,9 @@
             :color="isInactiveButton ? '#777777' : '#007aff'"
           ></uni-icons>
           <text :class="isInactiveButton ? '' : 'available'">{{
-            dynamicButtonText
-          }}</text>
+              dynamicButtonText
+            }}
+          </text>
         </view>
         <view class="button-item" @click="switchType('simple')">
           <text>收起</text>
@@ -215,7 +219,7 @@ import {
   queryAddUserTagRelation,
   queryUserTagByIds,
 } from '@/api/wow';
-import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
+import ActiveTimeBar from '@/pages-sub-wow/components/ActiveTimeBar.vue';
 import CustomTag from '@/components/CustomTag.vue';
 import { mapIconfont } from '@/utils/iconfont-map';
 
@@ -274,7 +278,7 @@ watch(
   {
     deep: true,
     immediate: true,
-  }
+  },
 );
 //#endregion
 
@@ -289,13 +293,13 @@ const getNickName = computed(() => {
   return (roleClass: string, classSpec: string) =>
     wowTag.value?.privacy?.displayWxProfile && props.data?.nickName
       ? {
-          main: props.data?.nickName,
-          sub: `${localeLabels[roleClass][classSpec]} ${localeLabels.class[roleClass]}`,
-        }
+        main: props.data?.nickName,
+        sub: `${localeLabels[roleClass][classSpec]} ${localeLabels.class[roleClass]}`,
+      }
       : {
-          main: localeLabels[roleClass][classSpec],
-          sub: localeLabels.class[roleClass],
-        };
+        main: localeLabels[roleClass][classSpec],
+        sub: localeLabels.class[roleClass],
+      };
 });
 const serverName = computed(() => {
   const serverItem = wowTag.value?.server?.[0];
@@ -470,7 +474,7 @@ async function requestBattlenet() {
   if (clipText) {
     uni.setClipboardData({
       data: clipText,
-      success: function () {
+      success: function() {
         uni.showToast({
           title: '已复制战网至粘贴板',
           icon: 'none',
@@ -487,6 +491,7 @@ function switchType(value: string) {
     emit('cell-update');
   });
 }
+
 //#endregion
 </script>
 

@@ -89,7 +89,8 @@
         class="question-button-item"
         :class="[currentIndex === 0 ? 'disabled-button' : '']"
         @click="prevQuestion"
-        >上一题</view
+      >上一题
+      </view
       >
       <view
         class="question-button-item question-button-item--active"
@@ -97,7 +98,8 @@
           currentIndex === questionList?.length ? 'disabled-button' : '',
         ]"
         @click="nextQuestion"
-        >{{ isShowReason ? '学到了, ' : '' }}下一题</view
+      >{{ isShowReason ? '学到了, ' : '' }}下一题
+      </view
       >
     </view>
   </view>
@@ -111,13 +113,13 @@ import { onLoad, onShareAppMessage, onUnload } from '@dcloudio/uni-app';
 import { computed, reactive, ref } from 'vue';
 
 import {
-  IQuestionItem,
+  type IQuestionItem,
   queryFinishQuestionDungeon,
   queryQuestions,
   queryUpdateUserQuestion,
 } from '@/api/wow';
 import { renderTip } from '@/hooks/richTextGenerator';
-import ProgressBar from '@/components/ProgressBar.vue';
+import ProgressBar from '@/pages-sub-wow/components/ProgressBar.vue';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 
@@ -169,6 +171,7 @@ const currentIndex = ref(0);
 const currentQuestion = ref<IQuestionItem>();
 const questionList = ref<IQuestionItem[]>();
 const dungeon = reactive({ id: -1, name: '', isRetry: false });
+
 function setStartQuestion() {
   // 考虑到用户可能做了一部分，从第一个用户未答的题目开始
   currentIndex.value =
@@ -181,6 +184,7 @@ function setStartQuestion() {
     });
   }
 }
+
 onLoad(async options => {
   dungeon.id = options?.dungeonId ?? 500;
   dungeon.isRetry = options?.isRetry ? JSON.parse(options?.isRetry) : false;
@@ -211,8 +215,10 @@ const selectOption = value => {
 function validateAnswer(value: number) {
   return value === currentQuestion.value?.question_text.answer.value;
 }
+
 const isAnswerOption = computed(() => (value: number) => validateAnswer(value));
 const isShowReason = ref(false);
+
 function switchPage(isNext) {
   isNext ? currentIndex.value++ : currentIndex.value--;
 
@@ -229,6 +235,7 @@ function switchPage(isNext) {
     }
   }
 }
+
 const navigator = useNavigator();
 let sendFinishSignal = false;
 const nextQuestion = async () => {
@@ -280,9 +287,11 @@ const prevQuestion = () => {
 
 //#region 图片加载优化
 const isImageLoaded = ref(false);
+
 function onImageLoad() {
   isImageLoaded.value = true;
 }
+
 //#endregion
 </script>
 
@@ -292,6 +301,7 @@ function onImageLoad() {
   flex-direction: column;
   margin-top: 130px;
 }
+
 // 广告
 .ad {
   top: 0;
@@ -305,6 +315,7 @@ function onImageLoad() {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .question-image_placeholder {
     width: 96vw;
     height: 18vh;
@@ -315,13 +326,16 @@ function onImageLoad() {
     justify-content: center;
     color: $uni-text-color-inverse;
   }
+
   .question-image {
     margin: 20rpx auto;
     border-radius: 40rpx;
   }
+
   .trash-image {
     height: 20vh;
   }
+
   .boss-image {
     width: 96vw !important;
     max-height: 30vh;
@@ -332,24 +346,29 @@ function onImageLoad() {
   margin-bottom: 30rpx;
   padding: 0 15px;
 }
+
 // 选项
 ::v-deep .uni-list {
   .uni-list--border-top {
     height: 2px;
     background-color: $uni-color-primary;
   }
+
   .uni-list--border-bottom {
     height: 2px;
     background-color: $uni-bg-color-grey;
   }
+
   .uni-list-item {
     background-color: $uni-bg-color-grey-lighter !important;
+
     .uni-list-item__container {
       padding-top: 8px;
       padding-bottom: 8px;
     }
   }
 }
+
 .slot-body,
 .slot-header,
 .slot-footer {
@@ -357,27 +376,33 @@ function onImageLoad() {
   align-items: center;
   color: #fff;
 }
+
 .slot-header {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   padding-right: 16rpx;
   width: 30rpx;
   color: $uni-text-color-inverse;
 }
+
 .show-reason {
   .slot-header {
     color: #bbb;
   }
+
   .slot-body {
     color: #bbb;
   }
+
   .uni-icons {
     color: #bbb !important;
   }
+
   .slot-answer {
     .slot-body {
       flex-direction: column;
       align-items: flex-start;
       justify-content: flex-start;
+
       .slot-body-option {
         padding-left: 44rpx;
         font-weight: bold;
@@ -385,6 +410,7 @@ function onImageLoad() {
         margin-bottom: 10rpx;
       }
     }
+
     .slot-header {
       position: absolute;
       color: $color-uncommon;
@@ -392,16 +418,19 @@ function onImageLoad() {
       justify-content: flex-start;
     }
   }
+
   .slot-error {
     .slot-body {
       // color: $color-s-tier
     }
   }
 }
+
 .slot-body {
   flex: 1;
   padding-right: 10rpx;
 }
+
 .slot-footer {
   justify-content: flex-end;
 }
@@ -418,6 +447,7 @@ function onImageLoad() {
   background-color: $uni-bg-color-grey-lighter;
   color: #fff;
   margin-bottom: 10px;
+
   &::before {
     content: '';
     position: absolute;
@@ -427,6 +457,7 @@ function onImageLoad() {
     width: 2px;
     background-color: $uni-color-primary;
   }
+
   .question-button-item {
     width: 50%;
     height: 100%;
@@ -435,10 +466,12 @@ function onImageLoad() {
     text-align: center;
     padding: 10px 0;
   }
+
   .question-button-item--active {
     background-color: $uni-color-primary;
   }
 }
+
 .disabled-button {
   color: #bbb;
   background-color: $uni-bg-color-grey-light;

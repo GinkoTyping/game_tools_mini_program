@@ -279,7 +279,8 @@
       ></uni-easyinput>
 
       <view v-if="wowForm.privacy.needConfirm"
-        >即将推出“申请”获取战网信息功能，只展示战网信息给您同意的用户。敬请期待</view
+      >即将推出“申请”获取战网信息功能，只展示战网信息给您同意的用户。敬请期待
+      </view
       >
     </uni-section>
   </view>
@@ -341,8 +342,9 @@
   </view>
   <view id="buttons" v-if="[0, 1].includes(currentTab)">
     <view class="submit-btn" @click="submit">{{
-      isEdit ? '更新' : '注册'
-    }}</view>
+        isEdit ? '更新' : '注册'
+      }}
+    </view>
   </view>
   <view class="footer"></view>
 
@@ -446,10 +448,10 @@ import { useUserStore } from '@/store/wowStore';
 import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
 import { computed, reactive, ref } from 'vue';
-import ActiveTimeBar from '@/components/ActiveTimeBar.vue';
-import FriendFooter from '@/components/FriendFooter.vue';
+import ActiveTimeBar from '@/pages-sub-wow/components/ActiveTimeBar.vue';
+import FriendFooter from '@/pages-sub-wow/components/FriendFooter.vue';
 import CustomTag from '@/components/CustomTag.vue';
-import TagCard from '@/components/TagCard.vue';
+import TagCard from '@/pages-sub-wow/components/TagCard.vue';
 
 onShareAppMessage(() => ({
   title: '标签即名片，相逢即战友',
@@ -464,11 +466,13 @@ const specOptions = computed(() => userStore.userTagOptions.specs);
 //#region 分段器
 const currentTab = ref(0);
 const tabs = ref(['基本信息', '其他(选填)', '我的名片']);
+
 function switchTab(e) {
   if (currentTab.value !== e.currentIndex) {
     currentTab.value = e.currentIndex;
   }
 }
+
 //#endregion
 
 //#region 基本信息
@@ -482,6 +486,7 @@ function getBasicTimeValues(title) {
     })),
   };
 }
+
 const wowForm = reactive<IWowTag>({
   server: [],
   jobs: [],
@@ -500,24 +505,28 @@ const battlenetStatus = ref(true);
 const battlenetDisplayInfo = computed(() => {
   return battlenetStatus.value
     ? {
-        placeholder: '输入战网昵称或者邮箱',
-        isError: false,
-      }
+      placeholder: '输入战网昵称或者邮箱',
+      isError: false,
+    }
     : {
-        placeholder: '输入战网昵称或者邮箱！或上方切换为不公开战网',
-        isError: true,
-      };
+      placeholder: '输入战网昵称或者邮箱！或上方切换为不公开战网',
+      isError: true,
+    };
 });
+
 function onPrivacyChange(e) {
   wowForm.privacy.needConfirm = !e.detail.value;
 }
+
 function showPrivacyNote() {
   uni.showToast({
     title: '',
     icon: 'none',
   });
 }
+
 const userProfile = ref();
+
 function onDisplayWxInfo(e) {
   wowForm.privacy.displayWxProfile = e.detail.value;
   uni.getUserProfile({
@@ -537,6 +546,7 @@ function onDisplayWxInfo(e) {
     },
   });
 }
+
 //#endregion
 
 //#region 职责
@@ -548,6 +558,7 @@ function selectJobs(item: IOptionItem) {
     wowForm.jobs.push(item);
   }
 }
+
 const isJobSelected = computed(() => {
   return (value: string) => wowForm.jobs.some(item => item.value === value);
 });
@@ -575,13 +586,14 @@ const popoverTitle = ref('');
 const selectionList = ref<IOptionItem[] | ISpecOptionItem[]>();
 const classPopup = ref();
 const optionDisplayType = ref('list');
+
 function openSelectionPopup(
   key: string,
   title: string,
   list: IOptionItem[],
   max: number,
   display: string = 'list',
-  formName: string
+  formName: string,
 ) {
   currentFormKey.value = key;
   currentSelectMax.value = max;
@@ -591,6 +603,7 @@ function openSelectionPopup(
   optionDisplayType.value = display;
   classPopup.value?.open?.();
 }
+
 function setSelection(params: {
   item: IOptionItem;
   key?: string;
@@ -605,11 +618,11 @@ function setSelection(params: {
   } = params;
   const formRef = formName === 'wow' ? wowForm : commonForm;
   const existed = formRef[key].find(
-    seletedItem => seletedItem.value === item.value
+    seletedItem => seletedItem.value === item.value,
   );
   if (existed) {
     formRef[key] = formRef[key].filter(
-      seletedItem => seletedItem.value !== item.value
+      seletedItem => seletedItem.value !== item.value,
     );
   } else {
     if (max && formRef[key].length >= max) {
@@ -626,6 +639,7 @@ function setSelection(params: {
     }
   }
 }
+
 const isOptionSelected = computed(() => {
   return (value: string, form, formKey?: string) =>
     form[formKey ?? currentFormKey.value]?.some(item => item.value === value);
@@ -637,6 +651,7 @@ const isAllowAddSelection = computed(() => {
 function closeClassPopup() {
   classPopup.value?.close?.();
 }
+
 //#endregion
 
 //#region 活跃时间段
@@ -646,7 +661,7 @@ const isDisplayTime = computed(
   () => (value: number, dayIndex: number) =>
     [0, 6, 12, 18].includes(value) ||
     (currentClickTime.value === `${dayIndex}-${value}` &&
-      ![1, 7, 13, 19].includes(value))
+      ![1, 7, 13, 19].includes(value)),
 );
 const timeLabelClass = computed(() => {
   return (value: number) => {
@@ -662,6 +677,7 @@ const timeLabelClass = computed(() => {
     return 'time-label-normal';
   };
 });
+
 function onClickTimeItem(dayIndex, item) {
   item.selected = !item.selected;
   clearTimeout(displayTimer);
@@ -670,6 +686,7 @@ function onClickTimeItem(dayIndex, item) {
     currentClickTime.value = '';
   }, 1000);
 }
+
 //#endregion
 
 //#region 其他信息
@@ -717,10 +734,12 @@ const commonSections = ref([
 //#region 提交
 const isEdit = ref(false);
 const infoDialog = ref();
+
 function comfirmInfoDialog() {
   currentTab.value = 1;
   infoDialog.value?.close?.();
 }
+
 function validateBattlenetId(value: string) {
   if (!value) {
     return {
@@ -738,6 +757,7 @@ function validateBattlenetId(value: string) {
     isValid: true,
   };
 }
+
 function validate() {
   const isServerValid = wowForm.server.length;
   const isJobsValid = wowForm.jobs.length;
@@ -766,13 +786,14 @@ function validate() {
     error: leastFilled.length >= 4 ? '' : '请至少填写4项基本信息',
   };
 }
+
 function handleBattlenet() {
   let isPrivacyValid;
   if (wowForm.privacy.needConfirm) {
     return;
   } else {
     const { isValid: isBattlenetValid, message } = validateBattlenetId(
-      battlenetId.value
+      battlenetId.value,
     );
     isPrivacyValid = isBattlenetValid;
     battlenetStatus.value = isBattlenetValid;
@@ -783,9 +804,11 @@ function handleBattlenet() {
     }
   }
 }
+
 function checkIsCommonTagEmpty() {
   return Object.values(commonForm).filter(value => value.length)?.length === 0;
 }
+
 async function submit() {
   const { isValid, error } = validate();
   const battlenetMsg = handleBattlenet();
@@ -837,6 +860,7 @@ async function submit() {
     });
   }
 }
+
 //#endregion
 
 //#region 预览

@@ -674,7 +674,7 @@ import TopMessage from '@/components/TopMessage.vue';
 import SpecFooter from '@/components/SpecFooter.vue';
 import ItemPopover from '@/components/ItemPopover.vue';
 import { useNavigator } from '@/hooks/navigator';
-import ExportCanvas from '@/components/ExportCanvas/ExportCanvas.vue';
+import ExportCanvas from '@/components/ExportCanvas.vue';
 
 const classKey = ref('');
 const specKey = ref('');

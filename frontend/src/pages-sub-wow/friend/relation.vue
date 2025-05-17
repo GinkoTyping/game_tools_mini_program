@@ -19,8 +19,9 @@
     <view
       class="hint"
       v-show="currentFeature === 'interestedByMe' && targetRelations?.length"
-      >有收到他们的好友邀请吗？<br />
-      如果觉得不错的话，可以主动添加试试噢!</view
+    >有收到他们的好友邀请吗？<br />
+      如果觉得不错的话，可以主动添加试试噢!
+    </view
     >
     <view class="card-list">
       <view
@@ -57,9 +58,9 @@ import {
   queryUserTagRelationByTargetId,
 } from '@/api/wow';
 import { IRelationItem } from '@/interface/IUserTag';
-import FilterHeader from '@/components/FilterHeader.vue';
-import FriendFooter from '@/components/FriendFooter.vue';
-import TagCard from '@/components/TagCard.vue';
+import FilterHeader from '@/pages-sub-wow/components/FilterHeader.vue';
+import FriendFooter from '@/pages-sub-wow/components/FriendFooter.vue';
+import TagCard from '@/pages-sub-wow/components/TagCard.vue';
 import CustomToast from '@/components/CustomToast.vue';
 import { useUserStore } from '@/store/wowStore';
 
@@ -75,7 +76,7 @@ onLoad(async () => {
   ]);
 
   [applicantRelations.value, targetRelations.value] = results.map(
-    result => result.value ?? null
+    result => result.value ?? null,
   );
 
   vListRef.value?.reload?.();
@@ -88,14 +89,14 @@ const relationParams = computed(() => {
         ? ['accepted']
         : ['pending', 'rejected'];
     const total = applicantRelations.value?.filter(item =>
-      validStatus.includes(item.status)
+      validStatus.includes(item.status),
     );
     return {
       ids:
         total
           ?.slice(
             (currentPageNo.value - 1) * currentPageSize.value,
-            currentPageNo.value * currentPageSize.value
+            currentPageNo.value * currentPageSize.value,
           )
           ?.map(item => item.tagId) ?? [],
       requireRelation: true,
@@ -104,14 +105,14 @@ const relationParams = computed(() => {
   }
   if (currentFeature.value === 'interestedByMe') {
     const total = targetRelations.value?.filter(
-      item => item.status === 'accepted'
+      item => item.status === 'accepted',
     );
     return {
       userIds:
         total
           ?.slice(
             (currentPageNo.value - 1) * currentPageSize.value,
-            currentPageNo.value * currentPageSize.value
+            currentPageNo.value * currentPageSize.value,
           )
           ?.map(item => item.applicantUserId) ?? [],
       requireRelation: false,
@@ -124,6 +125,7 @@ const relationParams = computed(() => {
 
 const currentPageNo = ref(1);
 let currentPageSize = ref(10);
+
 async function queryList(pageNo: number, pageSize: number, from: string) {
   currentPageNo.value = pageNo;
   currentPageSize.value = pageSize;
@@ -132,7 +134,7 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
     const data = await queryUserTagByIds(relationParams.value);
     if (from !== 'load-more' && data.length) {
       toastRef.value.showToast(
-        `获取了${relationParams.value?.count ?? 0}张名片`
+        `获取了${relationParams.value?.count ?? 0}张名片`,
       );
     }
     vListRef.value?.complete(data);
@@ -142,9 +144,11 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
 }
 
 const virtualList = ref();
+
 function virtualListChange(vList) {
   virtualList.value = vList;
 }
+
 function handleCellUpdate(index: number) {
   vListRef.value?.didUpdateVirtualListCell?.(index);
 }
@@ -181,6 +185,7 @@ async function switchFeature() {
     store.notViewedRelations.count = 0;
   }
 }
+
 //#endregion
 
 //#region 文字样式
@@ -189,7 +194,7 @@ const isUnread = computed(() => {
     return (
       currentFeature.value === 'interestedByMe' &&
       store.notViewedRelations?.list?.some(
-        item => item.applicantUserId === tagUserId
+        item => item.applicantUserId === tagUserId,
       )
     );
   };

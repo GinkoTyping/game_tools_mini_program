@@ -70,16 +70,16 @@ import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { nextTick, reactive, ref } from 'vue';
 
 import {
-  IFilterParams,
-  ITagCardItem,
+  type IFilterParams,
+  type ITagCardItem,
   queryUserTagByFilter,
   queryUserTagFilterOptions,
 } from '@/api/wow';
-import TagCard from '@/components/TagCard.vue';
+import TagCard from '@/pages-sub-wow/components/TagCard.vue';
+import FilterHeader from '@/pages-sub-wow/components/FilterHeader.vue';
+import FriendFooter from '@/pages-sub-wow/components/FriendFooter.vue';
+import FilterPage from '@/pages-sub-wow/components/FilterPage.vue';
 import CustomTag from '@/components/CustomTag.vue';
-import FilterHeader from '@/components/FilterHeader.vue';
-import FriendFooter from '@/components/FriendFooter.vue';
-import FilterPage from '@/components/FilterPage.vue';
 import CustomToast from '@/components/CustomToast.vue';
 
 onShareAppMessage(() => ({
@@ -116,6 +116,7 @@ const featureFilters = ref([
     value: 'delves',
   },
 ]);
+
 function switchFeature(value: string) {
   isDetailFiltering.value = false;
   setGameStyleFilter();
@@ -132,6 +133,7 @@ const filterParams = reactive<IFilterParams>({
   lastUpdatedAt: '',
   pageSize: 10,
 });
+
 async function setGameStyleFilter() {
   // 重置参数
   filterParams.filter = {
@@ -167,15 +169,18 @@ async function setGameStyleFilter() {
 
   vListRef.value?.reload?.();
 }
+
 //#endregion
 
 //#region 过滤页面
 const showFilterPage = ref(false);
 const filterOptions = ref();
 const isDetailFiltering = ref(false);
+
 function onSwitchFilterPage() {
   showFilterPage.value = !showFilterPage.value;
 }
+
 async function onFilterOptionChange(params) {
   filterParams.filter = params;
   filterParams.lastId = -1;
@@ -184,6 +189,7 @@ async function onFilterOptionChange(params) {
   isDetailFiltering.value = true;
   vListRef.value?.reload?.();
 }
+
 //#endregion
 
 //#region 广告控制 TODO: 后端控制广告数量，监控广告数量
@@ -193,6 +199,7 @@ const adState = reactive({
   todayAdCount: 0,
   minInterval: 20 * 1000,
 });
+
 function isInsertAd(from) {
   // 初始化展示广告的概率降低
   if (
@@ -208,25 +215,30 @@ function isInsertAd(from) {
 
   return frequencyCondition && Math.random() < getDynamicProbability();
 }
+
 function getDynamicProbability() {
   if (adState.todayAdCount <= 3) return 0.8; // 前3次高概率
   if (adState.todayAdCount <= 6) return 0.5;
   return 0.3; // 后续降频
 }
+
 function updateAdState() {
   adState.lastAdTimestamp = Date.now();
   adState.todayAdCount++;
 }
+
 function createAdItem() {
   return {
     isAd: true,
     id: Date.now(),
   } as ITagCardItem;
 }
+
 function onAdLoad(index: number) {
   updateAdState();
   handleCellUpdate(index);
 }
+
 //#endregion
 
 //#region 虚拟列表
@@ -238,7 +250,9 @@ const virtualList = ref();
 function virtualListChange(vList) {
   virtualList.value = vList;
 }
+
 const toastRef = ref();
+
 async function queryList(pageNo: number, pageSize: number, from: string) {
   if (['load-more'].includes(from) && cardList.length) {
     const lastTagCard = cardList.slice(-1)[0];
@@ -269,12 +283,14 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
 
   vListRef.value?.complete(data);
 }
+
 function handleCellUpdate(index: number) {
   // 为了确保在触发didUpdateVirtualListCell时虚拟列表的高度缓存已就绪
   nextTick(() => {
     vListRef.value?.updateVirtualListCell?.(index);
   });
 }
+
 //#endregion
 
 onLoad(async () => {

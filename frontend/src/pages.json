@@ -40,23 +40,6 @@
   ],
   "subPackages": [
     {
-      "root": "pages-poe",
-      "pages": [
-        {
-          "path": "ladders/index",
-          "style": {
-            "navigationBarTitleText": "流放之路2 天梯"
-          }
-        },
-        {
-          "path": "ladders/detail",
-          "style": {
-            "navigationBarTitleText": "流放之路2 天梯"
-          }
-        }
-      ]
-    },
-    {
       "root": "pages-sub-wow",
       "pages": [
         {

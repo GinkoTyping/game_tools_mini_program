@@ -48,7 +48,8 @@
               class="ascendancy-row__bg-fill"
               :class="`poe-${item.class}-bg`"
               :style="{ width: item.percentage }"
-              >{{ item.ascendancy }}({{ item.count }}人)</view
+            >{{ item.ascendancy }}({{ item.count }}人)
+            </view
             >
           </view>
         </view>
@@ -75,8 +76,8 @@ import {
 import { calculateRelativeTime } from '@/utils/time';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
-import LadderTable from '@/components/poe/LadderTable.vue';
-import { useLadderTable } from '@/hooks/poe/ladderTable';
+import LadderTable from '@/pages-poe/components/LadderTable.vue';
+import { useLadderTable } from '@/pages-poe/hooks/poe/ladderTable';
 
 const navigator = useNavigator();
 const ladders = ref();
@@ -89,7 +90,7 @@ onLoad(async () => {
 //#region 样式
 const displayColumns = computed(() => {
   return ladders.value?.columns.filter(
-    (column, index) => ladders.value?.columnDisplay[index]
+    (column, index) => ladders.value?.columnDisplay[index],
   );
 });
 const relativeUpdateTime = computed(() => {
@@ -112,6 +113,7 @@ const getAscendancyByType = computed(() => {
     ascendancyRank.value?.find(item => item.type === key)?.rankData as any;
 });
 const { classIconUrl } = useLadderTable();
+
 //#endregion
 
 function switchDisplayType(key: string) {
@@ -142,6 +144,7 @@ function switchDisplayType(key: string) {
     > view {
       padding: 14rpx 0;
     }
+
     .icon-wrap {
       display: flex;
       align-items: center;
@@ -220,18 +223,22 @@ $light-border: rgb(68, 68, 68);
 
 .ascendancy {
   padding: 0 20rpx;
+
   .ascendancy-row {
     display: flex;
     align-items: center;
     border-bottom: 1px $uni-bg-color solid !important;
+
     image {
       width: 50rpx;
     }
+
     .ascendancy-row__bg {
       height: 50rpx;
       line-height: 50rpx;
       flex: 1;
       background-color: $uni-bg-color-grey-lighter;
+
       .ascendancy-row__bg-fill {
         padding: 0 10rpx;
         box-sizing: border-box;

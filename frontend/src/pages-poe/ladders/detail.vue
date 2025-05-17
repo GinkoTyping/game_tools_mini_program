@@ -56,7 +56,7 @@ import { onLoad } from '@dcloudio/uni-app';
 import { nextTick, reactive, ref } from 'vue';
 
 import { queryLadder } from '@/api/poe';
-import { useLadderTable } from '@/hooks/poe/ladderTable';
+import { useLadderTable } from '@/pages-poe/hooks/poe/ladderTable';
 
 const { accountColor, classIconUrl, displayColumns } = useLadderTable();
 const options = reactive({ type: '', name: '' });
@@ -73,13 +73,16 @@ onLoad(async query => {
 
 const vListRef = ref();
 const virtualList = ref();
+
 function virtualListChange(vList) {
   virtualList.value = vList;
 }
+
 const tableCache = ref();
+
 async function queryList(pageNo: number, pageSize: number, from: string) {
   if (options.type) {
-    const lastRank = from === 'load-more' ? tableCache.value?.data?.slice(-1)[0].rank : 0
+    const lastRank = from === 'load-more' ? tableCache.value?.data?.slice(-1)[0].rank : 0;
     const data = await queryLadder({
       pageSize,
       lastRank,
@@ -93,7 +96,7 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
     }
 
     console.log(from, data.data);
-    
+
     // 不深拷贝会造成更新异常
     vListRef.value?.complete([...data.data]);
   }

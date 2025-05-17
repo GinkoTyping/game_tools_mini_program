@@ -10,7 +10,8 @@
           )"
           :key="column"
           width="30"
-          >{{ column }}</uni-th
+        >{{ column }}
+        </uni-th
         >
       </uni-tr>
       <uni-tr v-for="(item, index) in tableData" :key="index">
@@ -34,13 +35,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useLadderTable } from '@/hooks/poe/ladderTable';
+import { useLadderTable } from '@/pages-poe/hooks/poe/ladderTable';
 
 const tableData = defineModel('data', { type: Array });
 const props = defineProps({
-  columns: Array<String>,
-  rowDisplay: Array<String>,
-  columnDisplay: Array<String>,
+  columns: Array<string>,
+  rowDisplay: Array<string>,
+  columnDisplay: Array<string>,
 });
 const { accountColor, classIconUrl, displayColumns } = useLadderTable();
 </script>
