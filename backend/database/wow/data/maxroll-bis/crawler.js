@@ -172,6 +172,7 @@ function mapEnhancementId(icon, classSpec, roleClass) {
     case '5931390.webp':
       return 213479;
 
+    // 装备美化
     case '5976899.webp':
       return 226024;
 
@@ -277,3 +278,5 @@ export async function collectMaxrollBis(
   }
   return null;
 }
+
+collectMaxrollBis('discipline', 'priest', true);

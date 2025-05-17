@@ -197,6 +197,13 @@ function combineEnhancement(item, maxrollEnhancements, archonEnhancements) {
     enhancementsByMaxroll =
       maxrollEnhancements.find((maxrollItem) => maxrollItem.slot === item.slot)
         ?.enhancements ?? [];
+    enhancementsByMaxroll = enhancementsByMaxroll.filter(maxrollEnhancement => {
+      // maxroll中收集了装备美化的数据
+      if (item.source?.source === '制造装备') {
+        return true;
+      }
+      return maxrollEnhancement.item_class === '宝石';
+    })
 
     enhancementsByArchon =
       cloneArchonData
