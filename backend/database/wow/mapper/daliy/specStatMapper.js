@@ -38,7 +38,7 @@ async function updateSpecDpsRank(params) {
 
 async function getSpec(classSpec, roleClass) {
   const list = await db.get(
-    `SELECT * FROM wow_daily_spec_dps_rank ORDER BY week_id DESC LIMIT 1`
+    `SELECT * FROM wow_daily_spec_dps_rank ORDER BY id DESC LIMIT 1`
   );
   let output;
   if (list?.data) {
