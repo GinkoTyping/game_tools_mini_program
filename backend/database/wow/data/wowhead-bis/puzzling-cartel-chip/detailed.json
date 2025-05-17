@@ -479,7 +479,7 @@
           }
         },
         {
-          "type": "NGA-巨膜蘸酱",
+          "type": "泥潭-巨膜蘸酱",
           "info": "如果你有H的壮胆壶/纸牌屋/加斯特的宝钻，那么对应的M装备降档; 如果你觉得自己很菜玩不来双主动，那么最上品降档",
           "data": {
             "filters": [],
@@ -512,7 +512,7 @@
           }
         },
         {
-          "type": "NGA-巨膜蘸酱(大秘境兑换)",
+          "type": "泥潭-巨膜蘸酱(大秘境兑换)",
           "info": "",
           "data": {
             "filters": [],
@@ -816,7 +816,7 @@
           }
         },
         {
-          "type": "NGA-凛冽寒风",
+          "type": "泥潭-凛冽寒风",
           "info": "有678印章或665哈哈棱镜时降低纸牌屋优先级；如果用神经突触强化器就跳过纸牌屋",
           "data": {
             "filters": [],
@@ -856,6 +856,39 @@
                 "rarity": "mythic",
                 "info": "",
                 "index": 3
+              }
+            ]
+          }
+        },
+        {
+          "type": "某站-雨帆灬",
+          "info": "如果是车间法杖，就跳过纸牌屋。摘自视频BV号: BV1kuEJzXEig",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230192
+              },
+              {
+                "id": 230027,
+                "rarity": "mythic",
+                "info": "如果是车间法杖，就跳过纸牌屋",
+                "index": 0
+              },
+              {
+                "id": 219305,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 219296,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
               }
             ]
           }
@@ -940,7 +973,7 @@
           }
         },
         {
-          "type": "NGA-凛冽寒风",
+          "type": "泥潭-凛冽寒风",
           "info": "有678印章或665哈哈棱镜时降低纸牌屋优先级",
           "data": {
             "filters": [],
@@ -986,6 +1019,27 @@
                 "rarity": "mythic",
                 "info": "",
                 "index": 1
+              }
+            ]
+          }
+        },
+        {
+          "type": "某站-雨帆灬",
+          "info": "摘自视频BV号: BV1kuEJzXEig",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230192
+              },
+              {
+                "id": 230027,
+                "rarity": "mythic",
+                "info": "",
+                "index": 0
               }
             ]
           }
@@ -1061,7 +1115,7 @@
           }
         },
         {
-          "type": "NGA-凛冽寒风",
+          "type": "泥潭-凛冽寒风",
           "info": "",
           "data": {
             "filters": [],
@@ -1095,6 +1149,33 @@
                 "rarity": "mythic",
                 "info": "",
                 "index": 4
+              }
+            ]
+          }
+        },
+        {
+          "type": "某站-雨帆灬",
+          "info": "原视频BV号: BV1kuEJzXEig",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "rarity": "mythic",
+                "info": "",
+                "id": 230192
+              },
+              {
+                "id": 219305,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
+              },
+              {
+                "id": 219296,
+                "rarity": "mythic",
+                "info": "",
+                "index": 1
               }
             ]
           }
@@ -2663,6 +2744,78 @@
                 "name": "纸牌屋",
                 "rarity": "heroic",
                 "info": "主玩黑暗游侠的话，可以兑换。但如果你主玩哨兵，或者已经有一个M印章的话，就没必要换了"
+              }
+            ]
+          }
+        },
+        {
+          "type": "某站-七猫群啸",
+          "info": "以上结果基于木桩模拟的输出排行，可供参考。摘自视频BV号: BV1u2EqzHExP",
+          "data": {
+            "filters": [],
+            "options": [
+              {
+                "index": 0,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "mythic",
+                "info": "相比H印章提升1.2%，相比H纸牌屋提升0.7%"
+              },
+              {
+                "index": 1,
+                "id": 234217,
+                "name": "哈哈棱镜",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 1,
+                "id": 219308,
+                "name": "“隐修院印章”",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 2,
+                "id": 232541,
+                "name": "临时制作的爆盐起搏器",
+                "rarity": "mythic",
+                "info": "相比H起搏器提升0.7%"
+              },
+              {
+                "index": 3,
+                "id": 231265,
+                "name": "加斯特的宝钻",
+                "rarity": "mythic",
+                "info": "需要暴击属性足够高"
+              },
+              {
+                "index": 4,
+                "id": 232485,
+                "name": "机械核心增幅器",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 4,
+                "id": 230027,
+                "name": "纸牌屋",
+                "rarity": "heroic",
+                "info": ""
+              },
+              {
+                "index": 5,
+                "id": 235363,
+                "name": "可疑的能量饮料",
+                "rarity": "mythic",
+                "info": ""
+              },
+              {
+                "index": 6,
+                "id": 228893,
+                "name": "“小朋友”",
+                "rarity": "mythic",
+                "info": "相比M2的弓提升0.3%"
               }
             ]
           }
