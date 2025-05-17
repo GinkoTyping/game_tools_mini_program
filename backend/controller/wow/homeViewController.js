@@ -1,15 +1,25 @@
-import { useTarotMapper } from '../../database/common/mapper/dynamic/tarotMapper.js';
+import {
+  useTarotMapper,
+} from '../../database/common/mapper/dynamic/tarotMapper.js';
 import {
   getCommonDynamicDB,
   getDB,
   getDailyDB,
   getDynamicDB,
 } from '../../database/utils/index.js';
-import { useSpecStatMapper } from '../../database/wow/mapper/daliy/specStatMapper.js';
-import { useUserTagMapper } from '../../database/wow/mapper/dynamic/userTag.mapper.js';
+import {
+  useSpecStatMapper,
+} from '../../database/wow/mapper/daliy/specStatMapper.js';
+import {
+  useUserTagMapper,
+} from '../../database/wow/mapper/dynamic/userTag.mapper.js';
 import { useHomeViewMapper } from '../../database/wow/mapper/homeViewMapper.js';
-import { useNpcAndSpellMarkMapper } from '../../database/wow/mapper/npcAndSpellMarkMapper.js';
-import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
+import {
+  useNpcAndSpellMarkMapper,
+} from '../../database/wow/mapper/npcAndSpellMarkMapper.js';
+import {
+  useSpecBisCountMapper,
+} from '../../database/wow/mapper/specBisCountMapper.js';
 import { useTierListMapper } from '../../database/wow/mapper/tierListMapper.js';
 import { getWeekCount } from '../../util/wow.js';
 
@@ -52,9 +62,11 @@ async function getCarouselsByDpsRank() {
 
   return carousels;
 }
+
 async function getMythicDungeonMarks() {
   const { npcMarks, spellMarks } =
     await npcAndSpellMapper.getAllNpcAndSpellMarks();
+
   function getCount(marks) {
     return marks.reduce((pre, cur) => {
       const count =
@@ -63,6 +75,7 @@ async function getMythicDungeonMarks() {
       return pre;
     }, 0);
   }
+
   return getCount(npcMarks) + getCount(spellMarks);
 }
 
@@ -74,7 +87,6 @@ export async function queryHomeView(req, res) {
         value: 'rating',
         icon: 'auth-filled',
         page: '/pages/tier-list/index?versionId=11.1&activityType=MYTHIC&role=DPS',
-        feature: false,
         feature: true,
       },
       {
@@ -103,6 +115,43 @@ export async function queryHomeView(req, res) {
         value: 'rating',
         icon: 'pyq',
         page: '/pages/mythic-dungeon/list',
+        feature: false,
+      },
+    ],
+    newEntries: [
+      {
+        label: '专精排行',
+        value: 'rating',
+        icon: 'auth-filled',
+        page: '/pages/tier-list/index?versionId=11.1&activityType=MYTHIC&role=DPS',
+        feature: true,
+      },
+      {
+        label: '专精数据',
+        value: 'rating',
+        icon: 'fire-filled',
+        page: '/pages/spec-popularity/index',
+        feature: true,
+      },
+      {
+        label: '专精攻略',
+        value: 'rating',
+        icon: 'map-filled',
+        page: '/pages/spec-list/index',
+        color: '#e37e00',
+      },
+      {
+        label: '做题家',
+        value: 'rating',
+        icon: 'wallet-filled',
+        page: '/pages-sub-wow/question/index',
+        feature: false,
+      },
+      {
+        label: '大秘境',
+        value: 'rating',
+        icon: 'pyq',
+        page: '/pages-sub-wow/mythic-dungeon/list',
         feature: false,
       },
     ],
