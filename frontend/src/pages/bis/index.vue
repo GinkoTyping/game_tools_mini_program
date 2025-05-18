@@ -388,6 +388,7 @@
 
       </uni-card>
     </uni-section>
+
     <uni-section class="trinkets" :class="[classKey]" title="饰品">
 
       <uni-card class="section-card">
@@ -443,9 +444,13 @@
                 }}
               </view>
             </view>
-            <view class="popular-trinkets__item-right">{{
-                item.popularity
-              }}
+            <view class="popular-trinkets__item-right">
+              <text class="popular-trinkets__item-right__max-key">{{ item.maxKey }}</text>
+              <text class="popular-trinkets__item-right__dps">{{ getTrinketDps(item.dps) }}</text>
+              <text class="popular-trinkets__item-right__popularity">{{
+                  item.popularity
+                }}
+              </text>
             </view>
           </view>
         </view>
@@ -484,7 +489,7 @@
         >
           <view class="data-item">
             <image :src="currentImageSrc(item)" mode="widthFix" />
-            <text class="data-item__name" :class="[getItemRarityClass(item.rarity)]">{{ getItemRarityName(item.rarity)
+            <text class="advice-item__name" :class="[getItemRarityClass(item.rarity)]">{{ getItemRarityName(item.rarity)
               }}
             </text>
             <view class="advice-item__name"
@@ -499,7 +504,7 @@
           <view class="data-info" v-show="item.showInfo">{{ item.info }}</view>
         </view>
 
-        <text>{{ displayAdviceData?.info }}</text>
+        <text class="overall-info">{{ displayAdviceData?.info }}</text>
       </uni-card>
     </uni-section>
   </template>
@@ -1040,6 +1045,11 @@ function switchTrinketTab(e) {
   }
 }
 
+const getTrinketDps = computed(() => {
+  return (rawDps: string) => rawDps
+    ? (Number(rawDps?.replaceAll(',', '')) / 1000000).toFixed(2) + 'M'
+    : 0;
+});
 //#endregion
 
 //#region 大秘境TIPS
@@ -1051,12 +1061,12 @@ const tipCollapseIndex = ref(['0']);
 // TODO: 引入hook替代
 const renderTip = computed(() => {
   return (text: string) => {
-    const wrappedText = `<p style="font-size: 14px;">${text}</p>`;
+    const wrappedText = `<p style="font-size: 28rpx;">${text}</p>`;
 
     return wrappedText.replace(
       /\[(.*?)\]/g,
       (match, p) =>
-        `<b style="font-size: 14px;color: rgb(255, 209, 0); font-weight: bold;">${p}</b>`,
+        `<b style="font-size: 28rpx;color: rgb(255, 209, 0); font-weight: bold;">${p}</b>`,
     );
   };
 });
@@ -1566,16 +1576,16 @@ $light-border: rgb(68, 68, 68);
     }
 
     & > .ul {
-      padding: 0 12px;
-      font-size: 14px;
+      padding: 0 24rpx;
+      font-size: 28rpx;
       font-weight: bold;
       color: $uni-color-primary;
 
       > .li > .ul {
-        margin-left: 16px;
+        margin-left: 32rpx;
 
         & > .li > .ul {
-          margin-left: 16px;
+          margin-left: 32rpx;
         }
       }
     }
@@ -1717,11 +1727,12 @@ $light-border: rgb(68, 68, 68);
 
   text {
     width: 19%;
-    margin-bottom: 10px;
-    padding: 0 10px;
+    margin-bottom: 20rpx;
+    padding: 0 20rpx;
     font-weight: 800;
-    line-height: 30px;
-    height: 30px;
+    font-size: 30rpx;
+    line-height: 60rpx;
+    height: 60rpx;
     position: relative;
 
     &:not(:last-child):not(:nth-child(4))::after {
@@ -1730,8 +1741,8 @@ $light-border: rgb(68, 68, 68);
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 2px;
-      height: 10px;
+      width: 4rpx;
+      height: 20rpx;
       background-color: $light-border;
     }
   }
@@ -1742,11 +1753,11 @@ $light-border: rgb(68, 68, 68);
   display: flex;
 
   .tier-label {
-    width: 90px;
-    min-height: 80px;
-    border-radius: 6px;
-    font-size: 50px;
-    line-height: 50px;
+    width: 180rpx;
+    min-height: 160rpx;
+    border-radius: 12rpx;
+    font-size: 100rpx;
+    line-height: 100rpx;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1793,6 +1804,7 @@ $light-border: rgb(68, 68, 68);
   .popular-trinkets__item {
     display: flex;
     justify-content: space-between;
+    font-size: 26rpx;
 
     .popular-trinkets__item-left {
       display: flex;
@@ -1809,6 +1821,23 @@ $light-border: rgb(68, 68, 68);
 
     .popular-trinkets__item-right {
       font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30rpx;
+
+      .popular-trinkets__item-right__max-key {
+
+      }
+
+      .popular-trinkets__item-right__dps {
+
+      }
+
+      .popular-trinkets__item-right__popularity {
+        text-align: right;
+        min-width: 80rpx;
+      }
     }
 
     &:nth-child(1),
@@ -1918,14 +1947,14 @@ $light-border: rgb(68, 68, 68);
       text {
         color: $uni-color-primary;
         font-weight: bold;
-        font-size: 16px;
+        font-size: 30rpx;
       }
     }
 
     .uni-list-item__extra {
       text {
         color: #bbb;
-        font-size: 12px;
+        font-size: 24rpx;
       }
     }
   }
@@ -1970,20 +1999,19 @@ $light-border: rgb(68, 68, 68);
     }
   }
 
+  .overall-info {
+    color: #fff;
+    font-size: 26rpx;
+  }
+
   .advice-item {
-
-    font-size: 30rpx;
-
+    font-size: 26rpx;
     margin-bottom: 12rpx;
 
     .data-item {
       display: flex;
       gap: 12rpx;
       align-items: center;
-
-      .data-item__name {
-        font-weight: bold;
-      }
     }
 
     .data-info {
@@ -2001,6 +2029,7 @@ $light-border: rgb(68, 68, 68);
 
     .advice-item__name {
       color: $color-rare;
+      font-weight: bold;
     }
 
     .advice-item__name--heroic {
