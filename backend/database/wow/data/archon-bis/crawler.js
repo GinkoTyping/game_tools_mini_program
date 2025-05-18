@@ -353,9 +353,10 @@ async function queryGears(hash, classSpec, roleClass) {
 
     // 如果没有找到 BIS 标签的装备，默认取第一个
     if (collectCount === 0) {
+      console.log('未匹配BIS装备，使用热门度第一代替', `${classSpec} ${roleClass}`, slotLabel);
       slotLabel === 'Trinket'
-        ? trinkets.push(getFormatItem(item))
-        : bisGears.push(getFormatItem(item));
+        ? trinkets.push(getFormatItem(kind.data?.[0]))
+        : bisGears.push(getFormatItem(kind.data?.[0]));
     }
   });
 
