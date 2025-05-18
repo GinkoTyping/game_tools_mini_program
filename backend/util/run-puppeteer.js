@@ -23,7 +23,7 @@ export async function getCheerioByPuppeteer({
       html = fs.readFileSync(path.resolve(__dirname, staticFilePath), 'utf-8');
     } else {
       // puppeteer的waitUntil没有设置networkidle0 networkidle2 等，会导致异步加载的DOM无法获取，所以必须设置 selector
-      if (!waitForSelector) {
+      if (!waitForSelector && waitForSelector !== null) {
         throw new Error('Empty selector!');
       }
 
@@ -38,9 +38,14 @@ export async function getCheerioByPuppeteer({
       });
       const page = await browser.newPage();
       await page.setUserAgent(
-        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...'
-      );
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...');
       await page.setViewport({ width: 1280, height: 800 });
+      if (onResponse) {
+        page.on('response', (response) => {
+          onResponse(response);
+        });
+      }
+
       await page.goto(urlPath, {
         // 缩短超时时间 避免软任务运行过长
         timeout: 30000,
@@ -56,6 +61,14 @@ export async function getCheerioByPuppeteer({
         } catch (error) {
           console.error(`等待选择器失败: ${waitForSelector}`, error.message);
         }
+      } else {
+        try {
+          await page.waitForNetworkIdle({
+            idleTime: 500, timeout: 5000,
+          });
+        } catch (error) {
+          console.error('等待网络空闲超时:', error.message);
+        }
       }
 
       html = await page.content();
@@ -65,7 +78,7 @@ export async function getCheerioByPuppeteer({
         fs.writeFileSync(
           path.resolve(__dirname, staticFilePath),
           html,
-          'utf-8'
+          'utf-8',
         );
       }
     }

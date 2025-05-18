@@ -47,11 +47,15 @@ function mapStat(val) {
   }
 }
 
-// TODO: 计算百分比 https://maxroll.gg/wow/resources/stat-diminishing-returns
 async function getStatsOverview(classSpec, roleClass, useCache) {
   const $ = await useCheerioContext(
-    getOverviewStaticFilePath(classSpec, roleClass),
-    getOverviewUrl(classSpec, roleClass), useCache, 20000,
+    getOverviewStaticFilePath(
+      classSpec,
+      roleClass,
+    ),
+    getOverviewUrl(classSpec, roleClass),
+    useCache,
+    20000,
   );
   const priority = $(
     '#stats .builds-stat-priority-section>.builds-stat-priority-section__container .builds-stat-priority-section__container__inner')
@@ -67,10 +71,7 @@ async function getStatsOverview(classSpec, roleClass, useCache) {
         key,
         label: mapStat(key),
         value,
-        ratio: calculateStatRatio(
-          key,
-          value,
-        ),
+        ratio: calculateStatRatio(key, value),
       };
     })
     .get();
@@ -79,21 +80,21 @@ async function getStatsOverview(classSpec, roleClass, useCache) {
   const relations = [];
   priority.forEach((item, index) => {
     if (index > 0) {
-      relations.push(
-        Math.abs(priority[index].value - priority[index - 1].value) > Math.max(
-          priority[index].value, priority[index - 1].value) / 10 ? 1 : 10);
+      relations.push(Math.abs(priority[index].value - priority[index - 1].value) > Math.max(
+        priority[index].value,
+        priority[index - 1].value,
+      ) / 10 ? 1 : 10);
     }
   });
   return {
-    priority,
-    relations,
+    priority, relations,
   };
 }
 
+
 async function getBisOverview(classSpec, roleClass, useCache) {
   const $ = await getCheerioByPuppeteer({
-    staticFilePath: getStaticFilePath(
-      classSpec, roleClass),
+    staticFilePath: getStaticFilePath(classSpec, roleClass),
     urlPath: getUrl(classSpec, roleClass),
     useCache,
     waitForSelector: '#gear-tables .builds-gear-tables-section__group a a[data-disable-wowhead-tooltip=true]',
@@ -228,3 +229,46 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
     stats,
   };
 }
+
+let pathHash = '';
+
+async function getAllData(classSpec, roleClass) {
+  let overviewData;
+  let bisData;
+  if (pathHash) {
+
+  } else {
+    const $ = await getCheerioByPuppeteer({
+      staticFilePath: getStaticFilePath(classSpec, roleClass),
+      urlPath: getUrl(classSpec, roleClass),
+      useCache: false,
+      waitForSelector: null,
+      async onResponse(response) {
+        const url = new URL(response.url());
+        const pathname = url.pathname;
+        if (url.pathname.includes('/this-week.json')) {
+          if (!pathHash) {
+            const match = url.pathname.match(/^\/_next\/data\/([a-zA-Z0-9_]+)\//);
+            pathHash = match?.[1];
+          }
+          if (url.pathname.includes('/overview/')) {
+            const data = await response.json();
+            overviewData = data.pageProps?.page?.sections;
+          } else if (url.pathname.includes('/gear-and-tier-set/')) {
+            const data = await response.json();
+            bisData = data.pageProps?.page?.sections;
+          }
+        }
+      },
+    });
+  }
+
+  console.log({ overviewData, bisData });
+}
+
+async function collectByApi(classSpec, roleClass) {
+  await getAllData(classSpec, roleClass);
+  console.log('done');
+}
+
+collectByApi('blood', 'death-knight');
