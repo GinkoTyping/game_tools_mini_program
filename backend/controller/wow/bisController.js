@@ -360,6 +360,41 @@ async function mapWowheadBis(wowheadBis) {
   };
 }
 
+function mapArchonStatsData(statsData) {
+  function mergeIntervals(data) {
+    const merged = [];
+    for (let i = 0; i < data.length; i += 3) {
+      const group = data.slice(i, i + 3);
+      const total = group.reduce((sum, item) => sum + item.sampleCount, 0);
+      const lowerEnd = group[group.length - 1]?.interval.lowerEnd ?? 0;
+      const upperEnd = group[0]?.interval.upperEnd ?? 0;
+      merged.push({
+        sampleCount: total,
+        interval: { lowerEnd, upperEnd },
+      });
+    }
+    return merged;
+  }
+
+  if (statsData) {
+    statsData.priority = statsData.priority.map(item => {
+      return {
+        ...item,
+        data: mergeIntervals(item.data),
+      };
+    });
+
+    statsData.priority.forEach((item) => {
+      const max = [...item.data].sort((a, b) => b.sampleCount - a.sampleCount)[0].sampleCount;
+      item.data = item.data.map(count => ({
+        ...count,
+        percentage: (count.sampleCount / max * 100).toFixed(2) + '%',
+      }));
+    });
+  }
+  return statsData;
+}
+
 export async function getBisBySpec(req, res) {
   try {
     const roleClass = req.params.roleClass;
@@ -411,6 +446,8 @@ export async function getBisBySpec(req, res) {
         }),
       )
     ).map((result) => result.value);
+
+    const archonBisStats = mapArchonStatsData(archonBis?.stats);
 
     // 排名的信息
     const mythicDpsTier = await specStatMapper.getSpec(classSpec, roleClass);
