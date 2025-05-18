@@ -470,7 +470,7 @@ export async function getBisBySpec(req, res) {
       bis_items,
       bis_trinkets,
       detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
-      archon_stats_priority: archonBis?.stats,
+      archon_stats_priority: archonBisStats,
       ratings: JSON.parse(bisData.ratings),
       talents: JSON.parse(bisData.talents),
       wowhead_bis: wowheadBis,

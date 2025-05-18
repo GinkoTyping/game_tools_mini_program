@@ -4,7 +4,7 @@
       id="overview"
       :class="[classKey]"
       title="总览"
-      :sub-title="`已更新：${currentData?.updatedAt}`"
+      :sub-title="`上次更新：${currentData?.updatedAt}`"
     >
       <uni-card class="section-card">
         <view
@@ -78,14 +78,7 @@
           </view>
         </view>
       </uni-card>
-    </uni-section>
 
-    <uni-section
-      :class="[classKey]"
-      title="属性优先级"
-      @click="switchStatSource"
-      :sub-title="statSourceText"
-    >
       <uni-card class="section-card" v-show="statSource === 'wowhead'">
         <view class="menu stat-menu">
           <text
@@ -131,16 +124,30 @@
       </uni-card>
 
       <uni-card class="section-card" v-show="statSource === 'maxroll'">
+        <view class="stats-info">
+          基于前
+          <text> 5%</text>
+          高层大秘境 样本数:
+          <text>{{ currentData?.archonStatsPriority?.sampleCount }}</text>
+        </view>
         <view class="stats">
           <view class="stats__item">
-            <text :style="{ color: getStatLabel(0).color }">{{
-                getStatLabel(0).label
-              }}
-            </text>
+            <view :style="{ color: getStatLabel(0).color }">
+              <text>{{
+                  getStatRatio(0)
+                }}
+              </text>
+              <text>{{
+                  getStatLabel(0).label
+                }}
+              </text>
+            </view>
+
             <text>{{
                 getStatValue(0)
               }}
             </text>
+
           </view>
           <image
             v-if="currentData?.archonStatsPriority.relations.length"
@@ -149,10 +156,16 @@
             )}.svg`"
           ></image>
           <view class="stats__item">
-            <text :style="{ color: getStatLabel(1).color }">{{
-                getStatLabel(1).label
-              }}
-            </text>
+            <view :style="{ color: getStatLabel(1).color }">
+              <text>{{
+                  getStatRatio(1)
+                }}
+              </text>
+              <text>{{
+                  getStatLabel(1).label
+                }}
+              </text>
+            </view>
             <text>{{
                 getStatValue(1)
               }}
@@ -165,10 +178,16 @@
             )}.svg`"
           ></image>
           <view class="stats__item">
-            <text :style="{ color: getStatLabel(2).color }">{{
-                getStatLabel(2).label
-              }}
-            </text>
+            <view :style="{ color: getStatLabel(2).color }">
+              <text>{{
+                  getStatRatio(2)
+                }}
+              </text>
+              <text>{{
+                  getStatLabel(2).label
+                }}
+              </text>
+            </view>
             <text>{{
                 getStatValue(2)
               }}
@@ -181,14 +200,31 @@
             )}.svg`"
           ></image>
           <view class="stats__item">
-            <text :style="{ color: getStatLabel(3).color }">{{
-                getStatLabel(3).label
-              }}
-            </text>
+            <view :style="{ color: getStatLabel(3).color }">
+              <text>{{
+                  getStatRatio(3)
+                }}
+              </text>
+              <text>{{
+                  getStatLabel(3).label
+                }}
+              </text>
+            </view>
             <text>{{
                 getStatValue(3)
               }}
             </text>
+          </view>
+        </view>
+        <view class="stats-charts">
+          <view class="chart-item"
+            v-for="(item, index) in currentData?.archonStatsPriority?.priority"
+            :key="index"
+            :style="{ borderTopColor: getStatLabel(index).color }">
+            <view class="chart-item__bar"
+              v-for="bar in item.data"
+              :key="bar.sampleCount"
+              :style="{ height: bar.percentage, backgroundColor: getStatLabel(index).color }"></view>
           </view>
         </view>
       </uni-card>
@@ -782,13 +818,13 @@ const relationIcon = computed(() => {
 });
 const statSource = ref('maxroll');
 const statDetailCollapse = ref();
-const statSourceText = computed(() =>
-  statSource.value === 'wowhead' ? '点击查看简略版' : '点击查看详细版',
-);
 const getStatValue = computed(() => (index: number) => {
   const value = currentData.value?.archonStatsPriority?.priority?.[index]?.value;
+  return `${value}`;
+});
+const getStatRatio = computed(() => (index: number) => {
   const ratio = currentData.value?.archonStatsPriority?.priority?.[index]?.ratio;
-  return `${value}${ratio ? ` | ${ratio}%` : ''}`;
+  return ratio ? `${ratio}` : '';
 });
 const getStatLabel = computed(() => (index: number) => {
   const label = currentData.value?.archonStatsPriority?.priority?.[index]?.label;
@@ -1219,6 +1255,7 @@ async function onMenuChange(menuValue: string) {
 
 ::v-deep .tiers-card .uni-card {
   margin-top: 20rpx !important;
+  margin-bottom: 20rpx !important;
 }
 
 .tiers {
@@ -1292,33 +1329,66 @@ async function onMenuChange(menuValue: string) {
   }
 }
 
+.stats-info {
+  text-align: center;
+  margin-bottom: 10rpx;
+
+  text {
+    font-weight: bold;
+    color: #fff;
+  }
+}
+
 .stats {
-  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   .stats__item {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    text:last-child {
-      line-height: 14px;
-      font-size: 24rpx;
-      font-weight: normal;
+    text {
+      line-height: 26rpx;
+      color: inherit;
+    }
+
+    view:first-child {
+      text {
+        font-size: 24rpx;
+        font-weight: bold;
+      }
     }
   }
 
   text {
-    font-size: 30rpx;
+    font-size: 24rpx;
     color: #fff;
-    font-weight: bolder;
   }
 
   image {
     width: 20px;
     height: 20px;
+  }
+}
+
+.stats-charts {
+  margin-top: 10rpx;
+  display: flex;
+  height: 100rpx;
+  gap: 6rpx;
+
+  .chart-item {
+    flex: 1;
+    display: flex;
+    border-top-width: 4rpx;
+    border-top-style: solid;
+
+    .chart-item__bar {
+      flex: 1;
+    }
   }
 }
 
