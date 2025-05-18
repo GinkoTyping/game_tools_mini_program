@@ -16,7 +16,8 @@ import {
 import { isLocal } from '../../auth/validateAdmin.js';
 import spriteMap from '../../assets/wow/sprites/sprite-map.js';
 import {
-  collectBisOverview,
+  collectArchonByApi,
+  collectBisOverview, getArchonHash,
 } from '../../database/wow/data/archon-bis/crawler.js';
 import {
   collectMaxrollBis,
@@ -203,7 +204,7 @@ function combineEnhancement(item, maxrollEnhancements, archonEnhancements) {
         return true;
       }
       return maxrollEnhancement.item_class === '宝石';
-    })
+    });
 
     enhancementsByArchon =
       cloneArchonData
@@ -329,10 +330,10 @@ async function mapWowheadBis(wowheadBis) {
       return '外网推荐';
     }
     if (name === 'raid') {
-      return '团本'
+      return '团本';
     }
     if (name === 'mythic') {
-      return '大秘境'
+      return '大秘境';
     }
     return name;
   }
@@ -349,7 +350,7 @@ async function mapWowheadBis(wowheadBis) {
         }),
       );
       kind.typeName = mapTypeName(kind.type);
-      kind.data.options = itemResults.map(result => result.value).filter(item => item)
+      kind.data.options = itemResults.map(result => result.value).filter(item => item);
       return kind;
     }),
   );
@@ -554,14 +555,25 @@ export async function queryUpdateArchonBisOverview(req, res) {
     let doneCount = 0;
     let totalCount = flatSpecs.length;
 
+    let archonHash = '';
+    if (req.body.byApi) {
+      archonHash = await getArchonHash(
+        flatSpecs[0].classSpec,
+        flatSpecs[0].roleClass,
+      );
+    }
+
+    let collectFn = req.body.byApi
+      ? (classSpec, roleClass) => collectArchonByApi(archonHash, classSpec, roleClass)
+      : (classSpec, roleClass) => collectBisOverview(classSpec, roleClass, req.body.useCache);
+
     const results = await Promise.allSettled(
       flatSpecs.map((item) =>
         limiter.schedule(async () => {
           console.log(`获取${item.classSpec} ${item.roleClass}...`);
-          const data = await collectBisOverview(
+          const data = await collectFn(
             item.classSpec,
             item.roleClass,
-            req.body.useCache,
           );
           doneCount++;
           console.log(

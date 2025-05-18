@@ -15,6 +15,8 @@ export async function getCheerioByPuppeteer({
   urlPath,
   useCache,
   waitForSelector,
+  onResponse,
+  disableSaveCache,
 }) {
   let browser;
   try {
@@ -74,7 +76,7 @@ export async function getCheerioByPuppeteer({
       html = await page.content();
 
       // 没有获取到指定selector时，表面页面其实是异常的，不应该缓存
-      if (!waitForSelector || (waitForSelector && hasGetSelector)) {
+      if ((!waitForSelector || (waitForSelector && hasGetSelector)) && !disableSaveCache) {
         fs.writeFileSync(
           path.resolve(__dirname, staticFilePath),
           html,

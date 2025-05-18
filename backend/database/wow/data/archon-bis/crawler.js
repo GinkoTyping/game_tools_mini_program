@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -47,6 +49,7 @@ function mapStat(val) {
   }
 }
 
+// region puppeteer 查询数据
 async function getStatsOverview(classSpec, roleClass, useCache) {
   const $ = await useCheerioContext(
     getOverviewStaticFilePath(
@@ -90,7 +93,6 @@ async function getStatsOverview(classSpec, roleClass, useCache) {
     priority, relations,
   };
 }
-
 
 async function getBisOverview(classSpec, roleClass, useCache) {
   const $ = await getCheerioByPuppeteer({
@@ -190,32 +192,24 @@ async function getBisOverview(classSpec, roleClass, useCache) {
         })
         .get();
       return {
-        id,
-        name,
-        enhancements,
-        stats,
+        id, name, enhancements, stats,
       };
     })
     .get();
 
   return {
-    overview,
-    popularTrinkets,
-    popularityItems,
+    overview, popularTrinkets, popularityItems,
   };
 }
 
 export async function collectBisOverview(classSpec, roleClass, useCache) {
   const stats = await getStatsOverview(classSpec, roleClass, useCache);
   const {
-    overview,
-    popularityItems,
-    popularTrinkets,
+    overview, popularityItems, popularTrinkets,
   } = await getBisOverview(classSpec, roleClass, useCache);
 
   if (!overview.length) {
-    console.log(
-      `${classSpec}${roleClass}: 获取BIS数据失败，将使用热门度排行替代`);
+    console.log(`${classSpec}${roleClass}: 获取BIS数据失败，将使用热门度排行替代`);
   }
 
   return {
@@ -230,45 +224,185 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
   };
 }
 
-let pathHash = '';
+// endregion
 
-async function getAllData(classSpec, roleClass) {
-  let overviewData;
-  let bisData;
-  if (pathHash) {
+// region API 查询数据
+async function queryArchon(pathHash, category, classSpec, roleClass) {
+  try {
+    const res = await axios.get(`https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/mythic-plus/${category}/high-keys/all-dungeons/this-week.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=mythic-plus&categorySlug=${category}&difficultySlug=high-keys&encounterSlug=all-dungeons&affixesSlug=this-week`);
+    return res?.data?.pageProps?.page;
+  } catch (e) {
+    throw new Error(`获取archon数据失败: ${category}, ${classSpec} ${roleClass}`);
+  }
+}
 
-  } else {
-    const $ = await getCheerioByPuppeteer({
-      staticFilePath: getStaticFilePath(classSpec, roleClass),
-      urlPath: getUrl(classSpec, roleClass),
-      useCache: false,
-      waitForSelector: null,
-      async onResponse(response) {
-        const url = new URL(response.url());
-        const pathname = url.pathname;
-        if (url.pathname.includes('/this-week.json')) {
-          if (!pathHash) {
-            const match = url.pathname.match(/^\/_next\/data\/([a-zA-Z0-9_]+)\//);
-            pathHash = match?.[1];
-          }
-          if (url.pathname.includes('/overview/')) {
-            const data = await response.json();
-            overviewData = data.pageProps?.page?.sections;
-          } else if (url.pathname.includes('/gear-and-tier-set/')) {
-            const data = await response.json();
-            bisData = data.pageProps?.page?.sections;
+async function queryOverview(hash, classSpec, roleClass) {
+  const data = await queryArchon(hash, 'overview', classSpec, roleClass);
+  const statsSection = data.sections.find(section => section.navigationId === 'stats');
+  const priority = statsSection?.props?.stats?.map(item => ({
+    key: item.name,
+    label: mapStat(item.name),
+    value: item.value,
+    ratio: calculateStatRatio(item.name, item.value),
+    data: item.data,
+  })) ?? [];
+
+  // 不需要展示主属性
+  priority.shift();
+
+  const relations = [];
+  priority.forEach((item, index) => {
+    if (index > 0) {
+      relations.push(Math.abs(priority[index].value - priority[index - 1].value) > Math.max(
+        priority[index].value,
+        priority[index - 1].value,
+      ) / 10 ? 1 : 10);
+    }
+  });
+
+  return {
+    priority, relations, sampleCount: data?.totalParses,
+  };
+}
+
+function matchItemSlot(input) {
+  return input.match(/^.*?>([\s\S]*?)</)?.[1].trim();
+}
+
+function matchItemName(input) {
+  let normalName = input.match(/^.*?span>([\s\S]*?)</)?.[1]?.trim();
+  let name = normalName
+    ? normalName
+    : input.match(/^.*?>([\s\S]*?)<\/(ItemIcon|GearIcon)/)?.[1]?.trim();
+  return name.replace('&nbsp;', '');
+}
+
+function matchItemId(input) {
+  return input.match(/^.*?id={([\s\S]*?)}/)?.[1].trim();
+}
+
+function matchEnhancementIds(input) {
+  return input.match(/"id":(\d+)/g)?.map(item => Number(item.replace('"id":', ''))) ?? [];
+}
+
+function isBisItem(input) {
+  return input.includes('<BadgeLabel>BiS</BadgeLabel>');
+}
+
+function getFormatItem(item) {
+  return {
+    id: matchItemId(item.item),
+    name: matchItemName(item.item),
+    popularity: matchItemSlot(item.popularity),
+    maxKey: matchItemSlot(item.maxKey),
+    dps: matchItemSlot(item.dps),
+  };
+}
+
+async function queryGears(hash, classSpec, roleClass) {
+  const data = await queryArchon(hash, 'gear-and-tier-set', classSpec, roleClass);
+  const gearsTable = data.sections.find(section => section.navigationId === 'gear-tables');
+  let bisGears = [];
+  let trinkets = [];
+  gearsTable?.props?.tables.forEach(kind => {
+    let collectCount = 0;
+    let RING_COLLECT_MAX = 2;
+    let TRINKET_COLLECT_MAX = 5;
+    const slotLabel = matchItemSlot(kind.columns.item.header);
+    kind.data.some(item => {
+      let isPush = false;
+      if (slotLabel === 'Trinket' && collectCount < TRINKET_COLLECT_MAX) {
+        isPush = true;
+      } else {
+        if (isBisItem(item.item)) {
+          if (slotLabel === 'Off-Hand') {
+            const id = matchItemId(item.item);
+            const hasSameMainHand = bisGears.find(item => item.id === id);
+            isPush = !hasSameMainHand;
+          } else {
+            isPush = true;
           }
         }
-      },
+      }
+
+      if (isPush) {
+        const formatItem = getFormatItem(item);
+        if (slotLabel === 'Trinket') {
+          trinkets.push(formatItem);
+        } else {
+          bisGears.push(formatItem);
+        }
+
+        collectCount++;
+        if ([
+          'Rings',
+          'Trinket',
+        ].includes(slotLabel)) {
+          return (
+              // 戒指部位 收录了2个以上的戒指，只收集前2
+              slotLabel === 'Rings' && collectCount === RING_COLLECT_MAX)
+
+            // 饰品部位 需要展示不同流行度的饰品，统计5个
+            || (slotLabel === 'Trinket' && collectCount === TRINKET_COLLECT_MAX);
+        }
+        return true;
+      }
+
+      return false;
     });
-  }
 
-  console.log({ overviewData, bisData });
+    // 如果没有找到 BIS 标签的装备，默认取第一个
+    if (collectCount === 0) {
+      slotLabel === 'Trinket'
+        ? trinkets.push(getFormatItem(item))
+        : bisGears.push(getFormatItem(item));
+    }
+  });
+
+  const gearOverview = data.sections.find(section => section.navigationId === 'gear-overview');
+  const popularGears = [...gearOverview?.props?.gear, ...gearOverview?.props?.trinkets].map(gearItem => {
+    return {
+      id: matchItemId(gearItem.icon),
+      name: matchItemName(gearItem.icon),
+      enhancements: matchEnhancementIds(gearItem.icon),
+    };
+  });
+  return { bisGears, trinkets, popularGears };
 }
 
-async function collectByApi(classSpec, roleClass) {
-  await getAllData(classSpec, roleClass);
-  console.log('done');
+export async function getArchonHash(classSpec, roleClass) {
+  let pathHash = '';
+  await getCheerioByPuppeteer({
+    staticFilePath: getStaticFilePath(classSpec, roleClass),
+    urlPath: getUrl(classSpec, roleClass),
+    useCache: false,
+    waitForSelector: null,
+    disableSaveCache: true,
+    async onResponse(response) {
+      const url = new URL(response.url());
+      const pathname = url.pathname;
+      if (!pathHash && pathname.includes('/this-week.json')) {
+        const match = pathname.match(/^\/_next\/data\/([a-zA-Z0-9_]+)\//);
+        pathHash = match?.[1];
+      }
+    },
+  });
+
+  return pathHash;
 }
 
-collectByApi('blood', 'death-knight');
+export async function collectArchonByApi(hash, classSpec, roleClass) {
+  const stats = await queryOverview(hash, classSpec, roleClass);
+  const { bisGears, trinkets, popularGears } = await queryGears(hash, classSpec, roleClass);
+  return {
+    classSpec,
+    roleClass,
+
+    stats,
+    overview: bisGears,
+    popularTrinkets: trinkets,
+    popularityItems: popularGears,
+  };
+}
+
+// endregion
