@@ -17,33 +17,41 @@
       <text class="qulity">{{ itemDetail.quality?.name }}</text>
       <!-- TODO 显示的装等和版本不一致 有误导性 -->
       <!-- <text class="item-level">物品等级：{{ itemDetail.level }}</text> -->
-      <text class="binding">{{ itemDetail.preview_item?.binding?.name }}</text>
+      <text class="binding" :class="[bindToBandClass(itemDetail.preview_item?.binding?.name)]">
+        {{ itemDetail.preview_item?.binding?.name }}
+      </text>
       <text class="gem">{{
-        itemDetail.preview_item?.gem_properties?.effect
-      }}</text>
+          itemDetail.preview_item?.gem_properties?.effect
+        }}
+      </text>
       <text class="modified-crafting">{{
-        itemDetail.modified_crafting?.description
-      }}</text>
+          itemDetail.modified_crafting?.description
+        }}
+      </text>
       <view class="type">
         <text>{{ itemDetail.preview_item?.inventory_type?.name }}</text>
         <text v-show="itemDetail.item_class?.id === 2">{{
-          itemDetail.preview_item?.item_subclass?.name
-        }}</text>
+            itemDetail.preview_item?.item_subclass?.name
+          }}
+        </text>
       </view>
       <view
         class="damage justify-between"
         v-show="itemDetail.preview_item?.weapon"
       >
         <text>{{
-          itemDetail.preview_item?.weapon?.damage?.display_string
-        }}</text>
+            itemDetail.preview_item?.weapon?.damage?.display_string
+          }}
+        </text>
         <text>{{
-          itemDetail.preview_item?.weapon?.attack_speed?.display_string
-        }}</text>
+            itemDetail.preview_item?.weapon?.attack_speed?.display_string
+          }}
+        </text>
       </view>
       <text class="damage-dps">{{
-        itemDetail.preview_item?.weapon?.dps?.display_string
-      }}</text>
+          itemDetail.preview_item?.weapon?.dps?.display_string
+        }}
+      </text>
       <text
         class="non-bonus-stat"
         v-for="stat in itemDetail.preview_item?.stats?.filter((item: any) => !item.is_equip_bonus)"
@@ -61,20 +69,26 @@
         v-show="itemDetail.preview_item?.spells?.length"
         v-for="spell in itemDetail.preview_item?.spells"
         :key="spell.spell.id"
-        >{{ spell.description }}</text
+      >{{ spell.description }}
+      </text
       >
 
       <text class="durability">{{
-        itemDetail.preview_item?.durability?.display_string
-      }}</text>
+          itemDetail.preview_item?.durability?.display_string
+        }}
+      </text>
       <text class="requirements" v-show="itemDetail.preview_item?.requirements"
-        >{{ itemDetail.preview_item?.requirements?.level.display_string }}</text
+      >{{ itemDetail.preview_item?.requirements?.level.display_string }}
+      </text
       >
       <text class="description" v-show="itemDetail.source?.source"
-        >来源：<text>{{ itemDetail.source?.source }}</text></text
+      >来源：
+        <text>{{ itemDetail.source?.source }}</text>
+      </text
       >
       <text v-show="itemDetail?.description" class="description"
-        >“{{ itemDetail.description }}”</text
+      >“{{ itemDetail.description }}”
+      </text
       >
       <view class="price" v-if="itemDetail.preview_item?.sell_price">
         <view>
@@ -83,20 +97,23 @@
         <view>
           <img src="/static/images/wow/money-gold.gif" alt="" srcset="" />
           <text>{{
-            itemDetail.preview_item?.sell_price?.display_strings.gold
-          }}</text>
+              itemDetail.preview_item?.sell_price?.display_strings.gold
+            }}
+          </text>
         </view>
         <view>
           <img src="/static/images/wow/money-silver.gif" alt="" srcset="" />
           <text>{{
-            itemDetail.preview_item?.sell_price?.display_strings.silver
-          }}</text>
+              itemDetail.preview_item?.sell_price?.display_strings.silver
+            }}
+          </text>
         </view>
         <view>
           <img src="/static/images/wow/money-copper.gif" alt="" srcset="" />
           <text>{{
-            itemDetail.preview_item?.sell_price?.display_strings.copper
-          }}</text>
+              itemDetail.preview_item?.sell_price?.display_strings.copper
+            }}
+          </text>
         </view>
       </view>
     </view>
@@ -104,9 +121,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed } from 'vue';
 
-const popup = ref<any>('');
 const itemDetail = defineModel('itemDetail', {
   type: Object,
   default: () => ({}),
@@ -119,6 +135,8 @@ const imageSrc = defineModel('imageSrc', {
   type: String,
   default: '',
 });
+
+const bindToBandClass = computed(() => (bindText: string) => bindText.includes('战团') ? 'bind--band' : '');
 </script>
 
 <style lang="scss" scoped>
@@ -129,11 +147,13 @@ const imageSrc = defineModel('imageSrc', {
 
 .item-container {
   width: 70vw !important;
+
   .preview-image {
     width: 10vw;
     height: 10vw;
     margin-bottom: 6rpx;
   }
+
   .preview-popup {
     display: flex;
     flex-direction: column;
@@ -145,6 +165,7 @@ const imageSrc = defineModel('imageSrc', {
     font-size: 28rpx;
     line-height: 46rpx;
     border-radius: 8rpx;
+
     text {
       color: #fff;
     }
@@ -168,13 +189,17 @@ const imageSrc = defineModel('imageSrc', {
       }
     }
 
+    .bind--band {
+      color: $mage
+    }
+
     .name {
       color: $color-mythic;
     }
 
     .qulity,
     .bonus-stat,
-    .spell .modified-crafting {
+    .spell, .modified-crafting {
       color: $color-uncommon;
     }
 

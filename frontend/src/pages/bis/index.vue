@@ -493,6 +493,39 @@
       </uni-card>
     </uni-section>
 
+    <uni-section class="corruptions"
+      id="corruptions"
+      :class="[classKey]"
+      title="腐蚀"
+      :sub-title="`更新于: ${currentData?.wowheadBis?.updatedAt}`">
+      <uni-card class="section-card">
+        <rich-text
+          :nodes="renderTip(currentData?.wowheadBis?.corruptions?.title, '#fff', 'rgb(163, 53, 238)')"
+          @click="() => displaySpells(currentData?.wowheadBis?.corruptions?.items)"
+        ></rich-text>
+
+        <view
+          class="advice-item"
+          style="margin-top: 20rpx"
+          v-for="(item) in getDisplayCorruptions"
+          :key="item.id"
+        >
+          <view class="data-item" @click="() => switchDetail(true, item)">
+            <image :src="currentImageSrc(item)" mode="widthFix" />
+            <view
+              class="advice-item__name"
+              :class="[item.included ? 'advice-item__name--heroic' : 'advice-item__name--faded']"
+            >{{ item.name
+              }}
+            </view>
+          </view>
+        </view>
+
+        <text @click="isShowAllCorruptions = !isShowAllCorruptions">{{ switchCorruptionText }}</text>
+      </uni-card>
+
+    </uni-section>
+
     <uni-section
       id="puzzling-cartel-chip-advice"
       :class="[classKey]"
@@ -1069,6 +1102,15 @@ function switchChipAdviceTab(e) {
   }
 }
 
+const isShowAllCorruptions = ref(false);
+const getDisplayCorruptions = computed(() => {
+  if (isShowAllCorruptions.value) {
+    return currentData.value?.wowheadBis?.corruptions?.items;
+  }
+  return currentData.value?.wowheadBis?.corruptions?.items.filter(item => item.included);
+});
+const switchCorruptionText = computed(() => isShowAllCorruptions.value ? '隐藏冗余腐蚀' : '查看全部腐蚀');
+
 //#endregion
 
 //#region 饰品
@@ -1096,13 +1138,13 @@ const tipCollapseIndex = ref(['0']);
 
 // TODO: 引入hook替代
 const renderTip = computed(() => {
-  return (text: string) => {
-    const wrappedText = `<p style="font-size: 28rpx;">${text}</p>`;
+  return (text: string, commonColor: string = '', emphasisColor: string = 'rgb(255, 209, 0)') => {
+    const wrappedText = `<p style="font-size: 28rpx; color: ${commonColor}">${text}</p>`;
 
     return wrappedText.replace(
       /\[(.*?)\]/g,
       (match, p) =>
-        `<b style="font-size: 28rpx;color: rgb(255, 209, 0); font-weight: bold;">${p}</b>`,
+        `<b style="font-size: 28rpx;color: ${emphasisColor}; font-weight: bold;padding: 0 2px">${p}</b>`,
     );
   };
 });
@@ -2056,7 +2098,7 @@ $light-border: rgb(68, 68, 68);
   }
 }
 
-#puzzling-cartel-chip-advice {
+#puzzling-cartel-chip-advice, #corruptions {
   .advice-text {
     display: flex;
     justify-content: center;
@@ -2100,6 +2142,10 @@ $light-border: rgb(68, 68, 68);
     .advice-item__name {
       color: $color-rare;
       font-weight: bold;
+    }
+
+    .advice-item__name--faded {
+      color: #999;
     }
 
     .advice-item__name--heroic {
