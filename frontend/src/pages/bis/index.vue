@@ -411,10 +411,10 @@
                   class="ellipsis bis-item"
                   :class="[
                   item.wrap ? 'disale-ellipsis' : '',
-                  item.source.isLoot ? 'is-loot' : '',
+                  item.source?.isLoot ? 'is-loot' : '',
                 ]"
                   @click="() => switchWrap(item)"
-                >{{ item.source.source }}
+                >{{ item.source?.source }}
                 </view
                 >
               </uni-td>

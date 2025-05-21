@@ -8,25 +8,28 @@ async function insertItem(itemData) {
   const { id, slot, item, source, itemIcon } = itemData;
   return db.run(
     `
-    INSERT INTO wow_item(id, slot, name, source, image) VALUES(?1, ?2, ?3, ?4, ?5)
-  `,
-    [id, slot, item, JSON.stringify(source), itemIcon]
+        INSERT INTO wow_item(id, slot, name, source, image)
+        VALUES (?1, ?2, ?3, ?4, ?5)
+    `,
+    [id, slot, item, JSON.stringify(source), itemIcon],
   );
 }
 
 async function getItemById(id, deletePreview) {
   const item = await db.get(
     `
-    SELECT * FROM wow_item WHERE id=?1
+        SELECT *
+        FROM wow_item
+        WHERE id = ?1
     `,
-    [id]
+    [id],
   );
   return deletePreview
     ? {
-        ...item,
-        preview: undefined,
-        preview_en: undefined,
-      }
+      ...item,
+      preview: undefined,
+      preview_en: undefined,
+    }
     : item;
 }
 
@@ -34,9 +37,11 @@ async function getItemByName(name, locale) {
   const nameKey = locale === 'en_US' ? 'name_en' : 'name';
   return db.get(
     `
-    SELECT * FROM wow_item WHERE ${nameKey}=?1
+        SELECT *
+        FROM wow_item
+        WHERE ${nameKey} = ?1
     `,
-    [name]
+    [name],
   );
 }
 
@@ -45,16 +50,15 @@ async function updateItemById(itemData) {
     itemData;
   return db.run(
     `
-    UPDATE wow_item
-    SET
-      slot = COALESCE(?, slot),
-      name = COALESCE(?, name),
-      source = COALESCE(?, source),
-      image = COALESCE(?, image),
-      preview = COALESCE(?, preview),
-      name_en = COALESCE(?, name_en),
-      preview_en = COALESCE(?, preview_en)
-    WHERE id=?
+        UPDATE wow_item
+        SET slot       = COALESCE(?, slot),
+            name       = COALESCE(?, name),
+            source     = COALESCE(?, source),
+            image      = COALESCE(?, image),
+            preview    = COALESCE(?, preview),
+            name_en    = COALESCE(?, name_en),
+            preview_en = COALESCE(?, preview_en)
+        WHERE id = ?
     `,
     [
       slot,
@@ -65,7 +69,7 @@ async function updateItemById(itemData) {
       name_en,
       typeof preview_en === 'string' ? preview_en : JSON.stringify(preview_en),
       id,
-    ]
+    ],
   );
 }
 
@@ -73,8 +77,18 @@ async function addOrUpdatePreviewById(id, preview, locale) {
   const previewKey = locale === 'en_US' ? 'preview_en' : 'preview';
   const nameKey = locale === 'en_US' ? 'name_en' : 'name';
   return db.run(
-    `INSERT OR REPLACE INTO wow_item(id, ${previewKey}, ${nameKey}) VALUES(?, ?, ?)`,
-    [id, JSON.stringify(preview), preview.name]
+    `INSERT
+    OR REPLACE INTO wow_item(id,
+    ${previewKey},
+    ${nameKey}
+    )
+    VALUES
+    (
+    ?,
+    ?,
+    ?
+    )`,
+    [id, JSON.stringify(preview), preview.name],
   );
 }
 
@@ -82,37 +96,51 @@ async function updateItemPreivewById(id, preview, locale) {
   const previewKey = locale === 'en_US' ? 'preview_en' : 'preview';
   const nameKey = locale === 'en_US' ? 'name_en' : 'name';
   return db.run(
-    `UPDATE wow_item SET ${previewKey}=?1, ${nameKey}=?2 WHERE id=?3`,
-    [JSON.stringify(preview), preview.name, id]
+    `UPDATE wow_item
+     SET ${previewKey}=?1,
+         ${nameKey}=?2
+     WHERE id = ?3`,
+    [JSON.stringify(preview), preview.name, id],
   );
 }
 
 async function getUntranslated() {
   return db.all(`SELECT *
-  FROM wow_item
-  WHERE name NOT GLOB '*[一-龥]*'`);
+                 FROM wow_item
+                 WHERE name NOT GLOB '*[一-龥]*'`);
 }
 
 async function getBlankSourceItem() {
-  return db.all(`SELECT id, source FROM wow_item WHERE source IS NULL`);
+  return db.all(`SELECT id, source
+                 FROM wow_item
+                 WHERE source IS NULL
+                    or source = 'null'`);
 }
 
 async function getBlankImageItem() {
-  return db.all(`SELECT id, image FROM wow_item WHERE image IS NULL`);
+  return db.all(`SELECT id, image
+                 FROM wow_item
+                 WHERE image IS NULL`);
 }
 
 async function getBlankSlotItem() {
-  return db.all(`SELECT id, preview FROM wow_item WHERE slot IS NULL`);
+  return db.all(`SELECT id, preview
+                 FROM wow_item
+                 WHERE slot IS NULL`);
 }
 
 async function getBlankEnItem() {
   return db.all(
-    `SELECT id, name_en, preview_en FROM wow_item WHERE name_en IS NULL AND preview_en is NULL`
+    `SELECT id, name_en, preview_en
+     FROM wow_item
+     WHERE name_en IS NULL
+       AND preview_en is NULL`,
   );
 }
 
 async function getInvalidImageItem() {
-  const data = await db.all(`SELECT id, image FROM wow_item`);
+  const data = await db.all(`SELECT id, image
+                             FROM wow_item`);
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
@@ -122,8 +150,8 @@ async function getInvalidImageItem() {
       fs.existsSync(
         path.resolve(
           __dirname,
-          `../../../assets/wow/blizz-media-image/${item.image}`
-        )
+          `../../../assets/wow/blizz-media-image/${item.image}`,
+        ),
       )
     ) {
       return false;

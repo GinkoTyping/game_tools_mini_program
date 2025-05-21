@@ -295,6 +295,12 @@ function sortBisItems(bisItems) {
           } else {
             weapons.push(cur);
           }
+
+          // 处理异常的source
+          if (!cur.source) {
+            cur.source = { source: '/', isLoot: false };
+          }
+
           return [commonItems, rings, trinkets, weapons];
         },
         [[], [], [], []],
