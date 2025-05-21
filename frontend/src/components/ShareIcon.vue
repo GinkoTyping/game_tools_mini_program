@@ -30,9 +30,9 @@
   <button
     v-if="props.showChipEntry"
     class="poe2-btn"
-    @click="() => navigator.toSpecsMenu({ menu: 'bis', scrollTo: '#puzzling-cartel-chip-advice' })"
+    @click="() => navigator.toSpecsMenu({ menu: 'bis', scrollTo: '#corruptions' })"
   >
-    <image :src="getImageSrc('inv_misc_curiouscoin.jpg').item" mode="widthFix" />
+    <image src="/static/icon/home-bottom.jpg" mode="widthFix" />
     <view class="badage"></view>
   </button>
 
