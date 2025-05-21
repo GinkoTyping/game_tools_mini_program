@@ -19,6 +19,7 @@ const flatList = Object.entries(puzzlingCartelChipData).reduce(
         classSpec: item.spec,
         updatedAt: item.updatedAt,
         puzzlingCartelChipAdvice: item.advice,
+        corruptions: item.corruptions,
       });
     });
 
@@ -35,7 +36,7 @@ async function updateItem(item) {
     item.roleClass,
     item.classSpec,
   );
-  exisited.wowheadBis = JSON.parse(exisited.wowhead_bis)
+  exisited.wowheadBis = JSON.parse(exisited.wowhead_bis);
   const lastUpdatedAt = exisited.wowheadBis?.updatedAt;
   if (lastUpdatedAt === item.updatedAt) {
     // return null;
@@ -50,6 +51,7 @@ async function updateItem(item) {
       ...exisited.wowheadBis,
       updatedAt: item.updatedAt,
       detailedPuzzlingCartelChipAdvice: item.puzzlingCartelChipAdvice,
+      corruptions: item.corruptions,
     },
   });
 }
