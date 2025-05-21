@@ -360,8 +360,11 @@ async function mapWowheadBis(wowheadBis) {
       return kind;
     }),
   );
+  const detailedCorruptionItems = await mapSimpleItems(wowheadBis.corruptions?.items.map(item => item.id));
+
   return {
     ...wowheadBis,
+    corruptions: { ...wowheadBis.corruptions, items: detailedCorruptionItems },
     detailedPuzzlingCartelChipAdvice: detailedPuzzlingCartelChipAdvice.map(item => item.value),
   };
 }
