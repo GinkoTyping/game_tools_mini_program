@@ -360,8 +360,25 @@ async function mapWowheadBis(wowheadBis) {
       return kind;
     }),
   );
-  const detailedCorruptionItems = await mapSimpleItems(wowheadBis.corruptions?.items.map(item => item.id));
-
+  const ALL_CORRUPTIONS = [
+    239095,
+    239093,
+    239090,
+    239088,
+    239086,
+    239084,
+    239080,
+    239078,
+    238680,
+    238678,
+    238405,
+    238403,
+  ];
+  let detailedCorruptionItems = await mapSimpleItems(ALL_CORRUPTIONS);
+  detailedCorruptionItems = detailedCorruptionItems.map(item => ({
+    ...item,
+    included: wowheadBis.corruptions?.items.some(corruption => corruption.id === item.id),
+  }));
   return {
     ...wowheadBis,
     corruptions: { ...wowheadBis.corruptions, items: detailedCorruptionItems },
