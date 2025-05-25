@@ -656,6 +656,7 @@ export interface TalentNode {
       talent: { id: number; name: string }
     }
   }[];
+  unlocks?: number[];
 }
 
 export async function queryTalent(classSpec: string, roleClass: string) {

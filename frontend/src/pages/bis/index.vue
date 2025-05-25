@@ -1209,7 +1209,7 @@ async function displaySpells(params: any) {
 //#endregion
 
 // region 天赋
-const talentData = ref();
+const talentData = ref<any>({ class_talent_nodes: [] });
 // endregion
 
 //#region 切换底部菜单

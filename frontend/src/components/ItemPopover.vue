@@ -136,7 +136,7 @@ const imageSrc = defineModel('imageSrc', {
   default: '',
 });
 
-const bindToBandClass = computed(() => (bindText: string) => bindText.includes('战团') ? 'bind--band' : '');
+const bindToBandClass = computed(() => (bindText: string) => bindText?.includes('战团') ? 'bind--band' : '');
 </script>
 
 <style lang="scss" scoped>
