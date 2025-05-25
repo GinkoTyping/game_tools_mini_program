@@ -26,6 +26,7 @@ import { useTierListMapper } from '../../database/wow/mapper/tierListMapper.js';
 import {
   useSpecStatMapper,
 } from '../../database/wow/mapper/daliy/specStatMapper.js';
+import { useTalentMapper } from '../../database/wow/mapper/static/talentMapper.js';
 
 let api;
 const database = await getDB();
@@ -579,6 +580,15 @@ export async function queryUpdateItem(req, res) {
     itemIcon: image,
   });
   res.json(`更新物品${result.changes ? '成功' : '失败'}, ID:${id}`);
+}
+
+// 天赋树
+const talentMapper = useTalentMapper(database);
+
+export async function queryTalentBySpec(req, res) {
+  const { roleClass, classSpec } = req.query;
+  const data = await talentMapper.getTalent(classSpec, roleClass);
+  res.json(data);
 }
 
 //#region 内部接口

@@ -54,10 +54,19 @@ async function getTalentDev(classSpec) {
 }
 
 async function getTalent(classSpec, roleClass) {
-  return db.get(`SELECT *
-                 FROM ${TABLE_NAME}
-                 WHERE class_spec = ?
-                   AND role_class = ?`, [classSpec, roleClass]);
+  const data = await db.get(`SELECT *
+                             FROM ${TABLE_NAME}
+                             WHERE class_spec = ?
+                               AND role_class = ?`, [classSpec, roleClass]);
+  if (data) {
+    return {
+      ...data,
+      class_talent_nodes: JSON.parse(data.class_talent_nodes),
+      hero_talent_trees: JSON.parse(data.hero_talent_trees),
+      spec_talent_nodes: JSON.parse(data.spec_talent_nodes),
+      restriction_lines: JSON.parse(data.restriction_lines),
+    };
+  }
 }
 
 export function useTalentMapper(database) {

@@ -233,6 +233,7 @@
 
   <template v-if="activeMenu === 'talent'">
     <uni-section class="talent" :class="[classKey]" title="天赋">
+      <TalentTree v-model="talentData.class_talent_nodes" />
       <uni-card class="section-card">
         <view class="menu talent-menu">
           <text
@@ -739,6 +740,7 @@ import { Relation } from '@/interface/IWow';
 import { getImageSrc, type IDungeonDTO } from '@/api/wow';
 import {
   queryBis,
+  queryTalent,
   queryItemPreview,
   querySeasonDungeons,
   queryDungeonTip,
@@ -749,6 +751,7 @@ import SpecFooter from '@/components/SpecFooter.vue';
 import ItemPopover from '@/components/ItemPopover.vue';
 import { useNavigator } from '@/hooks/navigator';
 import ExportCanvas from '@/components/ExportCanvas.vue';
+import TalentTree from '@/components/TalentTree/index.vue';
 
 const classKey = ref('');
 const specKey = ref('');
@@ -879,16 +882,16 @@ const getStatLabel = computed(() => (index: number) => {
   return { label, color };
 });
 
-function switchStatSource() {
-  if (statSource.value === 'wowhead') {
-    statSource.value = 'maxroll';
-  } else {
-    statSource.value = 'wowhead';
-    nextTick(() => {
-      statDetailCollapse.value?.resize?.();
-    });
-  }
-}
+// function switchStatSource() {
+//   if (statSource.value === 'wowhead') {
+//     statSource.value = 'maxroll';
+//   } else {
+//     statSource.value = 'wowhead';
+//     nextTick(() => {
+//       statDetailCollapse.value?.resize?.();
+//     });
+//   }
+// }
 
 const isTalentImageLoad = ref(false);
 
@@ -1205,6 +1208,10 @@ async function displaySpells(params: any) {
 
 //#endregion
 
+// region 天赋
+const talentData = ref();
+// endregion
+
 //#region 切换底部菜单
 const activeMenu = ref('index');
 const footerMenus = [
@@ -1244,6 +1251,8 @@ async function onMenuChange(menuValue: string) {
     await getSeasonDungeons();
     await getDungeonTip();
     uni.hideLoading();
+  } else if (menuValue === 'talent') {
+    talentData.value = await queryTalent(specKey.value, classKey.value);
   }
 }
 

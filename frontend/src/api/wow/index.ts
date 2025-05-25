@@ -638,6 +638,40 @@ export async function queryUserMarks() {
   }
 }
 
+// region /bis
+export interface TalentNode {
+  id: number;
+  display_col: number;
+  display_row: number;
+  node_type: { id: number; type: string; };
+  ranks: {
+    rank: number;
+    tooltip: {
+      spell_tooltip: {
+        cast_time: string;
+        cooldown: string;
+        description: string;
+        spell: { id: number; name: string }
+      }
+      talent: { id: number; name: string }
+    }
+  }[];
+}
+
+export async function queryTalent(classSpec: string, roleClass: string) {
+  try {
+    const res = await proxyRequest({
+      url: `/wow/bis/talent?classSpec=${classSpec}&roleClass=${roleClass}`,
+    });
+    return res.data;
+  } catch (e) {
+    console.log(e);
+    return {};
+  }
+}
+
+// endregion
+
 //#region /question
 export interface IQuestionItem {
   dungeon_id: number;

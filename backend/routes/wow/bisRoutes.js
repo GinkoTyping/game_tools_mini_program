@@ -4,7 +4,7 @@ import {
   getItemPreviewById,
   queryBisTrends,
   queryBlankSourceItem,
-  queryRegisterItem,
+  queryRegisterItem, queryTalentBySpec,
   queryUpdateArchonBisOverview,
   queryUpdateItem,
   queryUpdateMaxrollBisOverview,
@@ -20,6 +20,7 @@ const router = express.Router();
 
 // GET 请求获取所有用户
 router.get('/bis/:roleClass/:classSpec', getBisBySpec);
+router.get('/bis/talent', queryTalentBySpec);
 router.get('/bis/trend', queryBisTrends);
 router.get('/bis/popularity', queryPolularity);
 
@@ -34,12 +35,12 @@ router.post('/bis/dps-rank', querySpecDpsRank);
 router.post(
   '/bis/archon-overview',
   validateAdmin,
-  queryUpdateArchonBisOverview
+  queryUpdateArchonBisOverview,
 );
 router.post(
   '/bis/update-maxroll-bis',
   validateAdmin,
-  queryUpdateMaxrollBisOverview
+  queryUpdateMaxrollBisOverview,
 );
 
 export default router;
