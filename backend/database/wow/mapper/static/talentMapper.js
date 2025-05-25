@@ -1,6 +1,11 @@
 let db;
 const TABLE_NAME = 'wow_talent';
 
+function getTalentList() {
+  return db.all(`SELECT *
+                 FROM ${TABLE_NAME}`);
+}
+
 function objToString(obj) {
   return typeof obj === 'string' ? obj : JSON.stringify(obj);
 }
@@ -16,27 +21,23 @@ async function addTalent(params) {
     restriction_lines,
   } = params;
   return db.run(`INSERT
-  OR REPLACE INTO
-  ${TABLE_NAME}
-  (
-  id,
-  role_class,
-  class_spec,
-  class_talent_nodes,
-  hero_talent_trees,
-  spec_talent_nodes,
-  restriction_lines
-  )
-  VALUES
-  (
-  ?,
-  ?,
-  ?,
-  ?,
-  ?,
-  ?,
-  ?
-  )`, [
+                     OR
+                 REPLACE
+                 INTO ${TABLE_NAME}
+                 (id,
+                  role_class,
+                  class_spec,
+                  class_talent_nodes,
+                  hero_talent_trees,
+                  spec_talent_nodes,
+                  restriction_lines)
+                 VALUES (?,
+                         ?,
+                         ?,
+                         ?,
+                         ?,
+                         ?,
+                         ?)`, [
     playable_specialization.id,
     role_class,
     class_spec,
@@ -77,5 +78,5 @@ export function useTalentMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { addTalent, getTalent, getTalentDev };
+  return { addTalent, getTalent, getTalentDev, getTalentList };
 }

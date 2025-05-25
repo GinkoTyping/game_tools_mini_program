@@ -11,17 +11,21 @@ async function insertSpell(param) {
     castTime = -1,
     cooldown = -1,
     description = '',
+    image = '',
   } = param;
   await db.run(
     `
-    INSERT INTO wow_spell(id, id_wow_db, name_en, name_zh, range, cost, cast_time, cooldown, description) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
-  `,
-    [id, idWowDB, nameEN, nameZH, range, cost, castTime, cooldown, description]
+        INSERT INTO wow_spell(id, id_wow_db, name_en, name_zh, range, cost, cast_time, cooldown, description, image)
+        VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)
+    `,
+    [id, idWowDB, nameEN, nameZH, range, cost, castTime, cooldown, description, image],
   );
 }
 
 async function getSpellById(id) {
-  return await db.get(`SELECT * FROM wow_spell WHERE id=?1`, [id]);
+  return await db.get(`SELECT *
+                       FROM wow_spell
+                       WHERE id = ?1`, [id]);
 }
 
 async function updateSpellById(param) {
@@ -35,56 +39,36 @@ async function updateSpellById(param) {
     castTime,
     cooldown,
     description,
+    image,
   } = param;
   return db.run(
-    `
-    UPDATE wow_spell
-    SET name_en = CASE
-      WHEN ?1 IS NOT NULL THEN ?1
-      ELSE name_en
-    END,
-    name_zh = CASE
-      WHEN ?2 IS NOT NULL THEN ?2
-      ELSE name_zh
-    END,
-    range = CASE
-      WHEN ?3 IS NOT NULL THEN ?3
-      ELSE range
-    END,
-    cost = CASE
-      WHEN ?4 IS NOT NULL THEN ?4
-      ELSE cost
-    END,
-    cast_time = CASE
-      WHEN ?5 IS NOT NULL THEN ?5
-      ELSE cast_time
-    END,
-    cooldown = CASE
-      WHEN ?6 IS NOT NULL THEN ?6
-      ELSE cooldown
-    END,
-    description = CASE
-      WHEN ?7 IS NOT NULL THEN ?7
-      ELSE description
-    END,
-      id_wow_db = CASE
-      WHEN ?8 IS NOT NULL THEN ?8
-      ELSE id_wow_db
-    END
-    WHERE id = ?9
-  `,
-    [nameEN, nameZH, range, cost, castTime, cooldown, description, idWowDB, id]
+    `UPDATE wow_spell
+     SET name_en     = COALESCE(?, name_en),
+         name_zh     = COALESCE(?, name_zh),
+         range       = COALESCE(?, range),
+         cost        = COALESCE(?, cost),
+         cast_time   = COALESCE(?, cast_time),
+         cooldown    = COALESCE(?, cooldown),
+         description = COALESCE(?, description),
+         id_wow_db   = COALESCE(?, id_wow_db),
+         image       = COALESCE(?, image)
+     WHERE id = ?
+    `,
+    [nameEN, nameZH, range, cost, castTime, cooldown, description, idWowDB, image, id],
   );
 }
 
 async function getBlankSpell() {
-  return db.all(`
-    SELECT id, id_wow_db, name_en FROM wow_spell WHERE description == ""
-  `);
+  return db.all(
+    `SELECT id, id_wow_db, name_en
+     FROM wow_spell
+     WHERE description == ''
+    `);
 }
 
 async function getAllSpell() {
-  return db.all(`SELECT * FROM wow_spell`);
+  return db.all(`SELECT *
+                 FROM wow_spell`);
 }
 
 export function useSpellMapper(database) {
