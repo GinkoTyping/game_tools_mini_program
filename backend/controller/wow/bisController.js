@@ -27,12 +27,14 @@ import {
   useSpecStatMapper,
 } from '../../database/wow/mapper/daliy/specStatMapper.js';
 import { useTalentMapper } from '../../database/wow/mapper/static/talentMapper.js';
+import { useSpellMapper } from '../../database/wow/mapper/spellMapper.js';
 
 let api;
 const database = await getDB();
 const bisMapper = useBisMapper(database);
 const itemMapper = useItemMapper(database);
 const tierListMapper = useTierListMapper(database);
+const spellMapper = useSpellMapper(database);
 
 const dynamicDB = await getDynamicDB();
 const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
@@ -588,6 +590,26 @@ const talentMapper = useTalentMapper(database);
 export async function queryTalentBySpec(req, res) {
   const { roleClass, classSpec } = req.query;
   const data = await talentMapper.getTalent(classSpec, roleClass);
+
+  async function mapNode(node) {
+    if (node.ranks?.[0]?.tooltip) {
+      const spellData = await spellMapper.getSpellById(node.ranks?.[0]?.tooltip.spell_tooltip?.spell?.id);
+      node.ranks[0].tooltip.spell_tooltip.spell.image = spellData.image;
+    } else if (node.ranks?.[0]?.choice_of_tooltips?.length) {
+      const results = await Promise.allSettled(node.ranks[0].choice_of_tooltips.map(async (item) => {
+        const spellData = await spellMapper.getSpellById(item.spell_tooltip.spell.id);
+        item.spell_tooltip.spell.image = spellData.image;
+        return item;
+      }));
+      node.ranks[0].choice_of_tooltips = results.map(item => item.value);
+    }
+    return node;
+  }
+
+  const classNodes = await Promise.allSettled(data.class_talent_nodes.map(node => mapNode(node)));
+  data.class_talent_nodes = classNodes.map(item => item.value);
+
+
   res.json(data);
 }
 

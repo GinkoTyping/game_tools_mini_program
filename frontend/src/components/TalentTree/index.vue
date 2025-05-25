@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import type { TalentNode } from '@/api/wow';
-import activeBorder from '@/static/images/wow/talent/spell.svg';
-import passiveBorder from '@/static/images/wow/talent/passive.svg';
-import choiceBorder from '@/static/images/wow/talent/choice.svg';
+import { getSpellImageUrl, type TalentNode } from '@/api/wow';
 import { computed, getCurrentInstance, ref } from 'vue';
 import { onReady } from '@dcloudio/uni-app';
 
@@ -26,14 +23,37 @@ const getBorder = computed(() => {
   return (item: TalentNode) => {
     switch (item.node_type.type) {
       case 'ACTIVE':
-        return activeBorder;
+        return {
+          image: 'node-item__bg-spell',
+          mask: 'node-item__icon-mask-spell',
+        };
       case 'PASSIVE':
-        return passiveBorder;
+        return {
+          image: 'node-item__bg-passive',
+          mask: 'node-item__icon-mask-passive',
+        };
       case 'CHOICE':
-        return choiceBorder;
+        return {
+          image: 'node-item__bg-choice',
+          mask: 'node-item__icon-mask-choice',
+        };
       default:
-        return activeBorder;
+        return {
+          image: 'node-item__bg-spell',
+          mask: 'node-item__icon-mask-spell',
+        };
     }
+  };
+});
+const getSpellBg = computed(() => {
+  return (node: TalentNode) => {
+    const image = node.ranks?.[0]?.tooltip?.spell_tooltip.spell.image;
+    if (image) {
+      return getSpellImageUrl(image).item;
+    } else if (node.ranks?.[0]?.choice_of_tooltips?.length) {
+      return node.ranks?.[0]?.choice_of_tooltips.map(spellItem => getSpellImageUrl(spellItem.spell_tooltip.spell.image).item);
+    }
+    return '';
   };
 });
 
@@ -118,8 +138,31 @@ onReady(() => {
     <view class="node-item"
       v-for="node in data"
       :key="node.id"
-      :style="{ transform: getPosition(node), width: COL_WIDTH }">
-      <image class="border-bg" :src="getBorder(node)"></image>
+      :class="[getBorder(node).image]"
+      :style="{
+        transform: getPosition(node),
+        width: COL_WIDTH,
+        height: COL_WIDTH,
+      }">
+      <view class="node-item__choice-wrap"
+        :class="[getBorder(node).mask]"
+        v-if="node.node_type?.type.includes('CHOICE')">
+        <image class="node-item__icon-bg"
+          v-for="choice in getSpellBg(node)" :key="choice"
+          :src="choice"
+        />
+      </view>
+      <image
+        v-else
+        class="node-item__icon-bg"
+        :class="[getBorder(node).mask]"
+        :src="getSpellBg(node)"
+      />
+
+      <!--      TODO: 被选中的node显示 -->
+      <view v-show="node.ranks?.length > 1" class="node-item__rank">
+        <text>{{ node.ranks?.length }}</text>
+      </view>
     </view>
   </view>
 </template>
@@ -138,22 +181,78 @@ $col-width: calc(100% / 10);
 
   .node-item {
     position: absolute;
-    aspect-ratio: 1/1;
     left: 0;
     top: 0;
+    padding: 4rpx;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(1);
 
-    image {
+    .node-item__icon-bg {
       width: 100%;
       height: 100%;
+      mask-mode: alpha; /* 根据透明度裁剪 */
     }
 
-    .border-bg {
-      filter: grayscale(1);
+    .node-item__icon-mask-spell {
+      mask-image: url("@/static/images/wow/talent/spell-mask.svg");
     }
 
-    .border-bg--active {
-      filter: none;
+    .node-item__icon-mask-passive {
+      border-radius: 50%;
     }
+
+    .node-item__icon-mask-choice {
+      mask-image: url("@/static/images/wow/talent/choice-mask.svg");
+    }
+
+    .node-item__choice-wrap {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+
+      image {
+        &:first-child {
+          position: absolute;
+          right: 50%;
+          top: 0;
+        }
+
+        &:last-child {
+          position: absolute;
+          left: 50%;
+          top: 0;
+        }
+      }
+    }
+
+    .node-item__rank {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 20rpx;
+      width: 20rpx;
+      border-radius: 50%;
+      background: red;
+      color: #fff;
+      font-weight: bold;
+      font-size: 20rpx;
+    }
+  }
+
+  .node-item__bg-spell {
+    background-image: url("@/static/images/wow/talent/spell.svg");;
+  }
+
+  .node-item__bg-passive {
+    background-image: url("@/static/images/wow/talent/passive.svg");;
+  }
+
+  .node-item__bg-choice {
+    background-image: url("@/static/images/wow/talent/choice.svg");;
   }
 }
 

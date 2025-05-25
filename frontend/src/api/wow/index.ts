@@ -67,6 +67,13 @@ export function getImageSrc(image: string) {
   };
 }
 
+export function getSpellImageUrl(image: string) {
+  return {
+    item: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image/spell/${image}`,
+    thumbItem: `https://ginkolearn.cyou/api/wow/assets/blizz-media-image-thumb/spell/${image}`,
+  };
+}
+
 export function getRoleSpecSrc(classSpec: string, roleClass: string) {
   return {
     specIcon: `https://ginkolearn.cyou/api/wow/assets/class-icons/${roleClass}-${classSpec}-class-icon.webp`,
@@ -651,10 +658,19 @@ export interface TalentNode {
         cast_time: string;
         cooldown: string;
         description: string;
-        spell: { id: number; name: string }
+        spell: { id: number; name: string; image: string }
       }
       talent: { id: number; name: string }
     }
+    choice_of_tooltips: {
+      spell_tooltip: {
+        cast_time: string;
+        cooldown: string;
+        description: string;
+        spell: { id: number; name: string; image: string }
+      }
+      talent: { id: number; name: string }
+    }[]
   }[];
   unlocks?: number[];
 }
