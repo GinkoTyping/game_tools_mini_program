@@ -233,7 +233,11 @@
 
   <template v-if="activeMenu === 'talent'">
     <uni-section class="talent" :class="[classKey]" title="天赋">
-      <TalentTree v-model="talentData.class_talent_nodes" />
+      <TalentTree
+        v-model="talentData.class_talent_nodes"
+        :col-count="colConfig.colCount"
+        :start-col="colConfig.startCol"
+      />
       <uni-card class="section-card">
         <view class="menu talent-menu">
           <text
@@ -1210,6 +1214,24 @@ async function displaySpells(params: any) {
 
 // region 天赋
 const talentData = ref<any>({ class_talent_nodes: [] });
+const currentPopularTree = ref('class_talent_nodes');
+const colConfig = computed(() => {
+  if (talentData.value) {
+    const list = [...talentData.value[currentPopularTree.value]];
+    const sorted = list.filter(node => node.ranks[0]?.tooltip || node.ranks[0]?.choice_of_tooltips).sort((
+      a,
+      b,
+    ) => b.display_col - a.display_col);
+    return {
+      colCount: sorted?.[0]?.display_col ?? 0,
+      startCol: sorted?.splice(-1)?.[0]?.display_col ?? 0,
+    };
+  }
+  return {
+    colCount: 0,
+    startCol: 0,
+  };
+});
 // endregion
 
 //#region 切换底部菜单

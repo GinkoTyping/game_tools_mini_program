@@ -609,6 +609,8 @@ export async function queryTalentBySpec(req, res) {
   const classNodes = await Promise.allSettled(data.class_talent_nodes.map(node => mapNode(node)));
   data.class_talent_nodes = classNodes.map(item => item.value);
 
+  const specNodes = await Promise.allSettled(data.spec_talent_nodes.map(node => mapNode(node)));
+  data.spec_talent_nodes = specNodes.map(item => item.value);
 
   res.json(data);
 }

@@ -3,6 +3,11 @@ import { getSpellImageUrl, type TalentNode } from '@/api/wow';
 import { computed, getCurrentInstance, ref } from 'vue';
 import { onReady } from '@dcloudio/uni-app';
 
+const props = defineProps({
+  type: String,
+  colCount: Number,
+  startCol: Number,
+});
 const data = defineModel('modelValue', {
   type: Array<TalentNode>, default() {
     return [];
@@ -10,13 +15,12 @@ const data = defineModel('modelValue', {
 });
 
 const TREE_PADDING = 20;
-const COL_WIDTH = `calc((100vw - ${TREE_PADDING}rpx * 2) / 10)`;
+const NODE_SIZE = `calc((100vw - ${TREE_PADDING}rpx * 2) / 10)`;
 const CONTAINER_HEIGHT = `calc((100vw - ${TREE_PADDING}rpx * 2) / 10 * 15)`;
 const getPosition = computed(() => {
   return (item: TalentNode) => {
-    const offsetX = `calc((${item.display_col} - 1) * ${COL_WIDTH} * 1.5)`;
-    const offsetY = `calc((${item.display_row} - 2) * ${COL_WIDTH} * 1.5)`;
-    return `translate(${offsetX}, ${offsetY})`;
+    const [x, y] = getLinePoint(item.display_row, item.display_col, false);
+    return `translate(${x}px, ${y}px)`;
   };
 });
 const getBorder = computed(() => {
@@ -61,14 +65,17 @@ const getSpellBg = computed(() => {
 const instance = getCurrentInstance();
 const canvasId = ref(`canvas_${Date.now()}`);
 const canvasWidth = ref();
-const canvasOffset = computed(() => ({
-  x: canvasWidth.value * 0.15,
-  y: canvasWidth.value * 0.15,
-}));
+const canvasOffset = computed(() => {
+  return {
+    x: canvasWidth.value * 0.15,
+    y: canvasWidth.value * 0.15,
+  };
+});
 const canvasHeight = ref();
 
-function getLinePoint(row: number, col: number) {
-  return [canvasOffset.value.x * (col - 1 + 1 / 3), canvasOffset.value.y * (row - 2 + 1 / 3)];
+function getLinePoint(row: number, col: number, isEdge) {
+  const extra = isEdge ? 1 / 3 : 0;
+  return [canvasOffset.value.x * (col - 1 + extra), canvasOffset.value.y * (row - 2 + extra)];
 }
 
 async function drawContent(width, height) {
@@ -81,11 +88,11 @@ async function drawContent(width, height) {
 
   data.value.forEach((node) => {
     if (node.unlocks?.length) {
-      const beginPoint = getLinePoint(node.display_row, node.display_col);
+      const beginPoint = getLinePoint(node.display_row, node.display_col, true);
       node.unlocks.forEach((childId) => {
         const childNode = data.value.find((item) => item.id === childId);
         if (childNode) {
-          const endPoint = getLinePoint(childNode?.display_row, childNode.display_col);
+          const endPoint = getLinePoint(childNode?.display_row, childNode.display_col, true);
 
           ctx.beginPath();
           ctx.setStrokeStyle('#737373');
@@ -120,6 +127,7 @@ function init() {
 }
 
 onReady(() => {
+  console.log('props', props);
   init();
 });
 </script>
@@ -141,8 +149,8 @@ onReady(() => {
       :class="[getBorder(node).image]"
       :style="{
         transform: getPosition(node),
-        width: COL_WIDTH,
-        height: COL_WIDTH,
+        width: NODE_SIZE,
+        height: NODE_SIZE,
       }">
       <view class="node-item__choice-wrap"
         :class="[getBorder(node).mask]"
