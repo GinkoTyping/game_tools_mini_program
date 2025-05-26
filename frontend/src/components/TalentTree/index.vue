@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { getSpellImageUrl, type TalentNode, type TalentTreeDTO } from '@/api/wow';
-import { computed, getCurrentInstance, ref, watch, type PropType } from 'vue';
+import { computed, getCurrentInstance, ref, watch, type PropType, nextTick } from 'vue';
 import { onReady } from '@dcloudio/uni-app';
 
 const props = defineProps({
@@ -23,7 +23,7 @@ const currentTreeData = computed(() => {
   if (props.type === 'class') {
     return props.data?.class_talent_nodes;
   }
-  console.log(heroTalentTrees.value?.[0]?.hero_talent_nodes);
+
   return heroTalentTrees.value?.[0]?.hero_talent_nodes;
 });
 const heroTalentTrees = computed(() => {
@@ -38,7 +38,7 @@ const heroNodeIds = computed(() => {
   return [];
 });
 const colConfig = computed(() => {
-  if (props.data) {
+  if (props.data && currentTreeData.value) {
     const list = [...currentTreeData.value];
 
     function filterHeroTalentNode(id: number) {
@@ -56,12 +56,6 @@ const colConfig = computed(() => {
     const maxCol = sortedByCol?.[0]?.display_col ?? 0;
     const minRow = sortedByRow?.splice(-1)?.[0]?.display_row ?? 0;
     const maxRow = sortedByRow?.[0]?.display_row ?? 0;
-    console.log({ sortedByCol, sortedByRow });
-    console.log({
-      rowCount: maxRow - minRow + 1,
-      colCount: maxCol - minCol + 1,
-      startCol: minCol,
-    });
     return {
       rowCount: maxRow - minRow + 1,
       colCount: maxCol - minCol + 1,
@@ -75,8 +69,12 @@ const colConfig = computed(() => {
 });
 
 const TREE_PADDING = 20;
-const CONTAINER_HEIGHT = `calc((100vw - ${TREE_PADDING}rpx * 2) / 10 * 15)`;
+const windowWidth = ref(0);
 const getContainerHeight = computed(() => 1.5 * getNodeSize.value * (colConfig.value.rowCount ?? 1));
+const getContainerWidth = computed(() => {
+  const width = windowWidth.value - uni.upx2px(TREE_PADDING) * 2;
+  return props.type === 'hero' ? uni.upx2px(320) : width;
+});
 
 // region node
 const getPosition = computed(() => {
@@ -123,42 +121,31 @@ const getSpellBg = computed(() => {
   };
 });
 const getNodeSize = computed(() => {
-  const size = canvasWidth.value / (1.5 * colConfig.value.colCount - 0.5);
-  console.log({ size });
-  return size;
+  return getContainerWidth.value / (1.5 * colConfig.value.colCount - 0.5);
 });
 // endregion
 
 // region edge
 const instance = getCurrentInstance();
 const canvasId = ref(`canvas_${Date.now()}`);
-const canvasWidth = ref();
 const canvasOffset = computed(() => {
   const ratio = (1 / (colConfig.value.colCount + (colConfig.value.colCount - 1) * 0.5)) * 1.5;
   const formatRatio = Number(ratio.toFixed(2));
-  console.log({
-    formatRatio,
-    x: canvasWidth.value * formatRatio,
-    y: canvasWidth.value * formatRatio,
-  });
   return {
-    x: canvasWidth.value * formatRatio,
-    y: canvasWidth.value * formatRatio,
+    x: getContainerWidth.value * formatRatio,
+    y: getContainerWidth.value * formatRatio,
   };
 });
-const canvasHeight = ref();
 
 function getLinePoint(row: number, col: number, isEdge) {
   const extra = isEdge ? 1 / 3 : 0;
   return [canvasOffset.value.x * (col - colConfig.value.startCol + extra), canvasOffset.value.y * (row - 2 + extra)];
 }
 
-async function drawContent(width) {
+async function drawEdge() {
   const ctx = uni.createCanvasContext(canvasId.value, instance);
-  canvasWidth.value = width;  // 画布实际像素宽度
-  canvasHeight.value = getContainerHeight.value;
 
-  ctx.clearRect(0, 0, width, canvasHeight.value);
+  ctx.clearRect(0, 0, getContainerWidth.value, getContainerHeight.value);
 
   currentTreeData.value.forEach((node) => {
     if (node.unlocks?.length) {
@@ -188,25 +175,15 @@ async function drawContent(width) {
 
 // endregion
 
-function init() {
-  const query = uni.createSelectorQuery().in(instance);
-
-  // 选择父节点并获取尺寸
-  query.select(`.tree-container__id__${canvasId.value} .canvas-wrap`)
-    .boundingClientRect((res: any) => {
-      if (res) {
-        drawContent(res.width);
-      }
-    })
-    .exec();
-}
-
 onReady(() => {
-  init();
+  windowWidth.value = uni.getSystemInfoSync().windowWidth;
+  drawEdge();
 });
 
 watch(() => props.type, () => {
-  init();
+  nextTick(() => {
+    drawEdge();
+  });
 });
 
 </script>
@@ -214,12 +191,12 @@ watch(() => props.type, () => {
 <template>
   <view class="tree-container"
     :class="[`tree-container__id__${canvasId}`]"
-    :style="{ height: `${getContainerHeight}px`, width: `calc(100vw - ${TREE_PADDING}rpx * 2)` }">
+    :style="{ height: `${getContainerHeight}px`, width: `${getContainerWidth}px` }">
     <view class="canvas-wrap">
       <canvas
         :canvas-id="canvasId"
         :id="canvasId"
-        :style="{ width: canvasWidth + 'px', height: canvasHeight + 'px' }"
+        :style="{ width: `${getContainerWidth}px`, height: `${getContainerHeight}px` }"
       ></canvas>
     </view>
     <view class="node-item"
@@ -277,10 +254,14 @@ $col-width: calc(100% / 10);
     background-repeat: no-repeat;
     background-size: cover;
     filter: grayscale(1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 
     .node-item__icon-bg {
-      width: 100%;
-      height: 100%;
+      width: calc(100% - 2px);
+      height: calc(100% - 2px);
       mask-mode: alpha; /* 根据透明度裁剪 */
     }
 
@@ -299,6 +280,7 @@ $col-width: calc(100% / 10);
     .node-item__choice-wrap {
       width: 100%;
       height: 100%;
+      border-radius: 26rpx;
       overflow: hidden;
       position: relative;
 

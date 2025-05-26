@@ -606,11 +606,20 @@ export async function queryTalentBySpec(req, res) {
     return node;
   }
 
-  const classNodes = await Promise.allSettled(data.class_talent_nodes.map(node => mapNode(node)));
-  data.class_talent_nodes = classNodes.map(item => item.value);
+  const classNodeResults = await Promise.allSettled(data.class_talent_nodes.map(node => mapNode(node)));
+  data.class_talent_nodes = classNodeResults.map(item => item.value);
 
-  const specNodes = await Promise.allSettled(data.spec_talent_nodes.map(node => mapNode(node)));
-  data.spec_talent_nodes = specNodes.map(item => item.value);
+  const specNodeResults = await Promise.allSettled(data.spec_talent_nodes.map(node => mapNode(node)));
+  data.spec_talent_nodes = specNodeResults.map(item => item.value);
+
+  async function mapHeroTree(tree) {
+    const nodeResults = await Promise.allSettled(tree.hero_talent_nodes.map(node => mapNode(node)));
+    tree.hero_talent_nodes = nodeResults.map(item => item.value);
+    return tree;
+  }
+
+  const heroTreeResults = await Promise.allSettled(data.hero_talent_trees.map(tree => mapHeroTree(tree)));
+  data.hero_talent_trees = heroTreeResults.map(item => item.value);
 
   res.json(data);
 }
