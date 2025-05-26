@@ -232,11 +232,20 @@
   </template>
 
   <template v-if="activeMenu === 'talent'">
-    <uni-section class="talent" :class="[classKey]" title="天赋">
+    <uni-section class="talent" :class="[classKey]" title="天赋点选择率">
+      <view class="popular-tabs">
+        <uni-segmented-control
+          :current="currentPopularTreeIndex"
+          :values="popularTalentTrees"
+          style-type="text"
+          active-color="#007aff"
+          @clickItem="switchPopularTalentTree"
+        />
+      </view>
+
       <TalentTree
-        v-model="talentData.class_talent_nodes"
-        :col-count="colConfig.colCount"
-        :start-col="colConfig.startCol"
+        :type="currentPopularTree"
+        :data="talentData"
       />
       <uni-card class="section-card">
         <view class="menu talent-menu">
@@ -1213,25 +1222,27 @@ async function displaySpells(params: any) {
 //#endregion
 
 // region 天赋
-const talentData = ref<any>({ class_talent_nodes: [] });
-const currentPopularTree = ref('class_talent_nodes');
-const colConfig = computed(() => {
-  if (talentData.value) {
-    const list = [...talentData.value[currentPopularTree.value]];
-    const sorted = list.filter(node => node.ranks[0]?.tooltip || node.ranks[0]?.choice_of_tooltips).sort((
-      a,
-      b,
-    ) => b.display_col - a.display_col);
-    return {
-      colCount: sorted?.[0]?.display_col ?? 0,
-      startCol: sorted?.splice(-1)?.[0]?.display_col ?? 0,
-    };
+const talentData = ref<any>();
+const currentPopularTree = computed(() => {
+  if (currentPopularTreeIndex.value === 0) {
+    return 'class';
   }
-  return {
-    colCount: 0,
-    startCol: 0,
-  };
+  if (currentPopularTreeIndex.value === 1) {
+    return 'hero';
+  }
+  if (currentPopularTreeIndex.value === 2) {
+    return 'spec';
+  }
 });
+const currentPopularTreeIndex = ref(0);
+const popularTalentTrees = ['职业天赋树', '英雄天赋树', '专精天赋树'];
+
+function switchPopularTalentTree({ currentIndex }) {
+  if (currentPopularTreeIndex.value !== currentIndex) {
+    currentPopularTreeIndex.value = currentIndex;
+  }
+}
+
 // endregion
 
 //#region 切换底部菜单
@@ -2214,22 +2225,34 @@ $light-border: rgb(68, 68, 68);
 }
 
 // 分段器
-::v-deep .segmented-control {
-  gap: 20rpx;
-  margin-bottom: 20rpx;
+:deep {
+  .segmented-control {
+    gap: 20rpx;
+    margin-bottom: 20rpx;
 
-  .segmented-control__item {
-    flex: none !important;
+    .segmented-control__item {
+      flex: none !important;
 
-    .segmented-control__text {
-      font-size: small;
-      color: inherit !important;
+      .segmented-control__text {
+        font-size: small;
+        color: inherit !important;
+      }
+
+      .segmented-control__item--text {
+        font-weight: bold;
+        color: #fff !important;
+      }
     }
+  }
+}
 
-    .segmented-control__item--text {
-      font-weight: bold;
-      color: #fff !important;
-    }
+
+// 天赋树
+.popular-tabs {
+  padding: 0 20rpx;
+
+  :deep(.segmented-control) {
+    justify-content: center;
   }
 }
 </style>

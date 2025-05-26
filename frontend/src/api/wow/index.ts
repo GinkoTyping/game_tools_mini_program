@@ -675,15 +675,42 @@ export interface TalentNode {
   unlocks?: number[];
 }
 
-export async function queryTalent(classSpec: string, roleClass: string) {
+export interface HeroTalentTreeDTO {
+  id: number;
+  name: string;
+  hero_talent_nodes: TalentNode[];
+  playable_class: {
+    id: number;
+    name: string;
+  };
+  playable_specializations: {
+    id: number;
+    name: string
+  }[];
+}
+
+
+export interface TalentTreeDTO {
+  id: number;
+  class_spec: string;
+  role_class: string;
+  class_talent_nodes: TalentNode[];
+  spec_talent_nodes: TalentNode[];
+  hero_talent_trees: HeroTalentTreeDTO[];
+}
+
+export async function queryTalent(
+  classSpec: string,
+  roleClass: string,
+): Promise<TalentTreeDTO> {
   try {
     const res = await proxyRequest({
       url: `/wow/bis/talent?classSpec=${classSpec}&roleClass=${roleClass}`,
     });
-    return res.data;
+    return res.data as TalentTreeDTO;
   } catch (e) {
     console.log(e);
-    return {};
+    return {} as TalentTreeDTO;
   }
 }
 
