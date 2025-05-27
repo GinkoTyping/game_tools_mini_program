@@ -26,10 +26,13 @@ const currentTreeData = computed(() => {
   console.log(heroTalentTrees.value);
   return heroTalentTrees.value?.[0]?.hero_talent_nodes;
 });
+const buildIndex = ref(0);
+const currentBuild = computed(() => {
+  return props.data.talents.talentTreeBuilds[buildIndex.value];
+});
 const heroTalentTrees = computed(() => {
   return props.data?.hero_talent_trees.filter(tree => tree.playable_specializations.find(spec => spec.id === props.data.id));
 });
-const currentHeroTalentId = ref();
 const heroNodeIds = computed(() => {
   if (props.data) {
     return [...props.data.hero_talent_trees.map(heroTree => heroTree.hero_talent_nodes)].flat().map(
@@ -139,6 +142,16 @@ const getNodeIconBg = computed(() => {
     return '';
   };
 });
+
+const getNodeStatus = computed(() => {
+  return (nodeId: number) => {
+    const found = currentBuild.value.talentTree.build.selectedNodes.find(([id]) => nodeId === id);
+    return {
+      selected: found !== undefined,
+      rank: found?.[1],
+    };
+  };
+});
 // endregion
 
 // region edge
@@ -214,7 +227,10 @@ watch(() => props.type, () => {
       v-for="node in currentTreeData"
       :key="node.id"
       :data-id="node.id"
-      :class="[getNodeBorder(node).image]"
+      :class="[
+        getNodeBorder(node).image,
+        getNodeStatus(node.id).selected ? 'node-item--active' : ''
+      ]"
       :style="{
         transform: getNodePosition(node),
         width: `${getNodeSize}px` ?? 0,
@@ -237,7 +253,7 @@ watch(() => props.type, () => {
 
       <!--      TODO: 被选中的node显示 -->
       <view v-show="node.ranks?.length > 1" class="node-item__rank">
-        <text>{{ node.ranks?.length }}</text>
+        <text>{{ getNodeStatus(node.id).rank }}</text>
       </view>
     </view>
   </view>
@@ -268,7 +284,6 @@ $col-width: calc(100% / 10);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 
     .node-item__icon-bg {
       width: calc(100% - 2px);
@@ -312,16 +327,22 @@ $col-width: calc(100% / 10);
 
     .node-item__rank {
       position: absolute;
-      bottom: 0;
-      right: 0;
-      height: 20rpx;
-      width: 20rpx;
+      bottom: -6rpx;
+      right: -6rpx;
+      height: 30rpx;
+      width: 30rpx;
       border-radius: 50%;
       background: red;
       color: #fff;
+      text-align: center;
       font-weight: bold;
-      font-size: 20rpx;
+      font-size: 24rpx;
+      line-height: 30rpx;
     }
+  }
+
+  .node-item--active {
+    filter: none;
   }
 
   .node-item__bg-spell {

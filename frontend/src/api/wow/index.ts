@@ -697,6 +697,23 @@ export interface TalentTreeDTO {
   class_talent_nodes: TalentNode[];
   spec_talent_nodes: TalentNode[];
   hero_talent_trees: HeroTalentTreeDTO[];
+  talents: {
+    heroTreeStats: { id: number; rank: number; metricValue: string }[]
+    talentHeatMap: Array<[number, number]>
+    talentTreeBuilds: {
+      isSelected: boolean;
+      isDefaultSelection: boolean;
+      keystoneLevel: number;
+      popularity: string;
+      talentTree: {
+        exportCode: string;
+        build: {
+          heroSpecId: number;
+          selectedNodes: Array<[number, number]>
+        }
+      }
+    }[]
+  };
 }
 
 export async function queryTalent(

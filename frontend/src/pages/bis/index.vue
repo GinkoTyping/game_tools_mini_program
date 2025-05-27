@@ -1233,6 +1233,7 @@ const currentPopularTree = computed(() => {
   if (currentPopularTreeIndex.value === 2) {
     return 'spec';
   }
+  return 'class';
 });
 const currentPopularTreeIndex = ref(0);
 const popularTalentTrees = ['职业天赋树', '英雄天赋树', '专精天赋树'];
