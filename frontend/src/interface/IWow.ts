@@ -60,4 +60,5 @@ export interface ISpell {
   cooldown: string;
   cost: string;
   description: string;
+  rank?: string;
 }

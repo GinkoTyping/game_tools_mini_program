@@ -3,6 +3,8 @@ import { getSpellImageUrl, type TalentNode, type TalentTreeDTO } from '@/api/wow
 import { computed, getCurrentInstance, ref, watch, type PropType, nextTick } from 'vue';
 import { onReady } from '@dcloudio/uni-app';
 
+import SpellCard from '@/components/SpellCard.vue';
+
 const props = defineProps({
   type: {
     type: String,
@@ -199,6 +201,41 @@ async function drawEdge() {
 
 // endregion
 
+// region 交互
+const talentPopup = ref();
+const selectedNode = ref<TalentNode>();
+
+function switchTooltip(node: TalentNode) {
+  selectedNode.value = node;
+  nextTick(() => {
+    talentPopup.value?.open();
+  });
+}
+
+function mapNodeToTooltip(rankItem) {
+  const tooltip = rankItem.tooltip;
+  return {
+    id: tooltip.spell_tooltip.spell.id,
+    rank: rankItem.rank,
+    name_zh: tooltip.talent.name,
+    cast_time: tooltip.spell_tooltip.cast_time,
+    cooldown: tooltip.spell_tooltip.cooldown,
+    cost: tooltip.spell_tooltip.power_cost,
+    range: tooltip.spell_tooltip.range,
+    description: tooltip.spell_tooltip.description,
+  };
+}
+
+const getNodeTooltips = computed(() => {
+  return selectedNode.value?.ranks.reduce((pre, cur) => {
+    if (cur.tooltip) {
+      pre.push(mapNodeToTooltip(cur));
+    }
+    return pre;
+  }, [] as any);
+});
+// endregion
+
 onReady(() => {
   windowWidth.value = uni.getSystemInfoSync().windowWidth;
   drawEdge();
@@ -235,7 +272,9 @@ watch(() => props.type, () => {
         transform: getNodePosition(node),
         width: `${getNodeSize}px` ?? 0,
         height: `${getNodeSize}px` ?? 0,
-      }">
+      }"
+      @click="() => switchTooltip(node)"
+    >
       <view class="node-item__choice-wrap"
         :class="[getNodeBorder(node).mask]"
         v-if="node.node_type?.type.includes('CHOICE')">
@@ -257,6 +296,10 @@ watch(() => props.type, () => {
       </view>
     </view>
   </view>
+
+  <uni-popup ref="talentPopup">
+    <SpellCard :spell="spell" v-for="spell in getNodeTooltips" :key="spell.id" />
+  </uni-popup>
 </template>
 
 <style scoped lang="scss">

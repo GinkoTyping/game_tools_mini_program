@@ -1,29 +1,37 @@
 <template>
-  <uni-card class="spell-popup">
+  <uni-card class="spell-popup custom-card">
     <text class="spell-name">{{ props.spell.name_zh }}</text>
+    <view v-show="props.spell.rank">等级{{
+        props.spell.rank
+      }}
+    </view>
     <view class="spell-prop">
       <text
         v-show="props.spell.range && !props.spell.range?.includes('0码')"
         style="width: 100%"
-        >{{ props.spell.range }}</text
+      >{{ props.spell.range }}
+      </text
       >
       <text v-show="props.spell.cast_time?.length">{{
-        props.spell.cast_time
-      }}</text>
+          props.spell.cast_time
+        }}
+      </text>
       <text
         v-show="props.spell.cooldown?.length && props.spell.cooldown != 'n/a'"
-        >{{ props.spell.cooldown }}</text
+      >{{ props.spell.cooldown }}
+      </text
       >
       <text v-show="props.spell.cost && props.spell.cost != '无'">{{
-        props.spell.cost
-      }}</text>
+          props.spell.cost
+        }}
+      </text>
     </view>
     <text class="description">{{ description }}</text>
   </uni-card>
 </template>
 
 <script lang="ts" setup>
-import { ISpell } from '@/interface/IWow';
+import type { ISpell } from '@/interface/IWow';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -50,54 +58,65 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.spell-popup > view {
+<style lang="scss">
+.custom-card.spell-popup > view {
   width: 70vw !important;
-  border: 1px solid #ffffff !important;
-  border-width: 1px;
+  box-shadow: inset 0 0 0 1px #FFFFFF !important;
   margin-bottom: 10px !important;
-  text {
+
+  text, view {
     color: #fff;
   }
+
   .uni-card__content {
     display: flex;
     flex-direction: column;
   }
+
   .spell-name {
     font-size: 16px;
     color: #fff !important;
   }
+
   .spell-prop {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
     text {
       width: 45%;
+
       &:nth-child(3),
       &:nth-child(5) {
         text-align: right;
       }
     }
   }
+
   .name {
     color: $color-mythic;
   }
+
   .qulity,
   .bonus-stat,
   .spell {
     color: $color-uncommon;
   }
+
   .item-level,
   .description {
     color: $uni-text-color-inverse;
   }
+
   .price {
     display: flex;
+
     view {
       display: flex;
       align-items: center;
       margin-right: 4px;
     }
+
     image {
       width: 16px;
       height: 16px;
