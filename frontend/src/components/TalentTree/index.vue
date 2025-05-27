@@ -23,7 +23,7 @@ const currentTreeData = computed(() => {
   if (props.type === 'class') {
     return props.data?.class_talent_nodes;
   }
-
+  console.log(heroTalentTrees.value);
   return heroTalentTrees.value?.[0]?.hero_talent_nodes;
 });
 const heroTalentTrees = computed(() => {
@@ -37,7 +37,7 @@ const heroNodeIds = computed(() => {
   }
   return [];
 });
-const colConfig = computed(() => {
+const coordinateConfig = computed(() => {
   if (props.data && currentTreeData.value) {
     const list = [...currentTreeData.value];
 
@@ -56,13 +56,22 @@ const colConfig = computed(() => {
     const maxCol = sortedByCol?.[0]?.display_col ?? 0;
     const minRow = sortedByRow?.splice(-1)?.[0]?.display_row ?? 0;
     const maxRow = sortedByRow?.[0]?.display_row ?? 0;
+    console.log({
+      startRow: minRow,
+      rowCount: maxRow - minRow + 1,
+      colCount: maxCol - minCol + 1,
+      startCol: minCol,
+    });
     return {
+      startRow: minRow,
       rowCount: maxRow - minRow + 1,
       colCount: maxCol - minCol + 1,
       startCol: minCol,
     };
   }
   return {
+    startRow: 1,
+    rowCount: 1,
     colCount: 1,
     startCol: 1,
   };
@@ -70,20 +79,30 @@ const colConfig = computed(() => {
 
 const TREE_PADDING = 20;
 const windowWidth = ref(0);
-const getContainerHeight = computed(() => 1.5 * getNodeSize.value * (colConfig.value.rowCount ?? 1));
+const getContainerHeight = computed(() => 1.5 * getNodeSize.value * (coordinateConfig.value.rowCount ?? 1));
 const getContainerWidth = computed(() => {
   const width = windowWidth.value - uni.upx2px(TREE_PADDING) * 2;
   return props.type === 'hero' ? uni.upx2px(320) : width;
 });
+const nodeOffset = computed(() => {
+  return {
+    x: getNodeSize.value * 1.5,
+    y: getNodeSize.value * 1.5,
+  };
+});
 
 // region node
-const getPosition = computed(() => {
+const getNodeSize = computed(() => {
+  const size = getContainerWidth.value / (coordinateConfig.value.colCount * 1.5 - 0.5);
+  return Number(size.toFixed(2));
+});
+const getNodePosition = computed(() => {
   return (item: TalentNode) => {
     const [x, y] = getLinePoint(item.display_row, item.display_col, false);
     return `translate(${x}px, ${y}px)`;
   };
 });
-const getBorder = computed(() => {
+const getNodeBorder = computed(() => {
   return (item: TalentNode) => {
     switch (item.node_type.type) {
       case 'ACTIVE':
@@ -109,7 +128,7 @@ const getBorder = computed(() => {
     }
   };
 });
-const getSpellBg = computed(() => {
+const getNodeIconBg = computed(() => {
   return (node: TalentNode) => {
     const image = node.ranks?.[0]?.tooltip?.spell_tooltip.spell.image;
     if (image) {
@@ -120,26 +139,18 @@ const getSpellBg = computed(() => {
     return '';
   };
 });
-const getNodeSize = computed(() => {
-  return getContainerWidth.value / (1.5 * colConfig.value.colCount - 0.5);
-});
 // endregion
 
 // region edge
 const instance = getCurrentInstance();
 const canvasId = ref(`canvas_${Date.now()}`);
-const canvasOffset = computed(() => {
-  const ratio = (1 / (colConfig.value.colCount + (colConfig.value.colCount - 1) * 0.5)) * 1.5;
-  const formatRatio = Number(ratio.toFixed(2));
-  return {
-    x: getContainerWidth.value * formatRatio,
-    y: getContainerWidth.value * formatRatio,
-  };
-});
 
 function getLinePoint(row: number, col: number, isEdge) {
   const extra = isEdge ? 1 / 3 : 0;
-  return [canvasOffset.value.x * (col - colConfig.value.startCol + extra), canvasOffset.value.y * (row - 2 + extra)];
+  return [
+    nodeOffset.value.x * (col - coordinateConfig.value.startCol + extra),
+    nodeOffset.value.y * (row - coordinateConfig.value.startRow + extra),
+  ];
 }
 
 async function drawEdge() {
@@ -203,25 +214,25 @@ watch(() => props.type, () => {
       v-for="node in currentTreeData"
       :key="node.id"
       :data-id="node.id"
-      :class="[getBorder(node).image]"
+      :class="[getNodeBorder(node).image]"
       :style="{
-        transform: getPosition(node),
+        transform: getNodePosition(node),
         width: `${getNodeSize}px` ?? 0,
         height: `${getNodeSize}px` ?? 0,
       }">
       <view class="node-item__choice-wrap"
-        :class="[getBorder(node).mask]"
+        :class="[getNodeBorder(node).mask]"
         v-if="node.node_type?.type.includes('CHOICE')">
         <image class="node-item__icon-bg"
-          v-for="choice in getSpellBg(node)" :key="choice"
+          v-for="choice in getNodeIconBg(node)" :key="choice"
           :src="choice"
         />
       </view>
       <image
         v-else
         class="node-item__icon-bg"
-        :class="[getBorder(node).mask]"
-        :src="getSpellBg(node)"
+        :class="[getNodeBorder(node).mask]"
+        :src="getNodeIconBg(node)"
       />
 
       <!--      TODO: 被选中的node显示 -->
