@@ -227,6 +227,28 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
 // endregion
 
 // region API 查询数据
+// 获取hash
+export async function getArchonHash(classSpec, roleClass) {
+  let pathHash = '';
+  await getCheerioByPuppeteer({
+    staticFilePath: getStaticFilePath(classSpec, roleClass),
+    urlPath: getUrl(classSpec, roleClass),
+    useCache: false,
+    waitForSelector: null,
+    disableSaveCache: true,
+    async onResponse(response) {
+      const url = new URL(response.url());
+      const pathname = url.pathname;
+      if (!pathHash && pathname.includes('/this-week.json')) {
+        const match = pathname.match(/^\/_next\/data\/([a-zA-Z0-9_]+)\//);
+        pathHash = match?.[1];
+      }
+    },
+  });
+
+  return pathHash;
+}
+
 async function queryArchon(pathHash, category, classSpec, roleClass) {
   try {
     const res = await axios.get(`https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/mythic-plus/${category}/high-keys/all-dungeons/this-week.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=mythic-plus&categorySlug=${category}&difficultySlug=high-keys&encounterSlug=all-dungeons&affixesSlug=this-week`);
@@ -236,6 +258,7 @@ async function queryArchon(pathHash, category, classSpec, roleClass) {
   }
 }
 
+// overview
 async function queryOverview(hash, classSpec, roleClass) {
   const data = await queryArchon(hash, 'overview', classSpec, roleClass);
   const statsSection = data.sections.find(section => section.navigationId === 'stats');
@@ -265,6 +288,7 @@ async function queryOverview(hash, classSpec, roleClass) {
   };
 }
 
+// gear-and-tier-set
 function matchItemSlot(input) {
   return input.match(/^.*?>([\s\S]*?)</)?.[1].trim();
 }
@@ -371,30 +395,74 @@ async function queryGears(hash, classSpec, roleClass) {
   return { bisGears, trinkets, popularGears };
 }
 
-export async function getArchonHash(classSpec, roleClass) {
-  let pathHash = '';
-  await getCheerioByPuppeteer({
-    staticFilePath: getStaticFilePath(classSpec, roleClass),
-    urlPath: getUrl(classSpec, roleClass),
-    useCache: false,
-    waitForSelector: null,
-    disableSaveCache: true,
-    async onResponse(response) {
-      const url = new URL(response.url());
-      const pathname = url.pathname;
-      if (!pathHash && pathname.includes('/this-week.json')) {
-        const match = pathname.match(/^\/_next\/data\/([a-zA-Z0-9_]+)\//);
-        pathHash = match?.[1];
-      }
-    },
-  });
+// talents
 
-  return pathHash;
+function getHeroTalentStats(data) {
+  const stats = data.sections.find(section => section.navigationId === 'hero-talents')?.props?.subTreeStats;
+  return stats.map(item => ({
+    ...item,
+    metricValue: item.metricValue.match(/^.*?>([\s\S]*?)</)?.[1]?.trim(),
+  }));
+}
+
+function mapDefinitionIdToNodeId([id, rank], nodesMap) {
+  const nodeId = nodesMap.find(node => {
+    return node.abilities.some(ability => ability.id === id);
+  })?.nodeId;
+  const output = [nodeId];
+  if (rank) {
+    output.push(rank);
+  }
+  return output;
+}
+
+function getTalentTreeBuilds(data, nodesMap) {
+  return data.sections.find(section => section.navigationId === 'talents')?.props.talentTreeBuildSets?.[0]?.alternatives.map(
+    tree => {
+      return {
+        isDefaultSelection: tree.isDefaultSelection,
+        keystoneLevel: tree.keystoneLevel,
+        popularity: tree.popularity,
+        talentTree: {
+          build: {
+            heroSpecId: tree.talentTree.dehydratedBuild.heroSpecId,
+            selectedNodes: tree.talentTree.dehydratedBuild.selectedNodes.map(([id, rank]) => mapDefinitionIdToNodeId([
+              id,
+              rank,
+            ], nodesMap)),
+          },
+          exportCode: tree.talentTree.exportCodeParams.exportCode,
+        },
+      };
+    });
+
+}
+
+function getTalentHeatMap(data, nodesMap) {
+  return data.sections.find(section => section.navigationId === 'talents-heatmap')?.props.talentTree.dehydratedBuild.selectedNodes.map(
+    ([id, rank]) => mapDefinitionIdToNodeId([
+      id,
+      rank,
+    ], nodesMap));
+}
+
+async function queryTalents(hash, classSpec, roleClass) {
+  const data = await queryArchon(hash, 'talents', classSpec, roleClass);
+  const nodesMap = Object.values(data.talentTreeBlueprints)[0]?.changeSet?.allNodes;
+  const heroTreeStats = getHeroTalentStats(data);
+  const talentTreeBuilds = getTalentTreeBuilds(data, nodesMap);
+  const talentHeatMap = getTalentHeatMap(data, nodesMap);
+  return {
+    heroTreeStats,
+    talentTreeBuilds,
+    talentHeatMap,
+  };
 }
 
 export async function collectArchonByApi(hash, classSpec, roleClass) {
   const stats = await queryOverview(hash, classSpec, roleClass);
   const { bisGears, trinkets, popularGears } = await queryGears(hash, classSpec, roleClass);
+  const talents = await queryTalents(hash, classSpec, roleClass);
   return {
     classSpec,
     roleClass,
@@ -403,6 +471,8 @@ export async function collectArchonByApi(hash, classSpec, roleClass) {
     overview: bisGears,
     popularTrinkets: trinkets,
     popularityItems: popularGears,
+
+    talents,
   };
 }
 

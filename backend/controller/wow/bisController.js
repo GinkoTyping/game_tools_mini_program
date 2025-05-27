@@ -606,21 +606,25 @@ export async function queryTalentBySpec(req, res) {
     return node;
   }
 
-  const classNodeResults = await Promise.allSettled(data.class_talent_nodes.map(node => mapNode(node)));
-  data.class_talent_nodes = classNodeResults.map(item => item.value);
-
-  const specNodeResults = await Promise.allSettled(data.spec_talent_nodes.map(node => mapNode(node)));
-  data.spec_talent_nodes = specNodeResults.map(item => item.value);
-
   async function mapHeroTree(tree) {
     const nodeResults = await Promise.allSettled(tree.hero_talent_nodes.map(node => mapNode(node)));
     tree.hero_talent_nodes = nodeResults.map(item => item.value);
     return tree;
   }
 
-  const heroTreeResults = await Promise.allSettled(data.hero_talent_trees.map(tree => mapHeroTree(tree)));
-  data.hero_talent_trees = heroTreeResults.map(item => item.value);
-
+  const [
+    classNodeResults, specNodeResults, heroTreeResults,
+    archonTalents,
+  ] = await Promise.allSettled([
+    Promise.allSettled(data.class_talent_nodes.map(node => mapNode(node))),
+    Promise.allSettled(data.spec_talent_nodes.map(node => mapNode(node))),
+    Promise.allSettled(data.hero_talent_trees.map(tree => mapHeroTree(tree))),
+    bisMapper.getArchonTalent(roleClass, classSpec),
+  ]);
+  data.class_talent_nodes = classNodeResults.value.map(item => item.value);
+  data.spec_talent_nodes = specNodeResults.value.map(item => item.value);
+  data.hero_talent_trees = heroTreeResults.value.map(item => item.value);
+  data.talents = archonTalents.value;
   res.json(data);
 }
 

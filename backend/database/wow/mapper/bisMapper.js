@@ -4,7 +4,10 @@ let db;
 const TABLE_NAME = 'wow_bis';
 
 async function getBisByClassAndSpec(roleClass, classSpec) {
-  return db.get(`SELECT * FROM wow_bis WHERE role_class=?1 AND class_spec=?2`, [
+  return db.get(`SELECT *
+                 FROM wow_bis
+                 WHERE role_class = ?1
+                   AND class_spec = ?2`, [
     roleClass,
     classSpec,
   ]);
@@ -31,24 +34,23 @@ async function updateBisByClassAndSpec(data) {
   } = data;
   return db.run(
     `
-    UPDATE wow_bis
-  SET
-    stats_priority = COALESCE(?, stats_priority),
-    ratings = COALESCE(?, ratings),
-    bis_items = COALESCE(?, bis_items),
-    bis_trinkets = COALESCE(?, bis_trinkets),
-    sort = COALESCE(?, sort),
-    spec_sort = COALESCE(?, spec_sort),
-    access_count = COALESCE(?, access_count),
-    updated_at = COALESCE(?, updated_at),
-    collected_at = COALESCE(?, collected_at),
-    talents = COALESCE(?, talents),
-    detailed_stats_priority = COALESCE(?, detailed_stats_priority),
-    enhancement = COALESCE(?, enhancement),
-    maxroll_bis = COALESCE(?, maxroll_bis),
-    wowhead_bis = COALESCE(?, wowhead_bis)
-  WHERE
-    role_class = ? AND class_spec = ?`,
+        UPDATE wow_bis
+        SET stats_priority          = COALESCE(?, stats_priority),
+            ratings                 = COALESCE(?, ratings),
+            bis_items               = COALESCE(?, bis_items),
+            bis_trinkets            = COALESCE(?, bis_trinkets),
+            sort                    = COALESCE(?, sort),
+            spec_sort               = COALESCE(?, spec_sort),
+            access_count            = COALESCE(?, access_count),
+            updated_at              = COALESCE(?, updated_at),
+            collected_at            = COALESCE(?, collected_at),
+            talents                 = COALESCE(?, talents),
+            detailed_stats_priority = COALESCE(?, detailed_stats_priority),
+            enhancement             = COALESCE(?, enhancement),
+            maxroll_bis             = COALESCE(?, maxroll_bis),
+            wowhead_bis             = COALESCE(?, wowhead_bis)
+        WHERE role_class = ?
+          AND class_spec = ?`,
     [
       JSON.stringify(stats),
       JSON.stringify(ratings),
@@ -66,17 +68,18 @@ async function updateBisByClassAndSpec(data) {
       JSON.stringify(wowheadBis),
       roleClass,
       classSpec,
-    ]
+    ],
   );
 }
 
 async function updateOverviewBis(roleClass, classSpec, data) {
   const existed = await db.get(
     `
-    SELECT bis_items
-    FROM ${TABLE_NAME} 
-    WHERE role_class=? AND class_spec=?`,
-    [roleClass, classSpec]
+        SELECT bis_items
+        FROM ${TABLE_NAME}
+        WHERE role_class = ?
+          AND class_spec = ?`,
+    [roleClass, classSpec],
   );
   if (existed?.bis_items) {
     const bisData = JSON.parse(existed.bis_items);
@@ -93,9 +96,10 @@ async function updateOverviewBis(roleClass, classSpec, data) {
     });
     return db.run(
       `
-      UPDATE ${TABLE_NAME}
-      SET bis_items=?,popularity_items=?,archon_bis=?,updated_at=?,collected_at=?
-      WHERE role_class=? AND class_spec=?`,
+          UPDATE ${TABLE_NAME}
+          SET bis_items=?, popularity_items=?, archon_bis=?, archon_talent=?, updated_at=?, collected_at=?
+          WHERE role_class = ?
+            AND class_spec = ?`,
       [
         JSON.stringify(bisData),
         JSON.stringify(data.popularityItems),
@@ -106,11 +110,14 @@ async function updateOverviewBis(roleClass, classSpec, data) {
           popularItems: data.popularityItems,
           popularTrinkets: data.popularTrinkets,
         }),
+        JSON.stringify(
+          data.talents,
+        ),
         date,
         date,
         roleClass,
         classSpec,
-      ]
+      ],
     );
   }
   return null;
@@ -130,8 +137,10 @@ async function insertBis(data) {
   } = data;
   return db.run(
     `
-    INSERT INTO wow_bis(role_class, class_spec, stats_priority, ratings, bis_items, bis_trinkets, talents, collected_at, updated_at) VALUES(?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
-  `,
+        INSERT INTO wow_bis(role_class, class_spec, stats_priority, ratings, bis_items, bis_trinkets, talents,
+                            collected_at, updated_at)
+        VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)
+    `,
     [
       roleClass,
       classSpec,
@@ -142,19 +151,21 @@ async function insertBis(data) {
       JSON.stringify(talents),
       updatedAt,
       collectedAt,
-    ]
+    ],
   );
 }
 
 async function getAllBis() {
   return db.all(`
-    SELECT role_class, class_spec, access_count FROM wow_bis
+      SELECT role_class, class_spec, access_count
+      FROM wow_bis
   `);
 }
 
 async function getAllBisDateInfo() {
   const data = await db.all(
-    `SELECT role_class, class_spec, updated_at FROM ${TABLE_NAME}`
+    `SELECT role_class, class_spec, updated_at
+     FROM ${TABLE_NAME}`,
   );
   return data.map((item) => ({
     ...item,
@@ -167,8 +178,11 @@ async function getOutdatedBIS() {
   const latest = formatDate();
   const data = await db.all(
     `
-    SELECT role_class, class_spec FROM ${TABLE_NAME} WHERE updated_at != ? ORDER BY updated_at ASC`,
-    [latest]
+        SELECT role_class, class_spec
+        FROM ${TABLE_NAME}
+        WHERE updated_at != ?
+        ORDER BY updated_at ASC`,
+    [latest],
   );
   return data.map((item) => ({
     classSpec: item?.class_spec,
@@ -178,10 +192,26 @@ async function getOutdatedBIS() {
 
 async function getMaxrollBis() {
   return db.all(`
-    SELECT
-      id, role_class, class_spec, maxroll_bis
-    FROM ${TABLE_NAME}
-      `);
+      SELECT id,
+             role_class,
+             class_spec,
+             maxroll_bis
+      FROM ${TABLE_NAME}
+  `);
+}
+
+async function getArchonTalent(roleClass, classSpec) {
+  const data = await db.get(`SELECT archon_talent
+                             FROM wow_bis
+                             WHERE role_class = ?1
+                               AND class_spec = ?2`, [
+    roleClass,
+    classSpec,
+  ]);
+  if (data?.archon_talent) {
+    return JSON.parse(data.archon_talent);
+  }
+  return {};
 }
 
 export function useBisMapper(database) {
@@ -193,6 +223,7 @@ export function useBisMapper(database) {
   }
 
   return {
+    getArchonTalent,
     getBisByClassAndSpec,
     getAllBis,
     getAllBisDateInfo,
