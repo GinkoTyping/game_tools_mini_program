@@ -1362,6 +1362,7 @@ const footerMenus = [
     title: '天赋',
     value: 'talent',
     icon: 'icon-tree',
+    feature: true,
   },
   {
     title: '分享',

@@ -10,6 +10,7 @@
       <uni-badge
         class="uni-badge-left-margin"
         :text="menu.value === 'relation' && store.unreadTagRelationCount"
+        :is-dot="menu.feature"
         absolute="rightTop"
         size="small"
       >
@@ -51,6 +52,7 @@ function switchMenu(menuItem) {
   }
   emits('change', menuItem.value);
 }
+
 onShow(() => {
   const currentPage = getCurrentPages().slice(-1)?.[0].route;
   switch (currentPage) {
@@ -83,6 +85,7 @@ $header-bg-color: #1d1d1f;
   background-color: $header-bg-color;
   box-sizing: border-box;
   z-index: 99;
+
   .button-wrap {
     padding: 0;
     margin: 0;
@@ -92,13 +95,16 @@ $header-bg-color: #1d1d1f;
     height: 24px;
     background: transparent;
     color: #bbb;
+
     .iconfont {
       font-size: 40rpx;
     }
+
     .button--active {
       color: $uni-color-primary !important;
     }
   }
+
   .menu-item {
     display: flex;
     flex-direction: column;
@@ -107,8 +113,10 @@ $header-bg-color: #1d1d1f;
     font-size: 20rpx;
     padding: 0 20rpx;
   }
+
   .menu-item--active {
     color: $uni-color-primary;
+
     view {
       font-weight: bolder;
     }

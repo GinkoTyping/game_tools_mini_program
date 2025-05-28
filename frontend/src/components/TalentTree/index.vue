@@ -294,7 +294,10 @@ const getNodeTooltips = computed(() => {
 
 onReady(() => {
   windowWidth.value = uni.getSystemInfoSync().windowWidth;
-  drawEdge();
+  setTimeout(() => {
+    drawEdge();
+
+  }, 500);
 });
 
 watch(() => props.type, () => {
@@ -369,8 +372,10 @@ $col-width: calc(100% / 10);
   margin: 0 auto;
 
   .canvas-wrap {
+    position: relative;
     height: 100%;
     width: 100%;
+    z-index: -1;
   }
 
   .node-item {

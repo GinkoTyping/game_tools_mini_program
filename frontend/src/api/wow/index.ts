@@ -751,7 +751,6 @@ export async function queryTalent(
         alternativeIndex: build.isDefaultSelection ? -1 : alternativeIndex,
       };
     });
-    console.log({ data });
     return data;
   } catch (e) {
     console.log(e);
