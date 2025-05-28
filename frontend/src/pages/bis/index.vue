@@ -266,7 +266,8 @@
       <TalentTree
         :type="currentPopularTree"
         :data="talentData"
-        :selected="currentBuildNodes"
+        :selected="currentBuild?.selectedNodes"
+        :selected-hero-tree="currentBuild?.heroSpecId"
       />
     </view>
 
@@ -1293,7 +1294,7 @@ const currentHeatMapTree = computed(() => {
 });
 const currentHeatMapTreeIndex = ref(0);
 
-const currentBuildNodes = computed(() => talentData.value?.talents.talentTreeBuilds?.[currentBuildIndex.value]?.talentTree?.build?.selectedNodes);
+const currentBuild = computed(() => talentData.value?.talents.talentTreeBuilds?.[currentBuildIndex.value]?.talentTree?.build);
 
 function switchPopularTalentTree({ currentIndex }) {
   if (currentPopularTreeIndex.value !== currentIndex) {

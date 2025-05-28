@@ -406,13 +406,21 @@ function getHeroTalentStats(data) {
 }
 
 function mapDefinitionIdToNodeId([id, rank], nodesMap) {
+  let spellId;
   const nodeId = nodesMap.find(node => {
-    return node.abilities.some(ability => ability.id === id);
+    const found = node.abilities.find(ability => ability.id === id);
+    if (found && node.abilities.length > 1) {
+      spellId = found.spellId;
+    }
+    return found;
   })?.nodeId;
   const output = [nodeId];
-  if (rank) {
-    output.push(rank);
+
+  output.push(rank ?? '');
+  if (spellId) {
+    output.push(spellId);
   }
+
   return output;
 }
 

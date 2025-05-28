@@ -16,6 +16,9 @@ const props = defineProps({
       return {};
     },
   },
+  selectedHeroTree: {
+    type: Number,
+  },
   selected: {
     type: Array<[number, number]>,
     default() {
@@ -34,6 +37,9 @@ const currentTreeData = computed(() => {
   }
   if (props.type === 'class') {
     return props.data?.class_talent_nodes;
+  }
+  if (props.selectedHeroTree) {
+    return heroTalentTrees.value.find(tree => tree.id === props.selectedHeroTree)?.hero_talent_nodes ?? [];
   }
   return heroTalentTrees.value?.[0]?.hero_talent_nodes;
 });
@@ -261,6 +267,10 @@ const getNodeTooltips = computed(() => {
   return selectedNode.value?.ranks.reduce((pre, cur) => {
     if (cur.tooltip) {
       pre.push(mapNodeToTooltip(cur));
+    } else if (cur.choice_of_tooltips) {
+      cur.choice_of_tooltips.forEach(item => {
+        pre.push(mapNodeToTooltip({ tooltip: item }));
+      });
     }
     return pre;
   }, [] as any);
@@ -296,7 +306,7 @@ watch(() => props.type, () => {
       :key="node.id"
       :data-id="node.id"
       :class="[
-        getNodeBorder(node).image,
+
         getNodeStatus(node.id).selected ? 'node-item--active' : '',
         getNodeStatus(node.id).halfSelectedType
       ]"
@@ -307,6 +317,7 @@ watch(() => props.type, () => {
       }"
       @click="() => switchTooltip(node)"
     >
+      <view class="node-item__border" :class="[getNodeBorder(node).image]"></view>
       <view class="node-item__choice-wrap"
         :class="[getNodeBorder(node).mask]"
         v-if="node.node_type?.type.includes('CHOICE')">
@@ -353,18 +364,28 @@ $col-width: calc(100% / 10);
     top: 0;
     padding: 4rpx;
     box-sizing: border-box;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2;
 
+    .node-item__border {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: -1;
+    }
+
     .node-item__icon-bg {
       width: calc(100% - 2px);
       height: calc(100% - 2px);
       mask-mode: alpha; /* 根据透明度裁剪 */
+      z-index: 3;
     }
 
     .node-item__icon-mask-spell {
@@ -426,13 +447,13 @@ $col-width: calc(100% / 10);
 
   // region 透明度
   .node-item {
-    image, .node-item__rank {
+    image, .node-item__rank, .node-item__border {
       filter: grayscale(1);
     }
   }
 
   .node-item--active {
-    image, .node-item__rank {
+    image, .node-item__rank, .node-item__border {
       filter: none;
     }
   }
