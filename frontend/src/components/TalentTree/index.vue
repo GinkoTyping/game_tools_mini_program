@@ -35,7 +35,6 @@ const currentTreeData = computed(() => {
   if (props.type === 'class') {
     return props.data?.class_talent_nodes;
   }
-  console.log(heroTalentTrees.value);
   return heroTalentTrees.value?.[0]?.hero_talent_nodes;
 });
 const heroTalentTrees = computed(() => {
@@ -67,12 +66,6 @@ const coordinateConfig = computed(() => {
     const maxCol = sortedByCol?.[0]?.display_col ?? 0;
     const minRow = sortedByRow?.splice(-1)?.[0]?.display_row ?? 0;
     const maxRow = sortedByRow?.[0]?.display_row ?? 0;
-    console.log({
-      startRow: minRow,
-      rowCount: maxRow - minRow + 1,
-      colCount: maxCol - minCol + 1,
-      startCol: minCol,
-    });
     return {
       startRow: minRow,
       rowCount: maxRow - minRow + 1,
@@ -150,6 +143,15 @@ const getNodeIconBg = computed(() => {
     return '';
   };
 });
+const isShowRank = computed(() => {
+  return (node: TalentNode) => {
+    if (props.selectType === 'normal') {
+      return node.ranks?.length > 1 && getNodeStatus.value(node.id).selected;
+    }
+    return true;
+  };
+
+});
 // endregion
 
 // region edge
@@ -201,9 +203,30 @@ async function drawEdge() {
 const getNodeStatus = computed(() => {
   return (nodeId: number) => {
     const found = props.selected?.find(([id]) => nodeId === id);
+    let selected = false;
+    let halfSelectedType = '';
+    let rank;
+    if (props.selectType === 'normal') {
+      rank = found?.[1];
+      selected = found !== undefined;
+    } else if (found) {
+      const ratio = found[1] ? found[1] * 100 : 0;
+      if (ratio > 80) {
+        selected = true;
+      } else if (ratio < 80 && ratio > 50) {
+        halfSelectedType = 'node-item--active__80';
+      } else if (ratio < 50 && ratio > 20) {
+        halfSelectedType = 'node-item--active__50';
+      } else {
+        halfSelectedType = 'node-item--active__20';
+      }
+      selected = ratio > 30;
+      rank = found[1] ? (found[1] * 100).toFixed(1) + '%' : '0.0%';
+    }
     return {
-      selected: found !== undefined,
-      rank: found?.[1],
+      halfSelectedType,
+      selected,
+      rank,
     };
   };
 });
@@ -274,7 +297,8 @@ watch(() => props.type, () => {
       :data-id="node.id"
       :class="[
         getNodeBorder(node).image,
-        getNodeStatus(node.id).selected ? 'node-item--active' : ''
+        getNodeStatus(node.id).selected ? 'node-item--active' : '',
+        getNodeStatus(node.id).halfSelectedType
       ]"
       :style="{
         transform: getNodePosition(node),
@@ -298,7 +322,9 @@ watch(() => props.type, () => {
         :src="getNodeIconBg(node)"
       />
 
-      <view v-show="node.ranks?.length > 1 && getNodeStatus(node.id).selected" class="node-item__rank">
+      <view v-show="isShowRank(node)"
+        class="node-item__rank"
+        :class="[props.selectType === 'heat-map' ? 'node-item__rank--heat-map' : '']">
         <text>{{ getNodeStatus(node.id).rank }}</text>
       </view>
     </view>
@@ -330,10 +356,10 @@ $col-width: calc(100% / 10);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    filter: grayscale(1);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 
     .node-item__icon-bg {
       width: calc(100% - 2px);
@@ -381,19 +407,73 @@ $col-width: calc(100% / 10);
       right: -6rpx;
       height: 30rpx;
       width: 30rpx;
-      border-radius: 50%;
+      border-radius: 15rpx;
       background: red;
       color: #fff;
       text-align: center;
       font-weight: bold;
-      font-size: 24rpx;
+      font-size: 18rpx;
       line-height: 30rpx;
+      z-index: 4;
+    }
+
+    .node-item__rank--heat-map {
+      width: 80rpx;
+      right: 50%;
+      transform: translateX(50%);
+    }
+  }
+
+  // region 透明度
+  .node-item {
+    image, .node-item__rank {
+      filter: grayscale(1);
     }
   }
 
   .node-item--active {
-    filter: none;
+    image, .node-item__rank {
+      filter: none;
+    }
   }
+
+  .node-item--active__80,
+  .node-item--active__50,
+  .node-item--active__20 {
+    .node-item__rank {
+      filter: none;
+    }
+  }
+
+  .node-item--active__80 {
+    image {
+      filter: saturate(.8) brightness(.7);
+    }
+
+    .node-item__rank {
+      filter: none;
+      background: $demon-hunter;
+    }
+  }
+
+  .node-item--active__50 {
+    image {
+      filter: saturate(.8) brightness(.7);
+    }
+
+    .node-item__rank {
+      filter: none;
+      background: $shaman;
+    }
+  }
+
+  .node-item--active__20 {
+    image, .node-item__rank {
+      filter: grayscale(1);
+    }
+  }
+
+  // endregion
 
   .node-item__bg-spell {
     background-image: url("@/static/images/wow/talent/spell.svg");;
