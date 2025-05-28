@@ -271,6 +271,7 @@
       />
     </view>
 
+    <!--  天赋 heat map  -->
     <uni-section class="talent" :class="[classKey]" title="天赋点选择率" sub-title="前100玩家">
       <view class="talent-tree-menus">
         <uni-segmented-control
@@ -300,7 +301,7 @@
         select-type="heat-map"
       />
 
-      <uni-card class="section-card">
+      <uni-card class="section-card" v-if="_dev_hide_old_talent">
         <view class="menu talent-menu">
           <text
             v-for="(item, index) in currentData?.talents"
@@ -981,6 +982,8 @@ function switchStatType(type: number) {
 //#endregion
 
 //#region 天赋
+// TODO maxroll 移除 还是 保留呢
+const _dev_hide_old_talent = ref(false);
 const currentTalentIndex = ref(0);
 const getTalentType = computed(() => {
   return (index: number) => {
