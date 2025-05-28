@@ -22,6 +22,10 @@ const props = defineProps({
       return [];
     },
   },
+  selectType: {
+    type: String,
+    default: 'normal',
+  },
 });
 
 const currentTreeData = computed(() => {
@@ -294,8 +298,7 @@ watch(() => props.type, () => {
         :src="getNodeIconBg(node)"
       />
 
-      <!--      TODO: 被选中的node显示 -->
-      <view v-show="node.ranks?.length > 1" class="node-item__rank">
+      <view v-show="node.ranks?.length > 1 && getNodeStatus(node.id).selected" class="node-item__rank">
         <text>{{ getNodeStatus(node.id).rank }}</text>
       </view>
     </view>

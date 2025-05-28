@@ -271,6 +271,23 @@
     </view>
 
     <uni-section class="talent" :class="[classKey]" title="天赋点选择率">
+      <view class="talent-tree-menus">
+        <uni-segmented-control
+          :current="currentHeatMapTreeIndex"
+          :values="popularTalentTrees"
+          style-type="text"
+          active-color="#007aff"
+          @clickItem="switchHeatMapTree"
+        />
+      </view>
+
+      <TalentTree
+        :type="currentHeatMapTree"
+        :data="talentData"
+        :selected="talentData?.talents.talentHeatMap"
+        select-type="heat-map"
+      />
+
       <uni-card class="section-card">
         <view class="menu talent-menu">
           <text
@@ -1262,12 +1279,31 @@ const currentPopularTree = computed(() => {
 });
 const currentPopularTreeIndex = ref(0);
 const popularTalentTrees = ['职业天赋树', '英雄天赋树', '专精天赋树'];
+const currentHeatMapTree = computed(() => {
+  if (currentHeatMapTreeIndex.value === 0) {
+    return 'class';
+  }
+  if (currentHeatMapTreeIndex.value === 1) {
+    return 'hero';
+  }
+  if (currentHeatMapTreeIndex.value === 2) {
+    return 'spec';
+  }
+  return 'class';
+});
+const currentHeatMapTreeIndex = ref(0);
 
 const currentBuildNodes = computed(() => talentData.value?.talents.talentTreeBuilds?.[currentBuildIndex.value]?.talentTree?.build?.selectedNodes);
 
 function switchPopularTalentTree({ currentIndex }) {
   if (currentPopularTreeIndex.value !== currentIndex) {
     currentPopularTreeIndex.value = currentIndex;
+  }
+}
+
+function switchHeatMapTree({ currentIndex }) {
+  if (currentHeatMapTreeIndex.value !== currentIndex) {
+    currentHeatMapTreeIndex.value = currentIndex;
   }
 }
 
@@ -1927,6 +1963,7 @@ $light-border: rgb(68, 68, 68);
 
 .talent-tree-menus {
   position: relative;
+  margin-bottom: 20rpx;
 
   :deep {
     .segmented-text {
