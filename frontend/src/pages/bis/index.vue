@@ -271,7 +271,7 @@
       />
     </view>
 
-    <uni-section class="talent" :class="[classKey]" title="天赋点选择率">
+    <uni-section class="talent" :class="[classKey]" title="天赋点选择率" sub-title="前100玩家">
       <view class="talent-tree-menus">
         <uni-segmented-control
           :current="currentHeatMapTreeIndex"
@@ -282,10 +282,21 @@
         />
       </view>
 
+      <view class="talent-tree-menus" v-show="currentHeatMapTreeIndex === 1">
+        <uni-segmented-control
+          :current="currentHeatMapHeroTreeIdx"
+          :values="heroTreeTabs?.map(item => item.name)"
+          style-type="text"
+          active-color="#007aff"
+          @clickItem="switchHeatMapHeroTree"
+        />
+      </view>
+
       <TalentTree
         :type="currentHeatMapTree"
         :data="talentData"
         :selected="talentData?.talents.talentHeatMap"
+        :selected-hero-tree="heroTreeTabs?.[currentHeatMapHeroTreeIdx]?.id"
         select-type="heat-map"
       />
 
@@ -1294,6 +1305,18 @@ const currentHeatMapTree = computed(() => {
 });
 const currentHeatMapTreeIndex = ref(0);
 
+// TODO 临时处理英雄天赋
+const currentHeatMapHeroTreeIdx = ref();
+const heroTreeTabs = computed(() => {
+  return talentData.value?.hero_talent_trees.filter(tree => tree.playable_specializations.find(spec => spec.id === talentData.value?.id));
+});
+
+function switchHeatMapHeroTree({ currentIndex }) {
+  if (currentHeatMapHeroTreeIdx.value !== currentIndex) {
+    currentHeatMapHeroTreeIdx.value = currentIndex;
+  }
+}
+
 const currentBuild = computed(() => talentData.value?.talents.talentTreeBuilds?.[currentBuildIndex.value]?.talentTree?.build);
 
 function switchPopularTalentTree({ currentIndex }) {
@@ -1964,7 +1987,7 @@ $light-border: rgb(68, 68, 68);
 
 .talent-tree-menus {
   position: relative;
-  margin-bottom: 20rpx;
+  margin-bottom: 30rpx;
 
   :deep {
     .segmented-text {

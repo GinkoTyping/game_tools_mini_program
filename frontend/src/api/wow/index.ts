@@ -699,7 +699,7 @@ export interface TalentTreeDTO {
   hero_talent_trees: HeroTalentTreeDTO[];
   talents: {
     heroTreeStats: { id: number; rank: number; metricValue: string }[]
-    talentHeatMap: Array<[number, number]>
+    talentHeatMap: Array<[number, number, number]>
     talentTreeBuilds: {
       isSelected: boolean;
       isDefaultSelection: boolean;
