@@ -709,7 +709,7 @@ export interface TalentTreeDTO {
         exportCode: string;
         build: {
           heroSpecId: number;
-          selectedNodes: Array<[number, number]>
+          selectedNodes: Array<[number, number, number]>
         }
       },
 

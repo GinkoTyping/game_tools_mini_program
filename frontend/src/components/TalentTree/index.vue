@@ -20,7 +20,7 @@ const props = defineProps({
     type: Number,
   },
   selected: {
-    type: Array<[number, number]>,
+    type: Array<[number, number, number]>,
     default() {
       return [];
     },
@@ -144,6 +144,14 @@ const getNodeIconBg = computed(() => {
     if (image) {
       return getSpellImageUrl(image).item;
     } else if (node.ranks?.[0]?.choice_of_tooltips?.length) {
+
+      // 是否选中
+      const status = getNodeStatus.value(node.id);
+      if (status.selected) {
+        return node.ranks?.[0]?.choice_of_tooltips.filter(spellItem => spellItem.spell_tooltip.spell.id === status.spellId)
+          .map(spellItem => getSpellImageUrl(spellItem.spell_tooltip.spell.image).item);
+      }
+
       return node.ranks?.[0]?.choice_of_tooltips.map(spellItem => getSpellImageUrl(spellItem.spell_tooltip.spell.image).item);
     }
     return '';
@@ -229,10 +237,17 @@ const getNodeStatus = computed(() => {
       selected = ratio > 30;
       rank = found[1] ? (found[1] * 100).toFixed(1) + '%' : '0.0%';
     }
+
+    let spellId;
+    if (found?.[2]) {
+      spellId = found?.[2];
+    }
+
     return {
       halfSelectedType,
       selected,
       rank,
+      spellId,
     };
   };
 });
@@ -306,7 +321,7 @@ watch(() => props.type, () => {
       :key="node.id"
       :data-id="node.id"
       :class="[
-
+        node.node_type?.type.includes('CHOICE') ? 'node-item--choice' : '',
         getNodeStatus(node.id).selected ? 'node-item--active' : '',
         getNodeStatus(node.id).halfSelectedType
       ]"
@@ -319,7 +334,7 @@ watch(() => props.type, () => {
     >
       <view class="node-item__border" :class="[getNodeBorder(node).image]"></view>
       <view class="node-item__choice-wrap"
-        :class="[getNodeBorder(node).mask]"
+        :class="[getNodeBorder(node).mask, getNodeStatus(node.id).selected ? 'node-item__choice-wrap--active' : '']"
         v-if="node.node_type?.type.includes('CHOICE')">
         <image class="node-item__icon-bg"
           v-for="choice in getNodeIconBg(node)" :key="choice"
@@ -401,7 +416,7 @@ $col-width: calc(100% / 10);
     }
 
     .node-item__choice-wrap {
-      width: 100%;
+      width: 200%;
       height: 100%;
       border-radius: 26rpx;
       overflow: hidden;
@@ -416,7 +431,17 @@ $col-width: calc(100% / 10);
 
         &:last-child {
           position: absolute;
-          left: 50%;
+          right: -50%;
+          top: 0;
+        }
+      }
+    }
+
+    .node-item__choice-wrap--active {
+      image {
+        &:first-child, &:last-child {
+          position: absolute;
+          right: 0;
           top: 0;
         }
       }
@@ -442,6 +467,36 @@ $col-width: calc(100% / 10);
       width: 80rpx;
       right: 50%;
       transform: translateX(50%);
+    }
+  }
+
+  .node-item--choice {
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 16rpx solid transparent;
+      border-bottom: 16rpx solid transparent;
+      border-right: 24rpx solid #808080;
+      z-index: 4;
+    }
+
+    &::after {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(50%, -50%);
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 16rpx solid transparent;
+      border-bottom: 16rpx solid transparent;
+      border-left: 24rpx solid #808080;
+      z-index: 4;
     }
   }
 
