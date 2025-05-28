@@ -232,8 +232,29 @@
   </template>
 
   <template v-if="activeMenu === 'talent'">
-    <uni-section class="talent" :class="[classKey]" title="天赋点选择率">
-      <view class="popular-tabs">
+    <!--  天赋推荐  -->
+    <view class="talent" :class="[classKey]">
+      <view class="alternative-builds">
+        <view class="alternative-build-menu"
+          :class="[currentBuildIndex === index ? `alternative-build-menu--active ${classKey}` : '']"
+          v-for="(build, index) in talentData?.talents.talentTreeBuilds"
+          :key="index"
+          @click="currentBuildIndex = index">
+          <view class="alternative-build-menu__title">
+            {{ build.isDefaultSelection ? '推荐' : `${build.alternativeIndex}#备选` }}
+          </view>
+          <view class="alternative-build-menu__footer">
+            <view>{{ build.popularity }}</view>
+            <view>{{ build.keystoneLevel }}+</view>
+          </view>
+          <view v-show="currentBuildIndex === index" class="iconfont icon-lushichuanshuo"></view>
+        </view>
+      </view>
+      <view class="talent-tree-menus">
+        <view class="action-icon" @click="copyTalentCode">
+          <view class="iconfont icon-paste2"></view>
+          <text>复制</text>
+        </view>
         <uni-segmented-control
           :current="currentPopularTreeIndex"
           :values="popularTalentTrees"
@@ -242,11 +263,14 @@
           @clickItem="switchPopularTalentTree"
         />
       </view>
-
       <TalentTree
         :type="currentPopularTree"
         :data="talentData"
+        :selected="currentBuildNodes"
       />
+    </view>
+
+    <uni-section class="talent" :class="[classKey]" title="天赋点选择率">
       <uni-card class="section-card">
         <view class="menu talent-menu">
           <text
@@ -750,7 +774,7 @@ import { computed, nextTick, ref } from 'vue';
 
 import type { IBisItem } from '@/interface/IWow';
 import { Relation } from '@/interface/IWow';
-import { getImageSrc, type IDungeonDTO } from '@/api/wow';
+import { getImageSrc, type IDungeonDTO, type TalentTreeDTO } from '@/api/wow';
 import {
   queryBis,
   queryTalent,
@@ -1222,7 +1246,8 @@ async function displaySpells(params: any) {
 //#endregion
 
 // region 天赋
-const talentData = ref<any>();
+const talentData = ref<TalentTreeDTO>();
+const currentBuildIndex = ref(0);
 const currentPopularTree = computed(() => {
   if (currentPopularTreeIndex.value === 0) {
     return 'class';
@@ -1238,10 +1263,25 @@ const currentPopularTree = computed(() => {
 const currentPopularTreeIndex = ref(0);
 const popularTalentTrees = ['职业天赋树', '英雄天赋树', '专精天赋树'];
 
+const currentBuildNodes = computed(() => talentData.value?.talents.talentTreeBuilds?.[currentBuildIndex.value]?.talentTree?.build?.selectedNodes);
+
 function switchPopularTalentTree({ currentIndex }) {
   if (currentPopularTreeIndex.value !== currentIndex) {
     currentPopularTreeIndex.value = currentIndex;
   }
+}
+
+function copyTalentCode() {
+  const code = talentData.value?.talents.talentTreeBuilds?.[currentBuildIndex.value]?.talentTree?.exportCode;
+
+  uni.setClipboardData({
+    data: code as string,
+    success: function() {
+      messageType.value = 'success';
+      messageText.value = '已复制天赋树代码';
+      messagePopup.value.open();
+    },
+  });
 }
 
 // endregion
@@ -1287,6 +1327,7 @@ async function onMenuChange(menuValue: string) {
     uni.hideLoading();
   } else if (menuValue === 'talent') {
     talentData.value = await queryTalent(specKey.value, classKey.value);
+    currentBuildIndex.value = talentData.value.talents.talentTreeBuilds.findIndex(build => build.isDefaultSelection);
   }
 }
 
@@ -1836,6 +1877,95 @@ $light-border: rgb(68, 68, 68);
     }
   }
 }
+
+// region 天赋
+.alternative-builds {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+
+  .alternative-build-menu {
+    box-sizing: border-box;
+    padding: 4rpx 8rpx;
+    border-radius: 10rpx;
+    width: 22%;
+    background-color: $uni-bg-color-grey-light;
+    position: relative;
+
+    &:not(.alternative-build-menu--active) {
+      color: $uni-text-color-grey;
+    }
+
+    .alternative-build-menu__title {
+      font-size: 28rpx;
+    }
+
+    .alternative-build-menu__footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6rpx;
+      font-size: 24rpx;
+    }
+
+    .iconfont {
+      font-size: 28rpx;
+      position: absolute;
+      right: 12rpx;
+      top: 8rpx;
+    }
+  }
+
+  .alternative-build-menu--active {
+    border: 2rpx solid;
+
+    .alternative-build-menu__title {
+      font-weight: bold;
+    }
+  }
+}
+
+.talent-tree-menus {
+  position: relative;
+
+  :deep {
+    .segmented-text {
+      justify-content: center;
+    }
+  }
+
+  .action-icon {
+    position: absolute;
+    top: 50%;
+    right: 20rpx;
+    transform: translate(0, -50%);
+    display: flex;
+    align-items: center;
+    gap: 4rpx;
+
+    text {
+      font-size: 28rpx;
+    }
+
+    .iconfont {
+      font-size: 32rpx;
+    }
+  }
+
+}
+
+:deep {
+  .talent-tree-menus {
+    uni-segmented-control {
+      & > view {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+// endregion
+
 
 .talent-menu {
   display: flex;

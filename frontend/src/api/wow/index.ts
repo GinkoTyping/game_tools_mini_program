@@ -711,7 +711,11 @@ export interface TalentTreeDTO {
           heroSpecId: number;
           selectedNodes: Array<[number, number]>
         }
-      }
+      },
+
+      // 前端展示
+      popularityPercentage: string;
+      alternativeIndex: number;
     }[]
   };
 }
@@ -724,7 +728,31 @@ export async function queryTalent(
     const res = await proxyRequest({
       url: `/wow/bis/talent?classSpec=${classSpec}&roleClass=${roleClass}`,
     });
-    return res.data as TalentTreeDTO;
+    const data = res.data as TalentTreeDTO;
+    const totolPopularity = data.talents.talentTreeBuilds.reduce((
+      pre: number,
+      cur,
+    ) => {
+      pre += Number(cur.popularity.replace('%', ''));
+      return pre;
+    }, 0);
+
+    let alternativeIndex = 0;
+    data.talents.talentTreeBuilds = data.talents.talentTreeBuilds.map(build => {
+      if (!build.isDefaultSelection) {
+        alternativeIndex++;
+      }
+      return {
+        ...build,
+        popularityPercentage: (Number(build.popularity.replace(
+          '%',
+          '',
+        )) / totolPopularity * 100).toFixed(2) + '%',
+        alternativeIndex: build.isDefaultSelection ? -1 : alternativeIndex,
+      };
+    });
+    console.log({ data });
+    return data;
   } catch (e) {
     console.log(e);
     return {} as TalentTreeDTO;

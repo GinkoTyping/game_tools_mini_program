@@ -16,6 +16,12 @@ const props = defineProps({
       return {};
     },
   },
+  selected: {
+    type: Array<[number, number]>,
+    default() {
+      return [];
+    },
+  },
 });
 
 const currentTreeData = computed(() => {
@@ -27,10 +33,6 @@ const currentTreeData = computed(() => {
   }
   console.log(heroTalentTrees.value);
   return heroTalentTrees.value?.[0]?.hero_talent_nodes;
-});
-const buildIndex = ref(0);
-const currentBuild = computed(() => {
-  return props.data.talents.talentTreeBuilds[buildIndex.value];
 });
 const heroTalentTrees = computed(() => {
   return props.data?.hero_talent_trees.filter(tree => tree.playable_specializations.find(spec => spec.id === props.data.id));
@@ -144,16 +146,6 @@ const getNodeIconBg = computed(() => {
     return '';
   };
 });
-
-const getNodeStatus = computed(() => {
-  return (nodeId: number) => {
-    const found = currentBuild.value.talentTree.build.selectedNodes.find(([id]) => nodeId === id);
-    return {
-      selected: found !== undefined,
-      rank: found?.[1],
-    };
-  };
-});
 // endregion
 
 // region edge
@@ -199,6 +191,18 @@ async function drawEdge() {
   await new Promise(resolve => ctx.draw(false, resolve));
 }
 
+// endregion
+
+// region build
+const getNodeStatus = computed(() => {
+  return (nodeId: number) => {
+    const found = props.selected?.find(([id]) => nodeId === id);
+    return {
+      selected: found !== undefined,
+      rank: found?.[1],
+    };
+  };
+});
 // endregion
 
 // region 交互
