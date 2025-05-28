@@ -829,6 +829,7 @@ const navigator = useNavigator();
 function checkJumpTo() {
   if (query.value?.menu) {
     activeMenu.value = query.value.menu;
+    onMenuChange(query.value.menu);
     if (query.value?.scrollTo) {
       nextTick(() => {
         uni.pageScrollTo({

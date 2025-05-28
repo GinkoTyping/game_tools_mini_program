@@ -479,9 +479,9 @@ $col-width: calc(100% / 10);
       content: '';
       width: 0;
       height: 0;
-      border-top: 16rpx solid transparent;
-      border-bottom: 16rpx solid transparent;
-      border-right: 24rpx solid #808080;
+      border-top: 12rpx solid transparent;
+      border-bottom: 12rpx solid transparent;
+      border-right: 22rpx solid #808080;
       z-index: 4;
     }
 
@@ -493,9 +493,9 @@ $col-width: calc(100% / 10);
       content: '';
       width: 0;
       height: 0;
-      border-top: 16rpx solid transparent;
-      border-bottom: 16rpx solid transparent;
-      border-left: 24rpx solid #808080;
+      border-top: 12rpx solid transparent;
+      border-bottom: 12rpx solid transparent;
+      border-left: 22rpx solid #808080;
       z-index: 4;
     }
   }
