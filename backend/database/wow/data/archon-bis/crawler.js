@@ -460,6 +460,8 @@ async function queryTalents(hash, classSpec, roleClass) {
   const heroTreeStats = getHeroTalentStats(data);
   const talentTreeBuilds = getTalentTreeBuilds(data, nodesMap);
   const talentHeatMap = getTalentHeatMap(data, nodesMap);
+
+  // TODO: 检查 class tree 中包含 spec tree 、 talent tree 的 node ； spec tree 中包含 talent tree 的 node
   return {
     heroTreeStats,
     talentTreeBuilds,
