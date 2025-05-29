@@ -54,7 +54,6 @@ const menus = reactive([
     title: '分享',
     value: 'share',
     icon: 'redo-filled',
-    page: '/pages-sub-wow/friend/index',
   },
   {
     title: '主页',
@@ -70,6 +69,7 @@ const menus = reactive([
   },
 ]);
 const navigator = useNavigator();
+
 function switchMenu(menuItem) {
   if (menuItem.value !== 'share' && activeMenu.value !== menuItem.value) {
     activeMenu.value = menuItem.value;
@@ -82,16 +82,17 @@ function switchMenu(menuItem) {
     }
   }
 }
+
 onShow(() => {
   const currentPage = getCurrentPages().slice(-1)?.[0].route;
   switch (currentPage) {
-    case 'pages/friend/index':
+    case 'pages-sub-wow/friend/index':
       activeMenu.value = 'index';
       break;
-    case 'pages/friend/setting':
+    case 'pages-sub-wow/friend/setting':
       activeMenu.value = 'setting';
       break;
-    case 'pages/friend/relation':
+    case 'pages-sub-wow/friend/relation':
       activeMenu.value = 'relation';
       break;
     default:
@@ -113,6 +114,7 @@ $header-bg-color: #1d1d1f;
   width: 100vw;
   background-color: $header-bg-color;
   box-sizing: border-box;
+
   .button-wrap {
     padding: 0;
     margin: 0;
@@ -122,6 +124,7 @@ $header-bg-color: #1d1d1f;
     height: 24px;
     background: transparent;
   }
+
   .menu-item {
     display: flex;
     flex-direction: column;
@@ -130,8 +133,10 @@ $header-bg-color: #1d1d1f;
     font-size: 20rpx;
     padding: 0 20rpx;
   }
+
   .menu-item--active {
     color: $uni-color-primary;
+
     view {
       font-weight: bolder;
     }
