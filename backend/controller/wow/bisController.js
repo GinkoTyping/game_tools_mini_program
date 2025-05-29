@@ -588,44 +588,49 @@ export async function queryUpdateItem(req, res) {
 const talentMapper = useTalentMapper(database);
 
 export async function queryTalentBySpec(req, res) {
-  const { roleClass, classSpec } = req.query;
-  const data = await talentMapper.getTalent(classSpec, roleClass);
+  try {
+    const { roleClass, classSpec } = req.query;
+    const data = await talentMapper.getTalent(classSpec, roleClass);
 
-  async function mapNode(node) {
-    if (node.ranks?.[0]?.tooltip) {
-      const spellData = await spellMapper.getSpellById(node.ranks?.[0]?.tooltip.spell_tooltip?.spell?.id);
-      node.ranks[0].tooltip.spell_tooltip.spell.image = spellData.image;
-    } else if (node.ranks?.[0]?.choice_of_tooltips?.length) {
-      const results = await Promise.allSettled(node.ranks[0].choice_of_tooltips.map(async (item) => {
-        const spellData = await spellMapper.getSpellById(item.spell_tooltip.spell.id);
-        item.spell_tooltip.spell.image = spellData.image;
-        return item;
-      }));
-      node.ranks[0].choice_of_tooltips = results.map(item => item.value);
+    async function mapNode(node) {
+      if (node.ranks?.[0]?.tooltip) {
+        const spellData = await spellMapper.getSpellById(node.ranks?.[0]?.tooltip.spell_tooltip?.spell?.id);
+        node.ranks[0].tooltip.spell_tooltip.spell.image = spellData.image;
+      } else if (node.ranks?.[0]?.choice_of_tooltips?.length) {
+        const results = await Promise.allSettled(node.ranks[0].choice_of_tooltips.map(async (item) => {
+          const spellData = await spellMapper.getSpellById(item.spell_tooltip.spell.id);
+          item.spell_tooltip.spell.image = spellData.image;
+          return item;
+        }));
+        node.ranks[0].choice_of_tooltips = results.map(item => item.value);
+      }
+      return node;
     }
-    return node;
-  }
 
-  async function mapHeroTree(tree) {
-    const nodeResults = await Promise.allSettled(tree.hero_talent_nodes.map(node => mapNode(node)));
-    tree.hero_talent_nodes = nodeResults.map(item => item.value);
-    return tree;
-  }
+    async function mapHeroTree(tree) {
+      const nodeResults = await Promise.allSettled(tree.hero_talent_nodes.map(node => mapNode(node)));
+      tree.hero_talent_nodes = nodeResults.map(item => item.value);
+      return tree;
+    }
 
-  const [
-    classNodeResults, specNodeResults, heroTreeResults,
-    archonTalents,
-  ] = await Promise.allSettled([
-    Promise.allSettled(data.class_talent_nodes.map(node => mapNode(node))),
-    Promise.allSettled(data.spec_talent_nodes.map(node => mapNode(node))),
-    Promise.allSettled(data.hero_talent_trees.map(tree => mapHeroTree(tree))),
-    bisMapper.getArchonTalent(roleClass, classSpec),
-  ]);
-  data.class_talent_nodes = classNodeResults.value.map(item => item.value);
-  data.spec_talent_nodes = specNodeResults.value.map(item => item.value);
-  data.hero_talent_trees = heroTreeResults.value.map(item => item.value);
-  data.talents = archonTalents.value;
-  res.json(data);
+    const [
+      classNodeResults, specNodeResults, heroTreeResults,
+      archonTalents,
+    ] = await Promise.allSettled([
+      Promise.allSettled(data.class_talent_nodes.map(node => mapNode(node))),
+      Promise.allSettled(data.spec_talent_nodes.map(node => mapNode(node))),
+      Promise.allSettled(data.hero_talent_trees.map(tree => mapHeroTree(tree))),
+      bisMapper.getArchonTalent(roleClass, classSpec),
+    ]);
+    data.class_talent_nodes = classNodeResults.value.map(item => item.value);
+    data.spec_talent_nodes = specNodeResults.value.map(item => item.value);
+    data.hero_talent_trees = heroTreeResults.value.map(item => item.value);
+    data.talents = archonTalents.value;
+    res.json(data);
+  } catch (e) {
+    console.error(e);
+    res.json({});
+  }
 }
 
 //#region 内部接口
