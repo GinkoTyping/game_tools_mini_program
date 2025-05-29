@@ -189,55 +189,76 @@ function getLinePoint(row: number, col: number, isEdge) {
 }
 
 async function drawEdge() {
-  const query = uni.createSelectorQuery().in(instance);
-  query.select(`#${canvasId.value}`)
-    .fields({ node: true, size: true })
-    .exec(async (res) => {
-      if (!res[0]) return;
+  uni.showLoading({
+    title: '加载中',
+    mask: true,
+  });
 
-      const canvas = res[0].node;
-      const ctx = canvas.getContext('2d');
-      const dpr = uni.getSystemInfoSync().pixelRatio;
+  try {
+    const query = uni.createSelectorQuery().in(instance);
+    query.select(`#${canvasId.value}`)
+      .fields({ node: true, size: true })
+      .exec(async (res) => {
+        try {
+          if (!res[0]) return;
 
-      // 确保 Canvas 尺寸正确
-      canvas.width = res[0].width * dpr;
-      canvas.height = res[0].height * dpr;
-      ctx.scale(dpr, dpr);
+          const canvas = res[0].node;
+          const ctx = canvas.getContext('2d');
+          const dpr = uni.getSystemInfoSync().pixelRatio;
 
-      // 使用标准 Canvas API 清除画布
-      ctx.clearRect(0, 0, res[0].width, res[0].height);
-      console.log(canvasId.value, currentTreeData.value?.length);
-      currentTreeData.value?.forEach((node) => {
-        if (node.unlocks?.length) {
-          const beginPoint = getLinePoint(node.display_row, node.display_col, true);
-          node.unlocks.forEach((childId) => {
-            const childNode = currentTreeData.value.find((item) => item.id === childId);
-            if (childNode) {
-              const endPoint = getLinePoint(childNode?.display_row, childNode.display_col, true);
+          // 确保 Canvas 尺寸正确
+          canvas.width = res[0].width * dpr;
+          canvas.height = res[0].height * dpr;
+          ctx.scale(dpr, dpr);
 
-              ctx.beginPath();
-              // 使用标准属性赋值而非 setXXX 方法
-              ctx.strokeStyle = '#737373'; // 直接赋值颜色
-              ctx.lineWidth = 2;         // 直接赋值线宽
-              ctx.lineCap = 'round';        // 直接赋值线帽样式
+          // 使用标准 Canvas API 清除画布
+          ctx.clearRect(0, 0, res[0].width, res[0].height);
 
-              ctx.moveTo(beginPoint[0], beginPoint[1]);
-              ctx.lineTo(endPoint[0], endPoint[1]);
-              ctx.stroke();
+          ctx.strokeStyle = '#737373'; // 直接赋值颜色
+          ctx.lineWidth = 2;         // 直接赋值线宽
+          ctx.lineCap = 'round';        // 直接赋值线帽样式
+          ctx.beginPath();
+
+          currentTreeData.value?.forEach((node) => {
+            if (node.unlocks?.length) {
+              const beginPoint = getLinePoint(node.display_row, node.display_col, true);
+              node.unlocks.forEach((childId) => {
+                const childNode = currentTreeData.value.find((item) => item.id === childId);
+                if (childNode) {
+                  const endPoint = getLinePoint(childNode?.display_row, childNode.display_col, true);
+
+
+                  ctx.moveTo(beginPoint[0], beginPoint[1]);
+                  ctx.lineTo(endPoint[0], endPoint[1]);
+                }
+              });
             }
           });
-        }
-      });
 
-      // 等待绘制完成
-      await new Promise(resolve => {
-        if (typeof ctx.draw === 'function') {
-          ctx.draw(false, resolve); // 微信基础库 < 2.16.0
-        } else {
-          setTimeout(resolve, 50); // 兼容无 draw 方法的情况
+          ctx.stroke();
+
+          // 等待绘制完成
+          await new Promise(resolve => {
+            if (typeof ctx.draw === 'function') {
+              ctx.draw(false, resolve); // 微信基础库 < 2.16.0
+            } else {
+              setTimeout(resolve, 50); // 兼容无 draw 方法的情况
+            }
+          });
+        } catch (e) {
+          console.warn(e);
+        } finally {
+          uni.hideLoading();
         }
+
       });
-    });
+  } catch (e) {
+    console.error(e);
+  } finally {
+    uni.hideLoading();
+  }
+
+
 }
 
 // endregion

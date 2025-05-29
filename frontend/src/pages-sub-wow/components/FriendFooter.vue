@@ -73,9 +73,7 @@ const navigator = useNavigator();
 function switchMenu(menuItem) {
   if (menuItem.value !== 'share' && activeMenu.value !== menuItem.value) {
     activeMenu.value = menuItem.value;
-    if (activeMenu.value === 'setting') {
-      navigator.toPage(menuItem.page);
-    } else if (activeMenu.value === 'home') {
+    if (activeMenu.value === 'home') {
       navigator.toHome();
     } else {
       navigator.redirectToPage(menuItem.page);
