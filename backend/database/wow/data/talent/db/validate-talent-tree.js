@@ -8,7 +8,7 @@ function checkNotNullNode(node) {
   return node.ranks?.[0]?.tooltip || node.ranks?.[0]?.choice_of_tooltips;
 }
 
-function validateTalentTree(talentData) {
+async function validateTalentTree(talentData) {
   const heroNodeIds = [talentData.hero_talent_trees.map(heroTree => heroTree.hero_talent_nodes)].flat().map(
     node => node.id);
   const specNodeIds = talentData.spec_talent_nodes.map(node => node.id);
@@ -18,7 +18,17 @@ function validateTalentTree(talentData) {
     && !specNodeIds.includes(node.id)
     && checkNotNullNode(node),
   );
-  talentData.spec_talent_nodes = talentData.class_talent_nodes.filter(node => !heroNodeIds.includes(node.id) && checkNotNullNode(
+  talentData.spec_talent_nodes = talentData.spec_talent_nodes.filter(node => !heroNodeIds.includes(node.id) && checkNotNullNode(
     node));
-  return talentData;
+  talentData.playable_specialization = { id: talentData.id };
+  return talentMapper.addTalent(talentData);
 }
+
+async function main() {
+  const talents = await talentMapper.getTalentList();
+
+  const results = await Promise.allSettled(talents.map(talent => validateTalentTree(talent)));
+  console.log(results);
+}
+
+main();

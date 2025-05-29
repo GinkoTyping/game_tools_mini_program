@@ -1,9 +1,24 @@
 let db;
 const TABLE_NAME = 'wow_talent';
 
-function getTalentList() {
-  return db.all(`SELECT *
-                 FROM ${TABLE_NAME}`);
+async function getTalentList() {
+  const data = await db.all(`SELECT *
+                             FROM ${TABLE_NAME}`);
+  if (data) {
+    return data.map(item => {
+      if (item) {
+        return {
+          ...item,
+          class_talent_nodes: JSON.parse(item.class_talent_nodes),
+          hero_talent_trees: JSON.parse(item.hero_talent_trees),
+          spec_talent_nodes: JSON.parse(item.spec_talent_nodes),
+          restriction_lines: JSON.parse(item.restriction_lines),
+        };
+      }
+      return {};
+    });
+  }
+  return [];
 }
 
 function objToString(obj) {
