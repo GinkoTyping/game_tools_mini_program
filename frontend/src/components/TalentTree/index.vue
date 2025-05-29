@@ -31,12 +31,18 @@ const props = defineProps({
   },
 });
 
+function checkValidNode(node) {
+  return node.ranks?.[0]?.tooltip || node.ranks?.[0]?.choice_of_tooltips;
+}
+
 const currentTreeData = computed(() => {
   if (props.type === 'spec') {
-    return props.data?.spec_talent_nodes?.filter(node => !heroNodeIds.value.includes(node.id));
+    return props.data?.spec_talent_nodes?.filter(node =>
+      !heroNodeIds.value.includes(node.id)
+      && checkValidNode(node));
   }
   if (props.type === 'class') {
-    return props.data?.class_talent_nodes;
+    return props.data?.class_talent_nodes?.filter(node => checkValidNode(node));
   }
   if (props.selectedHeroTree) {
     return heroTalentTrees.value.find(tree => tree.id === props.selectedHeroTree)?.hero_talent_nodes ?? [];
@@ -89,7 +95,9 @@ const coordinateConfig = computed(() => {
 
 const TREE_PADDING = 20;
 const windowWidth = ref(0);
-const getContainerHeight = computed(() => 1.5 * getNodeSize.value * (coordinateConfig.value.rowCount ?? 1));
+const getContainerHeight = computed(() => {
+  return 1.5 * getNodeSize.value * (coordinateConfig.value.rowCount ?? 1);
+});
 const getContainerWidth = computed(() => {
   const width = windowWidth.value - uni.upx2px(TREE_PADDING) * 2;
   return props.type === 'hero' ? uni.upx2px(320) : width;
@@ -181,34 +189,55 @@ function getLinePoint(row: number, col: number, isEdge) {
 }
 
 async function drawEdge() {
-  const ctx = uni.createCanvasContext(canvasId.value, instance);
+  const query = uni.createSelectorQuery().in(instance);
+  query.select(`#${canvasId.value}`)
+    .fields({ node: true, size: true })
+    .exec(async (res) => {
+      if (!res[0]) return;
 
-  ctx.clearRect(0, 0, getContainerWidth.value, getContainerHeight.value);
+      const canvas = res[0].node;
+      const ctx = canvas.getContext('2d');
+      const dpr = uni.getSystemInfoSync().pixelRatio;
 
-  currentTreeData.value.forEach((node) => {
-    if (node.unlocks?.length) {
-      const beginPoint = getLinePoint(node.display_row, node.display_col, true);
-      node.unlocks.forEach((childId) => {
-        const childNode = currentTreeData.value.find((item) => item.id === childId);
-        if (childNode) {
-          const endPoint = getLinePoint(childNode?.display_row, childNode.display_col, true);
+      // 确保 Canvas 尺寸正确
+      canvas.width = res[0].width * dpr;
+      canvas.height = res[0].height * dpr;
+      ctx.scale(dpr, dpr);
 
-          ctx.beginPath();
-          ctx.setStrokeStyle('#737373');
-          ctx.setLineWidth(2.5);
-          ctx.setLineCap('round');
+      // 使用标准 Canvas API 清除画布
+      ctx.clearRect(0, 0, res[0].width, res[0].height);
+      console.log(canvasId.value, currentTreeData.value?.length);
+      currentTreeData.value?.forEach((node) => {
+        if (node.unlocks?.length) {
+          const beginPoint = getLinePoint(node.display_row, node.display_col, true);
+          node.unlocks.forEach((childId) => {
+            const childNode = currentTreeData.value.find((item) => item.id === childId);
+            if (childNode) {
+              const endPoint = getLinePoint(childNode?.display_row, childNode.display_col, true);
 
-          ctx.moveTo(beginPoint[0], beginPoint[1]);
-          ctx.lineTo(endPoint[0], endPoint[1]);
+              ctx.beginPath();
+              // 使用标准属性赋值而非 setXXX 方法
+              ctx.strokeStyle = '#737373'; // 直接赋值颜色
+              ctx.lineWidth = 2;         // 直接赋值线宽
+              ctx.lineCap = 'round';        // 直接赋值线帽样式
 
-          ctx.stroke();
+              ctx.moveTo(beginPoint[0], beginPoint[1]);
+              ctx.lineTo(endPoint[0], endPoint[1]);
+              ctx.stroke();
+            }
+          });
         }
-
       });
-    }
-  });
 
-  await new Promise(resolve => ctx.draw(false, resolve));
+      // 等待绘制完成
+      await new Promise(resolve => {
+        if (typeof ctx.draw === 'function') {
+          ctx.draw(false, resolve); // 微信基础库 < 2.16.0
+        } else {
+          setTimeout(resolve, 50); // 兼容无 draw 方法的情况
+        }
+      });
+    });
 }
 
 // endregion
@@ -296,7 +325,6 @@ onReady(() => {
   windowWidth.value = uni.getSystemInfoSync().windowWidth;
   setTimeout(() => {
     drawEdge();
-
   }, 500);
 });
 
@@ -314,6 +342,7 @@ watch(() => props.type, () => {
     :style="{ height: `${getContainerHeight}px`, width: `${getContainerWidth}px` }">
     <view class="canvas-wrap">
       <canvas
+        type="2d"
         :canvas-id="canvasId"
         :id="canvasId"
         :style="{ width: `${getContainerWidth}px`, height: `${getContainerHeight}px` }"
@@ -375,7 +404,7 @@ $col-width: calc(100% / 10);
     position: relative;
     height: 100%;
     width: 100%;
-    z-index: -1;
+    z-index: 1;
   }
 
   .node-item {
