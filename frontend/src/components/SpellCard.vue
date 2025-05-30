@@ -1,6 +1,14 @@
 <template>
   <uni-card class="spell-popup custom-card">
-    <text class="spell-name">{{ props.spell.name_zh }}</text>
+    <view
+      class="spell-name"
+    >{{ props.spell.name_zh }}
+      <text
+        class="spell-name--selected"
+        v-if="props.spell.selected"
+      >{{ props.spell.selected ? props.spell.selectText : '' }}
+      </text>
+    </view>
     <view v-show="props.spell.rank">等级{{
         props.spell.rank
       }}
@@ -34,11 +42,17 @@
 import type { ISpell } from '@/interface/IWow';
 import { computed } from 'vue';
 
+interface ISpellCard extends ISpell {
+  selected?: boolean;
+  selectText?: string;
+}
+
 const props = defineProps({
   spell: {
-    type: Object as () => ISpell,
+    type: Object as () => ISpellCard,
     required: true,
   },
+
   singleBreakLine: {
     type: Boolean,
     default: false,
@@ -76,7 +90,14 @@ export default {
   .spell-name {
     font-size: 16px;
     color: #fff !important;
+
+    .spell-name--selected {
+      font-size: 12px;
+      color: $uni-text-color-inverse;
+      text-decoration: underline;
+    }
   }
+
 
   .spell-prop {
     display: flex;

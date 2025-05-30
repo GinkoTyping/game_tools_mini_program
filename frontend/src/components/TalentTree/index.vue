@@ -226,8 +226,6 @@ async function drawEdge() {
                 const childNode = currentTreeData.value.find((item) => item.id === childId);
                 if (childNode) {
                   const endPoint = getLinePoint(childNode?.display_row, childNode.display_col, true);
-
-
                   ctx.moveTo(beginPoint[0], beginPoint[1]);
                   ctx.lineTo(endPoint[0], endPoint[1]);
                 }
@@ -266,14 +264,16 @@ async function drawEdge() {
 // region build
 const getNodeStatus = computed(() => {
   return (nodeId: number) => {
-    const found = props.selected?.find(([id]) => nodeId === id);
+    let found = props.selected?.find(([id]) => nodeId === id);
+    const matchNodes = props.selected?.filter(([id]) => nodeId === id);
     let selected = false;
     let halfSelectedType = '';
     let rank;
     if (props.selectType === 'normal') {
       rank = found?.[1];
       selected = found !== undefined;
-    } else if (found) {
+    } else if (matchNodes?.length) {
+      found = [...matchNodes].sort((a, b) => b[1] - a[1])[0];
       const ratio = found[1] ? found[1] * 100 : 0;
       if (ratio > 80) {
         selected = true;
@@ -293,11 +293,21 @@ const getNodeStatus = computed(() => {
       spellId = found?.[2];
     }
 
+    let subSpellId;
+    let subRank;
+    if (spellId && matchNodes?.length === 2) {
+      const subSpell = matchNodes.filter(node => node[0] !== spellId)[0];
+      subSpellId = subSpell[0];
+      subRank = subSpell[1] ? (subSpell[1] * 100).toFixed(1) + '%' : '0.0%';
+    }
+
     return {
       halfSelectedType,
       selected,
       rank,
+      subRank,
       spellId,
+      subSpellId,
     };
   };
 });
@@ -325,6 +335,9 @@ function mapNodeToTooltip(rankItem) {
     cost: tooltip.spell_tooltip.power_cost,
     range: tooltip.spell_tooltip.range,
     description: tooltip.spell_tooltip.description,
+
+    selected: rankItem.selected,
+    selectText: rankItem.selectText,
   };
 }
 
@@ -333,8 +346,19 @@ const getNodeTooltips = computed(() => {
     if (cur.tooltip) {
       pre.push(mapNodeToTooltip(cur));
     } else if (cur.choice_of_tooltips) {
+      const status = getNodeStatus.value(selectedNode.value!.id);
       cur.choice_of_tooltips.forEach(item => {
-        pre.push(mapNodeToTooltip({ tooltip: item }));
+        let spellSelected = false;
+        let selectText = '';
+        if (props.selectType === 'normal') {
+          spellSelected = status.spellId === item.spell_tooltip.spell.id;
+          selectText = '当前选择';
+        } else if (status.selected) {
+          spellSelected = true;
+          selectText += '选择率: ';
+          selectText += status.spellId === item.spell_tooltip.spell.id ? status.rank : status.subRank;
+        }
+        pre.push(mapNodeToTooltip({ tooltip: item, selected: spellSelected, selectText }));
       });
     }
     return pre;
