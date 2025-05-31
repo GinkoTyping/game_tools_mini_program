@@ -249,9 +249,12 @@ export async function getArchonHash(classSpec, roleClass) {
   return pathHash;
 }
 
-async function queryArchon(pathHash, category, classSpec, roleClass) {
+async function queryArchon(pathHash, category, classSpec, roleClass, zoneType = 'mythic-plus') {
   try {
-    const res = await axios.get(`https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/mythic-plus/${category}/high-keys/all-dungeons/this-week.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=mythic-plus&categorySlug=${category}&difficultySlug=high-keys&encounterSlug=all-dungeons&affixesSlug=this-week`);
+    const url = zoneType === 'mythic-plus'
+      ? `https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/mythic-plus/${category}/high-keys/all-dungeons/this-week.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=mythic-plus&categorySlug=${category}&difficultySlug=high-keys&encounterSlug=all-dungeons&affixesSlug=this-week`
+      : `https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/raid/${category}/mythic/all-bosses.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=raid&categorySlug=${category}&difficultySlug=mythic&encounterSlug=all-bosses`;
+    const res = await axios.get(url);
     return res?.data?.pageProps?.page;
   } catch (e) {
     throw new Error(`获取archon数据失败: ${category}, ${classSpec} ${roleClass}`);
@@ -259,8 +262,8 @@ async function queryArchon(pathHash, category, classSpec, roleClass) {
 }
 
 // overview
-async function queryOverview(hash, classSpec, roleClass) {
-  const data = await queryArchon(hash, 'overview', classSpec, roleClass);
+async function queryOverview(hash, classSpec, roleClass, zoneType = 'mythic-plus') {
+  const data = await queryArchon(hash, 'overview', classSpec, roleClass, zoneType);
   const statsSection = data.sections.find(section => section.navigationId === 'stats');
   const priority = statsSection?.props?.stats?.map(item => ({
     key: item.name,
@@ -470,7 +473,8 @@ async function queryTalents(hash, classSpec, roleClass) {
 }
 
 export async function collectArchonByApi(hash, classSpec, roleClass) {
-  const stats = await queryOverview(hash, classSpec, roleClass);
+  const stats = await queryOverview(hash, classSpec, roleClass, 'mythic-plus');
+  const raidStats = await queryOverview(hash, classSpec, roleClass, 'raid');
   const { bisGears, trinkets, popularGears } = await queryGears(hash, classSpec, roleClass);
   const talents = await queryTalents(hash, classSpec, roleClass);
   return {
@@ -478,6 +482,8 @@ export async function collectArchonByApi(hash, classSpec, roleClass) {
     roleClass,
 
     stats,
+    raidStats,
+
     overview: bisGears,
     popularTrinkets: trinkets,
     popularityItems: popularGears,
@@ -487,3 +493,5 @@ export async function collectArchonByApi(hash, classSpec, roleClass) {
 }
 
 // endregion
+
+collectArchonByApi('OjZb5OlEKkR62_jjJVgtp', 'balance', 'druid');
