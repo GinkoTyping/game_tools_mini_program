@@ -703,7 +703,13 @@ export interface TalentTreeDTO {
   spec_talent_nodes: TalentNode[];
   hero_talent_trees: HeroTalentTreeDTO[];
   talents: {
-    heroTreeStats: { id: number; rank: number; metricValue: string }[]
+    heroTreeStats: {
+      id: number;
+      rank: number;
+      name: string;
+      metricValue: string;
+      popularity: string
+    }[]
     talentHeatMap: Array<[number, number, number]>
     talentTreeBuilds: {
       isSelected: boolean;

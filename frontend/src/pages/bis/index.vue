@@ -236,6 +236,22 @@
   </template>
 
   <template v-if="activeMenu === 'talent'">
+    <!--    英雄天赋选择率-->
+    <view class="hero-talent-trend">
+      <view class="hero-talent-trend-card"
+        v-for="(tree,index) in talentData?.talents.heroTreeStats"
+        :key="tree.id"
+        :style="{ width: `${index === 0 ? tree.popularity : ''}` }"
+      >
+        <view v-if="index === 1" class="hero-talent-trend-card__right">{{ tree.popularity }}</view>
+        <view class="hero-talent-trend-card__left">
+          <view class="hero-talent-trend-card__left__name">{{ tree.name }}</view>
+          <view class="hero-talent-trend-card__left__popularity">{{ tree.metricValue }}</view>
+        </view>
+        <view v-if="index === 0" class="hero-talent-trend-card__right">{{ tree.popularity }}</view>
+      </view>
+    </view>
+
     <!--  天赋推荐  -->
     <view class="talent" :class="[classKey]">
       <view class="alternative-builds">
@@ -1974,6 +1990,49 @@ $light-border: rgb(68, 68, 68);
 }
 
 // region 天赋
+.hero-talent-trend {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  gap: 20rpx;
+
+  .hero-talent-trend-card {
+    height: 70rpx;
+    border-radius: 16rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10rpx;
+    color: #fff;
+    font-size: 24rpx;
+
+    .hero-talent-trend-card__left__name {
+      font-size: 28rpx;
+      font-weight: bold;
+    }
+
+    .hero-talent-trend-card__right {
+      font-weight: bold;
+      font-size: 28rpx;
+    }
+
+    &:first-child {
+      background: $color-legend;
+    }
+
+    &:last-child {
+      min-width: 40%;
+      flex: 1;
+      background: $color-mythic;
+
+      .hero-talent-trend-card__left {
+        text-align: right;
+      }
+    }
+  }
+}
+
 .alternative-builds {
   display: flex;
   justify-content: space-between;
@@ -2061,7 +2120,6 @@ $light-border: rgb(68, 68, 68);
 }
 
 // endregion
-
 
 .talent-menu {
   display: flex;
