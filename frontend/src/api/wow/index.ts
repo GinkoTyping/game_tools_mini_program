@@ -37,6 +37,10 @@ interface IBisDataDTO {
     priority: { key: string; label: string; value: string }[];
     relation: number[];
   };
+  archon_raid_stats_priority: {
+    priority: { key: string; label: string; value: string }[];
+    relation: number[];
+  };
   updated_at: string;
   comment: string;
   popular_mythic_dungeon_trinkets: string;
@@ -178,6 +182,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
     classSpec,
     detailedStatsPriority: mapDetailStats(data.detailed_stats_priority),
     archonStatsPriority: data.archon_stats_priority,
+    archonRaidStatsPriority: data.archon_raid_stats_priority,
     updatedAt: data.updated_at,
     trinkets: mapTrinks(data.bis_trinkets),
     bisItems: mapBisItem(data),

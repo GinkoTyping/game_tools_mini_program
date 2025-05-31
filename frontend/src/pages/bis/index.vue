@@ -126,9 +126,13 @@
       <uni-card class="section-card" v-show="statSource === 'maxroll'">
         <view class="stats-info">
           基于前
-          <text> 5%</text>
-          高层大秘境 样本数:
-          <text>{{ currentData?.archonStatsPriority?.sampleCount }}</text>
+          <text class="stats-info__bold">{{ getStatsDes[0] }}</text>
+          {{ getStatsDes[1] }} 样本数:
+          <text class="stats-info__bold">{{ getStatsDes[2] }}</text>
+          <view class="switch-stats" @click="isMythicPlusStats = !isMythicPlusStats">
+            <text class="stats-info__bold">{{ getStatsDes[3] }}</text>
+            <text class="iconfont icon-switch"></text>
+          </view>
         </view>
         <view class="stats">
           <view class="stats__item">
@@ -923,15 +927,18 @@ const relationIcon = computed(() => {
 const statSource = ref('maxroll');
 const statDetailCollapse = ref();
 const getStatValue = computed(() => (index: number) => {
-  const value = currentData.value?.archonStatsPriority?.priority?.[index]?.value;
+  const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
+  const value = currentData.value?.[key]?.priority?.[index]?.value;
   return `${value}`;
 });
 const getStatRatio = computed(() => (index: number) => {
-  const ratio = currentData.value?.archonStatsPriority?.priority?.[index]?.ratio;
+  const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
+  const ratio = currentData.value?.[key]?.priority?.[index]?.ratio;
   return ratio ? `${ratio}` : '';
 });
 const getStatLabel = computed(() => (index: number) => {
-  const label = currentData.value?.archonStatsPriority?.priority?.[index]?.label;
+  const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
+  const label = currentData.value?.[key]?.priority?.[index]?.label;
   let color;
   switch (label) {
     case '急速':
@@ -979,6 +986,14 @@ const currentStatList = computed(
 function switchStatType(type: number) {
   currentStatType.value = type;
 }
+
+const isMythicPlusStats = ref(true);
+const getStatsDes = computed(() => {
+  if (isMythicPlusStats.value) {
+    return ['5%', '大秘境', currentData.value?.archonStatsPriority?.sampleCount, '团本'];
+  }
+  return ['50%', '团本', currentData.value?.archonRaidStatsPriority?.sampleCount, '大秘境'];
+});
 
 //#endregion
 
@@ -1523,10 +1538,24 @@ async function onMenuChange(menuValue: string) {
 .stats-info {
   text-align: center;
   margin-bottom: 10rpx;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 26rpx;
 
-  text {
+  .stats-info__bold {
     font-weight: bold;
     color: #fff;
+  }
+
+  .switch-stats {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, calc(-50% - 2rpx));
+
+    .iconfont {
+      margin-left: 4rpx;
+    }
   }
 }
 
@@ -1671,6 +1700,7 @@ $light-border: rgb(68, 68, 68);
 
   .spell-name {
     font-size: 16px;
+
   }
 
   .spell-prop {
