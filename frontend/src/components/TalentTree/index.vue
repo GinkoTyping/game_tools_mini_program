@@ -296,7 +296,7 @@ const getNodeStatus = computed(() => {
     let subSpellId;
     let subRank;
     if (spellId && matchNodes?.length === 2) {
-      const subSpell = matchNodes.filter(node => node[0] !== spellId)[0];
+      const subSpell = matchNodes.filter(node => node[2] !== spellId)[0];
       subSpellId = subSpell[0];
       subRank = subSpell[1] ? (subSpell[1] * 100).toFixed(1) + '%' : '0.0%';
     }
@@ -358,6 +358,7 @@ const getNodeTooltips = computed(() => {
           selectText += '选择率: ';
           selectText += status.spellId === item.spell_tooltip.spell.id ? status.rank : status.subRank;
         }
+        console.log({ status });
         pre.push(mapNodeToTooltip({ tooltip: item, selected: spellSelected, selectText }));
       });
     }

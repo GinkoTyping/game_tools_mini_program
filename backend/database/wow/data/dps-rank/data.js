@@ -19,6 +19,7 @@ function getTableElements(context) {
     })
     .get();
 }
+
 function collectTable(context, table, tableIndex) {
   const $ = context;
   let type;
@@ -95,7 +96,7 @@ export async function getSpecDpsRankData(week, maxWeek) {
       html = fs.readFileSync(filePath, 'utf-8');
     } else {
       const res = await axios.get(
-        `https://mythicstats.com/dps?dungeon=&period=${period}`
+        `https://mythicstats.com/dps?dungeon=&period=${period}`,
       );
       html = res.data;
 
@@ -106,13 +107,13 @@ export async function getSpecDpsRankData(week, maxWeek) {
     const tables = getTableElements($);
     const data = tables.map((table, index) => collectTable($, table, index));
     return {
-      name: '11层及以上',
+      name: '14层及以上',
       data,
     };
   } catch (error) {
     console.log('获取专精DPS排行失败：' + error);
     return {
-      name: '11层及以上',
+      name: '14层及以上',
       data: [],
     };
   }
