@@ -413,7 +413,7 @@ function mapDefinitionIdToNodeId([id, rank], nodesMap) {
   const nodeId = nodesMap.find(node => {
     const found = node.abilities.find(ability => ability.id === id);
     if (found && node.abilities.length > 1) {
-      spellId = found.spellId;
+      spellId = node.type === 'subtree' ? found.heroTreeId : found.spellId;
     }
     return found;
   })?.nodeId;
@@ -450,6 +450,7 @@ function getTalentTreeBuilds(data, nodesMap) {
 }
 
 function getTalentHeatMap(data, nodesMap) {
+  const subtreeNode = nodesMap.find(node => node.type === 'subtree');
   return data.sections.find(section => section.navigationId === 'talents-heatmap')?.props.talentTree.dehydratedBuild.selectedNodes.map(
     ([id, rank]) => mapDefinitionIdToNodeId([
       id,
@@ -493,5 +494,3 @@ export async function collectArchonByApi(hash, classSpec, roleClass) {
 }
 
 // endregion
-
-collectArchonByApi('OjZb5OlEKkR62_jjJVgtp', 'balance', 'druid');

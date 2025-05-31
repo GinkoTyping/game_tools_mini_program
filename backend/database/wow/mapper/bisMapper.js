@@ -106,6 +106,7 @@ async function updateOverviewBis(roleClass, classSpec, data) {
         JSON.stringify({
           updatedAt: date,
           stats: data.stats,
+          raidStats: data.raidStats,
           bisItems: data.overview.map((bisItem) => bisItem.id).join('@'),
           popularItems: data.popularityItems,
           popularTrinkets: data.popularTrinkets,

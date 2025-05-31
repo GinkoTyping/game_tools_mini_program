@@ -477,6 +477,7 @@ export async function getBisBySpec(req, res) {
     ).map((result) => result.value);
 
     const archonBisStats = mapArchonStatsData(archonBis?.stats);
+    const archonBisRaidStats = mapArchonStatsData(archonBis?.raidStats);
 
     // 排名的信息
     const mythicDpsTier = await specStatMapper.getSpec(classSpec, roleClass);
@@ -500,6 +501,7 @@ export async function getBisBySpec(req, res) {
       bis_trinkets,
       detailed_stats_priority: JSON.parse(bisData.detailed_stats_priority),
       archon_stats_priority: archonBisStats,
+      archon_raid_stats_priority: archonBisRaidStats,
       ratings: JSON.parse(bisData.ratings),
       talents: JSON.parse(bisData.talents),
       wowhead_bis: wowheadBis,
@@ -511,6 +513,7 @@ export async function getBisBySpec(req, res) {
       enhancement: undefined,
       stats_priority: undefined,
       popularity_items: undefined,
+      archon_talent: undefined,
     });
   } catch (error) {
     res.status(500).json({ error: error?.message });
@@ -683,7 +686,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
       : (classSpec, roleClass) => collectBisOverview(classSpec, roleClass, req.body.useCache);
 
     const results = await Promise.allSettled(
-      flatSpecs.map((item) =>
+      flatSpecs.slice(0, 1).map((item) =>
         limiter.schedule(async () => {
           console.log(`获取${item.classSpec} ${item.roleClass}...`);
           const data = await collectFn(
