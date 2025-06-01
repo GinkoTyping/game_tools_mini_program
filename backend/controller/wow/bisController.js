@@ -629,6 +629,29 @@ export async function queryTalentBySpec(req, res) {
     data.spec_talent_nodes = specNodeResults.value.map(item => item.value);
     data.hero_talent_trees = heroTreeResults.value.map(item => item.value);
     data.talents = archonTalents.value;
+
+    // 设置 英雄天赋的选取率
+    if (data.talents.heroTreeStats) {
+      let maxCount = data.talents.heroTreeStats?.length ?? 0;
+      const heroTrees = data.talents.heroTreeStats.map(item => item.id);
+      data.talents.talentHeatMap.some(([nodeId, popularity, heroTreeId]) => {
+        if (heroTrees.includes(heroTreeId)) {
+          data.talents.heroTreeStats.some(tree => {
+            if (tree.id === heroTreeId) {
+              tree.popularity = (popularity * 100).toFixed(1) + '%';
+              tree.name = data.hero_talent_trees.find((refer) => refer.id === tree.id)?.name;
+              maxCount--;
+              return true;
+            }
+            return false;
+          });
+
+          return maxCount <= 0;
+        }
+        return false;
+      });
+    }
+
     res.json(data);
   } catch (e) {
     console.error(e);
@@ -686,7 +709,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
       : (classSpec, roleClass) => collectBisOverview(classSpec, roleClass, req.body.useCache);
 
     const results = await Promise.allSettled(
-      flatSpecs.slice(0, 1).map((item) =>
+      flatSpecs.map((item) =>
         limiter.schedule(async () => {
           console.log(`获取${item.classSpec} ${item.roleClass}...`);
           const data = await collectFn(

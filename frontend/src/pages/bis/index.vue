@@ -243,12 +243,18 @@
         :key="tree.id"
         :style="{ width: `${index === 0 ? tree.popularity : ''}` }"
       >
-        <view v-if="index === 1" class="hero-talent-trend-card__right">{{ tree.popularity }}</view>
+        <view v-if="index === 1" class="hero-talent-trend-card__right">
+          <view class="hero-talent-bold">{{ tree.popularity }}</view>
+          <view>人气</view>
+        </view>
         <view class="hero-talent-trend-card__left">
-          <view class="hero-talent-trend-card__left__name">{{ tree.name }}</view>
+          <view class="hero-talent-trend-card__left__name hero-talent-bold">{{ tree.name }}</view>
           <view class="hero-talent-trend-card__left__popularity">{{ tree.metricValue }}</view>
         </view>
-        <view v-if="index === 0" class="hero-talent-trend-card__right">{{ tree.popularity }}</view>
+        <view v-if="index === 0" class="hero-talent-trend-card__right">
+          <view class="hero-talent-bold">{{ tree.popularity }}</view>
+          <view>人气</view>
+        </view>
       </view>
     </view>
 
@@ -2007,18 +2013,17 @@ $light-border: rgb(68, 68, 68);
     color: #fff;
     font-size: 24rpx;
 
-    .hero-talent-trend-card__left__name {
+    .hero-talent-bold {
       font-size: 28rpx;
       font-weight: bold;
-    }
-
-    .hero-talent-trend-card__right {
-      font-weight: bold;
-      font-size: 28rpx;
     }
 
     &:first-child {
       background: $color-legend;
+
+      .hero-talent-trend-card__right {
+        text-align: right;
+      }
     }
 
     &:last-child {
