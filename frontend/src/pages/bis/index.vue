@@ -222,7 +222,7 @@
         </view>
         <view class="stats-charts">
           <view class="chart-item"
-            v-for="(item, index) in currentData?.archonStatsPriority?.priority"
+            v-for="(item, index) in currentData?.[isMythicPlusStats ? 'archonStatsPriority' : 'archonRaidStatsPriority']?.priority"
             :key="index"
             :style="{ borderTopColor: getStatLabel(index).color }">
             <view class="chart-item__bar"
@@ -1012,9 +1012,9 @@ function switchStatType(type: number) {
 const isMythicPlusStats = ref(true);
 const getStatsDes = computed(() => {
   if (isMythicPlusStats.value) {
-    return ['5%', '大秘境', currentData.value?.archonStatsPriority?.sampleCount, '团本'];
+    return [' 5%', '大秘境', currentData.value?.archonStatsPriority?.sampleCount, '团本'];
   }
-  return ['50%', '团本', currentData.value?.archonRaidStatsPriority?.sampleCount, '大秘境'];
+  return [' 50%', '团本', currentData.value?.archonRaidStatsPriority?.sampleCount, '大秘境'];
 });
 
 //#endregion
