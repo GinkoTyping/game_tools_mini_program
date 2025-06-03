@@ -392,8 +392,8 @@ async function mapWowheadBis(wowheadBis) {
 function mapArchonStatsData(statsData) {
   function mergeIntervals(data) {
     const merged = [];
-    for (let i = 0; i < data.length; i += 3) {
-      const group = data.slice(i, i + 3);
+    for (let i = 0; i < data.length; i += 2) {
+      const group = data.slice(i, i + 2);
       const total = group.reduce((sum, item) => sum + item.sampleCount, 0);
       const lowerEnd = group[group.length - 1]?.interval.lowerEnd ?? 0;
       const upperEnd = group[0]?.interval.upperEnd ?? 0;
