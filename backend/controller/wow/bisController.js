@@ -636,10 +636,23 @@ export async function queryTalentBySpec(req, res) {
       const heroTrees = data.talents.heroTreeStats.map(item => item.id);
       data.talents.talentHeatMap.some(([nodeId, popularity, heroTreeId]) => {
         if (heroTrees.includes(heroTreeId)) {
+
+          // 武僧的英雄天赋树id和暴雪数据库不一致
+          let matchTreeId;
+          if (heroTreeId === 46) {
+            matchTreeId = 66;
+          } else if (heroTreeId === 47) {
+            matchTreeId = 64;
+          } else if (heroTreeId === 45) {
+            matchTreeId = 65;
+          } else {
+            matchTreeId = heroTreeId;
+          }
+
           data.talents.heroTreeStats.some(tree => {
             if (tree.id === heroTreeId) {
               tree.popularity = (popularity * 100).toFixed(1) + '%';
-              tree.name = data.hero_talent_trees.find((refer) => refer.id === tree.id)?.name;
+              tree.name = data.hero_talent_trees.find((refer) => refer.id === matchTreeId)?.name;
               maxCount--;
               return true;
             }
