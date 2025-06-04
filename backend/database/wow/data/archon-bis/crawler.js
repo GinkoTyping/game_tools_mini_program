@@ -388,7 +388,11 @@ async function queryGears(hash, classSpec, roleClass) {
   });
 
   const gearOverview = data.sections.find(section => section.navigationId === 'gear-overview');
-  const popularGears = [...gearOverview?.props?.gear, ...gearOverview?.props?.trinkets].map(gearItem => {
+  const popularGears = [
+    ...gearOverview?.props?.gear,
+    ...gearOverview?.props?.weapons,
+    ...gearOverview?.props?.trinkets,
+  ].map(gearItem => {
     return {
       id: matchItemId(gearItem.icon),
       name: matchItemName(gearItem.icon),
