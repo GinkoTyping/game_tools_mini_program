@@ -50,6 +50,29 @@ function mapStat(val) {
 }
 
 // region puppeteer 查询数据
+function handleStatsAffectedBySpecTalent(classSpec, roleClass, statsKey, statsValue) {
+  let realValue;
+  let realRatio;
+  if (classSpec === 'frost'
+    && roleClass === 'mage'
+    && statsKey.toLowerCase() === 'haste') {
+    // 天赋点（62174）寒冬祝福：急速提高8%，所有渠道获得的急速额外提高10%
+    realValue = Math.round(statsValue * 1.1);
+    realRatio = calculateStatRatio(statsKey, realValue) + 8;
+  }
+  if (realValue && realRatio) {
+    return {
+      realValue,
+      realRatio,
+      id: 417489,
+      name: '寒冬祝福',
+      image: 'spell_frost_wisp.jpg',
+      description: '你的急速提高8%。\\r\\n\\r\\n你从所有渠道获得的急速属性额外提高10%。',
+    };
+  }
+  return {};
+}
+
 async function getStatsOverview(classSpec, roleClass, useCache) {
   const $ = await useCheerioContext(
     getOverviewStaticFilePath(
@@ -75,6 +98,7 @@ async function getStatsOverview(classSpec, roleClass, useCache) {
         label: mapStat(key),
         value,
         ratio: calculateStatRatio(key, value),
+        ...handleStatsAffectedBySpecTalent(classSpec, roleClass, key, value),
       };
     })
     .get();
@@ -271,6 +295,7 @@ async function queryOverview(hash, classSpec, roleClass, zoneType = 'mythic-plus
     value: item.value,
     ratio: calculateStatRatio(item.name, item.value),
     data: item.data,
+    ...handleStatsAffectedBySpecTalent(classSpec, roleClass, item.name, item.value),
   })) ?? [];
 
   // 不需要展示主属性

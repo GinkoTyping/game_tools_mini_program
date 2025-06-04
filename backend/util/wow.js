@@ -58,7 +58,7 @@ export function calculateStatRatio(stat, value) {
         { start: 54600, coefficient: 0.5 },
         { start: 156000, coefficient: 0.0 },
       ],
-    }
+    },
   };
 
   const lowercaseStat = stat.toLowerCase();
@@ -90,4 +90,3 @@ export function calculateStatRatio(stat, value) {
 
   return Math.round(total);
 }
-calculateStatRatio('crit', 26356)
