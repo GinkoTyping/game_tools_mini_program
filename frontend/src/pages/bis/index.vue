@@ -135,90 +135,34 @@
           </view>
         </view>
         <view class="stats">
-          <view class="stats__item">
-            <view :style="{ color: getStatLabel(0).color }">
-              <text>{{
-                  getStatRatio(0)
-                }}
-              </text>
-              <text>{{
-                  getStatLabel(0).label
-                }}
-              </text>
-            </view>
+          <template v-for="itemIndex in [0,1,2,3]" :key="itemIndex">
+            <view class="stats__item" @click="() => showStatsInfo(itemIndex)">
+              <view :style="{ color: getStatLabel(itemIndex).color }">
+                <text>{{
+                    getStatRatio(itemIndex)
+                  }}
+                </text>
+                <text>{{
+                    getStatLabel(itemIndex).label
+                  }}
+                </text>
+              </view>
 
-            <text>{{
-                getStatValue(0)
-              }}
-            </text>
+              <text>{{
+                  getStatValue(itemIndex)
+                }}
+              </text>
 
-          </view>
-          <image
-            v-if="currentData?.archonStatsPriority.relations.length"
-            :src="`/static/icon/${relationIcon(
-              currentData?.archonStatsPriority.relations[0]
-            )}.svg`"
-          ></image>
-          <view class="stats__item">
-            <view :style="{ color: getStatLabel(1).color }">
-              <text>{{
-                  getStatRatio(1)
-                }}
-              </text>
-              <text>{{
-                  getStatLabel(1).label
-                }}
-              </text>
+              <view v-show="isEffectedStats(itemIndex)" class="iconfont icon-question-circle-fill"></view>
             </view>
-            <text>{{
-                getStatValue(1)
-              }}
-            </text>
-          </view>
-          <image
-            v-if="currentData?.archonStatsPriority.relations.length"
-            :src="`/static/icon/${relationIcon(
-              currentData?.archonStatsPriority.relations[1]
+            <image
+              v-if="currentData?.archonStatsPriority.relations.length"
+              :src="`/static/icon/${relationIcon(
+              currentData?.archonStatsPriority.relations[itemIndex]
             )}.svg`"
-          ></image>
-          <view class="stats__item">
-            <view :style="{ color: getStatLabel(2).color }">
-              <text>{{
-                  getStatRatio(2)
-                }}
-              </text>
-              <text>{{
-                  getStatLabel(2).label
-                }}
-              </text>
-            </view>
-            <text>{{
-                getStatValue(2)
-              }}
-            </text>
-          </view>
-          <image
-            v-if="currentData?.archonStatsPriority.relations.length"
-            :src="`/static/icon/${relationIcon(
-              currentData?.archonStatsPriority.relations[2]
-            )}.svg`"
-          ></image>
-          <view class="stats__item">
-            <view :style="{ color: getStatLabel(3).color }">
-              <text>{{
-                  getStatRatio(3)
-                }}
-              </text>
-              <text>{{
-                  getStatLabel(3).label
-                }}
-              </text>
-            </view>
-            <text>{{
-                getStatValue(3)
-              }}
-            </text>
-          </view>
+            ></image>
+          </template>
+
         </view>
         <view class="stats-charts">
           <view class="chart-item"
@@ -951,12 +895,14 @@ const statDetailCollapse = ref();
 const getStatValue = computed(() => (index: number) => {
   const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
   const value = currentData.value?.[key]?.priority?.[index]?.value;
-  return `${value}`;
+  const realValue = currentData.value?.[key]?.priority?.[index]?.realValue;
+  return `${value}${realValue ? `(${realValue})` : ''}`;
 });
 const getStatRatio = computed(() => (index: number) => {
   const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
   const ratio = currentData.value?.[key]?.priority?.[index]?.ratio;
-  return ratio ? `${ratio}` : '';
+  const realRatio = currentData.value?.[key]?.priority?.[index]?.realRatio;
+  return ratio ? `${ratio}${realRatio ? `(${realRatio})` : ''}` : '';
 });
 const getStatLabel = computed(() => (index: number) => {
   const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
@@ -977,6 +923,11 @@ const getStatLabel = computed(() => (index: number) => {
       break;
   }
   return { label, color };
+});
+
+const isEffectedStats = computed(() => (index: number) => {
+  const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
+  return currentData.value?.[key]?.priority?.[index]?.realRatio;
 });
 
 // function switchStatSource() {
@@ -1016,6 +967,14 @@ const getStatsDes = computed(() => {
   }
   return [' 50%', '团本', currentData.value?.archonRaidStatsPriority?.sampleCount, '大秘境'];
 });
+
+function showStatsInfo(index: number) {
+  if (isEffectedStats.value(index)) {
+    const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
+    const spellId = currentData.value?.[key]?.priority?.[index]?.id;
+    displaySpells([{ id: spellId }]);
+  }
+}
 
 //#endregion
 
@@ -1591,6 +1550,16 @@ async function onMenuChange(menuValue: string) {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+
+    .iconfont {
+      top: -4rpx;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      position: absolute;
+      font-size: 24rpx;
+      height: 24rpx;
+    }
 
     text {
       line-height: 26rpx;
