@@ -292,7 +292,8 @@ const database = await getDB();
 const basicStatsMapper = useBasicStatsMapper(database);
 
 async function calculateStats(classSpec, roleClass, statsData) {
-  const { crit, haste, mastery, vers } = await basicStatsMapper.getStats(classSpec, roleClass);
+  const data = await basicStatsMapper.getStats(classSpec, roleClass);
+  const { crit, haste, mastery, vers } = data ?? {};
 
   async function mapStats(statsItem) {
     let basic;
