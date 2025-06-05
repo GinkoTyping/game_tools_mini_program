@@ -6,6 +6,8 @@ import { fileURLToPath } from 'url';
 import { useCheerioContext } from '../../../../util/run-browser.js';
 import { getCheerioByPuppeteer } from '../../../../util/run-puppeteer.js';
 import { calculateStatRatio } from '../../../../util/wow.js';
+import { getDB } from '../../../utils/index.js';
+import { useBasicStatsMapper } from '../../mapper/static/basicStatsMapper.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,7 +35,7 @@ function getIdByUrl(url) {
   return Number(url?.split('item=')?.pop());
 }
 
-function mapStat(val) {
+function mapStatLabel(val) {
   const lowercase = val.toLowerCase();
   switch (lowercase) {
     case 'haste':
@@ -95,7 +97,7 @@ async function getStatsOverview(classSpec, roleClass, useCache) {
         .text();
       return {
         key,
-        label: mapStat(key),
+        label: mapStatLabel(key),
         value,
         ratio: calculateStatRatio(key, value),
         ...handleStatsAffectedBySpecTalent(classSpec, roleClass, key, value),
@@ -212,7 +214,7 @@ async function getBisOverview(classSpec, roleClass, useCache) {
         .find('.gear-icon__item-meta__stats')
         .children('span')
         .map((statIdx, statEle) => {
-          return mapStat($(statEle).text());
+          return mapStatLabel($(statEle).text());
         })
         .get();
       return {
@@ -286,20 +288,62 @@ async function queryArchon(pathHash, category, classSpec, roleClass, zoneType = 
 }
 
 // overview
+const database = await getDB();
+const basicStatsMapper = useBasicStatsMapper(database);
+
+async function calculateStats(classSpec, roleClass, statsData) {
+  const { crit, haste, mastery, vers } = await basicStatsMapper.getStats(classSpec, roleClass);
+
+  async function mapStats(statsItem) {
+    let basic;
+    const statsKey = statsItem.name.toLowerCase();
+    const statsValue = statsItem.value;
+    switch (statsKey) {
+      case 'crit':
+        basic = crit;
+        break;
+      case 'haste':
+        basic = haste;
+        break;
+      case 'mastery':
+        basic = mastery;
+        break;
+      case 'vers':
+        basic = vers;
+        break;
+    }
+    const ratio = calculateStatRatio(statsKey, statsValue);
+    const output = {
+      key: statsKey,
+      label: mapStatLabel(statsKey),
+      value: statsValue,
+      ratio,
+      data: statsItem.data,
+    };
+    if (basic) {
+      const basicValue = Number(basic.split('|')[0]);
+      const ids = basic.split('|')[1]?.split(',').map(item => Number(item));
+      return {
+        ...output,
+        basicValue,
+        realRatio: basicValue + ratio,
+        ids,
+      };
+    }
+    return output;
+  }
+
+  const results = await Promise.allSettled(statsData.map(item => mapStats(item)));
+  return results.map(result => result.value);
+}
+
 async function queryOverview(hash, classSpec, roleClass, zoneType = 'mythic-plus') {
   const data = await queryArchon(hash, 'overview', classSpec, roleClass, zoneType);
   const statsSection = data.sections.find(section => section.navigationId === 'stats');
-  const priority = statsSection?.props?.stats?.map(item => ({
-    key: item.name,
-    label: mapStat(item.name),
-    value: item.value,
-    ratio: calculateStatRatio(item.name, item.value),
-    data: item.data,
-    ...handleStatsAffectedBySpecTalent(classSpec, roleClass, item.name, item.value),
-  })) ?? [];
 
   // 不需要展示主属性
-  priority.shift();
+  statsSection?.props?.stats?.shift();
+  const priority = await calculateStats(classSpec, roleClass, statsSection?.props?.stats);
 
   const relations = [];
   priority.forEach((item, index) => {

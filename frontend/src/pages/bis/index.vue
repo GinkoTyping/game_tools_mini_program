@@ -124,7 +124,7 @@
       </uni-card>
 
       <uni-card class="section-card" v-show="statSource === 'maxroll'">
-        <view class="stats-info">
+        <view class="stats-info" :class="[hasAffectedStats ? 'stats-info--affected' : '']">
           基于前
           <text class="stats-info__bold">{{ getStatsDes[0] }}</text>
           {{ getStatsDes[1] }} 样本数:
@@ -174,6 +174,31 @@
               :key="bar.sampleCount"
               :style="{ height: bar.percentage, backgroundColor: getStatLabel(index).color }"></view>
           </view>
+        </view>
+        <view
+          class="stats-basic"
+          v-if="!showDetailStats && hasAffectedStats"
+          @click="switchDetailStats"
+        >
+          <text class="iconfont icon-question-circle-fill"></text>
+          <text>查看更多</text>
+        </view>
+        <view class="stats-basic"
+          v-if="showDetailStats && hasAffectedStats">
+          <uni-tooltip placement="top">
+            <template #content>
+              <view style="width: 300rpx">
+                <view>基础属性</view>
+                <view>= 专精基础的属性百分比</view>
+                <view>+ 天赋点的属性百分比</view>
+              </view>
+            </template>
+            <text class="iconfont icon-question-circle-fill"></text>
+            <text>{{ showDetailStats ? '基础属性：' : '查看更多' }}</text>
+            <text class="stats-basic-item" v-for="stat in getBasicStats" :key="stat.key" :style="{ color: stat.color }">
+              {{ stat.basicValue }}{{ stat.label }}
+            </text>
+          </uni-tooltip>
         </view>
       </uni-card>
     </uni-section>
@@ -902,8 +927,31 @@ const getStatRatio = computed(() => (index: number) => {
   const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
   const ratio = currentData.value?.[key]?.priority?.[index]?.ratio;
   const realRatio = currentData.value?.[key]?.priority?.[index]?.realRatio;
-  return ratio ? `${ratio}${realRatio ? `(${realRatio})` : ''}` : '';
+  if (ratio) {
+    return realRatio ?? ratio;
+  }
+  return '';
 });
+
+function getStatColor(stat) {
+  let color;
+  switch (stat) {
+    case '急速':
+      color = '#3db67a';
+      break;
+    case '暴击':
+      color = '#bd2625';
+      break;
+    case '全能':
+      color = '#3baaf2';
+      break;
+    case '精通':
+      color = '#725cc2';
+      break;
+  }
+  return color;
+}
+
 const getStatLabel = computed(() => (index: number) => {
   const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
   const label = currentData.value?.[key]?.priority?.[index]?.label;
@@ -924,11 +972,24 @@ const getStatLabel = computed(() => (index: number) => {
   }
   return { label, color };
 });
+const getBasicStats = computed(() => {
+  const stats = currentData.value?.archonStatsPriority?.priority;
+  return stats?.filter(item => item.basicValue).map(item => ({
+    ...item,
+    color: getStatColor(item.label),
+  }));
+});
 
+const showDetailStats = ref(false);
 const isEffectedStats = computed(() => (index: number) => {
   const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
-  return currentData.value?.[key]?.priority?.[index]?.realRatio;
+  const stat = currentData.value?.[key]?.priority?.[index];
+  return stat?.ids?.length > 0 && stat?.key !== 'mastery';
 });
+
+function switchDetailStats() {
+  showDetailStats.value = !showDetailStats.value;
+}
 
 // function switchStatSource() {
 //   if (statSource.value === 'wowhead') {
@@ -968,11 +1029,13 @@ const getStatsDes = computed(() => {
   return [' 50%', '团本', currentData.value?.archonRaidStatsPriority?.sampleCount, '大秘境'];
 });
 
+const hasAffectedStats = computed(() => currentData.value?.archonStatsPriority?.priority?.some(item => item.ids?.length));
+
 function showStatsInfo(index: number) {
   if (isEffectedStats.value(index)) {
     const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
-    const spellId = currentData.value?.[key]?.priority?.[index]?.id;
-    displaySpells([{ id: spellId }]);
+    const ids = currentData.value?.[key]?.priority?.[index]?.ids;
+    displaySpells(ids.map(id => ({ id })));
   }
 }
 
@@ -1516,6 +1579,10 @@ async function onMenuChange(menuValue: string) {
   }
 }
 
+.stats-info--affected {
+  margin-bottom: 18rpx !important;
+}
+
 .stats-info {
   text-align: center;
   margin-bottom: 10rpx;
@@ -1553,7 +1620,7 @@ async function onMenuChange(menuValue: string) {
     position: relative;
 
     .iconfont {
-      top: -4rpx;
+      top: -6rpx;
       left: 50%;
       transform: translate(-50%, -100%);
       position: absolute;
@@ -1600,6 +1667,23 @@ async function onMenuChange(menuValue: string) {
     .chart-item__bar {
       flex: 1;
     }
+  }
+}
+
+.stats-basic {
+  font-size: 24rpx;
+  line-height: 30rpx;
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx;
+
+  .iconfont {
+    font-size: 24rpx;
+    margin-right: 4rpx;
+  }
+
+  .stats-basic-item {
+    margin-right: 10rpx;
   }
 }
 

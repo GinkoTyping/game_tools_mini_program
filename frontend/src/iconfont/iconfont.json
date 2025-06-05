@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "21712624",
+      "name": "more",
+      "font_class": "more2",
+      "unicode": "e6aa",
+      "unicode_decimal": 59050
+    },
+    {
       "icon_id": "6151162",
       "name": "question-circle-fill",
       "font_class": "question-circle-fill",
