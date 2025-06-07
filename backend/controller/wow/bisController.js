@@ -709,12 +709,15 @@ export async function queryUpdateArchonBisOverview(req, res) {
     let doneCount = 0;
     let totalCount = flatSpecs.length;
 
-    let archonHash = '';
-    if (req.body.byApi) {
+    let archonHash = req.body.hash;
+    if (req.body.byApi && !archonHash) {
       archonHash = await getArchonHash(
         flatSpecs[0].classSpec,
         flatSpecs[0].roleClass,
       );
+      if (!archonHash) {
+        throw new Error('ArchonHash not found');
+      }
     }
 
     let collectFn = req.body.byApi

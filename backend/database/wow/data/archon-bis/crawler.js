@@ -255,24 +255,28 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
 // region API 查询数据
 // 获取hash
 export async function getArchonHash(classSpec, roleClass) {
-  let pathHash = '';
-  await getCheerioByPuppeteer({
-    staticFilePath: getStaticFilePath(classSpec, roleClass),
-    urlPath: getUrl(classSpec, roleClass),
-    useCache: false,
-    waitForSelector: null,
-    disableSaveCache: true,
-    async onResponse(response) {
-      const url = new URL(response.url());
-      const pathname = url.pathname;
-      if (!pathHash && pathname.includes('/this-week.json')) {
-        const match = pathname.match(/^\/_next\/data\/([a-zA-Z0-9_]+)\//);
-        pathHash = match?.[1];
-      }
-    },
-  });
+  try {
+    let pathHash = '';
+    await getCheerioByPuppeteer({
+      staticFilePath: getStaticFilePath(classSpec, roleClass),
+      urlPath: getUrl(classSpec, roleClass),
+      useCache: false,
+      waitForSelector: null,
+      disableSaveCache: true,
+      async onResponse(response) {
+        const url = new URL(response.url());
+        const pathname = url.pathname;
+        if (!pathHash && pathname.includes('/this-week.json')) {
+          const match = pathname.match(/^\/_next\/data\/([a-zA-Z0-9_]+)\//);
+          pathHash = match?.[1];
+        }
+      },
+    });
 
-  return pathHash;
+    return pathHash;
+  } catch (e) {
+    throw new Error(`获取hash失败`);
+  }
 }
 
 async function queryArchon(pathHash, category, classSpec, roleClass, zoneType = 'mythic-plus') {
