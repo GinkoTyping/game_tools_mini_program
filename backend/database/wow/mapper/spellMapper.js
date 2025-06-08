@@ -1,5 +1,12 @@
 let db;
 
+const TABLE_NAME = 'wow_spell';
+const TABLE_NAME_WOTLK = 'wow_wotlk_spell';
+
+function getTableName(version) {
+  return version === 'wotlk' ? TABLE_NAME_WOTLK : TABLE_NAME;
+}
+
 async function insertSpell(param) {
   const {
     id,
@@ -12,19 +19,22 @@ async function insertSpell(param) {
     cooldown = -1,
     description = '',
     image = '',
+    version,
   } = param;
+  const tableName = getTableName(version);
   await db.run(
     `
-        INSERT INTO wow_spell(id, id_wow_db, name_en, name_zh, range, cost, cast_time, cooldown, description, image)
+        INSERT INTO ${tableName}(id, id_wow_db, name_en, name_zh, range, cost, cast_time, cooldown, description, image)
         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10)
     `,
     [id, idWowDB, nameEN, nameZH, range, cost, castTime, cooldown, description, image],
   );
 }
 
-async function getSpellById(id) {
+async function getSpellById(id, version) {
+  const tableName = version === 'wotlk' ? TABLE_NAME_WOTLK : TABLE_NAME;
   return await db.get(`SELECT *
-                       FROM wow_spell
+                       FROM ${tableName}
                        WHERE id = ?1`, [id]);
 }
 
@@ -40,9 +50,11 @@ async function updateSpellById(param) {
     cooldown,
     description,
     image,
+    version,
   } = param;
+  const tableName = getTableName(version);
   return db.run(
-    `UPDATE wow_spell
+    `UPDATE ${tableName}
      SET name_en     = COALESCE(?, name_en),
          name_zh     = COALESCE(?, name_zh),
          range       = COALESCE(?, range),
@@ -58,10 +70,11 @@ async function updateSpellById(param) {
   );
 }
 
-async function getBlankSpell() {
+async function getBlankSpell(version = '') {
+  const tableName = getTableName(version);
   return db.all(
     `SELECT id, id_wow_db, name_en
-     FROM wow_spell
+     FROM ${tableName}
      WHERE description == ''
     `);
 }

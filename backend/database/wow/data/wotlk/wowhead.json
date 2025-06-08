@@ -1,0 +1,9509 @@
+[
+  {
+    "roleClass": "death-knight",
+    "classSpec": "blood",
+    "type": "tank",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 4,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 12,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 21,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 15,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            43554,
+            45805
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43673,
+            43672,
+            43535
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 4,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 12,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 5,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 30,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 5
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            43541,
+            43542,
+            45805
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43672,
+            43671,
+            43544
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "death-knight",
+    "classSpec": "frost",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 4,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 15,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 21,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 13,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 28,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            43543,
+            43547,
+            45805
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43673,
+            43672,
+            43535
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 15,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 21,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 13,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 20,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 28,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45805,
+            43546
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43544,
+            43673
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "death-knight",
+    "classSpec": "unholy",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 15,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 23,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 16,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 30,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 27,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 15,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            43546,
+            43549,
+            43542
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43535,
+            43672,
+            43673
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [],
+        [
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 23,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 30,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 1,
+            "maxPoints": 5
+          },
+          {
+            "index": 13,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 33,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 27,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 15,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            43549,
+            43546
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43673,
+            43672
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "druid",
+    "classSpec": "balance",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 7,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 11,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 21,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 27,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 34,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 35,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 1,
+            "maxPoints": 5
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [],
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            40921,
+            40919,
+            44928
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43335,
+            43331,
+            44922
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 11,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 21,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 34,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 35,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [],
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            40921,
+            44928,
+            40919
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43316,
+            43332,
+            43335
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "druid",
+    "classSpec": "feral",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 21,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 15,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 38,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            40901,
+            40902,
+            45604
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43335,
+            43674,
+            43331
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 21,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 19,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 15,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 31,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            40900,
+            45601,
+            45604
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43335,
+            43332,
+            43316
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "druid",
+    "classSpec": "feral",
+    "type": "tank",
+    "build": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 21,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 15,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 28,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 38,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            40897,
+            40896,
+            46372
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43334,
+            43332,
+            43335
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 21,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 15,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 31,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 28,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            40897,
+            40899,
+            40900
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43334,
+            43332,
+            43335
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "druid",
+    "classSpec": "restoration",
+    "type": "healer",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [],
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 16,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 1,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 29,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 26,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 38,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45602,
+            40906,
+            45603
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43331,
+            43335,
+            43674
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [],
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 16,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 1,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 29,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 26,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 38,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            50125,
+            40906,
+            45602
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43335,
+            43331,
+            43674
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "mage",
+    "classSpec": "arcane",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 19,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 21,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 38,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 29,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 11,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            44955,
+            42735,
+            42751
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43339,
+            43364,
+            43361
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 21,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 38,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 29,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [],
+        [
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42750,
+            42735,
+            44955
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43357,
+            43360,
+            43339
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "mage",
+    "classSpec": "fire",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 11,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 11,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 12,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 26,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42739,
+            42751,
+            45737
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            44920,
+            43339,
+            43364
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 11,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 12,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42738,
+            42750,
+            42747
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43357,
+            43360,
+            43339
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "mage",
+    "classSpec": "frost",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 11,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [],
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 12,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 26,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 29,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            50045,
+            42742,
+            42751
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43361,
+            43339,
+            43364
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [],
+        [
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 29,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42738,
+            45740,
+            42749
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43357,
+            43360,
+            43339
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "paladin",
+    "classSpec": "holy",
+    "type": "healer",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 32,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 38,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 15,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 5
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            41106,
+            41109
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43367,
+            43368
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 32,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 38,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [],
+        [
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 11,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": []
+        },
+        {
+          "type": "minor",
+          "glyphs": []
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "paladin",
+    "classSpec": "protection",
+    "type": "tank",
+    "build": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 28,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 34,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 38,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 37,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 1,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 4,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 11,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            41092,
+            45745,
+            43869
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43367,
+            43368
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 28,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 18,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 24,
+            "points": 1,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            41094,
+            41100
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43367,
+            43365
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "paladin",
+    "classSpec": "retribution",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 21,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 11,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 37,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 24,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": []
+        },
+        {
+          "type": "minor",
+          "glyphs": []
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [],
+        [
+          {
+            "index": 6,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 21,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 11,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 24,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": []
+        },
+        {
+          "type": "minor",
+          "glyphs": []
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "rogue",
+    "classSpec": "assassination",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 14,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 21,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [
+          {
+            "index": 7,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 0,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45768,
+            45761,
+            45767
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43376,
+            43380,
+            43378
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 14,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 21,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 19,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [
+          {
+            "index": 7,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45768,
+            42960,
+            42966
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": []
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "rogue",
+    "classSpec": "combat",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 14,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 7,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 15,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 21,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45767,
+            45762,
+            45766
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43378,
+            43380,
+            43376
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [
+          {
+            "index": 7,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 15,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 21,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42960,
+            42954
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": []
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "rogue",
+    "classSpec": "subtlety",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 13,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [],
+        [
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 18,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 19,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 16,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 29,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 20,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 0,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45767,
+            42969,
+            42961
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": []
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 7,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 18,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 19,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 29,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 0,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42965,
+            42967,
+            42960
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": []
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "shaman",
+    "classSpec": "elemental",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 19,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 29,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            41536,
+            45776,
+            41532
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43386,
+            44923,
+            43385
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 19,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 29,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            41536,
+            45776,
+            41524
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43386,
+            43385,
+            43388
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "shaman",
+    "classSpec": "enhancement",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 13,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 20,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            41539,
+            41530,
+            41532
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43388,
+            43385,
+            43344
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 13,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 7,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 20,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            41532,
+            41537,
+            41530
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43344,
+            43385,
+            43388
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "shaman",
+    "classSpec": "restoration",
+    "type": "healer",
+    "build": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 11,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 14,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            41517,
+            45775,
+            41527
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43386,
+            43385,
+            43388
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 7,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 11,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 14,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 26,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            41534,
+            41541,
+            45775
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43386,
+            43385,
+            43388
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "warlock",
+    "classSpec": "affliction",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 7,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 21,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 16,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 12,
+            "points": 1,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45785,
+            50077,
+            45779
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43390
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 7,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 21,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 16,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            50077,
+            42469
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43390,
+            43389
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "warlock",
+    "classSpec": "demonology",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 21,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 18,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 13,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 11,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 29,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 3,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45785,
+            50077,
+            42459
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43390
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 14,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 21,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 18,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 13,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 16,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 11,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 3,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 16,
+            "points": 1,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42453,
+            42465
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": []
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "warlock",
+    "classSpec": "destruction",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 3,
+            "points": 1,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 27,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 29,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42454,
+            42453,
+            45785
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43390
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 3,
+            "points": 1,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 13,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 27,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 29,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42453,
+            42465
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43390
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "warrior",
+    "classSpec": "arms",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 11,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 16,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 20,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 23,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 27,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            43423,
+            43416,
+            43421
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            49084,
+            43399,
+            43396
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 11,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 16,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 23,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 14,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 27,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45790,
+            43422
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43397,
+            43399
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "warrior",
+    "classSpec": "fury",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 11,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 11,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 12,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 27,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 31,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            43432,
+            43418,
+            43423
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43397,
+            49084,
+            43396
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 5,
+            "points": 1,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 11,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 14,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 12,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 27,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 31,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            43431,
+            43432
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43400,
+            43396
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "warrior",
+    "classSpec": "protection",
+    "type": "tank",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 11,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 2,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 11,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 24,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 38,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            43425,
+            45793,
+            43415
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            206953,
+            43399,
+            49084
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 11,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 24,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 37,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 38,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            43424,
+            43414,
+            43425
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43397,
+            43399,
+            43395
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "hunter",
+    "classSpec": "beast-mastery",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 13,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 2,
+            "points": 1,
+            "maxPoints": 5
+          },
+          {
+            "index": 19,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 14,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 7,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 26,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42902,
+            42912,
+            42914
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43351,
+            43350,
+            43338
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 2,
+            "points": 1,
+            "maxPoints": 5
+          },
+          {
+            "index": 19,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 14,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 7,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 20,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42907,
+            42912
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43351,
+            43350,
+            43338
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "hunter",
+    "classSpec": "marksmanship",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 1,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 9,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 23,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 7,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42912,
+            45625,
+            42914
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43351,
+            43350,
+            43338
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 14,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 23,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 11,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42897,
+            42912
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43351,
+            43350,
+            43338
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "hunter",
+    "classSpec": "survival",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 4,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 20,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 8,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 7,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 24,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 28,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 35,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 38,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 16,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45731,
+            45733,
+            45732
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43351,
+            43350,
+            43338
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 20,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 17,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 0,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 7,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 28,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 35,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 38,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42907,
+            42912
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43351,
+            43350,
+            43338
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "priest",
+    "classSpec": "discipline",
+    "type": "healer",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 26,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 34,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 1,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 11,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            45756,
+            42408,
+            42409
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43374,
+            43370,
+            43371
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 18,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 29,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 34,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 28,
+            "points": 1,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42401,
+            42408
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43370,
+            43371,
+            43372
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "priest",
+    "classSpec": "holy",
+    "type": "healer",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 11,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 18,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 22,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 16,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 20,
+            "points": 1,
+            "maxPoints": 2
+          },
+          {
+            "index": 24,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 32,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 37,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          }
+        ],
+        []
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42396,
+            42409,
+            45755
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43374,
+            43370,
+            43371
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 13,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 10,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 17,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 18,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 1,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 8,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 6,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 12,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          }
+        ],
+        [
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42401,
+            42408
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43370,
+            43371,
+            43372
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "roleClass": "priest",
+    "classSpec": "shadow",
+    "type": "dps",
+    "build": {
+      "talent": [
+        [
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [],
+        [
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 13,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 19,
+            "points": 2,
+            "maxPoints": 3
+          },
+          {
+            "index": 26,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 38,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42407,
+            42415,
+            45753
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43374,
+            43371,
+            43370
+          ]
+        }
+      ]
+    },
+    "leveling": {
+      "talent": [
+        [
+          {
+            "index": 6,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 5,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 8,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          }
+        ],
+        [],
+        [
+          {
+            "index": 15,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 2,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 6,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 0,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 9,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 5,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 17,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 10,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 25,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 14,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 18,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 19,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 26,
+            "points": 4,
+            "maxPoints": 5
+          },
+          {
+            "index": 33,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 20,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 30,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 28,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 38,
+            "points": 5,
+            "maxPoints": 5
+          },
+          {
+            "index": 32,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 34,
+            "points": 3,
+            "maxPoints": 3
+          },
+          {
+            "index": 41,
+            "points": 1,
+            "maxPoints": 1
+          },
+          {
+            "index": 1,
+            "points": 2,
+            "maxPoints": 2
+          },
+          {
+            "index": 22,
+            "points": 3,
+            "maxPoints": 3
+          }
+        ]
+      ],
+      "glyphs": [
+        {
+          "type": "major",
+          "glyphs": [
+            42415,
+            42407,
+            45753
+          ]
+        },
+        {
+          "type": "minor",
+          "glyphs": [
+            43374,
+            43370,
+            43371
+          ]
+        }
+      ]
+    }
+  }
+]

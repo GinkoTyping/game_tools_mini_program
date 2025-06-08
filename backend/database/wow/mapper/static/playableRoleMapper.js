@@ -1,5 +1,6 @@
 let db;
 const TABLE_NAME = 'wow_playable_spec';
+const TABLE_NAME_CLASS = 'wow_playable_class';
 
 async function getSpecByNameEN(name, isMage) {
   let sql = `SELECT ${TABLE_NAME}.*,
@@ -22,6 +23,11 @@ async function getSpecByNameEN(name, isMage) {
   };
 }
 
+function getPlayableClassList() {
+  return db.all(`SELECT *
+                 FROM ${TABLE_NAME_CLASS}`);
+}
+
 export function usePlayableRoleMapper(database) {
   if (database) {
     db = database;
@@ -30,5 +36,5 @@ export function usePlayableRoleMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { getSpecByNameEN };
+  return { getSpecByNameEN, getPlayableClassList };
 }

@@ -5,12 +5,13 @@ const database = await getDB();
 const spellMapper = useSpellMapper(database);
 
 export async function queryBlankSpells(req, res) {
-  const data = await spellMapper.getBlankSpell();
+  const version = req.query?.version;
+  const data = await spellMapper.getBlankSpell(version);
   res.json(data);
 }
 
 export async function queryUpdateSpell(req, res) {
-  const { id, nameZH, range, cost, castTime, description, cooldown } = req.body;
+  const { id, nameZH, range, cost, castTime, description, cooldown, version } = req.body;
   try {
     await spellMapper.updateSpellById({
       id,
@@ -20,6 +21,7 @@ export async function queryUpdateSpell(req, res) {
       castTime,
       description,
       cooldown,
+      version,
     });
     res.statusCode = 200;
     res.json({ message: '更新成功' });

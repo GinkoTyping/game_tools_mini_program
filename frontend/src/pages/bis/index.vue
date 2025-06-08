@@ -177,14 +177,14 @@
         </view>
         <view
           class="stats-basic"
-          v-if="!showDetailStats && hasAffectedStats"
+          v-if="!showDetailStats"
           @click="switchDetailStats"
         >
           <text class="iconfont icon-question-circle-fill"></text>
           <text>查看更多</text>
         </view>
         <view class="stats-basic"
-          v-if="showDetailStats && hasAffectedStats">
+          v-if="showDetailStats">
           <uni-tooltip placement="top">
             <template #content>
               <view style="width: 300rpx">

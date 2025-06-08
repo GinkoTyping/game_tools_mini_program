@@ -145,6 +145,36 @@ CREATE TABLE IF NOT EXISTS wow_basic_stats
     vers      TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS wow_wotlk_talent
+(
+    id            INTEGER PRIMARY KEY,
+    role_class    TEXT NOT NULL,
+    talent_groups TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS wow_wotlk_spell
+(
+    id          INTEGER PRIMARY KEY,
+    id_wow_db   INTEGER,
+    name_en     TEXT,
+    name_zh     TEXT,
+    range       TEXT,
+    cost        TEXT,
+    cast_time   TEXT,
+    cooldown    TEXT,
+    description TEXT,
+    image       TEXT
+);
+
+CREATE TABLE IF NOT EXISTS wow_wotlk_bis
+(
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    role_class TEXT NOT NULL,
+    class_spec TEXT NOT NULL,
+    type       TEXT NOT NULL,
+    talent     TEXT
+);
+
 -- dynamic tables
 CREATE TABLE
     IF NOT EXISTS wow_dynamic_mythic_dungeon_count
