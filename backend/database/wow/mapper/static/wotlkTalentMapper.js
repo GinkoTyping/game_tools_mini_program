@@ -27,6 +27,19 @@ async function addTalent(params) {
   ]);
 }
 
+export async function getTalent(roleClass) {
+  const data = await db.get(`SELECT *
+                             FROM ${TABLE_NAME}
+                             WHERE role_class = ?`, [roleClass]);
+  if (data) {
+    return {
+      ...data,
+      talent_groups: JSON.parse(data.talent_groups),
+    };
+  }
+  return null;
+}
+
 export function useWotlkTalentMapper(database) {
   if (database) {
     db = database;
@@ -35,5 +48,5 @@ export function useWotlkTalentMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { addTalent };
+  return { addTalent, getTalent };
 }

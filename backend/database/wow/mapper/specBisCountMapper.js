@@ -14,20 +14,29 @@ async function insertSpecBisCount(params) {
 }
 
 async function getSpecBisCountByClassAndSpec(params) {
-  const { roleClass, classSpec, version } = params;
+  const { roleClass, classSpec, version, type } = params;
   const tableName = getTableName(version);
+
+  let sql = `SELECT *
+             FROM ${tableName}
+             WHERE role_class = ?
+               AND class_spec = ?`;
+  const options = [roleClass, classSpec];
+
+  if (type && tableName === 'wow_wotlk_dynamic_spec_bis_count') {
+    sql += ' AND type = ?';
+    options.push(type);
+  }
+
   return db.get(
-    `SELECT *
-     FROM ${tableName}
-     WHERE role_class = ?1
-       AND class_spec = ?2`,
-    [roleClass, classSpec],
+    sql,
+    options,
   );
 }
 
 async function addSpecBisCountByClassAndSpec(params) {
-  const { roleClass, classSpec, verison } = params;
-  const tableName = getTableName(verison);
+  const { roleClass, classSpec, version, type } = params;
+  const tableName = getTableName(version);
   const item = await getSpecBisCountByClassAndSpec(params);
   const conut = item.count ?? 0;
   if (item) {

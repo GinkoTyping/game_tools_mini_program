@@ -424,23 +424,6 @@ function mapArchonStatsData(statsData) {
   return statsData;
 }
 
-export async function getWotlkBisBySpec(req, res) {
-  const roleClass = req.params.roleClass;
-  const classSpec = req.params.classSpec;
-  const version = req.params.version;
-
-  // 避免本地调测时，引起本地的数据和服务器不一致
-  if (!isLocal(req)) {
-    // 访问次数 +1
-
-  }
-  await specBisCountMapper.addSpecBisCountByClassAndSpec({
-    roleClass,
-    classSpec,
-    version,
-  });
-}
-
 export async function getBisBySpec(req, res) {
   try {
     const roleClass = req.params.roleClass;
@@ -558,6 +541,7 @@ export async function getTrendData(version) {
         found.specs.push({
           class_spec: cur.class_spec,
           access_count: cur.count,
+          type: cur.type ?? undefined,
           updated_at,
         });
       } else {
@@ -566,7 +550,12 @@ export async function getTrendData(version) {
           access_count: cur.count,
           updated_at,
           specs: [
-            { class_spec: cur.class_spec, access_count: cur.count, updated_at },
+            {
+              class_spec: cur.class_spec,
+              access_count: cur.count,
+              updated_at,
+              type: cur.type ?? undefined,
+            },
           ],
         });
       }

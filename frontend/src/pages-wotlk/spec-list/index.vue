@@ -18,7 +18,7 @@
           class="spec"
           v-for="specItem in item.specs"
           :key="specItem.class_spec"
-          @click="() => onClickSpec(item.role_class, specItem.class_spec)"
+          @click="() => onClickSpec(item.role_class, specItem.class_spec, specItem.type)"
         >
           <view
             :style="{
@@ -32,6 +32,7 @@
             }"
           ></view>
           <text>{{ localeLabels[item.role_class][specItem.class_spec] }}</text>
+          <image :src="getJobIcon(specItem.type)" class="jop-text" />
           <uni-icons
             v-show="specItem.access_count"
             color="rgb(97, 97, 97)"
@@ -57,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { onLoad, onShow, onShareAppMessage } from '@dcloudio/uni-app';
 
 import '@/static/css/index.scss';
@@ -66,6 +67,10 @@ import labels from '@/data/zh.json';
 import { queryTrend } from '@/api/wow';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
+
+import dpsIcon from '@/static/images/wow/job-icons/role-icon-dps.jpg';
+import healerIcon from '@/static/images/wow/job-icons/role-icon-healer.jpg';
+import tankIcon from '@/static/images/wow/job-icons/role-icon-tank.jpg';
 
 onShareAppMessage(() => ({
   title: '全专精攻略',
@@ -101,7 +106,7 @@ function getSortData() {
         new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
     );
   }
-
+  console.log({ output });
   return output;
 }
 
@@ -113,9 +118,30 @@ const localeLabels = labels as ILocaleLabels;
 
 const navigator = useNavigator();
 
-function onClickSpec(classKey: string, specKey: string) {
-  navigator.toSpecDetail(classKey, specKey, queryParams.value?.menu, queryParams.value?.scrollTo);
+function onClickSpec(classKey: string, specKey: string, type: string) {
+  navigator.toWotlkSpecDetail(
+    classKey,
+    specKey,
+    type,
+    queryParams.value?.menu,
+    queryParams.value?.scrollTo,
+  );
 }
+
+const getJobIcon = computed(() => {
+  return (type: string) => {
+    if (type === 'dps') {
+      return dpsIcon;
+    }
+    if (type === 'healer') {
+      return healerIcon;
+    }
+    if (type === 'tank') {
+      return tankIcon;
+    }
+    return type;
+  };
+});
 
 </script>
 
@@ -180,33 +206,40 @@ function onClickSpec(classKey: string, specKey: string) {
     }
 
     .spec {
-      padding-left: 32px;
+      padding-left: 64rpx;
       box-sizing: border-box;
-      font-size: 16px;
+      font-size: 32rpx;
       color: $uni-text-color-inverse;
-      line-height: 40px;
-      border-bottom: 4px solid $uni-bg-color;
+      line-height: 80rpx;
+      border-bottom: 8rpx solid $uni-bg-color;
       position: relative;
       display: flex;
       align-items: center;
 
+      .jop-text {
+        margin-left: 10rpx;
+
+        width: 40rpx;
+        height: 40rpx;
+      }
+
       .spec-update-at {
         position: absolute;
-        right: 30px;
-        font-size: 12px;
+        right: 60rpx;
+        font-size: 24rpx;
         color: #bbb;
       }
 
       uni-icons {
-        height: 40px;
-        margin-left: 4px;
+        height: 80rpx;
+        margin-left: 8rpx;
       }
 
       view {
-        width: 20px;
-        height: 20px;
+        width: 40rpx;
+        height: 40rpx;
         position: absolute;
-        left: 8px;
+        left: 16rpx;
         top: 50%;
         transform: translateY(-50%);
       }

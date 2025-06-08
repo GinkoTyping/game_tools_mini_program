@@ -28,6 +28,26 @@ async function addBis(params) {
   ]);
 }
 
+export async function getBis(params) {
+  const {
+    roleClass,
+    classSpec,
+    type,
+  } = params;
+  const data = await db.get(`SELECT *
+                             FROM ${TABLE_NAME}
+                             WHERE role_class = ?
+                               AND class_spec = ?
+                               AND type = ?`, [roleClass, classSpec, type]);
+  if (data) {
+    return {
+      ...data,
+      talent: JSON.parse(data.talent),
+    };
+  }
+  return null;
+}
+
 export function useWotlkBisMapper(database) {
   if (database) {
     db = database;
@@ -36,5 +56,5 @@ export function useWotlkBisMapper(database) {
     throw new Error('DB missing');
   }
 
-  return { addBis };
+  return { addBis, getBis };
 }

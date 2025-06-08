@@ -1,7 +1,7 @@
 import express from 'express';
 import {
   getBisBySpec,
-  getItemPreviewById, getWotlkBisBySpec,
+  getItemPreviewById,
   queryBisTrends,
   queryBlankSourceItem,
   queryRegisterItem, queryTalentBySpec,
@@ -15,13 +15,15 @@ import {
 } from '../../controller/wow/popularityController.js';
 import { querySpecDpsRank } from '../../controller/wow/specStatController.js';
 import { validateAdmin } from '../../auth/validateAdmin.js';
+import { getWotlkBisBySpec, queryWotlkTalentBySpec } from '../../controller/wow-wotlk/bisController.js';
 
 const router = express.Router();
 
 // GET 请求获取所有用户
 router.get('/bis/:roleClass/:classSpec', getBisBySpec);
-router.get('/bis/wotlk/:roleClass/:classSpec', getWotlkBisBySpec);
+router.post('/wotlk/bis', getWotlkBisBySpec);
 router.get('/bis/talent', queryTalentBySpec);
+router.get('/bis/wotlk/talent', queryWotlkTalentBySpec);
 router.get('/bis/trend', queryBisTrends);
 router.get('/bis/popularity', queryPolularity);
 

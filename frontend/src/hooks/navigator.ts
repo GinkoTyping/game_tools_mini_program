@@ -22,6 +22,19 @@ function toSpecDetail(
   });
 }
 
+// wotlk 专精攻略
+function toWotlkSpecDetail(
+  classKey: string,
+  specKey: string,
+  type: string,
+  menu: string = '',
+  scrollTo: string = '',
+) {
+  uni.navigateTo({
+    url: `/pages-wotlk/bis/index?classKey=${classKey}&specKey=${specKey}&type=${type}&title=${localeLabels[classKey][specKey]}${localeLabels.class[classKey]}&menu=${menu}&scrollTo=${scrollTo}`,
+  });
+}
+
 // 专精列表
 function toSpecsMenu(params) {
   if (params.menu && params.scrollTo) {
@@ -190,5 +203,7 @@ export function useNavigator() {
     // POE
     redirectToPoeLadders,
     toPoeDeatilLadder,
+
+    toWotlkSpecDetail,
   };
 }
