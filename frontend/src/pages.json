@@ -8,6 +8,12 @@
   },
   "pages": [
     {
+      "path": "pages-wotlk/spec-list/index",
+      "style": {
+        "navigationBarTitleText": "TEST"
+      }
+    },
+    {
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "银子的搜罗坊"

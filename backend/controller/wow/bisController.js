@@ -424,6 +424,23 @@ function mapArchonStatsData(statsData) {
   return statsData;
 }
 
+export async function getWotlkBisBySpec(req, res) {
+  const roleClass = req.params.roleClass;
+  const classSpec = req.params.classSpec;
+  const version = req.params.version;
+
+  // 避免本地调测时，引起本地的数据和服务器不一致
+  if (!isLocal(req)) {
+    // 访问次数 +1
+
+  }
+  await specBisCountMapper.addSpecBisCountByClassAndSpec({
+    roleClass,
+    classSpec,
+    version,
+  });
+}
+
 export async function getBisBySpec(req, res) {
   try {
     const roleClass = req.params.roleClass;
@@ -494,7 +511,6 @@ export async function getBisBySpec(req, res) {
         classSpec,
       });
     }
-
     res.json({
       ...bisData,
       bis_items,
@@ -520,9 +536,9 @@ export async function getBisBySpec(req, res) {
   }
 }
 
-export async function getTrendData() {
-  const data = await specBisCountMapper.getAllSpecBisCount();
-  const updateInfo = await bisMapper.getAllBisDateInfo();
+export async function getTrendData(version) {
+  const data = await specBisCountMapper.getAllSpecBisCount(version);
+  const updateInfo = await bisMapper.getAllBisDateInfo(version);
   const updateMap = updateInfo.reduce((pre, cur) => {
     if (pre[cur.role_class]) {
       pre[cur.role_class][cur.class_spec] = cur.updated_at;
@@ -565,7 +581,7 @@ export async function getTrendData() {
 }
 
 export async function queryBisTrends(req, res) {
-  const { trend, sprite } = await getTrendData();
+  const { trend, sprite } = await getTrendData(req.query?.version);
   res.json({
     trend,
     sprite,

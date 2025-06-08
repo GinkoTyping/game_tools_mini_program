@@ -1,34 +1,51 @@
 let db;
 
+function getTableName(version) {
+  return version === 'wotlk' ? 'wow_wotlk_dynamic_spec_bis_count' : 'wow_dynamic_spec_bis_count';
+}
+
 async function insertSpecBisCount(params) {
   const { count, role_class, class_spec } = params;
   return db.run(
-    `INSERT INTO wow_dynamic_spec_bis_count(count, role_class, class_spec) VALUES(?1, ?2, ?3)`,
-    [count, role_class, class_spec]
+    `INSERT INTO wow_dynamic_spec_bis_count(count, role_class, class_spec)
+     VALUES (?1, ?2, ?3)`,
+    [count, role_class, class_spec],
   );
 }
 
 async function getSpecBisCountByClassAndSpec(params) {
-  const { roleClass, classSpec } = params;
+  const { roleClass, classSpec, version } = params;
+  const tableName = getTableName(version);
   return db.get(
-    `SELECT * FROM wow_dynamic_spec_bis_count WHERE role_class = ?1 AND class_spec = ?2`,
-    [roleClass, classSpec]
+    `SELECT *
+     FROM ${tableName}
+     WHERE role_class = ?1
+       AND class_spec = ?2`,
+    [roleClass, classSpec],
   );
 }
 
 async function addSpecBisCountByClassAndSpec(params) {
-  const { roleClass, classSpec } = params;
+  const { roleClass, classSpec, verison } = params;
+  const tableName = getTableName(verison);
   const item = await getSpecBisCountByClassAndSpec(params);
+  const conut = item.count ?? 0;
   if (item) {
     await db.run(
-      `UPDATE wow_dynamic_spec_bis_count SET count=?1 WHERE role_class = ?2 AND class_spec = ?3`,
-      [item.count + 1, roleClass, classSpec]
+      `UPDATE ${tableName}
+       SET count=?1
+       WHERE role_class = ?2
+         AND class_spec = ?3`,
+      [conut + 1, roleClass, classSpec],
     );
   }
 }
 
-async function getAllSpecBisCount() {
-  return db.all(`SELECT * FROM wow_dynamic_spec_bis_count ORDER BY count DESC`);
+async function getAllSpecBisCount(version = '') {
+  const tableName = getTableName(version);
+  return db.all(`SELECT *
+                 FROM ${tableName}
+                 ORDER BY count DESC`);
 }
 
 export function useSpecBisCountMapper(database) {

@@ -195,6 +195,16 @@ CREATE TABLE
 );
 
 CREATE TABLE
+    IF NOT EXISTS wow_wotlk_dynamic_spec_bis_count
+(
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    role_class TEXT,
+    class_spec TEXT,
+    type       TEXT,
+    count      INTEGER DEFAULT 0
+);
+
+CREATE TABLE
     IF NOT EXISTS wow_dynamic_npc_mark_count
 (
     id         INTEGER PRIMARY KEY NOT NULL,

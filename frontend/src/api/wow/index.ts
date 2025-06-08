@@ -426,10 +426,10 @@ export async function querySpellsInTip(ids: number[]) {
   }
 }
 
-export async function queryTrend() {
+export async function queryTrend(version = '') {
   try {
     const res: any = await proxyRequest({
-      url: `/wow/bis/trend`,
+      url: `/wow/bis/trend?version=${version}`,
     });
     if (res.data?.trend?.[0]?.access_count > 0) {
       res.data.trend.forEach((item: any, index: number) => {

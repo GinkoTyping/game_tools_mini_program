@@ -163,10 +163,15 @@ async function getAllBis() {
   `);
 }
 
-async function getAllBisDateInfo() {
+function getTableName(version) {
+  return version === 'wotlk' ? 'wow_wotlk_bis' : 'wow_bis';
+}
+
+async function getAllBisDateInfo(version) {
+  const tableName = getTableName(version);
   const data = await db.all(
     `SELECT role_class, class_spec, updated_at
-     FROM ${TABLE_NAME}`,
+     FROM ${tableName}`,
   );
   return data.map((item) => ({
     ...item,

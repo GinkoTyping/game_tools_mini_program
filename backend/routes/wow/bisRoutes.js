@@ -1,7 +1,7 @@
 import express from 'express';
 import {
   getBisBySpec,
-  getItemPreviewById,
+  getItemPreviewById, getWotlkBisBySpec,
   queryBisTrends,
   queryBlankSourceItem,
   queryRegisterItem, queryTalentBySpec,
@@ -20,6 +20,7 @@ const router = express.Router();
 
 // GET 请求获取所有用户
 router.get('/bis/:roleClass/:classSpec', getBisBySpec);
+router.get('/bis/wotlk/:roleClass/:classSpec', getWotlkBisBySpec);
 router.get('/bis/talent', queryTalentBySpec);
 router.get('/bis/trend', queryBisTrends);
 router.get('/bis/popularity', queryPolularity);
