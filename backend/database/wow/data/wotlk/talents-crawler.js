@@ -34,12 +34,26 @@ async function getClassTalentData(name) {
 
   if (response.data) {
     let { classId, talentGroups } = response.data;
-
+    let index = 0;
     const talentGroupsResults = await Promise.allSettled(talentGroups.map(async group => {
       const talentsResults = await Promise.allSettled(group.talents.map(node => mapTalentNode(node)));
+      let selfIndex = 0;
       return {
         slug: group.slug.replace(' ', '-'),
-        talents: talentsResults.map(result => result.value),
+        talents: talentsResults.map(result => {
+          if (result.value) {
+            const currentIndex = index;
+            const currentSelfIndex = selfIndex;
+            index++;
+            selfIndex++;
+            return {
+              ...result.value,
+              index: currentIndex,
+              selfIndex: currentSelfIndex,
+            };
+          }
+          return null;
+        }),
       };
     }));
     talentGroups = talentGroupsResults.map(item => item.value);

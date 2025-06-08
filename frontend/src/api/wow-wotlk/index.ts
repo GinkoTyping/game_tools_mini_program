@@ -4,6 +4,8 @@ export interface WotlkTalent {
   name: string;
   ranks: number[];
   requiredPoints: number;
+  index: number;
+  selfIndex: number;
 }
 
 export interface WotlkSelectedTalent {

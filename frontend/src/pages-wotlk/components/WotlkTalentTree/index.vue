@@ -27,7 +27,7 @@ const props = defineProps({
 const getTalentStatus = computed(() => {
   return (node: WotlkTalent, index) => {
     if (node) {
-      const selected = props.selected.find(item => item.index === index);
+      const selected = props.selected.find(item => item.index === node.selfIndex);
       return {
         selected: selected !== undefined,
         points: `${selected?.points}/${selected?.maxPoints}`,
@@ -72,7 +72,7 @@ async function selectTalentNode(id) {
       <view class="talent-node__bg"
         :style="{
         backgroundImage: `url(https://ginkolearn.cyou/api/wow/assets/wotlk-talent/${roleClass}.jpg)`,
-        backgroundPosition: `calc(-80rpx * ${index}`
+        backgroundPosition: `calc(-80rpx * ${item?.index}`
          }"></view>
       <view class="talent-node__points"
         :class="[getTalentStatus(item, index).halfSelected ? 'talent-node__points--half-selected' : '']"
@@ -92,8 +92,8 @@ $node-size: 80rpx;
 .talent-tree {
   display: flex;
   flex-wrap: wrap;
-  width: calc($node-size * 5.5);
-  gap: calc($node-size * 0.5);
+  width: calc($node-size * 4.9);
+  gap: calc($node-size * 0.3);
   margin: 0 auto;
 
   .talent-node {
@@ -118,7 +118,7 @@ $node-size: 80rpx;
       position: absolute;
       right: 0;
       bottom: 0;
-      transform: translate(50%, 50%);
+      transform: translate(30%, 50%);
       padding: 4rpx 6rpx;
       border-radius: 6rpx;
       color: $uni-text-color-inverse;
