@@ -33,10 +33,15 @@ export async function queryUpdateSpell(req, res) {
 
 // TODO 不存在的spell Id在数据库中自动创建列
 export async function querySpellByIds(req, res) {
-  const promises = req.body?.ids?.map((id) => spellMapper.getSpellById(id));
-  const results = await Promise.allSettled(promises);
+  try {
+    const version = req.body.version;
+    const promises = req.body?.ids?.map((id) => spellMapper.getSpellById(id, version));
+    const results = await Promise.allSettled(promises);
 
-  res.json(results.map((item) => item.value));
+    res.json(results.map((item) => item.value));
+  } catch (e) {
+    res.status(500).json(e.message);
+  }
 }
 
 export async function queryAddSpell(req, res) {

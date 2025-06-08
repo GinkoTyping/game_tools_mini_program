@@ -402,13 +402,14 @@ export async function queryDungeonTip(params: {
   }
 }
 
-export async function querySpellsInTip(ids: number[]) {
+export async function querySpellsInTip(ids: number[], version = '') {
   try {
     const res: any = await proxyRequest({
       url: `/wow/spell`,
       method: 'POST',
       data: {
         ids,
+        version,
       },
     });
 

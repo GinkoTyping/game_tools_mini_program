@@ -1,5 +1,31 @@
 import { proxyRequest } from '../config';
 
+export interface WotlkTalent {
+  name: string;
+  ranks: number[];
+  requiredPoints: number;
+}
+
+export interface WotlkSelectedTalent {
+  index: number;
+  points: number;
+  maxPoints: number;
+}
+
+interface WotlkTalentDTO {
+  talent_groups: Array<{ slug: string; talents: WotlkTalent[] }>;
+  talent: {
+    build: {
+      glyphs: Array<{ type: string; glyphs: number[] }>;
+      talent: Array<WotlkSelectedTalent>
+    };
+    leveling: {
+      glyphs: Array<{ type: string; glyphs: number[] }>;
+      talent: Array<{ index: number; points: number; maxPoints: number; }>
+    }
+  };
+}
+
 export async function queryBis(
   roleClass: string,
   classSpec: string,
@@ -10,5 +36,5 @@ export async function queryBis(
     method: 'post',
     data: { roleClass, classSpec, type },
   });
-  return res;
+  return res.data as WotlkTalentDTO;
 }

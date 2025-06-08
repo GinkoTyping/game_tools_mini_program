@@ -3,16 +3,24 @@
 import { onLoad } from '@dcloudio/uni-app';
 import { queryBis } from '@/api/wow-wotlk';
 import { nextTick, ref } from 'vue';
-import { useNavigator } from '@/hooks/navigator';
+import WotlkTalentTree from '@/pages-wotlk/components/WotlkTalentTree/index.vue';
 
 const classKey = ref('');
 const specKey = ref('');
 const currentData = ref<any>();
 const query = ref<any>({});
-const navigator = useNavigator();
 
 function setNaviTitle(title: string) {
-  uni.setNavigationBarTitle({ title: title });
+  let menu = '';
+  const type = query.value.type;
+  if (type === 'dps') {
+    menu = '输出';
+  } else if (type === 'tank') {
+    menu = '坦克';
+  } else if (type === 'healer') {
+    menu = '治疗';
+  }
+  uni.setNavigationBarTitle({ title: `${query.value.title} ${menu}` });
 }
 
 onLoad(async (options: any) => {
@@ -30,12 +38,16 @@ onLoad(async (options: any) => {
 
   uni.hideLoading();
 
-  setNaviTitle(`${options.title} ${currentData.value.version}`);
+  setNaviTitle();
 });
 </script>
 
 <template>
-  BIS;
+  <WotlkTalentTree
+    :data="currentData?.talent_groups?.[0].talents"
+    :role-class="currentData?.role_class"
+    :selected="currentData?.talent?.build?.talent?.[0]"
+  />
 </template>
 
 <style scoped lang="scss">
