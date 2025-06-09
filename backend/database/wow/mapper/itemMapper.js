@@ -4,11 +4,16 @@ import { fileURLToPath } from 'url';
 
 let db;
 
-async function insertItem(itemData) {
+function getTableName(version) {
+  return version === 'wotlk' ? 'wow_wotlk_item' : 'wow_item';
+}
+
+async function insertItem(itemData, version) {
   const { id, slot, item, source, itemIcon } = itemData;
+  const tableName = getTableName(version);
   return db.run(
     `
-        INSERT INTO wow_item(id, slot, name, source, image)
+        INSERT INTO ${tableName}(id, slot, name, source, image)
         VALUES (?1, ?2, ?3, ?4, ?5)
     `,
     [id, slot, item, JSON.stringify(source), itemIcon],
@@ -45,12 +50,14 @@ async function getItemByName(name, locale) {
   );
 }
 
-async function updateItemById(itemData) {
+async function updateItemById(itemData, version) {
   const { id, slot, item, source, itemIcon, preview, name_en, preview_en } =
     itemData;
+
+  const tableName = getTableName(version);
   return db.run(
     `
-        UPDATE wow_item
+        UPDATE ${tableName}
         SET slot       = COALESCE(?, slot),
             name       = COALESCE(?, name),
             source     = COALESCE(?, source),
@@ -78,16 +85,14 @@ async function addOrUpdatePreviewById(id, preview, locale) {
   const nameKey = locale === 'en_US' ? 'name_en' : 'name';
   return db.run(
     `INSERT
-    OR REPLACE INTO wow_item(id,
-    ${previewKey},
-    ${nameKey}
-    )
-    VALUES
-    (
-    ?,
-    ?,
-    ?
-    )`,
+         OR
+     REPLACE
+     INTO wow_item(id,
+                   ${previewKey},
+                   ${nameKey})
+     VALUES (?,
+             ?,
+             ?)`,
     [id, JSON.stringify(preview), preview.name],
   );
 }
@@ -123,9 +128,10 @@ async function getBlankImageItem() {
                  WHERE image IS NULL`);
 }
 
-async function getBlankSlotItem() {
+async function getBlankSlotItem(version) {
+  const tableName = getTableName(version);
   return db.all(`SELECT id, preview
-                 FROM wow_item
+                 FROM ${tableName}
                  WHERE slot IS NULL`);
 }
 

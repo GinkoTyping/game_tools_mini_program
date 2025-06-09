@@ -15,7 +15,14 @@ const query = ref<any>({});
 // region 天赋树
 const selectedTreeIndex = ref(0);
 const talentTrees = computed(() => {
-  return currentData.value?.talent_groups.map(item => labels[currentData.value?.role_class][item.slug]);
+  return currentData.value?.talent_groups.map((item, index) => {
+    const slug = labels[currentData.value?.role_class][item.slug];
+    const nodeCount = currentData.value?.talent?.[activeMenu.value === 'leveling' ? 'leveling' : 'build']?.talent?.[index]?.reduce(
+      (pre, cur) => pre += cur.points,
+      0,
+    );
+    return `${slug}(${nodeCount})`;
+  });
 });
 
 function switchTreeIndex({ currentIndex }) {
@@ -84,7 +91,7 @@ onLoad(async (options: any) => {
 
   // TODO 加载页面完成前，需要展示loading
   currentData.value = await queryBis(query.value.classKey, query.value.specKey, query.value.type);
-
+  activeMenu.value = 'leveling';
   uni.hideLoading();
 
   setNaviTitle();

@@ -8,7 +8,7 @@ const db = await getDB();
 const itemMapper = useItemMapper(db);
 const api = setBlizzAPI();
 
-async function updateItemSlot(id, preview) {
+async function updateItemSlot(id, preview, version) {
   let slot;
   let data;
   if (preview?.inventory_type?.name) {
@@ -16,14 +16,14 @@ async function updateItemSlot(id, preview) {
   } else {
     data = await api.query(`/data/wow/item/${id}`, {
       params: {
-        namespace: 'static-us',
+        namespace: version === 'wotlk' ? 'static-classic-us' : 'static-us',
         locale: 'zh_CN',
       },
     });
     slot = data.inventory_type?.name;
   }
   if (slot) {
-    itemMapper.updateItemById({ id: id, slot, preview: data });
+    itemMapper.updateItemById({ id: id, slot, preview: data }, version);
   }
 
   current++;
@@ -36,18 +36,19 @@ const limiter = new Bottleneck({
 });
 let total = 0;
 let current = 0;
-export async function main() {
-  const data = await itemMapper.getBlankSlotItem();
+
+export async function main(version) {
+  const data = await itemMapper.getBlankSlotItem(version);
   total = data.length;
   const results = await Promise.allSettled(
     data.map((item) =>
-      limiter.schedule(() => updateItemSlot(item.id, item.preview))
-    )
+      limiter.schedule(() => updateItemSlot(item.id, JSON.parse(item.preview), version)),
+    ),
   );
   const errors = results.filter((item) => item.status !== 'fulfilled');
   if (errors.length) {
-    console.log('下载失败：' + errors.length);
+    console.log('查询失败：' + errors.length);
   }
 }
 
-main();
+main('wotlk');

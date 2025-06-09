@@ -175,6 +175,18 @@ CREATE TABLE IF NOT EXISTS wow_wotlk_bis
     talent     TEXT
 );
 
+CREATE TABLE IF NOT EXISTS wow_wotlk_item
+(
+    id         INTEGER PRIMARY KEY,
+    slot       TEXT,
+    name       TEXT,
+    name_en    TEXT,
+    source     TEXT,
+    image      TEXT,
+    preview    TEXT,
+    preview_en TEXT
+);
+
 -- dynamic tables
 CREATE TABLE
     IF NOT EXISTS wow_dynamic_mythic_dungeon_count

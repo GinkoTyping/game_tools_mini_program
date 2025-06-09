@@ -27,7 +27,7 @@ const props = defineProps({
 const getTalentStatus = computed(() => {
   return (node: WotlkTalent, index) => {
     if (node) {
-      const selected = props.selected.find(item => item.index === node.selfIndex);
+      const selected = props.selected.find(item => item.index === index);
       return {
         selected: selected !== undefined,
         points: `${selected?.points}/${selected?.maxPoints}`,
