@@ -15,25 +15,26 @@ const db = await getDB();
 const itemMapper = useItemMapper(db);
 const api = setBlizzAPI();
 
-async function updateItemImage(id) {
+async function updateItemImage(id, version) {
   try {
     const data = await api.query(`/data/wow/media/item/${id}`, {
       params: {
-        namespace: 'static-us',
+        namespace: version === 'wotlk' ? 'static-classic-us' : 'static-us',
         locale: 'zh_CN',
       },
     });
+    const folder = version === 'wotlk' ? 'blizz-media-image-wotlk' : 'blizz-media-image';
     if (data.assets?.[0]?.value) {
       const image = data.assets[0].value.split('/').pop();
       await downloadSingle(
         data.assets[0].value,
         path.resolve(
           __dirname,
-          `../../../../assets/wow/blizz-media-image/${image}`
-        )
+          `../../../../assets/wow/${folder}/${image}`,
+        ),
       );
 
-      itemMapper.updateItemById({ id: id, itemIcon: image });
+      itemMapper.updateItemById({ id: id, itemIcon: image }, version);
     }
   } catch (error) {
     return Promise.reject(error);
@@ -43,10 +44,11 @@ async function updateItemImage(id) {
 const limiter = new Bottleneck({
   minTime: 50, // 50ms间隔 → 20次/秒
 });
-export async function main() {
-  const data = await itemMapper.getInvalidImageItem();
+
+export async function main(version) {
+  const data = await itemMapper.getInvalidImageItem(version);
   const results = await Promise.allSettled(
-    data.map((item) => limiter.schedule(() => updateItemImage(item.id)))
+    data.map((item) => limiter.schedule(() => updateItemImage(item.id, version))),
   );
   const errors = results.filter((item) => item.status !== 'fulfilled');
   if (errors.length) {
@@ -54,4 +56,4 @@ export async function main() {
   }
 }
 
-main();
+main('wotlk');

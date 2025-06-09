@@ -144,19 +144,21 @@ async function getBlankEnItem() {
   );
 }
 
-async function getInvalidImageItem() {
+async function getInvalidImageItem(version) {
+  const tableName = getTableName(version);
   const data = await db.all(`SELECT id, image
-                             FROM wow_item`);
+                             FROM ${tableName}`);
 
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
+  const folderName = version === 'wotlk' ? 'blizz-media-image-wotlk' : 'blizz-media-image';
   return data.filter((item) => {
     if (
       item.image &&
       fs.existsSync(
         path.resolve(
           __dirname,
-          `../../../assets/wow/blizz-media-image/${item.image}`,
+          `../../../assets/wow/${folderName}/${item.image}`,
         ),
       )
     ) {
