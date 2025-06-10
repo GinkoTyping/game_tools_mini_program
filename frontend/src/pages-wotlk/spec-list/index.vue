@@ -1,4 +1,12 @@
 <template>
+  <uni-notice-bar
+    single
+    show-icon
+    show-close
+    color="#2979FF"
+    background-color="#EAF2FF"
+    text="简易天赋推荐, 怀旧服专题开发中..."
+  />
   <uni-collapse ref="collapse" accordion>
     <template v-for="item in displayData" :key="item.role_class">
       <uni-collapse-item>

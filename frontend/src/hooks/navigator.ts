@@ -22,7 +22,8 @@ function toSpecDetail(
   });
 }
 
-// wotlk 专精攻略
+// region 巫妖王之怒
+// 专精攻略
 function toWotlkSpecDetail(
   classKey: string,
   specKey: string,
@@ -34,6 +35,15 @@ function toWotlkSpecDetail(
     url: `/pages-wotlk/bis/index?classKey=${classKey}&specKey=${specKey}&type=${type}&title=${localeLabels[classKey][specKey]}${localeLabels.class[classKey]}&menu=${menu}&scrollTo=${scrollTo}`,
   });
 }
+
+function toWotlkSpecList() {
+  uni.navigateTo({
+    url: `/pages-wotlk/spec-list/index`,
+  });
+}
+
+// endregion
+
 
 // 专精列表
 function toSpecsMenu(params) {
@@ -205,5 +215,6 @@ export function useNavigator() {
     toPoeDeatilLadder,
 
     toWotlkSpecDetail,
+    toWotlkSpecList,
   };
 }

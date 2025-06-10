@@ -6,6 +6,7 @@ import { queryBis } from '@/api/wow-wotlk';
 import WotlkTalentTree from '@/pages-wotlk/components/WotlkTalentTree/index.vue';
 import SpecFooter from '@/components/SpecFooter.vue';
 import labels from '@/data/zh.json';
+import { getWotlkItemIcon } from '@/hooks/imageGenerator';
 
 const classKey = ref('');
 const specKey = ref('');
@@ -36,6 +37,9 @@ const selectedTalentTree = computed(() => {
 });
 const selectedTalentNodes = computed(() => {
   return currentData.value?.talent?.[activeMenu.value === 'leveling' ? 'leveling' : 'build']?.talent?.[selectedTreeIndex.value];
+});
+const selectedGlyphs = computed(() => {
+  return currentData.value?.talent?.[activeMenu.value === 'leveling' ? 'leveling' : 'build']?.glyphs;
 });
 
 // endregion
@@ -91,7 +95,10 @@ onLoad(async (options: any) => {
 
   // TODO 加载页面完成前，需要展示loading
   currentData.value = await queryBis(query.value.classKey, query.value.specKey, query.value.type);
+
   activeMenu.value = 'leveling';
+  selectedTreeIndex.value = currentData.value?.talent.leveling.talent.findIndex(item => item?.length);
+
   uni.hideLoading();
 
   setNaviTitle();
@@ -115,6 +122,8 @@ onLoad(async (options: any) => {
       :role-class="currentData?.role_class"
       :selected="selectedTalentNodes"
     />
+
+    <ad-custom style="margin-top: 20rpx" unit-id="adunit-66a8fa1220d4bfa4"></ad-custom>
   </view>
 
 
@@ -136,6 +145,16 @@ onLoad(async (options: any) => {
 :deep {
   .segmented-control__text:not(.segmented-control__item--text) {
     color: #fff !important;
+  }
+}
+
+.glyph-list {
+  color: #999;
+
+  .item-list {
+    display: flex;
+    gap: 10rpx;
+    color: $uni-text-color-inverse;
   }
 }
 </style>

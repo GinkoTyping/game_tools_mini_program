@@ -20,6 +20,24 @@ async function insertItem(itemData, version) {
   );
 }
 
+async function getWotlkItemById(id, deletePreview) {
+  const item = await db.get(
+    `
+        SELECT *
+        FROM wow_wotlk_item
+        WHERE id = ?1
+    `,
+    [id],
+  );
+  return deletePreview
+    ? {
+      ...item,
+      preview: undefined,
+      preview_en: undefined,
+    }
+    : item;
+}
+
 async function getItemById(id, deletePreview) {
   const item = await db.get(
     `
@@ -179,6 +197,7 @@ export function useItemMapper(database) {
   return {
     insertItem,
     getItemById,
+    getWotlkItemById,
     getItemByName,
     getUntranslated,
     getBlankSlotItem,

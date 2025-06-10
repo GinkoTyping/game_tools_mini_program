@@ -8,18 +8,6 @@
   },
   "pages": [
     {
-      "path": "pages-wotlk/spec-list/index",
-      "style": {
-        "navigationBarTitleText": "TEST"
-      }
-    },
-    {
-      "path": "pages-wotlk/bis/index",
-      "style": {
-        "navigationBarTitleText": "TEST"
-      }
-    },
-    {
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "银子的搜罗坊"
@@ -127,13 +115,31 @@
           }
         }
       ]
+    },
+    {
+      "root": "pages-wotlk",
+      "pages": [
+        {
+          "path": "spec-list/index",
+          "style": {
+            "navigationBarTitleText": "巫妖王之怒 专精列表"
+          }
+        },
+        {
+          "path": "bis/index",
+          "style": {
+            "navigationBarTitleText": "专精攻略"
+          }
+        }
+      ]
     }
   ],
   "preloadRule": {
     "pages/index/index": {
       "network": "wifi",
       "packages": [
-        "pages-sub-wow"
+        "pages-sub-wow",
+        "pages-wotlk"
       ]
     }
   },

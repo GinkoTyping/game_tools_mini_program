@@ -3,10 +3,12 @@ import { useWotlkTalentMapper } from '../../database/wow/mapper/static/wotlkTale
 import { isLocal } from '../../auth/validateAdmin.js';
 import { useSpecBisCountMapper } from '../../database/wow/mapper/specBisCountMapper.js';
 import { getBis, useWotlkBisMapper } from '../../database/wow/mapper/static/wotlkBisMapper.js';
+import { useItemMapper } from '../../database/wow/mapper/itemMapper.js';
 
 const db = await getDB();
 const wotlkBisMapper = useWotlkBisMapper(db);
 const wotlkTalentMapper = useWotlkTalentMapper(db);
+const itemMapper = useItemMapper(db);
 
 const dynamicDB = await getDynamicDB();
 const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
@@ -27,6 +29,21 @@ export async function getWotlkBisBySpec(req, res) {
   try {
     const data = await wotlkBisMapper.getBis({ roleClass, classSpec, type });
     const talentTrees = await wotlkTalentMapper.getTalent(roleClass);
+    const [buildResult, levelingResult] = await Promise.allSettled(['build', 'leveling'].map(async key => {
+      const glyphs = await Promise.allSettled(data.talent[key].glyphs.map(async item => {
+        const itemResults = await Promise.allSettled(item.glyphs.map(id => itemMapper.getWotlkItemById(id, true)));
+        return {
+          type: item.type,
+          glyphs: itemResults.map(result => result.value),
+        };
+      }));
+      return {
+        glyphs: glyphs.map(child => child.value),
+        talent: data.talent[key].talent,
+      };
+    }));
+    data.talent.build = buildResult.value;
+    data.talent.leveling = levelingResult.value;
     data.talent_groups = talentTrees.talent_groups;
     res.json(data);
   } catch (e) {

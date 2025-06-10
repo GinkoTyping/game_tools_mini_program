@@ -30,10 +30,10 @@
   <button
     v-if="props.showChipEntry"
     class="poe2-btn"
-    @click="() => navigator.toSpecsMenu({ menu: 'talent', scrollTo: '.talent' })"
+    @click="() => navigator.toWotlkSpecList()"
   >
-    <!--    <image src="/static/icon/home-bottom.jpg" mode="widthFix" />-->
-    <view class="iconfont icon-tree animate__animated animate__heartBeat animate__repeat-3"></view>
+    <image src="https://ginkolearn.cyou/api/wow/assets/home/wotlk-icon.png" mode="widthFix" />
+    <!--    <view class="iconfont icon-tree animate__animated animate__heartBeat animate__repeat-3"></view>-->
     <view class="badage"></view>
   </button>
 
