@@ -35,11 +35,12 @@ async function getClassTalentData(name) {
   if (response.data) {
     let { classId, talentGroups } = response.data;
     let index = 0;
-    const talentGroupsResults = await Promise.allSettled(talentGroups.map(async group => {
-      const talentsResults = await Promise.allSettled(group.talents.map(node => mapTalentNode(node)));
+    let outputGroups = [];
+    for (let i = 0; i < talentGroups.length; i++) {
+      const talentsResults = await Promise.allSettled(talentGroups[i].talents.map(node => mapTalentNode(node)));
       let selfIndex = 0;
-      return {
-        slug: group.slug.replace(' ', '-'),
+      outputGroups.push({
+        slug: talentGroups[i].slug.replace(' ', '-'),
         talents: talentsResults.map(result => {
           if (result.value) {
             const currentIndex = index;
@@ -54,13 +55,12 @@ async function getClassTalentData(name) {
           }
           return null;
         }),
-      };
-    }));
-    talentGroups = talentGroupsResults.map(item => item.value);
+      });
+    }
 
     return wotlkTalentMapper.addTalent({
       id: classId,
-      talent_groups: talentGroups,
+      talent_groups: outputGroups,
       role_class: name,
     });
   }
