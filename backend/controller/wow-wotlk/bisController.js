@@ -35,13 +35,12 @@ export async function getWotlkBisBySpec(req, res) {
     // 避免本地调测时，引起本地的数据和服务器不一致
     if (!isLocal(req)) {
       // 访问次数 +1
-
+      await specBisCountMapper.addSpecBisCountByClassAndSpec({
+        roleClass,
+        classSpec,
+        version: 'wotlk',
+        type,
+      });
     }
-    await specBisCountMapper.addSpecBisCountByClassAndSpec({
-      roleClass,
-      classSpec,
-      version: 'wotlk',
-      type,
-    });
   }
 }
