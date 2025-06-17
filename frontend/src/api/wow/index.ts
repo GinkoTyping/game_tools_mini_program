@@ -107,6 +107,7 @@ function adaptRotationAssist(data) {
         return pre;
       }, { columns: [], rows: [[]] });
       return {
+        ...data,
         data: [
           {
             label: '汇总',
@@ -124,7 +125,7 @@ function adaptRotationAssist(data) {
           data: [
             {
               label: '汇总',
-              data: data.data,
+              ...data.data,
             },
           ],
         };

@@ -357,7 +357,9 @@
     </uni-section>
   </template>
 
-  <BisRotation :class-key="classKey" v-if="activeMenu === 'rotation'" :data="currentData?.wowheadBis?.rotationAssist" />
+  <BisRotation
+    :spec-key="specKey"
+    :class-key="classKey" v-if="activeMenu === 'rotation'" :data="currentData?.wowheadBis?.rotationAssist" />
 
   <template v-if="activeMenu === 'bis'">
     <ExportCanvas
@@ -864,7 +866,6 @@ onLoad(async (options: any) => {
 async function getBasicBisData() {
   currentData.value = await queryBis(classKey.value, specKey.value);
   currentTableName.value = currentData.value.bisItems[0]?.title;
-  console.log(currentData.value?.wowheadBis?.rotationAssist);
 }
 
 onShareAppMessage(() => {

@@ -424,6 +424,137 @@ function mapArchonStatsData(statsData) {
   return statsData;
 }
 
+function getRotationAssistRank() {
+  return [
+    {
+      title: 'S',
+      subTitle: '-5%',
+      children: [
+        {
+          roleClass: 'warlock',
+          classSpec: 'destruction',
+        },
+        {
+          roleClass: 'hunter',
+          classSpec: 'beast-mastery',
+        },
+        {
+          roleClass: 'priest',
+          classSpec: 'shadow',
+        },
+        {
+          roleClass: 'paladin',
+          classSpec: 'retribution',
+        },
+        {
+          roleClass: 'death-knight',
+          classSpec: 'unholy',
+        },
+        {
+          roleClass: 'evoker',
+          classSpec: 'augmentation',
+        },
+        {
+          roleClass: 'hunter',
+          classSpec: 'marksmanship',
+        },
+      ],
+    },
+    {
+      title: 'A',
+      subTitle: '-10%',
+      children: [
+        {
+          roleClass: 'mage',
+          classSpec: 'frost',
+        },
+        {
+          roleClass: 'warrior',
+          classSpec: 'arms',
+        },
+        {
+          roleClass: 'warrior',
+          classSpec: 'fury',
+        },
+        {
+          roleClass: 'shaman',
+          classSpec: 'elemental',
+        },
+        {
+          roleClass: 'shaman',
+          classSpec: 'enhancement',
+        },
+        {
+          roleClass: 'death-knight',
+          classSpec: 'frost',
+        },
+        {
+          roleClass: 'druid',
+          classSpec: 'balance',
+        },
+        {
+          roleClass: 'warlock',
+          classSpec: 'demonology',
+        },
+        {
+          roleClass: 'evoker',
+          classSpec: 'devastation',
+        },
+        {
+          roleClass: 'mage',
+          classSpec: 'fire',
+        },
+        {
+          roleClass: 'rogue',
+          classSpec: 'assassination',
+        },
+        {
+          roleClass: 'rogue',
+          classSpec: 'outlaw',
+        },
+      ],
+    },
+    {
+      title: 'B',
+      subTitle: '-20%',
+      children: [
+        {
+          roleClass: 'warlock',
+          classSpec: 'affliction',
+        },
+        {
+          roleClass: 'mage',
+          classSpec: 'frost',
+        },
+        {
+          roleClass: 'mage',
+          classSpec: 'arcane',
+        },
+        {
+          roleClass: 'rogue',
+          classSpec: 'subtlety',
+        },
+        {
+          roleClass: 'hunter',
+          classSpec: 'survival',
+        },
+        {
+          roleClass: 'druid',
+          classSpec: 'feral',
+        },
+        {
+          roleClass: 'demon-hunter',
+          classSpec: 'havoc',
+        },
+        {
+          roleClass: 'monk',
+          classSpec: 'windwalker',
+        },
+      ],
+    },
+  ];
+}
+
 export async function getBisBySpec(req, res) {
   try {
     const roleClass = req.params.roleClass;
@@ -485,6 +616,10 @@ export async function getBisBySpec(req, res) {
       classSpec,
       roleClass,
     );
+
+    if (wowheadBis?.rotationAssist) {
+      wowheadBis.rotationAssist.rank = getRotationAssistRank();
+    }
 
     // 避免本地调测时，引起本地的数据和服务器不一致
     if (!isLocal(req)) {
