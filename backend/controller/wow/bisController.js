@@ -592,7 +592,7 @@ export async function queryUpdateItem(req, res) {
   res.json(`更新物品${result.changes ? '成功' : '失败'}, ID:${id}`);
 }
 
-// 天赋树
+// region 天赋树
 const talentMapper = useTalentMapper(database);
 
 export async function queryTalentBySpec(req, res) {
@@ -676,6 +676,8 @@ export async function queryTalentBySpec(req, res) {
     res.json({});
   }
 }
+
+// endregion
 
 //#region 内部接口
 export async function queryRegisterItem(req, res) {

@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "703563",
+      "name": "rotate-3d",
+      "font_class": "rotate3d",
+      "unicode": "ea53",
+      "unicode_decimal": 59987
+    },
+    {
+      "icon_id": "1445212",
+      "name": "rotate-3d",
+      "font_class": "rotate-d",
+      "unicode": "e87f",
+      "unicode_decimal": 59519
+    },
+    {
+      "icon_id": "5127492",
+      "name": "rotate",
+      "font_class": "rotate",
+      "unicode": "e807",
+      "unicode_decimal": 59399
+    },
+    {
       "icon_id": "21712624",
       "name": "more",
       "font_class": "more2",

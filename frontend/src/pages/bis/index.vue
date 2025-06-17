@@ -357,6 +357,8 @@
     </uni-section>
   </template>
 
+  <BisRotation :class-key="classKey" v-if="activeMenu === 'rotation'" :data="currentData?.wowheadBis?.rotationAssist" />
+
   <template v-if="activeMenu === 'bis'">
     <ExportCanvas
       ref="exportRef"
@@ -814,6 +816,7 @@ import ItemPopover from '@/components/ItemPopover.vue';
 import { useNavigator } from '@/hooks/navigator';
 import ExportCanvas from '@/components/ExportCanvas.vue';
 import TalentTree from '@/components/TalentTree/index.vue';
+import BisRotation from '@/pages/bis/components/BisRotation.vue';
 
 const classKey = ref('');
 const specKey = ref('');
@@ -853,12 +856,15 @@ onLoad(async (options: any) => {
 
   setNaviTitle(`${options.title} ${currentData.value.version}`);
 
+  setFooterMenu();
+
   checkJumpTo();
 });
 
 async function getBasicBisData() {
   currentData.value = await queryBis(classKey.value, specKey.value);
   currentTableName.value = currentData.value.bisItems[0]?.title;
+  console.log(currentData.value?.wowheadBis?.rotationAssist);
 }
 
 onShareAppMessage(() => {
@@ -1411,7 +1417,7 @@ function copyTalentCode() {
 
 //#region 切换底部菜单
 const activeMenu = ref('index');
-const footerMenus = [
+const footerMenus = ref([
   {
     title: '总览',
     value: 'index',
@@ -1438,7 +1444,17 @@ const footerMenus = [
     value: 'mythic',
     icon: 'icon-dungeon',
   },
-];
+]);
+
+function setFooterMenu() {
+  if (currentData.value?.wowheadBis?.rotationAssist) {
+    footerMenus.value.splice(1, 0, {
+      title: '循环',
+      value: 'rotation',
+      icon: 'icon-rotate-d',
+    });
+  }
+}
 
 async function onMenuChange(menuValue: string) {
   if (menuValue === 'mythic' && !dungeons.value?.length) {

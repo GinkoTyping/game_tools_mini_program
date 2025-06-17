@@ -72,6 +72,7 @@ onShow(() => {
   }
 });
 </script>
+
 <style lang="scss" scoped>
 $header-bg-color: #1d1d1f;
 .footer-menu {

@@ -20,6 +20,7 @@ const flatList = Object.entries(puzzlingCartelChipData).reduce(
         updatedAt: item.updatedAt,
         puzzlingCartelChipAdvice: item.advice,
         corruptions: item.corruptions,
+        rotationAssist: item.rotationAssist,
       });
     });
 
@@ -52,6 +53,7 @@ async function updateItem(item) {
       updatedAt: item.updatedAt,
       detailedPuzzlingCartelChipAdvice: item.puzzlingCartelChipAdvice,
       corruptions: item.corruptions,
+      rotationAssist: item.rotationAssist,
     },
   });
 }

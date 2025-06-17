@@ -61,6 +61,7 @@ interface IBisDataDTO {
     updated_at: string;
     puzzlingCartelChipAdvice: IBisItem[];
     detailedPuzzlingCartelChipAdvice: any;
+    rotationAssist: any;
   };
 }
 
@@ -94,6 +95,45 @@ function mapRatings(rating: number) {
     index++;
   }
   return array;
+}
+
+// region BIS
+function adaptRotationAssist(data) {
+  if (data) {
+    if (data.type === 'object') {
+      const table = data.data.reduce((pre, cur) => {
+        pre.columns.push(cur.label);
+        pre.rows[0].push(cur.value);
+        return pre;
+      }, { columns: [], rows: [[]] });
+      return {
+        data: [
+          {
+            label: '汇总',
+            ...table,
+          },
+        ],
+        info: data.info,
+      };
+    } else if (data.type === 'table') {
+      if (data.data?.length > 1) {
+        return data;
+      } else {
+        return {
+          ...data,
+          data: [
+            {
+              label: '汇总',
+              data: data.data,
+            },
+          ],
+        };
+      }
+    } else {
+      return data;
+    }
+  }
+  return null;
 }
 
 export async function queryBis(roleClass: string, classSpec: string) {
@@ -177,6 +217,10 @@ export async function queryBis(roleClass: string, classSpec: string) {
     return {};
   }
 
+  if (data.wowhead_bis?.rotationAssist) {
+    data.wowhead_bis.rotationAssist = adaptRotationAssist(data.wowhead_bis.rotationAssist);
+  }
+
   return {
     roleClass,
     classSpec,
@@ -200,6 +244,8 @@ export async function queryBis(roleClass: string, classSpec: string) {
     mythicDpsTier: data.mythicDpsTier,
   };
 }
+
+// endregion
 
 export async function queryItemPreview(id: number) {
   try {
