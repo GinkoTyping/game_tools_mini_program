@@ -828,14 +828,17 @@ const navigator = useNavigator();
 
 function checkJumpTo() {
   if (query.value?.menu) {
-    activeMenu.value = query.value.menu;
-    onMenuChange(query.value.menu);
-    if (query.value?.scrollTo) {
-      nextTick(() => {
-        uni.pageScrollTo({
-          selector: query.value?.scrollTo,
+    const validMenu = footerMenus.value.some(menu => menu.value === query.value.menu);
+    if (validMenu) {
+      activeMenu.value = query.value.menu;
+      onMenuChange(query.value.menu);
+      if (query.value?.scrollTo) {
+        nextTick(() => {
+          uni.pageScrollTo({
+            selector: query.value?.scrollTo,
+          });
         });
-      });
+      }
     }
   }
 

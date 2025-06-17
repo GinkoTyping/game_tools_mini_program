@@ -49,7 +49,7 @@ function toWotlkSpecList() {
 function toSpecsMenu(params) {
   if (params.menu && params.scrollTo) {
     uni.navigateTo({
-      url: `/pages/spec-list/index?menu=${params.menu}&scrollTo=${params.scrollTo}`,
+      url: `/pages/spec-list/index?menu=${params.menu}&scrollTo=${params.scrollTo}&title=${params.title}`,
     });
   } else {
     uni.navigateTo({

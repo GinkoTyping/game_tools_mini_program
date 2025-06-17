@@ -72,9 +72,10 @@ onShareAppMessage(() => ({
   path: 'pages/index/index',
 }));
 
-const queryParams = ref<{ menu: string; scrollTo: string }>();
+const queryParams = ref<{ menu: string; scrollTo: string; title?: string }>();
 onLoad(async (options) => {
   queryParams.value = options as typeof queryParams.value;
+  await uni.setNavigationBarTitle({ title: queryParams.value?.title ?? '专精列表' });
 });
 
 // 用专精页面返回该页面时，也需要刷新

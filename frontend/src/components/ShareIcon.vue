@@ -27,15 +27,24 @@
     </button>
   </view>
 
-  <button
-    v-if="props.showChipEntry"
-    class="poe2-btn"
-    @click="() => navigator.toWotlkSpecList()"
-  >
-    <image src="https://ginkolearn.cyou/api/wow/assets/home/wotlk-icon.png" mode="widthFix" />
-    <!--    <view class="iconfont icon-tree animate__animated animate__heartBeat animate__repeat-3"></view>-->
-    <view class="badage"></view>
-  </button>
+  <view class="shortcuts">
+    <button
+      v-if="props.showChipEntry"
+      class="shortcuts-button"
+      @click="() => navigator.toWotlkSpecList()"
+    >
+      <image src="https://ginkolearn.cyou/api/wow/assets/home/wotlk-icon.png" mode="widthFix" />
+    </button>
+
+    <button
+      v-if="props.showChipEntry"
+      class="shortcuts-button"
+      @click="() => navigator.toSpecsMenu({ menu: 'rotation',scrollTo: '.rotation-assist', title: '想查看哪个专精的战斗辅助' })"
+    >
+      <view class="iconfont icon-rotate-d animate__animated animate__heartBeat animate__repeat-3"></view>
+      <view class="badage"></view>
+    </button>
+  </view>
 
   <uni-popup ref="adPopup" type="dialog">
     <uni-popup-dialog
@@ -297,24 +306,25 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.poe2-btn {
+.shortcuts {
   position: fixed;
   bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 22px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+.shortcuts-button {
   height: 110rpx;
   width: 110rpx;
   background-color: #000000;
   border: 4rpx solid $uni-color-primary;
-  z-index: 2;
-  display: flex;
-  align-items: center;
 
   .iconfont {
-    font-size: 64rpx;
+    font-size: 80rpx;
     color: $color-legend;
   }
-
 
   image {
     width: 90rpx;
