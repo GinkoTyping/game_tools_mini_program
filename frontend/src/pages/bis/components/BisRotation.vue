@@ -52,7 +52,7 @@ function dialogClose() {
     <view class="rotation-assist-content">
       <uni-card class="section-card">
         <view class="rotation-assist-summary">
-          11.1.17 版本新增战斗辅助功能，包括2种类型： <br />
+          11.1.7 版本新增战斗辅助功能，包括2种类型： <br />
           <uni-tooltip placement="right">
             <template #content>
               <view style="width: 500rpx">
@@ -252,13 +252,24 @@ function dialogClose() {
     height: 80rpx;
     width: 80rpx;
     border-radius: 10rpx;
-    filter: grayscale(0.6);
+    filter: grayscale(.8);
     box-sizing: border-box;
   }
 
   .rotation-assist-rank-row-item--active {
     filter: grayscale(0);
-    border: 2rpx dashed $uni-text-color-inverse;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      border: 4rpx solid $uni-text-color-inverse;
+    }
   }
 }
 
