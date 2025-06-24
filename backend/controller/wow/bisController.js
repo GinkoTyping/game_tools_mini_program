@@ -524,10 +524,6 @@ function getRotationAssistRank() {
         },
         {
           roleClass: 'mage',
-          classSpec: 'frost',
-        },
-        {
-          roleClass: 'mage',
           classSpec: 'arcane',
         },
         {
