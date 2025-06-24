@@ -356,3 +356,20 @@ CREATE TABLE
     week_id TEXT                NOT NULL,
     data    TEXT                NOT NULL
 );
+
+CREATE TABLE
+    IF NOT EXISTS wow_weekly_mythic_score_rank
+(
+    id   INTEGER PRIMARY KEY AUTOINCREMENT,
+    time TEXT NOT NULL,
+    data TEXT NOT NULL
+);
+
+CREATE TABLE
+    IF NOT EXISTS wow_daily_mythic_score_rank
+(
+    id   INTEGER PRIMARY KEY AUTOINCREMENT,
+    page INTEGER NOT NULL,
+    time TEXT    NOT NULL,
+    data TEXT    NOT NULL
+);

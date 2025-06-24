@@ -18,6 +18,7 @@ import npcAndSpellMarkRoutes from './routes/wow/npcAndMarkRoutes.js';
 import userTagRoutes from './routes/wow/userTag.route.js';
 import commonBisRoutes from './routes/common/commonRoutes.js';
 import authRoutes from './routes/auth/authRoutes.js';
+import rankRoutes from './routes/wow/rankRoutes.js';
 
 import poeStaticRoutes from './routes/poe/static.route.js';
 
@@ -32,12 +33,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(
   '/api/wow/assets',
-  express.static(path.resolve(__dirname, 'assets/wow'))
+  express.static(path.resolve(__dirname, 'assets/wow')),
 );
 
 app.use(
   '/api/poe/assets',
-  express.static(path.resolve(__dirname, 'assets/poe'))
+  express.static(path.resolve(__dirname, 'assets/poe')),
 );
 // 未匹配到头像时，使用默认头像
 app.use('/api/poe/assets', (req, res, next) => {
@@ -47,7 +48,7 @@ app.use('/api/poe/assets', (req, res, next) => {
     // 设置默认图片的路径
     const defaultImagePath = path.resolve(
       __dirname,
-      'assets/poe/class-thumb/poe2-default-class-icon.webp'
+      'assets/poe/class-thumb/poe2-default-class-icon.webp',
     );
     fs.access(imagePath, fs.constants.F_OK, (err) => {
       if (err) {
@@ -61,7 +62,7 @@ app.use('/api/poe/assets', (req, res, next) => {
 
 app.use(
   '/api/common/assets',
-  express.static(path.resolve(__dirname, 'assets/common'))
+  express.static(path.resolve(__dirname, 'assets/common')),
 );
 // 未匹配到头像时，使用默认头像
 app.use('/api/common/assets', (req, res, next) => {
@@ -71,7 +72,7 @@ app.use('/api/common/assets', (req, res, next) => {
     // 设置默认图片的路径
     const defaultImagePath = path.resolve(
       __dirname,
-      'assets/common/advice/avatar/default.svg'
+      'assets/common/advice/avatar/default.svg',
     );
     fs.access(imagePath, fs.constants.F_OK, (err) => {
       if (err) {
@@ -98,6 +99,7 @@ app.use('/api/wow', homeViewRoutes);
 app.use('/api/wow', dungeonTipRoutes);
 app.use('/api/wow', mythicDungeonRoutes);
 app.use('/api/wow', npcAndSpellMarkRoutes);
+app.use('/api/wow', rankRoutes);
 app.use('/api/common', commonBisRoutes);
 app.use('/api/auth', authRoutes);
 
