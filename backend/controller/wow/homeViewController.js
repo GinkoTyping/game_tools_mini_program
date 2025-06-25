@@ -124,7 +124,7 @@ export async function queryHomeView(req, res) {
         value: 'rating',
         icon: 'auth-filled',
         page: '/pages/tier-list/index?versionId=11.1&activityType=MYTHIC&role=DPS',
-        feature: true,
+        feature: false,
       },
       {
         label: '专精数据',
@@ -141,11 +141,11 @@ export async function queryHomeView(req, res) {
         color: '#e37e00',
       },
       {
-        label: '做题家',
+        label: '大秘天梯',
         value: 'rating',
-        icon: 'wallet-filled',
-        page: '/pages-sub-wow/question/index',
-        feature: false,
+        icon: 'vip-filled',
+        page: '/pages/mythic-rank/index',
+        feature: true,
       },
       {
         label: '大秘境',

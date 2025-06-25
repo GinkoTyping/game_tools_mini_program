@@ -503,7 +503,7 @@ $simple-card-width: 43.5vw;
     .card-bg {
       top: 0;
       position: absolute;
-      background-position: centers;
+      background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
       scale: -1 1;

@@ -39,7 +39,7 @@
     <button
       v-if="props.showChipEntry"
       class="shortcuts-button"
-      @click="() => navigator.toSpecsMenu({ menu: 'rotation',scrollTo: '.rotation-assist', title: '想查看哪个专精的战斗辅助' })"
+      @click="() => navigator.toSpecsMenu({ menu: 'rotation',scrollTo: '.rotation-assist', title: '选择专精' })"
     >
       <view class="iconfont icon-rotate-d animate__animated animate__heartBeat animate__repeat-3"></view>
       <view class="badage"></view>

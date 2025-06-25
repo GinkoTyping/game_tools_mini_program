@@ -19,7 +19,8 @@
           <text class="collapse-title__tier">{{ item.tier }}</text>
           <text class="collapse-title__tier--suffix">级</text>
           <text class="update-note" v-show="index === 0"
-            >({{ tierList?.created_at }} 更新)</text
+          >({{ tierList?.created_at }} 更新)
+          </text
           >
         </view>
       </template>
@@ -37,7 +38,7 @@
           }"
         >
           <image
-            v-if="spec.dataChange !== '-'"
+            v-if="spec.dataChange && spec.dataChange !== '-'"
             class="collapse-content__card__change"
             :src="`/static/icon/${spec.dataChange}.png`"
           />
@@ -46,50 +47,6 @@
     </uni-collapse-item>
   </uni-collapse>
 
-  <uni-popup
-    class="pupup-container"
-    ref="detailPopup"
-    mask-background-color="rgba(0,0,0,0.8)"
-  >
-    <image
-      :class="[
-        currentSpec?.roleClass ? currentSpec.roleClass : '',
-        'spce-icon',
-      ]"
-      v-if="currentSpec?.roleClass"
-      :src="getClassIconURL(currentSpec.roleClass, currentSpec.classSpec)"
-    />
-    <uni-card class="desc-card">
-      <view :class="['desc-card__title', currentSpec?.roleClass]">{{
-        currentSpec?.fullNameZH
-      }}</view>
-      <rich-text :nodes="renderTip(currentSpec?.descZH)"></rich-text>
-    </uni-card>
-    <scroll-view
-      v-show="currentSpells?.length"
-      scroll-y="true"
-      class="scroll-y"
-    >
-      <view
-        class="scroll-y__item"
-        v-for="spell in currentSpells"
-        :key="spell.id"
-      >
-        <SpellCard class="spell-card" :spell="spell" />
-      </view>
-    </scroll-view>
-    <view class="pupup-container__btn-container">
-      <button
-        class="pupup-container__close-btn"
-        @click="() => detailPopup?.close?.()"
-      >
-        <image src="/static/icon/left_blue.svg" />
-      </button>
-      <button class="pupup-container__spec-btn" @click="comfirmToSpecDetail">
-        <image src="/static/icon/book.svg" />
-      </button>
-    </view>
-  </uni-popup>
   <uni-popup ref="alertDialog" type="dialog">
     <uni-popup-dialog
       type="info"
@@ -161,6 +118,7 @@ onShow(() => {
 //#region 顶部menu
 const currentTab = ref(0);
 const tabs = ref(['输出', '坦克', '治疗', '输出排行']);
+
 function switchMenu(e) {
   if (currentTab.value !== e.currentIndex) {
     if (e.currentIndex != 3) {
@@ -176,11 +134,12 @@ function switchMenu(e) {
           activity_type: query.value.activityType,
           role: roles[e.currentIndex],
         },
-        true
+        true,
       );
     }
   }
 }
+
 //#endregion
 
 const hasTranslatedDesc = computed(() => {
@@ -225,6 +184,7 @@ onShareAppMessage(() => {
 });
 
 const detailPopup = ref();
+
 async function onClickSpec(spec: ITierSpecDetail) {
   currentSpec.value = spec;
   comfirmToSpecDetail();
@@ -232,6 +192,7 @@ async function onClickSpec(spec: ITierSpecDetail) {
 
 const alertDialog = ref();
 const dialogContent = ref('');
+
 function comfirmToSpecDetail() {
   dialogContent.value = `查看关于“${currentSpec.value.fullNameZH}”的更多信息 ~`;
   alertDialog.value?.open?.();
@@ -240,7 +201,7 @@ function comfirmToSpecDetail() {
 function dialogConfirm() {
   navigator.toSpecDetail(
     currentSpec.value.roleClass,
-    currentSpec.value.classSpec
+    currentSpec.value.classSpec,
   );
 }
 
@@ -259,30 +220,38 @@ function dialogClose() {
   &:nth-child(1) {
     background-color: $color-s-tier !important;
   }
+
   &:nth-child(2) {
     background-color: $color-a-tier !important;
   }
+
   &:nth-child(3) {
     background-color: $color-b-tier !important;
   }
+
   &:nth-child(4) {
     background-color: $color-c-tier !important;
   }
+
   &:nth-child(5) {
     background-color: $color-d-tier !important;
   }
+
   .uni-collapse-item__title.uni-collapse-item-border {
     line-height: 40px;
     border-bottom: 4px solid $uni-bg-color-grey;
     padding-left: 10px;
     box-sizing: border-box;
     font-size: 16px;
+
     .uni-collapse-item--animation text {
       color: $uni-bg-color-grey !important;
     }
   }
+
   .uni-collapse-item__wrap {
     background-color: $uni-bg-color-grey !important;
+
     .uni-collapse-item__wrap-content {
       border: none !important;
     }
@@ -294,18 +263,21 @@ function dialogClose() {
   font-family: Impact, Haettenschweiler;
   display: flex;
   align-items: baseline;
+
   .collapse-title__tier {
     min-width: 10px;
     font-size: large;
     margin-right: 4rpx;
     display: block;
   }
+
   .update-note {
     font-size: small;
     margin-left: 20rpx;
     font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   }
 }
+
 $card-right-margin: 0.4rem;
 $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
 .collapse-content {
@@ -313,6 +285,7 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
   flex-wrap: wrap;
   margin: 0 10px;
   padding: 0.4rem 0;
+
   .collapse-content__card {
     margin-right: $card-right-margin;
     width: $card-width;
@@ -324,6 +297,7 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
     border-style: solid;
     margin-bottom: 0.4rem;
     position: relative;
+
     &:nth-child(5),
     &:nth-child(10) {
       margin-right: 0;
@@ -359,6 +333,7 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
 
 .uni-popup__wrapper {
   position: relative;
+
   .spce-icon {
     position: absolute;
     top: 0;
@@ -372,6 +347,7 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
     z-index: 99;
   }
 }
+
 .desc-card {
   .desc-card__title {
     padding-top: 0.5rem;
@@ -385,6 +361,7 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
 .scroll-y {
   margin-top: 1rem;
   max-height: 34vh;
+
   .scroll-y__item {
     margin-bottom: 0.4rem;
   }
@@ -402,14 +379,17 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
   justify-content: center;
 
   box-shadow: 0 0 6px 2px rgb(255 255 255 / 21%);
+
   image {
     width: 50%;
     height: 50%;
   }
 }
+
 .pupup-container__spec-btn {
   background-color: #007aff;
 }
+
 .pupup-container__close-btn {
   background-color: #fff;
 }
@@ -420,6 +400,7 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
   margin-top: 0.4rem;
   display: flex;
   justify-content: flex-end !important;
+
   .pupup-container__close-btn {
     margin-right: 0.6rem;
   }

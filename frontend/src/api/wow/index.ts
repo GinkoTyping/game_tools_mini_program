@@ -1217,3 +1217,25 @@ export async function queryUserTagRelationByTargetId(
 }
 
 //#endregion
+
+// region /rank
+export async function queryMythicRankList(pageNo: number) {
+  const { data } = await proxyRequest({
+    url: '/wow/rank/daily-mythic',
+    method: 'post',
+    data: {
+      pageNo: isNaN(pageNo) ? 0 : pageNo - 1,
+    },
+  });
+  return data;
+}
+
+export async function queryMythicRankRatio() {
+  const { data } = await proxyRequest({
+    url: '/wow/rank/daily-mythic-ratio',
+    method: 'post',
+  });
+  return data;
+}
+
+// endregion

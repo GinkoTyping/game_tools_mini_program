@@ -14,6 +14,12 @@
       }
     },
     {
+      "path": "pages/mythic-rank/index",
+      "style": {
+        "navigationBarTitleText": "大秘境天梯排行"
+      }
+    },
+    {
       "path": "pages/spec-popularity/index",
       "style": {
         "navigationBarTitleText": "专精数据统计"
