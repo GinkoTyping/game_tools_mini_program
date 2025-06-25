@@ -43,7 +43,8 @@ export async function queryDailyMythicRank(req, res) {
   try {
     const output = await queryMythicRankByRaidIO(pageNo);
     res.json(output);
-  } catch {
+  } catch (e) {
+    console.log(e);
     res.json({
       data: [],
       page: pageNo,
