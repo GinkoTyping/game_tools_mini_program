@@ -114,7 +114,7 @@ export async function queryHomeView(req, res) {
         label: '大秘境',
         value: 'rating',
         icon: 'pyq',
-        page: '/pages/mythic-dungeon/list',
+        page: '/pages-sub-wow/mythic-dungeon/list',
         feature: false,
       },
     ],
