@@ -56,4 +56,4 @@ export async function main(version) {
   }
 }
 
-main('wotlk');
+main();
