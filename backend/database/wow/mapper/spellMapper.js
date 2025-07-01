@@ -76,6 +76,7 @@ async function getBlankSpell(version = '') {
     `SELECT id, id_wow_db, name_en
      FROM ${tableName}
      WHERE description == ''
+        OR description is null
     `);
 }
 
