@@ -39,9 +39,9 @@
     <button
       v-if="props.showChipEntry"
       class="shortcuts-button"
-      @click="() => navigator.toSpecsMenu({ menu: 'rotation',scrollTo: '.rotation-assist', title: '选择专精' })"
+      @click="() => navigator.toSpecsMenu({ menu: 'bis',scrollTo: '#disc-belt', title: '选择专精' })"
     >
-      <view class="iconfont icon-rotate-d animate__animated animate__heartBeat animate__repeat-3"></view>
+      <view class="iconfont icon-leg-armor animate__animated animate__heartBeat animate__repeat-3"></view>
       <view class="badage"></view>
     </button>
   </view>

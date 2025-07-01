@@ -562,61 +562,6 @@
       </uni-card>
     </uni-section>
 
-    <uni-section title="地下堡腰带" id="corruptions" :class="[classKey]">
-      <uni-card class="section-card">
-        <uni-table stripe emptyText="暂无更多数据">
-          <uni-tr>
-            <uni-th width="100" align="left">场景</uni-th>
-            <uni-th :width="isShowDiscBeltInfo ? '100' : ''" align="left">装备特效</uni-th>
-            <uni-th align="left" v-if="isShowDiscBeltInfo">说明</uni-th>
-          </uni-tr>
-          <uni-tr v-for="item in currentData?.wowheadBis?.discBelt" :key="item.label">
-            <uni-td>{{ item.label }}</uni-td>
-            <uni-td>
-              <view class="slot-container">
-                <text v-for="spell in item.value" :key="spell.id" @click="displaySpells([spell])">
-                  {{ spell.name_zh }}
-                </text>
-              </view>
-            </uni-td>
-            <uni-td v-if="isShowDiscBeltInfo">{{ item.info ?? '-' }}</uni-td>
-          </uni-tr>
-        </uni-table>
-      </uni-card>
-    </uni-section>
-
-    <uni-section class="corruptions" title="腐蚀"
-      id="corruptions"
-      :class="[classKey]"
-      :sub-title="`更新于: ${currentData?.wowheadBis?.updatedAt}`">
-      <uni-card class="section-card">
-        <rich-text
-          :nodes="renderTip(currentData?.wowheadBis?.corruptions?.title, '#fff', 'rgb(163, 53, 238)')"
-          @click="() => displaySpells(currentData?.wowheadBis?.corruptions?.items)"
-        ></rich-text>
-
-        <view
-          class="advice-item"
-          style="margin-top: 20rpx"
-          v-for="(item) in getDisplayCorruptions"
-          :key="item.id"
-        >
-          <view class="data-item" @click="() => switchDetail(true, item)">
-            <image :src="currentImageSrc(item)" mode="widthFix" />
-            <view
-              class="advice-item__name"
-              :class="[item.included ? 'advice-item__name--heroic' : 'advice-item__name--faded']"
-            >{{ item.name
-              }}
-            </view>
-          </view>
-        </view>
-
-        <text @click="isShowAllCorruptions = !isShowAllCorruptions">{{ switchCorruptionText }}</text>
-      </uni-card>
-
-    </uni-section>
-
     <uni-section id="puzzling-cartel-chip-advice" title="团本兑换代币"
       :class="[classKey]"
       :sub-title="`更新于: ${currentData?.wowheadBis?.updatedAt}`"
@@ -663,6 +608,61 @@
         </view>
 
         <text class="overall-info">{{ displayAdviceData?.info }}</text>
+      </uni-card>
+    </uni-section>
+
+    <uni-section class="corruptions" title="腐蚀"
+      id="corruptions"
+      :class="[classKey]"
+    >
+      <uni-card class="section-card">
+        <rich-text
+          :nodes="renderTip(currentData?.wowheadBis?.corruptions?.title, '#fff', 'rgb(163, 53, 238)')"
+          @click="() => displaySpells(currentData?.wowheadBis?.corruptions?.items)"
+        ></rich-text>
+
+        <view
+          class="advice-item"
+          style="margin-top: 20rpx"
+          v-for="(item) in getDisplayCorruptions"
+          :key="item.id"
+        >
+          <view class="data-item" @click="() => switchDetail(true, item)">
+            <image :src="currentImageSrc(item)" mode="widthFix" />
+            <view
+              class="advice-item__name"
+              :class="[item.included ? 'advice-item__name--heroic' : 'advice-item__name--faded']"
+            >{{ item.name
+              }}
+            </view>
+          </view>
+        </view>
+
+        <text @click="isShowAllCorruptions = !isShowAllCorruptions">{{ switchCorruptionText }}</text>
+      </uni-card>
+
+    </uni-section>
+
+    <uni-section title="地下堡腰带" id="disc-belt" :class="[classKey]">
+      <uni-card class="section-card">
+        <uni-table stripe emptyText="暂无更多数据">
+          <uni-tr>
+            <uni-th width="100" align="left">场景</uni-th>
+            <uni-th :width="isShowDiscBeltInfo ? '100' : ''" align="left">装备特效</uni-th>
+            <uni-th align="left" v-if="isShowDiscBeltInfo">说明</uni-th>
+          </uni-tr>
+          <uni-tr v-for="item in currentData?.wowheadBis?.discBelt" :key="item.label">
+            <uni-td>{{ item.label }}</uni-td>
+            <uni-td>
+              <view class="slot-container">
+                <text v-for="spell in item.value" :key="spell.id" @click="displaySpells([spell])">
+                  {{ spell.name_zh }}
+                </text>
+              </view>
+            </uni-td>
+            <uni-td v-if="isShowDiscBeltInfo">{{ item.info ?? '-' }}</uni-td>
+          </uni-tr>
+        </uni-table>
       </uni-card>
     </uni-section>
   </template>
