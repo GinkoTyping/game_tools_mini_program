@@ -359,7 +359,9 @@
 
   <BisRotation
     :spec-key="specKey"
-    :class-key="classKey" v-if="activeMenu === 'rotation'" :data="currentData?.wowheadBis?.rotationAssist" />
+    :class-key="classKey" v-if="activeMenu === 'rotation'"
+    :data="currentData?.wowheadBis?.rotationAssist"
+  />
 
   <template v-if="activeMenu === 'bis'">
     <ExportCanvas
@@ -560,10 +562,32 @@
       </uni-card>
     </uni-section>
 
-    <uni-section class="corruptions"
+    <uni-section title="地下堡腰带" id="corruptions" :class="[classKey]">
+      <uni-card class="section-card">
+        <uni-table stripe emptyText="暂无更多数据">
+          <uni-tr>
+            <uni-th width="100" align="left">场景</uni-th>
+            <uni-th :width="isShowDiscBeltInfo ? '100' : ''" align="left">装备特效</uni-th>
+            <uni-th align="left" v-if="isShowDiscBeltInfo">说明</uni-th>
+          </uni-tr>
+          <uni-tr v-for="item in currentData?.wowheadBis?.discBelt" :key="item.label">
+            <uni-td>{{ item.label }}</uni-td>
+            <uni-td>
+              <view class="slot-container">
+                <text v-for="spell in item.value" :key="spell.id" @click="displaySpells([spell])">
+                  {{ spell.name_zh }}
+                </text>
+              </view>
+            </uni-td>
+            <uni-td v-if="isShowDiscBeltInfo">{{ item.info ?? '-' }}</uni-td>
+          </uni-tr>
+        </uni-table>
+      </uni-card>
+    </uni-section>
+
+    <uni-section class="corruptions" title="腐蚀"
       id="corruptions"
       :class="[classKey]"
-      title="腐蚀"
       :sub-title="`更新于: ${currentData?.wowheadBis?.updatedAt}`">
       <uni-card class="section-card">
         <rich-text
@@ -593,10 +617,8 @@
 
     </uni-section>
 
-    <uni-section
-      id="puzzling-cartel-chip-advice"
+    <uni-section id="puzzling-cartel-chip-advice" title="团本兑换代币"
       :class="[classKey]"
-      title="团本兑换代币"
       :sub-title="`更新于: ${currentData?.wowheadBis?.updatedAt}`"
     >
       <uni-card class="section-card">
@@ -1254,6 +1276,10 @@ const getDisplayCorruptions = computed(() => {
 const switchCorruptionText = computed(() => isShowAllCorruptions.value ? '隐藏冗余腐蚀' : '查看全部腐蚀');
 
 //#endregion
+
+// region DISC腰带
+const isShowDiscBeltInfo = computed(() => currentData.value?.wowheadBis?.discBelt.some(item => item.info?.length));
+// endregion
 
 //#region 饰品
 const currentTrinketTab = ref(0);

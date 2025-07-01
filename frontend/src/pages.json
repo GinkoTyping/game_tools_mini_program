@@ -16,7 +16,7 @@
     {
       "path": "pages/mythic-rank/index",
       "style": {
-        "navigationBarTitleText": "大秘境天梯排行"
+        "navigationBarTitleText": "每日大秘境天梯"
       }
     },
     {

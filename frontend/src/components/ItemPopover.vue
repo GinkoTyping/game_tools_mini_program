@@ -55,12 +55,14 @@
       <text
         class="non-bonus-stat"
         v-for="stat in itemDetail.preview_item?.stats?.filter((item: any) => !item.is_equip_bonus)"
+        :key="stat.display.display_string"
       >
         {{ stat.display.display_string }}
       </text>
       <text
         class="bonus-stat"
         v-for="stat in itemDetail.preview_item?.stats?.filter((item: any) => item.is_equip_bonus)"
+        :key="stat.display.display_string"
       >
         {{ stat.display.display_string }}
       </text>
@@ -70,17 +72,15 @@
         v-for="spell in itemDetail.preview_item?.spells"
         :key="spell.spell.id"
       >{{ spell.description }}
-      </text
-      >
+      </text>
 
       <text class="durability">{{
           itemDetail.preview_item?.durability?.display_string
         }}
       </text>
-      <text class="requirements" v-show="itemDetail.preview_item?.requirements"
-      >{{ itemDetail.preview_item?.requirements?.level.display_string }}
-      </text
-      >
+      <text class="requirements" v-show="itemDetail.preview_item?.requirements">
+        {{ itemDetail.preview_item?.requirements?.level.display_string }}
+      </text>
       <text class="description" v-show="itemDetail.source?.source"
       >来源：
         <text>{{ itemDetail.source?.source }}</text>

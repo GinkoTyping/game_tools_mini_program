@@ -565,6 +565,21 @@ function getRotationAssistRank() {
   ];
 }
 
+async function adaptDiscBeltData(data) {
+  const output = await Promise.allSettled(data.map(async item => {
+    const spells = Array.isArray(item.value) ? item.value : [item.value];
+
+    const results = await Promise.allSettled(spells.map(async spell => spellMapper.getSpellById(spell)));
+    return {
+      ...item,
+      value: results.map(result => result.value),
+    };
+  }));
+
+  return output.map(item => item.value);
+}
+
+
 export async function getBisBySpec(req, res) {
   try {
     const roleClass = req.params.roleClass;
@@ -629,6 +644,10 @@ export async function getBisBySpec(req, res) {
 
     if (wowheadBis?.rotationAssist) {
       wowheadBis.rotationAssist.rank = getRotationAssistRank();
+    }
+
+    if (wowheadBis?.discBelt) {
+      wowheadBis.discBelt = await adaptDiscBeltData(wowheadBis.discBelt);
     }
 
     // 避免本地调测时，引起本地的数据和服务器不一致
