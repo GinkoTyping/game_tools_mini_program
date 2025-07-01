@@ -1,0 +1,679 @@
+{
+  "death-knight": [
+    {
+      "spec": "blood",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236272,
+          "label": "团本"
+        },
+        {
+          "value": 1236272,
+          "label": "大秘境"
+        },
+        {
+          "value": 1236273,
+          "label": "大秘境-萨莱茵"
+        }
+      ]
+    },
+    {
+      "spec": "frost",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236272,
+          "label": "团本"
+        },
+        {
+          "value": 1236272,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "unholy",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236273,
+          "label": "团本"
+        },
+        {
+          "value": 1236273,
+          "label": "大秘境"
+        }
+      ]
+    }
+  ],
+  "demon-hunter": [
+    {
+      "spec": "havoc",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236272,
+          "label": "团本"
+        },
+        {
+          "value": 1236272,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "vengeance",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1241244,
+          "label": "纯单体"
+        },
+        {
+          "value": [
+            1236273,
+            1241246
+          ],
+          "label": "大秘境"
+        }
+      ]
+    }
+  ],
+  "druid": [
+    {
+      "spec": "balance",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1241250,
+          "label": "团本"
+        },
+        {
+          "value": 1236273,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "feral",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236938,
+          "label": "团本"
+        },
+        {
+          "value": 1236938,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "guardian",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236938,
+          "label": "团本"
+        },
+        {
+          "value": 1236273,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "restoration",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1236273,
+            1236122
+          ],
+          "label": "团本"
+        },
+        {
+          "value": 1236273,
+          "label": "大秘境"
+        }
+      ]
+    }
+  ],
+  "mage": [
+    {
+      "spec": "arcane",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236272,
+          "label": "团本"
+        },
+        {
+          "value": 1236272,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "fire",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1241250,
+            1236273
+          ],
+          "label": "霜火"
+        },
+        {
+          "value": [
+            1236273,
+            1241250
+          ],
+          "label": "日怒"
+        }
+      ]
+    },
+    {
+      "spec": "frost",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236279,
+          "label": "总体"
+        }
+      ]
+    }
+  ],
+  "monk": [
+    {
+      "spec": "brewmaster",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1236272,
+            1236279
+          ],
+          "label": "团本"
+        },
+        {
+          "value": [
+            1236272,
+            1236275
+          ],
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "mistweaver",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1236273,
+            1236272
+          ],
+          "label": "总体"
+        },
+        {
+          "value": [
+            1236122,
+            1236938
+          ],
+          "label": "治疗向/生存端"
+        }
+      ]
+    },
+    {
+      "spec": "windwalker",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1236272,
+            1236937,
+            1236273
+          ],
+          "info": "根据当前配装的绿字属性值选择",
+          "label": "总体"
+        }
+      ]
+    }
+  ],
+  "paladin": [
+    {
+      "spec": "holy",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236273,
+          "label": "总体推荐"
+        },
+        {
+          "value": 1236272,
+          "info": "如果急速已经很高的话，可以选",
+          "label": "备选1"
+        },
+        {
+          "value": 1236122,
+          "label": "治疗向"
+        }
+      ]
+    },
+    {
+      "spec": "protection",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236273,
+          "label": "团本"
+        },
+        {
+          "value": 1236272,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "retribution",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236272,
+          "label": "团本"
+        },
+        {
+          "value": 1236272,
+          "label": "大秘境"
+        }
+      ]
+    }
+  ],
+  "rogue": [
+    {
+      "spec": "assassination",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236279,
+          "label": "单体"
+        },
+        {
+          "value": [
+            1236279,
+            1236272
+          ],
+          "label": "AOE"
+        }
+      ]
+    },
+    {
+      "spec": "outlaw",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236279,
+          "label": "单体"
+        },
+        {
+          "value": [
+            1236279,
+            1236272
+          ],
+          "label": "AOE"
+        }
+      ]
+    },
+    {
+      "spec": "subtlety",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1236272,
+            1236938
+          ],
+          "label": "团本"
+        },
+        {
+          "value": [
+            1236272,
+            1236938
+          ],
+          "label": "单体"
+        }
+      ]
+    }
+  ],
+  "shaman": [
+    {
+      "spec": "elemental",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236128,
+          "info": "如果目前配装的全能占比已经很高了，可以考虑其他属性特效",
+          "label": "总体"
+        }
+      ]
+    },
+    {
+      "spec": "enhancement",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236273,
+          "label": "风暴使者-单体"
+        },
+        {
+          "value": 1236937,
+          "label": "图腾-单体"
+        },
+        {
+          "value": 1236937,
+          "label": "AOE"
+        }
+      ]
+    },
+    {
+      "spec": "restoration",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/03/20",
+      "data": [
+        {
+          "value": [
+            1236272,
+            1236122
+          ],
+          "label": "团本"
+        },
+        {
+          "value": [
+            1236272,
+            1236122
+          ],
+          "label": "大秘境"
+        },
+        {
+          "value": 1236109,
+          "label": "爆输出"
+        }
+      ]
+    }
+  ],
+  "warlock": [
+    {
+      "spec": "affliction",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236275,
+          "label": "团本"
+        },
+        {
+          "value": 1236275,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "demonology",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/04/15",
+      "data": [
+        {
+          "value": 1236275,
+          "label": "团本"
+        },
+        {
+          "value": 1236275,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "destruction",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236109,
+          "label": "团本"
+        },
+        {
+          "value": 1236273,
+          "label": "大秘境"
+        }
+      ]
+    }
+  ],
+  "warrior": [
+    {
+      "spec": "arms",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1236272,
+            1236273
+          ],
+          "label": "单体"
+        },
+        {
+          "value": 1236273,
+          "label": "多目标/大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "fury",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1236272,
+            1236937
+          ],
+          "label": "单体"
+        },
+        {
+          "value": 1236272,
+          "label": "多目标/大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "protection",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/03/18",
+      "data": [
+        {
+          "value": 1236273,
+          "label": "团本"
+        },
+        {
+          "value": [
+            1236273,
+            1236937
+          ],
+          "label": "多目标/大秘境"
+        }
+      ]
+    }
+  ],
+  "evoker": [
+    {
+      "spec": "devastation",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1241250,
+            1241246,
+            1241243,
+            1236273
+          ],
+          "info": "建议模拟自己的当前配装绿字",
+          "label": "优先级"
+        }
+      ]
+    },
+    {
+      "spec": "preservation",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236961,
+          "label": "团本"
+        },
+        {
+          "value": [
+            1236273,
+            1236961
+          ],
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "augmentation",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236265,
+          "label": "团本"
+        },
+        {
+          "value": 1236265,
+          "label": "大秘境"
+        }
+      ]
+    }
+  ],
+  "hunter": [
+    {
+      "spec": "beast-mastery",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236938,
+          "label": "团本"
+        },
+        {
+          "value": 1236938,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "marksmanship",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236272,
+          "label": "总体"
+        }
+      ]
+    },
+    {
+      "spec": "survival",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1236273,
+            1236272
+          ],
+          "info": "请根据当前配装的属性绿字选择",
+          "label": "总体"
+        }
+      ]
+    }
+  ],
+  "priest": [
+    {
+      "spec": "shadow",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": 1236937,
+          "label": "团本"
+        },
+        {
+          "value": 1236937,
+          "label": "大秘境"
+        }
+      ]
+    },
+    {
+      "spec": "discipline",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/04/11",
+      "data": [
+        {
+          "value": 1236272,
+          "label": "白戒律"
+        },
+        {
+          "value": 1236273,
+          "label": "黑戒律"
+        }
+      ]
+    },
+    {
+      "spec": "holy",
+      "collectedAt": "2025/06/30",
+      "updatedAt": "2025/06/30",
+      "data": [
+        {
+          "value": [
+            1236272,
+            1236937
+          ],
+          "label": "团本"
+        },
+        {
+          "value": 1236272,
+          "label": "大秘境"
+        }
+      ]
+    }
+  ]
+}

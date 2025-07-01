@@ -64,6 +64,20 @@ export async function queryBlizzItemById(id, locale) {
   });
 }
 
+function adaptDiscBelt(data) {
+  if (data?.name === '牢固信息保全容器' && data?.preview_item.spells) {
+    data.preview_item.spells = [
+      {
+        spell: {
+          id: -1,
+        },
+        description: '装备：特效推荐详下方的"大秘境腰带"章节',
+      },
+    ];
+  }
+  return data;
+}
+
 export async function getItemPreviewById(req, res) {
   if (!req.params.id || req.params.id === 'null') {
     res.status(404).json({ message: '物品的ID为空' });
@@ -73,9 +87,9 @@ export async function getItemPreviewById(req, res) {
   const item = await itemMapper.getItemById(req.params.id);
   if (item?.preview) {
     res.json({
-      ...JSON.parse(
+      ...adaptDiscBelt(JSON.parse(
         req.query?.locale === 'en_US' ? item.preview_en : item.preview,
-      ),
+      )),
       source: JSON.parse(item.source),
       image: item.image,
     });
@@ -810,7 +824,7 @@ export async function queryTalentBySpec(req, res) {
 
 // endregion
 
-//#region 内部接口
+// region 内部接口
 export async function queryRegisterItem(req, res) {
   try {
     const data = await itemMapper.insertItem(req.body);
