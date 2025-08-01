@@ -1,0 +1,103 @@
+{
+  "updatedAt": "2025/08/02",
+  "activityType": "MYTHIC",
+  "role": "TANK",
+  "versionId": "11.2 - PTR",
+  "data": [
+    {
+      "tier": "S",
+      "children": [
+        {
+          "fullNameEN": "Vengeance Demon Hunter",
+          "roleClass": "demon-hunter",
+          "classSpec": "vengeance",
+          "dataChange": "up",
+          "desc": "Vengeance Demon Hunter is entering Season 3 even better than Season 2. One of the biggest changes is their great tier set, which is considered one of the strongest tank tier sets so far. The spec still possesses one of the best mob control across any tanking spec in Mythic+. They have incredibly high damage output, extremely high self-sustain, and are one of the most durable tanks so far on the PTR. We believe their current performance warrants S-tier.",
+          "spells": [],
+          "fullNameZH": "复仇 恶魔猎手",
+          "descZH": "复仇恶魔猎手将以比第二赛季更强的姿态进入第三赛季。最重大的变化之一是获得了迄今为止最强的坦克套装之一。该专精仍保持着大秘境中最佳的怪物控制能力之一，拥有惊人的伤害输出、极高的自我恢复能力，是目前PTR上最耐打的坦克之一。我们认为他们当前的表现配得上S级评价。"
+        },
+        {
+          "fullNameEN": "Brewmaster Monk",
+          "roleClass": "monk",
+          "classSpec": "brewmaster",
+          "dataChange": "-",
+          "desc": "Brewmaster Monk received a significant rework leading up to Season 3, which has been focusing on improving their durability, self-sustain, and damage. Their performance is currently amazing, with significantly better mitigation and one of the highest damage outputs. We believe that Brewmaster monk is the perfect contender tank for the physical comps, which can further elevate their rankings due to the [玄秘掌] value. Further tuning will showcase their final placement for the tier list, but for now, they are currently performing better than ever on the PTR servers.",
+          "spells": [
+            {
+              "spellId": 8647,
+              "spellName": "Mystic Touch"
+            }
+          ],
+          "fullNameZH": "酒仙 武僧",
+          "descZH": "酒仙武僧在第三赛季前进行了重大重做，重点提升了耐久度、自我恢复和伤害能力。他们当前表现惊人，减伤能力显著提高，伤害输出也名列前茅。我们认为酒仙是物理队伍的完美坦克选择，[玄秘掌]的价值能进一步提升他们的排名。最终定位还需等待后续调整，但目前他们在PTR上的表现比以往任何时候都要出色。"
+        }
+      ]
+    },
+    {
+      "tier": "A+",
+      "children": [
+        {
+          "fullNameEN": "Protection Warrior",
+          "roleClass": "warrior",
+          "classSpec": "protection",
+          "dataChange": "-",
+          "desc": "Protection Warrior has seen a ton of changes leading to Season 3, which made the spec much better in a 5-man content. The spec self-sustain has skyrocketed, which improves the durability of Protection Warrior, and although continuous magical damage can be an issue, they are quite durable against heavy physical damage. In addition, they have one of the highest damage output across all tank specs, which is a large influence on their overall rankings. Overall when paired with a physical comp and durability is not an issue, you will shine!",
+          "spells": [],
+          "fullNameZH": "防护 战士",
+          "descZH": "防护战士在第三赛季前经历了大量改动，使其在5人内容中表现更佳。自我恢复能力大幅提升，增强了防护战士的耐久度，虽然持续魔法伤害仍是问题，但他们能很好地应对高额物理伤害。此外，他们在所有坦克专精中拥有最高的伤害输出之一，这对整体排名有很大影响。当搭配物理队伍且耐久度不成问题时，你将大放异彩！"
+        },
+        {
+          "fullNameEN": "Protection Paladin",
+          "roleClass": "paladin",
+          "classSpec": "protection",
+          "dataChange": "up",
+          "desc": "Protection Paladin hasn't seen any significant change from their playstyle from the last season, apart from the introduction of their new tier-set. Although their damage profile is looking to be incredible, durability improvements are needed in order for them to climb the rankings, as it is their only issue for now. They have incredible mob control, one of the best 5-man utilities, and an immunity, which is a reason why the spec is so highly desired when properly tuned. If they receive their long-awaited durability buffs, I won't be surprised to see them in a commanding position.",
+          "spells": [],
+          "fullNameZH": "防护 圣骑士",
+          "descZH": "防护圣骑士除了新套装外，玩法风格与上赛季相比没有重大变化。虽然伤害表现看起来非常出色，但需要提升耐久度才能提高排名，这是目前唯一的问题。他们拥有惊人的怪物控制能力、最好的5人副本辅助技能之一和免疫技能，这就是为什么在适当调整后该专精如此受欢迎的原因。如果他们获得期待已久的耐久度加强，看到他们占据主导地位我也不会感到惊讶。"
+        }
+      ]
+    },
+    {
+      "tier": "A",
+      "children": [
+        {
+          "fullNameEN": "Guardian Druid",
+          "roleClass": "druid",
+          "classSpec": "guardian",
+          "dataChange": "-",
+          "desc": "Guardian Druid received minor changes leading up to the next season, with the most significant one being their newly introduced tier set. Guardian's most recent damage buff is exactly what they needed to climb the rankings. Their durability was already good, paired with a decent self-sustain. At last, Druid has one of the strongest 5-man party buffs in the face of [野性印记], which holds immense value for the group. Once we get closer to the release of the season, we will have much more accurate placement for Guardian.",
+          "spells": [
+            {
+              "spellId": 1126,
+              "spellName": "Mark of the Wild"
+            }
+          ],
+          "fullNameZH": "守护 德鲁伊",
+          "descZH": "守护德鲁伊在下个赛季前进行了小幅调整，最重要的是引入了新套装。最近的伤害加强正是他们提升排名所需要的。他们的耐久度本来就不错，加上不错的自我恢复能力。最后，德鲁伊拥有最强的5人团队增益之一[野性印记]，这对团队有巨大价值。随着赛季发布的临近，我们将对守护德鲁伊有更准确的定位。"
+        }
+      ]
+    },
+    {
+      "tier": "B",
+      "children": [
+        {
+          "fullNameEN": "Blood Death Knight",
+          "roleClass": "death-knight",
+          "classSpec": "blood",
+          "dataChange": "-",
+          "desc": "Unfortunately, for Blood Death Knight there has mostly been negative changes, which will diminish their performance and likely move the tank towards the bottom half of the rankings. Most notable is their tier set, which doesn't offer as much power spike compared to its tank competition, and the removal of [憎恶附肢], which will make stacking mobs much harder. Blood Death Knight is the only tank spec without a raid buff, further crippling them in a 5-man content. In addition, defensively and offensively are at a disadvantage compared to the top-ranked tanks, further pushing them down the list. Overall, it is too early to have a final estimate of how the spec will rank, Still, preliminary thoughts are that the spec performance will likely change by the time they make it to the live servers and positive changes will come their way (hopefully).",
+          "spells": [
+            {
+              "spellId": 383269,
+              "spellName": "Abomination Limb"
+            }
+          ],
+          "fullNameZH": "鲜血 死亡骑士",
+          "descZH": "遗憾的是，鲜血死亡骑士主要经历了负面改动，这将降低他们的表现，并可能使这个坦克专精滑落到排名的下半部分。最值得注意的是他们的套装相比其他坦克竞争对手提供的爆发力不足，以及[憎恶附肢]的移除，这将使聚怪变得更加困难。鲜血死亡骑士是唯一没有团队增益的坦克专精，这进一步削弱了他们在5人内容中的表现。此外，在防御和进攻方面都比顶级坦克处于劣势，进一步拉低了他们的排名。总体而言，现在对该专精的最终排名做出准确估计还为时过早，但初步认为该专精的表现可能会在他们上线正式服时发生变化，并有望获得积极改动。"
+        }
+      ]
+    }
+  ]
+}

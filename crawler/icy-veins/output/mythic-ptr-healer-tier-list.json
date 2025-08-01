@@ -1,0 +1,138 @@
+{
+  "updatedAt": "2025/08/02",
+  "activityType": "MYTHIC",
+  "role": "HEALER",
+  "versionId": "11.2 - PTR",
+  "data": [
+    {
+      "tier": "S",
+      "children": [
+        {
+          "fullNameEN": "Restoration Druid",
+          "roleClass": "druid",
+          "classSpec": "restoration",
+          "dataChange": "-",
+          "desc": "Restoration Druid has gotten its fair share of changes leading up to Season 3, most notably receiving an amazing tier-set that fits perfectly in Mythic+. Their current HPS capabilities are ranked among the best while keeping your incredible party-wide utility unchanged. This is the driving factor for their placement as we believe they are currently among the best Healer options for Season 3. Future tuning will show us the final placement for Restoration Druid but for now, we are quite positive!",
+          "spells": [],
+          "fullNameZH": "恢复 德鲁伊",
+          "descZH": "恢复德鲁伊在第三赛季前获得了诸多改动，最引人注目的是获得了一套非常适合大秘境的强力套装。他们当前的治疗能力位居前列，同时保持了出色的团队辅助能力。这是我们将其评为S级的主要原因，我们相信他们目前是第三赛季最佳治疗选择之一。虽然最终定位还需等待后续调整，但目前我们非常看好！"
+        },
+        {
+          "fullNameEN": "Discipline Priest",
+          "roleClass": "priest",
+          "classSpec": "discipline",
+          "dataChange": "-",
+          "desc": "Discipline Priest got minor changes leading to Season 3, which won't impact your performance. Even after the most recent minor nerfs, their healing and the ability to apply absurdly big shields/spot-heal is one of the best compared to all the healers, which is the most important factor when ranking healing specs. In addition, they will retain their strong external utility packages such as 2x [痛苦压制] and [真言术：障]. Further tuning will tell how they turn out, but as of now, they remain as one of the best healers.",
+          "spells": [
+            {
+              "spellId": 33206,
+              "spellName": "Pain Suppression"
+            },
+            {
+              "spellId": 62618,
+              "spellName": "Power Word: Barrier"
+            }
+          ],
+          "fullNameZH": "戒律 牧师",
+          "descZH": "戒律牧师在第三赛季前仅进行了小幅调整，不会影响实际表现。即便经过最近的削弱，他们的治疗能力和施加超大护盾/定点治疗的能力依然是所有治疗职业中最出色的，这是评价治疗专精最重要的因素。此外，他们保留了强大的外部辅助技能，如双[痛苦压制]和[真言术：障]。最终表现还需看后续调整，但就目前而言，他们仍是最佳治疗之一。"
+        }
+      ]
+    },
+    {
+      "tier": "A+",
+      "children": [
+        {
+          "fullNameEN": "Restoration Shaman",
+          "roleClass": "shaman",
+          "classSpec": "restoration",
+          "dataChange": "-",
+          "desc": "Restoration Shaman received its fair share of changes, most notably a brand new tier set. They will retain their incredibly party-wide utility and healing capabilities, while also providing amazing mob-control for your party. Restoration Shaman is incredibly strong in physical damage-oriented comps due to their [天怒] buff, which makes even a lucrative pick-up just like last season. Overall, a strong contender for the top healing spot, but only future tuning will show us!",
+          "spells": [
+            {
+              "spellId": 462854,
+              "spellName": "Skyfury"
+            }
+          ],
+          "fullNameZH": "恢复 萨满",
+          "descZH": "恢复萨满获得了诸多改动，最显著的是全新套装。他们将保持惊人的团队辅助和治疗能力，同时为队伍提供出色的怪物控制。由于[天怒]增益，恢复萨满在物理输出队伍中表现尤为强势，和上赛季一样是抢手选择。总体而言是顶尖治疗的有力竞争者，但最终表现还需看后续调整！"
+        }
+      ]
+    },
+    {
+      "tier": "A",
+      "children": [
+        {
+          "fullNameEN": "Preservation Evoker",
+          "roleClass": "evoker",
+          "classSpec": "preservation",
+          "dataChange": "-",
+          "desc": "Preservation Evoker has received its fair share of changes, most notably the introduction of its brand new tier set. Their performance, more specifically their damage and especially healing output, has been great, making it a great pick-up with any group composition. Overall, they do not stand out as the best healing option for Mythic+ simply because of how hard it is to make them work in a pug environment, which hinders their performance. The group awareness must be present for them to understand how your healing profile works so that you can unlock your full potential. We believe this spec is in a much better spot for raiding than it is for Mythic+.",
+          "spells": [],
+          "fullNameZH": "恩护 唤魔师",
+          "descZH": "恩护唤魔师获得了诸多改动，最突出的是全新套装的引入。他们的表现（特别是伤害和治疗输出）非常出色，适合任何队伍配置。但由于在随机队伍中难以发挥全部实力，他们并非大秘境最佳治疗选择。需要团队配合理解治疗节奏才能释放全部潜力。我们认为这个专精更适合团队副本而非大秘境。"
+        },
+        {
+          "fullNameEN": "Holy Paladin",
+          "roleClass": "paladin",
+          "classSpec": "holy",
+          "dataChange": "-",
+          "desc": "Holy Paladin received quite a bit of change, with the most notable being the introduction of their brand new tier set. Healing output is currently their biggest weakness, as a major concern from Paladins is the RNG element attached to it. Their toolkit remains the same - one of the best party-wide utilities paired with strong defensiveness (even immunity), and excellent mob control. Overall, we expect them to be a decent choice for a healer going into Season 3, and if the current healing profile gets improved, we are confident they will rapidly climb the tier list rankings.",
+          "spells": [],
+          "fullNameZH": "神圣 圣骑士",
+          "descZH": "神圣圣骑士经历了诸多改动，最显著的是全新套装的引入。治疗输出是目前最大短板，因为存在随机性因素。但他们仍保持顶尖的团队辅助能力、强大的防御（甚至免疫）和出色的怪物控制。总体而言是第三赛季不错的治疗选择，如果治疗能力得到加强，相信排名会快速上升。"
+        }
+      ]
+    },
+    {
+      "tier": "Comp-dependant",
+      "children": [
+        {
+          "fullNameEN": "Mistweaver Monk",
+          "roleClass": "monk",
+          "classSpec": "mistweaver",
+          "dataChange": "-",
+          "desc": "Mistweaver Monk received almost no relevant changes leading to the next season, with the most notable being the change to [活力苏醒] to proc off from [旭日东升踢] casts instead of flat every 10 sec proc. That, in combination with how great [翡翠羁绊] talent has been (especially the CDR thanks to [朱鹤下凡]) makes their output great. Mistweaver's current HPS profile is good, as it can easily tackle any given encounter in Mythic+ while contributing to the team with its great damage profile (yes, most of your damage still requires you to be in melee). All of this combined plays well with the strong utility package they offer, while still being a contender for the best fit within the physical oriented teams. One downside of Mistweaver is that your external defensive options are the weakest out of any healing as [作茧缚命] is the weakest external option out of all healers.",
+          "spells": [
+            {
+              "spellId": 388812,
+              "spellName": "Vivacious Vivification"
+            },
+            {
+              "spellId": 107428,
+              "spellName": "Rising Sun Kick"
+            },
+            {
+              "spellId": 388031,
+              "spellName": "Jade Bond"
+            },
+            {
+              "spellId": 325197,
+              "spellName": "Invoke Chi-Ji, the Red Crane"
+            },
+            {
+              "spellId": 116849,
+              "spellName": "Life Cocoon"
+            }
+          ],
+          "fullNameZH": "织雾 武僧",
+          "descZH": "织雾武僧在下赛季前几乎没有重大改动，最值得注意的是[活力苏醒]现在由[旭日东升踢]触发而非固定10秒触发。配合[翡翠羁绊]天赋（特别是[朱鹤下凡]的冷却缩减）使输出能力出色。当前治疗表现良好，能轻松应对大秘境各种场合，同时贡献可观的伤害（多数伤害仍需近战输出）。结合强大的辅助能力，是物理队的优秀选择。但外部防御技能[作茧缚命]是所有治疗中最弱的。"
+        }
+      ]
+    },
+    {
+      "tier": "B",
+      "children": [
+        {
+          "fullNameEN": "Holy Priest",
+          "roleClass": "priest",
+          "classSpec": "holy",
+          "dataChange": "-",
+          "desc": "Unfortunately for Holy Priest, they had no relevant changes leading up to Season 3, this causes no shifts in your gameplay compared to what you are already used to. They will maintain their decent DPS and HPS profiles, which output is not enough to rank them higher on the tier list compared to the rest of the healing specs. However, it is noteworthy that this specialization is considered one of the easier healing options due to its reactive healing capabilities, which are adept at addressing any form of incoming or sustained HPS challenges. Further tuning will help us have more accurate ranking of the spec.",
+          "spells": [],
+          "fullNameZH": "神圣 牧师",
+          "descZH": "遗憾的是神圣牧师在第三赛季前没有重大改动，玩法与之前相同。他们保持了尚可的伤害和治疗能力，但不足以在治疗专精中排名更高。不过值得注意的是，由于反应式治疗机制擅长应对各种突发或持续治疗压力，这个专精被认为是较易上手的治疗选择。后续调整会帮助我们更准确评估其定位。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,413 @@
+{
+  "updatedAt": "2025/08/02",
+  "activityType": "MYTHIC",
+  "role": "DPS",
+  "versionId": "11.2 - PTR",
+  "data": [
+    {
+      "tier": "S",
+      "children": [
+        {
+          "fullNameEN": "Frost Death Knight",
+          "roleClass": "death-knight",
+          "classSpec": "frost",
+          "dataChange": "-",
+          "desc": "Frost Death Knight They will make their long-awaited comeback in Season 3, following a \"rework\". Most notably, no more annoying [枯萎凋零] casting ever, rework on [冰龙吐息], several new talents introduced, and a lot more consistent damage. Their AoE damage is one of the best, followed by one of the highest single-target & priority-target damage so far across all specializations. In addition, Death Knights are also one of the most durable DPS classes in the game (which is a huge advantage). This early into PTR, I believe Frost is the best melee by far, only future tuning will show if they will remain this dominant.",
+          "spells": [
+            {
+              "spellId": 43265,
+              "spellName": "Death and Decay"
+            },
+            {
+              "spellId": 152279,
+              "spellName": "Breath of Sindragosa"
+            }
+          ],
+          "fullNameZH": "冰霜 死亡骑士",
+          "descZH": "冰霜死亡骑士将在第三赛季经历了一次\"重做\"。最值得注意的是，不再需要施放烦人的[枯萎凋零]技能，[冰龙吐息]进行了重做，引入了几个新天赋，并且伤害输出更加稳定。他们的范围伤害是最出色的之一，同时在所有专精中拥有顶尖的单体目标伤害和优先级目标伤害。此外，死亡骑士也是游戏中最抗揍的DPS职业之一（这是个巨大优势）。在PTR测试初期，我认为冰霜DK是当前最强的近战职业，只有后续平衡性调整才能确定他们是否能保持这种统治地位。"
+        },
+        {
+          "fullNameEN": "Marksmanship Hunter",
+          "roleClass": "hunter",
+          "classSpec": "marksmanship",
+          "dataChange": "-",
+          "desc": "Marksmanship Hunter received a ton of changes leading to Season 3 of TWWW. They will retain their burst-orientated profile (thankfully!) which is a prominent feature of MM for a long time now and is incredibly useful against all key levels. In addition, their sustained damage is looking better than ever, even without your cooldowns. Their single-target has improved compared to Season 2 (with Mythic+ builds), which is a welcoming change. Overall, we believe Hunter is one of the strongest Ranged options so far in the PTR and only future tuning can cement their S-tier placement.",
+          "spells": [],
+          "fullNameZH": "射击 猎人",
+          "descZH": "射击猎人为即将到来的第三赛季进行了大量调整。他们保留了以爆发为核心的游戏风格（值得庆幸！），这是射击猎人长久以来的标志性特点，在所有关键场合都非常有用。此外，即使没有冷却技能支持，他们的持续伤害能力也达到了前所未有的高度。与第二赛季相比（搭配史诗钥石地下城天赋时），他们的单体目标伤害得到了提升，这是个值得欢迎的变化。总体而言，我们认为猎人目前在PTR中是最强的远程选择之一，只有后续调整才能稳固他们的S级地位。"
+        },
+        {
+          "fullNameEN": "Arcane Mage",
+          "roleClass": "mage",
+          "classSpec": "arcane",
+          "dataChange": "-",
+          "desc": "Arcane Mage has received its fair share of changes leading to the Season 3 of TWW. They will retain its burst-orientated damage profile while simultaneously providing priority-target damage when doing so. Their funnel damage/single target is also considered one of the best, which can gain you a ton of time in Mythic+. Mage utility is also considered one of the best in 5-man orientated content especially when ran with a caster comp. At last, we all know how durable mage, which further solidifies their S-tier spot for now.",
+          "spells": [],
+          "fullNameZH": "奥术 法师",
+          "descZH": "奥术法师在第三赛季前迎来了一系列改动。他们在保持爆发伤害特性的同时，还能提供出色的优先级目标伤害能力。他们的集中伤害/单体伤害也被认为是最顶级的，这能为玩家在大秘境中节省大量时间。法师的辅助功能在5人副本内容中堪称最佳，尤其是在法术输出队伍中。最后众所周知，法师生存能力相当出色，这进一步巩固了他们当前的S级地位。"
+        }
+      ]
+    },
+    {
+      "tier": "A+",
+      "children": [
+        {
+          "fullNameEN": "Elemental Shaman",
+          "roleClass": "shaman",
+          "classSpec": "elemental",
+          "dataChange": "up",
+          "desc": "Elemental Shaman have received massive single-target buffs leading to the Season 3 of the TWW expansion. Incredible burst, amazing priority-target damage, and one of the best party-wide utilities are some of their strengths. Their sustained damage, outside of major cooldowns, can be lacklustre if you don't proc your [升腾] (or your tier-set), but outside of this, you are incredibly strong.",
+          "spells": [
+            {
+              "spellId": 467263,
+              "spellName": "Ascendance"
+            }
+          ],
+          "fullNameZH": "元素 萨满",
+          "descZH": "元素萨满在第三赛季前获得了巨大的单体伤害增益。惊人的爆发伤害、出色的优先级目标伤害以及顶尖的团队辅助能力是他们的优势所在。不过，在主要冷却技能之外，如果无法触发[升腾]（或套装效果），他们的持续伤害可能会稍显不足。但除此之外，这个专精的表现极其强势。"
+        },
+        {
+          "fullNameEN": "Enhancement Shaman",
+          "roleClass": "shaman",
+          "classSpec": "enhancement",
+          "dataChange": "-",
+          "desc": "Enhancement Shaman received minor changes leading to Season 3, but luckily got a powerful tier set. They are arguably one of the best melee DPS on the PTR, not necessarily from a pure output point of view, but the whole toolkit, which is incredibly useful in Season 3. Having great sustain damage, one of the strongest major cooldowns, and insane funnel damage are exceptional qualities to have. In addition to that, their single-target is also excellent.",
+          "spells": [],
+          "fullNameZH": "增强 萨满",
+          "descZH": "增强萨满在第三赛季前仅进行了小幅调整，但幸运地获得了一套强力套装。从PTR表现来看，他们可以说是最优秀的近战DPS之一——不仅因为输出能力，更因其在第三赛季中极其实用的整体技能组合。出色的持续伤害、最强的爆发技能之一以及惊人的集中伤害都是他们的突出优势。此外，他们的单体伤害同样出色。"
+        },
+        {
+          "fullNameEN": "Havoc Demon Hunter",
+          "roleClass": "demon-hunter",
+          "classSpec": "havoc",
+          "dataChange": "-",
+          "desc": "Havoc Demon Hunter hasn't currently seen any changes leading towards Season 3 of TWW, but received one of the most powerful tier-set across all DPS specs (even after the tiny nerfs) thanks to Aldrachi. Their sustained damage (outside of cooldowns) has significantly improved, which was previously one of their weakest points. In addition, their priority-target damage has skyrocketed, making them one of the best in that niche. On top of this, they have good utility, great self-sustain, and one of the most mobile DPS specs out there. We need to wait for the final adjustments to see if their tier-set gets to be nerfed (it's highly likely).",
+          "spells": [],
+          "fullNameZH": "浩劫 恶魔猎手",
+          "descZH": "浩劫恶魔猎手目前尚未针对第三赛季进行调整，但得益于阿尔德拉克套装（即使经过小幅削弱），他们获得了全DPS专精中最强大的套装之一。他们在冷却技能之外的持续伤害得到了显著提升（这曾经是他们最薄弱的环节），同时优先级目标伤害也大幅提高，使其成为该领域的佼佼者。此外，他们还拥有优秀的辅助能力、强大的自我恢复能力以及最灵活的机动性。我们仍需等待最终调整，看看他们的套装是否会遭到削弱（这很有可能）。"
+        },
+        {
+          "fullNameEN": "Fire Mage",
+          "roleClass": "mage",
+          "classSpec": "fire",
+          "dataChange": "down",
+          "desc": "Fire Mage is entering Season 3 in a much better state than it was last season, thanks to some baseline buffs and their great tier-set. Their single-target damage is amazing when played with a Mythic+ build, which is one of their strongest features. Extremely effective damage profile for the highest levels of keys but due to the long ramp-up time it might loose some value for your casual level keys. To add on top of that, their AoE damage is one of the highest across all Ranged DPS specs. Just like every Mage spec so far, they have one of the best group-wide Mythic+ utilities.",
+          "spells": [],
+          "fullNameZH": "火焰 法师",
+          "descZH": "得益于基础属性的加强和出色的套装效果，火焰法师将以比上赛季更好的状态进入第三赛季。在使用大秘境天赋时，他们的单体伤害极为出色，这是他们最强大的特点之一。虽然在高等级钥石中表现出色，但由于较长的伤害启动时间，在普通难度钥石中可能稍显逊色。此外，他们的范围伤害在所有远程DPS专精中名列前茅。与所有法师专精一样，他们拥有最优秀的大秘境团队辅助能力。"
+        },
+        {
+          "fullNameEN": "Frost Mage",
+          "roleClass": "mage",
+          "classSpec": "frost",
+          "dataChange": "-",
+          "desc": "Frost Mage received minor changes leading to Season 3, with the most notable being Mastery buffs, [暴风雪] having longer cooldown, making you more focused on core spells like [冰川尖刺], [冰枪术] etc, and a new tier-set. They will retain their great burst damage profile (thanks to [冰冷血脉]), while focusing on priority-target damage. Their single-target is also in a good state, which was previously criticized in the last season. In addition, Mage is one of the most durable DPS specializations, and also have one of the best Mythic+ utilities from a DPS point of view.",
+          "spells": [
+            {
+              "spellId": 190356,
+              "spellName": "Blizzard"
+            },
+            {
+              "spellId": 199786,
+              "spellName": "Glacial Spike"
+            },
+            {
+              "spellId": 30455,
+              "spellName": "Ice Lance"
+            },
+            {
+              "spellId": 12472,
+              "spellName": "Icy Veins"
+            }
+          ],
+          "fullNameZH": "冰霜 法师",
+          "descZH": "冰霜法师在第三赛季前进行了小幅调整，最显著的是精通属性加强、[暴风雪]冷却时间延长（促使玩家更专注于[冰川尖刺]、[冰枪术]等核心技能）以及新套装。他们将保持出色的爆发伤害能力（得益于[冰冷血脉]），同时专注于优先级目标伤害。他们的单体伤害也处于良好状态（上赛季曾饱受诟病）。此外，法师是最耐打的DPS专精之一，从DPS角度而言也拥有最优秀的大秘境辅助能力。"
+        },
+        {
+          "fullNameEN": "Beast Mastery Hunter",
+          "roleClass": "hunter",
+          "classSpec": "beast-mastery",
+          "dataChange": "-",
+          "desc": "Beast Mastery Hunter is one of the specs that have seen a lot of changes leading up to Season 3. They have an amazing tier-set, which further elevates their already strong sustain-damage. Their single-target & AoE damage output is considered one of the best especially when put in a physical comp. So far, the specialization looks quite strong, with rarely any disadvantage (except for no party buff - [猎人印记] sucks for M+).",
+          "spells": [
+            {
+              "spellId": 257284,
+              "spellName": "Hunter's Mark"
+            }
+          ],
+          "fullNameZH": "野兽掌控 猎人",
+          "descZH": "野兽控制猎人是第三赛季改动较大的专精之一。他们获得了一套惊人的套装，进一步提升了本已强大的持续伤害能力。特别是在物理输出队伍中，他们的单体与范围伤害都被认为是最顶尖的。目前看来这个专精相当强势，几乎没有什么缺点（除了缺乏团队增益——[猎人印记]在大秘境中实在鸡肋）。"
+        },
+        {
+          "fullNameEN": "Devastation Evoker",
+          "roleClass": "evoker",
+          "classSpec": "devastation",
+          "dataChange": "up",
+          "desc": "The performance of Devastation Evoker have received several positive adjustments, most notable flat buffs and a choice to play different builds other than Flameshaper in the upcoming Season 3. The spec has retained its unique Evoker utility, while keeping its damage profile will be \"bursty\", which will help your performance across different key levels (with a much better-sustained damage profile). The output is not there to compete with the top-tier specs, but has been rapidly improving within the weeks of PTR testing leading to Season 3.",
+          "spells": [],
+          "fullNameZH": "湮灭 唤魔师",
+          "descZH": "湮灭唤魔师在即将到来的第三赛季获得了多项积极调整，最显著的是基础属性加强以及可以选择火焰塑形之外的不同天赋组合。该专精保留了唤魔师独特的辅助能力，同时保持了\"爆发型\"的伤害特点（配合显著改善的持续伤害曲线），这将帮助玩家在不同难度钥石中都有更好表现。虽然输出还无法与顶级专精媲美，但在PTR测试的几周内已经取得了快速进步。"
+        },
+        {
+          "fullNameEN": "Shadow Priest",
+          "roleClass": "priest",
+          "classSpec": "shadow",
+          "dataChange": "up",
+          "desc": "Shadow Priest received a complete rework in their playstyle and the majority of their talents leading to Season 3. Their damage is looking better as they have amazing priority-target damage while doing AoE. Their single-target is their strongest feature, with several minor cooldowns. In addition, they have finally received [暗影冲撞] quality-of-life update and now have 2x charges. Their utility remains strong, as [能量灌注] and [真言术：韧] are considered great party-buffs to push keys. We believe this spec is significantly better on the higher level keys due to its ramp-up damage profile.",
+          "spells": [
+            {
+              "spellId": 205385,
+              "spellName": "Shadow Crash"
+            },
+            {
+              "spellId": 10060,
+              "spellName": "Power Infusion"
+            },
+            {
+              "spellId": 21562,
+              "spellName": "Power Word: Fortitude"
+            }
+          ],
+          "fullNameZH": "暗影 牧师",
+          "descZH": "暗影牧师在第三赛季前迎来了玩法风格和大部分天赋的彻底重做。他们的伤害表现更加出色，能在范围伤害的同时对优先级目标造成惊人伤害。凭借多个小冷却技能，单体伤害成为他们最强大的特点。此外，[暗影冲撞]终于获得了使用体验优化，现在拥有2层充能。他们的辅助能力依然强大，[能量灌注]和[真言术：韧]被认为是冲层的优秀团队增益。由于其伤害启动特性，我们相信这个专精在高等级钥石中表现会明显更好。"
+        },
+        {
+          "fullNameEN": "Demonology Warlock",
+          "roleClass": "warlock",
+          "classSpec": "demonology",
+          "dataChange": "down",
+          "desc": "Demonology Warlock received one of the most powerful tier sets across all DPS specs, in addition to some baseline buffs to their already strong overall damage output. They will have better-sustained damage when running outside of cooldowns while having incredibly strong single-target output. In terms of utility, they will keep their unique Mythic+ package while being one of the most \"tanky\" Ranged DPS. Although Warlock doesn't have a unique party buff, their damage output offsets the spec limitation and can be considered in some of the caster-oriented comps.",
+          "spells": [],
+          "fullNameZH": "恶魔 术士",
+          "descZH": "恶魔术士不仅获得了一些基础属性加强来提升本就强大的整体输出，还拿到了全DPS专精中最强力的套装之一。他们在冷却技能之外将拥有更好的持续伤害，同时保持惊人的单体输出能力。就辅助性而言，他们将保留独特的大秘境技能组合，同时成为最\"硬\"的远程DPS之一。虽然术士没有独特的团队增益，但其伤害输出足以弥补这个缺陷，使其在某些法系队伍中值得考虑。"
+        },
+        {
+          "fullNameEN": "Feral Druid",
+          "roleClass": "druid",
+          "classSpec": "feral",
+          "dataChange": "up",
+          "desc": "Feral Druid has received barely any changes leading to the Season 3. The specialization will retain its signature burst-orientated profile while being significantly weaker during dry periods. Energy starvation, unfortunately, is still present in the spec, resulting in pockets of time of just \"waiting\" for more resources rather than actively engaging with your rotation. Their utility, just like any Druid spec, will retain its power, as [野性印记] is one of the strongest party-buffs in the group. Overall, we believe Feral Druid to be a decent melee option which excels the best in physical orientated comp.",
+          "spells": [
+            {
+              "spellId": 1126,
+              "spellName": "Mark of the Wild"
+            }
+          ],
+          "fullNameZH": "野性 德鲁伊",
+          "descZH": "野性德鲁伊在第三赛季前几乎没有进行任何改动。该专精将保持其标志性的爆发导向特性，但在技能真空期会明显疲软。遗憾的是，能量匮乏问题依然存在，导致玩家有时不得不\"干等\"资源回复而非积极循环输出。与其他德鲁伊专精一样，他们的辅助能力依然强大，[野性印记]是最强的团队增益之一。总体而言，我们认为野性德鲁伊是个不错近战选择，尤其在物理输出队伍中表现最佳。"
+        },
+        {
+          "fullNameEN": "Survival Hunter",
+          "roleClass": "hunter",
+          "classSpec": "survival",
+          "dataChange": "-",
+          "desc": "Survival Hunter has received its fair share of changes, leading to the third and final season of Mythic+ in TWW. Their consistent damage is incredible since their major cooldowns are relatively short and their overall output is its best ever been in the whole expansion. Their strength lies in their AoE damage, paired with great priority-target damage. Their single-target is also decent, although nowhere near \"OP\" levels. We believe the spec is already performing much better than the previous season, and we hope they keep that until the season release. Only future tuning will show that.",
+          "spells": [],
+          "fullNameZH": "生存 猎人",
+          "descZH": "生存猎人在大秘境的第三个也是最后一个赛季前获得了应有的调整。由于主要冷却技能较短且整体输出达到资料片最高水平，他们的持续伤害令人惊叹。他们的优势在于强大的范围伤害与优先级目标伤害的结合。单体伤害也还算不错（虽然远未达到\"OP\"级别）。我们认为该专精表现已经远超上赛季，希望这种状态能保持到赛季正式上线——只有未来的调整才能验证这一点。"
+        },
+        {
+          "fullNameEN": "Affliction Warlock",
+          "roleClass": "warlock",
+          "classSpec": "affliction",
+          "dataChange": "up",
+          "desc": "Affliction Warlock has seen some positive changes in the upcoming Season 3. Although they will remain with the same issues as Season 2, relying on [邪恶污染] for mass applying [痛楚], which becomes a significant problem at times, their most recent buffs significantly improve their single-target, priority-target, and funnel damage. Their AoE is already in good hands, which will make them the most powerful they have been in the entire TWW expansion so far. When you run out of minor & major cooldowns, you still have issues doing damage, but outside of this, the power of the spec is enough to push them towards A+ tier.",
+          "spells": [
+            {
+              "spellId": 278350,
+              "spellName": "Vile Taint"
+            },
+            {
+              "spellId": 980,
+              "spellName": "Agony"
+            }
+          ],
+          "fullNameZH": "痛苦 术士",
+          "descZH": "痛苦术士在即将到来的第三赛季获得了一些积极改动。虽然他们仍存在与第二赛季相同的问题——依赖[邪恶污染]来群体施加[痛楚]（这有时会造成严重问题），但最近的加强显著提升了他们的单体伤害、优先级目标伤害和集中伤害能力。他们的范围伤害本已表现良好，这些改动将使其达到11版本迄今为止的最强状态。当小技能和大技能都处于冷却时，伤害输出仍存在问题，但除此之外，该专精的强度足以将其推向A+级别。"
+        },
+        {
+          "fullNameEN": "Assassination Rogue",
+          "roleClass": "rogue",
+          "classSpec": "assassination",
+          "dataChange": "-",
+          "desc": "Assassination Rogue received no changes leading to Season 3. Also, their rotation and spec-flow remain mostly unchanged so far. Nevertheless, their AoE outputs remain their strongest asset in Mythic+, especially considering the great priority-target damage while doing the AoE. Single-target is the biggest disadvantage, and although it has been recently buffed, its still a long way to go. The only way to counter it is if you pull mobs on top of the boss for an effective funnel. Overall, we still believe they will remain a solid melee contender in Season 3, especially when played in a physical comp.",
+          "spells": [],
+          "fullNameZH": "刺杀 盗贼",
+          "descZH": "刺杀盗贼在第三赛季前未进行任何改动，其输出循环和专精机制也基本保持不变。尽管如此，他们的范围伤害仍是大秘境中最强大的优势，特别是在进行范围伤害时还能对优先级目标造成高额伤害。单体伤害是最大短板，虽然最近有所加强，但仍有很大提升空间。唯一的解决办法是将小怪拉到首领身边进行集中输出。总体而言，我们仍然认为他们会在第三赛季保持坚实近战地位，尤其在物理输出队伍中。"
+        }
+      ]
+    },
+    {
+      "tier": "Comp-Dependant",
+      "children": [
+        {
+          "fullNameEN": "Arms Warrior",
+          "roleClass": "warrior",
+          "classSpec": "arms",
+          "dataChange": "up",
+          "desc": "Arms Warrior received healthy buffs leading to Season 3 of TWW. Although the spec didn't start great, they have been given 3 consecutive buffs in a row, significantly improving their overall damage. This will put their AoE damage and single-target, in a much better state. This further solidifies their core position in the physical-comp meta, due to [战斗怒吼] value, and perhaps a situational pick, swapping back and forth with your siblings' spec. Overall, if physical-comp remains as strong as it is right now, they are in a good spot!",
+          "spells": [
+            {
+              "spellId": 6673,
+              "spellName": "Battle Shout"
+            }
+          ],
+          "fullNameZH": "武器 战士",
+          "descZH": "武器战士在TWW第三赛季前获得了可观的增益。虽然这个专精起步表现不佳，但连续三波加强显著提升了整体伤害。这将使他们的范围伤害和单体输出都处于更好的状态。由于[战斗怒吼]的价值，这进一步巩固了他们在物理队伍中的核心地位，也可以根据情况与兄弟专精切换使用。总体而言，如果物理队保持当前强度，他们的处境会相当不错！"
+        },
+        {
+          "fullNameEN": "Fury Warrior",
+          "roleClass": "warrior",
+          "classSpec": "fury",
+          "dataChange": "up",
+          "desc": "Fury Warrior hasn't seen any changes leading towards Season 3. They still are one of the few DPS specs that are a 5-target hard-capped, which reduces their AoE output. However, this spec has been getting buffs for the past 3 weeks and is now in a much better shape compared to where it started. Both single-target and AoE are looking better, and although your raw output might not match the specs & classes on the S-tier, your overall value in a physical-comp (thanks to [战斗怒吼]), will guarantee your invites./p> ",
+          "spells": [
+            {
+              "spellId": 6673,
+              "spellName": "Battle Shout"
+            }
+          ],
+          "fullNameZH": "狂怒 战士",
+          "descZH": "狂怒战士在第三赛季前没有变化。他们仍然是少数受5目标硬上限限制的DPS专精之一，这限制了范围伤害能力。不过该专精在过去三周持续获得加强，相比最初状态已大幅改善。单体与范围伤害都有提升，虽然原始输出可能比不上S级专精，但在物理队伍中的整体价值（得益于[战斗怒吼]）仍能确保获得组队邀请。"
+        },
+        {
+          "fullNameEN": "Windwalker Monk",
+          "roleClass": "monk",
+          "classSpec": "windwalker",
+          "dataChange": "up",
+          "desc": "Windwalker Monk hasn't seen any significant changes leading to Season 3 of TWW. Their toolkit, playstyle, and utility will mostly remain the same as nothing of significance has been added. Unfortunately, Windwalker Monk is one of the few specs that yet remains to have its target cap present, which can result in problems in mass AoE, but when that is not present, they will do great. The burst single-target capabilities are also an advantage. At last, the value of the spec significantly increases when its paired with a physical comp since [玄秘掌] is a must to have, so even if your output is not the best, you will still be chosen over!",
+          "spells": [
+            {
+              "spellId": 8647,
+              "spellName": "Mystic Touch"
+            }
+          ],
+          "fullNameZH": "踏风 武僧",
+          "descZH": "踏风武僧在TWW第三赛季前没有重大改动。他们的技能组合、玩法和辅助能力基本保持不变。遗憾的是，踏风仍是少数保留目标上限的专精之一，在大规模AOE场合可能存在问题，但在其他情况下表现优异。爆发性单体伤害也是优势所在。最重要的是，当搭配物理队伍时，由于[玄秘掌]的必备性，即使输出不是最佳，你仍然会被优先选择！"
+        },
+        {
+          "fullNameEN": "Outlaw Rogue",
+          "roleClass": "rogue",
+          "classSpec": "outlaw",
+          "dataChange": "-",
+          "desc": "Outlaw Rogue did not receive any major changes (except [影舞步] rework), but luckily for them, their tier set is amazing. The spec will retain its great consistent AoE damage, but unfortunately, will still be target-capped. Their single-target has recently being buffed which helps a ton as previously that was their major concern. Their defensive profile will remain unchanged, and so will their amazing group-wide utility and mob control.",
+          "spells": [
+            {
+              "spellId": 51690,
+              "spellName": "Killing Spree"
+            }
+          ],
+          "fullNameZH": "狂徒 盗贼",
+          "descZH": "狂徒盗贼没有获得重大改动（除了[影舞步]重做），但幸运的是他们的套装效果非常出色。该专精将保持优秀的持续AOE伤害能力，不过仍受目标数量限制。最近加强的单体伤害解决了他们最担忧的问题。防御属性和出色的团队辅助及怪物控制能力保持不变。"
+        }
+      ]
+    },
+    {
+      "tier": "A",
+      "children": [
+        {
+          "fullNameEN": "Unholy Death Knight",
+          "roleClass": "death-knight",
+          "classSpec": "unholy",
+          "dataChange": "-",
+          "desc": "Unholy Death Knight has changed a ton going forward to Season 3, as several new cool talents have surfaced like [憎恶附肢] / [培育憎恶]. The loss of their amazing Season 2 tier-set will be noticeable as an alternative version offered in S3 is not as powerful. Their once \"The Best AoE\" spec title is long gone (+ [爆裂之疡] is now target-cap), and while it is still great, it's nowhere near where it was in Season 2. Death Knight, lost [憎恶附肢] (ability to stack mobs) and still do not have raid buff. Current Unholy Death Knight is being overshadowed by Frost Death Knight by a mile, offering much damage and a more consistent damage profile.",
+          "spells": [
+            {
+              "spellId": 383269,
+              "spellName": "Legion of Souls"
+            },
+            {
+              "spellId": 288853,
+              "spellName": "Raise Abomination"
+            },
+            {
+              "spellId": 207264,
+              "spellName": "Bursting Sores"
+            },
+            {
+              "spellId": 383269,
+              "spellName": "Abomination Limb"
+            }
+          ],
+          "fullNameZH": "邪恶 死亡骑士",
+          "descZH": "邪恶死亡骑士在第三赛季前经历了巨大变化，新增了[憎恶附肢]/[培育憎恶]等酷炫天赋。失去第二赛季强力套装的效果将非常明显，因为第三赛季的替代版本不够强大。他们曾经\"最佳AOE专精\"的头衔早已不复存在（+[爆裂之疡]现在有目标上限），虽然仍然不错，但远不及第二赛季的水平。死亡骑士失去了[憎恶附肢]（聚怪能力）且仍然没有团队增益。当前邪恶死亡骑士被冰霜死亡骑士远远超越，后者能提供更高的伤害和更稳定的输出曲线。"
+        },
+        {
+          "fullNameEN": "Balance Druid",
+          "roleClass": "druid",
+          "classSpec": "balance",
+          "dataChange": "up",
+          "desc": "Balance Druid did get minor changes leading to Season 3. Unfortunately after the most recent tier-set nerfs, Balance unique funnel damage (when played with KotG Hero Talents) is now gone. This has been a major nerf to their overall damage contribution, which will result in a downfall from the previous S-tier spot. Their current AoE damage is still great, but the single-target needs to be further adjusted. The utility of Druid is heavily desired in a 5-man group due to its offensive and defensive powers. Overall, I'd expect to see compensation buffs to Balance Druids following the weeks prior to the release of the season.",
+          "spells": [],
+          "fullNameZH": "平衡 德鲁伊",
+          "descZH": "平衡德鲁伊在第三赛季前确实进行了一些小改动。不幸的是，在最近的套装削弱后，平衡德独特的集中伤害能力（当使用KotG英雄天赋时）现已消失。这对他们的整体伤害贡献造成了重大削弱，将导致他们从之前的S级位置跌落。他们当前的AOE伤害仍然很棒，但单体伤害还需要进一步调整。由于出色的进攻和防御能力，德鲁伊的辅助功能在5人小队中非常抢手。总体而言，我预计在赛季发布前的几周内会看到对平衡德的补偿性加强。"
+        },
+        {
+          "fullNameEN": "Retribution Paladin",
+          "roleClass": "paladin",
+          "classSpec": "retribution",
+          "dataChange": "-",
+          "desc": "Retribution Paladin has received mostly negative changes leading to the next season, most notably with the nerf to [神圣之锤], making it a 2-minute cooldown and reducing the amount of duration you ramp up. This significantly cripples their overall damage output but still will posses great AoE damage. Their single-target has recently been buffed, which is one of their weakest points so far. Keep in mind that they also possess excellent defensive options in case of danger, and are considered to have one of the strongest utility toolkits among all DPS specs.",
+          "spells": [
+            {
+              "spellId": 198137,
+              "spellName": "Divine Hammer"
+            }
+          ],
+          "fullNameZH": "惩戒 圣骑士",
+          "descZH": "惩戒圣骑士在下个赛季前主要受到了负面改动，最明显的是[神圣之锤]被削弱，冷却时间改为2分钟并减少了持续时间。这严重影响了他们的整体伤害输出，但仍将保持强大的AOE伤害能力。他们的单体伤害最近得到了加强，这是他们迄今为止最薄弱的环节之一。请记住，他们还拥有出色的防御手段来应对危险，并且被认为是所有DPS专精中拥有最强辅助工具包的职业之一。"
+        }
+      ]
+    },
+    {
+      "tier": "B+",
+      "children": [
+        {
+          "fullNameEN": "Destruction Warlock",
+          "roleClass": "warlock",
+          "classSpec": "destruction",
+          "dataChange": "-",
+          "desc": "Destruction [术士] unfortunately they haven't seen that many changes leading up to the next season, apart from their tier-set. They will still possess their great mass AoE damage (especially on higher keys where mobs live longer), decent single-target, and most importantly, great sustained damage. At last, every [术士] spec is quite durable and has a great party-wide utility, which fits perfectly for Mythic+. Overall, a good range option, overshadowed by its stronger sibling spec Demonology [术士].",
+          "spells": [
+            {
+              "spellId": 462481,
+              "spellName": "Warlock"
+            }
+          ],
+          "fullNameZH": "毁灭 术士",
+          "descZH": "毁灭[术士]在下个赛季前除了套装外没有太多改动。他们仍将保持强大的群体AOE伤害（特别是在怪物存活时间更长的高层钥石中）、不错的单体伤害，以及最重要的出色持续伤害能力。最后，每个[术士]专精都相当耐打并拥有优秀的团队辅助能力，非常适合大秘境。总体而言是个不错的远程选择，只是被更强的兄弟专精恶魔学识[术士]所掩盖。"
+        },
+        {
+          "fullNameEN": "Augmentation Evoker",
+          "roleClass": "evoker",
+          "classSpec": "augmentation",
+          "dataChange": "up",
+          "desc": "Augmentation Evoker has received no changes leading to Season 3, which results in no change neither to their power, nor to the rotation. They will retain their great utility, good mob control, and the ability to bolster your team's defensive and offensive profiles (especially as a DPS player) While there is still immense defensive value in taking Augmentation Evoker to your team, it will results in slower times throughout the dungeon as majority of the time, a regular 3rd DPS will just have more raw output.",
+          "spells": [],
+          "fullNameZH": "增辉 唤魔师",
+          "descZH": "增辉唤魔师在第三赛季前没有获得任何改动，这意味着他们的强度和输出循环都保持不变。他们将保留出色的辅助能力、良好的怪物控制技巧，以及增强团队攻防的能力（特别是作为DPS时）。虽然队伍中加入增辉唤魔师仍有巨大的防御价值，但这通常会导致副本通关时间变慢，因为在大多数情况下，常规的第三个DPS会提供更直接的伤害输出。"
+        }
+      ]
+    },
+    {
+      "tier": "B",
+      "children": [
+        {
+          "fullNameEN": "Subtlety Rogue",
+          "roleClass": "rogue",
+          "classSpec": "subtlety",
+          "dataChange": "-",
+          "desc": "Aside from the impressive Rogue's utility package, Subtlety Rogue has not seen any major changes going forward to the next season. Their single-target is their biggest asset as the burst capabilities of the spec are not to be underestimated. Unfortunately, their AoE, especially if [暗影之舞] is on cooldown is terrible so further tuning must be implemented before we rank them higher.",
+          "spells": [
+            {
+              "spellId": 185313,
+              "spellName": "Shadow Dance"
+            }
+          ],
+          "fullNameZH": "敏锐 盗贼",
+          "descZH": "除了盗贼职业强大的辅助能力外，敏锐贼在下个赛季前没有重大改动。他们的单体伤害是最大优势，这个专精的爆发能力不容小觑。遗憾的是，他们的AOE能力（特别是当[暗影之舞]处于冷却时）相当糟糕，因此需要进一步调整才能获得更高评价。"
+        }
+      ]
+    }
+  ]
+}

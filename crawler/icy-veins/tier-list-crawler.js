@@ -82,9 +82,9 @@ function collectTierList(context) {
             const $detailsContentP = $spec.find('.details-block__content p');
             let desc = $detailsContentP.length
               ? $detailsContentP
-                  .text()
-                  .replace(/\s{2,}/g, ' ')
-                  .replace(/\n/g, ' ')
+                .text()
+                .replace(/\s{2,}/g, ' ')
+                .replace(/\n/g, ' ')
               : null;
 
             const spellDoms = $spec.find('.spell_icon_span');
@@ -183,7 +183,7 @@ function convertDateFormat(dateStr) {
   // 拼接成新的日期格式
   const newDateStr = `${year}/${month}/${dayPadded.slice(
     0,
-    dayPadded.length - 1
+    dayPadded.length - 1,
   )}`;
   return newDateStr;
 }
@@ -194,7 +194,7 @@ function saveFile(data, fileName) {
   const outputPath = path.resolve(__dirname, `./output/${fileName}.json`);
   const copyPath = path.resolve(
     __dirname,
-    `../../backend/database/wow/data/tier-list/${fileName}.json`
+    `../../backend/database/wow/data/tier-list/${fileName}.json`,
   );
   let existedData;
   if (fs.existsSync(outputPath)) {
@@ -205,12 +205,12 @@ function saveFile(data, fileName) {
     if (existedData.updatedAt === data.updatedAt) {
       data.data.forEach((cur) => {
         const existedTier = existedData.data.find(
-          (item) => item.tier === cur.tier
+          (item) => item.tier === cur.tier,
         );
         if (existedTier) {
           cur.children.forEach((child) => {
             let existedChild = existedTier.children.find(
-              (item) => item.classSpec === child.classSpec
+              (item) => item.classSpec === child.classSpec,
             );
 
             if (existedChild) {
@@ -230,7 +230,7 @@ function saveFile(data, fileName) {
       fs.writeFileSync(
         outputPath,
         JSON.stringify(existedData, null, 2),
-        'utf-8'
+        'utf-8',
       );
       fs.writeFileSync(copyPath, JSON.stringify(existedData, null, 2), 'utf-8');
     } else {
@@ -254,17 +254,17 @@ async function translate(data) {
 
     if (specItem.spells?.length) {
       const spells = await querySpellByIds(
-        specItem.spells.map((spell) => Number(spell.spellId))
+        specItem.spells.map((spell) => Number(spell.spellId)),
       );
       specItem.spells.forEach((spell) => {
         const spellData = spells.find(
-          (spellDataItem) => spellDataItem?.id === spell.spellId
+          (spellDataItem) => spellDataItem?.id === spell.spellId,
         );
         if (spellData) {
           if (spellData.name_zh) {
             specItem.desc = specItem.desc.replaceAll(
               spell.spellName,
-              spellData.name_zh
+              spellData.name_zh,
             );
           } else {
             totalIncompleteSpells.push({
@@ -293,11 +293,11 @@ async function translate(data) {
 
   console.log(
     `未注册的spell, 注册中: ${JSON.stringify(
-      totalNullSpells.map((item) => item.id)
-    )}`
+      totalNullSpells.map((item) => item.id),
+    )}`,
   );
   const addNullSpellPromise = totalNullSpells.map((spell) =>
-    queryAddSpell(spell)
+    queryAddSpell(spell),
   );
   await Promise.allSettled(addNullSpellPromise);
   return tierResults.map((item) => item.value);
@@ -306,9 +306,12 @@ async function translate(data) {
 // collectByTierName('mythic-ptr-dps-tier-list');
 
 const promises = [
-  'mythic-dps-tier-list',
-  'mythic-tank-tier-list',
-  'mythic-healer-tier-list',
+  // 'mythic-dps-tier-list',
+  // 'mythic-tank-tier-list',
+  // 'mythic-healer-tier-list',
+  'mythic-ptr-dps-tier-list',
+  'mythic-ptr-tank-tier-list',
+  'mythic-ptr-healer-tier-list',
 ].map((fileName) => collectByTierName(fileName));
 
 const results = await Promise.allSettled(promises);
