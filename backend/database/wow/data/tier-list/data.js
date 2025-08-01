@@ -13,9 +13,9 @@ const __dirname = path.dirname(__filename);
 
 async function insertData() {
   const promises = [
-    'mythic-dps-tier-list',
-    'mythic-healer-tier-list',
-    'mythic-tank-tier-list',
+    'mythic-ptr-dps-tier-list',
+    'mythic-ptr-healer-tier-list',
+    'mythic-ptr-tank-tier-list',
   ].map((filename) => insertTierList(filename));
   const results = await Promise.allSettled(promises);
   const errors = results.filter((result) => result.status !== 'fulfilled');
@@ -26,7 +26,7 @@ async function insertData() {
 
 async function insertTierList(filename) {
   const tierListData = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, `./${filename}.json`))
+    fs.readFileSync(path.resolve(__dirname, `./${filename}.json`)),
   );
 
   const tierLists = await tierListMapper.getTierListByVersion({
@@ -35,7 +35,7 @@ async function insertTierList(filename) {
     activityType: tierListData.activityType,
   });
   const existed = tierLists.find(
-    (item) => item.created_at === tierListData.updatedAt
+    (item) => item.created_at === tierListData.updatedAt,
   );
   const params = {
     versionId: tierListData.versionId,

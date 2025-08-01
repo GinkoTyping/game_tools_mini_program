@@ -87,14 +87,14 @@ export async function queryHomeView(req, res) {
         value: 'rating',
         icon: 'auth-filled',
         page: '/pages/tier-list/index?versionId=11.1&activityType=MYTHIC&role=DPS',
-        feature: false,
+        color: '#e37e00',
+        feature: true,
       },
       {
         label: '专精数据',
         value: 'rating',
         icon: 'fire-filled',
         page: '/pages/spec-popularity/index',
-        feature: true,
       },
       {
         label: '专精攻略',

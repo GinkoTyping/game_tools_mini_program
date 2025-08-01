@@ -84,7 +84,7 @@
       ]
     },
     {
-      "tier": "Comp-dependant",
+      "tier": "依赖队伍阵容",
       "children": [
         {
           "fullNameEN": "Mistweaver Monk",

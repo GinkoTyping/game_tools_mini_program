@@ -238,7 +238,7 @@
       ]
     },
     {
-      "tier": "Comp-Dependant",
+      "tier": "依赖队伍阵容",
       "children": [
         {
           "fullNameEN": "Arms Warrior",

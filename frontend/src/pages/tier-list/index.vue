@@ -60,6 +60,52 @@
   </uni-popup>
   <ShareIcon />
 
+  <uni-popup
+    class="popup-container"
+    ref="detailPopup"
+    mask-background-color="rgba(0,0,0,0.8)"
+  >
+    <image
+      :class="[
+        currentSpec?.roleClass ? currentSpec.roleClass : '',
+        'spce-icon',
+      ]"
+      v-if="currentSpec?.roleClass"
+      :src="getClassIconURL(currentSpec.roleClass, currentSpec.classSpec)"
+    />
+    <uni-card class="desc-card">
+      <view :class="['desc-card__title', currentSpec?.roleClass]">{{
+          currentSpec?.fullNameZH
+        }}
+      </view>
+      <rich-text :nodes="renderTip(currentSpec?.descZH)"></rich-text>
+    </uni-card>
+    <scroll-view
+      v-show="currentSpells?.length"
+      scroll-y="true"
+      class="scroll-y"
+    >
+      <view
+        class="scroll-y__item"
+        v-for="spell in currentSpells"
+        :key="spell.id"
+      >
+        <SpellCard class="spell-card" :spell="spell" />
+      </view>
+    </scroll-view>
+    <view class="popup-container__btn-container">
+      <button
+        class="popup-container__close-btn"
+        @click="() => detailPopup?.close?.()"
+      >
+        <uni-icons color="#007aff" type="closeempty" size="30"></uni-icons>
+      </button>
+      <button class="popup-container__spec-btn" @click="dialogConfirm">
+        <uni-icons color="#ffffff" type="more-filled" size="30"></uni-icons>
+      </button>
+    </view>
+  </uni-popup>
+
   <view class="footer"></view>
 </template>
 
@@ -72,8 +118,8 @@ import SpellCard from '@/components/SpellCard.vue';
 import { getClassIconURL } from '@/hooks/imageGenerator';
 import { renderTip } from '@/hooks/richTextGenerator';
 import {
-  ITierListDTO,
-  ITierSpecDetail,
+  type ITierListDTO,
+  type ITierSpecDetail,
   querySpellsInTip,
 } from '@/api/wow/index';
 import ShareIcon from '@/components/ShareIcon.vue';
@@ -86,16 +132,21 @@ const currentSpells = ref();
 const query = ref();
 const tierListIcons = ref<any>([]);
 onLoad(async (options: any) => {
-  const { versionId, activityType, role } = options;
+  const { activityType, role } = options;
   query.value = options;
   tierListIcons.value = getTierListIcons(options);
   uni.setNavigationBarTitle({
     title: getPageTitle(options),
   });
   tierList.value = await queryTierList({
-    versionId: versionId,
+    versionId: '11.2 - PTR',
     activityType: activityType,
     role: role,
+  });
+
+  uni.showToast({
+    title: '专精图标可点击',
+    icon: 'none',
   });
 });
 
@@ -130,7 +181,7 @@ function switchMenu(e) {
     } else {
       navigator.toTierList(
         {
-          version_id: '11.1',
+          version_id: '11.2 - PTR',
           activity_type: query.value.activityType,
           role: roles[e.currentIndex],
         },
@@ -162,17 +213,9 @@ function getTierListIcons(options: any) {
 }
 
 function getPageTitle(options: any) {
-  const { versionId, activityType, role } = options;
+  const { activityType } = options;
   const title = activityType === 'MYTHIC' ? '大秘境' : '团本';
-  let roleText;
-  if (role.toUpperCase() === 'DPS') {
-    roleText = '输出专精';
-  } else if (role.toUpperCase() === 'HEALER') {
-    roleText = '治疗专精';
-  } else {
-    roleText = '坦克专精';
-  }
-  return `${title} ${roleText} 综合排行`;
+  return `11.2 PTR ${title} 综合排行`;
 }
 
 onShareAppMessage(() => {
@@ -187,13 +230,22 @@ const detailPopup = ref();
 
 async function onClickSpec(spec: ITierSpecDetail) {
   currentSpec.value = spec;
-  comfirmToSpecDetail();
+
+  if (currentSpec.value?.descZH) {
+    currentSpec.value = spec;
+    currentSpells.value = await querySpellsInTip(
+      spec.spells.map(spell => spell.spellId),
+    );
+    detailPopup.value?.open?.();
+  } else {
+    confirmToSpecDetail();
+  }
 }
 
 const alertDialog = ref();
 const dialogContent = ref('');
 
-function comfirmToSpecDetail() {
+function confirmToSpecDetail() {
   dialogContent.value = `查看关于“${currentSpec.value.fullNameZH}”的更多信息 ~`;
   alertDialog.value?.open?.();
 }
@@ -367,8 +419,8 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
   }
 }
 
-.pupup-container__spec-btn,
-.pupup-container__close-btn {
+.popup-container__spec-btn,
+.popup-container__close-btn {
   height: 40px;
   width: 40px;
   padding: 0;
@@ -386,22 +438,22 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
   }
 }
 
-.pupup-container__spec-btn {
+.popup-container__spec-btn {
   background-color: #007aff;
 }
 
-.pupup-container__close-btn {
+.popup-container__close-btn {
   background-color: #fff;
 }
 
-.pupup-container__btn-container {
+.popup-container__btn-container {
   width: 100%;
   position: relative;
   margin-top: 0.4rem;
   display: flex;
   justify-content: flex-end !important;
 
-  .pupup-container__close-btn {
+  .popup-container__close-btn {
     margin-right: 0.6rem;
   }
 }
