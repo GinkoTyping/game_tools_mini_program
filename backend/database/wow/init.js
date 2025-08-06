@@ -30,10 +30,10 @@ const openai = new OpenAI({
 });
 
 const wowheadData = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, './data/wowhead.json'))
+  fs.readFileSync(path.resolve(__dirname, './data/wowhead.json')),
 );
 const maxrollData = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, './data/maxroll.json'))
+  fs.readFileSync(path.resolve(__dirname, './data/maxroll.json')),
 );
 const CACHE_PATH = path.join(__dirname, './data/translationCache.json');
 const translationCacheData = JSON.parse(fs.readFileSync(CACHE_PATH, 'utf-8'));
@@ -52,22 +52,24 @@ async function createBisTable(db) {
   }
   // bis_type 0：overall 1：raid 2：mythic
   await db.run(`
-    CREATE TABLE IF NOT EXISTS wow_bis (
-      id INTEGER PRIMARY KEY,
-      role_class TEXT NOT NULL,
-      class_spec TEXT NOT NULL,
-      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      version TEXT,
-      stats_priority TEXT NOT NULL,
-      ratings TEXT NOT NULL,
-      bis_items TEXT NOT NULL,
-      bis_trinkets TEXT NOT NULL,
-      sort INTEGER DEFAULT 0,
-      spec_sort INTEGER DEFAULT 0
-    )`);
+      CREATE TABLE IF NOT EXISTS wow_bis
+      (
+          id             INTEGER PRIMARY KEY,
+          role_class     TEXT NOT NULL,
+          class_spec     TEXT NOT NULL,
+          created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          version        TEXT,
+          stats_priority TEXT NOT NULL,
+          ratings        TEXT NOT NULL,
+          bis_items      TEXT NOT NULL,
+          bis_trinkets   TEXT NOT NULL,
+          sort           INTEGER   DEFAULT 0,
+          spec_sort      INTEGER   DEFAULT 0
+      )`);
   console.log('创建 wow_bis表 完成。');
 }
+
 async function updateWowheadData() {
   function mapItems(items) {
     return items
@@ -75,6 +77,7 @@ async function updateWowheadData() {
       .map((item) => item.id)
       .join('@');
   }
+
   const formattedData = Object.entries(wowheadData).reduce(
     (pre, [roleClass, specs]) => {
       specs.forEach((spec) => {
@@ -102,22 +105,24 @@ async function updateWowheadData() {
       });
       return pre;
     },
-    []
+    [],
   );
   const promises = formattedData.map((item) => updateBisItem(item));
   const result = await Promise.allSettled(promises);
   handleBisItemRes(result, 'wowhead');
 }
+
 async function updateMaxrollData() {
   const promises = maxrollData.map((item) => updateBisItem(item));
   const result = await Promise.allSettled(promises);
   handleBisItemRes(result, 'maxroll');
 }
+
 async function updateBisItem(dataItem) {
   try {
     const existedItem = await bisMapper.getBisByClassAndSpec(
       dataItem.roleClass,
-      dataItem.classSpec
+      dataItem.classSpec,
     );
 
     if (dataItem.talents?.length) {
@@ -140,6 +145,7 @@ async function updateBisItem(dataItem) {
     });
   }
 }
+
 async function updateBisSort() {
   const output = Object.entries(wowheadData).reduce(
     (pre, [key, value], classIndex) => {
@@ -151,7 +157,7 @@ async function updateBisSort() {
 
       return pre;
     },
-    {}
+    {},
   );
 
   console.log(output);
@@ -165,14 +171,15 @@ function handleBisItemRes(result, tag) {
       errors
         .map(
           (item) =>
-            `插入失败：${item.value.classSpec} ${item.value.roleClass}, ${item.value.message}`
+            `插入失败：${item.value.classSpec} ${item.value.roleClass}, ${item.value.message}`,
         )
-        .join(';')
+        .join(';'),
     );
   } else {
     console.log(`插入${tag}的数据成功。`);
   }
 }
+
 //#endregion
 
 //#region 装备物品
@@ -181,21 +188,24 @@ async function createItemTable(db) {
     throw new Error('DB missing.');
   }
   await db.run(`
-    CREATE TABLE IF NOT EXISTS wow_item (
-      id INTEGER PRIMARY KEY NOT NULL,
-      slot TEXT,
-      name TEXT NOT NULL,
-      source TEXT,
-      image TEXT,
-      preview TEXT
-    )`);
+      CREATE TABLE IF NOT EXISTS wow_item
+      (
+          id      INTEGER PRIMARY KEY NOT NULL,
+          slot    TEXT,
+          name    TEXT                NOT NULL,
+          source  TEXT,
+          image   TEXT,
+          preview TEXT
+      )`);
   console.log('创建 wow_item表 完成。');
 }
+
 async function updateItemData() {
   function isIncludeLetter(input) {
     const regex = /[a-zA-Z]/;
     return regex.test(input);
   }
+
   function searchItems(output, items) {
     items.forEach((item) => {
       if (!item || item.item === 'Item') {
@@ -215,7 +225,7 @@ async function updateItemData() {
             return true;
           }
           console.log(
-            `检测到名称相同的物品, 具体不同的ID，均已录入，请手动核实有效ID。物品名称：${outputItem.item}`
+            `检测到名称相同的物品, 具体不同的ID，均已录入，请手动核实有效ID。物品名称：${outputItem.item}`,
           );
           return false;
         }
@@ -269,15 +279,17 @@ async function updateItemData() {
   if (errors.length) {
     errors.forEach((errorItem) => {
       console.log(
-        `插入 装备数据 失败：${errorItem.reason.name}, ${errorItem.reason.message}`
+        `插入 装备数据 失败：${errorItem.reason.name}, ${errorItem.reason.message}`,
       );
     });
   } else {
     console.log('插入 装备数据 成功。');
   }
 }
+
 async function updateItemDataByBlizz() {
   const data = await itemMapper.getUntranslated();
+
   async function updateEachItem(item) {
     const blizzData = await queryBlizzItemById(item.id);
     await itemMapper.updateItemById({
@@ -287,6 +299,7 @@ async function updateItemDataByBlizz() {
       preview: JSON.stringify(blizzData),
     });
   }
+
   const promises = data.map((item) => updateEachItem(item));
   const results = await Promise.allSettled(promises);
   const errors = results.filter((result) => result.status !== 'fulfilled');
@@ -296,6 +309,7 @@ async function updateItemDataByBlizz() {
     console.log(`更新装备信息成功计数: ${results.length}`);
   }
 }
+
 //#endregion
 
 //#region 地下城
@@ -303,14 +317,16 @@ async function createDungeonTable(db) {
   if (!db) {
     throw new Error('DB missing.');
   }
-  await db.run(`CREATE TABLE IF NOT EXISTS wow_dungeon (
-    id INTEGER PRIMARY KEY NOT NULL,
-    name_zh TEXT NOT NULL,
-    name_en TEXT NOT NULL,
-    booses TEXT
-  )`);
+  await db.run(`CREATE TABLE IF NOT EXISTS wow_dungeon
+                (
+                    id      INTEGER PRIMARY KEY NOT NULL,
+                    name_zh TEXT                NOT NULL,
+                    name_en TEXT                NOT NULL,
+                    booses  TEXT
+                )`);
   console.log('创建 wow_dungeon表 完成。');
 }
+
 async function updateDungeonData() {
   try {
     const data = await blizzAPI.query(
@@ -319,23 +335,27 @@ async function updateDungeonData() {
         params: {
           namespace: 'dynamic-us',
         },
-      }
+      },
     );
+
     async function insertDungeon(dungeon) {
       try {
-        await dungeonMapper.insertDungeon(
-          dungeon.id,
-          dungeon.name.zh_CN,
-          dungeon.name.en_US
-        );
-        return { id: dungeon.id, message: 'Insert succeed.' };
+        const existed = await dungeonMapper.getDungeonsById(dungeon.id);
+        if (!existed?.length) {
+          await dungeonMapper.insertDungeon(
+            dungeon.id,
+            dungeon.name.zh_CN,
+            dungeon.name.en_US,
+          );
+          return { id: dungeon.id, message: 'Insert succeed.' };
+        }
       } catch (error) {
         return Promise.reject({ id: dungeon.id, message: error.message });
       }
     }
 
     const dungeonPromises = data.dungeons.map((dungeon) =>
-      insertDungeon(dungeon)
+      insertDungeon(dungeon),
     );
     const res = await Promise.allSettled(dungeonPromises);
     const hasError = res.filter((item) => item.status !== 'fulfilled');
@@ -343,13 +363,14 @@ async function updateDungeonData() {
       console.log(
         `以下地下城插入表失败 :${hasError
           .map((item) => item.reason.id)
-          .join(',')}`
+          .join(',')}`,
       );
     }
   } catch (error) {
     console.log(error);
   }
 }
+
 //#endregion
 
 //#region 地下城tip
@@ -358,15 +379,16 @@ async function createDungeonTipTable(db) {
     throw new Error('DB missing.');
   }
 
-  await db.run(`CREATE TABLE IF NOT EXISTS wow_dungeon_tip(
-    id INTEGER PRIMARY KEY NOT NULL,
-    role_class TEXT NOT NULL,
-    class_spec TEXT NOT NULL,
-    dungeon_id INTEGER NOT NULL,
-    tips TEXT NOT NULL,
-    tips_en TEXT NOT NULL,
-    FOREIGN KEY(dungeon_id) REFERENCES wow_dungeon(id)
-  )`);
+  await db.run(`CREATE TABLE IF NOT EXISTS wow_dungeon_tip
+                (
+                    id         INTEGER PRIMARY KEY NOT NULL,
+                    role_class TEXT                NOT NULL,
+                    class_spec TEXT                NOT NULL,
+                    dungeon_id INTEGER             NOT NULL,
+                    tips       TEXT                NOT NULL,
+                    tips_en    TEXT                NOT NULL,
+                    FOREIGN KEY (dungeon_id) REFERENCES wow_dungeon (id)
+                )`);
 }
 
 function loadTranslationCache() {
@@ -388,6 +410,7 @@ function loadTranslationCache() {
     return translationCache;
   }
 }
+
 function saveTranslationCache(input) {
   try {
     // 将 Map 转换为普通对象
@@ -406,6 +429,7 @@ async function updateDungeonTipData() {
   const trashTipMap = {};
   const dungeonBossesCache = {};
   const translationCache = loadTranslationCache();
+
   async function insertTip(roleClass, classSpec, tip) {
     let currentDungeon;
     try {
@@ -422,12 +446,12 @@ async function updateDungeonTipData() {
       const existedDungeonTip = await dungeonTipMapper.getDungeonTipByCondition(
         roleClass,
         classSpec,
-        currentDungeon.id
+        currentDungeon.id,
       );
 
       const translatedTip = await translateDungeonTip(
         tip.children,
-        tip.dungeonTitle
+        tip.dungeonTitle,
       );
 
       const params = {
@@ -462,9 +486,10 @@ async function updateDungeonTipData() {
       });
     }
   }
+
   async function insertSpec(spec) {
     const tipPromises = spec.dungeonTips.map((tip) =>
-      insertTip(spec.roleClass, spec.classSpec, tip)
+      insertTip(spec.roleClass, spec.classSpec, tip),
     );
     const insertTipResults = await Promise.allSettled(tipPromises);
     const errors = insertTipResults.filter((res) => res.status !== 'fulfilled');
@@ -476,14 +501,17 @@ async function updateDungeonTipData() {
       console.log(`插入 地下城TIPS 成功：${spec.classSpec} ${spec.roleClass}`);
     }
   }
+
   async function translateDungeonTip(tips, dungeonTitle) {
     if (!tips?.length) {
       return [];
     }
+
     async function getSpellNameById(spell) {
       const spellData = await spellMapper.getSpellById(spell.id);
       return { titleOrigin: spell.title, titleZH: spellData.name_zh };
     }
+
     async function recurseTranslate(tip, dungeonTitle) {
       if (tip.title === 'Trash Tips') {
         tip.title = '小怪';
@@ -514,7 +542,7 @@ async function updateDungeonTipData() {
           }
         }
         const boss = dungeonBossesCache[dungeonTitle]?.find(
-          (item) => item.name.en_US === tip.title
+          (item) => item.name.en_US === tip.title,
         );
         tip.title = boss?.name.zh_CN ?? tip.title;
         tip.children = await translateDungeonTip(tip.children, dungeonTitle);
@@ -523,12 +551,12 @@ async function updateDungeonTipData() {
       } else if (tip.totalText) {
         // 准备好翻译过的spell
         const validSpells = tip.spells?.filter(
-          (spell) => spell.id && spell.title
+          (spell) => spell.id && spell.title,
         );
         let translatedSpells = [];
         if (validSpells?.length) {
           const spellPromises = validSpells.map((spell) =>
-            getSpellNameById(spell)
+            getSpellNameById(spell),
           );
           const spellResults = await Promise.allSettled(spellPromises);
           translatedSpells = spellResults.map((result) => result.value);
@@ -539,7 +567,7 @@ async function updateDungeonTipData() {
           translatedSpells.forEach((spell) => {
             tip.totalText = tip.totalText.replaceAll(
               spell.titleOrigin,
-              spell.titleZH
+              spell.titleZH,
             );
           });
         }
@@ -558,7 +586,7 @@ async function updateDungeonTipData() {
       if (translationCache.has(value)) {
         translatedSuccessCount++;
         console.log(
-          `翻译成功(缓存)：${translatedSuccessCount} / ${translatedTotalCount}`
+          `翻译成功(缓存)：${translatedSuccessCount} / ${translatedTotalCount}`,
         );
         return translationCache.get(value);
       }
@@ -569,6 +597,7 @@ async function updateDungeonTipData() {
           value
         );
       }
+
       const limiter = new Bottleneck({
         maxConcurrent: 5, // 适当并行
         minTime: 50, // 50ms间隔 → 20次/秒
@@ -588,12 +617,12 @@ async function updateDungeonTipData() {
         translationCache.set(value, translatedText);
         translatedSuccessCount++;
         console.log(
-          `翻译成功：${translatedSuccessCount} / ${translatedTotalCount}`
+          `翻译成功：${translatedSuccessCount} / ${translatedTotalCount}`,
         );
         return translatedText;
       } catch (error) {
         console.log(
-          `翻译失败：${translatedSuccessCount} / ${translatedTotalCount}`
+          `翻译失败：${translatedSuccessCount} / ${translatedTotalCount}`,
         );
         console.log(error);
         return value;
@@ -601,7 +630,7 @@ async function updateDungeonTipData() {
     }
 
     const translatePromise = tips.map((tip) =>
-      recurseTranslate(tip, dungeonTitle)
+      recurseTranslate(tip, dungeonTitle),
     );
     await Promise.allSettled(translatePromise);
     return tips;
@@ -609,7 +638,7 @@ async function updateDungeonTipData() {
 
   const limit = pLimit(1);
   const insertSpecPromises = maxrollData.map((spec) =>
-    limit(() => insertSpec(spec))
+    limit(() => insertSpec(spec)),
   );
   await Promise.allSettled(insertSpecPromises);
 
@@ -627,6 +656,7 @@ async function updateDungeonTipData() {
     saveTranslationCache(translationCache).then(() => process.exit());
   });
 }
+
 //#endregion
 
 //#region 法术
@@ -634,22 +664,24 @@ async function createSpellTable(db) {
   if (!db) {
     throw new Error('DB missing.');
   }
-  await db.run(`CREATE TABLE IF NOT EXISTS wow_spell(
-    id INTEGER PRIMARY KEY NOT NULL,
-    id_wow_db INTEGER,
-    name_en TEXT,
-    name_zh TEXT,
-    range INTEGER,
-    cost TEXT,
-    cast_time REAL,
-    cooldown INTEGER,
-    description TEXT
-  )`);
+  await db.run(`CREATE TABLE IF NOT EXISTS wow_spell
+                (
+                    id          INTEGER PRIMARY KEY NOT NULL,
+                    id_wow_db   INTEGER,
+                    name_en     TEXT,
+                    name_zh     TEXT,
+                    range       INTEGER,
+                    cost        TEXT,
+                    cast_time   REAL,
+                    cooldown    INTEGER,
+                    description TEXT
+                )`);
 }
 
 // 弃用：暴雪接口不稳定，数据不全。 不如直接爬 wowhead
 async function updateSpellData() {
   const limit = pLimit(10);
+
   function collectAllSpells(data) {
     const result = [];
 
@@ -665,6 +697,7 @@ async function updateSpellData() {
     data.forEach((item) => traverse(item));
     return result;
   }
+
   async function querySpell(spell) {
     let err;
 
@@ -684,7 +717,7 @@ async function updateSpellData() {
       });
       hasSearchName = true;
       const matched = spellByName?.results.find(
-        (item) => item.data.name.en_US === spell.title
+        (item) => item.data.name.en_US === spell.title,
       );
       if (matched) {
         hasFoundMatchedName = true;
@@ -696,13 +729,13 @@ async function updateSpellData() {
             params: {
               namespace: 'static-us',
             },
-          }
+          },
         );
         hasSearchFixedId = true;
         if (spellByFixId?.description) {
           currentCount++;
           console.log(
-            `有数据，总进度: ${currentCount} / ${totalCount} ~ ${spellByFixId.name.zh_CN}`
+            `有数据，总进度: ${currentCount} / ${totalCount} ~ ${spellByFixId.name.zh_CN}`,
           );
           return {
             ...spell,
@@ -721,7 +754,7 @@ async function updateSpellData() {
           hasFoundMatchedName ? '√' : 'x'
         }, 查询ID: ${hasSearchFixedId ? '√' : 'x'}, 原因: ${
           err?.message
-        } ,总进度: ${currentCount} / ${totalCount} ~${spell.title}`
+        } ,总进度: ${currentCount} / ${totalCount} ~${spell.title}`,
       );
       return { ...spell, nameEN: spell.title, error: err };
     } catch (error) {
@@ -732,6 +765,7 @@ async function updateSpellData() {
       return { ...spell, nameEN: spell.title, error: err };
     }
   }
+
   async function insertSpell(spell) {
     try {
       const existedSpell = await spellMapper.getSpellById(spell.id);
@@ -771,6 +805,7 @@ async function updateSpellData() {
 
   console.log(spellHasDesc);
 }
+
 //#endregion
 
 export async function init() {

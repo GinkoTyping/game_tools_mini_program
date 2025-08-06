@@ -21,6 +21,7 @@ export async function queryMythicDungeonById(req, res) {
   }
 
   const dungeons = JSON.parse(data.enemy_tips);
+
   async function getNpcAndSpellCounts() {
     const npcs = [];
     const spells = [];
@@ -40,11 +41,11 @@ export async function queryMythicDungeonById(req, res) {
 
     const npcCounts = await npcAndSpellMarkMapper.getNpcOrSpellCountByIds(
       npcs,
-      true
+      true,
     );
     const spellCounts = await npcAndSpellMarkMapper.getNpcOrSpellCountByIds(
       spells,
-      false
+      false,
     );
 
     return {
@@ -52,6 +53,7 @@ export async function queryMythicDungeonById(req, res) {
       spells: spellCounts,
     };
   }
+
   const { spells, npcs } = await getNpcAndSpellCounts();
 
   function setTipCounts() {
@@ -61,11 +63,12 @@ export async function queryMythicDungeonById(req, res) {
       part.data = part.data.map((item) => ({
         ...item,
         count: reference.find(
-          (referenceItem) => Number(referenceItem.id) === Number(item[key])
+          (referenceItem) => Number(referenceItem.id) === Number(item[key]),
         )?.count,
       }));
     });
   }
+
   setTipCounts();
 
   res.json({
@@ -80,7 +83,10 @@ export async function queryMythicDungeonById(req, res) {
 }
 
 export async function queryMythicDungeonList(req, res) {
-  const data = await mythicDungeonMapper.getMythicDunegonList();
+  const data = await (
+    req.query?.patch
+      ? mythicDungeonMapper.getCurrentSeasonMythicDungeonList()
+      : mythicDungeonMapper.getMythicDungeonList());
   const counts = await mythicDungeonCountMapper.getMythicDungeonCountList();
   res.json(
     data
@@ -90,6 +96,6 @@ export async function queryMythicDungeonList(req, res) {
           counts?.find((countItem) => countItem.id === item.id)?.count ?? 0,
         ratings: JSON.parse(item.ratings),
       }))
-      .sort((a, b) => b.count - a.count)
+      .sort((a, b) => b.count - a.count),
   );
 }

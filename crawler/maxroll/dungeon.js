@@ -21,7 +21,7 @@ import roleClassLabel from '../util/class-spec-locales.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const deepseek = useDeepseek(
-  path.resolve(__dirname, './cache/translate/index.json')
+  path.resolve(__dirname, './cache/translate/index.json'),
 );
 
 //#region 大秘境路线 和 评分
@@ -63,6 +63,7 @@ function getRoutesAndContainer(context, ele) {
   }
   return null;
 }
+
 function getDungeonRating(context, ele) {
   const $ = context;
   const ratings = $(ele)
@@ -75,7 +76,7 @@ function getDungeonRating(context, ele) {
           .children()
           .first()
           .find('span')
-          .filter(function (i, el) {
+          .filter(function(i, el) {
             return $(this).attr('class').includes('bg-grey-425');
           }).length;
       let label;
@@ -105,6 +106,7 @@ function getDungeonRating(context, ele) {
     .get();
   return ratings;
 }
+
 async function getRoutesAndRatings(context, dungeonName) {
   const $ = context;
   const headerReference = $('#route-header')
@@ -119,14 +121,15 @@ async function getRoutesAndRatings(context, dungeonName) {
         item.imageSrc,
         path.resolve(
           __dirname,
-          `../../backend/assets/wow/mythic-route/${dungeonName}-${item.title}.webp`
-        )
-      )
-    )
+          `../../backend/assets/wow/mythic-route/${dungeonName}-${item.title}.webp`,
+        ),
+      ),
+    ),
   );
 
   return { routes, ratings };
 }
+
 //#endregion
 
 //#region 能力技要求
@@ -141,6 +144,7 @@ function getTitle(title) {
   };
   return locales[title.toLowerCase()];
 }
+
 async function getUtilityNeeds(context) {
   const $ = context;
   const headerReference = $('#utility-needs-header')
@@ -206,7 +210,7 @@ async function getUtilityNeeds(context) {
                     .replaceAll(' ', '-')
                     .replace(/[\u00A0\u200D]/g, '')
                     .toLowerCase()
-                ],
+                  ],
               id,
               name,
             };
@@ -222,22 +226,23 @@ async function getUtilityNeeds(context) {
   async function translateUtilitySpells(utilityTpye) {
     const { spell, utility } = utilityTpye;
     const spellResults = await Promise.allSettled(
-      spell.map((item) => translateSpellName(item))
+      spell.map((item) => translateSpellName(item)),
     );
     utilityTpye.spell = spellResults.map((item) => item.value);
 
     const utilityResults = await Promise.allSettled(
-      utility.map((item) => translateSpellName(item))
+      utility.map((item) => translateSpellName(item)),
     );
     utilityTpye.utility = utilityResults.map((item) => item.value);
     return utilityTpye;
   }
 
   const results = await Promise.allSettled(
-    utilityNeeds.map((item) => translateUtilitySpells(item))
+    utilityNeeds.map((item) => translateUtilitySpells(item)),
   );
   return results.map((item) => item.value);
 }
+
 //#endregion
 
 //#region BOSS 及 小怪处理
@@ -249,7 +254,7 @@ function getBossAndTrashSeletors(context) {
     .map((i, ele) => {
       return $(ele)
         .attr('href')
-        .replaceAll("'", "\\'")
+        .replaceAll('\'', '\\\'')
         .replaceAll(',', '\\,')
         .replaceAll('.', '\\.');
     })
@@ -262,12 +267,13 @@ function getBossAndTrashSeletors(context) {
           '#lootpool-header',
           '#changelog-header',
           '#dungeon-extras-specials-header',
-        ].includes(selector)
+        ].includes(selector),
     );
 }
+
 async function getBossAndTrashTitle(context, dungeonData, selector) {
   const $ = context;
-  const title = $(selector).text().trim().toLowerCase();
+  const title = $(selector).text().trim().toLowerCase().replace(/\s+/g, ' ');
 
   // TODO: 适配 cinderbrew-meadery-guide 错误单词 Thrash Area
   const type = title.includes('rash area') ? 'trash' : 'boss';
@@ -278,7 +284,7 @@ async function getBossAndTrashTitle(context, dungeonData, selector) {
     .trim();
 
   const bossNameZH = JSON.parse(dungeonData?.bosses)?.find(
-    (item) => item.name.en_US.toLowerCase() === bossName
+    (item) => item.name.en_US.toLowerCase() === bossName,
   )?.name.zh_CN;
 
   translatedTitle = `"${bossNameZH}"${translatedTitle}`;
@@ -309,7 +315,7 @@ async function traverseCollectUl(context, ulEle) {
   const $ = context;
   const liEles = $(ulEle).children('li').get();
   const results = await Promise.allSettled(
-    liEles.map((liEle) => translateSpellsInText(context, liEle))
+    liEles.map((liEle) => translateSpellsInText(context, liEle)),
   );
   return results.map((item) => item.value);
 }
@@ -341,7 +347,7 @@ async function translateSpellsInText(context, liEle) {
       .get();
 
     const results = await Promise.allSettled(
-      spells.map((spell) => translateSpellName(spell))
+      spells.map((spell) => translateSpellName(spell)),
     );
 
     results.forEach((result) => {
@@ -368,6 +374,7 @@ async function translateSpellsInText(context, liEle) {
     const unranslatedSpells = spells.filter((spell) => !spell.nameZH);
     return !unranslatedSpells.length;
   }
+
   if (allowTranslate) {
     text = await deepseek.translate(text);
   } else {
@@ -376,6 +383,7 @@ async function translateSpellsInText(context, liEle) {
 
   return { text, spells, children };
 }
+
 async function translateTrash(trash) {
   try {
     const data = await queryNpcByName(trash.trashName);
@@ -392,6 +400,7 @@ async function translateTrash(trash) {
     return trash;
   }
 }
+
 async function getTrash(context, containerEle) {
   const $ = context;
   let rowOutput = $(containerEle)
@@ -416,7 +425,7 @@ async function getTrash(context, containerEle) {
     .get();
 
   const translatedTrashResults = await Promise.allSettled(
-    rowOutput.map((item) => translateTrash(item))
+    rowOutput.map((item) => translateTrash(item)),
   );
   rowOutput = translatedTrashResults.map((item) => item.value);
 
@@ -426,13 +435,13 @@ async function getTrash(context, containerEle) {
         item.trashImage,
         path.resolve(
           __dirname,
-          `../../backend/assets/wow/creature/${item.trashName}.webp`
-        )
-      )
-    )
+          `../../backend/assets/wow/creature/${item.trashName}.webp`,
+        ),
+      ),
+    ),
   );
   const ulsOutput = await Promise.allSettled(
-    rowOutput.map((item) => traverseCollectUl($, item.textUl))
+    rowOutput.map((item) => traverseCollectUl($, item.textUl)),
   );
 
   rowOutput.forEach((item, index) => {
@@ -474,13 +483,13 @@ async function getBossSpell(context, containerEle, index) {
 
   const imageSrc = $(imageEle).find('img')?.attr('src');
   const image = `${spellNameEN}.gif`;
-  
+
   // 避免下载失败 函数终止
   try {
     if (imageSrc) {
       await downloadSingle(
         imageSrc,
-        path.resolve(__dirname, `../../backend/assets/wow/spell/${image}`)
+        path.resolve(__dirname, `../../backend/assets/wow/spell/${image}`),
       );
     }
   } catch (error) {
@@ -496,6 +505,7 @@ async function getBossSpell(context, containerEle, index) {
     data: text,
   };
 }
+
 async function getBoss(context, containerEle) {
   const $ = context;
 
@@ -506,17 +516,18 @@ async function getBoss(context, containerEle) {
   const spellIndexArray = new Array(spellCount).fill(1);
   const results = await Promise.allSettled(
     spellIndexArray.map((item, index) =>
-      getBossSpell(context, containerEle, index)
-    )
+      getBossSpell(context, containerEle, index),
+    ),
   );
   return results.map((result) => result.value);
 }
+
 async function getBossAndTrashDetail(context, dungeonData, selector) {
   const $ = context;
   const { title, type } = await getBossAndTrashTitle(
     context,
     dungeonData,
-    selector
+    selector,
   );
   const reference = $(selector).parentsUntil('#main-article').last();
   if (!reference.length) {
@@ -539,11 +550,12 @@ async function getBossAndTrashDetail(context, dungeonData, selector) {
   }
   return detailData;
 }
+
 async function getBossAndTrash(context, url, dungeonData) {
   const $ = context;
   const titles = getBossAndTrashSeletors(context);
   const results = await Promise.allSettled(
-    titles.map((selector) => getBossAndTrashDetail($, dungeonData, selector))
+    titles.map((selector) => getBossAndTrashDetail($, dungeonData, selector)),
   );
 
   deepseek.saveTranslationCache();
@@ -554,6 +566,7 @@ async function getBossAndTrash(context, url, dungeonData) {
   });
   return results.map((item) => item.value);
 }
+
 //#endregion
 
 //#region 装备池
@@ -561,8 +574,10 @@ const limiter = new Bottleneck({
   maxConcurrent: 20,
   minTime: 30,
 });
+
 async function getLootByType(context, containerEle, index) {
   const $ = context;
+
   function mapTypeName(type) {
     switch (type.toLowerCase()) {
       case 'trinkets/jewelry':
@@ -614,6 +629,7 @@ async function getLootByType(context, containerEle, index) {
     }
     return type.toLowerCase();
   }
+
   async function parseItemByRow(row) {
     const type = mapTypeName($(row).children().first().text());
     const itemEle = $(row).children().last().find('span[data-wow-item]');
@@ -636,6 +652,7 @@ async function getLootByType(context, containerEle, index) {
       imageSrc,
     };
   }
+
   const type = mapTypeName(
     $(containerEle)
       .children()
@@ -644,7 +661,7 @@ async function getLootByType(context, containerEle, index) {
       .eq(index)
       .text()
       .trim()
-      .toLowerCase()
+      .toLowerCase(),
   );
   const loots = $(containerEle)
     .children()
@@ -654,7 +671,7 @@ async function getLootByType(context, containerEle, index) {
     .find('tr')
     .get();
   const results = await Promise.allSettled(
-    loots.map((item) => parseItemByRow(item))
+    loots.map((item) => parseItemByRow(item)),
   );
   return {
     type,
@@ -670,10 +687,11 @@ async function getLootPoll(context) {
   const typeArray = new Array(typeCount).fill(1);
 
   const results = await Promise.allSettled(
-    typeArray.map((item, index) => getLootByType($, lootPoolEle, index))
+    typeArray.map((item, index) => getLootByType($, lootPoolEle, index)),
   );
   return results.map((result) => result.value);
 }
+
 //#endregion
 
 async function collect(url) {
@@ -703,7 +721,7 @@ async function collect(url) {
     const dungeonData = await getDungeonData(url);
     const { routes, ratings } = await getRoutesAndRatings(
       $,
-      dungeonData.name_en
+      dungeonData.name_en,
     );
     const utilityNeeds = await getUtilityNeeds($);
     const enemyTips = await getBossAndTrash($, url, dungeonData);
@@ -730,11 +748,11 @@ async function collect(url) {
 function saveFile(data, fileName) {
   const outputPath = path.resolve(
     __dirname,
-    `./output/mythic/${fileName}.json`
+    `./output/mythic/${fileName}.json`,
   );
   const copyPath = path.resolve(
     __dirname,
-    `../../backend/database/wow/data/mythic/${fileName}.json`
+    `../../backend/database/wow/data/mythic/${fileName}.json`,
   );
 
   let existedData = [];
@@ -745,7 +763,7 @@ function saveFile(data, fileName) {
   data.forEach((item) => {
     let existedIndex = existedData.findIndex(
       (existedItem) =>
-        existedItem.dungeonEN && existedItem.dungeonEN === item.dungeonEN
+        existedItem.dungeonEN && existedItem.dungeonEN === item.dungeonEN,
     );
     if (existedIndex !== -1) {
       existedData.splice(existedIndex, 1, item);
@@ -761,19 +779,20 @@ function saveFile(data, fileName) {
 const crawlerLimiter = new Bottleneck({
   maxConcurrent: 2,
 });
+
 async function startCrawler() {
   const mythicDungeons = [
-    'theater-of-pain-guide',
-    'the-rookery-guide',
-    'the-motherlode-guide',
+    'the-dawnbreaker-guide',
+    'tazavesh-streets-of-wonder-guide',
+    'ara-kara-city-of-echoes-guide',
+    'eco-dome-aldani-guide',
+    'halls-of-atonement-guide',
+    'tazavesh-soleahs-gambit-guide',
     'priory-of-the-sacred-flame-guide',
-    'operation-mechagon-workshop-guide',
     'operation-floodgate-guide',
-    'darkflame-cleft-guide',
-    'cinderbrew-meadery-guide',
   ];
   const results = await Promise.allSettled(
-    mythicDungeons.map((item) => crawlerLimiter.schedule(() => collect(item)))
+    mythicDungeons.map((item) => crawlerLimiter.schedule(() => collect(item))),
   );
 
   const errors = results.filter((item) => item.status !== 'fulfilled');

@@ -623,7 +623,7 @@ export async function queryMythicDungeonById(id: number) {
 
 export async function queryMythicDunegonList() {
   const res: any = await proxyRequest({
-    url: `/wow/mythic-dungeon/list`,
+    url: `/wow/mythic-dungeon/list?patch=11-2`,
   });
 
   function mapTierText(tier: string) {

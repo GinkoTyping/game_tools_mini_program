@@ -29,13 +29,13 @@ async function updateDungeonTable() {
         namespace: 'static-us',
         locale: 'zh_CN',
       },
-    }
+    },
   );
 
   async function updateDungeonItem(dungeon, journals) {
     try {
       const journal = journals.dungeons.find(
-        (item) => item.name === dungeon.name_zh
+        (item) => item.name === dungeon.name_zh || item.id === dungeon.journal_id,
       );
       if (journal) {
         const dungeonDetail = await api.query(
@@ -44,7 +44,7 @@ async function updateDungeonTable() {
             params: {
               namespace: 'static-us',
             },
-          }
+          },
         );
 
         const bosses = dungeonDetail.encounters.map((boss) => {
@@ -70,7 +70,7 @@ async function updateDungeonTable() {
   }
 
   const promises = dungeons.map((item) =>
-    limiter.schedule(() => updateDungeonItem(item, journals))
+    limiter.schedule(() => updateDungeonItem(item, journals)),
   );
   const results = await Promise.allSettled(promises);
   const errors = results.filter((result) => result.status !== 'fulfilled');
