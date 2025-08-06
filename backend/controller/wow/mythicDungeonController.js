@@ -28,7 +28,7 @@ export async function queryMythicDungeonById(req, res) {
     dungeons.forEach((part) => {
       part.data.forEach((item) => {
         if (part.type === 'trash') {
-          if (!npcs.some((item) => item === item.trashId)) {
+          if (!npcs.some((item) => item === item?.trashId)) {
             npcs.push(item.trashId);
           }
         } else {
@@ -83,10 +83,7 @@ export async function queryMythicDungeonById(req, res) {
 }
 
 export async function queryMythicDungeonList(req, res) {
-  const data = await (
-    req.query?.patch
-      ? mythicDungeonMapper.getCurrentSeasonMythicDungeonList()
-      : mythicDungeonMapper.getMythicDungeonList());
+  const data = await mythicDungeonMapper.getCurrentSeasonMythicDungeonList();
   const counts = await mythicDungeonCountMapper.getMythicDungeonCountList();
   res.json(
     data
