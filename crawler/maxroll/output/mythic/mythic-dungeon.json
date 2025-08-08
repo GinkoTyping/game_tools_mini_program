@@ -16012,8 +16012,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Customs Security",
+            "trashName": "海关保安 <佐财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Customs-Security.webp",
+            "trashId": 177807,
             "data": [
               {
                 "text": "所需魔法净化：",
@@ -16075,8 +16076,9 @@
             ]
           },
           {
-            "trashName": "Support Officer",
+            "trashName": "支援警官 <佐财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Support-Officer.webp",
+            "trashId": 177817,
             "data": [
               {
                 "text": "所需打断：",
@@ -16127,8 +16129,9 @@
             ]
           },
           {
-            "trashName": "Portalmancer Zo'honn",
+            "trashName": "传送门操控师佐·霍恩 <佐财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Portalmancer-Zohonn.webp",
+            "trashId": 179334,
             "data": [
               {
                 "text": "所需打断：",
@@ -16190,8 +16193,9 @@
             ]
           },
           {
-            "trashName": "Interrogation Specialist",
+            "trashName": "审讯专员 <佐财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Interrogation-Specialist.webp",
+            "trashId": 177816,
             "data": [
               {
                 "text": "所需打断：",
@@ -16219,8 +16223,9 @@
             ]
           },
           {
-            "trashName": "Gatewarden Zo'mazz",
+            "trashName": "大门看护者佐·马兹 <佐财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Gatewarden-Zomazz.webp",
+            "trashId": 178392,
             "data": [
               {
                 "text": "[代打]",
@@ -16259,8 +16264,9 @@
             ]
           },
           {
-            "trashName": "Armored Overseer",
+            "trashName": "装甲监工 <佐财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Armored-Overseer.webp",
+            "trashId": 177808,
             "data": [
               {
                 "text": "[代打]",
@@ -16469,8 +16475,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Frenzied Nightclaw",
+            "trashName": "狂乱的夜爪豹",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Frenzied-Nightclaw.webp",
+            "trashId": 180567,
             "data": [
               {
                 "text": "[狂乱割裂]",
@@ -16492,8 +16499,9 @@
             ]
           },
           {
-            "trashName": "Ancient Core Hound",
+            "trashName": "上古熔火恶犬",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ancient-Core-Hound.webp",
+            "trashId": 180091,
             "data": [
               {
                 "text": "所需打断：",
@@ -16544,8 +16552,9 @@
             ]
           },
           {
-            "trashName": "Tracker Zo'korss",
+            "trashName": "追踪者佐·刻斯 <保安合同工>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Tracker-Zokorss.webp",
+            "trashId": 179837,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -16607,8 +16616,9 @@
             ]
           },
           {
-            "trashName": "Enraged Direhorn",
+            "trashName": "暴怒的恐角龙",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Enraged-Direhorn.webp",
+            "trashId": 180495,
             "data": [
               {
                 "text": "[狂暴冲锋]",
@@ -16856,8 +16866,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Cartel Muscle",
+            "trashName": "财团打手",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Cartel-Muscle.webp",
+            "trashId": 180348,
             "data": [
               {
                 "text": "[凌光反打]",
@@ -16896,8 +16907,9 @@
             ]
           },
           {
-            "trashName": "Market Peacekeeper",
+            "trashName": "集市维和者 <佐财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Market-Peacekeeper.webp",
+            "trashId": 179840,
             "data": [
               {
                 "text": "[压制打击]",
@@ -16936,8 +16948,9 @@
             ]
           },
           {
-            "trashName": "Cartel Skulker",
+            "trashName": "财团潜伏者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Cartel-Skulker.webp",
+            "trashId": 179893,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -16982,8 +16995,9 @@
             ]
           },
           {
-            "trashName": "Cartel Smuggler",
+            "trashName": "财团走私者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Cartel-Smuggler.webp",
+            "trashId": 180335,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -17051,8 +17065,9 @@
             ]
           },
           {
-            "trashName": "Cartel Wiseguy",
+            "trashName": "财团智囊",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Cartel-Wiseguy.webp",
+            "trashId": 180336,
             "data": [
               {
                 "text": "所需打断：",
@@ -17097,8 +17112,9 @@
             ]
           },
           {
-            "trashName": "Bazaar Strongarm",
+            "trashName": "卖场铁腕战士",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bazaar-Strongarm.webp",
+            "trashId": 178388,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -17132,8 +17148,9 @@
             ]
           },
           {
-            "trashName": "Cartel Lackey",
+            "trashName": "财团跟班",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Cartel-Lackey.webp",
+            "trashId": 178394,
             "data": [
               {
                 "text": "[人多势众]",
@@ -17308,8 +17325,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "P.O.S.T. Worker",
+            "trashName": "P.O.S.T.工人",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/P.O.S.webp",
+            "trashId": 176394,
             "data": [
               {
                 "text": "[开信刀]",
@@ -17331,8 +17349,9 @@
             ]
           },
           {
-            "trashName": "Defective Sorter",
+            "trashName": "损坏的分拣机",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Defective-Sorter.webp",
+            "trashId": 176396,
             "data": [
               {
                 "text": "[邮件急射]",
@@ -17354,8 +17373,9 @@
             ]
           },
           {
-            "trashName": "Overloaded Mailemental",
+            "trashName": "过载的邮件元素",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Overloaded-Mailemental.webp",
+            "trashId": 176395,
             "data": [
               {
                 "text": "所需打断：",
@@ -17546,8 +17566,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Commander Zo'far",
+            "trashName": "指挥官佐·法 <佐财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Commander-Zofar.webp",
+            "trashId": 179821,
             "data": [
               {
                 "text": "[震荡地雷]",
@@ -18029,8 +18050,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Nakt",
+            "trashName": "纳克特 <苏雷吉侍从>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nakt-1024x847.webp",
+            "trashId": 218324,
             "data": [
               {
                 "text": "所需打断：",
@@ -18098,8 +18120,9 @@
             ]
           },
           {
-            "trashName": "Atik",
+            "trashName": "阿提克 <苏雷吉侍从>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nakt-1024x847.webp",
+            "trashId": 217533,
             "data": [
               {
                 "text": "所需打断：",
@@ -18161,8 +18184,9 @@
             ]
           },
           {
-            "trashName": "Ixin",
+            "trashName": "伊克辛 <苏雷吉侍从>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nakt-1024x847.webp",
+            "trashId": 217531,
             "data": [
               {
                 "text": "所需打断：",
@@ -18224,8 +18248,9 @@
             ]
           },
           {
-            "trashName": "Engorged Crawler",
+            "trashName": "充血的爬行者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Engorged-Crawler-1024x409.webp",
+            "trashId": 214840,
             "data": [
               {
                 "text": "所需驱散中毒：",
@@ -18253,8 +18278,9 @@
             ]
           },
           {
-            "trashName": "Jabbing Flyer",
+            "trashName": "戳刺飞虫",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Jabbing-Flyer.webp",
+            "trashId": 216341,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -18282,8 +18308,9 @@
             ]
           },
           {
-            "trashName": "Ravenous Crawler",
+            "trashName": "贪婪爬蛛",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ravenous-Crawler-1024x435.webp",
+            "trashId": 216336,
             "data": [
               {
                 "text": "[伏击]",
@@ -18305,8 +18332,9 @@
             ]
           },
           {
-            "trashName": "Trilling Attendant",
+            "trashName": "颤声侍从",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Trilling-Attendant-1024x838.webp",
+            "trashId": 216293,
             "data": [
               {
                 "text": "所需打断：",
@@ -18484,8 +18512,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Bloodworker",
+            "trashName": "血工",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bloodworker.webp",
+            "trashId": 215826,
             "data": [
               {
                 "text": "[冲锋]",
@@ -18507,8 +18536,9 @@
             ]
           },
           {
-            "trashName": "Bloodstained Assistant",
+            "trashName": "沾血的助手",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bloodstained-Assistant.webp",
+            "trashId": 216333,
             "data": [
               {
                 "text": "[深掘打击]",
@@ -18530,8 +18560,9 @@
             ]
           },
           {
-            "trashName": "Bloodstained Webmage",
+            "trashName": "沾血的网法师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Bloodstained-Webmage-1024x805.webp",
+            "trashId": 220599,
             "data": [
               {
                 "text": "所需打断：",
@@ -18576,8 +18607,9 @@
             ]
           },
           {
-            "trashName": "Hulking Bloodguard",
+            "trashName": "魁梧的血卫",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Hulking-Bloodguard-1024x812.webp",
+            "trashId": 216338,
             "data": [
               {
                 "text": "[虫群风暴]",
@@ -18616,8 +18648,9 @@
             ]
           },
           {
-            "trashName": "Sentry Stagshell",
+            "trashName": "哨兵鹿壳虫",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Sentry-Stagshell.webp",
+            "trashId": 216340,
             "data": [
               {
                 "text": "[预警尖鸣]",
@@ -18787,8 +18820,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Reinforced Drone",
+            "trashName": "强化雄虫",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Reinforced-Drone.webp",
+            "trashId": 216363,
             "data": [
               {
                 "text": "[污血]",
@@ -18810,8 +18844,9 @@
             ]
           },
           {
-            "trashName": "Winged Carrier",
+            "trashName": "飞翼运输者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Winged-Carrier-1024x528.webp",
+            "trashId": 216365,
             "data": [
               {
                 "text": "[疾冲猛击]",
@@ -18833,8 +18868,9 @@
             ]
           },
           {
-            "trashName": "Blood Overseer",
+            "trashName": "鲜血监督者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Blood-Overseer.webp",
+            "trashId": 216364,
             "data": [
               {
                 "text": "所需打断：",
@@ -18879,8 +18915,9 @@
             ]
           },
           {
-            "trashName": "Black Blood",
+            "trashName": "黑血",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Black-Blood-1024x535.webp",
+            "trashId": 215968,
             "data": [
               {
                 "text": "所需打断：",
@@ -19297,6 +19334,7 @@
           {
             "trashName": "Ravaging Scavenger",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ravaging-Scavenger.webp",
+            "trashId": 234912,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -19343,6 +19381,7 @@
           {
             "trashName": "Ravenous Destroyer",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ravenous-Destroyer.webp",
+            "trashId": 236995,
             "data": [
               {
                 "text": "[不稳定的喷发]",
@@ -19383,6 +19422,7 @@
           {
             "trashName": "Voracious Gorger",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Voracious-Gorger.webp",
+            "trashId": 234883,
             "data": [
               {
                 "text": "[暴食猛击]",
@@ -19423,6 +19463,7 @@
           {
             "trashName": "Invading Mite",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Invading-Mite-1024x496.webp",
+            "trashId": 234870,
             "data": [
               {
                 "text": "[饱餐]",
@@ -19446,6 +19487,7 @@
           {
             "trashName": "Overgorged Mite",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Overgorged-Mite-1024x495.webp",
+            "trashId": 242209,
             "data": [
               {
                 "text": "所需打断：",
@@ -19632,6 +19674,7 @@
           {
             "trashName": "Wastelander Phaseblade",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Wastelander-Phaseblade.webp",
+            "trashId": 234872,
             "data": [
               {
                 "text": "必清任务：[Required Purge]  \n\n（说明：根据魔兽世界副本攻略的语境，\"Required Purge\"作为任务/成就名称时通常保留英文原名并用方括号标注，中文部分\"必清任务\"是符合游戏术语习惯的翻译。\"Purge\"在此语境下指\"清除副本内特定目标\"，与\"任务\"搭配更符合中文玩家的理解习惯。）",
@@ -19678,6 +19721,7 @@
           {
             "trashName": "Overcharged Sentinel",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Overcharged-Sentinel-723x1024.webp",
+            "trashId": 242631,
             "data": [
               {
                 "text": "[被保护的核心]  \n\n**副本简介**  \n该副本位于[地点名称]，玩家需要突破重重防御，摧毁敌方核心以完成任务。副本内包含多个首领战与机关谜题，考验团队协作与战术执行。  \n\n**首领战攻略**  \n1. **防御者XXX**  \n   - **技能提醒**：  \n     - [能量护盾]：周期性生成吸收伤害的护盾，需集火快速打破。  \n     - [过载冲击]：对全团造成AOE伤害，治疗注意抬血。  \n   - **战术**：坦克将BOSS背对团队，避免[散射激光]波及队友。  \n\n2. **核心守护者**（最终首领）  \n   - **阶段一**：激活四个[稳定装置]后进入P2。  \n   - **阶段二**：核心暴露，全力输出，但需躲避[自毁程序]的地面红圈。  \n\n**小贴士**  \n- 副本内[不稳定能量球]可被击杀，避免其爆炸造成团灭。  \n- 工程专业玩家可[拆卸]部分陷阱，减轻团队压力。  \n\n**掉落奖励**  \n[核心碎片]、[防御矩阵图纸]等稀有装备。  \n\n（注：XXX为占位名称，实际游戏请以官方数据为准。）",
@@ -19741,6 +19785,7 @@
           {
             "trashName": "Wastelander Farstalker",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Wastelander-Farstalker.webp",
+            "trashId": 234962,
             "data": [
               {
                 "text": "所需打断：",
@@ -19787,6 +19832,7 @@
           {
             "trashName": "Tamed Ruinstalker",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Tamed-Ruinstalker.webp",
+            "trashId": 234960,
             "data": [
               {
                 "text": "[传送]",
@@ -19810,6 +19856,7 @@
           {
             "trashName": "Wastelander Ritualist",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Wastelander-Ritualist.webp",
+            "trashId": 234957,
             "data": [
               {
                 "text": "所需打断：",
@@ -19856,6 +19903,7 @@
           {
             "trashName": "Voracious Gorger",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Voracious-Gorger.webp",
+            "trashId": 234883,
             "data": [
               {
                 "text": "[暴食猛击]",
@@ -19896,6 +19944,7 @@
           {
             "trashName": "Ravaging Scavenger",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ravaging-Scavenger.webp",
+            "trashId": 234912,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -20103,6 +20152,7 @@
           {
             "trashName": "Wastelander Pactspeaker",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Wastelander-Pactspeaker.webp",
+            "trashId": 234955,
             "data": [
               {
                 "text": "所需打断：",
@@ -20166,6 +20216,7 @@
           {
             "trashName": "K'aresh Elemental",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Karesh-Elemental.webp",
+            "trashId": 235151,
             "data": [
               {
                 "text": "所需打断：",
@@ -20671,8 +20722,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Vicious Gargon",
+            "trashName": "邪恶的加尔贡",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Vicious-Gargon.webp",
+            "trashId": 164563,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -20717,8 +20769,9 @@
             ]
           },
           {
-            "trashName": "Toiling Groundskeeper",
+            "trashName": "劳苦的管理员",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Toiling-Groundskeeper.webp",
+            "trashId": 165415,
             "data": [
               {
                 "text": "[快跑！]",
@@ -20740,8 +20793,9 @@
             ]
           },
           {
-            "trashName": "Depraved Obliterator",
+            "trashName": "堕落的歼灭者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Depraved-Obliterator.webp",
+            "trashId": 165414,
             "data": [
               {
                 "text": "所需打断：",
@@ -20792,8 +20846,9 @@
             ]
           },
           {
-            "trashName": "Depraved Darkblade",
+            "trashName": "堕落的黑暗剑士",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Depraved-Darkblade.webp",
+            "trashId": 165515,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -20821,8 +20876,9 @@
             ]
           },
           {
-            "trashName": "Stoneborn Slasher",
+            "trashName": "石裔切割者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stoneborn-Slasher.webp",
+            "trashId": 167607,
             "data": [
               {
                 "text": "[岩石监视者]",
@@ -20895,8 +20951,9 @@
             ]
           },
           {
-            "trashName": "Depraved Houndmaster",
+            "trashName": "堕落的驯犬者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Depraved-Houndmaster.webp",
+            "trashId": 164562,
             "data": [
               {
                 "text": "所需打断：",
@@ -20941,8 +20998,9 @@
             ]
           },
           {
-            "trashName": "Shard of Halkias",
+            "trashName": "哈尔吉亚斯的碎片",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shard-of-Halkias.webp",
+            "trashId": 164557,
             "data": [
               {
                 "text": "[罪孽震击]",
@@ -20981,8 +21039,9 @@
             ]
           },
           {
-            "trashName": "Depraved Collector",
+            "trashName": "堕落的搜集者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Depraved-Collector.webp",
+            "trashId": 165529,
             "data": [
               {
                 "text": "所需打断：",
@@ -21186,8 +21245,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Stoneborn Reaver",
+            "trashName": "石裔掠夺者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stoneborn-Reaver.webp",
+            "trashId": 167612,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -21232,8 +21292,9 @@
             ]
           },
           {
-            "trashName": "Stonefiend Anklebiter",
+            "trashName": "石精噬踝者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stonefiend-Anklebiter.webp",
+            "trashId": 167610,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -21261,8 +21322,9 @@
             ]
           },
           {
-            "trashName": "Stoneborn Eviscerator",
+            "trashName": "石裔剔骨者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stoneborn-Eviscerator.webp",
+            "trashId": 167611,
             "data": [
               {
                 "text": "[战刃风暴]",
@@ -21463,8 +21525,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Vicious Gargon",
+            "trashName": "邪恶的加尔贡",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Vicious-Gargon.webp",
+            "trashId": 164563,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -21509,8 +21572,9 @@
             ]
           },
           {
-            "trashName": "Stoneborn Eviscerator",
+            "trashName": "石裔剔骨者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stoneborn-Eviscerator.webp",
+            "trashId": 167611,
             "data": [
               {
                 "text": "[战刃风暴]",
@@ -21549,8 +21613,9 @@
             ]
           },
           {
-            "trashName": "Depraved Darkblade",
+            "trashName": "堕落的黑暗剑士",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Depraved-Darkblade.webp",
+            "trashId": 165515,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -21578,8 +21643,9 @@
             ]
           },
           {
-            "trashName": "Depraved Houndmaster",
+            "trashName": "堕落的驯犬者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Depraved-Houndmaster.webp",
+            "trashId": 164562,
             "data": [
               {
                 "text": "所需打断：",
@@ -21624,8 +21690,9 @@
             ]
           },
           {
-            "trashName": "Stoneborn Reaver",
+            "trashName": "石裔掠夺者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stoneborn-Reaver.webp",
+            "trashId": 167612,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -21670,8 +21737,9 @@
             ]
           },
           {
-            "trashName": "Depraved Collector",
+            "trashName": "堕落的搜集者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Depraved-Collector.webp",
+            "trashId": 165529,
             "data": [
               {
                 "text": "所需打断：",
@@ -21722,8 +21790,9 @@
             ]
           },
           {
-            "trashName": "Depraved Obliterator",
+            "trashName": "堕落的歼灭者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Depraved-Obliterator.webp",
+            "trashId": 165414,
             "data": [
               {
                 "text": "所需打断：",
@@ -21774,8 +21843,9 @@
             ]
           },
           {
-            "trashName": "Stoneborn Slasher",
+            "trashName": "石裔切割者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stoneborn-Slasher.webp",
+            "trashId": 167607,
             "data": [
               {
                 "text": "[岩石监视者]",
@@ -21983,8 +22053,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Inquisitor Sigar",
+            "trashName": "审判官西加尔",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Inquisitor-Sigar.webp",
+            "trashId": 167876,
             "data": [
               {
                 "text": "所需打断：",
@@ -22063,8 +22134,9 @@
             ]
           },
           {
-            "trashName": "Manifestation of Envy",
+            "trashName": "嫉妒具象",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Manifestation-of-Envy.webp",
+            "trashId": 167898,
             "data": [
               {
                 "text": "[嫉妒之印]",
@@ -22494,8 +22566,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Murkbrine Shellcrusher",
+            "trashName": "浊盐碎壳者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Murkbrine-Shellcrusher.webp",
+            "trashId": 178139,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -22540,8 +22613,9 @@
             ]
           },
           {
-            "trashName": "Murkbrine Fishmancer",
+            "trashName": "浊盐鱼术师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Murkbrine-Fishmancer.webp",
+            "trashId": 178142,
             "data": [
               {
                 "text": "所需打断：",
@@ -22586,8 +22660,9 @@
             ]
           },
           {
-            "trashName": "Murkbrine Scalebinder",
+            "trashName": "浊盐缚鳞者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Murkbrine-Scalebinder.webp",
+            "trashId": 178141,
             "data": [
               {
                 "text": "[活力鱼串]",
@@ -22609,8 +22684,9 @@
             ]
           },
           {
-            "trashName": "Coastwalker Goliath",
+            "trashName": "踏滨巨人",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Coastwalker-Goliath.webp",
+            "trashId": 178165,
             "data": [
               {
                 "text": "[海潮践踏]",
@@ -22649,8 +22725,9 @@
             ]
           },
           {
-            "trashName": "Stormforged Guardian",
+            "trashName": "雷铸守护者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stormforged-Guardian.webp",
+            "trashId": 178171,
             "data": [
               {
                 "text": "[连环爆裂]",
@@ -22809,8 +22886,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Burly Deckhand",
+            "trashName": "肌肉虬结的水手",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Burly-Deckhand.webp",
+            "trashId": 180015,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -22838,8 +22916,9 @@
             ]
           },
           {
-            "trashName": "Hourglass Tidesage",
+            "trashName": "时沙号海潮贤者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Hourglass-Tidesage.webp",
+            "trashId": 179388,
             "data": [
               {
                 "text": "所需打断：",
@@ -22884,8 +22963,9 @@
             ]
           },
           {
-            "trashName": "Corsair Officer",
+            "trashName": "海盗船军官",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Corsair-Officer.webp",
+            "trashId": 179386,
             "data": [
               {
                 "text": "[利剑投掷]",
@@ -23028,8 +23108,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Devoted Accomplice",
+            "trashName": "热心的同谋 <索财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Devoted-Accomplice.webp",
+            "trashId": 180432,
             "data": [
               {
                 "text": "[传送]",
@@ -23051,8 +23132,9 @@
             ]
           },
           {
-            "trashName": "Adorned Starseer",
+            "trashName": "盛装的星辰先知 <索财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Adorned-Starseer.webp",
+            "trashId": 180429,
             "data": [
               {
                 "text": "[游移之星]",
@@ -23091,8 +23173,9 @@
             ]
           },
           {
-            "trashName": "Focused Ritualist",
+            "trashName": "专心的祭师 <索财团>",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Focused-Ritualist.webp",
+            "trashId": 180431,
             "data": [
               {
                 "text": "所需打断：",
