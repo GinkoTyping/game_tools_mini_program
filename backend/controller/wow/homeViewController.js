@@ -88,7 +88,6 @@ export async function queryHomeView(req, res) {
         icon: 'auth-filled',
         page: '/pages/tier-list/index?versionId=11.1&activityType=MYTHIC&role=DPS',
         color: '#e37e00',
-        feature: true,
       },
       {
         label: '专精数据',
@@ -101,6 +100,8 @@ export async function queryHomeView(req, res) {
         value: 'rating',
         icon: 'map-filled',
         page: '/pages/spec-list/index',
+        color: '#e37e00',
+        feature: true,
       },
       {
         label: '大秘天梯',
