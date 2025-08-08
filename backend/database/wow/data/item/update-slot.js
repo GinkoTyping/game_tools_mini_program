@@ -23,7 +23,7 @@ async function updateItemSlot(id, preview, version) {
     slot = data.inventory_type?.name;
   }
   if (slot) {
-    itemMapper.updateItemById({ id: id, slot, preview: data }, version);
+    itemMapper.updateItemById({ id: id, slot, item: data?.name ?? preview.name, preview: data }, version);
   }
 
   current++;

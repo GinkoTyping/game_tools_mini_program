@@ -216,6 +216,8 @@ async function updateItemData() {
           if (outputItem.id === item.id) {
             // 寻找了 source 翻译好的 装备， 更新之
             if (
+              outputItem.source &&
+              item.source &&
               outputItem.source.source !== item.source.source &&
               !isIncludeLetter(item.source.source)
             ) {
@@ -243,6 +245,15 @@ async function updateItemData() {
         ...(spec.overall ?? []),
         ...spec.bisItemRaid,
         ...spec.bisItemMythic,
+        ...spec.trinkets.flatMap(item => {
+          return item.trinkets.map(trinket => ({
+            slot: '饰品',
+            item: '',
+            source: null,
+            id: trinket.id,
+            itemIcon: trinket.image,
+          }));
+        }),
       ]);
     });
     return pre;
@@ -286,8 +297,6 @@ async function updateItemData() {
     console.log('插入 装备数据 成功。');
   }
 }
-
-updateItemData();
 
 async function updateItemDataByBlizz() {
   const data = await itemMapper.getUntranslated();
