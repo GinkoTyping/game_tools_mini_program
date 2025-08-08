@@ -289,7 +289,7 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
 
         return {
           ...item.value,
-          // enhancements,
+          enhancements: [],
           preview: undefined,
           preview_en: undefined,
         };
