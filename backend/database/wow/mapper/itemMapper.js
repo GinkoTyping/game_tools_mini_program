@@ -150,7 +150,8 @@ async function getBlankSlotItem(version) {
   const tableName = getTableName(version);
   return db.all(`SELECT id, preview
                  FROM ${tableName}
-                 WHERE slot IS NULL`);
+                 WHERE slot IS NULL
+                    OR preview IS NULL`);
 }
 
 async function getBlankEnItem() {

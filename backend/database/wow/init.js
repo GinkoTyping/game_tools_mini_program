@@ -84,7 +84,7 @@ async function updateWowheadData() {
         const bisItems = [
           {
             title: '汇总',
-            items: mapItems(spec.overall),
+            items: mapItems(spec.overall ?? []),
           },
           {
             title: '大秘境获取',
@@ -240,7 +240,7 @@ async function updateItemData() {
   const slotItems = Object.values(wowheadData).reduce((pre, cur) => {
     cur.forEach((spec) => {
       pre = searchItems(pre, [
-        ...spec.overall,
+        ...(spec.overall ?? []),
         ...spec.bisItemRaid,
         ...spec.bisItemMythic,
       ]);
@@ -286,6 +286,8 @@ async function updateItemData() {
     console.log('插入 装备数据 成功。');
   }
 }
+
+updateItemData();
 
 async function updateItemDataByBlizz() {
   const data = await itemMapper.getUntranslated();
