@@ -39,13 +39,9 @@
     <button
       v-if="props.showChipEntry"
       class="shortcuts-button"
-      @click="() => navigator.toTierList({
-        version_id: '11.2 - PTR',
-        activity_type: 'MYTHIC',
-        role: 'DPS'
-      })"
+      @click="() => navigator.toSpecsMenu({ menu: 'bis',scrollTo: '.bis', title: '选择专精' })"
     >
-      <view class="iconfont icon-rankfill animate__animated animate__heartBeat animate__repeat-3"></view>
+      <view class="iconfont icon-leg-armor animate__animated animate__heartBeat animate__repeat-3"></view>
       <view class="badage"></view>
     </button>
   </view>
