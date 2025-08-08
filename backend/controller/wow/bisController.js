@@ -264,27 +264,32 @@ async function mapBisItems(bisItems, maxrollEnhancements, archonEnhancements) {
   }
 
   async function mapBisItemsByType(bisItemsByType) {
-    const promises = bisItemsByType.items
-      .split('@')
-      .map((item) => queryItem(item));
-    const data = await Promise.allSettled(promises);
+    let data = [];
+    if (bisItemsByType.items?.length) {
+      const promises = bisItemsByType.items
+        ?.split('@')
+        ?.map((item) => queryItem(item));
+      data = await Promise.allSettled(promises);
+    }
 
     return {
       ...bisItemsByType,
       title: bisItemsByType.title,
+
+      // TODO: 待大秘境更新
       items: data.map((item, index) => {
-        let enhancements = [];
-        if (bisItemsByType.title === '汇总') {
-          enhancements = combineEnhancement(
-            item.value,
-            maxrollEnhancements,
-            archonEnhancements,
-          );
-        }
+        // let enhancements = [];
+        // if (bisItemsByType.title === '汇总') {
+        //   enhancements = combineEnhancement(
+        //     item.value,
+        //     maxrollEnhancements,
+        //     archonEnhancements,
+        //   );
+        // }
 
         return {
           ...item.value,
-          enhancements,
+          // enhancements,
           preview: undefined,
           preview_en: undefined,
         };
@@ -603,10 +608,15 @@ export async function getBisBySpec(req, res) {
       JSON.parse(bisData.popularity_items),
       true,
     );
+
     // 团本获取的BIS目前很鸡肋
-    bis_items = bis_items.filter((item) => item.title !== '团本获取');
+    // TODO: 待大秘境更新
+    // bis_items = bis_items.filter((item) => item.title !== '团本获取');
+
     // 展示archon上按热门度的配装
-    bis_items.splice(1, 0, { title: '大秘境热门度', items: popularity_items });
+    // TODO: 待大秘境更新
+    // bis_items.splice(1, 0, { title: '大秘境热门度', items: popularity_items });
+
     bis_items = sortBisItems(bis_items);
 
     const bis_trinkets = await mapBisTrinket(
