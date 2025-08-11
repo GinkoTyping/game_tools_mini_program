@@ -40,6 +40,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 let errorSpecs = [];
+
 function collectError(roleClass, classSpec) {
   if (!errorSpecs.some((item) => item === `${classSpec}-${roleClass}`)) {
     errorSpecs.push(`${classSpec}-${roleClass}`);
@@ -64,7 +65,7 @@ async function collectBySpec(roleClass, classSpec) {
       if (fs.existsSync(path.resolve(__dirname, staticFilePath))) {
         html = fs.readFileSync(
           path.resolve(__dirname, staticFilePath),
-          'utf-8'
+          'utf-8',
         );
       } else {
         browser = await puppeteer.launch({
@@ -87,14 +88,14 @@ async function collectBySpec(roleClass, classSpec) {
         //  勿使用代理
         await page.goto(getURL(), {
           timeout: 60000,
-          waitUntil: ['domcontentloaded', 'networkidle0'],
+          waitUntil: ['domcontentloaded', 'networkidle2'],
         });
 
         html = await page.content();
         fs.writeFileSync(
           path.resolve(__dirname, staticFilePath),
           html,
-          'utf-8'
+          'utf-8',
         );
       }
     }
@@ -109,7 +110,7 @@ async function collectBySpec(roleClass, classSpec) {
       if (!stats[0]?.stats.length) {
         collectError(roleClass, classSpec);
         console.log(
-          `${classSpec} ${roleClass} 的属性优先级数据获取失败: ${error}`
+          `${classSpec} ${roleClass} 的属性优先级数据获取失败: ${error}`,
         );
       }
     }
@@ -137,7 +138,7 @@ async function collectBySpec(roleClass, classSpec) {
   } finally {
     currentCount++;
     console.log(
-      `成功获取${classSpec} ${roleClass}的数据(${currentCount}/${totalCount})...`
+      `成功获取${classSpec} ${roleClass}的数据(${currentCount}/${totalCount})...`,
     );
     await page?.close?.();
     await browser?.close?.();
@@ -146,16 +147,17 @@ async function collectBySpec(roleClass, classSpec) {
 
 // 控制并发数量
 const limit = pLimit(3);
+
 async function crawler() {
   const crawlerPromises = Object.entries(specs).reduce(
     (pre, [roleClass, classSpecs]) => {
       totalCount += classSpecs.length;
       pre.push(
-        ...classSpecs.map((spec) => limit(() => collectBySpec(roleClass, spec)))
+        ...classSpecs.map((spec) => limit(() => collectBySpec(roleClass, spec))),
       );
       return pre;
     },
-    []
+    [],
   );
 
   const data = await Promise.allSettled(crawlerPromises);
@@ -167,7 +169,12 @@ async function crawler() {
 
 const OUTPUT_FILE_PATH = './output/bis/output.json';
 const BACKEND_OUTPUT_FILE_PATH = '../../backend/database/wow/data/maxroll.json';
+
 function saveFile(data, isOverrideAll = false) {
+  if (!data) {
+    return;
+  }
+
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
   const filePath = path.resolve(__dirname, OUTPUT_FILE_PATH);
@@ -180,7 +187,7 @@ function saveFile(data, isOverrideAll = false) {
       let foundItemIndex = dataToWrite.findIndex(
         (existedItem) =>
           existedItem.roleClass === item.roleClass &&
-          existedItem.classSpec === item.classSpec
+          existedItem.classSpec === item.classSpec,
       );
       if (foundItemIndex === -1) {
         dataToWrite.push(item);
@@ -193,7 +200,7 @@ function saveFile(data, isOverrideAll = false) {
     fs.writeFileSync(
       path.resolve(__dirname, filePath),
       JSON.stringify(dataToWrite, null, 2),
-      'utf-8'
+      'utf-8',
     );
   });
 }
@@ -290,9 +297,10 @@ async function getStatsPriority(context, page) {
         .split('||');
     }
   }
+
   if (output.filter((item) => item.desc?.length).length) {
     const translationPromises = output.map((item, index) =>
-      translateDesc(item, index)
+      translateDesc(item, index),
     );
     await Promise.allSettled(translationPromises);
   }
@@ -445,7 +453,7 @@ function mapDescWithIcon(context, element) {
         .each((index, element) => {
           if ($(element).find('span[data-wow-id]').length) {
             const id = Number(
-              $(element).find('span[data-wow-id]').first().attr('data-wow-id')
+              $(element).find('span[data-wow-id]').first().attr('data-wow-id'),
             );
             spells.push({
               id: isNaN(id) ? null : id,
@@ -540,6 +548,7 @@ async function getTalentCode(context, page, roleClass, classSpec) {
         output.push(ele.parentNode);
         return findParentsUntil(ele.parentNode, selector, output);
       }
+
       function getIndexOfParent(parent, ele) {
         const children = parent.children; // 获取所有元素子节点
         for (let i = 0; i < children.length; i++) {
@@ -551,7 +560,7 @@ async function getTalentCode(context, page, roleClass, classSpec) {
 
       const referenceEle = findParentsUntil(
         document.querySelector('#talents-header'),
-        '#main-article'
+        '#main-article',
       ).pop();
       const mainArticle = document.querySelector('#main-article');
       if (
@@ -560,7 +569,7 @@ async function getTalentCode(context, page, roleClass, classSpec) {
       ) {
         return getIndexOfParent(
           mainArticle,
-          referenceEle.nextElementSibling.nextElementSibling
+          referenceEle.nextElementSibling.nextElementSibling,
         );
       }
       return getIndexOfParent(mainArticle, referenceEle.nextElementSibling);
@@ -571,7 +580,7 @@ async function getTalentCode(context, page, roleClass, classSpec) {
       talentIndex,
       page,
       roleClass,
-      classSpec
+      classSpec,
     ) {
       try {
         if (!activeTreeSelector) {
@@ -598,14 +607,14 @@ async function getTalentCode(context, page, roleClass, classSpec) {
         await page.evaluate(
           (containerChildIndex, talentIndex) => {
             const talentTreesEle = document.querySelector(
-              `#main-article>div:nth-child(${containerChildIndex})`
+              `#main-article>div:nth-child(${containerChildIndex})`,
             ).children[1];
             Array.from(talentTreesEle.children).forEach((item, index) => {
               item.style.display = talentIndex === index ? 'block' : 'none';
             });
           },
           containerChildIndex,
-          talentIndex
+          talentIndex,
         );
 
         if (!boundingBox) {
@@ -657,7 +666,7 @@ async function getTalentCode(context, page, roleClass, classSpec) {
               clip,
               path: path.resolve(
                 __dirname,
-                `../../backend/assets/wow/talent/${classSpec}-${roleClass}-${talentIndex}-${label}.jpg`
+                `../../backend/assets/wow/talent/${classSpec}-${roleClass}-${talentIndex}-${label}.jpg`,
               ),
               type: 'jpeg',
               quality: 100, // 质量参数，100为最高质量
@@ -668,7 +677,7 @@ async function getTalentCode(context, page, roleClass, classSpec) {
         }
 
         const downloadPromises = ['class', 'hero', 'spec'].map((item, index) =>
-          screenshot(item, index)
+          screenshot(item, index),
         );
 
         await Promise.allSettled(downloadPromises);
@@ -719,7 +728,7 @@ function getRawEnhancement(context) {
           const id = Number($(spanEle).attr(attrKey).split(':').shift());
           const backgroundImage = $(spanEle).find('.wow-icon').attr('style');
           const imageSrc = /url\(\s*["']?(.*?)["']?\s*\)/gi.exec(
-            backgroundImage
+            backgroundImage,
           )?.[1];
           return {
             id,
@@ -740,6 +749,7 @@ function getRawEnhancement(context) {
 
   return enhancementData;
 }
+
 async function searchItem(item) {
   let output = { ...item };
   if (item.type === 'item') {
@@ -766,7 +776,7 @@ async function searchItem(item) {
       console.log(
         `注册物品${registerResult.changes ? '成功' : '失败'}：${item.id}, ${
           item.name
-        }`
+        }`,
       );
     }
   } else {
@@ -784,27 +794,31 @@ async function searchItem(item) {
       console.log(
         `注册技能${registerResult.changes ? '成功' : '失败'}：${item.id}, ${
           item.name
-        }`
+        }`,
       );
     }
   }
   return output;
 }
+
 async function translateEnhancement(consumable) {
   const results = await Promise.allSettled(
-    consumable.items.map((item) => searchItem(item))
+    consumable.items.map((item) => searchItem(item)),
   );
   return {
     ...consumable,
     items: results.map((item) => item.value),
   };
 }
+
 function getItemImgPath(name) {
   return path.resolve(__dirname, `../../backend/assets/wow/items/${name}`);
 }
+
 function getSpellImgPath(name) {
   return path.resolve(__dirname, `../../backend/assets/wow/spellIcon/${name}`);
 }
+
 async function downloadEnhancementImages(consumableData) {
   const imagesUrl = consumableData.reduce((pre, cur) => {
     pre.push(...cur.items);
@@ -816,9 +830,9 @@ async function downloadEnhancementImages(consumableData) {
         item.imageSrc,
         item.type === 'item'
           ? getItemImgPath(item.image)
-          : getSpellImgPath(item.image)
-      )
-    )
+          : getSpellImgPath(item.image),
+      ),
+    ),
   );
   results.forEach((item) => {
     if (item.status !== 'fulfilled') {
@@ -828,16 +842,18 @@ async function downloadEnhancementImages(consumableData) {
 
   return results;
 }
+
 async function getEnhancements(context) {
   const rawData = getRawEnhancement(context);
   const translateResults = await Promise.allSettled(
-    rawData.map((item) => translateEnhancement(item))
+    rawData.map((item) => translateEnhancement(item)),
   );
   const output = translateResults.map((item) => item.value);
   const downloadResult = await downloadEnhancementImages(output);
 
   return output;
 }
+
 //#endregion
 
 //#region 消耗品和宝石 搁置
@@ -866,6 +882,7 @@ function mapConsumableType(key) {
   }
   return key;
 }
+
 function getRawConsumables(context) {
   const $ = context;
   const reference = $('#consumables-header')
@@ -888,7 +905,7 @@ function getRawConsumables(context) {
         const id = itemEle.attr('data-wow-item').split(':').pop();
         const backgroundImage = itemEle.find('.wow-icon').attr('style');
         const imageSrc = /url\(\s*["']?(.*?)["']?\s*\)/gi.exec(
-          backgroundImage
+          backgroundImage,
         )?.[1];
         let children;
 
@@ -926,13 +943,14 @@ function getRawConsumables(context) {
 
   return output;
 }
+
 async function translateConsumable(data) {
   async function recursiveSearch(item) {
     const itemResult = await searchItem(item);
     let newChildren;
     if (item.children?.length) {
       newChildren = await Promise.allSettled(
-        item.children.map((child) => recursiveSearch(child))
+        item.children.map((child) => recursiveSearch(child)),
       );
     }
     return {
@@ -940,11 +958,12 @@ async function translateConsumable(data) {
       children: newChildren,
     };
   }
+
   async function translateByType(type) {
     let results;
     if (type.children?.length) {
       results = await Promise.allSettled(
-        type.children.map((item) => recursiveSearch(item))
+        type.children.map((item) => recursiveSearch(item)),
       );
     }
     return {
@@ -954,27 +973,30 @@ async function translateConsumable(data) {
   }
 
   const translatedResults = await Promise.allSettled(
-    data.map((item) => translateByType(item))
+    data.map((item) => translateByType(item)),
   );
 
   return translatedResults.map((item) => item.value);
 }
+
 async function downloadConsumableImages(consumableData) {
   let imagesUrl = [];
+
   function recurseGetItem(item) {
     imagesUrl.push(item);
     if (item.chilren?.length) {
       item.chilren.forEach((child) => recurseGetItem(child));
     }
   }
+
   consumableData.forEach((item) => {
     item.children.forEach((child) => recurseGetItem(child));
   });
 
   const results = await Promise.allSettled(
     imagesUrl.map((item) =>
-      downloadSingle(item.imageSrc, getItemImgPath(item.image))
-    )
+      downloadSingle(item.imageSrc, getItemImgPath(item.image)),
+    ),
   );
   results.forEach((item) => {
     if (item.status !== 'fulfilled') {
@@ -984,12 +1006,14 @@ async function downloadConsumableImages(consumableData) {
 
   return results;
 }
+
 async function getConsumables(context) {
   const rawData = getRawConsumables(context);
   const transaltedData = await translateConsumable(rawData);
   await downloadConsumableImages(transaltedData);
   return transaltedData;
 }
+
 //#endregion
 
 crawler();
