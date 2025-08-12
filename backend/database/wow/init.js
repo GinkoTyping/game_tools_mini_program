@@ -118,6 +118,8 @@ async function updateMaxrollData() {
   handleBisItemRes(result, 'maxroll');
 }
 
+updateMaxrollData();
+
 async function updateBisItem(dataItem) {
   try {
     const existedItem = await bisMapper.getBisByClassAndSpec(

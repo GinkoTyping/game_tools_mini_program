@@ -684,9 +684,10 @@ export async function getBisBySpec(req, res) {
       maxroll_bis: undefined,
       archon_bis: undefined,
       enhancement: undefined,
-      stats_priority: undefined,
+      stats_priority: JSON.parse(bisData.stats_priority),
       popularity_items: undefined,
       archon_talent: undefined,
+      talentType: ['maxroll'],
     });
   } catch (error) {
     res.status(500).json({ error: error?.message });

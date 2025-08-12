@@ -19,18 +19,18 @@ import { mapSlotLabel } from '../util/map-slot-label.js';
 import { downloadSingle } from '../util/download.js';
 
 const specs = {
-  'death-knight': ['blood', 'frost', 'unholy'],
-  'demon-hunter': ['havoc', 'vengeance'],
-  druid: ['balance', 'feral', 'guardian', 'restoration'],
-  mage: ['arcane', 'fire', 'frost'],
-  monk: ['brewmaster', 'mistweaver', 'windwalker'],
-  paladin: ['holy', 'protection', 'retribution'],
-  rogue: ['assassination', 'outlaw', 'subtlety'],
-  shaman: ['elemental', 'enhancement', 'restoration'],
-  warlock: ['affliction', 'demonology', 'destruction'],
-  warrior: ['arms', 'fury', 'protection'],
-  evoker: ['devastation', 'preservation', 'augmentation'],
-  hunter: ['beast-mastery', 'marksmanship', 'survival'],
+  // 'death-knight': ['blood', 'frost', 'unholy'],
+  // 'demon-hunter': ['havoc', 'vengeance'],
+  // druid: ['balance', 'feral', 'guardian', 'restoration'],
+  // mage: ['arcane', 'fire', 'frost'],
+  // monk: ['brewmaster', 'mistweaver', 'windwalker'],
+  // paladin: ['holy', 'protection', 'retribution'],
+  // rogue: ['assassination', 'outlaw', 'subtlety'],
+  // shaman: ['elemental', 'enhancement', 'restoration'],
+  // warlock: ['affliction', 'demonology', 'destruction'],
+  // warrior: ['arms', 'fury', 'protection'],
+  // evoker: ['devastation', 'preservation', 'augmentation'],
+  // hunter: ['beast-mastery', 'marksmanship', 'survival'],
   priest: ['discipline', 'holy', 'shadow'],
 };
 let totalCount = 0;
@@ -116,9 +116,9 @@ async function collectBySpec(roleClass, classSpec) {
     }
 
     const ratings = getSpecRating($);
-    const dungeonTips = await getDungeonTips($);
+    // const dungeonTips = await getDungeonTips($);
     const talents = await getTalentCode($, page, roleClass, classSpec);
-    const enhancement = await getEnhancements($);
+    // const enhancement = await getEnhancements($);
 
     if (!talents?.length) {
       console.log(`${classSpec} ${roleClass} 的天赋数据获取失败。`);
@@ -129,9 +129,9 @@ async function collectBySpec(roleClass, classSpec) {
       classSpec,
       stats,
       ratings,
-      dungeonTips,
+      // dungeonTips,
       talents,
-      enhancement,
+      // enhancement,
     };
   } catch (error) {
     console.error(`获取失败：${classSpec} ${roleClass} - ${error}`);
