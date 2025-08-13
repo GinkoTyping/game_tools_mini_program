@@ -458,22 +458,36 @@ async function getTrash(context, containerEle) {
   return rowOutput;
 }
 
-async function getBossSpell(context, containerEle, index) {
+async function getBossSpell(context, containerEle, tabClassName, index) {
   const $ = context;
-  const spellEle = $(containerEle)
+
+  let spellEle = $(containerEle)
     .children()
     .first()
-    .find('span[data-wow-id]')
+    .find(`.${tabClassName}`)
     .eq(index);
+
+  if ($(spellEle).find('span[data-wow-id]')?.length) {
+    spellEle = $(spellEle).find('span[data-wow-id]').first();
+  }
+
   const spellId = $(spellEle).attr('data-wow-id');
   const spellNameEN = $(spellEle).text().trim();
 
-  const spellsData = await translateSpellName({
-    id: spellId,
-    name: spellNameEN,
-  });
+  let spellNameZH;
+  if (spellId) {
+    const spellsData = await translateSpellName({
+      id: spellId,
+      name: spellNameEN,
+    });
 
-  const spellNameZH = spellsData?.nameZH;
+    spellNameZH = spellsData?.nameZH;
+
+    // 部分页签 并不是一个 法术，例如 总览、转阶段的小怪等
+  } else {
+    spellNameZH = spellNameEN?.toLowerCase() === 'overview' ? '总览' : spellNameEN;
+  }
+
 
   const infoEle = $(containerEle).children().last().children().eq(index);
   const textEle = $(infoEle).find('>div>div').first().find('>ul');
@@ -509,14 +523,19 @@ async function getBossSpell(context, containerEle, index) {
 async function getBoss(context, containerEle) {
   const $ = context;
 
+  const tabEleClassName = $(containerEle).children()
+    .first()
+    .find('span[data-wow-id]').first().parent().parent().attr('class');
+
   const spellCount = $(containerEle)
     .children()
     .first()
-    .find('span[data-wow-id]').length;
+    .find(`.${tabEleClassName}`).length;
+
   const spellIndexArray = new Array(spellCount).fill(1);
   const results = await Promise.allSettled(
     spellIndexArray.map((item, index) =>
-      getBossSpell(context, containerEle, index),
+      getBossSpell(context, containerEle, tabEleClassName, index),
     ),
   );
   return results.map((result) => result.value);
@@ -763,7 +782,7 @@ function saveFile(data, fileName) {
   data.forEach((item) => {
     let existedIndex = existedData.findIndex(
       (existedItem) =>
-        existedItem.dungeonEN && existedItem.dungeonEN === item.dungeonEN,
+        existedItem?.dungeonEN && existedItem.dungeonEN === item?.dungeonEN,
     );
     if (existedIndex !== -1) {
       existedData.splice(existedIndex, 1, item);

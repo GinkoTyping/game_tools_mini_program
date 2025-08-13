@@ -4393,11 +4393,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "424419",
-            "spellNameZH": "战斗狂啸",
-            "spellNameEN": "‍Battle Cry",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Captain-Dailcry.webp",
-            "image": "‍Battle Cry.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "战斗开始时，[戴尔克莱船长]受到[亲信卫兵]的保护。当这些卫兵彼此靠近时，会获得[人多势众]效果。",
@@ -4475,11 +4474,11 @@
             ]
           },
           {
-            "spellId": "1238779",
-            "spellNameZH": "碎地之矛",
-            "spellNameEN": "‍Earthshattering Spear",
+            "spellId": "424419",
+            "spellNameZH": "战斗狂啸",
+            "spellNameEN": "‍Battle Cry",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-BattleCry-ezgif.com-optimize.gif",
-            "image": "‍Earthshattering Spear.gif",
+            "image": "‍Battle Cry.gif",
             "data": [
               {
                 "text": "一声震慑人心的[战斗狂啸]，对所有玩家造成物理伤害（无视护甲），同时激励受信任的守卫，为每个守卫恢复50点能量值，并使其造成的伤害提高50%，持续30秒。",
@@ -4501,11 +4500,11 @@
             ]
           },
           {
-            "spellId": "447439",
-            "spellNameZH": "野蛮重殴",
-            "spellNameEN": "‍Savage Mauling",
+            "spellId": "1238779",
+            "spellNameZH": "碎地之矛",
+            "spellNameEN": "‍Earthshattering Spear",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-PierceArmor-ezgif.com-optimize.gif",
-            "image": "‍Savage Mauling.gif",
+            "image": "‍Earthshattering Spear.gif",
             "data": [
               {
                 "text": "[队长戴尔克里]会以毁灭性的力量投掷长矛，对区域内玩家造成物理伤害，同时震裂地面，使所有玩家受到音波伤害。",
@@ -4515,11 +4514,11 @@
             ]
           },
           {
-            "spellId": "424414",
-            "spellNameZH": "贯穿护甲",
-            "spellNameEN": "‍Pierce Armor",
+            "spellId": "447439",
+            "spellNameZH": "野蛮重殴",
+            "spellNameEN": "‍Savage Mauling",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-SavageMauling-ezgif.com-optimize.gif",
-            "image": "‍Pierce Armor.gif",
+            "image": "‍Savage Mauling.gif",
             "data": [
               {
                 "text": "戴尔克雷上尉命令\n                              [烬狼]撕咬一名玩家，使其无法移动并每0.5秒受到一次物理伤害。",
@@ -4539,6 +4538,181 @@
                         "nameZH": "野蛮重殴"
                       }
                     ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "424414",
+            "spellNameZH": "贯穿护甲",
+            "spellNameEN": "‍Pierce Armor",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-PierceArmor-ezgif.com-optimize.gif",
+            "image": "‍Pierce Armor.gif",
+            "data": [
+              {
+                "text": "[队长戴尔克里]挥剑劈向坦克，造成物理伤害并施加一层可叠加的[流血]效果，持续10秒。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellNameZH": "Elaena Emberlanz",
+            "spellNameEN": "Elaena Emberlanz",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Elaena-Emberlanz-501x1024.webp",
+            "image": "Elaena Emberlanz.gif",
+            "data": [
+              {
+                "text": "[神圣审判]",
+                "spells": [
+                  {
+                    "name": "‍Divine Judgment",
+                    "id": "448515",
+                    "nameZH": "神圣审判"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对坦克造成神圣伤害并施加一个魔法减益效果，使其在8秒内受到的伤害提高25%。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "[圣光烁辉]",
+                "spells": [
+                  {
+                    "name": "‍Holy Radiance",
+                    "id": "424431",
+                    "nameZH": "圣光烁辉"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "每秒对所有玩家造成神圣伤害，持续8秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellNameZH": "Sergeant Shaynemail",
+            "spellNameEN": "Sergeant Shaynemail",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Sergeant-Shaynemail-388x1024.webp",
+            "image": "Sergeant Shaynemail.gif",
+            "data": [
+              {
+                "text": "需要驱散流血效果：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[跃进打击]",
+                    "spells": [
+                      {
+                        "name": "‍Lunging Strike",
+                        "id": "424423",
+                        "nameZH": "跃进打击"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "随机跃向一名玩家，造成物理伤害并施加[流血]效果。",
+                        "spells": [],
+                        "children": [
+                          {
+                            "text": "[军士长莎妮梅尔]跃起后，可通过闪现、传送或开启疾跑快速移动来规避伤害。  \n关键机制：该技能在施法完成的瞬间即锁定玩家当前位置进行跳跃攻击。",
+                            "spells": [],
+                            "children": []
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[蛮力重击]",
+                "spells": [
+                  {
+                    "name": "‍Brutal Smash",
+                    "id": "424621",
+                    "nameZH": "蛮力重击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "对8码范围内的玩家造成物理伤害并使其昏迷。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellNameZH": "Taener Duelmal",
+            "spellNameEN": "Taener Duelmal",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Taener-Duelmal-497x1024.webp",
+            "image": "Taener Duelmal.gif",
+            "data": [
+              {
+                "text": "所需打断：",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[余烬冲击]",
+                    "spells": [
+                      {
+                        "name": "‍Cinderblast",
+                        "id": "424420",
+                        "nameZH": "余烬冲击"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "对随机一名玩家造成火焰伤害，并施加一个魔法持续伤害效果，[每1秒造成一次火焰伤害，持续5秒]，同时使目标昏迷。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "text": "[火球术]",
+                    "spells": [
+                      {
+                        "name": "‍Fireball",
+                        "id": "424421",
+                        "nameZH": "火球术"
+                      }
+                    ],
+                    "children": [
+                      {
+                        "text": "向随机玩家发射一枚火球，造成火焰伤害。",
+                        "spells": [],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "text": "[余烬风暴]",
+                "spells": [
+                  {
+                    "name": "‍Ember Storm",
+                    "id": "424462",
+                    "nameZH": "余烬风暴"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "在地面上生成多个火池，对站在其中的玩家造成火焰伤害。",
+                    "spells": [],
                     "children": []
                   }
                 ]
@@ -4693,11 +4867,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "422969",
-            "spellNameZH": "报偿之怒",
-            "spellNameEN": "‍Vindictive Wrath",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Baron-Braunpyke.webp",
-            "image": "‍Vindictive Wrath.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "整场战斗中，全团应保持集中站位，这样既能将[谴罚者之盾]和[纯洁之锤]的落点引导至同一区域，又能更轻松地规避这两个技能。",
@@ -4761,11 +4934,11 @@
             ]
           },
           {
-            "spellId": "423015",
-            "spellNameZH": "谴罚者之盾",
-            "spellNameEN": "‍Castigator's Shield",
+            "spellId": "422969",
+            "spellNameZH": "报偿之怒",
+            "spellNameEN": "‍Vindictive Wrath",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-VindictiveWrath-ezgif.com-optimize.gif",
-            "image": "‍Castigator's Shield.gif",
+            "image": "‍Vindictive Wrath.gif",
             "data": [
               {
                 "text": "布劳恩派克用圣光强化自身，\n                              [物理伤害]提高100%，并强化他的每一项技能。",
@@ -4775,11 +4948,11 @@
             ]
           },
           {
-            "spellId": "423051",
-            "spellNameZH": "灼烧之光",
-            "spellNameEN": "‍Burning Light",
+            "spellId": "423015",
+            "spellNameZH": "谴罚者之盾",
+            "spellNameEN": "‍Castigator's Shield",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-CastigatorsShield-ezgif.com-optimize.gif",
-            "image": "‍Burning Light.gif",
+            "image": "‍Castigator's Shield.gif",
             "data": [
               {
                 "text": "布劳恩派克向多名玩家投掷神圣之盾，造成神圣伤害并在命中时使移动速度降低50%，持续5秒。",
@@ -4806,11 +4979,11 @@
             ]
           },
           {
-            "spellId": "423062",
-            "spellNameZH": "纯洁之锤",
-            "spellNameEN": "‍Hammer of Purity",
+            "spellId": "423051",
+            "spellNameZH": "灼烧之光",
+            "spellNameEN": "‍Burning Light",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BurningLight-ezgif.com-optimize.gif",
-            "image": "‍Hammer of Purity.gif",
+            "image": "‍Burning Light.gif",
             "data": [
               {
                 "text": "布劳恩派克释放出一道神圣之光爆发，对所有玩家造成初始神圣伤害，并在接下来的12秒内每2秒额外造成一次神圣伤害。这道光爆还会为布劳恩派克恢复其最大生命值10%的血量。\n\n（说明：根据魔兽世界副本攻略的文本特征，我进行了以下处理：\n1. 保留了角色名\"Braunpyke\"的音译\"布劳恩派克\"\n2. 将技能效果描述转换为符合中文MMO攻略的表述方式\n3. 使用\"神圣之光爆发\"对应\"burst of holy light\"\n4. 数值和机制描述完全保留原文含义\n5. 采用短句分行保持攻略文本的易读性\n6. 术语如\"holy damage\"统一译为\"神圣伤害\"\n7. 保持被动语态转换为中文主动语态的流畅性）",
@@ -4837,11 +5010,11 @@
             ]
           },
           {
-            "spellId": "446368",
-            "spellNameZH": "献祭葬火",
-            "spellNameEN": "‍Sacrificial Pyre",
+            "spellId": "423062",
+            "spellNameZH": "纯洁之锤",
+            "spellNameEN": "‍Hammer of Purity",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-HammerofPurity-ezgif.com-optimize.gif",
-            "image": "‍Sacrificial Pyre.gif",
+            "image": "‍Hammer of Purity.gif",
             "data": [
               {
                 "text": "[布劳恩派克]召唤灼热之光降临一名玩家所在位置，对3码范围内的玩家造成神圣伤害。随后会有锤子从冲击点螺旋向外飞出，对路径上的玩家造成神圣伤害。",
@@ -4859,6 +5032,43 @@
                         "name": "‍Hammer of Purity",
                         "id": "423062",
                         "nameZH": "纯洁之锤"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "446368",
+            "spellNameZH": "献祭葬火",
+            "spellNameEN": "‍Sacrificial Pyre",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-SacrificialPyre-ezgif.com-cut.gif",
+            "image": "‍Sacrificial Pyre.gif",
+            "data": [
+              {
+                "text": "布劳恩派克会召唤一座燃烧的火堆，其中包含3次充能，持续30秒。每当有玩家接触到火堆时，会消耗1次充能，该玩家将受到[牺牲烈焰]效果影响（一个可叠加的持续神圣伤害效果），同时火堆会对所有玩家造成神圣伤害。",
+                "spells": [
+                  {
+                    "name": "‍Sacrificial Flame",
+                    "id": "446403",
+                    "nameZH": "牺牲烈焰"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "当[报偿之怒]强化效果激活时，\n[献祭葬火]将获得5层充能。\n\n（说明：根据魔兽世界中文版技能描述习惯，\"stack\"译为\"层\"，\"empowered\"译为\"强化效果激活\"，保持技能名称方括号格式不变，调整语序符合中文\"当...时\"的条件句式结构）",
+                    "spells": [
+                      {
+                        "name": "‍Vindictive Wrath",
+                        "id": "422969",
+                        "nameZH": "报偿之怒"
+                      },
+                      {
+                        "name": "‍Sacrificial Pyre",
+                        "id": "446368",
+                        "nameZH": "献祭葬火"
                       }
                     ],
                     "children": []
@@ -5155,11 +5365,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "423588",
-            "spellNameZH": "圣光屏障",
-            "spellNameEN": "‍Barrier of Light",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Prioress-Murrpray.webp",
-            "image": "‍Barrier of Light.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "在第一阶段，团队成员需分散站位，随时准备风筝[神圣烈焰]（若点名在你身上）。  \n\n（说明：根据中文MMO攻略习惯进行了以下优化：  \n1. 将被动语态\"be ready to kite\"转化为主动句式\"随时准备风筝\"  \n2. 补充\"团队成员\"作为主语使指令更明确  \n3. 使用游戏术语\"点名\"替代直译\"on you\"  \n4. 保留原版技能方括号格式  \n5. 添加括号说明使语句更符合中文表达逻辑）",
@@ -5224,11 +5433,11 @@
             ]
           },
           {
-            "spellId": "425544",
-            "spellNameZH": "神圣烈焰",
-            "spellNameEN": "‍The Sacred Flame",
+            "spellId": "423588",
+            "spellNameZH": "圣光屏障",
+            "spellNameEN": "‍Barrier of Light",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-BarrierofLight-ezgif.com-cut.gif",
-            "image": "‍The Sacred Flame.gif",
+            "image": "‍Barrier of Light.gif",
             "data": [
               {
                 "text": "当生命值降至50%时，[穆尔普蕾]会为自己施加一个吸收护盾（该护盾使其免疫打断效果），并开始引导[拥抱圣光]——每秒对所有玩家造成神圣伤害。",
@@ -5256,11 +5465,11 @@
             ]
           },
           {
-            "spellId": "428169",
-            "spellNameZH": "盲目之光",
-            "spellNameEN": "‍Blinding Light",
+            "spellId": "425544",
+            "spellNameZH": "神圣烈焰",
+            "spellNameEN": "‍The Sacred Flame",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-TheSacredFlame-ezgif.com-optimize.gif",
-            "image": "‍Blinding Light.gif",
+            "image": "‍The Sacred Flame.gif",
             "data": [
               {
                 "text": "穆尔普莱召唤一道灼热的光束，随机锁定一名玩家，对路径上的玩家每秒造成神圣伤害，并在路径上留下[神圣之地]，对身处其中的玩家持续造成神圣伤害。\n\n（说明：根据魔兽世界中文版惯用术语进行了以下处理：\n1. \"Murrpray\"音译为\"穆尔普莱\"符合首领命名规范\n2. \"ray of searing fire\"译为\"灼热的光束\"更符合技能描述习惯\n3. 保留游戏内专有名词\"[神圣之地]\"的方括号格式\n4. \"fixates\"译为\"锁定\"更符合中文战斗机制表述\n5. 调整了句式结构使其更符合中文\"先主谓宾后修饰\"的语序）",
@@ -5276,11 +5485,11 @@
             ]
           },
           {
-            "spellId": "423539",
-            "spellNameZH": "心灵之火",
-            "spellNameEN": "‍Inner Fire",
+            "spellId": "428169",
+            "spellNameZH": "盲目之光",
+            "spellNameEN": "‍Blinding Light",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-BlindingLight-ezgif.com-optimize.gif",
-            "image": "‍Inner Fire.gif",
+            "image": "‍Blinding Light.gif",
             "data": [
               {
                 "text": "[穆尔普瑞]释放出一道耀眼的圣光，对所有玩家造成神圣伤害。",
@@ -5296,11 +5505,11 @@
             ]
           },
           {
-            "spellId": "451606",
-            "spellNameZH": "神圣烈焰",
-            "spellNameEN": "‍Holy Flame",
+            "spellId": "423539",
+            "spellNameZH": "心灵之火",
+            "spellNameEN": "‍Inner Fire",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-InnerFire-ezgif.com-cut.gif",
-            "image": "‍Holy Flame.gif",
+            "image": "‍Inner Fire.gif",
             "data": [
               {
                 "text": "神圣烈焰强化了穆尔普蕾，使其神圣伤害提高50%，持续12秒。",
@@ -5316,15 +5525,88 @@
             ]
           },
           {
-            "spellId": "423536",
-            "spellNameZH": "神圣惩击",
-            "spellNameEN": "‍Holy Smite",
+            "spellId": "451606",
+            "spellNameZH": "神圣烈焰",
+            "spellNameEN": "‍Holy Flame",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-HolyFlame-ezgif.com-optimize.gif",
-            "image": "‍Holy Smite.gif",
+            "image": "‍Holy Flame.gif",
             "data": [
               {
                 "text": "穆尔普莱向玩家所在位置召唤一道圣光射线，立即造成神圣伤害，并对冲击点7.5码范围内的所有玩家施加一个魔法减益效果，使其每秒持续受到伤害。",
                 "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "423536",
+            "spellNameZH": "神圣惩击",
+            "spellNameEN": "‍Holy Smite",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-HolySmite-ezgif.com-crop.gif",
+            "image": "‍Holy Smite.gif",
+            "data": [
+              {
+                "text": "对坦克造成神圣伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "可打断。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellNameZH": "Arathi Neophyte",
+            "spellNameEN": "Arathi Neophyte",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Arathi-Neophyte-491x1024.webp",
+            "image": "Arathi Neophyte.gif",
+            "data": [
+              {
+                "text": "在[拥抱圣光]引导施法期间，\n阿拉希新兵会开始刷新并朝穆尔普莱方向奔跑，\n随机锁定玩家作为目标。",
+                "spells": [
+                  {
+                    "name": "‍Embrace the Light",
+                    "id": "423665",
+                    "nameZH": "拥抱圣光"
+                  }
+                ],
+                "children": []
+              },
+              {
+                "text": "阿拉希新兵受到[非凡力量]的强化效果，造成的伤害提高35%，并每秒对4码范围内的玩家造成神圣伤害。\n\n（说明：根据魔兽世界中文版惯用术语进行了以下处理：\n1. \"Arathi Neophyte\" 采用台服译名\"阿拉希新兵\"（国服译名可能为\"阿拉希见习教徒\"）\n2. \"buffed with\" 译为\"受到...强化效果\"\n3. 保留原文的方括号标记[非凡力量]\n4. \"holy damage\" 采用通用译法\"神圣伤害\"\n5. 调整语序符合中文\"先范围后效果\"的描述习惯）",
+                "spells": [
+                  {
+                    "name": "‍Overwhelming Power",
+                    "id": "425022:QAwF",
+                    "nameZH": "非凡力量"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "[非凡力量]每秒流失4%的生命值。",
+                    "spells": [
+                      {
+                        "name": "‍Overwhelming Power",
+                        "id": "425022:QAwF",
+                        "nameZH": "非凡力量"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "text": "尽量远离阿拉希新兵，并设法减速他们，让他们在[非凡力量]的持续伤害中慢慢消亡。",
+                "spells": [
+                  {
+                    "name": "‍Overwhelming Power",
+                    "id": "425022:QAwF",
+                    "nameZH": "非凡力量"
+                  }
+                ],
                 "children": []
               }
             ]
@@ -12658,11 +12940,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "471585",
-            "spellNameZH": "动员无人机",
-            "spellNameEN": "‍Mobilize Mechadrones",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Big-M.O.M.M.A.webp",
-            "image": "‍Mobilize Mechadrones.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "尽量保持团队集中站位，不要远离首领。如果可能的话，尝试将首领定位于墙边或场地边缘，这样能诱使[黑暗融合机械战车]冲锋撞墙，从而获得更长的输出时间。",
@@ -12705,11 +12986,11 @@
             ]
           },
           {
-            "spellId": "460156",
-            "spellNameZH": "快速启动",
-            "spellNameEN": "‍Jumpstart",
+            "spellId": "471585",
+            "spellNameZH": "动员无人机",
+            "spellNameEN": "‍Mobilize Mechadrones",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-MobilizeMechadrones-ezgif.com-optimize.gif",
-            "image": "‍Jumpstart.gif",
+            "image": "‍Mobilize Mechadrones.gif",
             "data": [
               {
                 "text": "在[行动：水闸]中，[大妈妈]会召唤4个[暗熔机甲无人机]协助作战。",
@@ -12782,11 +13063,11 @@
             ]
           },
           {
-            "spellId": "473351",
-            "spellNameZH": "电气重碾",
-            "spellNameEN": "‍Electrocrush",
+            "spellId": "460156",
+            "spellNameZH": "快速启动",
+            "spellNameEN": "‍Jumpstart",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-Jumpstart-ezgif.com-optimize.gif",
-            "image": "‍Electrocrush.gif",
+            "image": "‍Jumpstart.gif",
             "data": [
               {
                 "text": "当所有暗炉机甲全部被击败后，\n[大块头妈妈]会试图为它们耗尽的电池重新充能。\n这一过程会使它受到的伤害提高200%，并在12秒内每1.5秒释放一次能量冲击。每次能量冲击都会对所有玩家造成自然伤害。",
@@ -12807,11 +13088,11 @@
             ]
           },
           {
-            "spellId": "473220",
-            "spellNameZH": "音爆",
-            "spellNameEN": "‍Sonic Boom",
+            "spellId": "473351",
+            "spellNameZH": "电气重碾",
+            "spellNameEN": "‍Electrocrush",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-Electrocrush-ezgif.com-optimize.gif",
-            "image": "‍Sonic Boom.gif",
+            "image": "‍Electrocrush.gif",
             "data": [
               {
                 "text": "大块头M.O.M.M.A.会用带电的巨钳猛击坦克，立即造成自然伤害并在10秒内每秒持续造成自然伤害。",
@@ -12821,11 +13102,11 @@
             ]
           },
           {
-            "spellId": "469981",
-            "spellNameZH": "夺命封锁屏障",
-            "spellNameEN": "‍Kill-o-Block Barrier",
+            "spellId": "473220",
+            "spellNameZH": "音爆",
+            "spellNameEN": "‍Sonic Boom",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-SonicBoom-ezgif.com-cut.gif",
-            "image": "‍Kill-o-Block Barrier.gif",
+            "image": "‍Sonic Boom.gif",
             "data": [
               {
                 "text": "在[行动：水闸]中，大妈妈M.O.M.M.A.会向随机玩家发射一道声波能量脉冲，每0.5秒造成一次声波伤害，同时将范围内的玩家拖拽并施加沉默效果。",
@@ -12842,6 +13123,32 @@
                 "text": "与首领保持适当距离，避免被正面技能[沉默]并拖拽，同时注意不要贴墙站立，以防被二次爆炸波及。",
                 "spells": [],
                 "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "469981",
+            "spellNameZH": "夺命封锁屏障",
+            "spellNameEN": "‍Kill-o-Block Barrier",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/1-Kill-o-BlockBarrier-ezgif.com-optimize.gif",
+            "image": "‍Kill-o-Block Barrier.gif",
+            "data": [
+              {
+                "text": "大块头M.O.M.M.A.会释放一圈[电能屏障]，使自身受到的伤害降低80%。在护盾激活期间，每2.5秒会对所有玩家造成自然伤害。\n\n（说明：根据魔兽世界中文版惯用术语进行了以下处理：\n1. \"Big M.O.M.M.A.\"保留英文代号不译，符合BOSS名称本地化惯例\n2. \"electric barrier\"译为[电能屏障]，使用方括号标注技能名称\n3. 将被动语态转换为中文主动句式\n4. \"nature damage\"采用台服/国服统一译法\"自然伤害\"\n5. 调整了句式结构，使其更符合中文副本攻略的表述习惯）",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "[夺命封锁屏障] 的解除方法是  \n                                  击杀所有[暗炉机甲工兵]。  \n\n（说明：根据中文游戏攻略的表述习惯进行了以下调整：  \n1. 将被动语态\"is removed by\"转换为主动句式\"的解除方法是\"，更符合中文攻略的指令性语气  \n2. 专有名词[Darkfuse Mechadrones]保留方括号格式并本地化为暴雪官方译名[暗炉机甲工兵]  \n3. 调整了换行位置以保持中文段落紧凑性  \n4. 使用\"击杀\"替代\"杀死\"，更贴合MMORPG常用术语）",
+                    "spells": [
+                      {
+                        "name": "‍Kill-o-Block Barrier",
+                        "id": "469981",
+                        "nameZH": "夺命封锁屏障"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
               }
             ]
           }
@@ -13035,11 +13342,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "460867",
-            "spellNameZH": "天降神雷！",
-            "spellNameEN": "‍Big Bada BOOM!",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Demolition-Duo.webp",
-            "image": "‍Big Bada BOOM!.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "当你被[动能胶质炸药]锁定目标时，立即开启防御技能，并尽量利用该机制顺劈到附近的炸弹。",
@@ -13082,11 +13388,11 @@
             ]
           },
           {
-            "spellId": "1217653",
-            "spellNameZH": "B.B.B.F.G.",
-            "spellNameEN": "‍B.B.B.F.G.",
+            "spellId": "460867",
+            "spellNameZH": "天降神雷！",
+            "spellNameEN": "‍Big Bada BOOM!",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BigBadaBOOM-ezgif.com-optimize.gif",
-            "image": "‍B.B.B.F.G..gif",
+            "image": "‍Big Bada BOOM!.gif",
             "data": [
               {
                 "text": "在\"行动：泄洪闸\"中，基扎会召唤多枚[滴答作响的定时炸弹]。这些炸弹持续30秒，在到期时会造成[爆燃]效果。\n\n（说明：根据中文游戏攻略的表述习惯，我进行了以下处理：\n1. 将英文副本名称\"Operation: Floodgate\"译为\"行动：泄洪闸\"，符合魔兽世界副本命名风格\n2. 人名\"Keeza\"音译为\"基扎\"，采用魔兽世界惯用的翻译规则\n3. 技能名\"Ticking Time Bombs\"保留游戏内常用译法[滴答作响的定时炸弹]\n4. 效果术语[爆燃]保留方括号标注\n5. 调整了句式结构，使其更符合中文攻略常见的\"角色+行为+效果\"的叙述逻辑）",
@@ -13136,11 +13442,11 @@
             ]
           },
           {
-            "spellId": "460602",
-            "spellNameZH": "快速射击",
-            "spellNameEN": "‍Quick Shot",
+            "spellId": "1217653",
+            "spellNameZH": "B.B.B.F.G.",
+            "spellNameEN": "‍B.B.B.F.G.",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-B.B.B.F.G.-ezgif.com-optimize.gif",
-            "image": "‍Quick Shot.gif",
+            "image": "‍B.B.B.F.G..gif",
             "data": [
               {
                 "text": "在副本\"行动：水闸\"中，基莎会释放她的\n[B.B.B.F.G.]技能，\n生成数道正面直线火焰，对路径上的玩家造成火焰伤害并将其击飞至空中。",
@@ -13156,11 +13462,11 @@
             ]
           },
           {
-            "spellId": "473690",
-            "spellNameZH": "动能胶质炸药",
-            "spellNameEN": "‍Kinetic Explosive Gel",
+            "spellId": "460602",
+            "spellNameZH": "快速射击",
+            "spellNameEN": "‍Quick Shot",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-QuickShot-ezgif.com-cut.gif",
-            "image": "‍Kinetic Explosive Gel.gif",
+            "image": "‍Quick Shot.gif",
             "data": [
               {
                 "text": "在[行动：水闸]行动中，基扎会向随机玩家快速射击，造成物理伤害。",
@@ -13170,11 +13476,11 @@
             ]
           },
           {
-            "spellId": "459779",
-            "spellNameZH": "滚桶冲锋",
-            "spellNameEN": "‍Barreling Charge",
+            "spellId": "473690",
+            "spellNameZH": "动能胶质炸药",
+            "spellNameEN": "‍Kinetic Explosive Gel",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-KineticExplosiveGel-ezgif.com-optimize.gif",
-            "image": "‍Barreling Charge.gif",
+            "image": "‍Kinetic Explosive Gel.gif",
             "data": [
               {
                 "text": "基扎对随机一名玩家施加魔法减益效果，每秒造成火焰伤害。",
@@ -13195,11 +13501,11 @@
             ]
           },
           {
-            "spellId": "459799",
-            "spellNameZH": "重击",
-            "spellNameEN": "‍Wallop",
+            "spellId": "459779",
+            "spellNameZH": "滚桶冲锋",
+            "spellNameEN": "‍Barreling Charge",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-BarrelingCharge-ezgif.com-optimize.gif",
-            "image": "‍Wallop.gif",
+            "image": "‍Barreling Charge.gif",
             "data": [
               {
                 "text": "布朗特会随机冲向一名玩家，对路径上的所有玩家造成物理伤害并使其昏迷2秒。",
@@ -13232,16 +13538,41 @@
             ]
           },
           {
-            "spellId": "470090",
-            "spellNameZH": "天人永隔",
-            "spellNameEN": "‍Divided Duo",
+            "spellId": "459799",
+            "spellNameZH": "重击",
+            "spellNameEN": "‍Wallop",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/2-Wallop-ezgif.com-optimize.gif",
-            "image": "‍Divided Duo.gif",
+            "image": "‍Wallop.gif",
             "data": [
               {
                 "text": "布鲁恩特会重击坦克，对其造成物理伤害，同时还会对周围5码范围内的玩家造成物理伤害并将其击飞。",
                 "spells": [],
                 "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "470090",
+            "spellNameZH": "天人永隔",
+            "spellNameEN": "‍Divided Duo",
+            "image": "‍Divided Duo.gif",
+            "data": [
+              {
+                "text": "击败基扎或布隆特中的任意一个，都会使另一个的伤害每4秒提高20%。此外，布隆特还会开始频繁对敌人施放[重击]。",
+                "spells": [
+                  {
+                    "name": "‍Walloping",
+                    "id": "459799",
+                    "nameZH": "重击"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "确保同时击杀两个首领。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
               }
             ]
           }
@@ -13405,11 +13736,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "470039",
-            "spellNameZH": "割喉藤蔓",
-            "spellNameEN": "‍Razorchoke Vines",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Swampface.webp",
-            "image": "‍Razorchoke Vines.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "开战前，请与队友统一[泥石流]正面技能的躲避方向（固定左移或右移）。",
@@ -13452,11 +13782,11 @@
             ]
           },
           {
-            "spellId": "473070",
-            "spellNameZH": "唤醒沼泽",
-            "spellNameEN": "‍Awaken the Swamp",
+            "spellId": "470039",
+            "spellNameZH": "割喉藤蔓",
+            "spellNameEN": "‍Razorchoke Vines",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-RazorchokeVines-ezgif.com-optimize.gif",
-            "image": "‍Awaken the Swamp.gif",
+            "image": "‍Razorchoke Vines.gif",
             "data": [
               {
                 "text": "在副本[暴风城的陷落]中，[沼泽之面]会将玩家两两缠绕在一起。这些藤蔓会在24秒内每秒造成自然伤害。",
@@ -13477,11 +13807,11 @@
             ]
           },
           {
-            "spellId": "473112",
-            "spellNameZH": "泥石流",
-            "spellNameEN": "‍Mudslide",
+            "spellId": "473070",
+            "spellNameZH": "唤醒沼泽",
+            "spellNameEN": "‍Awaken the Swamp",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-AwakentheSwamp-ezgif.com-optimize.gif",
-            "image": "‍Mudslide.gif",
+            "image": "‍Awaken the Swamp.gif",
             "data": [
               {
                 "text": "在\"行动：水闸\"副本中，沼泽之面会持续4秒每秒重击地面，对所有玩家造成自然伤害，并导致[穿心根须]从河床中迸发而出。",
@@ -13537,14 +13867,28 @@
             ]
           },
           {
-            "spellId": "469478",
-            "spellNameZH": "淤泥之爪",
-            "spellNameEN": "‍Sludge Claws",
+            "spellId": "473112",
+            "spellNameZH": "泥石流",
+            "spellNameEN": "‍Mudslide",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-Mudslide-ezgif.com-optimize.gif",
-            "image": "‍Sludge Claws.gif",
+            "image": "‍Mudslide.gif",
             "data": [
               {
                 "text": "[沼泽之面]在面前掀起大量泥浆，对击中的玩家造成自然伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "469478",
+            "spellNameZH": "淤泥之爪",
+            "spellNameEN": "‍Sludge Claws",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/3-SludgeClaws-ezgif.com-optimize.gif",
+            "image": "‍Sludge Claws.gif",
+            "data": [
+              {
+                "text": "沼泽之面用狰狞的利爪撕裂坦克，造成物理伤害和自然伤害。这些泥泞的伤口还会附加治疗效果吸收效果。\n\n（说明：根据魔兽世界副本攻略的文本风格，我进行了以下处理：\n1. 将\"Swampface\"保留为\"沼泽之面\"这个符合魔兽命名习惯的译名\n2. \"ravages\"译为\"撕裂\"比直译\"蹂躏\"更符合战斗场景\n3. \"gruesome claws\"译为\"狰狞的利爪\"增强画面感\n4. \"muddy gashes\"意译为\"泥泞的伤口\"既保留原意象又符合中文表达\n5. \"healing absorb\"采用魔兽玩家熟悉的\"治疗效果吸收\"标准术语\n6. 整体采用短句结构，保持攻略文本简洁明快的风格）",
                 "spells": [],
                 "children": []
               }
@@ -13770,11 +14114,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "465456",
-            "spellNameZH": "涡轮增压",
-            "spellNameEN": "‍Turbo Charge",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Geezle-Gigazap.webp",
-            "image": "‍Turbo Charge.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "小心别用[超力震击]劈到[水坝渗流]的水潭，同时身上有[超力震击]的debuff时也别踩进去，否则会引发电击效果。",
@@ -13855,11 +14198,11 @@
             ]
           },
           {
-            "spellId": "468276",
-            "spellNameZH": "水坝！",
-            "spellNameEN": "‍Dam!",
+            "spellId": "465456",
+            "spellNameZH": "涡轮增压",
+            "spellNameEN": "‍Turbo Charge",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-TurboCharge-ezgif.com-optimize.gif",
-            "image": "‍Dam!.gif",
+            "image": "‍Turbo Charge.gif",
             "data": [
               {
                 "text": "吉兹尔从发电机中汲取能量充入自己的电池包，获得10点电能，并在10秒内每秒对所有玩家造成自然伤害。",
@@ -13874,11 +14217,11 @@
             ]
           },
           {
-            "spellId": "468846",
-            "spellNameZH": "跃动火花",
-            "spellNameEN": "‍Leaping Sparks",
+            "spellId": "468276",
+            "spellNameZH": "水坝！",
+            "spellNameEN": "‍Dam!",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-Dam-ezgif.com-optimize.gif",
-            "image": "‍Leaping Sparks.gif",
+            "image": "‍Dam!.gif",
             "data": [
               {
                 "text": "大坝结构因巨大的能量转移而剧烈震颤，导致[水流外泄]，[碎石从顶部不断坠落]。",
@@ -13916,11 +14259,11 @@
             ]
           },
           {
-            "spellId": "468812",
-            "spellNameZH": "超力震击",
-            "spellNameEN": "‍Gigazap",
+            "spellId": "468846",
+            "spellNameZH": "跃动火花",
+            "spellNameEN": "‍Leaping Sparks",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-LeapingSparks-ezgif.com-optimize.gif",
-            "image": "‍Gigazap.gif",
+            "image": "‍Leaping Sparks.gif",
             "data": [
               {
                 "text": "吉兹尔消耗40点电能，激活数个[跃动火花]锁定玩家。",
@@ -13980,14 +14323,28 @@
             ]
           },
           {
-            "spellId": "466197",
-            "spellNameZH": "雷霆重拳",
-            "spellNameEN": "‍Thunder Punch",
+            "spellId": "468812",
+            "spellNameZH": "超力震击",
+            "spellNameEN": "‍Gigazap",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-Gigazap-ezgif.com-optimize.gif",
-            "image": "‍Thunder Punch.gif",
+            "image": "‍Gigazap.gif",
             "data": [
               {
                 "text": "在[救难行动：水闸]中，[吉兹尔]会消耗20点电力值施展[无限能量电击]，随机对玩家造成自然伤害：立即造成一次自然伤害，并在随后8秒内每秒额外造成一次自然伤害。\n\n（说明：根据魔兽世界副本攻略的文本特点，进行了以下处理：\n1. 保留所有方括号标记的专有名词和技能名称\n2. 将英文被动语态转换为中文主动语态\n3. 调整了句式结构使其更符合中文攻略常见的\"技能名称+冒号+效果说明\"的格式\n4. 将\"every second for 8 seconds\"意译为\"随后8秒内每秒\"，更符合中文时间表述习惯\n5. 补充了\"施展\"作为动词，使技能释放描述更完整）",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "466197",
+            "spellNameZH": "雷霆重拳",
+            "spellNameEN": "‍Thunder Punch",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/4-ThunderPunch-ezgif.com-optimize.gif",
+            "image": "‍Thunder Punch.gif",
+            "data": [
+              {
+                "text": "吉兹尔消耗10点电能，用带电之拳对坦克发动[偷袭猛击]，将其击退并立即造成物理伤害，随后在4秒内每秒造成自然伤害。",
                 "spells": [],
                 "children": []
               }
@@ -14541,11 +14898,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "451026",
-            "spellNameZH": "黑暗降临",
-            "spellNameEN": "‍Darkness Comes",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Speaker-Shadowcrown.webp",
-            "image": "‍Darkness Comes.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "这场战斗的站位安排取决于团队构成：\n若为纯近战DPS队伍，则需采用[近战集中站位]策略；\n若队伍中至少有1名远程DPS，则推荐使用[远程风筝+近战追击]战术。",
@@ -14604,11 +14960,11 @@
             ]
           },
           {
-            "spellId": "453212",
-            "spellNameZH": "黑曜光束",
-            "spellNameEN": "‍Obsidian Beam",
+            "spellId": "451026",
+            "spellNameZH": "黑暗降临",
+            "spellNameEN": "‍Darkness Comes",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Darkness-Comes-1024x677.webp",
-            "image": "‍Obsidian Beam.gif",
+            "image": "‍Darkness Comes.gif",
             "data": [
               {
                 "text": "[暗影之冠]释放出一股巨大的暗影魔法爆炸，试图摧毁所有停留在[破晓者号]上的玩家。在施放该技能期间，[暗影之冠]免疫任何伤害。",
@@ -14624,11 +14980,11 @@
             ]
           },
           {
-            "spellId": "453140",
-            "spellNameZH": "塌缩之夜",
-            "spellNameEN": "‍Collapsing Night",
+            "spellId": "453212",
+            "spellNameZH": "黑曜光束",
+            "spellNameEN": "‍Obsidian Beam",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Obsidian-Beam-1024x677.webp",
-            "image": "‍Collapsing Night.gif",
+            "image": "‍Obsidian Beam.gif",
             "data": [
               {
                 "text": "[暗影之冠]向当前目标喷射黑暗能量，造成[暗影伤害]并对所有其他玩家额外造成一次[暗影伤害]。",
@@ -14644,11 +15000,11 @@
             ]
           },
           {
-            "spellId": "426734",
-            "spellNameZH": "燃烧之影",
-            "spellNameEN": "‍Burning Shadows",
+            "spellId": "453140",
+            "spellNameZH": "塌缩之夜",
+            "spellNameEN": "‍Collapsing Night",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Collapsing-Night-1024x677.webp",
-            "image": "‍Burning Shadows.gif",
+            "image": "‍Collapsing Night.gif",
             "data": [
               {
                 "text": "[暗影之冠]在目标位置撕开传送门，持续30秒，对范围内的玩家每秒造成暗影伤害。这些暗影区域会随时间推移逐渐扩大范围。",
@@ -14664,11 +15020,11 @@
             ]
           },
           {
-            "spellId": "428086",
-            "spellNameZH": "暗影箭",
-            "spellNameEN": "‍Shadow Bolt",
+            "spellId": "426734",
+            "spellNameZH": "燃烧之影",
+            "spellNameEN": "‍Burning Shadows",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Burning-Shadows-1024x677.webp",
-            "image": "‍Shadow Bolt.gif",
+            "image": "‍Burning Shadows.gif",
             "data": [
               {
                 "text": "暗影王冠会切断玩家[身体与灵魂]的联系，每秒造成两次暗影伤害，并使移动速度永久降低50%。",
@@ -14696,6 +15052,26 @@
                         "children": []
                       }
                     ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "428086",
+            "spellNameZH": "暗影箭",
+            "spellNameEN": "‍Shadow Bolt",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Shadow-Bolt-1024x677.webp",
+            "image": "‍Shadow Bolt.gif",
+            "data": [
+              {
+                "text": "[暗影之冠]向目标投掷暗影魔法，造成[暗影伤害]。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "可打断。",
+                    "spells": [],
+                    "children": []
                   }
                 ]
               }
@@ -15145,11 +15521,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "426860",
-            "spellNameZH": "暗黑法球",
-            "spellNameEN": "‍Dark Orb",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Anubikkaj.webp",
-            "image": "‍Dark Orb.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "[请注意]副本内有3个会强化阿努比克萨的小首领，开打前务必先击杀[不破者伊克斯克里滕]、[死亡尖啸者伊肯塔克]和[晋升者维斯寇克希亚]。",
@@ -15213,11 +15588,11 @@
             ]
           },
           {
-            "spellId": "427001",
-            "spellNameZH": "恐惧猛击",
-            "spellNameEN": "‍Terrifying Slam",
+            "spellId": "426860",
+            "spellNameZH": "暗黑法球",
+            "spellNameEN": "‍Dark Orb",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Dark-Orb-1024x677.webp",
-            "image": "‍Terrifying Slam.gif",
+            "image": "‍Dark Orb.gif",
             "data": [
               {
                 "text": "阿努比卡杰召唤出一颗纯粹的黑暗之球，[黑暗之球]会向前飞行直至撞击物体后爆炸，对所有玩家造成暗影伤害。该伤害会随着[黑暗之球]飞行距离的增加而递减。",
@@ -15251,14 +15626,28 @@
             ]
           },
           {
-            "spellId": "426787",
-            "spellNameZH": "晦影腐朽",
-            "spellNameEN": "‍Shadowy Decay",
+            "spellId": "427001",
+            "spellNameZH": "恐惧猛击",
+            "spellNameEN": "‍Terrifying Slam",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Terrifying-Slam-1024x677.webp",
-            "image": "‍Shadowy Decay.gif",
+            "image": "‍Terrifying Slam.gif",
             "data": [
               {
                 "text": "阿努比卡杰对当前目标发动物理与暗影双重冲击，造成伤害并将其击退。此外，还会对15码范围内的其他目标造成暗影伤害，并使其陷入5秒恐惧状态。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "426787",
+            "spellNameZH": "晦影腐朽",
+            "spellNameEN": "‍Shadowy Decay",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Shadowy-Decay-1024x677.webp",
+            "image": "‍Shadowy Decay.gif",
+            "data": [
+              {
+                "text": "阿努比卡吉释放出黑暗魔法，在5秒内每秒造成暗影伤害，且每跳伤害递增10%。该效果可叠加。[注：保留游戏术语\"暗影伤害\"和技能名称\"阿努比卡吉\"的译名统一性]",
                 "spells": [],
                 "children": []
               }
@@ -15461,11 +15850,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "434407",
-            "spellNameZH": "酸液翻腾",
-            "spellNameEN": "‍Rolling Acid",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Rashanan-1024x708.webp",
-            "image": "‍Rolling Acid.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "这场战斗分为两个阶段：第一阶段在船上进行，第二阶段则在地下室与首领决战。",
@@ -15535,11 +15923,11 @@
             ]
           },
           {
-            "spellId": "448213",
-            "spellNameZH": "缠网喷吐",
-            "spellNameEN": "‍Expel Webs",
+            "spellId": "434407",
+            "spellNameZH": "酸液翻腾",
+            "spellNameEN": "‍Rolling Acid",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Rolling-Acid-1024x677.webp",
-            "image": "‍Expel Webs.gif",
+            "image": "‍Rolling Acid.gif",
             "data": [
               {
                 "text": "拉沙'南向标记目标喷吐剧毒混合物，毒液会从目标位置向指定方向呈波浪状扩散。",
@@ -15577,11 +15965,11 @@
             ]
           },
           {
-            "spellId": "448888",
-            "spellNameZH": "侵蚀喷涌",
-            "spellNameEN": "‍Erosive Spray",
+            "spellId": "448213",
+            "spellNameZH": "缠网喷吐",
+            "spellNameEN": "‍Expel Webs",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Expel-Webs-1024x677.webp",
-            "image": "‍Erosive Spray.gif",
+            "image": "‍Expel Webs.gif",
             "data": [
               {
                 "text": "拉沙'南向目标方向喷射黏稠丝线，对冲击点3码范围内的玩家造成自然伤害，并将其定身在原地3秒。",
@@ -15591,11 +15979,11 @@
             ]
           },
           {
-            "spellId": "449734",
-            "spellNameZH": "酸蚀喷发",
-            "spellNameEN": "‍Acidic Eruption",
+            "spellId": "448888",
+            "spellNameZH": "侵蚀喷涌",
+            "spellNameEN": "‍Erosive Spray",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Erosive-Spray-1024x677.webp",
-            "image": "‍Acidic Eruption.gif",
+            "image": "‍Erosive Spray.gif",
             "data": [
               {
                 "text": "拉沙'南在施法开始时及之后每秒喷吐酸液，持续2秒，对所有玩家造成自然伤害。",
@@ -15617,11 +16005,11 @@
             ]
           },
           {
-            "spellId": "434089",
-            "spellNameZH": "喷射丝线",
-            "spellNameEN": "‍Spinneret's Strands",
+            "spellId": "449734",
+            "spellNameZH": "酸蚀喷发",
+            "spellNameEN": "‍Acidic Eruption",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Acidic-Eruption-1024x677.webp",
-            "image": "‍Spinneret's Strands.gif",
+            "image": "‍Acidic Eruption.gif",
             "data": [
               {
                 "text": "抵达[尊崇之地]后，[拉沙安]会狂暴地抽打地面，对所有玩家造成自然伤害，该效果会随时间推移不断增强，直到被玩家打断。",
@@ -15638,6 +16026,32 @@
                 "text": "[Rasha'nan]在效果持续期间免疫所有伤害。",
                 "spells": [],
                 "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "434089",
+            "spellNameZH": "喷射丝线",
+            "spellNameEN": "‍Spinneret's Strands",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Spinnerets-Strands-1024x677.webp",
+            "image": "‍Spinneret's Strands.gif",
+            "data": [
+              {
+                "text": "拉沙'纳恩向目标玩家喷射蛛网，对10码范围内的玩家造成暗影伤害，同时将最初的目标束缚在原地并生成粘性蛛网。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "这根锁链每秒造成暗影伤害，并将初始目标拉向施法者。移动超过10码会扯断锁链，引发[喷丝网裂]效果。",
+                    "spells": [
+                      {
+                        "name": "‍Spinneret's Websnap",
+                        "id": "439778",
+                        "nameZH": "喷丝网裂"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
               }
             ]
           }
@@ -16311,11 +16725,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "348350",
-            "spellNameZH": "审讯",
-            "spellNameEN": "‍Interrogation",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/ZoPhex-the-Sentinel.webp",
-            "image": "‍Interrogation.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "留意[扣押违禁品]倒计时，确保效果触发时全员满血。另外注意避免在效果触发时被沉默打断关键输出技能，必要时可延迟开启爆发技能。",
@@ -16370,11 +16783,11 @@
             ]
           },
           {
-            "spellId": "346204",
-            "spellNameZH": "武装安保",
-            "spellNameEN": "‍Armed Security",
+            "spellId": "348350",
+            "spellNameZH": "审讯",
+            "spellNameEN": "‍Interrogation",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Interrogation-1024x677.webp",
-            "image": "‍Armed Security.gif",
+            "image": "‍Interrogation.gif",
             "data": [
               {
                 "text": "佐菲克斯会锁定一名被标记的玩家进行[审讯]，将其关押在[监禁室]中，同时缓慢向目标逼近。",
@@ -16422,11 +16835,11 @@
             ]
           },
           {
-            "spellId": "348128",
-            "spellNameZH": "全副武装",
-            "spellNameEN": "‍Fully Armed",
+            "spellId": "346204",
+            "spellNameZH": "武装安保",
+            "spellNameEN": "‍Armed Security",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Armed-Security-1024x677.webp",
-            "image": "‍Fully Armed.gif",
+            "image": "‍Armed Security.gif",
             "data": [
               {
                 "text": "佐·菲克斯的双臂脱离躯干，开始剧烈旋转，每1.5秒对6码范围内的玩家造成物理伤害。",
@@ -16436,10 +16849,10 @@
             ]
           },
           {
-            "spellId": "345770",
-            "spellNameZH": "扣押违禁品",
-            "spellNameEN": "‍Impound Contraband",
-            "image": "‍Impound Contraband.gif",
+            "spellId": "348128",
+            "spellNameZH": "全副武装",
+            "spellNameEN": "‍Fully Armed",
+            "image": "‍Fully Armed.gif",
             "data": [
               {
                 "text": "佐·菲克斯不断补充躯干上的肢体，使造成的物理伤害提高25%。",
@@ -16449,11 +16862,11 @@
             ]
           },
           {
-            "spellId": "1236348",
-            "spellNameZH": "充能劈斩",
-            "spellNameEN": "‍Charged Slash",
+            "spellId": "345770",
+            "spellNameZH": "扣押违禁品",
+            "spellNameEN": "‍Impound Contraband",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Impound-Contraband-1024x677.webp",
-            "image": "‍Charged Slash.gif",
+            "image": "‍Impound Contraband.gif",
             "data": [
               {
                 "text": "佐·菲克斯会没收一名玩家的武器，使其陷入[沉默]与[安抚]状态，直到该玩家重新取回武器为止。",
@@ -16465,6 +16878,20 @@
                     "children": []
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "spellId": "1236348",
+            "spellNameZH": "充能劈斩",
+            "spellNameEN": "‍Charged Slash",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Charged-Slash-1024x677.webp",
+            "image": "‍Charged Slash.gif",
+            "data": [
+              {
+                "text": "佐·菲克斯蓄力挥剑，释放一次大范围劈砍，对面前的所有玩家造成物理伤害。",
+                "spells": [],
+                "children": []
               }
             ]
           }
@@ -16663,11 +17090,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "349627",
-            "spellNameZH": "暴食",
-            "spellNameEN": "‍Gluttony",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/The-Grand-Menagerie-1024x413.webp",
-            "image": "‍Gluttony.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "在与阿尔克鲁克斯交战时，每当[饕餮吞噬]发动时不必惊慌。请记住：虽然能量球会覆盖整个房间，但它们会分两波出现。站在第二波能量球的落点位置，待第一波球体坠落完毕后，迅速踏入安全区域即可避开第二波攻击。",
@@ -16733,11 +17159,11 @@
             ]
           },
           {
-            "spellId": "349663",
-            "spellNameZH": "饥饿之握",
-            "spellNameEN": "‍Grip of Hunger",
+            "spellId": "349627",
+            "spellNameZH": "暴食",
+            "spellNameEN": "‍Gluttony",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Gluttony-1024x677.webp",
-            "image": "‍Grip of Hunger.gif",
+            "image": "‍Gluttony.gif",
             "data": [
               {
                 "text": "阿尔克鲁克斯将[饥饿精华]施加给最近的玩家，持续21秒。该玩家可以安全吸收[不稳定的心能]，但同时会对5码范围内的其他玩家每秒造成暗影伤害。",
@@ -16771,11 +17197,11 @@
             ]
           },
           {
-            "spellId": "349797",
-            "spellNameZH": "饕餮吞噬",
-            "spellNameEN": "‍Grand Consumption",
+            "spellId": "349663",
+            "spellNameZH": "饥饿之握",
+            "spellNameEN": "‍Grip of Hunger",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Grip-of-Hunger-1024x677.webp",
-            "image": "‍Grand Consumption.gif",
+            "image": "‍Grip of Hunger.gif",
             "data": [
               {
                 "text": "阿尔克鲁克斯将所有玩家拉至其所在位置，随后发动爆炸性打击，对20码范围内的所有玩家造成暗影伤害。",
@@ -16785,11 +17211,11 @@
             ]
           },
           {
-            "spellId": "349987",
-            "spellNameZH": "排风协议",
-            "spellNameEN": "‍Venting Protocol",
+            "spellId": "349797",
+            "spellNameZH": "饕餮吞噬",
+            "spellNameEN": "‍Grand Consumption",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Grand-Consumption-1024x677.webp",
-            "image": "‍Venting Protocol.gif",
+            "image": "‍Grand Consumption.gif",
             "data": [
               {
                 "text": "阿尔克鲁斯会召唤出吞噬之球浪潮，这些球体在4秒后爆炸，对12码范围内的所有玩家造成吸血效果。",
@@ -16799,11 +17225,11 @@
             ]
           },
           {
-            "spellId": "349934",
-            "spellNameZH": "狂热鞭笞协议",
-            "spellNameEN": "‍Flagellation Protocol",
+            "spellId": "349987",
+            "spellNameZH": "排风协议",
+            "spellNameEN": "‍Venting Protocol",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Venting-Protocol-1024x677.webp",
-            "image": "‍Flagellation Protocol.gif",
+            "image": "‍Venting Protocol.gif",
             "data": [
               {
                 "text": "阿基莱特释放其心能核心，喷发出不稳定的心能，对7码范围内的所有玩家造成神圣伤害并将其击退。",
@@ -16819,10 +17245,10 @@
             ]
           },
           {
-            "spellId": "349954",
-            "spellNameZH": "净化协议",
-            "spellNameEN": "‍Purification Protocol",
-            "image": "‍Purification Protocol.gif",
+            "spellId": "349934",
+            "spellNameZH": "狂热鞭笞协议",
+            "spellNameEN": "‍Flagellation Protocol",
+            "image": "‍Flagellation Protocol.gif",
             "data": [
               {
                 "text": "阿基里特开始猛击目标，在5秒内每0.5秒造成一次物理伤害。",
@@ -16832,11 +17258,11 @@
             ]
           },
           {
-            "spellId": "350086",
-            "spellNameZH": "歼灭螺旋",
-            "spellNameEN": "‍Whirling Annihilation",
+            "spellId": "349954",
+            "spellNameZH": "净化协议",
+            "spellNameEN": "‍Purification Protocol",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Purification-Protocol-1024x677.webp",
-            "image": "‍Whirling Annihilation.gif",
+            "image": "‍Purification Protocol.gif",
             "data": [
               {
                 "text": "阿基利特会对两名玩家施加[不稳定的心能]，在6秒内每秒造成神圣伤害。效果结束时会发生爆炸，对10码范围内的所有玩家造成神圣伤害。",
@@ -16846,14 +17272,28 @@
             ]
           },
           {
-            "spellId": "350101",
-            "spellNameZH": "诅咒锁链",
-            "spellNameEN": "‍Chains of Damnation",
+            "spellId": "350086",
+            "spellNameZH": "歼灭螺旋",
+            "spellNameEN": "‍Whirling Annihilation",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Whirling-Annihilation-1024x677.webp",
-            "image": "‍Chains of Damnation.gif",
+            "image": "‍Whirling Annihilation.gif",
             "data": [
               {
                 "text": "[薇恩莎]疯狂挥舞着湮灭之刃，将所有玩家拉向自己，并对7码范围内的玩家每秒造成一次物理伤害。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "350101",
+            "spellNameZH": "诅咒锁链",
+            "spellNameEN": "‍Chains of Damnation",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Chains-of-Damnation-1024x677.webp",
+            "image": "‍Chains of Damnation.gif",
+            "data": [
+              {
+                "text": "薇恩扎随机禁锢一名玩家，每2秒造成一次物理伤害，并使其移动速度降低100%，直到锁链被摧毁。",
                 "spells": [],
                 "children": []
               }
@@ -17178,11 +17618,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "1241032",
-            "spellNameZH": "最终警告",
-            "spellNameEN": "‍Final Warning",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Myzas-Oasis.webp",
-            "image": "‍Final Warning.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "战斗开始时，队伍中每位成员需要拾取一件乐器。这将赋予你一个额外动作按钮，根据所选乐器的不同，该按钮可使你[向前冲锋]或[击飞敌人]。随后你需要通过按下这个额外动作键来切割地面符号，从而获得[爵士乐]和[快拍提速！]增益效果。",
@@ -17246,11 +17685,11 @@
             ]
           },
           {
-            "spellId": "355438",
-            "spellNameZH": "压制冲击",
-            "spellNameEN": "‍Suppression Spark",
+            "spellId": "1241032",
+            "spellNameZH": "最终警告",
+            "spellNameEN": "‍Final Warning",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Final-Warning-1024x677.webp",
-            "image": "‍Suppression Spark.gif",
+            "image": "‍Final Warning.gif",
             "data": [
               {
                 "text": "佐格隆用一道力场护盾保护自己，\n吸收所有受到的伤害，并开始施放[最终警告]。施法完成后，\n对所有玩家造成奥术伤害。\n\n（说明：根据魔兽世界中文版常用术语规范进行了本地化处理：\n1. \"force field\"译为\"力场护盾\"（游戏内常见护盾类技能译法）\n2. \"arcane damage\"译为\"奥术伤害\"（魔兽标准元素伤害类型译法）\n3. 保留了方括号标记的技能名称格式\n4. 调整了句式结构使其更符合中文技能描述习惯）",
@@ -17266,11 +17705,11 @@
             ]
           },
           {
-            "spellId": "350919",
-            "spellNameZH": "群体控制",
-            "spellNameEN": "‍Crowd Control",
+            "spellId": "355438",
+            "spellNameZH": "压制冲击",
+            "spellNameEN": "‍Suppression Spark",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Suppression-Spark-1024x677.webp",
-            "image": "‍Crowd Control.gif",
+            "image": "‍Suppression Spark.gif",
             "data": [
               {
                 "text": "佐格隆将玩家拉向他的位置，为团队协作创造了绝佳时机。",
@@ -17286,11 +17725,11 @@
             ]
           },
           {
-            "spellId": "359028",
-            "spellNameZH": "安保猛击",
-            "spellNameEN": "‍Security Slam",
+            "spellId": "350919",
+            "spellNameZH": "群体控制",
+            "spellNameEN": "‍Crowd Control",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Crowd-Control-1024x677.webp",
-            "image": "‍Security Slam.gif",
+            "image": "‍Crowd Control.gif",
             "data": [
               {
                 "text": "佐格罗恩在5秒内格挡来自正面的所有攻击和法术。",
@@ -17306,15 +17745,35 @@
             ]
           },
           {
-            "spellId": "350922",
-            "spellNameZH": "威吓怒吼",
-            "spellNameEN": "‍Menacing Shout",
-            "image": "‍Menacing Shout.gif",
+            "spellId": "359028",
+            "spellNameZH": "安保猛击",
+            "spellNameEN": "‍Security Slam",
+            "image": "‍Security Slam.gif",
             "data": [
               {
                 "text": "佐格隆用战锤重击目标，造成物理伤害。\n\n（说明：根据魔兽世界中文版惯用的技能描述风格进行了本地化处理：\n1. \"clobbers\"译为\"重击\"，符合游戏内近战攻击的术语习惯\n2. \"Zo'Gron\"保留英文名不译，与魔兽世界副本BOSS命名规范一致\n3. 采用\"造成物理伤害\"的标准表述，与游戏内技能说明文本风格统一\n4. 整体采用简洁有力的短句结构，保持攻略文本的实用性）",
                 "spells": [],
                 "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "350922",
+            "spellNameZH": "威吓怒吼",
+            "spellNameEN": "‍Menacing Shout",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Menacing-Shout-1024x677.webp",
+            "image": "‍Menacing Shout.gif",
+            "data": [
+              {
+                "text": "对所有玩家造成物理伤害，并打断施法6秒。该效果无视护甲。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "可打断。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
               }
             ]
           }
@@ -17426,11 +17885,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "346947",
-            "spellNameZH": "不稳定的货物",
-            "spellNameEN": "‍Unstable Goods",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Mailroom-Mayhem.webp",
-            "image": "‍Unstable Goods.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "在整场战斗中，建议团队保持集中站位，这样能更轻松地应对[邮件旋风]和[现金汇款]的群体分摊治疗压力。",
@@ -17473,11 +17931,11 @@
             ]
           },
           {
-            "spellId": "346286",
-            "spellNameZH": "有害液体",
-            "spellNameEN": "‍Hazardous Liquids",
+            "spellId": "346947",
+            "spellNameZH": "不稳定的货物",
+            "spellNameEN": "‍Unstable Goods",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Unstable-Goods-1024x677.webp",
-            "image": "‍Hazardous Liquids.gif",
+            "image": "‍Unstable Goods.gif",
             "data": [
               {
                 "text": "[邮差主管]会激活中央邮件传送门，释放出[不稳定的货物]包裹。这些包裹若在30秒内未能投递，就会发生爆炸。\n\n（说明：根据魔兽世界副本攻略的文本特点，我做了以下处理：\n1. 保留了游戏内专有名词的方括号格式\n2. 将英文被动语态转换为中文主动语态\n3. 调整了句式结构使其更符合中文表达习惯\n4. 添加了\"这些包裹\"作为主语衔接，使语义更连贯\n5. 使用\"发生爆炸\"替代直译的\"爆炸\"，更符合中文动词搭配习惯）",
@@ -17516,11 +17974,11 @@
             ]
           },
           {
-            "spellId": "346742",
-            "spellNameZH": "邮件旋风",
-            "spellNameEN": "‍Fan Mail",
+            "spellId": "346286",
+            "spellNameZH": "有害液体",
+            "spellNameEN": "‍Hazardous Liquids",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Hazardous-Liquids-1024x677.webp",
-            "image": "‍Fan Mail.gif",
+            "image": "‍Hazardous Liquids.gif",
             "data": [
               {
                 "text": "[邮政局长]激活中央邮件传送门，释放出一批危险液体。若未被玩家拦截，这些液体会泼洒在地面上形成污染区域。",
@@ -17546,14 +18004,28 @@
             ]
           },
           {
-            "spellId": "346962",
-            "spellNameZH": "现金汇款",
-            "spellNameEN": "‍Money Order",
+            "spellId": "346742",
+            "spellNameZH": "邮件旋风",
+            "spellNameEN": "‍Fan Mail",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Fan-Mail-1024x677.webp",
-            "image": "‍Money Order.gif",
+            "image": "‍Fan Mail.gif",
             "data": [
               {
                 "text": "[邮差主管]失控暴走，向四面八方喷射信件，对所有玩家造成持续5秒的物理伤害（每秒一次）。",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "346962",
+            "spellNameZH": "现金汇款",
+            "spellNameEN": "‍Money Order",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Money-Order-1024x677.webp",
+            "image": "‍Money Order.gif",
+            "data": [
+              {
+                "text": "[邮差主管]会向一名玩家投掷大量金币，对6码范围内的所有玩家造成物理伤害，该伤害将由所有被击中的玩家均摊。",
                 "spells": [],
                 "children": []
               }
@@ -17630,11 +18102,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "1245579",
-            "spellNameZH": "奥能手里波",
-            "spellNameEN": "‍Shuri",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Soazmi.webp",
-            "image": "‍Shuri.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "始终保持靠近首领并紧跟坦克移动。",
@@ -17672,11 +18143,11 @@
             ]
           },
           {
-            "spellId": "347392",
-            "spellNameZH": "设置移形信标",
-            "spellNameEN": "‍Deploy Relocators",
+            "spellId": "1245579",
+            "spellNameZH": "奥能手里波",
+            "spellNameEN": "‍Shuri",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Shuri-1024x677.webp",
-            "image": "‍Deploy Relocators.gif",
+            "image": "‍Shuri.gif",
             "data": [
               {
                 "text": "索阿兹米会制造一圈不断扩散的奥术能量环，被能量环波及的玩家将每秒受到一次奥术伤害，持续10秒。[需要保持移动来规避该技能]",
@@ -17686,11 +18157,11 @@
             ]
           },
           {
-            "spellId": "1245634",
-            "spellNameZH": "分隔术",
-            "spellNameEN": "‍Divide",
+            "spellId": "347392",
+            "spellNameZH": "设置移形信标",
+            "spellNameEN": "‍Deploy Relocators",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Deploy-Relocators-1024x677.webp",
-            "image": "‍Divide.gif",
+            "image": "‍Deploy Relocators.gif",
             "data": [
               {
                 "text": "索·阿兹米会部署成对的[迁跃器]来迷惑敌人。",
@@ -17706,11 +18177,11 @@
             ]
           },
           {
-            "spellId": "1245669",
-            "spellNameZH": "双重秘术",
-            "spellNameEN": "‍Double Technique",
+            "spellId": "1245634",
+            "spellNameZH": "分隔术",
+            "spellNameEN": "‍Divide",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Divide-1024x677.webp",
-            "image": "‍Double Technique.gif",
+            "image": "‍Divide.gif",
             "data": [
               {
                 "text": "当索阿兹米的血量降至70%和40%时，他会用一道屏障将场地分割开来，玩家无法穿过屏障移动或锁定目标。",
@@ -17720,11 +18191,11 @@
             ]
           },
           {
-            "spellId": "1248209",
-            "spellNameZH": "相位斩",
-            "spellNameEN": "‍Phase Slash",
+            "spellId": "1245669",
+            "spellNameZH": "双重秘术",
+            "spellNameEN": "‍Double Technique",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Double-Technique-1024x677.webp",
-            "image": "‍Phase Slash.gif",
+            "image": "‍Double Technique.gif",
             "data": [
               {
                 "text": "索阿兹米施展其独门二段技。[完成]后，他会向所有玩家投掷燃烧利刃，在10秒内每秒造成火焰伤害。",
@@ -17736,6 +18207,19 @@
                     "children": []
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "spellId": "1248209",
+            "spellNameZH": "相位斩",
+            "spellNameEN": "‍Phase Slash",
+            "image": "‍Phase Slash.gif",
+            "data": [
+              {
+                "text": "索阿兹米遁入暗影，随机对3名玩家发动斩击，造成物理伤害并使其[流血]。",
+                "spells": [],
+                "children": []
               }
             ]
           }
@@ -18385,11 +18869,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "438476",
-            "spellNameZH": "警示尖鸣",
-            "spellNameEN": "‍Alerting Shrill",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Avanoxx-1024x415.webp",
-            "image": "‍Alerting Shrill.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "在这场首领战中，团队需始终保持集中站位，但当[饥饿的爬行者]存活时务必注意走位。由于[贪得无厌]技能的存在，阿瓦诺克斯会吞噬任何靠近她的爬行者，从而提升自身伤害，极可能导致团灭。",
@@ -18438,11 +18921,11 @@
             ]
           },
           {
-            "spellId": "438473",
-            "spellNameZH": "蛛纱强袭",
-            "spellNameEN": "‍Gossamer Onslaught",
+            "spellId": "438476",
+            "spellNameZH": "警示尖鸣",
+            "spellNameEN": "‍Alerting Shrill",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Alerting-Shrill-1024x677.webp",
-            "image": "‍Gossamer Onslaught.gif",
+            "image": "‍Alerting Shrill.gif",
             "data": [
               {
                 "text": "阿瓦诺克斯发出一声刺耳的尖啸，召唤出[饥饿的爬行者]破卵而出，并在3秒内每0.5秒对所有玩家造成一次物理伤害。\n\n（说明：根据魔兽世界中文版惯用术语进行本地化处理：\n1. \"Starved Crawlers\"译为[饥饿的爬行者]（参照经典副本[安其拉废墟]中的同名怪物译法）\n2. 技能效果描述采用\"每X秒造成一次伤害\"的标准句式\n3. 保留方括号格式的专有名词标记\n4. 将英文被动语态转换为中文主动句式）",
@@ -18458,11 +18941,11 @@
             ]
           },
           {
-            "spellId": "438471",
-            "spellNameZH": "贪食撕咬",
-            "spellNameEN": "‍Voracious Bite",
+            "spellId": "438473",
+            "spellNameZH": "蛛纱强袭",
+            "spellNameEN": "‍Gossamer Onslaught",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Gossamer-Onslaught-1024x677.webp",
-            "image": "‍Voracious Bite.gif",
+            "image": "‍Gossamer Onslaught.gif",
             "data": [
               {
                 "text": "阿瓦诺克斯向四面八方喷射剧毒蛛网，对所有玩家每秒造成自然伤害，持续5秒。此外，该技能还会在目标位置留下[邪恶缠网]，对每个落点2码范围内的玩家造成自然伤害。",
@@ -18502,6 +18985,19 @@
                     "children": []
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "spellId": "438471",
+            "spellNameZH": "贪食撕咬",
+            "spellNameEN": "‍Voracious Bite",
+            "image": "‍Voracious Bite.gif",
+            "data": [
+              {
+                "text": "阿瓦诺克丝跃向她的主要目标并发动连续撕咬。每次撕咬造成物理伤害，最后一击还会使目标受到的伤害提高50%，持续10秒。",
+                "spells": [],
+                "children": []
               }
             ]
           }
@@ -18684,11 +19180,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "433766",
-            "spellNameZH": "虫群之眼",
-            "spellNameEN": "‍Eye of the Swarm",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Anubzekt-1024x870.webp",
-            "image": "‍Eye of the Swarm.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "近战位持续输出，注意[钻地冲击]始终锁定最远距离目标。",
@@ -18742,11 +19237,11 @@
             ]
           },
           {
-            "spellId": "433740",
-            "spellNameZH": "感染",
-            "spellNameEN": "‍Infestation",
+            "spellId": "433766",
+            "spellNameZH": "虫群之眼",
+            "spellNameEN": "‍Eye of the Swarm",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Eye-of-the-Swarm-1024x677.webp",
-            "image": "‍Infestation.gif",
+            "image": "‍Eye of the Swarm.gif",
             "data": [
               {
                 "text": "当能量达到100点时，阿努布泽克会召唤出铺天盖地的虫群包围竞技场。玩家身处[无休虫群]肆虐区域时，会快速叠加该效果层数。",
@@ -18768,11 +19263,11 @@
             ]
           },
           {
-            "spellId": "439506",
-            "spellNameZH": "钻地冲击",
-            "spellNameEN": "‍Burrow Charge",
+            "spellId": "433740",
+            "spellNameZH": "感染",
+            "spellNameEN": "‍Infestation",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Infestation-1024x677.webp",
-            "image": "‍Burrow Charge.gif",
+            "image": "‍Infestation.gif",
             "data": [
               {
                 "text": "阿努布泽克召唤虫群吞噬随机一名玩家，在5秒内每0.5秒造成一次自然伤害。",
@@ -18794,11 +19289,11 @@
             ]
           },
           {
-            "spellId": "435012",
-            "spellNameZH": "穿刺",
-            "spellNameEN": "‍Impale",
+            "spellId": "439506",
+            "spellNameZH": "钻地冲击",
+            "spellNameEN": "‍Burrow Charge",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Burrow-Charge-1024x677.webp",
-            "image": "‍Impale.gif",
+            "image": "‍Burrow Charge.gif",
             "data": [
               {
                 "text": "阿努布泽克随机钻向一名玩家，对路径上的玩家造成物理伤害并将其击退。在路径终点处，他会破土而出，对13码范围内的玩家造成物理伤害并击退。[注：保留游戏内技能名称\"Anub'zekt\"的音译，同时符合中文魔兽世界攻略常见的\"码\"作为距离单位]",
@@ -18810,6 +19305,20 @@
                     "children": []
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "spellId": "435012",
+            "spellNameZH": "穿刺",
+            "spellNameEN": "‍Impale",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Impale-1024x677.webp",
+            "image": "‍Impale.gif",
+            "data": [
+              {
+                "text": "阿努布雷克向当前目标所在方向发射一道地刺之锥，对命中的玩家造成物理伤害并将其击退。",
+                "spells": [],
+                "children": []
               }
             ]
           }
@@ -18951,11 +19460,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "432117",
-            "spellNameZH": "宇宙奇点",
-            "spellNameEN": "‍Cosmic Singularity",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Kikatal-the-Harvester.webp",
-            "image": "‍Cosmic Singularity.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "分散站位，避免[培植毒药]Debuff的毒液波浪溅射到队友。",
@@ -18999,11 +19507,11 @@
             ]
           },
           {
-            "spellId": "461487",
-            "spellNameZH": "培植毒药",
-            "spellNameEN": "‍Cultivated Poisons",
+            "spellId": "432117",
+            "spellNameZH": "宇宙奇点",
+            "spellNameEN": "‍Cosmic Singularity",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Cosmic-Singularity-1024x677.webp",
-            "image": "‍Cultivated Poisons.gif",
+            "image": "‍Cosmic Singularity.gif",
             "data": [
               {
                 "text": "收割者基卡塔尔会将所有玩家拉至身边，并开始制造空间扭曲。施法完成后，10码范围内的所有玩家都会受到暗影伤害并被击退。",
@@ -19030,11 +19538,11 @@
             ]
           },
           {
-            "spellId": "432130",
-            "spellNameZH": "爆发蛛网",
-            "spellNameEN": "‍Erupting Webs",
+            "spellId": "461487",
+            "spellNameZH": "培植毒药",
+            "spellNameEN": "‍Cultivated Poisons",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Cultivated-Poisons-1024x677.webp",
-            "image": "‍Erupting Webs.gif",
+            "image": "‍Cultivated Poisons.gif",
             "data": [
               {
                 "text": "收割者基卡塔尔会向3名玩家注入不断增长的毒液，每秒造成自然伤害，持续8秒。当毒液效果被驱散时，会爆发形成扩散波纹，对命中的玩家造成自然伤害，并在5秒内每0.5秒额外造成一次自然伤害。\n\n（说明：根据魔兽世界副本攻略的文本风格，我做了以下处理：\n1. 将技能名称\"Ki'katal the Harvester\"译为\"收割者基卡塔尔\"，采用魔兽世界经典的\"称号+名字\"命名格式\n2. 将\"inject\"译为\"注入\"，更符合游戏中毒药效果的描述\n3. 使用\"扩散波纹\"来翻译\"waves\"，既保留了原意又增加了视觉画面感\n4. 将被动语态转换为主动语态，符合中文攻略的表述习惯\n5. 保留了精确的时间单位和伤害类型说明\n6. 使用\"被驱散\"来对应\"upon removal\"的游戏术语）",
@@ -19046,6 +19554,20 @@
                     "children": []
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "spellId": "432130",
+            "spellNameZH": "爆发蛛网",
+            "spellNameEN": "‍Erupting Webs",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Erupting-Webs-1024x677.webp",
+            "image": "‍Erupting Webs.gif",
+            "data": [
+              {
+                "text": "收割者基卡塔尔会引发多次蛛网喷发，对命中的玩家造成自然伤害并使其昏迷3秒。",
+                "spells": [],
+                "children": []
               }
             ]
           }
@@ -19561,11 +20083,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "1217232",
-            "spellNameZH": "吞噬",
-            "spellNameEN": "‍Devour",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Azhiccar.webp",
-            "image": "‍Devour.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "尽量保持彼此紧密站位，以便更轻松处理小怪，但要注意随时准备跑开[毒性反刍]debuff。",
@@ -19620,11 +20141,11 @@
             ]
           },
           {
-            "spellId": "1217327",
-            "spellNameZH": "入侵尖啸",
-            "spellNameEN": "‍Invading Shriek",
+            "spellId": "1217232",
+            "spellNameZH": "吞噬",
+            "spellNameEN": "‍Devour",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Devour-1024x677.webp",
-            "image": "‍Invading Shriek.gif",
+            "image": "‍Devour.gif",
             "data": [
               {
                 "text": "当[阿兹卡]能量达到100点时，他会深吸一口气，试图吞噬竞技场内的所有玩家和生物，持续18秒。在此期间，每秒都会对所有玩家造成暗影伤害。",
@@ -19646,11 +20167,11 @@
             ]
           },
           {
-            "spellId": "1227745",
-            "spellNameZH": "毒性反刍",
-            "spellNameEN": "‍Toxic Regurgitation",
+            "spellId": "1217327",
+            "spellNameZH": "入侵尖啸",
+            "spellNameEN": "‍Invading Shriek",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Invading-Shriek-1024x677.webp",
-            "image": "‍Toxic Regurgitation.gif",
+            "image": "‍Invading Shriek.gif",
             "data": [
               {
                 "text": "阿兹卡卡尖啸一声，召唤出[吞噬虱]加入战斗，并对所有玩家造成物理伤害。\n\n（说明：根据魔兽世界中文本地化惯例：\n1. 保留游戏内专有名词\"[吞噬虱]\"的方括号格式\n2. \"Devourer Mites\"采用国服标准译名\"吞噬虱\"\n3. 将英文被动语态转换为中文主动语态\"召唤出...加入战斗\"\n4. \"inflicting physical damage\"译为\"造成物理伤害\"，符合游戏术语规范\n5. 整体采用简练的战场通报风格，与副本攻略文本特征保持一致）",
@@ -19659,6 +20180,38 @@
                   {
                     "text": "噬体虱会随机攻击目标，在跳跃扑向敌人时吸取生命值，并获得可叠加的伤害提升效果。",
                     "spells": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "1227745",
+            "spellNameZH": "毒性反刍",
+            "spellNameEN": "‍Toxic Regurgitation",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Toxic-Regurgitation-1024x677.webp",
+            "image": "‍Toxic Regurgitation.gif",
+            "data": [
+              {
+                "text": "阿兹卡尔向目标玩家喷吐消化酸液，对冲击点10码范围内的敌人每秒造成暗影伤害，持续6秒，并在其位置留下一滩[消化唾沫]。",
+                "spells": [
+                  {
+                    "name": "‍Digestive Spittle",
+                    "id": "1217446",
+                    "nameZH": "消化唾沫"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "站在[消化唾沫]中的玩家每1.5秒会受到暗影伤害，并且移动速度降低50%。",
+                    "spells": [
+                      {
+                        "name": "‍Digestive Spittle",
+                        "id": "1217446",
+                        "nameZH": "消化唾沫"
+                      }
+                    ],
                     "children": []
                   }
                 ]
@@ -19995,11 +20548,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "1219700",
-            "spellNameZH": "奥术突袭",
-            "spellNameEN": "‍Arcane Blitz",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Taahbat-and-Awazj.webp",
-            "image": "‍Arcane Blitz.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "由于[兽王的情谊]的效果，塔赫巴特与阿瓦兹共享生命值，这意味着当两名首领在[奥术突袭]阶段后均可被攻击时，你应当尽量打出最大化的范围伤害。",
@@ -20053,11 +20605,11 @@
             ]
           },
           {
-            "spellId": "1236130",
-            "spellNameZH": "束缚的标枪",
-            "spellNameEN": "‍Binding Javelin",
+            "spellId": "1219700",
+            "spellNameZH": "奥术突袭",
+            "spellNameEN": "‍Arcane Blitz",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Arcane-Blitz-1024x677.webp",
-            "image": "‍Binding Javelin.gif",
+            "image": "‍Arcane Blitz.gif",
             "data": [
               {
                 "text": "当能量达到100点时，阿瓦兹会消失并对玩家释放[迁跃打击]，同时塔阿巴特获得[虚体]状态并进入[奥术超载]阶段。",
@@ -20110,11 +20662,11 @@
             ]
           },
           {
-            "spellId": "1227900",
-            "spellNameZH": "迁跃打击",
-            "spellNameEN": "‍Warp Strike",
+            "spellId": "1236130",
+            "spellNameZH": "束缚的标枪",
+            "spellNameEN": "‍Binding Javelin",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Binding-Javelin-1024x677.webp",
-            "image": "‍Warp Strike.gif",
+            "image": "‍Binding Javelin.gif",
             "data": [
               {
                 "text": "塔哈巴特向目标玩家投掷奥术标枪，对目标周围8码内的玩家造成奥术伤害，并[束缚]所有被击中的玩家。",
@@ -20130,14 +20682,27 @@
             ]
           },
           {
-            "spellId": "1219482",
-            "spellNameZH": "裂隙利爪",
-            "spellNameEN": "‍Rift Claws",
+            "spellId": "1227900",
+            "spellNameZH": "迁跃打击",
+            "spellNameEN": "‍Warp Strike",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Warp-Strike-1024x677.webp",
-            "image": "‍Rift Claws.gif",
+            "image": "‍Warp Strike.gif",
             "data": [
               {
                 "text": "阿兹瓦克会扭曲穿过目标，对路径上的玩家造成[奥术伤害]，并在5秒内每秒使其受到[奥术伤害]。该效果可叠加。\n\n（说明：根据魔兽世界中文版惯用的技能描述风格进行了本地化处理：\n1. 将英文名\"A'wazj\"音译为符合魔兽命名体系的\"阿兹瓦克\"\n2. 使用\"扭曲穿过\"准确传达\"warps through\"的传送机制\n3. 采用\"[奥术伤害]\"的标准伤害类型标注格式\n4. 将被动语态转换为主动语态（\"causing them to suffer\"→\"使其受到\"）\n5. 保持\"该效果可叠加\"的简洁说明方式\n6. 整体符合中文技能描述的短句分行排版习惯）",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "1219482",
+            "spellNameZH": "裂隙利爪",
+            "spellNameEN": "‍Rift Claws",
+            "image": "‍Rift Claws.gif",
+            "data": [
+              {
+                "text": "阿瓦兹用其奥术充能的利爪猛击当前目标，造成奥术伤害并使其流血。",
                 "spells": [],
                 "children": []
               }
@@ -20256,11 +20821,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "1224793",
-            "spellNameZH": "命运低语",
-            "spellNameEN": "‍Whispers of Fate",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Soul-Scribe.webp",
-            "image": "‍Whispers of Fate.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "这场战斗的核心机制在于：你需要在[灵魂]被首领的任何技能击中之前及时回收它，同时自身也要规避这些技能攻击。\n\n（说明：根据要求保留了原文中的方括号格式，并将英文部分转化为符合中文游戏攻略表述习惯的句式。使用\"核心机制\"对应\"whole concept\"，\"回收\"对应\"collecting\"，\"规避\"对应\"avoiding getting hit\"等术语，使文本更贴近魔兽世界副本攻略的文体特征。）",
@@ -20329,11 +20893,11 @@
             ]
           },
           {
-            "spellId": "1236703",
-            "spellNameZH": "永恒织缕",
-            "spellNameEN": "‍Eternal Weave",
+            "spellId": "1224793",
+            "spellNameZH": "命运低语",
+            "spellNameEN": "‍Whispers of Fate",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Whispers-of-Fate-1024x677.webp",
-            "image": "‍Eternal Weave.gif",
+            "image": "‍Whispers of Fate.gif",
             "data": [
               {
                 "text": "灵魂书写者会粉碎每位玩家的命运，召唤出他们的[命缚者]幻象，使其承受奥术伤害。",
@@ -20361,11 +20925,11 @@
             ]
           },
           {
-            "spellId": "1225218",
-            "spellNameZH": "对未知的畏惧",
-            "spellNameEN": "‍Dread of the Unknown",
+            "spellId": "1236703",
+            "spellNameZH": "永恒织缕",
+            "spellNameEN": "‍Eternal Weave",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Eternal-Weave-1024x677.webp",
-            "image": "‍Dread of the Unknown.gif",
+            "image": "‍Eternal Weave.gif",
             "data": [
               {
                 "text": "当灵魂书写者的能量达到100点时，他会进入持续24秒的仪式状态，期间会释放一系列锥形范围攻击，对范围内的玩家造成奥术伤害。",
@@ -20404,11 +20968,11 @@
             ]
           },
           {
-            "spellId": "1225174",
-            "spellNameZH": "仪式匕首",
-            "spellNameEN": "‍Ceremonial Dagger",
+            "spellId": "1225218",
+            "spellNameZH": "对未知的畏惧",
+            "spellNameEN": "‍Dread of the Unknown",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Dread-of-the-Unknown-1024x677.webp",
-            "image": "‍Ceremonial Dagger.gif",
+            "image": "‍Dread of the Unknown.gif",
             "data": [
               {
                 "text": "灵魂书写者会给被标记的玩家灌注恐惧效果。\n当效果结束时，该玩家会爆发奥术能量，对爆发点9码范围内的玩家造成伤害。\n\n（说明：根据魔兽世界副本攻略的文本风格，我做了以下处理：\n1. 保留了\"Soul-Scribe\"的译名\"灵魂书写者\"（魔兽世界官方译名风格）\n2. 将\"dread\"译为\"恐惧效果\"，符合游戏术语\n3. \"eruption\"译为\"爆发\"，更符合中文技能描述习惯\n4. 调整了句式结构，使其更符合中文被动语态的表达方式\n5. 保持\"9码\"的游戏距离单位不变\n6. 整体文本风格与魔兽世界官方攻略一致，简洁清晰）",
@@ -20437,6 +21001,32 @@
                   }
                 ],
                 "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "1225174",
+            "spellNameZH": "仪式匕首",
+            "spellNameEN": "‍Ceremonial Dagger",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ceremonial-Dagger-1024x677.webp",
+            "image": "‍Ceremonial Dagger.gif",
+            "data": [
+              {
+                "text": "灵魂书写者向[命运]与[命运束缚]玩家所在方向投掷飞刀，对命中的玩家造成奥术伤害，并在6秒内每1.5秒额外造成一次奥术伤害。",
+                "spells": [],
+                "children": [
+                  {
+                    "text": "命运打击会使被命中的玩家受到[重伤的命运]效果影响。",
+                    "spells": [
+                      {
+                        "name": "‍Wounded Fate",
+                        "id": "1226444",
+                        "nameZH": "重伤的命运"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
               }
             ]
           }
@@ -21098,11 +21688,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "322711",
-            "spellNameZH": "折射罪光",
-            "spellNameEN": "‍Refracted Sinlight",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Halkias.webp",
-            "image": "‍Refracted Sinlight.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "分散站位并跟随Boss移动。时刻注意坦克的位置，永远不要靠近坦克。",
@@ -21151,11 +21740,11 @@
             ]
           },
           {
-            "spellId": "322936",
-            "spellNameZH": "粉碎砸击",
-            "spellNameEN": "‍Crumbling Slam",
+            "spellId": "322711",
+            "spellNameZH": "折射罪光",
+            "spellNameEN": "‍Refracted Sinlight",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Refracted-Sinlight-1024x677.webp",
-            "image": "‍Crumbling Slam.gif",
+            "image": "‍Refracted Sinlight.gif",
             "data": [
               {
                 "text": "哈尔吉亚斯从四扇窗户中射出强大的[折射罪光]，每0.3秒对光束范围内的敌人造成一次暗影伤害。（注：根据魔兽世界中文版习惯，\"Sinlight\"译为\"罪光\"符合暗影界主题；\"Halkias\"采用音译\"哈尔吉亚斯\"保持名称一致性；调整了句式结构使其更符合中文攻略语体）",
@@ -21165,11 +21754,11 @@
             ]
           },
           {
-            "spellId": "322943",
-            "spellNameZH": "举起残骸",
-            "spellNameEN": "‍Heave Debris",
+            "spellId": "322936",
+            "spellNameZH": "粉碎砸击",
+            "spellNameEN": "‍Crumbling Slam",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Crumbling-Slam-1024x677.webp",
-            "image": "‍Heave Debris.gif",
+            "image": "‍Crumbling Slam.gif",
             "data": [
               {
                 "text": "哈尔吉亚斯挥舞其巨大的石臂猛砸面前的地面，对冲击点6码范围内的敌人造成物理伤害，同时对所有100码范围内的玩家造成音波伤害。[粉碎砸击]的冲击会留下[玻璃裂片]。",
@@ -21202,11 +21791,11 @@
             ]
           },
           {
-            "spellId": "339235",
-            "spellNameZH": "赎罪之光",
-            "spellNameEN": "‍Light of Atonement",
+            "spellId": "322943",
+            "spellNameZH": "举起残骸",
+            "spellNameEN": "‍Heave Debris",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Heave-Debris-1024x677.webp",
-            "image": "‍Light of Atonement.gif",
+            "image": "‍Heave Debris.gif",
             "data": [
               {
                 "text": "哈尔吉亚斯向随机玩家投掷一块残骸，对落点6码范围内的玩家造成物理伤害，并对100码内的所有玩家造成音波伤害。[举起残骸]的冲击会留下[玻璃裂片]。\n\n（说明：根据要求保留了原中文文本和方括号内容，将英文部分按照中文游戏攻略的表述习惯进行了翻译，使用了\"码\"作为单位保持游戏术语一致性，动词\"hurls\"译为\"投掷\"更符合BOSS技能描述风格，被动语态转换为主动语态更符合中文表达习惯）",
@@ -21230,6 +21819,48 @@
                         "name": "‍Glass Shards",
                         "id": "323001",
                         "nameZH": "玻璃裂片"
+                      }
+                    ],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "spellId": "339235",
+            "spellNameZH": "赎罪之光",
+            "spellNameEN": "‍Light of Atonement",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Light-of-Atonement-1024x677.webp",
+            "image": "‍Light of Atonement.gif",
+            "data": [
+              {
+                "text": "[赎罪之光]能够保护范围内的玩家免受[罪光幻象]的恐怖影响。",
+                "spells": [
+                  {
+                    "name": "‍Light of Atonement",
+                    "id": "339235",
+                    "nameZH": "赎罪之光"
+                  },
+                  {
+                    "name": "‍Sinlight Visions",
+                    "id": "322977",
+                    "nameZH": "罪光幻象"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "[罪光幻象]会使处于[赎罪之光]范围外的玩家因恐惧而逃离。",
+                    "spells": [
+                      {
+                        "name": "‍Sinlight Visions",
+                        "id": "322977",
+                        "nameZH": "罪光幻象"
+                      },
+                      {
+                        "name": "‍Light of Atonement",
+                        "id": "339235",
+                        "nameZH": "赎罪之光"
                       }
                     ],
                     "children": []
@@ -21369,11 +22000,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "319733",
-            "spellNameZH": "唤石",
-            "spellNameEN": "‍Stone Call",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Echelon.webp",
-            "image": "‍Stone Call.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "分散站位，但不要离Boss太远。",
@@ -21422,10 +22052,10 @@
             ]
           },
           {
-            "spellId": "328206",
-            "spellNameZH": "石化血肉",
-            "spellNameEN": "‍Flesh to Stone",
-            "image": "‍Flesh to Stone.gif",
+            "spellId": "319733",
+            "spellNameZH": "唤石",
+            "spellNameEN": "‍Stone Call",
+            "image": "‍Stone Call.gif",
             "data": [
               {
                 "text": "埃克隆召唤盟友助战，从地下召出6个[不灭的石裔魔]。",
@@ -21463,10 +22093,10 @@
             ]
           },
           {
-            "spellId": "319941",
-            "spellNameZH": "碎石之跃",
-            "spellNameEN": "‍Stone Shattering Leap",
-            "image": "‍Stone Shattering Leap.gif",
+            "spellId": "328206",
+            "spellNameZH": "石化血肉",
+            "spellNameEN": "‍Flesh to Stone",
+            "image": "‍Flesh to Stone.gif",
             "data": [
               {
                 "text": "当[艾奇隆]的能量达到100点时，它会开始将一名玩家逐渐石化，每秒降低其25%移动速度，持续5秒。当石化效果叠加至4层时，该玩家会完全化为石像，使自身及周围8码内的所有玩家昏迷3秒。",
@@ -21476,11 +22106,11 @@
             ]
           },
           {
-            "spellId": "326389",
-            "spellNameZH": "鲜血洪流",
-            "spellNameEN": "‍Blood Torrent",
+            "spellId": "319941",
+            "spellNameZH": "碎石之跃",
+            "spellNameEN": "‍Stone Shattering Leap",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Stone-Shattering-Leap-1024x677.webp",
-            "image": "‍Blood Torrent.gif",
+            "image": "‍Stone Shattering Leap.gif",
             "data": [
               {
                 "text": "埃克隆震碎周围的大地，对8码范围内的所有玩家造成自然伤害并施加[粉碎]效果。",
@@ -21514,6 +22144,20 @@
                     "nameZH": "碎石之跃"
                   }
                 ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "326389",
+            "spellNameZH": "鲜血洪流",
+            "spellNameEN": "‍Blood Torrent",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Blood-Torrent-1024x677.webp",
+            "image": "‍Blood Torrent.gif",
+            "data": [
+              {
+                "text": "埃克隆释放出一阵剧毒血浪，对冲击点造成暗影伤害，并对区域内所有玩家每秒造成一次暗影伤害。[注：保留游戏术语\"shadow damage\"的译法为\"暗影伤害\"]",
+                "spells": [],
                 "children": []
               }
             ]
@@ -21924,11 +22568,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "323538",
-            "spellNameZH": "心能箭矢",
-            "spellNameEN": "‍Anima Bolt",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/High-Adjudicator-Aleez.webp",
-            "image": "‍Anima Bolt.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "在这场首领战中，[高阶裁决官阿利兹]会持续召唤鬼魂锁定并追击玩家。这些鬼魂存活时间越长，对团队造成的暗影伤害就会逐步提升。唯一消灭它们的方法是将鬼魂引至[赎罪容器]附近进行封印。\n\n（说明：根据中文MMO攻略的表述习惯进行了以下优化：\n1. 将英文名\"High Adjudicator Aleez\"规范化为带方括号的译名格式\n2. \"Ghosts\"译为\"鬼魂\"更符合魔兽世界观\n3. \"fixate and follow\"译为\"锁定并追击\"更符合游戏术语\n4. 将被动语态\"will be dealing\"转化为主动语态\"会持续造成\"\n5. 把\"赎罪容器\"保留方括号标注关键道具\n6. \"capture them\"意译为\"封印\"比直译\"捕获\"更符合语境\n7. 调整了句式结构，使说明更符合中文攻略的条理性）",
@@ -21989,11 +22632,11 @@
             ]
           },
           {
-            "spellId": "1236512",
-            "spellNameZH": "不稳定的心能",
-            "spellNameEN": "‍Unstable Anima",
+            "spellId": "323538",
+            "spellNameZH": "心能箭矢",
+            "spellNameEN": "‍Anima Bolt",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Anima-bolt-1024x677.webp",
-            "image": "‍Unstable Anima.gif",
+            "image": "‍Anima Bolt.gif",
             "data": [
               {
                 "text": "高阶裁决官阿利兹会对当前目标造成暗影伤害。",
@@ -22009,11 +22652,11 @@
             ]
           },
           {
-            "spellId": "329340",
-            "spellNameZH": "心能喷泉",
-            "spellNameEN": "‍Anima Fountain",
+            "spellId": "1236512",
+            "spellNameZH": "不稳定的心能",
+            "spellNameEN": "‍Unstable Anima",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Unstable-Anima-1024x677.webp",
-            "image": "‍Anima Fountain.gif",
+            "image": "‍Unstable Anima.gif",
             "data": [
               {
                 "text": "高阶裁决官阿丽兹对2名玩家释放[不稳定的心能]，每2秒造成一次暗影伤害，持续14秒。",
@@ -22043,6 +22686,20 @@
                     ]
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "spellId": "329340",
+            "spellNameZH": "心能喷泉",
+            "spellNameEN": "‍Anima Fountain",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Anima-Fountain-1024x677.webp",
+            "image": "‍Anima Fountain.gif",
+            "data": [
+              {
+                "text": "灵魄喷泉沸腾溢出，对每个冲击点5码范围内的所有玩家造成暗影伤害。",
+                "spells": [],
+                "children": []
               }
             ]
           }
@@ -22164,11 +22821,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "341245",
-            "spellNameZH": "宫务大臣的和声",
-            "spellNameEN": "‍Chamberlain's Chorus",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Lord-Chamberlain.webp",
-            "image": "‍Chamberlain's Chorus.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "分散站位可以更方便地瞄准[雕像]，但不要离Boss太远，否则当[释放苦痛]的扇形范围随距离扩大时，你将难以躲避这个正面锥形技能。",
@@ -22212,10 +22868,10 @@
             ]
           },
           {
-            "spellId": "323142",
-            "spellNameZH": "念力投掷",
-            "spellNameEN": "‍Telekinetic Toss",
-            "image": "‍Telekinetic Toss.gif",
+            "spellId": "341245",
+            "spellNameZH": "宫务大臣的和声",
+            "spellNameEN": "‍Chamberlain's Chorus",
+            "image": "‍Chamberlain's Chorus.gif",
             "data": [
               {
                 "text": "宫廷总管释放锁链\n                              [念力突袭]、[念力反斥]和[哀伤仪式]持续20秒。\n\n（说明：根据魔兽世界中文版惯用术语进行了调整：\n1. \"Lord Chamberlain\" 采用国服标准译名\"宫廷总管\"\n2. 技能名保留方括号格式不变\n3. 调整了标点符号为中文全角格式\n4. 保持\"持续20秒\"的简练战斗提示风格\n5. 动词\"释放\"更符合中文技能描述习惯）",
@@ -22285,11 +22941,11 @@
             ]
           },
           {
-            "spellId": "323236",
-            "spellNameZH": "释放苦痛",
-            "spellNameEN": "‍Unleashed Suffering",
+            "spellId": "323142",
+            "spellNameZH": "念力投掷",
+            "spellNameEN": "‍Telekinetic Toss",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Telekinetic-Toss-1024x677.webp",
-            "image": "‍Unleashed Suffering.gif",
+            "image": "‍Telekinetic Toss.gif",
             "data": [
               {
                 "text": "[Lord Chamberlain]向附近玩家投掷一块[sinstone statue]，对路径上的所有目标造成物理伤害并击退。当[sinstone statue]落地时，其冲击力会对所有玩家造成音波伤害。",
@@ -22299,11 +22955,11 @@
             ]
           },
           {
-            "spellId": "1236973",
-            "spellNameZH": "痛苦爆发",
-            "spellNameEN": "‍Erupting Torment",
+            "spellId": "323236",
+            "spellNameZH": "释放苦痛",
+            "spellNameEN": "‍Unleashed Suffering",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Unleashed-Suffering-1024x677.webp",
-            "image": "‍Erupting Torment.gif",
+            "image": "‍Unleashed Suffering.gif",
             "data": [
               {
                 "text": "宫廷总管释放出一波心能，对面前锥形范围内的所有玩家造成暗影伤害。",
@@ -22313,15 +22969,34 @@
             ]
           },
           {
-            "spellId": "323437",
-            "spellNameZH": "傲慢罪印",
-            "spellNameEN": "‍Stigma of Pride",
+            "spellId": "1236973",
+            "spellNameZH": "痛苦爆发",
+            "spellNameEN": "‍Erupting Torment",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Erupting-Torment-1024x677.webp",
-            "image": "‍Stigma of Pride.gif",
+            "image": "‍Erupting Torment.gif",
             "data": [
               {
                 "text": "[宫廷总管]会释放自身与所有[罪石雕像]中的邪恶能量，对14码范围内的玩家造成暗影伤害。",
                 "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "323437",
+            "spellNameZH": "傲慢罪印",
+            "spellNameEN": "‍Stigma of Pride",
+            "image": "‍Stigma of Pride.gif",
+            "data": [
+              {
+                "text": "侍从长会给主要目标施加[傲慢罪印]，每3秒造成一次暗影伤害，持续18秒。每次伤害会比前一次提高30%。",
+                "spells": [
+                  {
+                    "name": "‍Stigma of Pride",
+                    "id": "323437",
+                    "nameZH": "傲慢罪印"
+                  }
+                ],
                 "children": []
               }
             ]
@@ -22772,11 +23447,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "353312",
-            "spellNameZH": "净化爆发",
-            "spellNameEN": "‍Purifying Burst",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Hylbrande.webp",
-            "image": "‍Purifying Burst.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "优先击杀[宝库净化者]，并打断它们的施法。",
@@ -22819,11 +23493,11 @@
             ]
           },
           {
-            "spellId": "346116",
-            "spellNameZH": "剪切挥舞",
-            "spellNameEN": "‍Shearing Swings",
+            "spellId": "353312",
+            "spellNameZH": "净化爆发",
+            "spellNameEN": "‍Purifying Burst",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Purifying-Burst-1024x677.webp",
-            "image": "‍Shearing Swings.gif",
+            "image": "‍Purifying Burst.gif",
             "data": [
               {
                 "text": "[霍伊尔布兰德]凝聚出一团能量并将其分裂为多枚飞弹，对敌人造成神圣伤害。",
@@ -22833,10 +23507,10 @@
             ]
           },
           {
-            "spellId": "347094",
-            "spellNameZH": "泰坦粉碎",
-            "spellNameEN": "‍Titanic Crash",
-            "image": "‍Titanic Crash.gif",
+            "spellId": "346116",
+            "spellNameZH": "剪切挥舞",
+            "spellNameEN": "‍Shearing Swings",
+            "image": "‍Shearing Swings.gif",
             "data": [
               {
                 "text": "Hylbrande会对其主要目标连续发动两次劈砍，造成物理伤害。",
@@ -22846,11 +23520,11 @@
             ]
           },
           {
-            "spellId": "346959",
-            "spellNameZH": "火焰净除",
-            "spellNameEN": "‍Purged by Fire",
+            "spellId": "347094",
+            "spellNameZH": "泰坦粉碎",
+            "spellNameEN": "‍Titanic Crash",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Titanic-Crash-1024x677.webp",
-            "image": "‍Purged by Fire.gif",
+            "image": "‍Titanic Crash.gif",
             "data": [
               {
                 "text": "希尔布兰德猛劈长剑，对面前所有玩家造成物理伤害并使其昏迷4秒。",
@@ -22860,11 +23534,11 @@
             ]
           },
           {
-            "spellId": "346766",
-            "spellNameZH": "定期消毒",
-            "spellNameEN": "‍Sanitizing Cycle",
+            "spellId": "346959",
+            "spellNameZH": "火焰净除",
+            "spellNameEN": "‍Purged by Fire",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Purged-by-Fire-1024x677.webp",
-            "image": "‍Sanitizing Cycle.gif",
+            "image": "‍Purged by Fire.gif",
             "data": [
               {
                 "text": "希尔布兰德命令一座炮塔向玩家脚下聚焦强烈能量，对停留在该区域的玩家每0.5秒造成神圣伤害，并留下一片[净化之地]，每1.5秒对玩家造成神圣伤害，直到效果消失。",
@@ -22876,6 +23550,48 @@
                   }
                 ],
                 "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "346766",
+            "spellNameZH": "定期消毒",
+            "spellNameEN": "‍Sanitizing Cycle",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Sanitizing-Cycle-1024x677.webp",
+            "image": "‍Sanitizing Cycle.gif",
+            "data": [
+              {
+                "text": "希尔布兰德引导来自密室中的泰坦能量，作为安全措施清除所有未授权生命体。在此期间他免疫所有伤害，并在房间内布满[消毒区域]。",
+                "spells": [
+                  {
+                    "name": "‍Sanitizing Field",
+                    "id": "346828",
+                    "nameZH": "消毒区域"
+                  }
+                ],
+                "children": []
+              },
+              {
+                "text": "绕过密码会出现在希尔布兰德附近，玩家可以拾取并将其投入附近的安全面板中。[注：该机制用于解除副本内特定区域的安保系统]",
+                "spells": [],
+                "children": []
+              },
+              {
+                "text": "玩家可以通过激活大厅后方的泰坦控制台来获得[泰坦洞察]效果，从而确认每段密码的正确放置位置。",
+                "spells": [
+                  {
+                    "name": "‍Titanic Insight",
+                    "id": "346427",
+                    "nameZH": "泰坦洞察"
+                  }
+                ],
+                "children": [
+                  {
+                    "text": "向控制面板输入错误的通行密码会触发神圣伤害，并使玩家昏迷3秒。",
+                    "spells": [],
+                    "children": []
+                  }
+                ]
               }
             ]
           }
@@ -22993,11 +23709,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "347149",
-            "spellNameZH": "永恒吐息",
-            "spellNameEN": "‍Infinite Breath",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Timecapn-Hooktail.webp",
-            "image": "‍Infinite Breath.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "不要手动击杀海盗蛮兵，让坦克用[永恒吐息]解决他们。",
@@ -23029,11 +23744,11 @@
             ]
           },
           {
-            "spellId": "1240102",
-            "spellNameZH": "定时炸弹",
-            "spellNameEN": "‍Time Bomb",
+            "spellId": "347149",
+            "spellNameZH": "永恒吐息",
+            "spellNameEN": "‍Infinite Breath",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Infinite-Breath-1024x677.webp",
-            "image": "‍Time Bomb.gif",
+            "image": "‍Infinite Breath.gif",
             "data": [
               {
                 "text": "钩尾的强力吐息会对前方锥形范围内的玩家造成奥术伤害，并使其昏迷3秒。",
@@ -23055,11 +23770,11 @@
             ]
           },
           {
-            "spellId": "347422",
-            "spellNameZH": "致命海洋",
-            "spellNameEN": "‍Deadly Seas",
+            "spellId": "1240102",
+            "spellNameZH": "定时炸弹",
+            "spellNameEN": "‍Time Bomb",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Time-Bomb-1024x677.webp",
-            "image": "‍Deadly Seas.gif",
+            "image": "‍Time Bomb.gif",
             "data": [
               {
                 "text": "时缚船长钩尾会给两名玩家施加[定时炸弹]，使其急速提高30%，但同时会在30秒内每秒造成奥术伤害。‍[定时炸弹]每次造成伤害时，其伤害会提高10%。",
@@ -23097,6 +23812,19 @@
                     "nameZH": "时光爆破"
                   }
                 ],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "347422",
+            "spellNameZH": "致命海洋",
+            "spellNameEN": "‍Deadly Seas",
+            "image": "‍Deadly Seas.gif",
+            "data": [
+              {
+                "text": "这片海域游弋着成群的饥饿鲨鱼，玩家若在水中逗留过久，很快就会被撕碎吞噬。[注意保持移动或迅速登岸]",
+                "spells": [],
                 "children": []
               }
             ]
@@ -23226,11 +23954,10 @@
         "type": "boss",
         "data": [
           {
-            "spellId": "350796",
-            "spellNameZH": "凌光火花",
-            "spellNameEN": "‍Hyperlight Spark",
+            "spellNameZH": "总览",
+            "spellNameEN": "Overview",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Soleah.webp",
-            "image": "‍Hyperlight Spark.gif",
+            "image": "Overview.gif",
             "data": [
               {
                 "text": "在第一阶段，注意顺劈小怪并及时打断它们的技能。每当你去吸收[坍缩之星]时，记得开启减伤技能。",
@@ -23273,11 +24000,11 @@
             ]
           },
           {
-            "spellId": "353635",
-            "spellNameZH": "坍缩之星",
-            "spellNameEN": "‍Collapsing Star",
+            "spellId": "350796",
+            "spellNameZH": "凌光火花",
+            "spellNameEN": "‍Hyperlight Spark",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Hyperlight-Spark-1024x677.webp",
-            "image": "‍Collapsing Star.gif",
+            "image": "‍Hyperlight Spark.gif",
             "data": [
               {
                 "text": "索利亚创造一枚[凌光火花]，在玩家之间弹跳，造成奥术伤害。",
@@ -23293,11 +24020,11 @@
             ]
           },
           {
-            "spellId": "351124",
-            "spellNameZH": "召唤刺客",
-            "spellNameEN": "‍Summon Assassins",
+            "spellId": "353635",
+            "spellNameZH": "坍缩之星",
+            "spellNameEN": "‍Collapsing Star",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Collapsing-Star-1024x677.webp",
-            "image": "‍Summon Assassins.gif",
+            "image": "‍Collapsing Star.gif",
             "data": [
               {
                 "text": "索莱阿凝聚出一颗蕴含4层[坍缩能量]的[坍缩之星]，持续30秒。每当玩家触碰到[坍缩之星]时，会消耗一层能量，使所有玩家获得[坍缩能量]效果，在3秒内每秒受到奥术伤害。",
@@ -23325,11 +24052,11 @@
             ]
           },
           {
-            "spellId": "351086",
-            "spellNameZH": "势不可挡",
-            "spellNameEN": "‍Power Overwhelming",
+            "spellId": "351124",
+            "spellNameZH": "召唤刺客",
+            "spellNameEN": "‍Summon Assassins",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Summon-Assassins-1024x677.webp",
-            "image": "‍Power Overwhelming.gif",
+            "image": "‍Summon Assassins.gif",
             "data": [
               {
                 "text": "索莱娅召唤精英刺客前来助阵。",
@@ -23357,10 +24084,10 @@
             ]
           },
           {
-            "spellId": "350875",
-            "spellNameZH": "凌光震荡",
-            "spellNameEN": "‍Hyperlight Jolt",
-            "image": "‍Hyperlight Jolt.gif",
+            "spellId": "351086",
+            "spellNameZH": "势不可挡",
+            "spellNameEN": "‍Power Overwhelming",
+            "image": "‍Power Overwhelming.gif",
             "data": [
               {
                 "text": "索莱阿与[圣物]建立联结，汲取其力量使自身在联结期间受到的所有伤害降低99%。",
@@ -23370,11 +24097,11 @@
             ]
           },
           {
-            "spellId": "351096",
-            "spellNameZH": "能量裂片",
-            "spellNameEN": "‍Energy Fragmentation",
+            "spellId": "350875",
+            "spellNameZH": "凌光震荡",
+            "spellNameEN": "‍Hyperlight Jolt",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Hyperlight-Jolt-1024x677.webp",
-            "image": "‍Energy Fragmentation.gif",
+            "image": "‍Hyperlight Jolt.gif",
             "data": [
               {
                 "text": "索莱娅向所有玩家释放一道能量冲击，在每名玩家之间形成连线并造成奥术伤害，同时使玩家受到的[凌光震荡]伤害提高25%，持续15秒。",
@@ -23402,14 +24129,28 @@
             ]
           },
           {
-            "spellId": "351646",
-            "spellNameZH": "凌光新星",
-            "spellNameEN": "‍Hyperlight Nova",
+            "spellId": "351096",
+            "spellNameZH": "能量裂片",
+            "spellNameEN": "‍Energy Fragmentation",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Energy-Fragmentation-1024x677.webp",
-            "image": "‍Hyperlight Nova.gif",
+            "image": "‍Energy Fragmentation.gif",
             "data": [
               {
                 "text": "索莱娅触发了遗物中的剧烈反应，释放出多方向的能量碎片。被能量碎片击中的玩家将被击退，受到奥术伤害，并在6秒内每2秒承受一次额外的奥术伤害。\n\n（说明：根据魔兽世界副本攻略的文本风格，我进行了以下处理：\n1. 将英文名\"So'leah\"保留为音译\"索莱娅\"，符合魔兽世界命名惯例\n2. \"relic\"译为\"遗物\"，符合游戏内道具的常见译法\n3. 技能效果描述采用短句结构，保持与中文版游戏文本一致的简洁风格\n4. \"arcane damage\"统一译为\"奥术伤害\"，保持游戏术语一致性\n5. 时间单位\"6秒\"/\"2秒\"保留数字形式，符合中文攻略书写规范\n6. 被动效果描述使用\"承受\"替代\"受到\"，体现专业副本攻略用语）",
+                "spells": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "spellId": "351646",
+            "spellNameZH": "凌光新星",
+            "spellNameEN": "‍Hyperlight Nova",
+            "imageSrc": "https://assets-ng.maxroll.gg/wordpress/‍Hyperlight-Nova-1024x677.webp",
+            "image": "‍Hyperlight Nova.gif",
+            "data": [
+              {
+                "text": "索莱阿与圣物爆发，对14码范围内的玩家造成[奥术]伤害。",
                 "spells": [],
                 "children": []
               }
@@ -23507,5 +24248,10 @@
         ]
       }
     ]
-  }
+  },
+  null,
+  null,
+  null,
+  null,
+  null
 ]

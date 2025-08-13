@@ -19,18 +19,18 @@ import { mapSlotLabel } from '../util/map-slot-label.js';
 import { downloadSingle } from '../util/download.js';
 
 const specs = {
-  // 'death-knight': ['blood', 'frost', 'unholy'],
-  // 'demon-hunter': ['havoc', 'vengeance'],
-  // druid: ['balance', 'feral', 'guardian', 'restoration'],
-  // mage: ['arcane', 'fire', 'frost'],
-  // monk: ['brewmaster', 'mistweaver', 'windwalker'],
-  // paladin: ['holy', 'protection', 'retribution'],
-  // rogue: ['assassination', 'outlaw', 'subtlety'],
-  // shaman: ['elemental', 'enhancement', 'restoration'],
-  // warlock: ['affliction', 'demonology', 'destruction'],
-  // warrior: ['arms', 'fury', 'protection'],
-  // evoker: ['devastation', 'preservation', 'augmentation'],
-  // hunter: ['beast-mastery', 'marksmanship', 'survival'],
+  'death-knight': ['blood', 'frost', 'unholy'],
+  'demon-hunter': ['havoc', 'vengeance'],
+  druid: ['balance', 'feral', 'guardian', 'restoration'],
+  mage: ['arcane', 'fire', 'frost'],
+  monk: ['brewmaster', 'mistweaver', 'windwalker'],
+  paladin: ['holy', 'protection', 'retribution'],
+  rogue: ['assassination', 'outlaw', 'subtlety'],
+  shaman: ['elemental', 'enhancement', 'restoration'],
+  warlock: ['affliction', 'demonology', 'destruction'],
+  warrior: ['arms', 'fury', 'protection'],
+  evoker: ['devastation', 'preservation', 'augmentation'],
+  hunter: ['beast-mastery', 'marksmanship', 'survival'],
   priest: ['discipline', 'holy', 'shadow'],
 };
 let totalCount = 0;
