@@ -53,7 +53,7 @@ async function mapDataItem(dataItem) {
 
 async function mapPopularityData(data) {
   const results = await Promise.allSettled(
-    data.map((item) => mapDataItem(item))
+    data.map((item) => mapDataItem(item)),
   );
   const total = results.reduce((pre, cur) => {
     pre += cur.value.quantity;
@@ -67,7 +67,7 @@ async function mapPopularityData(data) {
     .sort((a, b) => b.quantity - a.quantity);
 }
 
-export async function queryPolularityByCondition(req, res) {
+export async function queryPopularityByCondition(req, res) {
   const currentDate = getDate();
   const weekCountMax = getWeekCount();
   const { minMythicLevel = 2, maxMythicLevel = 99 } = req.body;
@@ -79,7 +79,7 @@ export async function queryPolularityByCondition(req, res) {
     level_range: key,
   });
 
-  if (dbData?.data) {
+  if (dbData?.data?.length) {
     res.json({
       ...JSON.parse(dbData.data),
       sprite: spriteMap,
@@ -87,11 +87,11 @@ export async function queryPolularityByCondition(req, res) {
   } else {
     try {
       const response = await axios.get(
-        `https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=${minMythicLevel}&maxMythicLevel=${maxMythicLevel}&seasonWeekStart=${weekCountMax}&seasonWeekEnd=${weekCountMax}&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity`,
+        `https://raider.io/api/statistics/get-data?season=season-tww-3&type=spec-popularity&minMythicLevel=${minMythicLevel}&maxMythicLevel=${maxMythicLevel}&seasonWeekStart=${weekCountMax}&seasonWeekEnd=${weekCountMax}&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-3%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity`,
         {
           family: 4,
           timeout: 15000,
-        }
+        },
       );
 
       if (response?.data?.data) {
@@ -134,7 +134,7 @@ export async function queryPolularity(req, res) {
   } else {
     const staticFilePath = path.resolve(
       __dirname,
-      `../../database/wow/data/popularity/${currentDate}.json`
+      `../../database/wow/data/popularity/${currentDate}.json`,
     );
     const isFileExist = fs.existsSync(staticFilePath);
     if (isFileExist) {
@@ -142,7 +142,7 @@ export async function queryPolularity(req, res) {
       res.json(cacheData);
     } else {
       const response = await axios.get(
-        'https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=2&maxMythicLevel=99&seasonWeekStart=1&seasonWeekEnd=1&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity'
+        'https://raider.io/api/statistics/get-data?season=season-tww-2&type=spec-popularity&minMythicLevel=2&maxMythicLevel=99&seasonWeekStart=1&seasonWeekEnd=1&href=%2Fstats%2Fmythic-plus-spec-popularity%3Fseason%3Dseason-tww-2%26groupBy%3Dpopularity&version=3&timedOnly=false&uniqueCharacters=false&groupBy=popularity',
       );
       if (response?.data) {
         cacheDate = getDate(response.data.aggregated_at);
@@ -150,9 +150,9 @@ export async function queryPolularity(req, res) {
         fs.writeFileSync(
           path.resolve(
             __dirname,
-            `../../database/wow/data/popularity/${cacheDate}.json`
+            `../../database/wow/data/popularity/${cacheDate}.json`,
           ),
-          JSON.stringify(cacheData, null, 2)
+          JSON.stringify(cacheData, null, 2),
         );
         res.json(cacheData);
       } else {

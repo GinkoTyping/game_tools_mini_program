@@ -687,7 +687,7 @@ export async function getBisBySpec(req, res) {
       stats_priority: JSON.parse(bisData.stats_priority),
       popularity_items: undefined,
       archon_talent: undefined,
-      talentType: ['maxroll'],
+      talentType: ['wowhead'],
     });
   } catch (error) {
     res.status(500).json({ error: error?.message });

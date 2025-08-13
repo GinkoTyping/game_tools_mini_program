@@ -11,7 +11,7 @@ import {
 } from '../../controller/wow/bisController.js';
 import {
   queryPolularity,
-  queryPolularityByCondition,
+  queryPopularityByCondition,
 } from '../../controller/wow/popularityController.js';
 import { querySpecDpsRank } from '../../controller/wow/specStatController.js';
 import { validateAdmin } from '../../auth/validateAdmin.js';
@@ -32,7 +32,7 @@ router.get('/item/:id', getItemPreviewById);
 router.post('/item/update', validateAdmin, queryUpdateItem);
 router.post('/item/add', validateAdmin, queryRegisterItem);
 
-router.post('/bis/popularity', queryPolularityByCondition);
+router.post('/bis/popularity', queryPopularityByCondition);
 router.post('/bis/dps-rank', querySpecDpsRank);
 
 router.post(
