@@ -54,7 +54,8 @@
             'ellipsis',
             currentUtilityType === utility.type ? 'menu_active' : '',
           ]"
-          >{{ utility.type }}</text
+        >{{ utility.type }}
+        </text
         >
       </view>
 
@@ -137,19 +138,24 @@
                   'menu-title',
                   isBossTip(tip.type) ? 'menu-title--highlight' : '',
                 ]"
-                >{{
+              >{{
                   dataItem?.trashName ||
                   dataItem?.spellNameZH ||
                   dataItem?.spellNameEN
-                }}</text
+                }}
+              </text
               >
               <view
                 class="menu-title-slot__sub"
+                v-if="dataItem?.spellId || dataItem?.trashId"
                 :class="[
                   dataItem.count ? 'menu-title-slot__sub--highlight' : '',
                 ]"
               >
-                <view> ({{ dataItem.count }} <text>提醒</text>) </view>
+                <view> ({{ dataItem.count }}
+                  <text>提醒</text>
+                  )
+                </view>
               </view>
             </view>
           </template>
@@ -160,7 +166,7 @@
                 openedcollapseItems.includes(`${tipIndex}-${index}`)
               "
               :class="[`${tip.type}-image`]"
-              :mode="isBossTip(tip.type) ? 'widthFix' : 'heightFix'"
+              mode="heightFix"
               :src="dataItem?.imageSrc"
               @click="() => preiviewImage(dataItem?.imageSrc)"
             />
@@ -188,7 +194,7 @@
               </view>
             </view>
           </view>
-          <view class="buttons">
+          <view class="buttons" v-if="dataItem?.spellId || dataItem?.trashId">
             <view
               class="buttons-item"
               @click="
@@ -214,7 +220,8 @@
                     : '',
                 ]"
                 v-show="!hasMarked(dataItem, tip.type)"
-                >(这条攻略重要吗？点赞提醒其他玩家吧)</text
+              >(这条攻略重要吗？点赞提醒其他玩家吧)
+              </text
               >
             </view>
           </view>
@@ -239,7 +246,8 @@
             'ellipsis',
             currentLootType === loot.type ? 'menu_active' : '',
           ]"
-          >{{ loot.type }}</text
+        >{{ loot.type }}
+        </text
         >
       </view>
 
@@ -344,9 +352,10 @@ const itemPopup = ref<any>('');
 const currentDetails = ref<any>({});
 const currentItem = ref<any>({});
 const status = ref('loading');
+
 async function switchDetail(
   isShow: boolean,
-  item: { image: string; id: number; type: string }
+  item: { image: string; id: number; type: string },
 ) {
   currentDetails.value = {};
   if (isShow) {
@@ -363,6 +372,7 @@ async function switchDetail(
     }
   }
 }
+
 //#endregion
 
 //#region 跳转到指定TIP
@@ -370,8 +380,9 @@ const jumpParams = ref<{ type: string; guideId: number }>();
 const defaultOpenTip = computed(
   () => (type, id) =>
     type === jumpParams.value?.type &&
-    Number(id) === Number(jumpParams.value?.guideId)
+    Number(id) === Number(jumpParams.value?.guideId),
 );
+
 function scrollToTip() {
   if (jumpParams.value?.type && jumpParams.value.guideId) {
     nextTick(() => {
@@ -381,6 +392,7 @@ function scrollToTip() {
     });
   }
 }
+
 //#endregion
 
 onLoad(async (options: any) => {
@@ -410,7 +422,7 @@ onShareAppMessage(() => {
 function exportRouteCode(code: string) {
   uni.setClipboardData({
     data: code,
-    success: function () {
+    success: function() {
       uni.showToast({
         title: '已复制, 可导入到MDT插件中',
         icon: 'none',
@@ -418,6 +430,7 @@ function exportRouteCode(code: string) {
     },
   });
 }
+
 function preiviewImage(url: string) {
   uni.previewImage({
     urls: [url],
@@ -429,14 +442,16 @@ function preiviewImage(url: string) {
 const currentUtilityType = ref('');
 const currentUtility = computed(() =>
   mythicDungeonData.value?.utilityNeeds.find(
-    (item: any) => item.type === currentUtilityType.value
-  )
+    (item: any) => item.type === currentUtilityType.value,
+  ),
 );
+
 function switchUtilityType(type: string) {
   if (currentUtilityType.value !== type) {
     currentUtilityType.value = type;
   }
 }
+
 function swicthShowSpellDesc(item: any) {
   item.showDesc = !item.showDesc;
 }
@@ -445,9 +460,10 @@ const currentLootType = ref('');
 const currentLootTable = computed(
   () =>
     mythicDungeonData.value?.lootPool.find(
-      (item: any) => item.type === currentLootType.value
-    )?.loots ?? []
+      (item: any) => item.type === currentLootType.value,
+    )?.loots ?? [],
 );
+
 function switchLootType(type: string) {
   if (currentLootType.value !== type) {
     currentLootType.value = type;
@@ -455,6 +471,7 @@ function switchLootType(type: string) {
 }
 
 const menuPopup = ref();
+
 function switchMenuPopup(isOpen: boolean) {
   if (isOpen) {
     menuPopup.value?.open?.();
@@ -466,6 +483,7 @@ const getEnemySectionId = computed(() => {
     return `enemy-section-${index}`;
   };
 });
+
 function scrollTo(selector: string) {
   uni.pageScrollTo({
     selector,
@@ -474,16 +492,20 @@ function scrollTo(selector: string) {
     menuPopup.value?.close?.();
   });
 }
+
 const isBossTip = computed(() => (type: string) => type === 'boss');
 
 // 控制展开collapse面板时，触发collapse内部的动画
 const openedcollapseItems = ref<string[]>([]);
+
 function onCollapseChange(tipIndex: number, e: string[]) {
   const mapKey = e.map(item => `${tipIndex}-${Number(item)}`);
   mapKey.push(...openedcollapseItems.value);
   openedcollapseItems.value = [...new Set(mapKey)];
 }
+
 const isShowNotice = ref(true);
+
 function onClickNotice() {
   scrollTo('#enemy-section-0');
   isShowNotice.value = false;
@@ -493,16 +515,17 @@ const hasMarked = computed(() => {
   return (item: any, tipType: string) => {
     const markId = item[tipType === 'trash' ? 'trashId' : 'spellId'];
     return marks.value[tipType === 'trash' ? 'npcs' : 'spells'].includes(
-      Number(markId)
+      Number(markId),
     );
   };
 });
 
 let lastMarkTime = 0;
+
 async function markTip(
   dataItem: { trashId: number; spellId: number; count: number },
   isMark: boolean,
-  tipType: string
+  tipType: string,
 ) {
   // 防抖
   const now = Date.now();
@@ -542,22 +565,27 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
 .slot-container {
   display: flex;
 }
+
 .ul-l1 {
   padding-right: 1rem;
   line-height: 20px;
   font-size: 14px;
   margin-left: 30px;
   color: #fff;
+
   .ul-l2 {
     margin-left: 16px;
+
     .ul-l3 {
       margin-left: 16px;
     }
   }
 }
+
 .list-style,
 .list-style-empty {
   position: relative;
+
   &::before {
     content: '';
     position: absolute;
@@ -569,19 +597,24 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
     border: 1px solid #fff;
   }
 }
+
 .list-style {
   &::before {
     background-color: #fff;
   }
 }
+
 ::v-deep .uni-collapse {
   background-color: $uni-bg-color-grey-light !important;
+
   .uni-collapse-item__title-box {
     background-color: $uni-bg-color-grey-light !important;
   }
 }
+
 ::v-deep uni-collapse-item {
   width: 100vw;
+
   .uni-collapse-item__title.uni-collapse-item-border {
     line-height: 40px;
     border-bottom: 4px solid $uni-bg-color-grey;
@@ -589,6 +622,7 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
     box-sizing: border-box;
     font-size: 16px;
   }
+
   .uni-collapse-item__title.is-open {
     border-bottom-color: $uni-bg-color-grey-lighter !important;
     background-color: $uni-bg-color-grey-lighter !important;
@@ -596,6 +630,7 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
 
   .uni-collapse-item__wrap {
     background-color: $uni-bg-color-grey !important;
+
     .uni-collapse-item__wrap-content {
       border: none !important;
       border-bottom: 8px solid $uni-bg-color-grey !important;
@@ -604,36 +639,44 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
     }
   }
 }
+
 .section-title--boss {
   color: $color-b-tier;
 }
+
 .menu-title-slot {
   display: flex;
   align-items: center;
   position: relative;
+
   .menu-title-slot__marked {
     position: absolute;
     left: -1rem;
   }
+
   .menu-title-slot__sub {
     margin-left: 0.4rem;
     display: flex;
     align-items: center;
     color: #bbb;
     font-size: 14px;
+
     text {
       font-size: 12px;
     }
   }
+
   .menu-title-slot__sub--highlight {
     color: $color-mythic;
   }
 }
+
 .menu-title {
   color: #fff;
   font-size: 14px;
   font-weight: bold;
 }
+
 .menu-title--highlight {
   color: $color-b-tier;
 }
@@ -642,15 +685,18 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
   padding: 0 1rem;
   display: flex;
   align-items: center;
+
   .buttons-item {
     display: flex;
     align-items: center;
     color: #bbb;
     padding: 0.2rem 0.2rem;
+
     text {
       margin-left: 4px;
       font-size: 14px;
     }
+
     .buttons-item-tip {
       font-size: 12px;
       text-decoration: underline;
@@ -663,12 +709,15 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
   .uni-section-header {
     background-color: $uni-bg-color-grey !important;
     color: inherit !important;
+
     .uni-section-header__content {
       color: inherit !important;
+
       .uni-section-header__content-sub {
         color: inherit !important;
         text-align: center;
       }
+
       .uni-section__content-title {
         color: inherit !important;
         text-align: center;
@@ -676,6 +725,7 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
         font-size: 32rpx !important;
         display: inline-block;
         box-sizing: border-box;
+
         &::before,
         &::after {
           content: '';
@@ -685,10 +735,12 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
           height: 2px;
           background-color: rgb(68, 68, 68);
         }
+
         &::before {
           left: 0;
           top: 50%;
         }
+
         &::after {
           right: 0;
           top: 50%;
@@ -696,6 +748,7 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
       }
     }
   }
+
   .uni-section-content {
     background-color: $uni-bg-color-grey;
   }
@@ -711,34 +764,45 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
     background-color: $uni-bg-color-grey-light !important;
   }
 }
+
 .route-image,
 .trash-image {
   border-radius: 10px;
   object-fit: cover;
 }
+
 .route-image {
   width: 100%;
 }
+
 .trash-image {
   height: 20vh;
 }
+
 .route-download {
   display: flex;
   justify-content: center;
   align-items: center;
+
   text {
     color: #007aff;
   }
 }
-.tip-image-container {
+
+:deep(.tip-image-container) {
   display: flex;
   justify-content: center;
   margin-bottom: 0.6rem;
+
+  image {
+    max-height: 20vh
+  }
 }
 
 .uni-section .divide-section:first-child {
   padding-top: 0 !important;
 }
+
 .divide-section {
   padding: 1rem;
   padding-bottom: 0.4rem;
@@ -749,8 +813,10 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
   font-size: 14px;
   line-height: 20px;
   background: transparent;
+
   .prefix {
     display: flex;
+
     .icon {
       width: 4px;
       height: 20px;
@@ -759,6 +825,7 @@ function updateLocalMarkCount(isNpc: boolean, isMark: boolean, markId: number) {
       background-color: #2979ff;
     }
   }
+
   .suffix {
     color: #2979ff;
   }
@@ -769,6 +836,7 @@ $light-border: rgb(68, 68, 68);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
   .menu_active {
     color: #ffffff;
     // border-bottom: 4px red solid;
@@ -783,6 +851,7 @@ $light-border: rgb(68, 68, 68);
       transform: translateX(-50%);
     }
   }
+
   text {
     width: 26%;
     margin-bottom: 10px;
@@ -792,6 +861,7 @@ $light-border: rgb(68, 68, 68);
     height: 30px;
     position: relative;
     text-align: center;
+
     &:not(:last-child):not(:nth-child(3))::after {
       content: '';
       position: absolute;
@@ -810,17 +880,21 @@ $light-border: rgb(68, 68, 68);
   .uni-list--border-bottom {
     background-color: $uni-bg-color-grey !important;
   }
+
   .uni-list-item {
     background-color: $uni-bg-color-grey-lighter !important;
+
     .uni-list-item__content-title {
       color: #fff;
     }
   }
 }
+
 ::v-deep .utility {
   .uni-list-item {
     .uni-list-item__content {
       color: inherit !important;
+
       .uni-list-item__content-title {
         color: inherit !important;
       }
@@ -836,14 +910,17 @@ $light-border: rgb(68, 68, 68);
 ::v-deep .uni-table {
   background-color: rgb(40, 40, 40) !important;
   border: 2px $light-border solid;
+
   .uni-table-th,
   .uni-table-td {
     padding-left: 4px !important;
     padding-right: 4px !important;
     border-bottom: 1px $uni-bg-color solid !important;
+
     .slot-container {
       display: flex;
       align-items: center;
+
       image {
         margin-right: 4px;
       }
@@ -854,24 +931,31 @@ $light-border: rgb(68, 68, 68);
     font-weight: 800;
     color: #ffffff;
   }
+
   .uni-table-td {
     font-weight: 400;
+
     &:first-child {
       color: rgb(221, 221, 221);
     }
+
     &:nth-child(2) {
       color: rgb(163, 53, 238);
+
       view {
         width: 160px !important;
       }
     }
+
     &:nth-child(3) {
       color: rgb(221, 221, 221);
+
       view {
         width: 100px !important;
       }
     }
   }
+
   .is-loot {
     color: $uni-text-color-inverse !important;
   }
@@ -881,6 +965,7 @@ $light-border: rgb(68, 68, 68);
   .uni-list-item__content-title {
     color: #bbb !important;
   }
+
   .menu-list--highlight .uni-list-item__content-title {
     color: $color-b-tier !important;
   }

@@ -63,6 +63,7 @@ interface IBisDataDTO {
     detailedPuzzlingCartelChipAdvice: any;
     rotationAssist: any;
   };
+  talentType: string[];
 }
 
 export function getImageSrc(image: string) {
@@ -243,6 +244,7 @@ export async function queryBis(roleClass: string, classSpec: string) {
     popularMythicDungeonTrinkets: data.popular_mythic_dungeon_trinkets,
     mythicOverallTier: data.mythicOverallTier,
     mythicDpsTier: data.mythicDpsTier,
+    talentType: data.talentType,
   };
 }
 
@@ -320,16 +322,16 @@ export async function querySpecPopularity(
     };
     maxCount.all = cacheData.sort(
       (a, b) => b.quantity - a.quantity,
-    )[0].quantity;
+    )[0]?.quantity;
     maxCount.dps = cacheData
       .filter(item => item.role === 'dps')
-      .sort((a, b) => b.quantity - a.quantity)[0].quantity;
+      .sort((a, b) => b.quantity - a.quantity)[0]?.quantity;
     maxCount.tank = cacheData
       .filter(item => item.role === 'tank')
-      .sort((a, b) => b.quantity - a.quantity)[0].quantity;
+      .sort((a, b) => b.quantity - a.quantity)[0]?.quantity;
     maxCount.healer = cacheData
       .filter(item => item.role === 'healer')
-      .sort((a, b) => b.quantity - a.quantity)[0].quantity;
+      .sort((a, b) => b.quantity - a.quantity)[0]?.quantity;
 
     return {
       date: res.data.aggregated_at,

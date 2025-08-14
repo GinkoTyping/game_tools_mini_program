@@ -5,13 +5,15 @@
         class="rank-menu-item"
         :class="[currentMenu === 'rank' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('rank')"
-        >输出伤害排行</view
+      >输出伤害排行
+      </view
       >
       <view
         class="rank-menu-item"
         :class="[currentMenu === 'popular' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('popular')"
-        >专精热度排行</view
+      >专精热度排行
+      </view
       >
     </view>
 
@@ -30,7 +32,7 @@
       ></uni-title>
 
       <view class="filter-container">
-        <text> 时间： </text>
+        <text> 时间：</text>
         <button
           class="filter-container__button"
           :class="[
@@ -46,7 +48,7 @@
         </button>
       </view>
       <view class="filter-container">
-        <text> 职业： </text>
+        <text> 职业：</text>
         <button
           class="filter-container__button"
           :class="[
@@ -74,18 +76,21 @@
         <view class="row body" v-for="row in currentRankData" :key="row.type">
           <view class="tags">
             <view class="tag tag-diff" :class="[diffClass(row.diff)]">{{
-              row.diff
-            }}</view>
+                row.diff
+              }}
+            </view>
             <view class="tag tag--bg tag-tier" :class="[row.tier]">{{
-              row.tier
-            }}</view>
+                row.tier
+              }}
+            </view>
             <view class="tag tag--bg" :class="[row.tier]">{{ row.avg }}</view>
             <view class="tag tag--bg" :class="[row.tier]">{{ row.top }}</view>
             <view
               class="tag tag--bg"
               v-show="currentRankJob !== 'dps'"
               :class="[row.tier]"
-              >{{ row.runs }}</view
+            >{{ row.runs }}
+            </view
             >
           </view>
           <view class="bars-wrap" @click="() => comfirmToSpecBis(row)">
@@ -99,10 +104,13 @@
               <view
                 class="bar-avg"
                 :style="{ width: row.avgWidth, backgroundColor: row.color }"
-                >{{ row.name
-                }}<text v-show="currentRankJob === 'dps'"
-                  >({{ row.runs }}次)</text
-                ></view
+              >{{ row.name
+                }}
+                <text v-show="currentRankJob === 'dps'"
+                >({{ row.runs }}次)
+                </text
+                >
+              </view
               >
               <view
                 class="bar-top"
@@ -126,7 +134,7 @@
         color="#fff"
       ></uni-title>
       <view class="filter-container">
-        <text> 层数： </text>
+        <text> 层数：</text>
         <button
           class="filter-container__button"
           :class="[
@@ -142,7 +150,7 @@
         </button>
       </view>
       <view class="filter-container">
-        <text> 职业： </text>
+        <text> 职业：</text>
         <button
           class="filter-container__button"
           :class="[
@@ -172,8 +180,9 @@
           <view class="tags">
             <view class="tag tag-diff">{{ row.quantityText }}</view>
             <view class="tag" :class="[row.class_name_en.toLowerCase()]">{{
-              row.name_zh
-            }}</view>
+                row.name_zh
+              }}
+            </view>
           </view>
           <view class="bars-wrap" @click="() => comfirmToSpecBis(row)">
             <view
@@ -205,31 +214,51 @@
   <uni-card>
     <uni-title type="h4" title="排行说明：" color="#bbb"></uni-title>
     <view class="info-text" v-show="currentMenu === 'rank'"
-      >- 每周CD前两天，因为样本数较少，所以排名可能有波动。<text
+    >- 每周CD前两天，因为样本数较少，所以排名可能有波动。
+      <text
         class="info-text--strong"
-        >每4小时</text
-      >更新一次数据（来源mythicstats）；</view
+      >每4小时
+      </text
+      >
+      更新一次数据（来源mythicstats）；
+    </view
     >
     <view class="info-text" v-show="currentMenu === 'rank'"
-      >- <text class="info-text--strong">每秒伤害</text> =
-      整个副本期间造成的伤害 / 完成副本的时间(包括脱战的时间)；</view
+    >-
+      <text class="info-text--strong">每秒伤害</text>
+      =
+      整个副本期间造成的伤害 / 完成副本的时间(包括脱战的时间)；
+    </view
     >
     <view class="info-text" v-show="currentMenu === 'rank'"
-      >-
-      <text class="info-text--strong">评级：</text
-      >仅依据平均的每秒伤害从高到低排名，所以并不意味着<text
+    >-
+      <text class="info-text--strong">评级：
+      </text
+      >
+      仅依据平均的每秒伤害从高到低排名，所以并不意味着
+      <text
         class="info-text--strong"
-        >排名F</text
-      >的职业一定很差，单纯是每秒伤害低；如果您想查看综合能力的专精排行，可以<text
+      >排名F
+      </text
+      >
+      的职业一定很差，单纯是每秒伤害低；如果您想查看综合能力的专精排行，可以
+      <text
         class="info-text--highlight"
         @click="toSpecTierPage"
-        >点击查看专精排行</text
-      >页面</view
+      >点击查看专精排行
+      </text
+      >
+      页面
+    </view
     >
     <view class="info-text"
-      >- 查看专精攻略： 点击对应专精的<text class="info-text--strong"
-        >统计条</text
-      >，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；</view
+    >- 查看专精攻略： 点击对应专精的
+      <text class="info-text--strong"
+      >统计条
+      </text
+      >
+      ，即可查看专精攻略，包括BIS配装、属性优先级、天赋和专属攻略等；
+    </view
     >
   </uni-card>
 
@@ -248,7 +277,8 @@
         <view class="dialog-content">
           去看看
           <text class="dialog-content_text--highlight"
-            >{{ currentSpec?.name_zh }}-{{ currentSpec?.class_name_zh }}</text
+          >{{ currentSpec?.name_zh }}-{{ currentSpec?.class_name_zh }}
+          </text
           >
           的天赋、属性优先级、BIS和专属攻略等。
         </view>
@@ -275,26 +305,31 @@ onShareAppMessage(() => ({
 }));
 
 const currentMenu = ref('rank');
+
 function switchMenu(menuName: any) {
   if (currentMenu.value !== menuName) {
     currentMenu.value = menuName;
   }
 }
+
 const dialog = ref();
 const dialogContent = ref();
 const currentSpec = ref();
+
 function comfirmToSpecBis(specData) {
   currentSpec.value = specData;
   nextTick(() => {
     dialog.value?.open?.();
   });
 }
+
 function dialogConfirm() {
   navigator.toSpecDetail(
     currentSpec.value.roleClass,
-    currentSpec.value.classSpec
+    currentSpec.value.classSpec,
   );
 }
+
 const relativeTime = computed(() => {
   return (time: string) => calculateRelativeTime(time);
 });
@@ -354,11 +389,13 @@ const jobFilters = ref([
   },
 ]);
 const currentJob = ref(jobFilters.value[1]);
+
 function switchJob(job: any) {
   if (currentJob.value.value !== job.value) {
     currentJob.value = job;
   }
 }
+
 const levelFilter = [
   {
     label: '全部',
@@ -387,12 +424,14 @@ const popularSpecBarWidth = computed(() => {
     return currentJob.value.value === 'all' ? item.allWidth : item.roleWidth;
   };
 });
+
 async function switchLevel(value: any) {
   if (currentLevel.value !== value) {
     currentLevel.value = value;
     await getPopularityData();
   }
 }
+
 //#endregion
 
 //#region 输出排名
@@ -417,6 +456,7 @@ const currentRankData = computed(() => {
     rankData.value?.find(item => item.type === currentRankJob.value)?.rank ?? []
   );
 });
+
 function switchRankJob(job: string) {
   if (currentRankJob.value !== job) {
     currentRankJob.value = job;
@@ -441,12 +481,13 @@ const rankWeekOptions = ref(
       };
     })
     .reverse()
-    .slice(0, 5)
+    .slice(0, 5),
 );
 
 const currentWeek = ref<number>();
 const thisWeek = rankWeekOptions.value?.[0].value;
 currentWeek.value = rankWeekOptions.value?.[0].value;
+
 async function switchRankWeek(week: number) {
   if (currentWeek.value !== week) {
     currentWeek.value = week;
@@ -461,6 +502,7 @@ const currentRankLevel = ref('');
 const diffClass = computed(() => {
   return (diff: string) => (diff.includes('↑') ? 'up' : 'down');
 });
+
 async function getSpecRankData() {
   if (currentWeek.value) {
     uni.showLoading({
@@ -478,6 +520,7 @@ async function getSpecRankData() {
 
 const STATIC_VERSION = '11.1';
 const STATIC_ACTIVITY_TYPE = 'MYTHIC';
+
 function toSpecTierPage() {
   navigator.toTierList({
     version_id: STATIC_VERSION,
@@ -485,11 +528,12 @@ function toSpecTierPage() {
     role: currentRankJob.value,
   });
 }
+
 //#endregion
 
-onMounted(async () => {
-  await getPopularityData();
-  await getSpecRankData();
+onMounted(() => {
+  getPopularityData();
+  getSpecRankData();
 });
 </script>
 
@@ -505,6 +549,7 @@ onMounted(async () => {
   background-color: $uni-bg-color-grey-light;
   color: #fff;
   margin-bottom: 10px;
+
   &::before {
     content: '';
     position: absolute;
@@ -514,6 +559,7 @@ onMounted(async () => {
     width: 2px;
     background-color: $uni-color-primary;
   }
+
   .rank-menu-item {
     width: 50%;
     height: 100%;
@@ -522,10 +568,12 @@ onMounted(async () => {
     text-align: center;
     padding: 10px 0;
   }
+
   .rank-menu-item--active {
     background-color: $uni-color-primary;
   }
 }
+
 .rank-container {
   .row {
     display: flex;
@@ -533,78 +581,98 @@ onMounted(async () => {
     align-items: center;
     height: 20px;
     line-height: 20px;
+
     .tags {
       height: 100%;
       display: flex;
       margin-right: 6px;
+
       &:not(:last-child) {
         .tag {
           border-bottom: none;
         }
       }
+
       view {
         padding: 2px;
         width: 30px;
         text-align: center;
+
         &:first-child {
           border: none;
         }
       }
+
       .tag {
         border: 1px solid black;
         box-sizing: border-box;
+
         &:not(:last-child) {
           border-right: none;
         }
       }
+
       .up {
         color: $color-uncommon;
       }
+
       .down {
         color: $uni-color-error;
       }
+
       .tag-diff {
         width: 30px;
         font-size: 10px;
         background-color: $uni-bg-color-grey-lighter;
         border-bottom: 1px solid $uni-bg-color-grey-light !important;
       }
+
       .tag--bg {
         color: black;
       }
+
       .tag-tier {
         font-size: 14px;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       }
+
       .S {
         background-color: $color-s-tier;
       }
+
       .A {
         background-color: $color-a-tier;
       }
+
       .B {
         background-color: $color-b-tier;
       }
+
       .C {
         background-color: $color-c-tier;
       }
+
       .D {
         background-color: $color-d-tier;
       }
+
       .F {
         background-color: #bbb;
       }
     }
+
     .bars-wrap {
       display: flex;
       flex: 1;
       align-items: center;
       height: 100%;
+
       .spec-icon {
         width: 20px;
         height: 20px;
         background-image: url(https://ginkolearn.cyou/api/wow/assets/sprites/spec-sprite.png);
       }
+
       .bars {
         flex: 1;
         display: flex;
@@ -614,24 +682,29 @@ onMounted(async () => {
         position: relative;
         border-bottom: 1px solid black;
         box-sizing: border-box;
+
         .bar-avg,
         .bar-top {
           height: 100%;
           box-sizing: border-box;
         }
+
         .bar-avg {
           padding-left: 4px;
           color: black;
           overflow: hidden;
+
           text {
             font-size: 10px;
           }
         }
+
         .bar-top {
           color: black;
           padding-right: 2px;
           text-align: right;
           position: relative;
+
           &::before {
             content: '';
             position: absolute;
@@ -642,6 +715,7 @@ onMounted(async () => {
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 0;
           }
+
           text {
             position: absolute;
             right: 0;
@@ -649,6 +723,7 @@ onMounted(async () => {
             z-index: 99;
           }
         }
+
         .bar-edge {
           position: absolute;
           width: 1px;
@@ -658,6 +733,7 @@ onMounted(async () => {
       }
     }
   }
+
   .header {
     .tags {
       .tag {
@@ -665,6 +741,7 @@ onMounted(async () => {
       }
     }
   }
+
   .body:nth-child(2) .bars {
     &::after {
       content: '看攻略';
@@ -679,10 +756,12 @@ onMounted(async () => {
 .info-text {
   color: #bbb;
 }
+
 .info-text--strong {
   font-size: 16px;
   font-weight: bold;
 }
+
 .info-text--highlight {
   color: $uni-text-color-inverse;
   font-weight: bold;
@@ -709,6 +788,7 @@ onMounted(async () => {
   font-size: 12px;
   align-items: center;
   color: #fff;
+
   .filter-container__button {
     color: #fff;
     line-height: 24px;
@@ -721,6 +801,7 @@ onMounted(async () => {
     border: 1px solid #bbb !important;
     background-color: $uni-bg-color-grey-light;
   }
+
   .filter-container__button--active {
     color: #fff;
     font-weight: bold;
@@ -730,11 +811,13 @@ onMounted(async () => {
 
 .dialog-content {
   font-size: 14px;
+
   .dialog-content_text--highlight {
     font-weight: bold;
     font-size: 16px;
   }
 }
+
 .footer {
   height: 5rem;
   width: 1vw;

@@ -205,156 +205,17 @@
   </template>
 
   <template v-if="activeMenu === 'talent'">
-    <!--    英雄天赋选择率-->
-    <view class="hero-talent-trend">
-      <view class="hero-talent-trend-card"
-        v-for="(tree,index) in talentData?.talents.heroTreeStats"
-        :key="tree.id"
-        :style="{ width: `${index === 0 ? tree.popularity : ''}` }"
-      >
-        <view v-if="index === 1" class="hero-talent-trend-card__right">
-          <view class="hero-talent-bold">{{ tree.popularity }}</view>
-          <view>人气</view>
-        </view>
-        <view class="hero-talent-trend-card__left">
-          <view class="hero-talent-trend-card__left__name hero-talent-bold">{{ tree.name }}</view>
-          <view class="hero-talent-trend-card__left__popularity">{{ tree.metricValue }}</view>
-        </view>
-        <view v-if="index === 0" class="hero-talent-trend-card__right">
-          <view class="hero-talent-bold">{{ tree.popularity }}</view>
-          <view>人气</view>
-        </view>
-      </view>
-    </view>
-
-    <!--  天赋推荐  -->
-    <view class="talent" :class="[classKey]">
-      <view class="alternative-builds">
-        <view class="alternative-build-menu"
-          :class="[currentBuildIndex === index ? `alternative-build-menu--active ${classKey}` : '']"
-          v-for="(build, index) in talentData?.talents.talentTreeBuilds"
-          :key="index"
-          @click="currentBuildIndex = index">
-          <view class="alternative-build-menu__title">
-            {{ build.isDefaultSelection ? '推荐' : `${build.alternativeIndex}#备选` }}
-          </view>
-          <view class="alternative-build-menu__footer">
-            <view>{{ build.popularity }}</view>
-            <view>{{ build.keystoneLevel }}+</view>
-          </view>
-          <view v-show="currentBuildIndex === index" class="iconfont icon-lushichuanshuo"></view>
-        </view>
-      </view>
-      <view class="talent-tree-menus">
-        <view class="action-icon" @click="copyTalentCode">
-          <view class="iconfont icon-paste2"></view>
-          <text>复制</text>
-        </view>
-        <uni-segmented-control
-          :current="currentPopularTreeIndex"
-          :values="popularTalentTrees"
-          style-type="text"
-          active-color="#007aff"
-          @clickItem="switchPopularTalentTree"
-        />
-      </view>
-      <TalentTree
-        :type="currentPopularTree"
-        :data="talentData"
-        :selected="currentBuild?.selectedNodes"
-        :selected-hero-tree="currentBuild?.heroSpecId"
-      />
-    </view>
-
-    <!--  天赋 heat map  -->
-    <uni-section class="talent" :class="[classKey]" title="天赋点选择率" sub-title="前100玩家">
-      <view class="talent-tree-menus">
-        <uni-segmented-control
-          :current="currentHeatMapTreeIndex"
-          :values="popularTalentTrees"
-          style-type="text"
-          active-color="#007aff"
-          @clickItem="switchHeatMapTree"
-        />
-      </view>
-
-      <view class="talent-tree-menus" v-show="currentHeatMapTreeIndex === 1">
-        <uni-segmented-control
-          :current="currentHeatMapHeroTreeIdx"
-          :values="heroTreeTabs?.map(item => item.name)"
-          style-type="text"
-          active-color="#007aff"
-          @clickItem="switchHeatMapHeroTree"
-        />
-      </view>
-
-      <TalentTree
-        :type="currentHeatMapTree"
-        :data="talentData"
-        :selected="talentData?.talents.talentHeatMap"
-        :selected-hero-tree="heroTreeTabs?.[currentHeatMapHeroTreeIdx]?.id"
-        select-type="heat-map"
-      />
-
-      <uni-card class="section-card" v-if="_dev_hide_old_talent">
-        <view class="menu talent-menu">
-          <text
-            v-for="(item, index) in currentData?.talents"
-            :key="item.talent"
-            class="ellipsis"
-            @click="() => switchTalent(index)"
-            :class="[
-              classKey,
-              currentTalentIndex === index ? 'menu_active' : '',
-            ]"
-          >{{ item.talent }}
-          </text
-          >
-        </view>
-        <view class="talent-export" @click="exportTalentCode">
-          <text class="talent-export__title"
-          >当前：{{ currentData?.talents[currentTalentIndex]?.talent }}
-          </text
-          >
-          <view>
-            <uni-icons
-              type="download-filled"
-              color="#007aff"
-              size="30"
-            ></uni-icons>
-            <text>复制代码</text>
-          </view>
-        </view>
-
-        <uni-collapse ref="collapse">
-          <uni-collapse-item
-            v-for="(url, index) in currentData?.talents[currentTalentIndex]
-              ?.url"
-            :key="index"
-            :open="isTalentImageLoad && index === 2"
-          >
-            <template v-slot:title>
-              <uni-list>
-                <uni-list-item
-                  class="dungeon_tip-title"
-                  :title="getTalentType(index)"
-                  rightText="点击任意位置"
-                >
-                </uni-list-item>
-              </uni-list>
-            </template>
-            <image
-              class="talent-image"
-              mode="widthFix"
-              lazy-load
-              :src="getTalentImage(url)"
-              @load="() => onImageLoad(currentTalentIndex, index)"
-              @click="() => preiviewImage(index)"
-            />
-          </uni-collapse-item>
-        </uni-collapse>
-      </uni-card>
-    </uni-section>
+    <MaxrollTalent
+      v-if="currentData.talentType.includes('maxroll')"
+      :classKey="classKey"
+      :data="currentData.talents"
+    />
+    <ArchonTalent
+      v-if="currentData.talentType.includes('wowhead')"
+      :classKey="classKey"
+      :data="talentData as TalentTreeDTO"
+      v-model:active="currentBuildIndex"
+    />
   </template>
 
   <BisRotation
@@ -839,8 +700,9 @@ import SpecFooter from '@/components/SpecFooter.vue';
 import ItemPopover from '@/components/ItemPopover.vue';
 import { useNavigator } from '@/hooks/navigator';
 import ExportCanvas from '@/components/ExportCanvas.vue';
-import TalentTree from '@/components/TalentTree/index.vue';
 import BisRotation from '@/pages/bis/components/BisRotation.vue';
+import ArchonTalent from '@/pages/bis/components/ArchonTalent.vue';
+import MaxrollTalent from '@/pages/bis/components/MaxrollTalent.vue';
 
 const classKey = ref('');
 const specKey = ref('');
@@ -1034,14 +896,6 @@ function switchDetailStats() {
 //   }
 // }
 
-const isTalentImageLoad = ref(false);
-
-function onImageLoad(tablentIndex: number, index: number) {
-  if (tablentIndex === 0 && index === 2) {
-    isTalentImageLoad.value = true;
-  }
-}
-
 const currentStatType = ref(0);
 const currentStatList = computed(
   () =>
@@ -1074,57 +928,6 @@ function showStatsInfo(index: number) {
 //#endregion
 
 //#region 天赋
-// TODO maxroll 移除 还是 保留呢
-const _dev_hide_old_talent = ref(false);
-const currentTalentIndex = ref(0);
-const getTalentType = computed(() => {
-  return (index: number) => {
-    switch (index) {
-      case 0:
-        return '职业天赋';
-      case 1:
-        return '英雄天赋';
-      case 2:
-        return '专精天赋';
-      default:
-        break;
-    }
-  };
-});
-
-function switchTalent(index: number) {
-  if (currentTalentIndex.value !== index) {
-    currentTalentIndex.value = index;
-  }
-}
-
-function exportTalentCode() {
-  uni.setClipboardData({
-    data: currentData.value.talents[currentTalentIndex.value].code,
-    success: function() {
-      messageType.value = 'success';
-      messageText.value = '已成功复制天赋代码到粘贴板。';
-      messagePopup.value.open();
-    },
-  });
-}
-
-function getTalentImage(url: string) {
-  return `https://ginkolearn.cyou/api/wow/assets/talent/${url}`;
-}
-
-function preiviewImage(imageIndex: number) {
-  const urls = currentData.value.talents[currentTalentIndex.value].url.map(
-    (item: string) => getTalentImage(item),
-  );
-  uni.previewImage({
-    urls: urls,
-    current: imageIndex,
-    indicator: 'number',
-    loop: true,
-  });
-}
-
 const currentTableName = ref('');
 const tableData = computed(() => {
   return currentData.value?.bisItems.find(
@@ -1373,77 +1176,8 @@ async function displaySpells(params: any) {
 
 //#endregion
 
-// region 天赋
 const talentData = ref<TalentTreeDTO>();
 const currentBuildIndex = ref(0);
-const currentPopularTree = computed(() => {
-  if (currentPopularTreeIndex.value === 0) {
-    return 'class';
-  }
-  if (currentPopularTreeIndex.value === 1) {
-    return 'hero';
-  }
-  if (currentPopularTreeIndex.value === 2) {
-    return 'spec';
-  }
-  return 'class';
-});
-const currentPopularTreeIndex = ref(0);
-const popularTalentTrees = ['职业天赋树', '英雄天赋树', '专精天赋树'];
-const currentHeatMapTree = computed(() => {
-  if (currentHeatMapTreeIndex.value === 0) {
-    return 'class';
-  }
-  if (currentHeatMapTreeIndex.value === 1) {
-    return 'hero';
-  }
-  if (currentHeatMapTreeIndex.value === 2) {
-    return 'spec';
-  }
-  return 'class';
-});
-const currentHeatMapTreeIndex = ref(0);
-
-// TODO 临时处理英雄天赋
-const currentHeatMapHeroTreeIdx = ref();
-const heroTreeTabs = computed(() => {
-  return talentData.value?.hero_talent_trees.filter(tree => tree.playable_specializations.find(spec => spec.id === talentData.value?.id));
-});
-
-function switchHeatMapHeroTree({ currentIndex }) {
-  if (currentHeatMapHeroTreeIdx.value !== currentIndex) {
-    currentHeatMapHeroTreeIdx.value = currentIndex;
-  }
-}
-
-const currentBuild = computed(() => talentData.value?.talents.talentTreeBuilds?.[currentBuildIndex.value]?.talentTree?.build);
-
-function switchPopularTalentTree({ currentIndex }) {
-  if (currentPopularTreeIndex.value !== currentIndex) {
-    currentPopularTreeIndex.value = currentIndex;
-  }
-}
-
-function switchHeatMapTree({ currentIndex }) {
-  if (currentHeatMapTreeIndex.value !== currentIndex) {
-    currentHeatMapTreeIndex.value = currentIndex;
-  }
-}
-
-function copyTalentCode() {
-  const code = talentData.value?.talents.talentTreeBuilds?.[currentBuildIndex.value]?.talentTree?.exportCode;
-
-  uni.setClipboardData({
-    data: code as string,
-    success: function() {
-      messageType.value = 'success';
-      messageText.value = '已复制天赋树代码';
-      messagePopup.value.open();
-    },
-  });
-}
-
-// endregion
 
 //#region 切换底部菜单
 const activeMenu = ref('index');
@@ -1498,6 +1232,7 @@ async function onMenuChange(menuValue: string) {
   } else if (menuValue === 'talent') {
     talentData.value = await queryTalent(specKey.value, classKey.value);
     currentBuildIndex.value = talentData.value.talents.talentTreeBuilds.findIndex(build => build.isDefaultSelection);
+    console.log(currentBuildIndex.value);
   }
 }
 
@@ -2094,156 +1829,6 @@ $light-border: rgb(68, 68, 68);
   }
 }
 
-// region 天赋
-.hero-talent-trend {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20rpx;
-  gap: 20rpx;
-
-  .hero-talent-trend-card {
-    height: 70rpx;
-    border-radius: 16rpx;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10rpx;
-    color: #fff;
-    font-size: 24rpx;
-
-    .hero-talent-bold {
-      font-size: 28rpx;
-      font-weight: bold;
-    }
-
-    &:first-child {
-      background: $color-legend;
-
-      .hero-talent-trend-card__right {
-        text-align: right;
-      }
-    }
-
-    &:last-child {
-      min-width: 40%;
-      flex: 1;
-      background: $color-mythic;
-
-      .hero-talent-trend-card__left {
-        text-align: right;
-      }
-    }
-  }
-}
-
-.alternative-builds {
-  display: flex;
-  justify-content: space-between;
-  padding: 20rpx;
-
-  .alternative-build-menu {
-    box-sizing: border-box;
-    padding: 4rpx 8rpx;
-    border-radius: 10rpx;
-    width: 22%;
-    background-color: $uni-bg-color-grey-light;
-    position: relative;
-
-    &:not(.alternative-build-menu--active) {
-      color: $uni-text-color-grey;
-    }
-
-    .alternative-build-menu__title {
-      font-size: 28rpx;
-    }
-
-    .alternative-build-menu__footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 6rpx;
-      font-size: 24rpx;
-    }
-
-    .iconfont {
-      font-size: 28rpx;
-      position: absolute;
-      right: 12rpx;
-      top: 8rpx;
-    }
-  }
-
-  .alternative-build-menu--active {
-    border: 2rpx solid;
-
-    .alternative-build-menu__title {
-      font-weight: bold;
-    }
-  }
-}
-
-.talent-tree-menus {
-  position: relative;
-  margin-bottom: 30rpx;
-
-  :deep {
-    .segmented-text {
-      justify-content: center;
-    }
-  }
-
-  .action-icon {
-    position: absolute;
-    top: 50%;
-    right: 20rpx;
-    transform: translate(0, -50%);
-    display: flex;
-    align-items: center;
-    gap: 4rpx;
-
-    text {
-      font-size: 28rpx;
-    }
-
-    .iconfont {
-      font-size: 32rpx;
-    }
-  }
-
-}
-
-:deep {
-  .talent-tree-menus {
-    uni-segmented-control {
-      & > view {
-        justify-content: center;
-      }
-    }
-  }
-}
-
-// endregion
-
-.talent-menu {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-
-  .menu_active {
-    &::before {
-      bottom: 0 !important;
-    }
-  }
-
-  text {
-    max-width: 50%;
-    flex: 1;
-    display: block;
-    text-align: center;
-  }
-}
-
 ::v-deep .dungeon .uni-card .uni-card__content {
   padding-bottom: 2rem;
 }
@@ -2457,24 +2042,6 @@ $light-border: rgb(68, 68, 68);
   object-fit: cover;
 }
 
-.talent-export {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0.8rem 0 0.2rem 0;
-
-  .talent-export__title {
-    font-size: 14px;
-    font-weight: bold;
-    margin-left: 15px;
-  }
-
-  text {
-    margin-left: 0.4rem;
-    color: $uni-color-primary;
-  }
-}
-
 ::v-deep .uni-list {
   background-color: transparent !important;
 
@@ -2617,7 +2184,8 @@ $light-border: rgb(68, 68, 68);
 :deep {
   .segmented-control {
     gap: 20rpx;
-    margin-bottom: 20rpx;
+    margin: 0 20rpx 20rpx 20rpx;
+    justify-content: center;
 
     .segmented-control__item {
       flex: none !important;
