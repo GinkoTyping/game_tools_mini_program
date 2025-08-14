@@ -16,7 +16,7 @@ async function queryMythicRankByRaidIO(pageNo) {
   }
 
   const response = await axios.get(
-    `https://raider.io/api/mythic-plus/rankings/characters?region=world&season=season-tww-3&class=all&role=all&page=${pageNo}`,
+    `https://raider.io/api/mythic-plus/rankings/characters?region=cn&season=season-tww-3&class=all&role=all&page=${pageNo}`,
     {
       family: 4,
       timeout: 15000,
