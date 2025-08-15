@@ -8,44 +8,48 @@
       @clickItem="switchMenu"
     />
   </view>
-  <uni-collapse ref="collapse">
-    <uni-collapse-item
-      v-for="(item, index) in tierList?.tier_data"
-      :key="item.tier"
-      open
-    >
-      <template v-slot:title>
-        <view class="collapse-title">
-          <text class="collapse-title__tier">{{ item.tier }}</text>
-          <text class="collapse-title__tier--suffix">级</text>
-          <text class="update-note" v-show="index === 0"
-          >({{ tierList?.created_at }} 更新)
-          </text
-          >
-        </view>
-      </template>
-      <view class="collapse-content">
-        <view
-          :class="[spec.roleClass, 'collapse-content__card']"
-          v-for="spec in item.children"
-          :key="spec.fullNameEN"
-          @click="() => onClickSpec(spec)"
-          :style="{
+
+  <view style="padding: 0 20rpx">
+    <uni-collapse class="tier-list-collapse" ref="collapseRef">
+      <uni-collapse-item
+        v-for="(item, index) in tierList?.tier_data"
+        :key="item.tier"
+        open
+      >
+        <template v-slot:title>
+          <view class="collapse-title">
+            <text class="collapse-title__tier">{{ item.tier }}</text>
+            <text class="collapse-title__tier--suffix">级</text>
+            <text class="update-note" v-show="index === 0"
+            >({{ tierList?.created_at }} 更新)
+            </text
+            >
+          </view>
+        </template>
+        <view class="collapse-content">
+          <view
+            :class="[spec.roleClass, 'collapse-content__card']"
+            v-for="spec in item.children"
+            :key="spec.fullNameEN"
+            @click="() => onClickSpec(spec)"
+            :style="{
             backgroundImage: `url(${getClassIconURL(
               spec.roleClass,
               spec.classSpec
             )})`,
           }"
-        >
-          <image
-            v-if="spec.dataChange && spec.dataChange !== '-'"
-            class="collapse-content__card__change"
-            :src="`/static/icon/${spec.dataChange}.png`"
-          />
+          >
+            <image
+              v-if="spec.dataChange && spec.dataChange !== '-'"
+              class="collapse-content__card__change"
+              :src="`/static/icon/${spec.dataChange}.png`"
+            />
+          </view>
         </view>
-      </view>
-    </uni-collapse-item>
-  </uni-collapse>
+      </uni-collapse-item>
+    </uni-collapse>
+  </view>
+
 
   <uni-popup ref="alertDialog" type="dialog">
     <uni-popup-dialog
@@ -105,14 +109,12 @@
       </button>
     </view>
   </uni-popup>
-
-  <view class="footer"></view>
 </template>
 
 <script lang="ts" setup>
 import { onLoad, onShareAppMessage, onShow } from '@dcloudio/uni-app';
 import { queryTierList } from '@/api/wow/index';
-import { computed, ref } from 'vue';
+import { nextTick, ref } from 'vue';
 
 import SpellCard from '@/components/SpellCard.vue';
 import { getClassIconURL } from '@/hooks/imageGenerator';
@@ -130,27 +132,16 @@ const tierList = ref<ITierListDTO>();
 const currentSpec = ref();
 const currentSpells = ref();
 const query = ref();
-const tierListIcons = ref<any>([]);
-onLoad(async (options: any) => {
-  const { activityType, role } = options;
-  query.value = options;
-  tierListIcons.value = getTierListIcons(options);
-  uni.setNavigationBarTitle({
-    title: getPageTitle(options),
-  });
-  tierList.value = await queryTierList({
-    versionId: '11.2 - PTR',
-    activityType: activityType,
-    role: role,
-  });
 
-  uni.showToast({
-    title: '专精图标可点击',
-    icon: 'none',
-  });
+onLoad(async (options: any) => {
+  query.value = options;
 });
 
-onShow(() => {
+onShow(async (options: any) => {
+  if (options && Object.keys(options)?.length > 0) {
+    await initPage(options);
+  }
+
   switch (query.value?.role) {
     case 'dps':
       currentTab.value = 0;
@@ -168,7 +159,7 @@ onShow(() => {
 
 //#region 顶部menu
 const currentTab = ref(0);
-const tabs = ref(['输出', '坦克', '治疗', '输出排行']);
+const tabs = ref(['输出', '坦克', '治疗']);
 
 function switchMenu(e) {
   if (currentTab.value !== e.currentIndex) {
@@ -179,43 +170,45 @@ function switchMenu(e) {
     if (e.currentIndex === 3) {
       navigator.toSpecPopularity();
     } else {
-      navigator.toTierList(
-        {
-          version_id: '11.2 - PTR',
-          activity_type: query.value.activityType,
-          role: roles[e.currentIndex],
-        },
-        true,
-      );
+      initPage({
+        version_id: '11.2 - PTR',
+        activity_type: 'MYTHIC',
+        role: roles[e.currentIndex],
+      });
     }
   }
 }
 
 //#endregion
 
-const hasTranslatedDesc = computed(() => {
-  return tierList.value?.tier_data?.[0].children?.[0].descZH;
-});
+const collapseRef = ref<any>();
 
-function getTierListIcons(options: any) {
-  const params = JSON.parse(JSON.stringify(options));
-  return ['dps', 'tank', 'healer']
-    .filter(role => role != params.role.toLocaleLowerCase())
-    .map(item => ({
-      role: item,
-      onClick: () =>
-        navigator.toTierList({
-          version_id: '11.1',
-          activity_type: query.value.activityType,
-          role: item,
-        }),
-    }));
+async function initPage(params?: any) {
+  const { role } = params ?? {};
+
+  tierList.value = await queryTierList({
+    versionId: '11.2 - PTR',
+    activityType: 'MYTHIC',
+    role: role ?? 'DPS',
+  });
+  nextTick(() => {
+    collapseRef.value?.resize();
+  });
+
+  uni.showToast({
+    title: '专精图标可点击',
+    icon: 'none',
+  });
 }
+
+// const hasTranslatedDesc = computed(() => {
+//   return tierList.value?.tier_data?.[0].children?.[0].descZH;
+// });
 
 function getPageTitle(options: any) {
   const { activityType } = options;
   const title = activityType === 'MYTHIC' ? '大秘境' : '团本';
-  return `11.2 PTR ${title} 综合排行`;
+  return `${title} 综合排行`;
 }
 
 onShareAppMessage(() => {
@@ -260,15 +253,20 @@ function dialogConfirm() {
 function dialogClose() {
   alertDialog.value?.close?.();
 }
+
+defineExpose({
+  initPage,
+});
+
 </script>
 
 <style lang="scss" scoped>
 .header {
-  padding: 20rpx;
+  padding: 0 20rpx 20rpx;
 }
 
-// TODO 和 index/index 页面的样式有冗余
-::v-deep uni-collapse-item {
+:deep(uni-collapse-item) {
+
   &:nth-child(1) {
     background-color: $color-s-tier !important;
   }
@@ -287,26 +285,6 @@ function dialogClose() {
 
   &:nth-child(5) {
     background-color: $color-d-tier !important;
-  }
-
-  .uni-collapse-item__title.uni-collapse-item-border {
-    line-height: 40px;
-    border-bottom: 4px solid $uni-bg-color-grey;
-    padding-left: 10px;
-    box-sizing: border-box;
-    font-size: 16px;
-
-    .uni-collapse-item--animation text {
-      color: $uni-bg-color-grey !important;
-    }
-  }
-
-  .uni-collapse-item__wrap {
-    background-color: $uni-bg-color-grey !important;
-
-    .uni-collapse-item__wrap-content {
-      border: none !important;
-    }
   }
 }
 
@@ -335,8 +313,8 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
 .collapse-content {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 10px;
-  padding: 0.4rem 0;
+  padding: 0.4rem 20rpx;
+  background-color: black;
 
   .collapse-content__card {
     margin-right: $card-right-margin;
@@ -456,9 +434,5 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
   .popup-container__close-btn {
     margin-right: 0.6rem;
   }
-}
-
-.footer {
-  height: 140rpx;
 }
 </style>

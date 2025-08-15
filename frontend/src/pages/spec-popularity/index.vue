@@ -8,6 +8,7 @@
       >输出伤害排行
       </view
       >
+
       <view
         class="rank-menu-item"
         :class="[currentMenu === 'popular' ? 'rank-menu-item--active' : '']"
@@ -15,21 +16,31 @@
       >专精热度排行
       </view
       >
+
+      <view
+        class="rank-menu-item"
+        :class="[currentMenu === 'overall' ? 'rank-menu-item--active' : '']"
+        @click="() => switchMenu('overall')"
+      >专精综合排行
+      </view
+      >
     </view>
 
     <uni-card v-show="currentMenu === 'rank'">
-      <uni-title
-        type="h4"
-        :title="`仅${currentRankLevel}的数据 ${
+      <view class="rank-title">
+        <view>仅
+          <text>{{ currentRankLevel }}</text>
+          的数据
+        </view>
+        <view>{{ `${
           currentWeek === thisWeek
             ? `, 上次更新: ${
-                calculateRelativeTime(currentRankUpdatedAt) ?? '加载中...'
-              }`
+              calculateRelativeTime(currentRankUpdatedAt) ?? '加载中...'
+            }`
             : ''
-        }`"
-        align="center"
-        color="#fff"
-      ></uni-title>
+        }` }}
+        </view>
+      </view>
 
       <view class="filter-container">
         <text> 时间：</text>
@@ -204,6 +215,8 @@
         </view>
       </view>
     </uni-card>
+
+    <OverallRankPage ref="overallRankPageRef" v-show="currentMenu === 'overall'" />
   </view>
 
   <ad-custom
@@ -294,6 +307,7 @@ import { onShareAppMessage } from '@dcloudio/uni-app';
 
 import { querySpecDpsRank, querySpecPopularity } from '@/api/wow/index';
 import ShareIcon from '@/components/ShareIcon.vue';
+import OverallRankPage from '@/pages/tier-list/index.vue';
 import { getWeekCount } from '@/utils/wow';
 import { useNavigator } from '@/hooks/navigator';
 import { calculateRelativeTime } from '@/utils/time';
@@ -306,9 +320,16 @@ onShareAppMessage(() => ({
 
 const currentMenu = ref('rank');
 
+const overallRankPageRef = ref<any>();
+
 function switchMenu(menuName: any) {
   if (currentMenu.value !== menuName) {
     currentMenu.value = menuName;
+  }
+  if (menuName === 'overall') {
+    nextTick(() => {
+      overallRankPageRef.value?.initPage();
+    });
   }
 }
 
@@ -538,6 +559,21 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.rank-title {
+  text-align: center;
+  color: #fff;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+
+  text {
+    color: $uni-color-primary;
+    font-size: 32rpx;
+    font-weight: bold;
+  }
+}
+
 .rank-menu {
   display: flex;
   justify-content: space-between;
@@ -550,16 +586,6 @@ onMounted(() => {
   color: #fff;
   margin-bottom: 10px;
 
-  &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    height: 100%;
-    width: 2px;
-    background-color: $uni-color-primary;
-  }
-
   .rank-menu-item {
     width: 50%;
     height: 100%;
@@ -567,6 +593,10 @@ onMounted(() => {
     font-weight: bold;
     text-align: center;
     padding: 10px 0;
+
+    &:not(:last-child) {
+      border-right: 4rpx solid $uni-color-primary;
+    }
   }
 
   .rank-menu-item--active {

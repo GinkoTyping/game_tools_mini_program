@@ -589,9 +589,10 @@ export async function queryTierList(params: {
     });
     if (res.data) {
       res.data.created_at = res.data.created_at.slice(0, 10);
+      res.data.tier_data = res.data.tier_data.filter(item => item.children?.length);
     }
     return res.data as ITierListDTO;
-  } catch (error) {
+  } catch {
     return {} as ITierListDTO;
   }
 }

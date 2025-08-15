@@ -253,3 +253,23 @@ $priest: rgb(255, 255, 255);
 .segmented-control__text {
   font-size: 28rpx !important;
 }
+
+// 综合排行页面样式
+.tier-list-collapse {
+  
+  .uni-collapse-item__wrap-content {
+    border: none !important;
+  }
+
+  .uni-collapse-item__title.uni-collapse-item-border {
+    line-height: 40px;
+    border-bottom: 4px solid $uni-bg-color-grey;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+
+    .uni-collapse-item--animation text {
+      color: $uni-bg-color-grey !important;
+    }
+  }
+}
