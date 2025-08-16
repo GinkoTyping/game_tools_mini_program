@@ -516,6 +516,7 @@ export interface IHomeViewDTO {
     value: string;
     icon: string;
     color: string;
+    dpswow?: boolean;
   }[];
   newEntries: {
     feature: boolean;
@@ -524,6 +525,7 @@ export interface IHomeViewDTO {
     value: string;
     icon: string;
     color: string;
+    dpswow?: boolean;
   }[];
   mythicMarkCount: number;
   tarotCount: number;

@@ -78,11 +78,20 @@
   <view class="entries">
     <view
       class="entries-item"
-      v-for="entry in homeViewData?.entries"
-      :key="entry.value"
-      @click="navigator.toPage(entry.page)"
+      v-for="entry in homeViewData?.newEntries"
+      :key="entry.page"
+      @click="() => onClickFeature(entry)"
     >
+      <view
+        class="entries-item_dpswow"
+        v-if="entry.dpswow">
+        <view class="spacing">
+          <text>W</text>
+          <text>D</text>
+        </view>
+      </view>
       <uni-icons
+        v-else
         :class="[entry.feature ? 'entries-item--feature' : '']"
         :type="entry.icon"
         size="36"
@@ -298,6 +307,21 @@ function setNoticeBarCountdown() {
 function onClickNotice() {
   navigator.toPatchLog();
 }
+
+function onClickFeature(entryItem: any) {
+  if (entryItem.dpswow) {
+
+    uni.navigateToMiniProgram({
+      appId: import.meta.env.VITE_DPS_WOW_APP_ID,
+      path: 'pages/index/home?referralCode=yinzi',
+      extraData: {
+        fromPage: 'pages/index/index',
+      },
+    });
+  } else {
+    navigator.toPage(entryItem.page);
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -395,6 +419,32 @@ $simple-card-width: 43.5vw;
     flex-direction: column;
     align-items: center;
     width: 28vw;
+
+    .entries-item_dpswow {
+      width: 72rpx;
+      height: 72rpx;
+      padding: 8rpx;
+      box-sizing: border-box;
+
+      .spacing {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        background-color: #e37e00;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #d32121;
+        font-weight: bolder;
+        font-size: 30rpx;
+
+        text {
+          &:first-child {
+            margin-right: -10rpx;
+          }
+        }
+      }
+    }
 
     view {
       font-size: 14px;
