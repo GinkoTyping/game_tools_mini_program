@@ -1,11 +1,12 @@
 <template>
   <view class="main-container">
+    <view class="menu-placeholder"></view>
     <view class="rank-menu">
       <view
         class="rank-menu-item"
         :class="[currentMenu === 'rank' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('rank')"
-      >输出伤害排行
+      >输出伤害
       </view
       >
 
@@ -13,7 +14,7 @@
         class="rank-menu-item"
         :class="[currentMenu === 'popular' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('popular')"
-      >专精热度排行
+      >专精热度
       </view
       >
 
@@ -21,7 +22,15 @@
         class="rank-menu-item"
         :class="[currentMenu === 'overall' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('overall')"
-      >专精综合排行
+      >综合排行
+      </view
+      >
+
+      <view
+        class="rank-menu-item"
+        :class="[currentMenu === 'dpswow' ? 'rank-menu-item--active' : '']"
+        @click="() => switchMenu('dpswow')"
+      >输出模拟
       </view
       >
     </view>
@@ -217,14 +226,16 @@
     </uni-card>
 
     <OverallRankPage ref="overallRankPageRef" v-show="currentMenu === 'overall'" />
+    <DpsWowPage v-show="currentMenu === 'dpswow'" />
   </view>
 
   <ad-custom
+    v-if="!['dpswow'].includes(currentMenu)"
     unit-id="adunit-79a3e360c99b34ab"
     style="margin: 1rem 0"
   ></ad-custom>
 
-  <uni-card>
+  <uni-card v-if="['rank', 'popular'].includes(currentMenu)">
     <uni-title type="h4" title="排行说明：" color="#bbb"></uni-title>
     <view class="info-text" v-show="currentMenu === 'rank'"
     >- 每周CD前两天，因为样本数较少，所以排名可能有波动。
@@ -305,9 +316,10 @@
 import { computed, nextTick, onMounted, reactive, ref } from 'vue';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 
-import { querySpecDpsRank, querySpecPopularity } from '@/api/wow/index';
+import { querySpecDpsRank, querySpecPopularity } from '@/api/wow';
 import ShareIcon from '@/components/ShareIcon.vue';
 import OverallRankPage from '@/pages/spec-stats/components/OverallRank.vue';
+import DpsWowPage from '@/pages/spec-stats/components/DpsWow.vue';
 import { getWeekCount } from '@/utils/wow';
 import { useNavigator } from '@/hooks/navigator';
 import { calculateRelativeTime } from '@/utils/time';
@@ -539,15 +551,8 @@ async function getSpecRankData() {
   }
 }
 
-const STATIC_VERSION = '11.1';
-const STATIC_ACTIVITY_TYPE = 'MYTHIC';
-
 function toSpecTierPage() {
-  navigator.toTierList({
-    version_id: STATIC_VERSION,
-    activity_type: STATIC_ACTIVITY_TYPE,
-    role: currentRankJob.value,
-  });
+  currentMenu.value = 'overall';
 }
 
 //#endregion
@@ -574,17 +579,24 @@ onMounted(() => {
   }
 }
 
+.menu-placeholder {
+  height: 120rpx;
+}
+
 .rank-menu {
   display: flex;
+  position: fixed;
+  top: 20rpx;
+  z-index: 99;
+  width: calc(100vw - 4vw);
+  box-sizing: border-box;
   justify-content: space-between;
   border: 1px solid $uni-color-primary;
-  position: relative;
-  margin: 0 2vw;
   border-radius: 10px;
   overflow: hidden;
   background-color: $uni-bg-color-grey-light;
   color: #fff;
-  margin-bottom: 10px;
+  margin: 0 2vw 10px;
 
   .rank-menu-item {
     width: 50%;
@@ -796,10 +808,6 @@ onMounted(() => {
   color: $uni-text-color-inverse;
   font-weight: bold;
   font-size: 16px;
-}
-
-.main-container {
-  padding-top: 1rem;
 }
 
 ::v-deep .uni-card {

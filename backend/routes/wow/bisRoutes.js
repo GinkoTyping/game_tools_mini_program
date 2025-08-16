@@ -16,6 +16,7 @@ import {
 import { querySpecDpsRank } from '../../controller/wow/specStatController.js';
 import { validateAdmin } from '../../auth/validateAdmin.js';
 import { getWotlkBisBySpec, queryWotlkTalentBySpec } from '../../controller/wow-wotlk/bisController.js';
+import { queryDpsWoWList } from '../../controller/wow/dspwow.js';
 
 const router = express.Router();
 
@@ -45,5 +46,7 @@ router.post(
   validateAdmin,
   queryUpdateMaxrollBisOverview,
 );
+
+router.post('/bis/dpswow/list', queryDpsWoWList);
 
 export default router;

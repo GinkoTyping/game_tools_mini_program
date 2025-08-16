@@ -1,0 +1,20 @@
+/**
+ * 多行文本溢出省略号 Mixin
+ * @param {Number} $lines - 显示的最大行数（默认值：2）
+ * @param {String} $break - 单词换行方式（默认值：break-word）
+ */
+@mixin multi-line-ellipsis($lines: 2, $break: break-word) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: $break;
+
+  @if $lines == 1 {
+    // 单行省略
+    white-space: nowrap;
+  } @else {
+    // 多行省略（WebKit内核）
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+  }
+}

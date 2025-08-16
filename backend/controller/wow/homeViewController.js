@@ -83,17 +83,15 @@ export async function queryHomeView(req, res) {
   let basicOutput = {
     entries: [
       {
-        label: '专精排行',
-        value: 'rating',
-        icon: 'auth-filled',
-        page: '/pages/tier-list/index?versionId=11.1&activityType=MYTHIC&role=DPS',
-        color: '#e37e00',
+        label: 'DPS模拟',
+        value: 'dpswow',
+        dpswow: true,
       },
       {
-        label: '专精数据',
+        label: '专精排行',
         value: 'rating',
         icon: 'fire-filled',
-        page: '/pages/spec-popularity/index',
+        page: '/pages/spec-stats/index',
         color: '#e37e00',
         feature: true,
       },
