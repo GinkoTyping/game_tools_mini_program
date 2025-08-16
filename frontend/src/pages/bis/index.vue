@@ -3,7 +3,7 @@
     <uni-section
       id="overview"
       :class="[classKey]"
-      title="总览"
+      title=""
       :sub-title="`上次更新：${currentData?.updatedAt}`"
     >
       <uni-card class="section-card">
@@ -33,11 +33,7 @@
             class="tier-bar"
             @click="
               () =>
-                navigator.toTierList({
-                  version_id: '11.1',
-                  activity_type: 'MYTHIC',
-                  role: 'dps',
-                })
+                navigator.toSpecStats('overall')
             "
           >
             <view class="tier-prefix">
@@ -55,7 +51,7 @@
             </view>
           </view>
 
-          <view class="tier-bar" @click="() => navigator.toSpecPopularity()">
+          <view class="tier-bar" @click="() => navigator.toSpecStats()">
             <view class="tier-prefix">
               <view
                 class="tier-icon"

@@ -7,6 +7,7 @@
     v-model="dataList"
     @query="queryList"
     :default-page-size="50"
+    :auto="false"
   >
     <template #top>
       <view class="top-placeholder"></view>
@@ -55,6 +56,29 @@
       </view>
     </view>
 
+    <template #bottom>
+      <view class="table-footer" @click="navigator.toWowDps">
+        <view class="table-footer__left">
+          <view class="table-footer__info">
+            <view>感谢</view>
+            <view class="dpswow-label">魔兽DPS</view>
+            <image
+              src="https://ginkolearn.cyou/api/common/assets/media/dpswow.png"
+            ></image>
+            <view>提供的数据支持</view>
+          </view>
+          <view class="table-footer__icon">
+            前往小程序获取您的输出模拟数据
+          </view>
+        </view>
+        <view class="table-footer__right">
+          <image
+            src="https://ginkolearn.cyou/api/common/assets/media/dpswow.png"
+          ></image>
+        </view>
+      </view>
+    </template>
+
   </z-paging>
 
   <uni-popup ref="popupRef" type="bottom" @change="handleTogglePopup">
@@ -100,6 +124,9 @@ import { queryDpsWowList } from '@/api/wow/dpswow';
 import { getClassIconURL } from '@/hooks/imageGenerator';
 import locales from '@/data/zh-latest.json';
 import CustomTag from '@/components/CustomTag.vue';
+import { useNavigator } from '@/hooks/navigator';
+
+const navigator = useNavigator();
 
 // region 虚拟表格
 const pagingRef = ref<any>(null);
@@ -376,6 +403,48 @@ $row-height: 48rpx;
       background-color: $uni-color-primary;
       padding: 4rpx 12rpx;
       border-radius: 8rpx;
+    }
+  }
+}
+
+.table-footer {
+  height: 150rpx;
+  padding: 0 20rpx;
+  font-size: 30rpx;
+  color: $uni-text-color-grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid $uni-bg-color-grey-lighter;
+
+  .table-footer__info {
+    display: flex;
+    align-items: center;
+
+    .dpswow-label {
+      color: $uni-text-color-inverse;
+      margin-left: 8rpx;
+      font-weight: bold;
+    }
+
+    image {
+      width: 40rpx;
+      height: 40rpx;
+      margin-left: 4rpx;
+      margin-right: 8rpx;
+    }
+  }
+
+
+  .table-footer__right {
+    width: 70rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    image {
+      width: 70rpx;
+      height: 70rpx;
     }
   }
 }

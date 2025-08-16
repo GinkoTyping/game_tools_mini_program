@@ -80,9 +80,9 @@ function toMythicDungeon(id: number, type?: string, guideId?: number) {
 }
 
 // 专精数据
-function toSpecPopularity() {
+function toSpecStats(menu?: string) {
   uni.navigateTo({
-    url: `/pages/spec-stats/index`,
+    url: menu ? `/pages/spec-stats/index?menu=${menu}` : '/pages/spec-stats/index',
   });
 }
 
@@ -166,15 +166,27 @@ function toPoeDeatilLadder(type: string, name: string) {
   });
 }
 
+function toWowDps() {
+  uni.navigateToMiniProgram({
+    appId: import.meta.env.VITE_DPS_WOW_APP_ID,
+    path: 'pages/index/home?referralCode=yinzi',
+    extraData: {
+      fromPage: 'pages/index/index',
+    },
+  });
+}
+
 export function useNavigator() {
   return {
+    toWowDps,
+
     toHome,
     toSpecDetail,
     toSpecsMenu,
     toPatchLog,
     toMythicDungeon,
     toMythicDungeonList,
-    toSpecPopularity,
+    toSpecStats,
     toPage,
     toRaidGuide,
     toQuestionDungeon,

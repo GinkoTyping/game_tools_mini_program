@@ -310,14 +310,7 @@ function onClickNotice() {
 
 function onClickFeature(entryItem: any) {
   if (entryItem.dpswow) {
-
-    uni.navigateToMiniProgram({
-      appId: import.meta.env.VITE_DPS_WOW_APP_ID,
-      path: 'pages/index/home?referralCode=yinzi',
-      extraData: {
-        fromPage: 'pages/index/index',
-      },
-    });
+    navigator.toWowDps();
   } else {
     navigator.toPage(entryItem.page);
   }

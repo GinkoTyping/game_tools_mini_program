@@ -168,7 +168,7 @@ function switchMenu(e) {
     }
     const roles = ['dps', 'tank', 'healer'];
     if (e.currentIndex === 3) {
-      navigator.toSpecPopularity();
+      navigator.toSpecStats();
     } else {
       initPage({
         version_id: '11.2 - PTR',

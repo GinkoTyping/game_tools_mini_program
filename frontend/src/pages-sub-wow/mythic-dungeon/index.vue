@@ -406,7 +406,7 @@ onLoad(async (options: any) => {
   currentUtilityType.value = mythicDungeonData.value?.utilityNeeds[0].type;
   currentLootType.value = mythicDungeonData.value?.lootPool[0].type;
   uni.setNavigationBarTitle({
-    title: `大秘境 —— ${mythicDungeonData.value?.nameZH ?? '未知名称'}`,
+    title: `${mythicDungeonData.value?.nameZH ?? '未知名称'}`,
   });
 
   scrollToTip();

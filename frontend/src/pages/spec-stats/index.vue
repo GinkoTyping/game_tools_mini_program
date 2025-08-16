@@ -6,9 +6,16 @@
         class="rank-menu-item"
         :class="[currentMenu === 'rank' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('rank')"
-      >输出伤害
+      >输出统计
       </view
       >
+
+      <view
+        class="rank-menu-item"
+        :class="[currentMenu === 'dpswow' ? 'rank-menu-item--active' : '']"
+        @click="() => switchMenu('dpswow')"
+      >输出模拟
+      </view>
 
       <view
         class="rank-menu-item"
@@ -23,14 +30,6 @@
         :class="[currentMenu === 'overall' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('overall')"
       >综合排行
-      </view
-      >
-
-      <view
-        class="rank-menu-item"
-        :class="[currentMenu === 'dpswow' ? 'rank-menu-item--active' : '']"
-        @click="() => switchMenu('dpswow')"
-      >输出模拟
       </view
       >
     </view>
@@ -226,7 +225,7 @@
     </uni-card>
 
     <OverallRankPage ref="overallRankPageRef" v-show="currentMenu === 'overall'" />
-    <DpsWowPage v-show="currentMenu === 'dpswow'" />
+    <DpsWowPage ref="dpswowPageRef" v-show="currentMenu === 'dpswow'" />
   </view>
 
   <ad-custom
@@ -309,12 +308,12 @@
       </template>
     </uni-popup-dialog>
   </uni-popup>
-  <ShareIcon />
+  <ShareIcon v-if="currentMenu !== 'dpswow'" />
 </template>
 
 <script lang="ts" setup>
 import { computed, nextTick, onMounted, reactive, ref } from 'vue';
-import { onShareAppMessage } from '@dcloudio/uni-app';
+import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
 import { querySpecDpsRank, querySpecPopularity } from '@/api/wow';
 import ShareIcon from '@/components/ShareIcon.vue';
@@ -333,6 +332,8 @@ onShareAppMessage(() => ({
 const currentMenu = ref('rank');
 
 const overallRankPageRef = ref<any>();
+const dpswowPageRef = ref<any>();
+
 
 function switchMenu(menuName: any) {
   if (currentMenu.value !== menuName) {
@@ -341,6 +342,10 @@ function switchMenu(menuName: any) {
   if (menuName === 'overall') {
     nextTick(() => {
       overallRankPageRef.value?.initPage();
+    });
+  } else if (menuName === 'dpswow') {
+    nextTick(() => {
+      dpswowPageRef.value?.initPage();
     });
   }
 }
@@ -557,9 +562,13 @@ function toSpecTierPage() {
 
 //#endregion
 
-onMounted(() => {
+onLoad((option: any) => {
   getPopularityData();
   getSpecRankData();
+
+  if (option?.menu) {
+    switchMenu(option.menu);
+  }
 });
 </script>
 
