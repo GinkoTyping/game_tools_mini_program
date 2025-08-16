@@ -254,9 +254,9 @@ $priest: rgb(255, 255, 255);
   font-size: 28rpx !important;
 }
 
-// 综合排行页面样式
+// region 综合排行页面样式
 .tier-list-collapse {
-  
+
   .uni-collapse-item__wrap-content {
     border: none !important;
   }
@@ -273,3 +273,28 @@ $priest: rgb(255, 255, 255);
     }
   }
 }
+
+.tier-list-dialog {
+  .uni-popup__wrapper {
+    position: relative;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .spce-icon {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -80%);
+      width: 100rpx;
+      height: 100rpx;
+      border-radius: 50%;
+      border-width: 0.2rem;
+      border-style: solid;
+      z-index: 99;
+    }
+  }
+}
+
+// endregion

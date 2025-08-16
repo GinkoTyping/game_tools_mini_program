@@ -307,15 +307,15 @@ import { onShareAppMessage } from '@dcloudio/uni-app';
 
 import { querySpecDpsRank, querySpecPopularity } from '@/api/wow/index';
 import ShareIcon from '@/components/ShareIcon.vue';
-import OverallRankPage from '@/pages/tier-list/index.vue';
+import OverallRankPage from '@/pages/spec-stats/components/OverallRank.vue';
 import { getWeekCount } from '@/utils/wow';
 import { useNavigator } from '@/hooks/navigator';
 import { calculateRelativeTime } from '@/utils/time';
 
 const navigator = useNavigator();
 onShareAppMessage(() => ({
-  title: '热门专精排行（每日更新）',
-  path: 'pages/spec-popularity/index',
+  title: '专精排行',
+  path: 'pages/spec-stats/index',
 }));
 
 const currentMenu = ref('rank');

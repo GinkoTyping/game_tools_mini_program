@@ -78,7 +78,7 @@
   <view class="entries">
     <view
       class="entries-item"
-      v-for="entry in homeViewData?.newEntries"
+      v-for="entry in homeViewData?.entries"
       :key="entry.page"
       @click="() => onClickFeature(entry)"
     >

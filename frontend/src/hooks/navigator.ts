@@ -65,28 +65,6 @@ function toPatchLog() {
   });
 }
 
-// 专精排行
-function toTierList(
-  params: {
-    version_id: string;
-    activity_type: string;
-    role: string;
-  },
-  isRedirect?: boolean,
-) {
-  const { version_id, activity_type, role } = params;
-  const url = `/pages/tier-list/index?versionId=${version_id}&activityType=${activity_type}&role=${role}`;
-  if (isRedirect) {
-    uni.redirectTo({
-      url,
-    });
-  } else {
-    uni.navigateTo({
-      url,
-    });
-  }
-}
-
 // 大秘境列表
 function toMythicDungeonList() {
   uni.navigateTo({
@@ -104,7 +82,7 @@ function toMythicDungeon(id: number, type?: string, guideId?: number) {
 // 专精数据
 function toSpecPopularity() {
   uni.navigateTo({
-    url: `/pages/spec-popularity/index`,
+    url: `/pages/spec-stats/index`,
   });
 }
 
@@ -193,7 +171,6 @@ export function useNavigator() {
     toHome,
     toSpecDetail,
     toSpecsMenu,
-    toTierList,
     toPatchLog,
     toMythicDungeon,
     toMythicDungeonList,

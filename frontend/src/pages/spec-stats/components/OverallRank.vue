@@ -65,7 +65,7 @@
   <ShareIcon />
 
   <uni-popup
-    class="popup-container"
+    class="popup-container tier-list-dialog"
     ref="detailPopup"
     mask-background-color="rgba(0,0,0,0.8)"
   >
@@ -113,7 +113,7 @@
 
 <script lang="ts" setup>
 import { onLoad, onShareAppMessage, onShow } from '@dcloudio/uni-app';
-import { queryTierList } from '@/api/wow/index';
+import { queryTierList } from '@/api/wow';
 import { nextTick, ref } from 'vue';
 
 import SpellCard from '@/components/SpellCard.vue';
@@ -123,7 +123,7 @@ import {
   type ITierListDTO,
   type ITierSpecDetail,
   querySpellsInTip,
-} from '@/api/wow/index';
+} from '@/api/wow';
 import ShareIcon from '@/components/ShareIcon.vue';
 import { useNavigator } from '@/hooks/navigator';
 
@@ -204,20 +204,6 @@ async function initPage(params?: any) {
 // const hasTranslatedDesc = computed(() => {
 //   return tierList.value?.tier_data?.[0].children?.[0].descZH;
 // });
-
-function getPageTitle(options: any) {
-  const { activityType } = options;
-  const title = activityType === 'MYTHIC' ? '大秘境' : '团本';
-  return `${title} 综合排行`;
-}
-
-onShareAppMessage(() => {
-  const { versionId, activityType, role } = query.value;
-  return {
-    title: getPageTitle(query.value),
-    path: `/pages/tier-list/index?versionId=${versionId}&activityType=${activityType}&role=${role}`,
-  };
-});
 
 const detailPopup = ref();
 
@@ -351,30 +337,6 @@ $card-width: calc((100vw - 4rem - (4 * $card-right-margin)) / 5);
     margin: 0 auto !important;
     border: none !important;
     background-color: $uni-bg-color-grey-light !important;
-  }
-}
-
-::v-deep .uni-popup__wrapper {
-  display: flex !important;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.uni-popup__wrapper {
-  position: relative;
-
-  .spce-icon {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -80%);
-    width: $card-width;
-    height: $card-width;
-    border-radius: 50%;
-    border-width: 0.2rem;
-    border-style: solid;
-    z-index: 99;
   }
 }
 

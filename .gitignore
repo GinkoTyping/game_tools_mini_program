@@ -49,3 +49,6 @@ backend/database/wow/data/archon-tier-list/cache
 backend/database/wow/data/archon-bis/cache
 backend/database/wow/data/maxroll-bis/cache
 backend/database/wow/data/dps-rank/cache/
+
+/frontend/.env.development
+/frontend/.env.production

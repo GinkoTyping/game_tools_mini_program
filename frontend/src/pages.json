@@ -20,13 +20,7 @@
       }
     },
     {
-      "path": "pages/spec-popularity/index",
-      "style": {
-        "navigationBarTitleText": "专精数据统计"
-      }
-    },
-    {
-      "path": "pages/tier-list/index",
+      "path": "pages/spec-stats/index",
       "style": {
         "navigationBarTitleText": "专精排行"
       }
