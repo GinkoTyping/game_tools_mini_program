@@ -12,7 +12,7 @@
     >
       <template v-slot:title>
         <view>
-          <text class="menu-index">{{ bossIndex + 1 }}号 </text>
+          <text class="menu-index">{{ bossIndex + 1 }}号</text>
           <text class="menu-title">{{ boss.title }}</text>
         </view>
       </template>
@@ -72,17 +72,18 @@ onLoad(async () => {
 });
 onShareAppMessage(() => ({
   title: '解放安德麦 一句话攻略',
-  path: `pages/raid-guide/index`,
+  path: `pages-sub-wow/raid-guide/index`,
 }));
 
 const currentSpells = ref();
 const spellPopup = ref();
+
 async function showSpells(spells: any) {
   if (spells?.length) {
     isShowNotice.value = false;
 
     currentSpells.value = await querySpellsInTip(
-      spells.map((spell: any) => spell.id)
+      spells.map((spell: any) => spell.id),
     );
     if (currentSpells.value.filter((item: any) => item !== null).length) {
       spellPopup.value?.open?.();
@@ -93,6 +94,7 @@ async function showSpells(spells: any) {
 <style lang="scss" scoped>
 ::v-deep .uni-collapse {
   background-color: $uni-bg-color-grey-light !important;
+
   .uni-collapse-item__title-box {
     background-color: $uni-bg-color-grey-light !important;
   }
@@ -100,6 +102,7 @@ async function showSpells(spells: any) {
 
 ::v-deep uni-collapse-item {
   width: 100vw;
+
   .uni-collapse-item__title.uni-collapse-item-border {
     line-height: 40px;
     border-bottom: 4px solid $uni-bg-color-grey;
@@ -107,6 +110,7 @@ async function showSpells(spells: any) {
     box-sizing: border-box;
     font-size: 16px;
   }
+
   .uni-collapse-item__wrap {
     background-color: $uni-bg-color-grey !important;
 
@@ -138,6 +142,7 @@ async function showSpells(spells: any) {
   padding: 0 1.8rem;
   margin-bottom: 4px;
   position: relative;
+
   &::before {
     content: '';
     position: absolute;

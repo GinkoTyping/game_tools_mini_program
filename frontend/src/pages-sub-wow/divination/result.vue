@@ -11,11 +11,13 @@
         <view class="title">
           <text class="sub-title">您抽中了</text>
           {{ tarot.name
-          }}<text
+          }}
+          <text
             class="sub-title"
             :class="[tarot.isPositive ? 'text--positive' : 'text--negative']"
           >
-            ({{ tarot.isPositive ? '正位' : '逆位' }})</text
+            ({{ tarot.isPositive ? '正位' : '逆位' }})
+          </text
           >
         </view>
         <view
@@ -24,7 +26,7 @@
         >
           {{ tarot.summary }}
         </view>
-        <view class="suggestion"> {{ tarot.suggestion }} </view>
+        <view class="suggestion"> {{ tarot.suggestion }}</view>
       </view>
       <view class="footer animate__animated animate__fadeInUpBig">
         <view class="buttons">
@@ -48,12 +50,22 @@
             :class="[isExpand ? 'animate__fadeInUp' : '']"
           >
             <view
-              >今天有<text>{{ userStore.drawTarotInfo.totalCount }}人</text
-              >占卜，其中<text>{{ userStore.drawTarotInfo.count }}人</text
-              >也抽中了{{ tarot.name }}!</view
+            >今天有
+              <text>{{ userStore.drawTarotInfo.totalCount }}人
+              </text
+              >
+              占卜，其中
+              <text>{{ userStore.drawTarotInfo.count }}人
+              </text
+              >
+              也抽中了{{ tarot.name }}!
+            </view
             >
             <view @click="clickShowAdDialog"
-              >觉得不错的话，点击<text>赏程序猿一个鸡腿🍗</text>吧</view
+            >觉得不错的话，点击
+              <text>赏程序猿一个鸡腿🍗</text>
+              吧
+            </view
             >
           </view>
         </view>
@@ -76,7 +88,7 @@ import { useUserStore } from '@/store/wowStore';
 
 onShareAppMessage(() => ({
   title: '卡牌玄学改天命，艾泽拉斯掌乾坤',
-  path: 'pages/question/index',
+  path: 'pages-sub-wow/question/index',
 }));
 
 onLoad(() => {
@@ -108,11 +120,13 @@ const tarot = computed(() => {
 });
 
 const isExpand = ref(false);
+
 function switchExpand() {
   isExpand.value = !isExpand.value;
 }
 
 const shareIconRef = ref();
+
 function clickShowAdDialog() {
   shareIconRef.value?.showAdDialog?.();
 }
@@ -232,6 +246,7 @@ $content-font: 32rpx;
 
     .fold-content {
       color: $secondary-corlor;
+
       text {
         font-size: 28rpx;
         font-weight: bold;
@@ -240,6 +255,7 @@ $content-font: 32rpx;
     }
   }
 }
+
 .ad-avoider {
   height: 140rpx;
 }

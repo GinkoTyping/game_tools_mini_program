@@ -38,7 +38,8 @@
         </view>
       </view>
       <view class="footer animate__animated animate__fadeIn animate__delay-2s"
-        >{{ userStore.drawTarotInfo.totalCount ?? 0 }}人已抽</view
+      >{{ userStore.drawTarotInfo.totalCount ?? 0 }}人已抽
+      </view
       >
     </view>
   </view>
@@ -57,7 +58,7 @@ import { useNavigator } from '@/hooks/navigator';
 
 onShareAppMessage(() => ({
   title: '卡牌玄学改天命，艾泽拉斯掌乾坤',
-  path: 'pages/question/index',
+  path: 'pages-sub-wow/divination/index',
 }));
 
 onShow(async () => {
@@ -66,6 +67,7 @@ onShow(async () => {
 
 const userStore = useUserStore();
 const navigator = useNavigator();
+
 async function drawTarot() {
   if (!userStore.drawTarotInfo.hasDraw) {
     uni.showLoading({

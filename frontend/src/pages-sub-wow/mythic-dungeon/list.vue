@@ -33,10 +33,12 @@
               <text
                 class="slot-header__tier-main"
                 :class="[`tier-${dungeon.tier?.toLowerCase()}`]"
-                >{{ dungeon.tier }}</text
+              >{{ dungeon.tier }}
+              </text
               >
               <text class="slot-header__tier-sub"
-                >({{ dungeon.tierText }})</text
+              >({{ dungeon.tierText }})
+              </text
               >
             </view>
           </view>
@@ -51,8 +53,9 @@
             >
               <view class="slot-body__desc-label">{{ rating.label }}</view>
               <text :class="[scoreConfig(rating.score).class, 'score']">{{
-                rating.score
-              }}</text>
+                  rating.score
+                }}
+              </text>
               <image :src="scoreConfig(rating.score).src" />
             </view>
           </view>
@@ -99,7 +102,7 @@ onLoad(async () => {
 onShareAppMessage(() => {
   return {
     title: '大秘境攻略',
-    path: 'pages/mythic-dungeon/list',
+    path: 'pages-sub-wow/mythic-dungeon/list',
   };
 });
 
@@ -131,6 +134,7 @@ const imageSrc = computed(() => {
     return 'https://ginkolearn.cyou/api/wow/assets/raid-guide/liberation-of-undermine-small.jpg';
   };
 });
+
 function toDetail(dungeon) {
   if (dungeon.id) {
     navigator.toMythicDungeon(dungeon.id);
@@ -144,16 +148,19 @@ function toDetail(dungeon) {
   height: 5rem;
   width: 1vw;
 }
+
 .slot-header {
   display: flex;
   align-items: center;
   margin-right: 4px;
   position: relative;
+
   .slot-image {
     object-fit: cover;
     max-width: 140px;
     height: 80px;
   }
+
   .slot-header__tier {
     position: absolute;
     bottom: 4px;
@@ -166,6 +173,7 @@ function toDetail(dungeon) {
     align-items: center;
     color: #fff;
     background-color: #999;
+
     .slot-header__tier-main {
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       font-weight: bold;
@@ -173,15 +181,19 @@ function toDetail(dungeon) {
       margin-right: 4px;
     }
   }
+
   .tier-s {
     color: $color-c-tier;
   }
+
   .tier-a {
     color: $color-b-tier;
   }
+
   .tier-b {
     color: $color-a-tier;
   }
+
   .tier-c {
     color: $color-s-tier;
   }
@@ -192,34 +204,42 @@ function toDetail(dungeon) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   .slot-body__header {
     color: #fff;
     font-size: 14px;
     font-weight: bold;
   }
+
   .slot-body__desc {
     font-size: 12px;
     display: flex;
     align-items: center;
+
     .slot-body__desc-label {
       width: 64px;
       color: #999;
     }
+
     .score {
       font-weight: bold;
       margin-right: 4px;
     }
+
     image {
       width: 14px;
       height: 14px;
       margin-right: 6px;
     }
+
     .hard {
       color: $color-s-tier;
     }
+
     .medium {
       color: $color-legend;
     }
+
     .easy {
       color: $color-c-tier;
     }
@@ -238,11 +258,14 @@ function toDetail(dungeon) {
   .uni-list--border-bottom {
     background-color: $uni-bg-color-grey !important;
   }
+
   .uni-list-item {
     background-color: rgb(43, 44, 44) !important;
+
     .uni-list-item__content-title {
       color: #fff;
     }
+
     .uni-list-item__container {
       display: flex;
       justify-content: space-between;

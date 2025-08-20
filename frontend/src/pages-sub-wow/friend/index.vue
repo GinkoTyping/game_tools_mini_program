@@ -84,7 +84,7 @@ import CustomToast from '@/components/CustomToast.vue';
 
 onShareAppMessage(() => ({
   title: '标签即名片，相逢即战友',
-  path: `pages/frind/index`,
+  path: `pages-sub-wow/friend/index`,
 }));
 
 //#region 过滤栏

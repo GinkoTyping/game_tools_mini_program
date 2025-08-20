@@ -116,7 +116,7 @@ import ShareIcon from '@/components/ShareIcon.vue';
 
 onShareAppMessage(() => ({
   title: '冲层如渡劫，题库是攻略！',
-  path: 'pages/question/index',
+  path: 'pages-sub-wow/question/index',
 }));
 
 //#region 数据

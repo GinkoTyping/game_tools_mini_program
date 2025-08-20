@@ -455,7 +455,7 @@ import TagCard from '@/pages-sub-wow/components/TagCard.vue';
 
 onShareAppMessage(() => ({
   title: '标签即名片，相逢即战友',
-  path: `pages/frind/index`,
+  path: `pages-sub-wow/friend/index`,
 }));
 
 const userStore = useUserStore();

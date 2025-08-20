@@ -431,7 +431,7 @@ onLoad(async (options: any) => {
 onShareAppMessage(() => {
   return {
     title: `${mythicDungeonData.value?.nameZH}·大秘境攻略`,
-    path: `pages/mythic-dungeon/index?id=${dungeonId.value}`,
+    path: `pages-sub-wow/mythic-dungeon/index?id=${dungeonId.value}`,
   };
 });
 

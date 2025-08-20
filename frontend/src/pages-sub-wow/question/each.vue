@@ -125,7 +125,7 @@ import ShareIcon from '@/components/ShareIcon.vue';
 
 onShareAppMessage(() => ({
   title: '冲层如渡劫，题库是攻略！',
-  path: 'pages/question/index',
+  path: 'pages-sub-wow/question/index',
 }));
 
 // 用户返回前一个页面时，保存当前题目的数据
