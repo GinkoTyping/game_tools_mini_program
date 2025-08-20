@@ -170,7 +170,7 @@ const questionDungeonsSchedule = useScheduleCheck(UPDATE_INTERVAL_HOUR);
 let correctRatingCache = {};
 
 export async function queryQuestionDunegons(req, res) {
-  const { userId, season } = req.body;
+  const { userId, season = '11.2' } = req.body;
   const userData = await userQuestionMapper.getAllById(userId);
   const doneList = userData?.done_list ?? [];
   const allQuestions = await questionMapper.getAllQuestions();
