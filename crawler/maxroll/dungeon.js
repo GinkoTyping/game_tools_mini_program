@@ -802,13 +802,13 @@ const crawlerLimiter = new Bottleneck({
 async function startCrawler() {
   const mythicDungeons = [
     'the-dawnbreaker-guide',
-    'tazavesh-streets-of-wonder-guide',
-    'ara-kara-city-of-echoes-guide',
-    'eco-dome-aldani-guide',
-    'halls-of-atonement-guide',
-    'tazavesh-soleahs-gambit-guide',
-    'priory-of-the-sacred-flame-guide',
-    'operation-floodgate-guide',
+    // 'tazavesh-streets-of-wonder-guide',
+    // 'ara-kara-city-of-echoes-guide',
+    // 'eco-dome-aldani-guide',
+    // 'halls-of-atonement-guide',
+    // 'tazavesh-soleahs-gambit-guide',
+    // 'priory-of-the-sacred-flame-guide',
+    // 'operation-floodgate-guide',
   ];
   const results = await Promise.allSettled(
     mythicDungeons.map((item) => crawlerLimiter.schedule(() => collect(item))),

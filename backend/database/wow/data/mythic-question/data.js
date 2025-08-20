@@ -1,7 +1,7 @@
 import { getDB, getDynamicDB } from '../../../utils/index.js';
 import { useNpcAndSpellMarkMapper } from '../../mapper/npcAndSpellMarkMapper.js';
 import { useQuestionMapper } from '../../mapper/static/questionMapper.js';
-import questionData from './question.js';
+import questionData from './question-s3.js';
 
 const db = await getDB();
 const questionMapper = useQuestionMapper(db);
@@ -26,14 +26,16 @@ function shuffleOptions(questionText) {
 
 async function updateQuestionItem(params) {
   const { guide_id, guide_type } = params;
+
   async function getDungeonId(guide_id, guide_type) {
     const data = await npcAndSpellMapper.getNpcOrSpellCountByIds(
       [guide_id],
       guide_type === 'trash',
-      true
+      true,
     );
     return data?.[0]?.dungeon_id;
   }
+
   const dungeon_id = await getDungeonId(guide_id, guide_type);
   const existed = await questionMapper.getQuestionByCondition(params);
   const shuffledQuestions = shuffleOptions(params.question_text);
@@ -49,7 +51,7 @@ async function updateQuestionItem(params) {
 
 async function main() {
   return Promise.allSettled(
-    questionData.map((item) => updateQuestionItem(item))
+    questionData.map((item) => updateQuestionItem(item)),
   );
 }
 

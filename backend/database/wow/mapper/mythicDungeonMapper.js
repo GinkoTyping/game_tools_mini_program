@@ -68,6 +68,10 @@ function updateMythicDungeonById(params) {
   );
 }
 
+function getDungeonIdsBySeason(season) {
+  return [392, 542, 378, 499, 391, 503, 505, 525];
+}
+
 export function useMythicDungeonMapper(database) {
   if (database) {
     db = database;
@@ -83,5 +87,7 @@ export function useMythicDungeonMapper(database) {
     getCurrentSeasonMythicDungeonList,
     getMythicDungeonAll,
     updateMythicDungeonById,
+
+    getDungeonIdsBySeason,
   };
 }

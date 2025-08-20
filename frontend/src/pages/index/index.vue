@@ -144,6 +144,13 @@
   <view class="narrow-card-container">
     <view class="narrow-card" @click="() => navigator.toQuestionIndex()">
       <view class="narrow-card_info">
+        <uni-tag
+          class="narrow-card_info__tag"
+          type="error"
+          text="11.2已更新"
+          size="small"
+          circle
+        ></uni-tag>
         <view class="icon">
           <uni-icons
             color="rgb(244, 123, 0)"
@@ -153,7 +160,7 @@
           <text>{{ homeViewData?.mythicMarkCount }}</text>
         </view>
         <view class="info">
-          <view class="card-name"> 做题家</view>
+          <view class="card-name">做题家</view>
           <view class="card-desc">大秘境开卷考</view>
         </view>
       </view>
@@ -583,10 +590,17 @@ $simple-card-width: 43.5vw;
     background-color: transparent;
     position: relative;
 
+    .narrow-card_info__tag {
+      position: absolute;
+      z-index: 3;
+      right: 0.2rem;
+      top: 0.4rem;
+    }
+
     .icon {
       position: absolute;
       z-index: 2;
-      right: 0.6rem;
+      left: 0.6rem;
       color: $color-legend;
       display: flex;
       align-items: center;

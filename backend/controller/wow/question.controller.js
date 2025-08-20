@@ -7,10 +7,12 @@ import { updateStringList } from '../../util/stringListHandler.js';
 import { useMythicDungeonQuestionCountMapper } from '../../database/wow/mapper/mythicDungeonQuestionCount.mapper.js';
 import { updateMarkStatus } from './npcAndSpellMarkController.js';
 import { useScheduleCheck } from '../../util/use-schedule-check.js';
+import { useMythicDungeonMapper } from '../../database/wow/mapper/mythicDungeonMapper.js';
 
 const db = await getDB();
 const questionMapper = useQuestionMapper(db);
 const dungeonMapper = useDungeonMapper(db);
+const mythicDungeonMapper = useMythicDungeonMapper(db);
 
 const dynamicDB = await getDynamicDB();
 const npcAndSpellMapper = useNpcAndSpellMarkMapper(dynamicDB);
@@ -22,7 +24,7 @@ async function mapQustionItem(item) {
   const tipInfo = await npcAndSpellMapper.getNpcOrSpellCountByIds(
     [guide_id],
     guide_type === 'trash',
-    true
+    true,
   );
   return {
     ...item,
@@ -34,28 +36,29 @@ async function mapQustionItem(item) {
 async function getQuestionCorrectRatingByDungeon(dungeonId) {
   const allUserQuestions = await userQuestionMapper.getAllUserQuestion();
   const dungeonQuestion = await questionMapper.getQuestionsByDungeonId(
-    dungeonId
+    dungeonId,
   );
   const validGuideIds = dungeonQuestion?.map((item) => Number(item.id)) ?? [];
   const { wrongCount, totalCount } = allUserQuestions.reduce(
     (pre, cur) => {
       const validIds = cur.done_list.filter((item) =>
-        validGuideIds.includes(Number(item))
+        validGuideIds.includes(Number(item)),
       );
       const validWrongIds = cur.wrong_list.filter((item) =>
-        validGuideIds.includes(Number(item))
+        validGuideIds.includes(Number(item)),
       );
       pre.totalCount += validIds.length;
       pre.wrongCount += validWrongIds.length;
       return pre;
     },
-    { wrongCount: 0, totalCount: 0 }
+    { wrongCount: 0, totalCount: 0 },
   );
   return {
     dungeonId,
-    rating: ((1 - wrongCount / totalCount) * 100).toFixed(2),
+    rating: totalCount === 0 ? '0.00' : ((1 - wrongCount / totalCount) * 100).toFixed(2),
   };
 }
+
 export async function queryQuestionByDungeon(req, res) {
   const { dungeonId, userId, showAvgCorrect } = req.body;
   const dungeonsData = await dungeonMapper.getDungeonsById([dungeonId]);
@@ -78,7 +81,7 @@ export async function queryQuestionByDungeon(req, res) {
 
   // 获取题目对应的图片
   const results = await Promise.allSettled(
-    questions?.map((question) => mapQustionItem(question))
+    questions?.map((question) => mapQustionItem(question)),
   );
   let avgCorrectPercentage;
   if (showAvgCorrect) {
@@ -117,6 +120,7 @@ async function syncUpdateTipMark(userId, questionList) {
   }
   return results;
 }
+
 export async function queryUpdateUserQuestion(req, res) {
   const { questionList = [], userId } = req.body;
   const wrongList =
@@ -146,7 +150,7 @@ export async function queryUpdateUserQuestion(req, res) {
   // 把错题 同步更新到用户的 mark 记录里
   await syncUpdateTipMark(
     userId,
-    questionList?.filter((item) => item.isRight === 0)
+    questionList?.filter((item) => item.isRight === 0),
   );
 
   res.json({
@@ -164,8 +168,9 @@ export async function queryFinishQuestionByDungeon(req, res) {
 const UPDATE_INTERVAL_HOUR = 1;
 const questionDungeonsSchedule = useScheduleCheck(UPDATE_INTERVAL_HOUR);
 let correctRatingCache = {};
+
 export async function queryQuestionDunegons(req, res) {
-  const { userId } = req.body;
+  const { userId, season } = req.body;
   const userData = await userQuestionMapper.getAllById(userId);
   const doneList = userData?.done_list ?? [];
   const allQuestions = await questionMapper.getAllQuestions();
@@ -185,11 +190,15 @@ export async function queryQuestionDunegons(req, res) {
     return pre;
   }, {});
 
-  const data = await dqCountMapper.getList();
+  let dungeonIds = [];
+  if (season) {
+    dungeonIds = mythicDungeonMapper.getDungeonIdsBySeason(season);
+  }
+  const data = await dqCountMapper.getList(dungeonIds);
 
   if (questionDungeonsSchedule.isSchedule()) {
     const ratingResults = await Promise.allSettled(
-      data.map((item) => getQuestionCorrectRatingByDungeon(item.id))
+      data.map((item) => getQuestionCorrectRatingByDungeon(item.id)),
     );
     correctRatingCache = ratingResults.reduce((pre, cur) => {
       pre[cur.value.dungeonId] = cur.value.rating;

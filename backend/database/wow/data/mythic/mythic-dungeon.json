@@ -14696,8 +14696,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Sureki Webmage",
+            "trashName": "苏雷吉网法师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Sureky-Webmage.webp",
+            "trashId": 210966,
             "data": [
               {
                 "text": "所需打断：",
@@ -14733,7 +14734,7 @@
                 ],
                 "children": [
                   {
-                    "text": "施加一个持续6秒的周期性自然伤害减益效果，每秒造成少量自然伤害，并在效果结束时爆发，对受减益目标5码范围内的玩家造成自然伤害。\n\n[注释：译文保留了游戏术语\"减益效果\"的惯用译法，采用\"周期性伤害\"对应\"ticking debuff\"，\"爆发\"对应\"bursting\"，并精准转换了距离单位\"yards\"为\"码\"。句式调整为中文攻略常见的主动语态描述，通过\"施加\"、\"造成\"等动词保持攻略文本的指令性特征。]",
+                    "text": "施加一个持续6秒的周期性自然伤害减益效果，每秒造成少量自然伤害，并在效果结束时爆发，对受减益目标5码范围内的玩家造成自然伤害。",
                     "spells": [],
                     "children": []
                   }
@@ -14742,8 +14743,9 @@
             ]
           },
           {
-            "trashName": "Nightfall Shadowmage",
+            "trashName": "夜幕影法师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Shadowmage-464x1024.webp",
+            "trashId": 213892,
             "data": [
               {
                 "text": "所需打断：",
@@ -14773,7 +14775,7 @@
                 "spells": [],
                 "children": [
                   {
-                    "text": "[诱捕暗影]  \n（保持原中文名称不变，以下为翻译内容）  \n\n**副本机制**：  \n- 该技能会在地面生成持续性的暗影漩涡，对范围内的玩家造成周期性暗影伤害并降低移动速度。  \n- 被[诱捕暗影]影响的玩家会获得可叠加的\"暗影缠绕\"debuff，每层使受到的暗影伤害提高10%。  \n\n**应对策略**：  \n1. **及时规避**：当脚下出现紫色漩涡特效时，立刻离开该区域。  \n2. **驱散优先级**：治疗需优先驱散叠加到3层以上的\"暗影缠绕\"debuff。  \n3. **团队协作**：远程职业尽量分散站位，避免多人同时中招导致治疗压力过大。  \n\n**特殊提示**：  \n- 该技能在英雄难度下会额外附加\"暗影锁链\"效果，定身首个命中目标3秒，需安排坦克使用免疫技能应对。  \n\n（保留原格式与符号，仅翻译英文部分为符合中文阅读习惯的表述）",
+                    "text": "[诱捕暗影]",
                     "spells": [
                       {
                         "name": "‍Ensnaring Shadows",
@@ -14794,8 +14796,9 @@
             ]
           },
           {
-            "trashName": "Nightfall Ritualist",
+            "trashName": "夜幕祭师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Ritualist.webp",
+            "trashId": 214761,
             "data": [
               {
                 "text": "需要魔法驱散：",
@@ -14831,7 +14834,7 @@
                 ],
                 "children": [
                   {
-                    "text": "将暗影魔法导入玩家体内，持续5秒，每0.5秒造成一次暗影伤害。[注：保留游戏术语\"shadow damage\"标准译法\"暗影伤害\"]",
+                    "text": "将暗影魔法导入玩家体内，持续5秒，每0.5秒造成一次暗影伤害。",
                     "spells": [],
                     "children": []
                   }
@@ -14840,8 +14843,9 @@
             ]
           },
           {
-            "trashName": "Nightfall Commander",
+            "trashName": "夜幕司令官",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Commander.webp",
+            "trashId": 214762,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -15084,8 +15088,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Nightfall Shadowalker",
+            "trashName": "夜幕影行者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Shadowalker.webp",
+            "trashId": 213895,
             "data": [
               {
                 "text": "[暗影突击]",
@@ -15130,8 +15135,9 @@
             ]
           },
           {
-            "trashName": "Nightfall Tactician",
+            "trashName": "夜幕战略家",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Tactician.webp",
+            "trashId": 213934,
             "data": [
               {
                 "text": "需要驱散的激怒效果：",
@@ -15182,8 +15188,9 @@
             ]
           },
           {
-            "trashName": "Nightfall Darkcaster",
+            "trashName": "夜幕暗法师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Darkcaster-371x1024.webp",
+            "trashId": 213893,
             "data": [
               {
                 "text": "所需打断：",
@@ -15228,8 +15235,9 @@
             ]
           },
           {
-            "trashName": "Manifested Shadow",
+            "trashName": "暗影具象",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Manifested-Shadow.webp",
+            "trashId": 211341,
             "data": [
               {
                 "text": "[深渊朽烂]",
@@ -15268,8 +15276,9 @@
             ]
           },
           {
-            "trashName": "Ixkreten the Unbreakable",
+            "trashName": "坚不可摧的伊克斯雷腾",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ixkreten-the-Unbreakable.webp",
+            "trashId": 211262,
             "data": [
               {
                 "text": "[深渊轰击]",
@@ -15308,8 +15317,9 @@
             ]
           },
           {
-            "trashName": "Deathscreamer Iken'tak",
+            "trashName": "死亡尖啸者艾肯塔克",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Deathscreamer-Ikentak.webp",
+            "trashId": 211263,
             "data": [
               {
                 "text": "[深渊轰击]",
@@ -15354,8 +15364,9 @@
             ]
           },
           {
-            "trashName": "Ascendant Vis'coxria",
+            "trashName": "扬升者维斯可里亚",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Ascendant-Viscoxria.webp",
+            "trashId": 211261,
             "data": [
               {
                 "text": "[深渊轰击]",
@@ -15394,8 +15405,9 @@
             ]
           },
           {
-            "trashName": "Unstable Darkness",
+            "trashName": "不稳定的黑暗",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Unstable-Darkness.webp",
+            "trashId": 213905,
             "data": [
               {
                 "text": "[暗影冲斥]",
@@ -15417,8 +15429,9 @@
             ]
           },
           {
-            "trashName": "Nightfall Shadowmage",
+            "trashName": "夜幕影法师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Shadowmage-464x1024.webp",
+            "trashId": 213892,
             "data": [
               {
                 "text": "所需打断：",
@@ -15448,7 +15461,7 @@
                 "spells": [],
                 "children": [
                   {
-                    "text": "[诱捕暗影]  \n（保持原中文名称不变，以下为翻译内容）  \n\n**副本机制**：  \n- 该技能会在地面生成持续性的暗影漩涡，对范围内的玩家造成周期性暗影伤害并降低移动速度。  \n- 被[诱捕暗影]影响的玩家会获得可叠加的\"暗影缠绕\"debuff，每层使受到的暗影伤害提高10%。  \n\n**应对策略**：  \n1. **及时规避**：当脚下出现紫色漩涡特效时，立刻离开该区域。  \n2. **驱散优先级**：治疗需优先驱散叠加到3层以上的\"暗影缠绕\"debuff。  \n3. **团队协作**：远程职业尽量分散站位，避免多人同时中招导致治疗压力过大。  \n\n**特殊提示**：  \n- 该技能在英雄难度下会额外附加\"暗影锁链\"效果，定身首个命中目标3秒，需安排坦克使用免疫技能应对。  \n\n（保留原格式与符号，仅翻译英文部分为符合中文阅读习惯的表述）",
+                    "text": "[诱捕暗影]",
                     "spells": [
                       {
                         "name": "‍Ensnaring Shadows",
@@ -15469,8 +15482,9 @@
             ]
           },
           {
-            "trashName": "Nightfall Commander",
+            "trashName": "夜幕司令官",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Commander.webp",
+            "trashId": 214762,
             "data": [
               {
                 "text": "需要驱散流血效果：",
@@ -15647,7 +15661,7 @@
             "image": "‍Shadowy Decay.gif",
             "data": [
               {
-                "text": "阿努比卡吉释放出黑暗魔法，在5秒内每秒造成暗影伤害，且每跳伤害递增10%。该效果可叠加。[注：保留游戏术语\"暗影伤害\"和技能名称\"阿努比卡吉\"的译名统一性]",
+                "text": "阿努比卡吉释放出黑暗魔法，在5秒内每秒造成暗影伤害，且每跳伤害递增10%。该效果可叠加。",
                 "spells": [],
                 "children": []
               }
@@ -15660,8 +15674,9 @@
         "type": "trash",
         "data": [
           {
-            "trashName": "Nightfall Dark Architect",
+            "trashName": "夜幕筑暗师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Dark-Architect.webp",
+            "trashId": 213885,
             "data": [
               {
                 "text": "[折磨喷发]",
@@ -15700,8 +15715,9 @@
             ]
           },
           {
-            "trashName": "Nightfall Shadowalker",
+            "trashName": "夜幕影行者",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Shadowalker.webp",
+            "trashId": 213895,
             "data": [
               {
                 "text": "[暗影突击]",
@@ -15746,8 +15762,9 @@
             ]
           },
           {
-            "trashName": "Nightfall Darkcaster",
+            "trashName": "夜幕暗法师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Darkcaster-371x1024.webp",
+            "trashId": 213893,
             "data": [
               {
                 "text": "所需打断：",
@@ -15792,8 +15809,9 @@
             ]
           },
           {
-            "trashName": "Nightfall Shadowmage",
+            "trashName": "夜幕影法师",
             "imageSrc": "https://assets-ng.maxroll.gg/wordpress/Nightfall-Shadowmage-464x1024.webp",
+            "trashId": 213892,
             "data": [
               {
                 "text": "所需打断：",
@@ -15823,7 +15841,7 @@
                 "spells": [],
                 "children": [
                   {
-                    "text": "[诱捕暗影]  \n（保持原中文名称不变，以下为翻译内容）  \n\n**副本机制**：  \n- 该技能会在地面生成持续性的暗影漩涡，对范围内的玩家造成周期性暗影伤害并降低移动速度。  \n- 被[诱捕暗影]影响的玩家会获得可叠加的\"暗影缠绕\"debuff，每层使受到的暗影伤害提高10%。  \n\n**应对策略**：  \n1. **及时规避**：当脚下出现紫色漩涡特效时，立刻离开该区域。  \n2. **驱散优先级**：治疗需优先驱散叠加到3层以上的\"暗影缠绕\"debuff。  \n3. **团队协作**：远程职业尽量分散站位，避免多人同时中招导致治疗压力过大。  \n\n**特殊提示**：  \n- 该技能在英雄难度下会额外附加\"暗影锁链\"效果，定身首个命中目标3秒，需安排坦克使用免疫技能应对。  \n\n（保留原格式与符号，仅翻译英文部分为符合中文阅读习惯的表述）",
+                    "text": "[诱捕暗影]",
                     "spells": [
                       {
                         "name": "‍Ensnaring Shadows",
@@ -16935,7 +16953,7 @@
                 "spells": [],
                 "children": [
                   {
-                    "text": "[上古恐慌]  \n\n**副本背景**  \n在艾泽拉斯的远古遗迹深处，沉睡的上古之力正逐渐苏醒。堕落的泰坦造物与扭曲的虚空生物盘踞于此，试图利用禁忌知识撕裂现实。玩家需深入这座被时间遗忘的迷宫，阻止上古邪恶的复苏。  \n\n**首领战要点**  \n\n1. **堕落守护者维克托斯**  \n   - **技能应对**：  \n     - [虚空裂隙]：地面出现紫色漩涡，2秒后爆发造成范围暗影伤害，需及时躲开。  \n     - [心智腐蚀]：随机点名玩家叠加debuff，3层后触发[精神控制]，治疗需优先驱散。  \n   - **战术**：坦克将BOSS背对团队，近战注意避开正面[暗影顺劈]。  \n\n2. **时空编织者克罗诺斯**  \n   - **时空紊乱机制**：  \n     - 战斗区域会周期性切换[过去]/[现在]/[未来]三种相位，每个相位BOSS技能不同：  \n       - [过去]：召唤历史幻影，需优先击杀。  \n       - [现在]：全团承受持续时间伤害，治疗压力大。  \n       - [未来]：BOSS获得[预知]buff，需打断其读条技能[命运改写]。  \n   - **关键**：团队需根据相位提示快速调整站位和集火目标。  \n\n3. **最终首领：上古之神佐尔玛特（残躯）**  \n   - **阶段一（100%-40%）**：  \n     - [触须鞭笞]：随机拍击玩家，被击中者会被击飞并附加流血dot。  \n     - [低语腐化]：全团周期性受到精神伤害，可被护盾类技能抵消。  \n   - **阶段二（40%-0%）**：  \n     - BOSS激活[虚空形态]，场地边缘出现[吞噬黑洞]，玩家需避免被吸入。  \n     - 团队需在躲避黑洞的同时，击杀刷新的[虚空之子]小怪，否则BOSS会吸收它们回血。  \n\n**小贴士**  \n- 副本内多处有[腐蚀之地]环境效果，站立超过5秒会叠加减速debuff，保持移动。  \n- 推荐携带[暗影抗性药剂]和[时间扭曲符文]以应对高额法术伤害。  \n\n\"恐惧源于未知，而我们将亲手终结这份未知。\"——青铜龙使者艾莉丝",
+                    "text": "[上古恐慌]",
                     "spells": [
                       {
                         "name": "‍Ancient Dread",
@@ -18901,7 +18919,7 @@
                 ],
                 "children": [
                   {
-                    "text": "此外，在[蛛纱强袭]期间，全队应尽量保持同步移动——可以围绕Boss环形走位或呈直线队列移动。（注：根据魔兽世界副本攻略的用语习惯，将\"together as a group\"译为更符合游戏术语的\"全队同步移动\"，\"around the boss or in a line\"采用\"环形走位/直线队列\"的经典表述，同时保留技能方括号格式）",
+                    "text": "此外，在[蛛纱强袭]期间，全队应尽量保持同步移动——可以围绕Boss环形走位或呈直线队列移动。",
                     "spells": [
                       {
                         "name": "‍Gossamer Onslaught",
@@ -19254,7 +19272,7 @@
                 ],
                 "children": [
                   {
-                    "text": "需要重点了解的是，虫群阶段的\"安全\"区域会跟随坦克移动，这意味着坦克可以主动掌控\"安全\"区域的走位。[注：根据魔兽世界副本攻略文本特点，保留游戏术语\"坦克\"的称谓，并采用\"走位\"等玩家熟悉的战斗用语，同时将\"dictate\"译为更符合MMO语境的\"掌控\"]",
+                    "text": "需要重点了解的是，虫群阶段的\"安全\"区域会跟随坦克移动，这意味着坦克可以主动掌控\"安全\"区域的走位。",
                     "spells": [],
                     "children": []
                   }
@@ -20277,7 +20295,7 @@
             "trashId": 242631,
             "data": [
               {
-                "text": "[被保护的核心]  \n\n**副本简介**  \n该副本位于[地点名称]，玩家需要突破重重防御，摧毁敌方核心以完成任务。副本内包含多个首领战与机关谜题，考验团队协作与战术执行。  \n\n**首领战攻略**  \n1. **防御者XXX**  \n   - **技能提醒**：  \n     - [能量护盾]：周期性生成吸收伤害的护盾，需集火快速打破。  \n     - [过载冲击]：对全团造成AOE伤害，治疗注意抬血。  \n   - **战术**：坦克将BOSS背对团队，避免[散射激光]波及队友。  \n\n2. **核心守护者**（最终首领）  \n   - **阶段一**：激活四个[稳定装置]后进入P2。  \n   - **阶段二**：核心暴露，全力输出，但需躲避[自毁程序]的地面红圈。  \n\n**小贴士**  \n- 副本内[不稳定能量球]可被击杀，避免其爆炸造成团灭。  \n- 工程专业玩家可[拆卸]部分陷阱，减轻团队压力。  \n\n**掉落奖励**  \n[核心碎片]、[防御矩阵图纸]等稀有装备。  \n\n（注：XXX为占位名称，实际游戏请以官方数据为准。）",
+                "text": "[被保护的核心]",
                 "spells": [
                   {
                     "name": "‍Protected Core",
