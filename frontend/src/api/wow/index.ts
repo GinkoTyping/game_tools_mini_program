@@ -897,6 +897,7 @@ export async function queryQuestionDungeons() {
     method: 'POST',
     data: {
       userId,
+      season: '11.2',
     },
   });
   return res.data as IQuestionDungeon[];

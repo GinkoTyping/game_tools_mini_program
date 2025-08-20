@@ -112,120 +112,128 @@
       :class="[isBossTip(tip.type) ? 'section-title--boss' : 'shaman']"
       :title="tip?.title"
     >
-      <uni-collapse @change="(e: any) => onCollapseChange(tipIndex, e)">
-        <uni-collapse-item
-          v-if="tip?.data?.length"
-          v-for="(dataItem, index) in tip.data"
-          :key="index"
-          :id="`${tip.type}-${dataItem.trashId ?? dataItem.spellId}`"
-          :open="defaultOpenTip(tip.type, dataItem.trashId ?? dataItem.spellId)"
-        >
-          <template v-slot:title>
-            <view class="menu-title-slot">
-              <uni-icons
-                class="menu-title-slot__marked animate__animated"
-                :class="[
+      <uni-collapse ref="collapseRef" @change="(e: any) => onCollapseChange(tipIndex, e)">
+        <template v-if="tip?.data?.length">
+          <uni-collapse-item
+            v-for="(dataItem, index) in tip.data"
+            :key="index"
+            :id="`${tip.type}-${dataItem.trashId ?? dataItem.spellId}`"
+            :open="defaultOpenTip(tip.type, dataItem.trashId ?? dataItem.spellId)"
+          >
+            <template v-slot:title>
+              <view class="menu-title-slot">
+                <uni-icons
+                  class="menu-title-slot__marked animate__animated"
+                  :class="[
                   hasMarked(dataItem, tip.type)
                     ? 'animate__fadeInDown'
                     : 'animate__fadeOut',
                 ]"
-                color="rgb(244, 123, 0)"
-                type="star-filled"
-                size="14"
-              ></uni-icons>
-              <text
-                :class="[
+                  color="rgb(244, 123, 0)"
+                  type="star-filled"
+                  size="14"
+                ></uni-icons>
+                <text
+                  :class="[
                   'menu-title',
                   isBossTip(tip.type) ? 'menu-title--highlight' : '',
                 ]"
-              >{{
-                  dataItem?.trashName ||
-                  dataItem?.spellNameZH ||
-                  dataItem?.spellNameEN
-                }}
-              </text
-              >
-              <view
-                class="menu-title-slot__sub"
-                v-if="dataItem?.spellId || dataItem?.trashId"
-                :class="[
+                >{{
+                    dataItem?.trashName ||
+                    dataItem?.spellNameZH ||
+                    dataItem?.spellNameEN
+                  }}
+                </text
+                >
+                <view
+                  class="menu-title-slot__sub"
+                  v-if="dataItem?.spellId || dataItem?.trashId"
+                  :class="[
                   dataItem.count ? 'menu-title-slot__sub--highlight' : '',
                 ]"
-              >
-                <view> ({{ dataItem.count }}
-                  <text>提醒</text>
-                  )
+                >
+                  <view> ({{ dataItem.count }}
+                    <text>提醒</text>
+                    )
+                  </view>
                 </view>
               </view>
-            </view>
-          </template>
-          <view class="tip-image-container">
-            <image
-              v-if="
+            </template>
+            <view class="tip-image-container">
+              <image
+                v-if="
                 dataItem?.imageSrc &&
-                openedcollapseItems.includes(`${tipIndex}-${index}`)
+                (
+                  openedcollapseItems.includes(`${tipIndex}-${index}`)
+                  || defaultOpenTip(tip.type, dataItem.trashId ?? dataItem.spellId)
+                )
               "
-              :class="[`${tip.type}-image`]"
-              mode="heightFix"
-              :src="dataItem?.imageSrc"
-              @click="() => preiviewImage(dataItem?.imageSrc)"
-            />
-          </view>
-          <view
-            class="ul-l1 list-style"
-            v-for="(spellTip, spellTipIndex) in dataItem?.data"
-            :key="spellTipIndex"
-          >
-            <rich-text :nodes="renderTip(spellTip.text)"></rich-text>
-            <view
-              class="ul-l2 list-style-empty"
-              v-if="spellTip.children?.length"
-              v-for="(child1Tip, child1Index) in spellTip.children"
-              :key="child1Index"
-            >
-              <rich-text :nodes="renderTip(child1Tip.text)"></rich-text>
-              <view
-                class="ul-l3 list-style-empty"
-                v-if="child1Tip.children?.length"
-                v-for="(child2Tip, child2Index) in child1Tip.children"
-                :key="child2Index"
-              >
-                <rich-text :nodes="renderTip(child2Tip.text)"></rich-text>
-              </view>
+                :class="[`${tip.type}-image`]"
+                mode="heightFix"
+                :src="dataItem?.imageSrc"
+                @click="() => preiviewImage(dataItem?.imageSrc)"
+                @load="onImageLoaded"
+              />
             </view>
-          </view>
-          <view class="buttons" v-if="dataItem?.spellId || dataItem?.trashId">
             <view
-              class="buttons-item"
-              @click="
+              class="ul-l1 list-style"
+              v-for="(spellTip, spellTipIndex) in dataItem?.data"
+              :key="spellTipIndex"
+            >
+              <rich-text :nodes="renderTip(spellTip.text)"></rich-text>
+              <template v-if="spellTip.children?.length">
+                <view
+                  class="ul-l2 list-style-empty"
+                  v-for="(child1Tip, child1Index) in spellTip.children"
+                  :key="child1Index"
+                >
+                  <rich-text :nodes="renderTip(child1Tip.text)"></rich-text>
+                  <template v-if="child1Tip.children?.length">
+                    <view
+                      class="ul-l3 list-style-empty"
+                      v-for="(child2Tip, child2Index) in child1Tip.children"
+                      :key="child2Index"
+                    >
+                      <rich-text :nodes="renderTip(child2Tip.text)"></rich-text>
+                    </view>
+                  </template>
+                </view>
+              </template>
+            </view>
+            <view class="buttons" v-if="dataItem?.spellId || dataItem?.trashId">
+              <view
+                class="buttons-item"
+                @click="
                 () =>
                   markTip(dataItem, !hasMarked(dataItem, tip.type), tip.type)
               "
-            >
-              <uni-icons
-                :type="
+              >
+                <uni-icons
+                  :type="
                   hasMarked(dataItem, tip.type) ? 'hand-up-filled' : 'hand-up'
                 "
-                :color="
+                  :color="
                   hasMarked(dataItem, tip.type) ? 'rgb(244, 123, 0)' : '#bbb'
                 "
-                size="26"
-              ></uni-icons>
-              <text class="buttons-item-count">{{ dataItem.count }}</text>
-              <text
-                class="buttons-item-tip animate__animated"
-                :class="[
+                  size="26"
+                ></uni-icons>
+                <text class="buttons-item-count">{{ dataItem.count }}</text>
+                <text
+                  class="buttons-item-tip animate__animated"
+                  :class="[
                   openedcollapseItems.includes(`${tipIndex}-${index}`)
                     ? 'animate__fadeInRight'
                     : '',
                 ]"
-                v-show="!hasMarked(dataItem, tip.type)"
-              >(这条攻略重要吗？点赞提醒其他玩家吧)
-              </text
-              >
+                  v-show="!hasMarked(dataItem, tip.type)"
+                >(这条攻略重要吗？点赞提醒其他玩家吧)
+                </text
+                >
+              </view>
             </view>
-          </view>
-        </uni-collapse-item>
+          </uni-collapse-item>
+        </template>
+
       </uni-collapse>
     </uni-section>
   </template>
@@ -382,6 +390,14 @@ const defaultOpenTip = computed(
     type === jumpParams.value?.type &&
     Number(id) === Number(jumpParams.value?.guideId),
 );
+
+const collapseRef = ref<any>();
+
+function onImageLoaded() {
+  nextTick(() => {
+    // collapseRef.value?.resize();
+  });
+}
 
 function scrollToTip() {
   if (jumpParams.value?.type && jumpParams.value.guideId) {

@@ -22,7 +22,7 @@
   />
 
   <view class="container">
-    <FilterMenu v-model:data="questionSort" @change="switchMenu"/>
+    <FilterMenu v-model:data="questionSort" @change="switchMenu" />
     <view class="dungeon-list">
       <view
         class="dungeon-list-item"
@@ -39,12 +39,15 @@
         <view class="info">
           <view class="name">{{ dungeon.name }}</view>
           <view class="completion"
-            ><text class="completion-prefix"
-              >{{ dungeon.doneQuestionCount }}/{{
+          >
+            <text class="completion-prefix"
+            >{{ dungeon.doneQuestionCount }}/{{
                 dungeon.totalQuestionCount
-              }}</text
+              }}
+            </text
             >
-            <text class="completion-suffix">题</text></view
+            <text class="completion-suffix">题</text>
+          </view
           >
           <view class="access">
             <uni-icons type="eye-filled" color="#fff" size="20"></uni-icons>
@@ -70,7 +73,7 @@
 import { computed, ref } from 'vue';
 import { onShareAppMessage, onShow } from '@dcloudio/uni-app';
 
-import { IQuestionDungeon, queryQuestionDungeons } from '@/api/wow';
+import { type IQuestionDungeon, queryQuestionDungeons } from '@/api/wow';
 import { useNavigator } from '@/hooks/navigator';
 import ShareIcon from '@/components/ShareIcon.vue';
 import FilterMenu from '@/components/FilterMenu.vue';
@@ -100,16 +103,19 @@ const questionSort = ref({
     },
   ],
 });
+
 function sortDungeon() {
   if (currentMenu.value === 'popularity') {
     dungeons.value = dungeons.value?.sort((a, b) => b.count - a.count);
   } else {
     dungeons.value = dungeons.value?.sort(
-      (a, b) => Number(a.avgCorrect) - Number(b.avgCorrect)
+      (a, b) => Number(a.avgCorrect) - Number(b.avgCorrect),
     );
   }
 }
+
 const currentMenu = ref('popularity');
+
 function switchMenu(name: string) {
   if (currentMenu.value !== name) {
     currentMenu.value = name;
@@ -157,6 +163,7 @@ $list-item-width: 47vw;
   background-color: $uni-bg-color-grey-light;
   color: #fff;
   margin-bottom: 10px;
+
   &::before {
     content: '';
     position: absolute;
@@ -166,6 +173,7 @@ $list-item-width: 47vw;
     width: 2px;
     background-color: $uni-color-primary;
   }
+
   .rank-menu-item {
     width: 50%;
     height: 100%;
@@ -174,6 +182,7 @@ $list-item-width: 47vw;
     text-align: center;
     padding: 10px 0;
   }
+
   .rank-menu-item--active {
     background-color: $uni-color-primary;
   }
@@ -183,15 +192,18 @@ $list-item-width: 47vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
   .dungeon-list-item {
     position: relative;
     margin-bottom: calc(100vw - 4vw - $list-item-width * 2);
     box-sizing: border-box;
+
     image {
       border-radius: 20rpx;
       width: $list-item-width;
       position: relative;
     }
+
     .info {
       position: absolute;
       z-index: 2;
@@ -204,11 +216,13 @@ $list-item-width: 47vw;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
       .name {
         color: $uni-text-color-inverse;
         font-size: 18px;
         font-weight: bold;
       }
+
       .completion {
         color: #fff;
         font-size: 16px;
@@ -217,26 +231,31 @@ $list-item-width: 47vw;
         margin-bottom: 10rpx;
         display: flex;
         align-items: center;
+
         .completion-suffix {
           font-size: 12px;
           margin-left: 8rpx;
           font-weight: normal;
         }
       }
+
       .access,
       .avg {
         color: #fff;
         display: flex;
         align-items: center;
+
         .access-num {
           font-size: 30rpx;
           font-weight: bold;
           margin-left: 6rpx;
         }
       }
+
       .avg {
         font-size: 20rpx;
         color: $uni-text-color-inverse;
+
         .avg-num {
           font-weight: bold;
           text-decoration: underline;
@@ -244,21 +263,25 @@ $list-item-width: 47vw;
       }
     }
   }
+
   .zero-completion {
     .completion-prefix {
       color: $uni-color-error;
     }
   }
+
   .half-completion {
     .completion-prefix {
       color: $color-legend;
     }
   }
+
   .done-completion {
     .completion-prefix {
       color: $color-uncommon;
     }
   }
+
   .zero-completion,
   .half-completion {
     image {

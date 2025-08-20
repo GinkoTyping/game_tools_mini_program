@@ -24,7 +24,7 @@
           isTrash(currentQuestion?.guide_type) ? 'trash-image' : 'boss-image',
         ]"
         :src="currentQuestion?.imageSrc"
-        :mode="isTrash(currentQuestion?.guide_type) ? 'heightFix' : 'widthFix'"
+        :mode="isTrash(currentQuestion?.guide_type) ? 'heightFix' : 'heightFix'"
         @load="onImageLoad"
         v-show="isImageLoaded"
       />
@@ -337,8 +337,7 @@ function onImageLoad() {
   }
 
   .boss-image {
-    width: 96vw !important;
-    max-height: 30vh;
+    height: 20vh;
   }
 }
 

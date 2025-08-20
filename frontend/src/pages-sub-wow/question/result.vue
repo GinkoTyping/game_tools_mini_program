@@ -31,7 +31,9 @@
       @click="() => navigator.toQuestionDungeon(dungeon.id, true)"
     >
       <view>🎲重答一遍？</view>
-      <view>点我<text>「/reload」</text></view>
+      <view>点我
+        <text>「/reload」</text>
+      </view>
     </view>
   </view>
 
@@ -83,7 +85,8 @@
     <view
       class="question-button-item"
       @click="() => navigator.toQuestionIndex()"
-      >再做一题</view
+    >再做一题
+    </view
     >
     <button
       open-type="share"
@@ -104,7 +107,7 @@
 </template>
 
 <script lang="ts" setup>
-import { IQuestionItem, queryQuestions } from '@/api/wow';
+import { type IQuestionItem, queryQuestions } from '@/api/wow';
 import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, reactive, ref } from 'vue';
 import { renderTip } from '@/hooks/richTextGenerator';
@@ -119,13 +122,13 @@ onShareAppMessage(() => ({
 //#region 数据
 const questionList = ref<IQuestionItem[]>([]);
 const wrongList = computed(() =>
-  questionList.value.filter(item => item.isRight === 0)
+  questionList.value.filter(item => item.isRight === 0),
 );
 const getAnswer = computed(
   () => (item: IQuestionItem) =>
     item.question_text.options.find(
-      option => option.value === item.question_text.answer.value
-    )?.text
+      option => option.value === item.question_text.answer.value,
+    )?.text,
 );
 const dungeon = reactive({ id: -1, name: '' });
 const avgCorrect = ref(0);
@@ -203,6 +206,7 @@ const scoreDisplay = computed(() => {
 });
 //#endregion
 const navigator = useNavigator();
+
 function toMythicDetailPage(item: IQuestionItem) {
   navigator.toMythicDungeon(dungeon.id, item.guide_type, item.guide_id);
 }
@@ -223,12 +227,14 @@ function toMythicDetailPage(item: IQuestionItem) {
   .score-avg {
     font-size: 26rpx;
   }
+
   .retry {
     margin-top: 20rpx;
     margin-bottom: 20rpx;
     display: flex;
     align-items: center;
     font-weight: bold;
+
     text {
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       color: $uni-color-primary;
@@ -318,5 +324,11 @@ function toMythicDetailPage(item: IQuestionItem) {
 
 .footer {
   height: 140rpx;
+}
+
+.question-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 </style>
