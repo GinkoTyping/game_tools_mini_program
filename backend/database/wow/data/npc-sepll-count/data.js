@@ -41,26 +41,30 @@ async function main() {
     });
   });
 
-  await Promise.allSettled(
+  const npcRes = await Promise.allSettled(
     npcs.map((npc) =>
       npcAndSpellMarkMapper.insertNpc({
         id: npc.trashId,
         name_zh: npc.trashName,
         content: JSON.stringify(npc),
         dungeon_id: npc.dungeonId,
-      })
-    )
+      }),
+    ),
   );
-  await Promise.allSettled(
+  const spellRes = await Promise.allSettled(
     spells.map((spell) =>
       npcAndSpellMarkMapper.insertSpell({
         id: spell.spellId,
         name_zh: spell.spellNameZH,
         content: JSON.stringify(spell),
         dungeon_id: spell.dungeonId,
-      })
-    )
+      }),
+    ),
   );
+  const total = [...npcRes, ...spellRes];
+  const errors = total.filter(item => item.status !== 'fulfilled');
+
+  console.log(`失败次数：${errors.length}/${total.length}`);
 }
 
 main();

@@ -3,16 +3,20 @@ let db;
 async function insertNpc(npc) {
   const { id, name_zh, content, dungeon_id } = npc;
   return db.run(
-    `INSERT INTO wow_dynamic_npc_mark_count(id, name, content, dungeon_id) VALUES(?1, ?2, ?3, ?4)`,
-    [id, name_zh, content, dungeon_id]
+    `INSERT OR
+     REPLACE INTO wow_dynamic_npc_mark_count(id, name, content, dungeon_id)
+     VALUES (?1, ?2, ?3, ?4)`,
+    [id, name_zh, content, dungeon_id],
   );
 }
 
 async function insertSpell(spell) {
   const { id, name_zh, content, dungeon_id } = spell;
   return db.run(
-    `INSERT INTO wow_dynamic_spell_mark_count(id, name, content, dungeon_id) VALUES(?1, ?2, ?3, ?4)`,
-    [id, name_zh, content, dungeon_id]
+    `INSERT OR
+     REPLACE INTO wow_dynamic_spell_mark_count(id, name, content, dungeon_id)
+     VALUES (?1, ?2, ?3, ?4)`,
+    [id, name_zh, content, dungeon_id],
   );
 }
 
@@ -30,17 +34,21 @@ async function getNpcOrSpellCountByIds(ids, isNpc, isAll = false) {
       pre += `OR id=?${index + 1} `;
     }
     return pre;
-  }, `SELECT ${selectSql} FROM ${tableName} WHERE `);
+  }, `SELECT ${selectSql}
+      FROM ${tableName}
+      WHERE `);
 
   return db.all(sql, ids);
 }
 
 async function getAllNpcAndSpellMarks() {
   const npcMarks = await db.all(
-    `SELECT id,mark_list FROM wow_dynamic_npc_mark_count`
+    `SELECT id, mark_list
+     FROM wow_dynamic_npc_mark_count`,
   );
   const spellMarks = await db.all(
-    `SELECT id,mark_list FROM wow_dynamic_spell_mark_count`
+    `SELECT id, mark_list
+     FROM wow_dynamic_spell_mark_count`,
   );
   return {
     npcMarks,
@@ -58,7 +66,7 @@ async function updateNpcOrSpellMark(isNpc, isMark, userId, markId) {
     }
   } else {
     markList = markList.filter(
-      (item) => item && Number(item) !== Number(userId)
+      (item) => item && Number(item) !== Number(userId),
     );
   }
 
@@ -68,7 +76,9 @@ async function updateNpcOrSpellMark(isNpc, isMark, userId, markId) {
   const tableName = isNpc
     ? 'wow_dynamic_npc_mark_count'
     : 'wow_dynamic_spell_mark_count';
-  return db.run(`UPDATE ${tableName} SET mark_list=?1, count=?2 WHERE id=?3`, [
+  return db.run(`UPDATE ${tableName}
+                 SET mark_list=?1, count=?2
+                 WHERE id = ?3`, [
     newMarkList,
     markList.length,
     markId,
