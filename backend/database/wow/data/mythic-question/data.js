@@ -20,7 +20,7 @@ function shuffleOptions(questionText) {
 
   return {
     ...questionText,
-    options: shuffle(questionText.options),
+    options: questionText.options,
   };
 }
 
