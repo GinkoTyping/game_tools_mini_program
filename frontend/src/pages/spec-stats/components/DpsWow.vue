@@ -41,18 +41,21 @@
       </view>
     </template>
 
-    <view class="row row-tbody" v-for="(item) in dataList" :key="item.key">
+    <view class="row row-tbody" v-for="(item, index) in dataList" :key="item.key" @click="() => handleToDetail(item)">
       <view class="row-td row-td--rank" :style="getTextStyleByRank(item)">{{ item.rank }}</view>
-      <view class="row-td row-td--dps-label">{{ (item.dps / 1000000).toFixed(2) }}M</view>
+      <view class="row-td row-td--dps-label">
+        {{ (item.dps / 1000000).toFixed(2) }}M
+      </view>
       <view class="row-td row-td--dps">
         <view :class="[`${item.className}-bg`, 'row-td--dps__info']" :style="{
           width: Math.min(item.dps / maxDps * 100, 100).toFixed(2) + '%'
         }">
           <image :src="getClassIconURL(item.className, item.spec)"></image>
           <view class="row-td--dps__name">{{ item.characterName }}
-            <text style="font-size: 20rpx">{{ item.rank <= 10 ? ` (${item.itemLevel})` : '' }}</text>
+            <text style="font-size: 18rpx">{{ item.rank <= 10 ? ` (${item.itemLevel})` : '' }}</text>
           </view>
         </view>
+        <text class="click-hint" v-if="index === 0">点击查看配装</text>
       </view>
     </view>
 
@@ -163,9 +166,20 @@ async function queryList(pageNo: number, pageSize: number, from: string) {
   }) as any);
 
   if (from !== 'load-more') {
-    maxDps.value = list?.[0].dps;
+    // 个别异常数据
+    if (list?.[0]?.dps > list?.[1]?.dps * 2) {
+      maxDps.value = list?.[1].dps;
+    } else {
+      maxDps.value = list?.[0].dps;
+    }
   }
   pagingRef.value?.completeByTotal(list, pagination?.total);
+}
+
+function handleToDetail(row: any) {
+  if (row.simcRecordId) {
+    navigator.toWowDpsDetailById(row.simcRecordId);
+  }
 }
 
 // endregion
@@ -329,6 +343,17 @@ $row-height: 48rpx;
   .row-td--dps {
     margin-right: 20rpx;
     background-color: $uni-bg-color-grey-lighter;
+    position: relative;
+
+    .click-hint {
+      position: absolute;
+      right: 10rpx;
+      top: 50%;
+      transform: translate(0, -50%);
+      color: $uni-bg-color-grey;
+      text-decoration: underline;
+      font-size: 24rpx;
+    }
 
     .row-td--dps__info {
       display: flex;
@@ -337,12 +362,14 @@ $row-height: 48rpx;
     }
 
     .row-td--dps__name {
+      @include multi-line-ellipsis(1);
       padding-left: 4rpx;
       color: $uni-bg-color;
       letter-spacing: 1rpx;
     }
 
     image {
+      flex-shrink: 0;
       width: $row-height;
       height: $row-height;
     }

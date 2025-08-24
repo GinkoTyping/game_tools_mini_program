@@ -593,14 +593,14 @@ $simple-card-width: 43.5vw;
     .narrow-card_info__tag {
       position: absolute;
       z-index: 3;
-      right: 0.2rem;
+      left: 0.4rem;
       top: 0.4rem;
     }
 
     .icon {
       position: absolute;
       z-index: 2;
-      left: 0.6rem;
+      right: 0.6rem;
       color: $color-legend;
       display: flex;
       align-items: center;

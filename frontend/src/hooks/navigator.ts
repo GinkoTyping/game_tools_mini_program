@@ -176,9 +176,20 @@ function toWowDps() {
   });
 }
 
+function toWowDpsDetailById(id: string) {
+  uni.openEmbeddedMiniProgram({
+    appId: import.meta.env.VITE_DPS_WOW_APP_ID,
+    path: `pages/result/rank?referralCode=yinzi&id=${id}`,
+    extraData: {
+      fromPage: 'pages/index/index',
+    },
+  });
+}
+
 export function useNavigator() {
   return {
     toWowDps,
+    toWowDpsDetailById,
 
     toHome,
     toSpecDetail,
