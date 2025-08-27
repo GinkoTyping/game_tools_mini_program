@@ -16,7 +16,7 @@ import {
 import { querySpecDpsRank } from '../../controller/wow/specStatController.js';
 import { validateAdmin } from '../../auth/validateAdmin.js';
 import { getWotlkBisBySpec, queryWotlkTalentBySpec } from '../../controller/wow-wotlk/bisController.js';
-import { queryDpsWoWList } from '../../controller/wow/dspwow.js';
+import { queryDpsWoWList, queryDpsWowUserSimcRecords } from '../../controller/wow/dspwow.js';
 
 const router = express.Router();
 
@@ -48,5 +48,6 @@ router.post(
 );
 
 router.post('/bis/dpswow/list', queryDpsWoWList);
+router.post('/bis/dpswow/records', queryDpsWowUserSimcRecords);
 
 export default router;
