@@ -23,13 +23,18 @@ async function getTalentTreeList() {
     const list = [];
 
     async function collectEmptyTalentSpec(item) {
-      const isExisted = await talentMapper.getTalentDev(item.name);
-      if (!isExisted || item.name === 'Holy') {
-        list.push({
-          url: item.key.href,
-          name: item.name.toLowerCase().replace(/\s/g, '-'),
-        });
-      }
+      // const isExisted = await talentMapper.getTalentDev(item.name);
+      // if (!isExisted || item.name === 'Holy') {
+      //   list.push({
+      //     url: item.key.href,
+      //     name: item.name.toLowerCase().replace(/\s/g, '-'),
+      //   });
+      // }
+
+      list.push({
+        url: item.key.href,
+        name: item.name.toLowerCase().replace(/\s/g, '-'),
+      });
     }
 
     await Promise.allSettled(data.spec_talent_trees.map(item => collectEmptyTalentSpec(item)));
