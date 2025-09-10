@@ -107,13 +107,13 @@ export async function getSpecDpsRankData(week, maxWeek) {
     const tables = getTableElements($);
     const data = tables.map((table, index) => collectTable($, table, index));
     return {
-      name: '11 ~ 17层',
+      name: '13 ~ 19层',
       data,
     };
   } catch (error) {
     console.log('获取专精DPS排行失败：' + error);
     return {
-      name: '11 ~ 17层',
+      name: '13 ~ 19层',
       data: [],
     };
   }
