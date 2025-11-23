@@ -3,7 +3,6 @@
     <uni-section
       id="overview"
       :class="[classKey]"
-      title=""
       :sub-title="`上次更新：${currentData?.updatedAt}`"
     >
       <uni-card class="section-card">
@@ -221,6 +220,20 @@
   />
 
   <template v-if="activeMenu === 'bis'">
+    <view class="dpswow-notice-bar" v-if="isShowNoticeBar && getNoticeData.text">
+      <view class="notice-content">
+        <view class="notice-content__left">
+          <image
+            src="https://ginkolearn.cyou/api/common/assets/media/dpswow.png"
+          ></image>
+          <text class="animate__animated animate__fast" :class="[noticeClass]" @click="navigator.toWowDps">
+            <text class="notice-content__left-name">{{ getNoticeData.userName }}</text>
+            {{ getNoticeData.text }}
+          </text>
+        </view>
+        <uni-icons type="closeempty" color="#fff" @click="isShowNoticeBar = false"></uni-icons>
+      </view>
+    </view>
     <ExportCanvas
       ref="exportRef"
       target-selector="#bis-table"
@@ -236,7 +249,7 @@
       @error="handleError"
     />
 
-    <uni-section class="bis" :class="[classKey]" title="BIS配装">
+    <uni-section class="bis" :class="[classKey]" :sub-title="`上次更新：${currentData?.updatedAt}`">
       <uni-card class="section-card">
         <view class="menu-container">
           <view class="menu">
@@ -676,7 +689,7 @@
 
 <script lang="ts" setup>
 // TODO 新增对应专精的图片
-import { onLoad } from '@dcloudio/uni-app';
+import { onHide, onLoad } from '@dcloudio/uni-app';
 import { onShareAppMessage } from '@dcloudio/uni-app';
 import { computed, nextTick, ref } from 'vue';
 
@@ -699,6 +712,7 @@ import ExportCanvas from '@/components/ExportCanvas.vue';
 import BisRotation from '@/pages/bis/components/BisRotation.vue';
 import ArchonTalent from '@/pages/bis/components/ArchonTalent.vue';
 import MaxrollTalent from '@/pages/bis/components/MaxrollTalent.vue';
+import { queryDpsWowSimcRecords } from '@/api/wow/dpswow';
 
 const classKey = ref('');
 const specKey = ref('');
@@ -1074,6 +1088,69 @@ const getDisplayCorruptions = computed(() => {
 });
 const switchCorruptionText = computed(() => isShowAllCorruptions.value ? '隐藏冗余腐蚀' : '查看全部腐蚀');
 
+// 顶部 DPSWOW 通知栏
+const dpswowRecords = ref([]);
+const activeRecordIndex = ref(0);
+
+function formatTimeDifference(timeStr: string): string {
+  // 解析输入时间字符串
+  const inputTime = new Date(timeStr);
+  const now = new Date();
+
+  // 计算时间差（毫秒）
+  const diffMs = Math.abs(now.getTime() - inputTime.getTime());
+  const diffSeconds = Math.floor(diffMs / 1000);
+
+  // 根据时间差返回相应的字符串
+  if (diffSeconds < 60) {
+    return `${diffSeconds}秒前`;
+  } else if (diffSeconds < 3600) {
+    const minutes = Math.floor(diffSeconds / 60);
+    return `${minutes}分钟前`;
+  } else {
+    const hours = Math.floor(diffSeconds / 3600);
+    return `${hours}小时前`;
+  }
+}
+
+const getNoticeData = computed(() => {
+  const data: any = dpswowRecords.value[activeRecordIndex.value];
+  if (data) {
+    return {
+      userName: `${data.playerInfo?.playerName} · ${data.playerInfo?.server} `,
+      text: `${formatTimeDifference(data.createTime)} 模拟了伤害输出`,
+    };
+  }
+  return {
+    text: '',
+  };
+});
+const isShowNoticeBar = ref(true);
+const noticeClass = ref('');
+
+let noticeBarTimer;
+
+async function initNoticeBar() {
+  dpswowRecords.value = await queryDpsWowSimcRecords();
+  activeRecordIndex.value = 0;
+  noticeBarTimer = setInterval(() => {
+    let index = activeRecordIndex.value + 1;
+    if (index > dpswowRecords.value?.length - 1) {
+      index = 0;
+    }
+    noticeClass.value = 'animate__fadeOutUp';
+    setTimeout(() => {
+      activeRecordIndex.value = index;
+      noticeClass.value = 'animate__fadeInUp';
+    }, 1000);
+  }, 4000);
+}
+
+function clearNoticeBarTimer() {
+  clearInterval(noticeBarTimer);
+  noticeBarTimer = null;
+}
+
 //#endregion
 
 // region DISC腰带
@@ -1199,16 +1276,11 @@ const footerMenus = ref([
     value: 'bis',
     icon: 'icon-leg-armor',
   },
-  {
-    title: '大秘境',
-    value: 'mythic',
-    icon: 'icon-dungeon',
-  },
 ]);
 
 function setFooterMenu() {
   if (currentData.value?.wowheadBis?.rotationAssist) {
-    footerMenus.value.splice(1, 0, {
+    footerMenus.value.push({
       title: '循环',
       value: 'rotation',
       icon: 'icon-rotate-d',
@@ -1217,6 +1289,8 @@ function setFooterMenu() {
 }
 
 async function onMenuChange(menuValue: string) {
+  clearNoticeBarTimer();
+
   if (menuValue === 'mythic' && !dungeons.value?.length) {
     uni.showLoading({
       title: '银子加载中...',
@@ -1228,11 +1302,16 @@ async function onMenuChange(menuValue: string) {
   } else if (menuValue === 'talent') {
     talentData.value = await queryTalent(specKey.value, classKey.value);
     currentBuildIndex.value = talentData.value.talents.talentTreeBuilds.findIndex(build => build.isDefaultSelection);
-    console.log(currentBuildIndex.value);
+  } else if (menuValue === 'bis') {
+    await initNoticeBar();
   }
 }
 
 //#endregion
+
+onHide(() => {
+  clearNoticeBarTimer();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -2208,4 +2287,48 @@ $light-border: rgb(68, 68, 68);
     justify-content: center;
   }
 }
+
+// region BIS
+.dpswow-notice-bar {
+  height: 60rpx;
+  width: 100vw;
+
+  .notice-content {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    background-color: $uni-bg-color-grey-light;
+    height: 60rpx;
+    width: 100vw;
+    font-size: 24rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $uni-text-color;
+    z-index: 3;
+
+    .notice-content__left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .notice-content__left-name {
+
+      }
+
+      image {
+        height: 40rpx;
+        width: 40rpx;
+      }
+    }
+
+    .uni-icons {
+      font-size: 24rpx !important;
+    }
+  }
+}
+
+// endregion
 </style>

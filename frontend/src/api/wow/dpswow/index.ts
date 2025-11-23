@@ -42,3 +42,12 @@ export async function queryDpsWowList(params: QueryDpsWowParamsDTO) {
   }
   return data?.data;
 }
+
+export async function queryDpsWowSimcRecords() {
+  const { data } = (await proxyRequest({
+    url: '/wow/bis/dpswow/records',
+    method: 'POST',
+  }) as any);
+
+  return data?.data;
+}
