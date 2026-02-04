@@ -529,11 +529,11 @@ function getTalentTreeBuilds(data, nodesMap) {
 
 function getTalentHeatMap(data, nodesMap) {
   const subtreeNode = nodesMap.find(node => node.type === 'subtree');
-  return data.sections.find(section => section.navigationId === 'talents-heatmap')?.props.talentTree.dehydratedBuild.selectedNodes.map(
+  return data.sections.find(section => section.navigationId === 'talents-heatmap')?.props.talentTree?.dehydratedBuild?.selectedNodes?.map(
     ([id, rank]) => mapDefinitionIdToNodeId([
       id,
       rank,
-    ], nodesMap));
+    ], nodesMap)) ?? [];
 }
 
 async function queryTalents(hash, classSpec, roleClass) {
