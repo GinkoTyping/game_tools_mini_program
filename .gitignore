@@ -53,3 +53,4 @@ backend/database/wow/data/dps-rank/cache/
 /frontend/.env.development
 /frontend/.env.production
 /backend/database/wow/dynamic-database_bk.db
+/backend/database/wow/dynamic-database - 副本.db

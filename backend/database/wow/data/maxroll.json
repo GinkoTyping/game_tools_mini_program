@@ -6,8 +6,19 @@
       {
         "talentLabel": "",
         "talentID": "",
-        "stats": [],
-        "relations": [],
+        "stats": [
+          "力量",
+          "急速",
+          "暴击",
+          "全能",
+          "精通"
+        ],
+        "relations": [
+          1,
+          1,
+          0,
+          0
+        ],
         "desc": []
       }
     ],
@@ -130,17 +141,35 @@
     "classSpec": "unholy",
     "stats": [
       {
-        "talentLabel": " ",
+        "talentLabel": "‍ ",
         "talentID": 123322,
-        "stats": [],
-        "relations": [],
+        "stats": [
+          "急速",
+          "精通",
+          "暴击",
+          "全能"
+        ],
+        "relations": [
+          10,
+          10,
+          2
+        ],
         "desc": []
       },
       {
-        "talentLabel": " ",
+        "talentLabel": "‍ ",
         "talentID": 123321,
-        "stats": [],
-        "relations": [],
+        "stats": [
+          "急速",
+          "精通",
+          "暴击",
+          "全能"
+        ],
+        "relations": [
+          10,
+          1,
+          2
+        ],
         "desc": []
       }
     ],
@@ -410,8 +439,19 @@
       {
         "talentLabel": "",
         "talentID": "",
-        "stats": [],
-        "relations": [],
+        "stats": [
+          "敏捷",
+          "暴击",
+          "精通",
+          "急速",
+          "全能"
+        ],
+        "relations": [
+          2,
+          1,
+          1,
+          1
+        ],
         "desc": []
       }
     ],
@@ -579,19 +619,8 @@
       {
         "talentLabel": "",
         "talentID": "",
-        "stats": [
-          "全能",
-          "急速",
-          "精通",
-          "暴击",
-          "智力"
-        ],
-        "relations": [
-          1,
-          1,
-          1,
-          1
-        ],
+        "stats": [],
+        "relations": [],
         "desc": []
       }
     ],
@@ -739,19 +768,8 @@
       {
         "talentLabel": "",
         "talentID": "",
-        "stats": [
-          "敏捷",
-          "全能",
-          "暴击",
-          "精通",
-          "急速"
-        ],
-        "relations": [
-          1,
-          0,
-          1,
-          1
-        ],
+        "stats": [],
+        "relations": [],
         "desc": []
       }
     ],
@@ -785,7 +803,7 @@
           "brewmaster-monk-0-hero.jpg",
           "brewmaster-monk-0-spec.jpg"
         ],
-        "code": "CyQAzgHLS-55nNbpq8wAIwuw7AAAAgxmxMmxsMjNmZGDAAAAAAwyiBxMDMDjNgtZmZY2Ymx2sMTbLz2sNzMYBAAWmlplZbmlBAAEAGWA"
+        "code": "CyQAtGFTXoAkQGpPGxcbAOPAaAAAAgZbzYGzwyM2wMjBAAAAAAYZBEzMwMM2MDmZmZY2YmxMLDLbz22sNMLAAwysMtMbzsMAAz2s0MzMLMswwMzMDTjBAAsA"
       },
       {
         "talent": "Shado-Pan Build",
@@ -794,7 +812,7 @@
           "brewmaster-monk-1-hero.jpg",
           "brewmaster-monk-1-spec.jpg"
         ],
-        "code": "CyQAzgHLS-55nNbpq8wAIwuw7AAAAgxGmxMmlZsNmZGDAAAAAAwyiBxMDMDjNgtZmZY2Ymx2sMTMbz2MzwsBAAbzy0ysNzyAAY2mtmZmZhZYBA"
+        "code": "CyQAtGFTXoAkQGpPGxcbAOPAaAAAAwMbbGDzwyM2wMjBAAAAAAYZBEzMwMM2MDmZmZY2YmxMLDLbz22sNMLAAw2sMtMbzsMAAz2s0MzMLMswAmZYaMAAgFA"
       }
     ]
   },
@@ -836,7 +854,7 @@
       },
       {
         "label": "生存能力",
-        "rating": 4
+        "rating": 3
       },
       {
         "label": "移动性",
@@ -851,7 +869,7 @@
           "mistweaver-monk-0-hero.jpg",
           "mistweaver-monk-0-spec.jpg"
         ],
-        "code": "C6QA34TLH53bWGMGufKp2OaMMDAAAAAAAghFLzsMmFz2MzM2w2yysNeAMbWmZWWYGNzMDMDzAYbGzwsxMDzyDMBAAAAY2m2mtZWmNAQAAwG"
+        "code": "C6QAFATzWz4lI5VUD9Zqvgf_hDAAAAAAAgxwyMLjZZZbGzMWgllZYwstsMzYhZmmxMgBDwyMzMDzGmBLzEAAAAABYx2ssNLzMAAwgxAMDYAWkxM"
       }
     ]
   },
@@ -862,8 +880,19 @@
       {
         "talentLabel": "",
         "talentID": "",
-        "stats": [],
-        "relations": [],
+        "stats": [
+          "敏捷",
+          "精通",
+          "急速",
+          "暴击",
+          "全能"
+        ],
+        "relations": [
+          1,
+          1,
+          1,
+          1
+        ],
         "desc": []
       }
     ],
@@ -977,33 +1006,15 @@
         "stats": [
           "力量",
           "急速",
-          "精通",
           "暴击",
-          "全能"
-        ],
-        "relations": [
-          1,
-          1,
-          1,
-          0
-        ],
-        "desc": []
-      },
-      {
-        "talentLabel": "",
-        "talentID": "",
-        "stats": [
-          "力量",
-          "暴击",
-          "急速",
           "全能",
           "精通"
         ],
         "relations": [
           1,
           1,
-          1,
-          1
+          2,
+          10
         ],
         "desc": []
       }
@@ -1038,7 +1049,7 @@
           "protection-paladin-0-hero.jpg",
           "protection-paladin-0-spec.jpg"
         ],
-        "code": "CKEAdONJT9UXwASulicpk_6GOvZMYWGLzMzMzMLbzYGzsNzMGAAgBAAAAAAg2yMzihZwYG2aDAYgBgBbDAAwMTbzysNzMzy2SLzMWYwAwgZ2wA"
+        "code": "CKEAoNewa_YPd6atmlLYBD6qYuZMYWGLzMjZmZZbMGzsMLDDAwAAAAAAgmmZWmZMDGmt2AwADwgNAAwMTbzMbzMzsst0yMjFGmBwYMDjBAzMbzAMzAG"
       },
       {
         "talent": "Templar Build",
@@ -1047,7 +1058,7 @@
           "protection-paladin-1-hero.jpg",
           "protection-paladin-1-spec.jpg"
         ],
-        "code": "CKEAdONJT9UXwASulicpk_6GOvZMYWGLzMzMjZZbmZGzsNGGAAgBAAAAAAg2yMzihZwYG2aDAGDMAMYbAAAmZabWmtZmZW2WaZmxGDGAmhZYMA"
+        "code": "CKEAoNewa_YPd6atmlLYBD6qYuZMYWGLzMjZmZZbMGzsMLDDAwAAAAAAgmmZWmZMDGmt2AwADwgNAAwMTbzMbzMzsst0yMjNGmBwYMDjBAzMbzAMzAG"
       }
     ]
   },
@@ -1208,8 +1219,19 @@
       {
         "talentLabel": "",
         "talentID": "",
-        "stats": [],
-        "relations": [],
+        "stats": [
+          "敏捷",
+          "全能",
+          "暴击",
+          "急速",
+          "精通"
+        ],
+        "relations": [
+          1,
+          1,
+          1,
+          1
+        ],
         "desc": []
       }
     ],
@@ -1413,7 +1435,7 @@
           "enhancement-shaman-0-hero.jpg",
           "enhancement-shaman-0-spec.jpg"
         ],
-        "code": "CeQAMsQa3KLHSy3T4K-WTU6UYMzMDMzDMDzMz8AzMLzMYZAAAAAAAAAA2AsZGDbkFYGGawCAmlJzALMzMzwMzMGWmx0sxyMGzMAAjB"
+        "code": "CeQAx6A1Q-GD0hGLZqug7opVfMzMzYMzMzMzMMzYAAAAAAAAAshNstNjZmtFNLbDzwMTDWAYWmxMGLLzAzMGLzMzMjhxMAAzwYmhZiZmZGMYMA"
       },
       {
         "talent": "Totemic",
@@ -1422,7 +1444,7 @@
           "enhancement-shaman-1-hero.jpg",
           "enhancement-shaman-1-spec.jpg"
         ],
-        "code": "CeQAMsQa3KLHSy3T4K-WTU6UYMzMjZGmZYmxMzMbmxyYAAAAAAAAAAgFstNjZmtFNLbDzwMTD2AwsMZGYhZmZGmZmxwyMmmNWmxYmBAY"
+        "code": "CeQAx6A1Q-GD0hGLZqug7opVfMzMjZmZmZmZmZmZGzAAAAAAAAAAbwGMjFN2GAzEsBwsMjZMWWmBmZMWmZmZGDjZAAGwYYmYmBAGDA"
       }
     ]
   },
@@ -1613,8 +1635,19 @@
       {
         "talentLabel": "",
         "talentID": "",
-        "stats": [],
-        "relations": [],
+        "stats": [
+          "智力",
+          "急速",
+          "暴击",
+          "精通",
+          "全能"
+        ],
+        "relations": [
+          1,
+          1,
+          10,
+          1
+        ],
         "desc": []
       }
     ],
@@ -1726,13 +1759,13 @@
         "stats": [
           "精通",
           "急速",
-          "全能",
-          "暴击"
+          "暴击",
+          "全能"
         ],
         "relations": [
+          0,
           10,
-          1,
-          10
+          2
         ],
         "desc": []
       }
@@ -1744,7 +1777,7 @@
       },
       {
         "label": "AOE",
-        "rating": 4
+        "rating": 3
       },
       {
         "label": "功能性",
@@ -1761,13 +1794,22 @@
     ],
     "talents": [
       {
-        "talent": "Mountain Thane Mythic+ Talents",
+        "talent": "Mountain Thane Mythic+",
         "url": [
           "fury-warrior-0-class.jpg",
           "fury-warrior-0-hero.jpg",
           "fury-warrior-0-spec.jpg"
         ],
-        "code": "CiEABi-Ws4Ti-PUAIpgY38rfIAAAAAAAAAQjhxsMmhxygZWYmZGzwMMzy2MjZmZDzMzMDzMWGeAegZMAAAIMwGssZ0YGQmFYsA"
+        "code": "CiEA88cDcoK0WBwtBUN5_D3bqBAAAAAAgGDjZMjlZmZGjZMzYmZGzsMzMGjZZMzMAAQYgNYZzoxMgMbYGLAmBzyAgZGADzMzMMYA"
+      },
+      {
+        "talent": "Slayer Mythic+",
+        "url": [
+          "fury-warrior-1-class.jpg",
+          "fury-warrior-1-hero.jpg",
+          "fury-warrior-1-spec.jpg"
+        ],
+        "code": "CiEA88cDcoK0WBwtBUN5_D3bqBAAAAAAgGDjhZsMzMzMzMjZGzMzYmlZmxYMbjZmBAAixyyALgJYGmAzwGgZwsMAAYmxwMzMDDG"
       }
     ]
   },
@@ -1779,16 +1821,16 @@
         "talentLabel": "",
         "talentID": "",
         "stats": [
+          "力量",
           "急速",
-          "暴击",
-          "全能",
           "精通",
-          "力量"
+          "暴击",
+          "全能"
         ],
         "relations": [
+          1,
+          1,
           0,
-          1,
-          1,
           1
         ],
         "desc": []
@@ -1824,7 +1866,7 @@
           "protection-warrior-0-hero.jpg",
           "protection-warrior-0-spec.jpg"
         ],
-        "code": "CmEABi-Ws4Ti-PUAIpgY38rfI0yAAAAwYmZMzMzMmNzMLDGjRjZZMDjlxMzw2MzwMYYAAAAAAglxAAzYDwgltZMLLbjmZGmhlZphZDmB"
+        "code": "CmEA88cDcoK0WBwtBUN5_D3bqlBAAGzYmZmZmxsZmZZGjxoxMmZzMzMzYGmZAAAAwyMDwMGgB2glFjGzAYWiZ2wMzMzwwAgZGAAMgHA"
       }
     ]
   },
@@ -1833,20 +1875,20 @@
     "classSpec": "devastation",
     "stats": [
       {
-        "talentLabel": "‍Flameshaper",
-        "talentID": 123336,
+        "talentLabel": "",
+        "talentID": "",
         "stats": [
           "智力",
-          "急速",
           "暴击",
-          "全能",
-          "精通"
+          "急速",
+          "精通",
+          "全能"
         ],
         "relations": [
           1,
+          10,
           1,
-          1,
-          10
+          0
         ],
         "desc": []
       }
@@ -1854,11 +1896,11 @@
     "ratings": [
       {
         "label": "单体",
-        "rating": 3
+        "rating": 5
       },
       {
         "label": "AOE",
-        "rating": 5
+        "rating": 4
       },
       {
         "label": "功能性",
@@ -1875,31 +1917,22 @@
     ],
     "talents": [
       {
-        "talent": "Flameshaper AoE",
+        "talent": "Flameshaper All-Rounder",
         "url": [
           "devastation-evoker-0-class.jpg",
           "devastation-evoker-0-hero.jpg",
           "devastation-evoker-0-spec.jpg"
         ],
-        "code": "CubBntI9mb49j7H1q7y1vUVfKAAAAAAAAAAAAGzYmxsMzYmBmxYYaYmpZ2GLDGGjZWmBYmZMmZMzMYGYGzAbgtgZYCZBsMMD"
+        "code": "CubBi9T1nBsqdFxumocT5BdmCBAAAAAAAAAAAzMDmZMzYmBGGjZaMzMZw2MzMzwYmZGwMzMGzMmZGMDMjZgFwSwMMhsBWGmBYmZY"
       },
       {
-        "talent": "Flameshaper Single-Target and Cleave",
+        "talent": "Scalecommander All-Rounder",
         "url": [
           "devastation-evoker-1-class.jpg",
           "devastation-evoker-1-hero.jpg",
           "devastation-evoker-1-spec.jpg"
         ],
-        "code": "CubBntI9mb49j7H1q7y1vUVfKAAAAAAAAAAAAGzYmxsMzYmBmxYYaYmJjxyMMzwYmlZAmZGjZGzMDmBmxMwGYLYGmQWALDzA"
-      },
-      {
-        "talent": "Scalecommander All-Rounder",
-        "url": [
-          "devastation-evoker-2-class.jpg",
-          "devastation-evoker-2-hero.jpg",
-          "devastation-evoker-2-spec.jpg"
-        ],
-        "code": "CubBntI9mb49j7H1q7y1vUVfKAAAAAAAAAAAAmZGYGzMmZghxYmGmZysNWmhZmZGzsMDwMzYMzYmZgBGDWglxox2AyMBYDzA"
+        "code": "CubBi9T1nBsqdFxumocT5BdmCBAAAAAAAAAAAzMDMjHYGzMwwYMTjZmpZY2mxMzMzYmZGwMzMGzMmZGYgZmZsALjZpxyMDTmJbgthZwMjxwA"
       }
     ]
   },
@@ -1913,14 +1946,14 @@
         "stats": [
           "智力",
           "精通",
-          "急速",
           "暴击",
+          "急速",
           "全能"
         ],
         "relations": [
           1,
           1,
-          0,
+          1,
           1
         ],
         "desc": []
@@ -1956,7 +1989,7 @@
           "preservation-evoker-0-hero.jpg",
           "preservation-evoker-0-spec.jpg"
         ],
-        "code": "CybBntI9mb49j7H1q7y1vUVfKAAAAAAmZmZ2mlBGzMjZxMzsBAAAzMMmxYYmYMDAAAYmZmmx2MzMGzAAwY2swCMwMaoBjFYA"
+        "code": "CybBOL646-XB1L3ByMUaaSWqJDAAAAAmZmZ22mHADzMmFzYw2AAAMzYGDjxMTmZmBAAAMzMTGmZMLzMDAMmZMjNWswwMzMN0sxYxwYmBGjB"
       }
     ]
   },
@@ -1969,15 +2002,15 @@
         "talentID": 123334,
         "stats": [
           "智力",
-          "精通",
           "暴击",
           "急速",
+          "精通",
           "全能"
         ],
         "relations": [
           1,
-          0,
-          0,
+          10,
+          2,
           1
         ],
         "desc": []
@@ -1995,8 +2028,8 @@
         "relations": [
           1,
           10,
-          1,
-          0
+          2,
+          1
         ],
         "desc": []
       }
@@ -2004,11 +2037,11 @@
     "ratings": [
       {
         "label": "单体",
-        "rating": 2
+        "rating": 5
       },
       {
         "label": "AOE",
-        "rating": 2
+        "rating": 4
       },
       {
         "label": "功能性",
@@ -2025,22 +2058,22 @@
     ],
     "talents": [
       {
-        "talent": "Chronowarden",
+        "talent": "Scalecommander",
         "url": [
           "augmentation-evoker-0-class.jpg",
           "augmentation-evoker-0-hero.jpg",
           "augmentation-evoker-0-spec.jpg"
         ],
-        "code": "CGcBntI9mb49j7H1q7y1vUVfKMmZZmtZmZGGYmlZYmxMbAAAAAAAAYmBGGjpGmZGAAAAMjZ2GzMGzMwMbGYMLWYBGYGGaELwMD"
+        "code": "CGcBi9T1nBsqdFxumocT5BdmCNmZGbzMzghHYmZZGjhZ2AAAAAAAAYmBGGjpGzMzAAAAAzMjxMzyMzMwMbGDWglxwYZAMTEbYmZwMDGM"
       },
       {
-        "talent": "Scalecommander",
+        "talent": "Chronowarden",
         "url": [
           "augmentation-evoker-1-class.jpg",
           "augmentation-evoker-1-hero.jpg",
           "augmentation-evoker-1-spec.jpg"
         ],
-        "code": "CGcBntI9mb49j7H1q7y1vUVfKMmZZmtZmZGGYmlZMGmZDAAAAAAAAzMwwYM1wMzAAAAgZmZMmZMmZgZ2MGsALjhxyAYmI2wMzA"
+        "code": "CGcBi9T1nBsqdFxumocT5BdmCNmZGbzMzghHYmZZGjhZ2AAAAAAAAYmBGGjpGzMzAAAAAzMjxMz2MzMwMbGDzyMWYZwYYGmZaELYmZmZmZwgBA"
       }
     ]
   },
@@ -2053,16 +2086,16 @@
         "talentID": "",
         "stats": [
           "敏捷",
+          "精通",
           "暴击",
           "急速",
-          "精通",
           "全能"
         ],
         "relations": [
+          2,
           1,
           1,
-          0,
-          1
+          0
         ],
         "desc": []
       }
@@ -2070,7 +2103,7 @@
     "ratings": [
       {
         "label": "单体",
-        "rating": 5
+        "rating": 3
       },
       {
         "label": "AOE",
@@ -2078,11 +2111,11 @@
       },
       {
         "label": "功能性",
-        "rating": 4
+        "rating": 1
       },
       {
         "label": "生存能力",
-        "rating": 3
+        "rating": 4
       },
       {
         "label": "移动性",
@@ -2091,22 +2124,13 @@
     ],
     "talents": [
       {
-        "talent": "Pack Leader No ‍Multi-Shot",
+        "talent": "Pack Leader Mythic+",
         "url": [
           "beast-mastery-hunter-0-class.jpg",
           "beast-mastery-hunter-0-hero.jpg",
           "beast-mastery-hunter-0-spec.jpg"
         ],
-        "code": "C2PAEcUbCPG7ccUEP2qufQdhgDMmxwCsBzohG2AAAAAAwYGjHYWmZGmxMYZYmZMzMzMZGzYmxMzYmhhxYGDzygtlZwGAAAAAAMD"
-      },
-      {
-        "talent": "Pack Leader ‍Multi-Shot",
-        "url": [
-          "beast-mastery-hunter-1-class.jpg",
-          "beast-mastery-hunter-1-hero.jpg",
-          "beast-mastery-hunter-1-spec.jpg"
-        ],
-        "code": "C2PAEcUbCPG7ccUEP2qufQdhgDMmxwCsBzohG2AAAAAAwYGz8AjZmBzMDWmxMzYMzMTmxMmZMzMmZYYMmxwsMYbZGsBAAAAAAzA"
+        "code": "C2PAT2JM8_teuMvoNmAAnFMpzazYGzMDLwCmZ2M0M2AAwMjlZmZxMMzMzwMmZMMDzMmZmx2MzYGzgx0MAAAAAgZAAAYMmZYmZmFEwsA2MA"
       }
     ]
   },
@@ -2114,22 +2138,6 @@
     "roleClass": "hunter",
     "classSpec": "marksmanship",
     "stats": [
-      {
-        "talentLabel": "‍Dark Ranger",
-        "talentID": 123346,
-        "stats": [
-          "暴击",
-          "急速",
-          "精通",
-          "全能"
-        ],
-        "relations": [
-          1,
-          1,
-          1
-        ],
-        "desc": []
-      },
       {
         "talentLabel": "",
         "talentID": "",
@@ -2140,7 +2148,7 @@
           "全能"
         ],
         "relations": [
-          1,
+          10,
           1,
           1
         ],
@@ -2150,11 +2158,11 @@
     "ratings": [
       {
         "label": "单体",
-        "rating": 3
+        "rating": 4
       },
       {
         "label": "AOE",
-        "rating": 4
+        "rating": 3
       },
       {
         "label": "功能性",
@@ -2166,27 +2174,27 @@
       },
       {
         "label": "移动性",
-        "rating": 4
+        "rating": 3
       }
     ],
     "talents": [
       {
-        "talent": "Dark Ranger Prio Talents",
+        "talent": "Sentinel Full AoE Talents",
         "url": [
           "marksmanship-hunter-0-class.jpg",
           "marksmanship-hunter-0-hero.jpg",
           "marksmanship-hunter-0-spec.jpg"
         ],
-        "code": "C6PAEcUbCPG7ccUEP2qufQdhgbMbDMgJY2YJwsAAAAAAAAAAAAAAzYGzYmZGzoZGjhZGGDziZw2wMGLbbmZmxsYmhxMzssZYZYmB"
+        "code": "C6PALd5IZPvhpqaYvV77PkbDAyCMwMGNWGQmBbAAAAAAAAAzYGzYbGzMjZwYaGjZmZZbzMzMMzgZmlxYWGmZAAAjxMAYmx2GmBYBDA"
       },
       {
-        "talent": "Sentinel Full AoE Talents",
+        "talent": "Sentinel Hydra Prio Damage",
         "url": [
           "marksmanship-hunter-1-class.jpg",
           "marksmanship-hunter-1-hero.jpg",
           "marksmanship-hunter-1-spec.jpg"
         ],
-        "code": "C6PAEcUbCPG7ccUEP2qufQdhgbmZbMM2Gz0YZmNWysxsBAAAAAAAAAAAAAzYGzYmZGzoZGjhZGGDziZw2YYmZZbbbmxAzMjZmZmFGzywMD"
+        "code": "C6PALd5IZPvhpqaYvV77PkbDAyCMwMGNWGQmBbAAAAAAAAAzYGzYbGzMjZwYaGjZmZbbzMzMMzgZmlxYWGmZAAAjxMAYmx2GmBYBDA"
       }
     ]
   },
@@ -2218,7 +2226,7 @@
       },
       {
         "label": "AOE",
-        "rating": 4
+        "rating": 3
       },
       {
         "label": "功能性",
@@ -2226,7 +2234,7 @@
       },
       {
         "label": "生存能力",
-        "rating": 4
+        "rating": 5
       },
       {
         "label": "移动性",
@@ -2241,25 +2249,25 @@
           "survival-hunter-0-hero.jpg",
           "survival-hunter-0-spec.jpg"
         ],
-        "code": "C-PAEcUbCPG7ccUEP2qufQdhgPGYglxoxyAY2C2mZsMzMzMzYGzMjxYMmZMLAAAAAAANjZMjZmhZYGGDzMMLDziZwGAAAAAM"
+        "code": "C-PAT2JM8_teuMvoNmAAnFMpzOWwMzYmZb0ssMMDzMNYzMzMjhl5BAAAAAAYGzMzwMGzYGMmmBAAAAMAAW2mZmFzMzMjxMDYmtZYbDGjZmNG"
       },
       {
-        "talent": "Pack Leader Balanced",
+        "talent": "Pack Leader",
         "url": [
           "survival-hunter-1-class.jpg",
           "survival-hunter-1-hero.jpg",
           "survival-hunter-1-spec.jpg"
         ],
-        "code": "C-PAEcUbCPG7ccUEP2qufQdhgPGMzMmlZZ0stMMDzs1glZmZZmZmZmZMGzYMGjZGzCAAAAAAQzYGzYmZYGmhxwMDzywsYGsBAAAAAD"
+        "code": "C-PAT2JM8_teuMvoNmAAnFMpzOWwMzYmZb0ssMMDzMNYxMzMzMsMAAAAAAYGzMzwMGzYGMmmBAAAAMAAWWmZmNzMzMjxMDYmtZYbDGjZmNG"
       },
       {
-        "talent": "Pack Leader Heavy Single-Target",
+        "talent": "Sentinel more AoE",
         "url": [
           "survival-hunter-2-class.jpg",
           "survival-hunter-2-hero.jpg",
           "survival-hunter-2-spec.jpg"
         ],
-        "code": "C-PAEcUbCPG7ccUEP2qufQdhgPGMzMmlZb0stMMDzs1glZmZZGzMjZMGjZwDMzMzY2GAAAAAAQzYGzYmZYGmhxwMDzywsYGsBAAAAAD"
+        "code": "C-PAT2JM8_teuMvoNmAAnFMpzOWwMzYmZb0ssMMDzMNYbmZmZMmtZAAAAAAYGzMzwMGzYGMmmBAAAAMAAW2mZegtZMzYMmZAzsNDbbwYYmNG"
       }
     ]
   },
@@ -2273,13 +2281,13 @@
         "stats": [
           "智力",
           "急速",
-          "暴击",
           "精通",
+          "暴击",
           "全能"
         ],
         "relations": [
           1,
-          1,
+          2,
           10,
           1
         ],
@@ -2316,7 +2324,7 @@
           "discipline-priest-0-hero.jpg",
           "discipline-priest-0-spec.jpg"
         ],
-        "code": "CCQA_3oQZu1FL7wNlmHN2ZJQWCDsNjZMGjxMYmtZ2mZmxMzMAAAAAAAAAAALzGjZmBziZMjxYwiZbmGTsYAmZBLUMmlBYshF"
+        "code": "CCQAeZKRuNSooft8tRxtaN5SHBDsMGWmZMmBmZbmtZmZmxMDAAAAAAAAAghZZGmZmZYGzMwMNTMAzsghwYWGgxgFAAYMzYMYGgZmRwA"
       }
     ]
   },
@@ -2329,14 +2337,14 @@
         "talentID": "",
         "stats": [
           "智力",
-          "急速",
           "精通",
+          "急速",
           "暴击",
           "全能"
         ],
         "relations": [
           1,
-          1,
+          0,
           1,
           1
         ],
@@ -2346,7 +2354,7 @@
     "ratings": [
       {
         "label": "单体",
-        "rating": 4
+        "rating": 3
       },
       {
         "label": "AOE",
@@ -2358,7 +2366,7 @@
       },
       {
         "label": "生存能力",
-        "rating": 3
+        "rating": 2
       },
       {
         "label": "移动性",
@@ -2367,22 +2375,22 @@
     ],
     "talents": [
       {
-        "talent": "Archon Void Eruption",
+        "talent": "Archon",
         "url": [
           "shadow-priest-0-class.jpg",
           "shadow-priest-0-hero.jpg",
           "shadow-priest-0-spec.jpg"
         ],
-        "code": "CKQA_3oQZu1FL7wNlmHN2ZJQWOMmBAAAAAAAAAAAAjxCjZmZbZjZmZmZmZZwsxMzMjZjBGjhZxsN1MDWwMAzsZZ0sZAIjxCAsND"
+        "code": "CKQAeZKRuNSooft8tRxtaN5SHNMjZGAAAAAAAAAAAgBLmxYZmhZWmZYG2mZGzMzYDZGLmpBYGgZWMjmNDAZMWAwMzAjZmZMbjZ2WGgZw"
       },
       {
-        "talent": "Voidweaver Dark Ascension",
+        "talent": "Voidweaver",
         "url": [
           "shadow-priest-1-class.jpg",
           "shadow-priest-1-hero.jpg",
           "shadow-priest-1-spec.jpg"
         ],
-        "code": "CKQA_3oQZu1FL7wNlmHN2ZJQWODmZAAAAAAAAAAAAYM2YMzMLbbMzYmZmZZwsxMzMjZjBGjhZxsN1MDWgZZGAIAz2stEMbsAYbG"
+        "code": "CKQAeZKRuNSooft8tRxtaN5SHNMjZGAAAAAAAAAAAgBLmxYZmhZWmZYG2mZGzMzYDZGLmpBYmZGAIAz2stEMbMAzMDMmZmxsNmBzMYGM"
       }
     ]
   },
@@ -2439,8 +2447,36 @@
           "holy-priest-0-hero.jpg",
           "holy-priest-0-spec.jpg"
         ],
-        "code": "CGQA_3oQZu1FL7wNlmHN2ZJQWyYAAAAAAAzmhxsNmZMzYGzwYbmZmBAAAAMLz2gZmBzCz2MmZMYhNmxUzCAzsgFCjZbANWgFjxC"
+        "code": "CGQAeZKRuNSooft8tRxtaN5SHxYAAAAAAgZzwMjBjZmZGzMzYbmZmBAAAwYsMDzMzMMjZGshZqBAmZzMZ2MAwYwmZGbAaGmxYwMbLDwAWA"
       }
     ]
+  },
+  {
+    "roleClass": "demon-hunter",
+    "classSpec": "devourer",
+    "stats": [],
+    "ratings": [
+      {
+        "label": "单体",
+        "rating": 0
+      },
+      {
+        "label": "AOE",
+        "rating": 0
+      },
+      {
+        "label": "功能性",
+        "rating": 0
+      },
+      {
+        "label": "生存能力",
+        "rating": 0
+      },
+      {
+        "label": "移动性",
+        "rating": 0
+      }
+    ],
+    "talents": []
   }
 ]

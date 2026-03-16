@@ -8,6 +8,7 @@ export default {
   'demon-hunter': {
     havoc: 0,
     vengeance: 1,
+    devourer: 2,
     sort: 1,
   },
   druid: {
