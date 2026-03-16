@@ -281,7 +281,7 @@ onLoad(async () => {
 
 .bottom-ad {
   width: 100vw;
-  position: fixed;
+  position: fixed !important;
   bottom: 0;
   left: 0;
 }
