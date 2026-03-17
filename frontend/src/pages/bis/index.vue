@@ -440,110 +440,6 @@
         </view>
       </uni-card>
     </uni-section>
-
-    <uni-section id="puzzling-cartel-chip-advice" title="团本兑换代币"
-      :class="[classKey]"
-      :sub-title="`更新于: ${currentData?.wowheadBis?.updatedAt}`"
-    >
-      <uni-card class="section-card">
-        <view class="advice-text">
-          <image
-            src="https://ginkolearn.cyou/api/wow/assets/blizz-media-image/inv_misc_curiouscoin.jpg"
-            mode="widthFix"
-          />
-          <view class="druid">令人费解的财阀凭证</view>
-          <view>兑换优先级推荐</view>
-        </view>
-
-        <uni-segmented-control
-          v-if="chipAdviceTabs?.length > 1"
-          :class="[classKey]"
-          :current="currentChipAdviceTab"
-          :values="chipAdviceTabs"
-          style-type="text"
-          @clickItem="switchChipAdviceTab"
-        />
-        <view
-          class="advice-item"
-          v-for="(item, index) in displayAdviceData?.list"
-          :class="[isSamePriorityChipItem(item, index) ? 'advice-item--same-priority' :'']"
-          :key="item.id"
-        >
-          <view class="data-item">
-            <image :src="currentImageSrc(item)" mode="widthFix" />
-            <text class="advice-item__name" :class="[getItemRarityClass(item.rarity)]">{{ getItemRarityName(item.rarity)
-              }}
-            </text>
-            <view class="advice-item__name"
-              :class="[getItemRarityClass(item.rarity)]"
-              @click="() => switchDetail(true, item)">{{ item.name }}
-            </view>
-            <view class="advice-item__more" v-if="item.info" @click="item.showInfo = !item.showInfo">
-              <text class="iconfont icon-weidu-01"></text>
-              <text class="">{{ item.showInfo ? '隐藏解释' : '查看解释' }}</text>
-            </view>
-          </view>
-          <view class="data-info" v-show="item.showInfo">{{ item.info }}</view>
-        </view>
-
-        <text class="overall-info">{{ displayAdviceData?.info }}</text>
-      </uni-card>
-    </uni-section>
-
-    <uni-section class="corruptions" title="腐蚀"
-      id="corruptions"
-      :class="[classKey]"
-    >
-      <uni-card class="section-card">
-        <rich-text
-          :nodes="renderTip(currentData?.wowheadBis?.corruptions?.title, '#fff', 'rgb(163, 53, 238)')"
-          @click="() => displaySpells(currentData?.wowheadBis?.corruptions?.items)"
-        ></rich-text>
-
-        <view
-          class="advice-item"
-          style="margin-top: 20rpx"
-          v-for="(item) in getDisplayCorruptions"
-          :key="item.id"
-        >
-          <view class="data-item" @click="() => switchDetail(true, item)">
-            <image :src="currentImageSrc(item)" mode="widthFix" />
-            <view
-              class="advice-item__name"
-              :class="[item.included ? 'advice-item__name--heroic' : 'advice-item__name--faded']"
-            >{{ item.name
-              }}
-            </view>
-          </view>
-        </view>
-
-        <text @click="isShowAllCorruptions = !isShowAllCorruptions">{{ switchCorruptionText }}</text>
-      </uni-card>
-
-    </uni-section>
-
-    <uni-section title="地下堡腰带" id="disc-belt" :class="[classKey]">
-      <uni-card class="section-card">
-        <uni-table stripe emptyText="暂无更多数据">
-          <uni-tr>
-            <uni-th width="100" align="left">场景</uni-th>
-            <uni-th :width="isShowDiscBeltInfo ? '100' : ''" align="left">装备特效</uni-th>
-            <uni-th align="left" v-if="isShowDiscBeltInfo">说明</uni-th>
-          </uni-tr>
-          <uni-tr v-for="item in currentData?.wowheadBis?.discBelt" :key="item.label">
-            <uni-td>{{ item.label }}</uni-td>
-            <uni-td>
-              <view class="slot-container">
-                <text v-for="spell in item.value" :key="spell.id" @click="displaySpells([spell])">
-                  {{ spell.name_zh }}
-                </text>
-              </view>
-            </uni-td>
-            <uni-td v-if="isShowDiscBeltInfo">{{ item.info ?? '-' }}</uni-td>
-          </uni-tr>
-        </uni-table>
-      </uni-card>
-    </uni-section>
   </template>
 
   <template v-if="activeMenu === 'mythic'">
@@ -1053,48 +949,6 @@ const handleError = (err) => {
   console.error('导出错误:', err?.message);
 };
 
-const currentChipAdviceTab = ref(0);
-
-const chipAdviceTabs = computed(() => {
-  return currentData.value?.wowheadBis?.detailedPuzzlingCartelChipAdvice?.map(item => item.typeName);
-});
-const displayAdviceData = computed(() => {
-  const found = currentData.value?.wowheadBis?.detailedPuzzlingCartelChipAdvice?.[currentChipAdviceTab.value];
-  return {
-    info: found?.info,
-    list: found?.data?.options ?? [],
-  };
-});
-const getItemRarityClass = computed(() => (rarity: string) => {
-  return rarity === 'heroic' ? 'advice-item__name--heroic' : 'advice-item__name--mythic';
-});
-const getItemRarityName = computed(() => (rarity: string) => rarity?.[0]?.toUpperCase());
-const isSamePriorityChipItem = computed(() => {
-  return (item, index) => {
-    if (index === 0) {
-      return false;
-    }
-    const isSameIndex = item.index === displayAdviceData.value.list[index - 1].index;
-    const isFirstIndex = displayAdviceData.value.list.findIndex(child => child.index === index) === index;
-    return !isFirstIndex && isSameIndex;
-  };
-});
-
-function switchChipAdviceTab(e) {
-  if (currentChipAdviceTab.value != e.currentIndex) {
-    currentChipAdviceTab.value = e.currentIndex;
-  }
-}
-
-const isShowAllCorruptions = ref(false);
-const getDisplayCorruptions = computed(() => {
-  if (isShowAllCorruptions.value) {
-    return currentData.value?.wowheadBis?.corruptions?.items;
-  }
-  return currentData.value?.wowheadBis?.corruptions?.items.filter(item => item.included);
-});
-const switchCorruptionText = computed(() => isShowAllCorruptions.value ? '隐藏冗余腐蚀' : '查看全部腐蚀');
-
 // 顶部 DPSWOW 通知栏
 const dpswowRecords = ref([]);
 const activeRecordIndex = ref(0);
@@ -1159,10 +1013,6 @@ function clearNoticeBarTimer() {
 }
 
 //#endregion
-
-// region DISC腰带
-const isShowDiscBeltInfo = computed(() => currentData.value?.wowheadBis?.discBelt.some(item => item.info?.length));
-// endregion
 
 //#region 饰品
 const currentTrinketTab = ref(0);
@@ -2174,90 +2024,6 @@ $light-border: rgb(68, 68, 68);
     height: 0.4rem;
     border-radius: 50%;
     background: #fff;
-  }
-}
-
-#puzzling-cartel-chip-advice, #corruptions {
-  .advice-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30rpx;
-    margin-bottom: 20rpx;
-
-    image {
-      width: 36rpx;
-    }
-  }
-
-  .overall-info {
-    color: #fff;
-    font-size: 26rpx;
-  }
-
-  .advice-item {
-    font-size: 26rpx;
-    margin-bottom: 12rpx;
-
-    .data-item {
-      display: flex;
-      gap: 12rpx;
-      align-items: center;
-    }
-
-    .data-info {
-      font-size: 26rpx;
-    }
-
-    .advice-item__index {
-      color: $color-legend;
-    }
-
-    image {
-      width: 60rpx;
-      border-radius: 10rpx;
-    }
-
-    .advice-item__name {
-      color: $color-rare;
-      font-weight: bold;
-    }
-
-    .advice-item__name--faded {
-      color: #999;
-    }
-
-    .advice-item__name--heroic {
-      color: $color-mythic;
-    }
-
-    .advice-item__name--mythic {
-      color: $color-legend;
-    }
-
-    .advice-item__more {
-      flex: 1;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      margin-left: 4rpx;
-      gap: 4rpx;
-      color: $uni-color-primary;
-    }
-  }
-
-  .advice-item--same-priority {
-    padding-left: 60rpx;
-    position: relative;
-
-    &:before {
-      content: '=';
-      color: #fff;
-      position: absolute;
-      left: 30rpx;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
 }
 
