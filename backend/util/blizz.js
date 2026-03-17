@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 let api;
+
 function setBlizzAPI() {
   if (!api) {
     const __filename = fileURLToPath(import.meta.url);
@@ -15,6 +16,8 @@ function setBlizzAPI() {
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
     });
+
+    api.getAccessToken().then(token => console.log('BlizzAPI', token));
   }
 
   return api;

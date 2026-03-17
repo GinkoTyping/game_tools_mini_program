@@ -10,7 +10,7 @@ import { queryAddSpell, querySpellByIds } from '../api/index.js';
 import localeLabels from '../util/class-spec-locales.js';
 
 const prompt =
-  '按照中文的阅读习惯，把每个成员中的desc属性翻译到属性descZH，它是魔兽世界的职业介绍。该属性中已经是中文的部分和"["、"]"符号请保留。desc属性需要保持英文不变，翻译后的文本设置为成员的descZH属性，然后按照JSON格式重新输出整个数组 。';
+  '按照中文的阅读习惯，把每个成员中的desc属性翻译到属性descZH，它是魔兽世界的职业介绍。该属性中已经是中文的部分和"["、"]"符号请保留。desc属性需要保持英文不变，翻译后的文本设置为成员的descZH属性，然后按照JSON格式、代码块包裹重新输出整个数组，方便我直接复制 。';
 
 async function collectByTierName(file) {
   try {
@@ -306,12 +306,12 @@ async function translate(data) {
 // collectByTierName('mythic-ptr-dps-tier-list');
 
 const promises = [
-  // 'mythic-dps-tier-list',
-  // 'mythic-tank-tier-list',
-  // 'mythic-healer-tier-list',
-  'mythic-ptr-dps-tier-list',
-  'mythic-ptr-tank-tier-list',
-  'mythic-ptr-healer-tier-list',
+  'mythic-dps-tier-list',
+  'mythic-tank-tier-list',
+  'mythic-healer-tier-list',
+  // 'mythic-ptr-dps-tier-list',
+  // 'mythic-ptr-tank-tier-list',
+  // 'mythic-ptr-healer-tier-list',
 ].map((fileName) => collectByTierName(fileName));
 
 const results = await Promise.allSettled(promises);

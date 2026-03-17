@@ -1,53 +1,29 @@
 {
-  "updatedAt": "2025/03/23",
+  "updatedAt": "2026/03/15",
   "activityType": "MYTHIC",
   "role": "HEALER",
-  "versionId": "11.1",
+  "versionId": "12.0",
   "data": [
     {
       "tier": "S",
       "children": [
         {
-          "fullNameEN": "Discipline Priest",
-          "roleClass": "priest",
-          "classSpec": "discipline",
-          "dataChange": "-",
-          "desc": "Discipline Priest is likely the healer with the most amount of changes coming into Season 2, from removal of [全神贯注] cooldown, to redesigning how [虚空召唤师] plays out (degenerate [惩击] playstyle is now no more) getting a passive CDR rather than having it interact with any spells. Their healing/damage output still appears to be great, which is the most important factor when rankings specs. In addition, they will retain their strong external utility packages such as 2x [痛苦压制] and [真言术：障]. Although their healing output from [救赎] has been recently nerfed, we believe that they will still be one of the best healing choices in Season 2.",
-          "spells": [
-            {
-              "spellId": 47536,
-              "spellName": "Rapture"
-            },
-            {
-              "spellId": 390770,
-              "spellName": "Void Summoner"
-            },
-            {
-              "spellId": 585,
-              "spellName": "Smite"
-            },
-            {
-              "spellId": 33206,
-              "spellName": "Pain Suppression"
-            },
-            {
-              "spellId": 62618,
-              "spellName": "Power Word: Barrier"
-            },
-            {
-              "spellId": 81749,
-              "spellName": "Atonement"
-            }
-          ],
-          "fullNameZH": "戒律 牧师"
-        },
-        {
           "fullNameEN": "Restoration Druid",
           "roleClass": "druid",
           "classSpec": "restoration",
-          "dataChange": "up",
-          "desc": "Restoration Druid has gotten their fair share of changes leading up to Season 2, most notably changes done to their Mastery effect. Although their current rotation plays similar to what we are used to in Season 1, there have been numerous quality-of-life changes that will ease your life in Mythic+ (like interrupting a target), with a bigger emphasis on committing to either \"Owl weaving\" or \"Cat weaving\". There are a few more survivability notes that could strengthen their durability further while keeping your incredible party-wide utility unchanged. Both their damage and healing profiles are in a good state, so watch out for this spec, this could be the dark horse of the season.",
-          "spells": [],
+          "dataChange": "-",
+          "desc": "Restoration Druid has received its fair share of changes coming into the Midnight expansion, with an intense pruning on their rotational core that aims to lower the barrier-to-entry for the specialization. Healing-over-time management will now be much easier, as you now only have to maintain 1 [生命绽放] (compared to 2 in TWW) and have [大德鲁伊的力量], making room for more GCDs, better planning, and quicker healing setups. Their current healing performance is considered one of the best and is a leading factor for their S-tier placement.",
+          "descZH": "恢复德鲁伊在进入《至暗之夜版本》时获得了相当多的改动，对其核心循环进行了大幅精简，旨在降低该专精的上手门槛。持续治疗管理现在会容易得多，因为你只需要维持1层[生命绽放]（相比TWW的2层），并且拥有了[大德鲁伊的力量]，这为更多的公共冷却时间、更好的规划和更快的治疗准备提供了空间。他们当前的治疗表现被认为是最佳的之一，这也是他们位列S级的主要原因。",
+          "spells": [
+            {
+              "spellId": 33763,
+              "spellName": "Lifebloom"
+            },
+            {
+              "spellId": 392302,
+              "spellName": "Power of the Archdruid"
+            }
+          ],
           "fullNameZH": "恢复 德鲁伊"
         }
       ]
@@ -59,27 +35,71 @@
           "fullNameEN": "Mistweaver Monk",
           "roleClass": "monk",
           "classSpec": "mistweaver",
-          "dataChange": "-",
-          "desc": "Mistweaver Monk received quite a few changes in the upcoming patch, leading to improvement in their Mythic+ performance for Season 2. One of the best things to ever happen to the spec is the introduction of [青玉赋能] which allows your [碎玉闪电] do to a ton of single-target/priority-target and AoE damage while also healing you allies (like an extra minor cooldown). That in combination with how great [翡翠羁绊] talent has been (especially the CDR thanks to [朱鹤下凡]) makes them crazy good. Mistweaver's current HPS profile is amazing as it can easily tackle any given encounter in Mythic+ while contributing to the team with its great damage profile (yes, even after the most recent nerfs). All of this combined plays well with the strong utility package they offer, cementing them to be a great healing choice for Season 2.",
+          "dataChange": "up",
+          "desc": "Mistweaver Monk received quite a few changes leading up to the Midnight expansion, with the most notable being [碧火之训] now being a passive, and [疗愈扩散] & [真气宁和] having been removed. One downside of Mistweaver is that your external defensive options are the weakest out of any healer, as [作茧缚命] still does not compare to what other healers have to offer. Despite that, Mistweaver is looking like a promising choice in Season 1, with one of their biggest advantages being a very strong healing profile.",
+          "descZH": "织雾武僧在《至暗之夜版本》即将到来之际进行了不少改动，其中最引人注目的是[碧火之训]现在是被动效果，以及[疗愈扩散]和[真气宁和]被移除。织雾的一个缺点是，你的外部防御选择是所有治疗职业中最弱的，因为[作茧缚命]仍然无法与其他治疗职业的防御技能相提并论。尽管如此，织雾看起来是第1赛季一个有希望的选择，其最大的优势之一就是拥有非常强大的治疗轮廓。",
           "spells": [
             {
-              "spellId": 467316,
-              "spellName": "Jade Empowerment"
+              "spellId": 467293,
+              "spellName": "Jadefire Teachings"
             },
             {
-              "spellId": 117952,
-              "spellName": "Crackling Jade Lightning"
+              "spellId": 388509,
+              "spellName": "Mending Proliferation"
             },
             {
-              "spellId": 388031,
-              "spellName": "Jade Bond"
+              "spellId": 423458,
+              "spellName": "Chi Harmony"
             },
             {
-              "spellId": 325197,
-              "spellName": "Invoke Chi-Ji, the Red Crane"
+              "spellId": 116849,
+              "spellName": "Life Cocoon"
             }
           ],
           "fullNameZH": "织雾 武僧"
+        },
+        {
+          "fullNameEN": "Holy Paladin",
+          "roleClass": "paladin",
+          "classSpec": "holy",
+          "dataChange": "down",
+          "desc": "Holy Paladin received a major rework for the Midnight expansion, with some of the most notable changes being: [复仇之怒] having lower cooldown, a massive focus on [[神圣震击]] due to the removal of [[十字军打击]], [神圣棱镜] is now a choice node with [圣洁鸣钟], and [黎明之光] is now a baseline 40-yard spell. Such a massive shift has taken Holy Paladin to focus entirely on [[神圣震击]] for both offensive and defensive gameplay, to support their playstyle without having to rely on abilities like [[十字军打击]] to do damage. This will help with gaps where previously they were struggling with HPS outside of their major cooldowns.",
+          "descZH": "神圣圣骑士在《至暗之夜版本》中进行了重大重做，一些最值得注意的改动包括：[复仇之怒]冷却时间缩短，由于移除了[[十字军打击]]，游戏玩法极大地聚焦于[[神圣震击]]，[神圣棱镜]现在是一个与[圣洁鸣钟]竞争的选择节点，[黎明之光]现在是一个基础射程40码的法术。如此巨大的转变使得神圣圣骑士完全专注于在进攻和防御游戏玩法中使用[[神圣震击]]，以支持其玩法风格，而无需依赖像[[十字军打击]]这样的技能来造成伤害。这将有助于填补以往他们在主要冷却时间之外难以维持高每秒治疗量的缺口。",
+          "spells": [
+            {
+              "spellId": 384376,
+              "spellName": "Avenging Wrath"
+            },
+            {
+              "spellId": 20473,
+              "spellName": "Holy Shock"
+            },
+            {
+              "spellId": 35395,
+              "spellName": "Crusader Strike"
+            },
+            {
+              "spellId": 114165,
+              "spellName": "Holy Prism"
+            },
+            {
+              "spellId": 375576,
+              "spellName": "Divine Toll"
+            },
+            {
+              "spellId": 85222,
+              "spellName": "Light of Dawn"
+            },
+            {
+              "spellId": 20473,
+              "spellName": "Holy Shock"
+            },
+            {
+              "spellId": 35395,
+              "spellName": "Crusader Strike"
+            }
+          ],
+          "fullNameZH": "神圣 圣骑士"
         }
       ]
     },
@@ -87,44 +107,137 @@
       "tier": "A",
       "children": [
         {
-          "fullNameEN": "Holy Paladin",
-          "roleClass": "paladin",
-          "classSpec": "holy",
-          "dataChange": "up",
-          "desc": "Holy Paladin received quite a bit of changes, with the most notable being beefing up the [神圣震击] healing/damage output which creates further synergy with their tier-set, giving further damage amps during [[圣洁鸣钟]] windows. All of this combined allows [[圣洁鸣钟]] to have a shorter cooldown which makes it easier to tackle hard healing checks which come frequently. The most recent buffs to their output (both healing and DPS) will positively affect their rankings. Their toolkit remains the same - one of the best party-wide utilities paired with strong defensiveness (even immunity), and excellent mob control. Overall, we expect them to continue to be a solid choice for a healer going into Season 2, especially after the most recent output buffs.",
-          "spells": [
-            {
-              "spellId": 20473,
-              "spellName": "Holy Shock"
-            },
-            {
-              "spellId": 375576,
-              "spellName": "Divine Toll"
-            },
-            {
-              "spellId": 375576,
-              "spellName": "Divine Toll"
-            }
-          ],
-          "fullNameZH": "神圣 圣骑士"
-        },
-        {
           "fullNameEN": "Restoration Shaman",
           "roleClass": "shaman",
           "classSpec": "restoration",
-          "dataChange": "-",
-          "desc": "Restoration Shaman received its fair share of changes, including the removal of some of their minor cooldowns like [先祖指引] and [法力之潮图腾] to name a few, which will have a minor impact on your gameplay. They will however retain their incredibly party-wide utility and healing capabilities, but it seems this time around to be much more mana \"hungry\" than the rest of the specialization, as well as having lower damage output. If either of those issues are being targeted, we believe they will rise in swiftly rise in rankings.",
+          "dataChange": "up",
+          "desc": "Restoration Shaman is the healer that got torn to pieces and rebuilt in Midnight, as the design of the spec is totally different compared to before. Your [升腾] is now a choice-node with [治疗之潮图腾], while [暴雨图腾] has been removed. Your core gameplay loop will consist of [激流], [治疗链], [治疗波], and [治疗之雨]. Your Apex talent will also support this playstyle, providing passive healing that will be a good addition to your overall HPS profile. It's also important to note that Restoration Shaman is the ONLY healer that still has an interrupt, making it extremely valuable in Mythic+, on top of retaining the majority of its group-wide utility and mob-control (except [雷霆风暴]).",
+          "descZH": "恢复萨满是《至暗之夜》中被拆解并重建的治疗职业，其专精设计与以前完全不同。你的[升腾]现在是一个与[治疗之潮图腾]竞争的选择节点，而[暴雨图腾]已被移除。你的核心游戏循环将由[激流]、[治疗链]、[治疗波]和[治疗之雨]组成。你的巅峰天赋也会支持这种玩法，提供被动治疗，这将很好地补充你的整体每秒治疗量轮廓。同样值得注意的是，恢复萨满是唯一仍然拥有打断技能的治疗者，这使其在史诗钥石地下城中极具价值，此外它还保留了大部分的团队范围能力技和怪物控制能力（除了[雷霆风暴]）。",
           "spells": [
             {
-              "spellId": 108281,
-              "spellName": "Ancestral Guidance"
+              "spellId": 467263,
+              "spellName": "Ascendance"
             },
             {
-              "spellId": 16191,
-              "spellName": "Mana Tide Totem"
+              "spellId": 108280,
+              "spellName": "Healing Tide Totem"
+            },
+            {
+              "spellId": 157153,
+              "spellName": "Cloudburst Totem"
+            },
+            {
+              "spellId": 61295,
+              "spellName": "Riptide"
+            },
+            {
+              "spellId": 1064,
+              "spellName": "Chain Heal"
+            },
+            {
+              "spellId": 77472,
+              "spellName": "Healing Wave"
+            },
+            {
+              "spellId": 73920,
+              "spellName": "Healing Rain"
+            },
+            {
+              "spellId": 51490,
+              "spellName": "Thunderstorm"
             }
           ],
           "fullNameZH": "恢复 萨满"
+        },
+        {
+          "fullNameEN": "Holy Priest",
+          "roleClass": "priest",
+          "classSpec": "holy",
+          "dataChange": "down",
+          "desc": "Holy Priest, received its fair share of changes leading up to the Midnight expansion, with some of the highlights being: [治疗术], [恢复], [希望象征] [光明之泉], and [神言] removed, shifting its focus towards Holy Word gameplay paired with Prayer of [治疗术]ing, [愈合祷言], and Flash [治疗术]. Although quite a few things have changed for Holy Priest, their core gameplay will remain similar to what they were already doing in TWW. Their current damage profile is one of the highest compared to all other [治疗术]ing specializations, but unfortunately their weak AoE healing drags their rank down.",
+          "descZH": "神圣牧师在《至暗之夜版本》即将到来之际也进行了不少改动，其中一些亮点包括：移除了[治疗术]、[恢复]、[希望象征]、[光明之泉]和[神言]，将其焦点转向了与治疗祷言、[愈合祷言]和快速[治疗术]配合使用的圣言玩法。尽管神圣牧师发生了不少变化，但其核心游戏玩法将与他们在TWW中已经做的类似。与所有其他治疗专精相比，他们目前的伤害轮廓是最高的之一，但不幸的是，他们较弱的范围治疗能力拉低了他们的排名。",
+          "spells": [
+            {
+              "spellId": 2060,
+              "spellName": "Heal"
+            },
+            {
+              "spellId": 139,
+              "spellName": "Renew"
+            },
+            {
+              "spellId": 64901,
+              "spellName": "Symbol of Hope"
+            },
+            {
+              "spellId": 372835,
+              "spellName": "Lightwell"
+            },
+            {
+              "spellId": 372760,
+              "spellName": "Divine Word"
+            },
+            {
+              "spellId": 596,
+              "spellName": "Prayer of Healing"
+            },
+            {
+              "spellId": 33076,
+              "spellName": "Prayer of Mending"
+            },
+            {
+              "spellId": 2061,
+              "spellName": "Flash Heal"
+            }
+          ],
+          "fullNameZH": "神圣 牧师"
+        },
+        {
+          "fullNameEN": "Preservation Evoker",
+          "roleClass": "evoker",
+          "classSpec": "preservation",
+          "dataChange": "up",
+          "desc": "Preservation Evoker received a major rework for Midnight with some of the highlights being: [缚誓生命] can no longer be echoed, and the removal of [精神之花], [翡翠交融], and [生生不息]. The core of its healing kit will instead be shifted towards [青翠之拥], [梦境吐息], [回响], [逆转], and your Apex Talents ( [麦琳瑟拉的祝福]). Overall the spec should play a lot easier compared to the previous expansion, allowing newcomers to play it smoothly while still doing good healing.",
+          "descZH": "恩护唤魔师在《至暗之夜》中进行了重大重做，其中一些亮点包括：[缚誓生命]不再能被[回响]复制，以及移除了[精神之花]、[翡翠交融]和[生生不息]。其治疗能力的核心将转向[青翠之拥]、[梦境吐息]、[回响]、[逆转]和你的巅峰天赋（[麦琳瑟拉的祝福]）。总体而言，与上一个资料片相比，这个专精应该会容易玩得多，让新玩家能够顺畅地操作，同时仍然能提供良好的治疗。",
+          "spells": [
+            {
+              "spellId": 373270,
+              "spellName": "Lifebind"
+            },
+            {
+              "spellId": 367226,
+              "spellName": "Spiritbloom"
+            },
+            {
+              "spellId": 370960,
+              "spellName": "Emerald Communion"
+            },
+            {
+              "spellId": 371832,
+              "spellName": "Cycle of Life"
+            },
+            {
+              "spellId": 360995,
+              "spellName": "Verdant Embrace"
+            },
+            {
+              "spellId": 355936,
+              "spellName": "Dream Breath"
+            },
+            {
+              "spellId": 364343,
+              "spellName": "Echo"
+            },
+            {
+              "spellId": 366155,
+              "spellName": "Reversion"
+            },
+            {
+              "spellId": 1256577,
+              "spellName": "Merithra's Blessing"
+            }
+          ],
+          "fullNameZH": "恩护 唤魔师"
         }
       ]
     },
@@ -132,22 +245,31 @@
       "tier": "B",
       "children": [
         {
-          "fullNameEN": "Holy Priest",
+          "fullNameEN": "Discipline Priest",
           "roleClass": "priest",
-          "classSpec": "holy",
-          "dataChange": "up",
-          "desc": " Unfortunately for Holy Priest, received its fair share of changes leading up to Season 2, which will not cause a significant shift of gameplay of what you are already used to. They will maintain their decent DPS and HPS profiles, which output is not enough to rank them higher on the tierlist compared to the rest of the healing specs. In addition, they will continue to face the same limitations as in Season 1 - low mobility and insufficient mob control (just like Discipline Priest). Additionally, they are one of the few healing specializations lacking an interrupt spell, which makes their mob-control one of the weakest, compared to the rest of the healing specs. However, it is noteworthy that this specialization is considered one of the easier healing options due to its reactive healing capabilities, which are adept at addressing any form of incoming or sustained HPS challenges, complemented by robust spot-healing.",
-          "spells": [],
-          "fullNameZH": "神圣 牧师"
-        },
-        {
-          "fullNameEN": "Preservation Evoker",
-          "roleClass": "evoker",
-          "classSpec": "preservation",
-          "dataChange": "-",
-          "desc": "Preservation Evoker has received its fair share of changes, more specifically focusing on making Flameshaper builds a lot more competitive in PvE environment. They still have the shortest offensive and defensive ability range among all healers, which is a massive issue. Their performance, more specifically their damage and healing output, has been great, making it a great pick up with any group composition. Overall, they do not stand out as the best healing option for Mythic+ simply because of how hard it is to make them work in a pug environment and inability to compete with the top healing specs for pure output. The group awareness must be present for them to understand how your healing profile works so you can unlock your full potential.",
-          "spells": [],
-          "fullNameZH": "恩护 唤魔师"
+          "classSpec": "discipline",
+          "dataChange": "down",
+          "desc": "Discipline Priest received quite a few changes leading up to the Midnight expansion, with a major focus on pruning its core rotation and easing the requirement for good cooldown management. [终极苦修] is now a choice node with [真言术：障], while a changed [福音] and the removal of [恢复] are some of the major changes the spec has seen during the Beta period. Sadly the current healing output of Discipline Priest is not looking good, which is the primary reason for their poor placement. In addition, their mana management, might need some optimization in the long run.",
+          "descZH": "戒律牧师在《至暗之夜版本》即将到来之际也进行了不少改动，主要焦点是精简其核心循环，并降低对良好冷却时间管理的要求。[终极苦修]现在是一个与[真言术：障]竞争的选择节点，而修改后的[福音]和移除[恢复]是该专精在Beta测试期间经历的一些重大变化。遗憾的是，戒律牧师目前的治疗量看起来并不乐观，这是其排名不佳的主要原因。此外，他们的法力值管理从长远来看可能需要一些优化。",
+          "spells": [
+            {
+              "spellId": 421453,
+              "spellName": "Ultimate Penitence"
+            },
+            {
+              "spellId": 62618,
+              "spellName": "Power Word: Barrier"
+            },
+            {
+              "spellId": 472433,
+              "spellName": "Evangelism"
+            },
+            {
+              "spellId": 139,
+              "spellName": "Renew"
+            }
+          ],
+          "fullNameZH": "戒律 牧师"
         }
       ]
     }

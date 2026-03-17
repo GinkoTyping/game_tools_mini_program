@@ -1,70 +1,81 @@
 {
-  "updatedAt": "2025/03/23",
+  "updatedAt": "2026/03/15",
   "activityType": "MYTHIC",
   "role": "DPS",
-  "versionId": "11.1",
+  "versionId": "12.0",
   "data": [
     {
       "tier": "S",
       "children": [
         {
-          "fullNameEN": "Unholy Death Knight",
-          "roleClass": "death-knight",
-          "classSpec": "unholy",
-          "dataChange": "up",
-          "desc": "Unholy Death Knight will continue to be in phenomenal shape, retaining its signature strong AoE burst and a tremendous sustained damage profile. The spec offers better sustained damage off major cooldowns in Season 2 and just like its sibling spec, is incredibly durable in any environment. They are currently considered one of the highest, if not the highest (depending on the key) damage output classes in Mythic+, which is the primary factor for their S-tier placement.",
-          "spells": [],
-          "fullNameZH": "邪恶 死亡骑士"
+          "fullNameEN": "Demonology Warlock",
+          "roleClass": "warlock",
+          "classSpec": "demonology",
+          "dataChange": "-",
+          "desc": "Demonology Warlock got a major rework for the Midnight expansion, with a lot of quality-of-life updates. Especially within the utility department, thanks to [魔典：小鬼领主] and [魔典：邪能破坏者] getting an extra Interrupt or Dispel option, Demonology is looking very strong. Their core rotation has also changed slightly, with [内爆] now having a cooldown, forcing you to plan your cooldowns more carefully. Lastly, the Warlock utility toolkit is expanding with the introduction of a mass curse option - [虚弱灾厄] or [语言灾厄].",
+          "spells": [
+            {
+              "spellId": 1276452,
+              "spellName": "Grimoire: Imp Lord"
+            },
+            {
+              "spellId": 1276467,
+              "spellName": "Grimoire: Fel Ravager"
+            },
+            {
+              "spellId": 196277,
+              "spellName": "Implosion"
+            },
+            {
+              "spellId": 1271748,
+              "spellName": "Blight of Weakness"
+            },
+            {
+              "spellId": 1271802,
+              "spellName": "Blight of Tongues"
+            }
+          ],
+          "fullNameZH": "恶魔 术士",
+          "descZH": "恶魔术士在至暗之夜版本中进行了重大重做，有了很多生存技能更新。特别是在能力技方面，由于[魔典：小鬼领主]和[魔典：邪能破坏者]获得了额外的打断或驱散选项，恶魔术士看起来非常强大。他们的核心循环也略有变化，[内爆]现在有了冷却时间，迫使你更仔细地规划你的技能冷却。最后，术士的能力技引入了群体诅咒选项——[虚弱灾厄]或[语言灾厄]。"
         },
         {
           "fullNameEN": "Elemental Shaman",
           "roleClass": "shaman",
           "classSpec": "elemental",
-          "dataChange": "-",
-          "desc": "Elemental Shaman will continue to be an amazing Ranged option in Season 2 of TWW expansion. Incredible burst, amazing priority-target damage, great damage off-major CDs, and one of the best party-wide utilities, is there anything else to ask for? Overall we are happy with how the spec is playing and we are hopeful that it will remain that strong during the whole season.",
-          "spells": [],
-          "fullNameZH": "元素 萨满"
-        },
-        {
-          "fullNameEN": "Balance Druid",
-          "roleClass": "druid",
-          "classSpec": "balance",
-          "dataChange": "-",
-          "desc": "Balance Druid is currently currently performing as one of the best-rated options in Mythic+ so far into the Season 2. Although their single target has improved (thanks to the recent buffs), their thorough strength lies in the AoE damage profile, which is among the best in the game. The utility of Druid is heavily desired in a 5-man group due to its offensive and defensive powers. The only downside of the spec is their potential squishiness, having only one active \"major\" defensive cooldown, which can sometimes cause some trouble.",
-          "spells": [],
-          "fullNameZH": "平衡 德鲁伊"
-        },
-        {
-          "fullNameEN": "Fire Mage",
-          "roleClass": "mage",
-          "classSpec": "fire",
-          "dataChange": "down",
-          "desc": "Fire Mage is entering Season 2 as one of the best DPS specs in Mythic+. Their newly introduced tier-set is one of the best designed sets out there and offers an immense power-spike to the spec, allowing you to have higher [燃烧] uptime. Their single target and AoE output is phenomenal and is considered one of the best (depending on the key level, the higher it goes, the better this spec becomes). Just like every Mage spec so far, they have one of the best group-wide Mythic+ utilities.",
-          "spells": [
-            {
-              "spellId": 190319,
-              "spellName": "Combustion"
-            }
-          ],
-          "fullNameZH": "火焰 法师"
-        },
-        {
-          "fullNameEN": "Frost Mage",
-          "roleClass": "mage",
-          "classSpec": "frost",
           "dataChange": "up",
-          "desc": "Frost Mage received quite significant changes leading to the Season 2, with the most notable being less spamming of [冰枪术] in your rotation and a much beefier [暴风雪] (damage, radius and duration increased). The current power of Frost Mage ranks them among the best ranged options on our DPS tierlist, with great burst and sustained damage (especially on ST), as well as good priority-target cleave in it. In addition, Mage is one of the most most durable DPS specializations, and also have one of the best Mythic+ utilities from a DPS.",
+          "desc": "Elemental Shaman has received a major rework coming into the Midnight expansion, with some of the biggest changes being the removal of [冰怒], [大分裂的回响], [根深蒂固的元素], and a [升腾] nerf. Your rotation is now severely pruned with only Chain Lighting/Lighting Bolt (generator) and [地震术] / [元素冲击] as a spender, while using Tempests (if you go Stormbringer) or some passive damage if you decide to opt in for Farseer. The priority-target damage has been hit severely, as well as the survivability , due to a removal of [石肤图腾].",
           "spells": [
             {
-              "spellId": 30455,
-              "spellName": "Ice Lance"
+              "spellId": 210714,
+              "spellName": "Icefury"
             },
             {
-              "spellId": 190356,
-              "spellName": "Blizzard"
+              "spellId": 384087,
+              "spellName": "Echoes of Great Sundering"
+            },
+            {
+              "spellId": 378270,
+              "spellName": "Deeply Rooted Elements"
+            },
+            {
+              "spellId": 467263,
+              "spellName": "Ascendance"
+            },
+            {
+              "spellId": 61882,
+              "spellName": "Earthquake"
+            },
+            {
+              "spellId": 117014,
+              "spellName": "Elemental Blast"
+            },
+            {
+              "spellId": 383017,
+              "spellName": "Stoneskin Totem"
             }
           ],
-          "fullNameZH": "冰霜 法师"
+          "fullNameZH": "元素 萨满",
+          "descZH": "元素萨满在迈入至暗之夜版本时进行了重大重做，一些最大的变化包括移除了[冰怒]、[大分裂的回响]、[根深蒂固的元素]，以及削弱了[升腾]。你的输出循环现在被大幅简化，只剩下闪电链/闪电箭（资源生成技能）和[地震术]/[元素冲击]作为资源消耗技能，同时配合使用风暴（如果你选择风暴使者）或一些被动伤害（如果你选择图腾萨）。由于移除了[石肤图腾]，对优先目标的伤害以及生存能力都受到了严重打击。"
         }
       ]
     },
@@ -72,109 +83,260 @@
       "tier": "A+",
       "children": [
         {
-          "fullNameEN": "Demonology Warlock",
-          "roleClass": "warlock",
-          "classSpec": "demonology",
-          "dataChange": "up",
-          "desc": "Demonology Warlock received one of the most powerful tier sets across all DPS specs, which further supplements their already strong damage output. They will have better-sustained damage when running outside of cooldowns while having a stronger burst (compared to Season 1). In addition to this, the benefit to the additional [恶魔之核]s will allow them to have better mobility, which is always a welcoming change. In terms of utility, they will keep their unique Mythic+ package while being one of the most \"tanky\" Ranged DPS.",
-          "spells": [
-            {
-              "spellId": 267102,
-              "spellName": "Demonic Core"
-            }
-          ],
-          "fullNameZH": "恶魔 术士"
-        },
-        {
           "fullNameEN": "Feral Druid",
           "roleClass": "druid",
           "classSpec": "feral",
-          "dataChange": "-",
-          "desc": "Feral Druid has received its fair share of changes leading to the Season 2. The specialization will retain its signature burst-orientated profile while being significantly weaker during dry periods. Energy starvation, unfortunately, is still present in the spec, resulting in pockets of time of just \"waiting\" for more resources rather than actively engaging with your rotation. Their utility, just like any Druid spec, will retain its power, as [野性印记] is one of the strongest party-buffs in the group. Overall, we believe Feral Druid to be one of the strongest melees entering Season 2.",
+          "dataChange": "up",
+          "desc": "Feral Druid has received a major rework going into the Midnight expansion, with much of it focused on streamlining its rotation by removing some features that were difficult to play around, by lowering the snapshotting windows and the removal of the [血腥爪击], [野蛮挥砍] and [激变蜂群] talents. Although the playstyle is much easier in Midnight, some features from your core rotation still exist such as focusing on applying bleeds via [斜掠] and [原始之怒] while using the free combo-points for extra [凶猛撕咬]s. They have added several cool new talents such as [怒意狂乱] and [啃噬], while keeping their utility toolkit unchanged. Overall, you can still expect Feral to have that nice bursty-playstyle with significantly less energy issues than before!",
           "spells": [
             {
-              "spellId": 1126,
-              "spellName": "Mark of the Wild"
-            }
-          ],
-          "fullNameZH": "野性 德鲁伊"
-        },
-        {
-          "fullNameEN": "Assassination Rogue",
-          "roleClass": "rogue",
-          "classSpec": "assassination",
-          "dataChange": "up",
-          "desc": "Assassination Rogue received no significant changes leading to the Season 2. Also, their rotation and spec-specific talents remain mostly unchanged so far. Nevertheless, their AoE outputs remain their strongest asset in Mythic+, especially considering the great priority-target damage while doing the AoE. Single-target is the biggest disadvantage, and although it was recently buffed, they are still behind most of the specs in that department. Overall, we still believe they will remain a solid melee contender in Season 2.",
-          "spells": [],
-          "fullNameZH": "刺杀 盗贼"
-        },
-        {
-          "fullNameEN": "Retribution Paladin",
-          "roleClass": "paladin",
-          "classSpec": "retribution",
-          "dataChange": "up",
-          "desc": "Retribution Paladin's current AoE burst damage output will remain strong (just like last season), while retaining their signature group-wide utilities for a DPS, which is a valuable asset for anyone who wants to play this spec. Although the specialization is considered way above average in performance, it lacks the output and the priority-target damage to compete for the highest ranks. Due to having short offensive cooldowns and being incredibly bursty, they are likely going to be one of the best specs for low-level keys. Keep in mind that they also possess excellent defensive options in case of danger, and are considered one of the easiest specs to play in the current iteration of World of Warcraft.",
-          "spells": [],
-          "fullNameZH": "惩戒 圣骑士"
-        },
-        {
-          "fullNameEN": "Devastation Evoker",
-          "roleClass": "evoker",
-          "classSpec": "devastation",
-          "dataChange": "up",
-          "desc": "The performance of Devastation Evoker have received several adjustments, more specifically being able to play both builds (Flameshaper/Scalecommander), allowing you for more flexible gameplay. In addition, the tier set will offer a major power to the Devastation Evoker, making it one of the better ones out there. The spec has retained its unique Evoker utility, while keeping its damage profile will \"bursty\", which will help your performance across different key levels (with a much better-sustained damage profile). Unfortunately, the output is not there to compete with the top-tier specs, but has been rapidly improving within the weeks of PTR testing leading to Season 2.",
-          "spells": [],
-          "fullNameZH": "湮灭 唤魔师"
-        },
-        {
-          "fullNameEN": "Beast Mastery Hunter",
-          "roleClass": "hunter",
-          "classSpec": "beast-mastery",
-          "dataChange": "-",
-          "desc": "Beast Mastery Hunter is one of the specs that have seen a lot of changes leading up to Season 2. Sadly (or not?) Beast Mastery Hunter will retain a similar playstyle, which will disappoint some and delight others. After their most recent tuning, the specialization has \"fallen from the top\", having their single-target & AoE damage outputs (both sustained and burst) significantly nerfed. At last, [狂野怒火] uptime has also increased (thanks to our tier-set) which brings you in \"minor cooldowns\" more frequently. A massively improved version of the spec compared to Season 1 and with that, they are climbing the rankings!",
-          "spells": [
-            {
-              "spellId": 19574,
-              "spellName": "Bestial Wrath"
-            }
-          ],
-          "fullNameZH": "野兽掌控 猎人"
-        },
-        {
-          "fullNameEN": "Shadow Priest",
-          "roleClass": "priest",
-          "classSpec": "shadow",
-          "dataChange": "down",
-          "desc": "Shadow Priest received no significant changes leading to Season 2. Their damage profile is quite rampy which excels much better when targets live longer due to their major cooldown - [虚空形态] being such a long duration. When the key level is higher both AoE and single-target/priority-target damage are great, however when things do not last long, it is a dreadful experience (especially when you enter a pack without [暗影冲撞]). Their utility and defensiveness remain strong, which is positive for the spec as both factors are considered valuable. Overall, we expect to be extremely good on the higher level keys, especially if magical orientated meta persists, and likely move rankings depending on the key level. Further improvement can be achieved if neither of the Priest healers end up being S-tier, due to their overlapping Mythic+ utility.",
-          "spells": [
-            {
-              "spellId": 228264,
-              "spellName": "Voidform"
+              "spellId": 319439,
+              "spellName": "Bloodtalons"
             },
             {
-              "spellId": 205385,
-              "spellName": "Shadow Crash"
+              "spellId": 202028,
+              "spellName": "Brutal Slash"
+            },
+            {
+              "spellId": 391888,
+              "spellName": "Adaptive Swarm"
+            },
+            {
+              "spellId": 1822,
+              "spellName": "Rake"
+            },
+            {
+              "spellId": 285381,
+              "spellName": "Primal Wrath"
+            },
+            {
+              "spellId": 22568,
+              "spellName": "Ferocious Bite"
+            },
+            {
+              "spellId": 1243807,
+              "spellName": "Frantic Frenzy"
+            },
+            {
+              "spellId": 1244258,
+              "spellName": "Chomp"
             }
           ],
-          "fullNameZH": "暗影 牧师"
+          "fullNameZH": "野性 德鲁伊",
+          "descZH": "野性德鲁伊在进入至暗之夜版本时进行了重大重做，其中大部分改动都侧重于通过移除一些难以应对的机制、缩短快照时间窗口以及移除[血腥爪击]、[野蛮挥砍]和[激变蜂群]天赋来简化其输出循环。尽管在Midnight中玩法变得更加容易，但你核心循环中的一些特色仍然存在，例如专注于通过[斜掠]和[原始之怒]施加流血效果，同时使用免费连击点进行额外的[凶猛撕咬]。他们添加了一些很棒的新天赋，比如[怒意狂乱]和[啃噬]，同时保持了他们的能力技不变。总的来说，你仍然可以期待野性德鲁伊拥有那种爽快的爆发式玩法，并且能量问题比之前显著减少！"
         },
         {
-          "fullNameEN": "Enhancement Shaman",
-          "roleClass": "shaman",
-          "classSpec": "enhancement",
+          "fullNameEN": "Devourer Demon Hunter",
+          "roleClass": "demon-hunter",
+          "classSpec": "devourer",
+          "dataChange": "down",
+          "desc": "Devourer Demon Hunter is the newest (semi) Ranged DPS added in the Midnight expansion. The spec has several core abilities like [虚空射线] as a spender, [收割], [吞噬], [灵魂献祭] & [虚空之刃] as a generator. The playstyle is focused on building Fury, spending it and collecting enough souls to activate their major cooldown - [[虚空变形]], during which all damage is massively increased. Their major cooldowns also introduces a mini game - once you collect \"30\" souls, you will be able to cast [坍缩之星], which is the culmination of your [[虚空变形]]. They of course have similar utility as Havoc as well, but being ranged gives them a bit of an edge in Mythic+.",
+          "spells": [
+            {
+              "spellId": 473728,
+              "spellName": "Void Ray"
+            },
+            {
+              "spellId": 1226019,
+              "spellName": "Reap"
+            },
+            {
+              "spellId": 473662,
+              "spellName": "Consume"
+            },
+            {
+              "spellId": 1241937,
+              "spellName": "Soul Immolation"
+            },
+            {
+              "spellId": 1245412,
+              "spellName": "Voidblade"
+            },
+            {
+              "spellId": 471306,
+              "spellName": "Void Metamorphosis"
+            },
+            {
+              "spellId": 1221167,
+              "spellName": "Collapsing Star"
+            },
+            {
+              "spellId": 471306,
+              "spellName": "Void Metamorphosis"
+            }
+          ],
+          "fullNameZH": "undefined 恶魔猎手",
+          "descZH": "吞噬者恶魔猎手是至暗之夜版本中新增的最新（半）远程DPS专精。该专精拥有几个核心技能，如作为资源消耗技能的[虚空射线]，以及作为资源生成技能的[收割]、[吞噬]、[灵魂献祭]和[虚空之刃]。其玩法侧重于积攒怒气、消耗怒气并收集足够的灵魂来激活其主要冷却技能——[[虚空变形]]，在此状态下所有伤害都会大幅提高。他们的主要冷却技能还引入了一个小游戏——一旦你收集了“30”个灵魂，你将能够施放[坍缩之星]，这是你[[虚空变形]]的巅峰。当然，他们也有与浩劫相似的效用技能，但作为远程职业，他们在史诗钥石地下城中具有些许优势。"
+        },
+        {
+          "fullNameEN": "Arcane Mage",
+          "roleClass": "mage",
+          "classSpec": "arcane",
           "dataChange": "-",
-          "desc": "Enhancement Shaman received a total rework of some of their talents, which resulted in a playstyle difference. Fortunately for the spec, after all of the nerfs, they are still performing well. Great sustain damage, short offensive cooldowns, insane funnel damage, there isn't anything bad to be said about the spec. Unfortunately, after 4 consecutive rounds of nerfs, we believe the spec is still considered above-average performer, but nowhere near as dominant as they were in Season 1.",
-          "spells": [],
-          "fullNameZH": "增强 萨满"
+          "desc": "Arcane Mage received quite a few changes leading up to the Midnight expansion, with some of the most notable being a complete [唤醒] rework (no longer used as an offensive CD), better minor cooldowns (2x [大法师之触]) and a brand new talent to replace the \"melee mage\", (due to [魔爆术]) - [奥术脉冲]. At last, playing around [奥术祥和] will definitely be the new \"mini-game\" which can be a ton of fun.",
+          "spells": [
+            {
+              "spellId": 12051,
+              "spellName": "Evocation"
+            },
+            {
+              "spellId": 321507,
+              "spellName": "Touch of the Magi"
+            },
+            {
+              "spellId": 1449,
+              "spellName": "Arcane Explosion"
+            },
+            {
+              "spellId": 260364,
+              "spellName": "Arcane Pulse"
+            },
+            {
+              "spellId": 384452,
+              "spellName": "Arcane Salvo"
+            }
+          ],
+          "fullNameZH": "奥术 法师",
+          "descZH": "奥术法师在至暗之夜版本前进行了相当多的改动，其中最显著的一些包括对[唤醒]的完全重做（不再用作进攻性冷却技能）、更好的小冷却技能（2次[大法师之触]）以及一个全新的天赋来替代“近战法师”（由于[魔爆术]）——[奥术脉冲]。最后，围绕[奥术祥和]进行操作无疑将成为新的“小游戏”，这会带来很多乐趣。"
         },
         {
-          "fullNameEN": "Frost Death Knight",
-          "roleClass": "death-knight",
+          "fullNameEN": "Balance Druid",
+          "roleClass": "druid",
+          "classSpec": "balance",
+          "dataChange": "up",
+          "desc": "Balance Druid received its fair share of changes leading up to the Midnight expansion, with the most prominent change being its [日月之蚀] rework to an active button which was previously a passive. You can expect the core rotation to stay similar to what it was in TWW, but you will have to be much more conservative with your [日月之蚀] expenditure, as it will require some cooldown management. Their utility toolkit remains mostly the same, and so will their defensive options (unfortunately). Yes, they are still exceptional at mass AoE, even after their most recent Mastery change, which lowers the ramp-up playstyle and helps in the lower-level keys where mobs die too quickly.",
+          "spells": [
+            {
+              "spellId": 79577,
+              "spellName": "Eclipse"
+            }
+          ],
+          "fullNameZH": "平衡 德鲁伊",
+          "descZH": "平衡德鲁伊在至暗之夜版本前也进行了相应的改动，其中最突出的变化是[日月之蚀]被重做为一个主动技能按钮，而以前是被动效果。你可以预期核心循环将与TWW版本保持相似，但你必须更加谨慎地使用你的[日月之蚀]，因为它将需要一些冷却时间管理。他们的能力技大体保持不变，他们的防御性选择也是如此（不幸的是）。是的，即使在最近的精通改动之后，他们在大规模AoE方面仍然表现出色，该改动降低了启动时间，并有助于在小怪死得太快的低层钥石地下城中发挥作用。"
+        },
+        {
+          "fullNameEN": "Frost Mage",
+          "roleClass": "mage",
           "classSpec": "frost",
           "dataChange": "up",
-          "desc": "Frost Death Knight will unfortunately be a mere shadow of what they were in Season 1. While they retain their signature burst (both in AoE and single target + priority-target damage), their overall damage output is considered moderate, which is the main reason for their placement. Although durability has been nerfed during Season 1, they are also one of the most durable DPS classes in the game (which is a huge advantage). At last, their sibling spec is currently performing much better, leaving for even less desire picking up Frost DK.> ",
-          "spells": [],
-          "fullNameZH": "冰霜 死亡骑士"
+          "desc": "Frost Mage received a complete rework for the Midnight expansion, and the new Frost has nothing to do with how the spec used to play before. The main goal behind the changes is managing Freezing Stacks, which, upon \"popping them\", you do damage. [彗星风暴] is now passive, castable after [冰霜射线], which is now your major cooldown following [冰冷血脉] removal. [寒冰宝珠] got a complete rework, [冰川尖刺] is now baked inside [寒冰箭] (it upgrades to GS once you generate 5x [冰刺]s) and much more. Sidenote, yes, as every other Mage spec, Frost is no exception to defensive toolkit nerfs.",
+          "spells": [
+            {
+              "spellId": 1247777,
+              "spellName": "Comet Storm"
+            },
+            {
+              "spellId": 205021,
+              "spellName": "Ray of Frost"
+            },
+            {
+              "spellId": 12472,
+              "spellName": "Icy Veins"
+            },
+            {
+              "spellId": 84714,
+              "spellName": "Frozen Orb"
+            },
+            {
+              "spellId": 199786,
+              "spellName": "Glacial Spike"
+            },
+            {
+              "spellId": 116,
+              "spellName": "Frostbolt"
+            },
+            {
+              "spellId": 109315,
+              "spellName": "Icicle"
+            }
+          ],
+          "fullNameZH": "冰霜 法师",
+          "descZH": "冰霜法师在至暗之夜版本中进行了彻底的重做，新的冰法与这个专精以往的玩法毫无关系。这些改动背后的主要目标是管理“冰冻”层数，一旦“触发”它们，你就会造成伤害。[彗星风暴]现在是被动技能，可在[冰霜射线]后施放，而[冰霜射线]是移除[冰冷血脉]后你的主要冷却技能。[寒冰宝珠]进行了彻底重做，[冰川尖刺]现在内置于[寒冰箭]中（一旦你产生5个[冰刺]，它就会升级为GS），还有很多改动。旁注，是的，与其他所有法师专精一样，冰法的防御工具包也未能幸免于削弱。"
+        },
+        {
+          "fullNameEN": "Fury Warrior",
+          "roleClass": "warrior",
+          "classSpec": "fury",
+          "dataChange": "up",
+          "desc": "Fury Warrior received a fair of changes going into Midnight. The core rotation of Fury will remain quite similar to what players were used to in TWW, but this time around they are getting one of the biggest utility-package buffs any class has seen so far: An extra interrupt thanks to [破天投枪], an uncapped AoE stop - [破胆怒吼] (previously target-capped), extra movement speed for allies once you pop [刺耳怒吼], and much more. Unfortunately, some of their issues persist in Midnight, and that is the target cap talks, although an attempt has been made recently by increasing [奥丁之怒] to a 8-target cap instead.",
+          "spells": [
+            {
+              "spellId": 1271948,
+              "spellName": "Javelineer"
+            },
+            {
+              "spellId": 5246,
+              "spellName": "Intimidating Shout"
+            },
+            {
+              "spellId": 12323,
+              "spellName": "Piercing Howl"
+            },
+            {
+              "spellId": 385059,
+              "spellName": "Odyn's Fury"
+            }
+          ],
+          "fullNameZH": "狂怒 战士",
+          "descZH": "狂怒战士在进入Midnight时获得了一系列合理的改动。狂怒的核心循环将与玩家在TWW中习惯的非常相似，但这一次，他们获得了迄今为止所有职业中最大的效用包增益之一：得益于[破天投枪]获得了一次额外的打断技能，一个无目标上限的AoE打断——[破胆怒吼]（以前有目标上限），一旦你施放[刺耳怒吼]就能为盟友提供额外的移动速度等等。不幸的是，他们的一些问题在Midnight中依然存在，那就是目标上限问题，尽管最近已经尝试将[奥丁之怒]的目标上限提高到了8个。"
+        },
+        {
+          "fullNameEN": "Havoc Demon Hunter",
+          "roleClass": "demon-hunter",
+          "classSpec": "havoc",
+          "dataChange": "up",
+          "desc": "Havoc Demon Hunter received its fair share of changes, most notably trimming some spells ( [烈焰咒符] / [怨念咒符], which shortens your opener), adding great quality-of-life updates such as [战刃风暴] being a passive, all while keeping its core rotation similar. On top of this, Havoc will now benefit from having 2x charges of [疾影] which benefits from the built-in reworked [虚空行走] and [恶魔笼头]. You can expect this spec to be just as much fun, while having great damage profile and even better defensive options!",
+          "spells": [
+            {
+              "spellId": 204596,
+              "spellName": "Sigil of Flame"
+            },
+            {
+              "spellId": 390163,
+              "spellName": "Sigil of Spite"
+            },
+            {
+              "spellId": 342817,
+              "spellName": "Glaive Tempest"
+            },
+            {
+              "spellId": 198589,
+              "spellName": "Blur"
+            },
+            {
+              "spellId": 196555,
+              "spellName": "Netherwalk"
+            },
+            {
+              "spellId": 1266329,
+              "spellName": "Demon Muzzle"
+            }
+          ],
+          "fullNameZH": "浩劫 恶魔猎手",
+          "descZH": "浩劫恶魔猎手也进行了相应的改动，最显著的是精简了一些法术（[烈焰咒符]/[怨念咒符]，这缩短了你的起手式），并添加了很棒的生活质量更新，例如[战刃风暴]变为被动技能，同时保持了其核心循环的相似性。除此之外，浩劫现在将受益于拥有两层充能的[疾影]，这得益于内置的重做后的[虚空行走]和[恶魔笼头]。你可以期待这个专精同样充满乐趣，同时拥有出色的伤害构成和更好的防御选择！"
+        },
+        {
+          "fullNameEN": "Unholy Death Knight",
+          "roleClass": "death-knight",
+          "classSpec": "unholy",
+          "dataChange": "down",
+          "desc": "Unholy Death Knight has received a major rework coming into Midnight expansion. This is one of the few specs that did a complete 180. Some of the highlights being: No [溃烂之伤], you now have Lesser Ghouls, [枯萎凋零] is no longer a must, you have smart disease spreading, and a brand new minor cooldown - [腐化]. Honestly, a lot has changed rotationally for Unholy DK. One thing is for sure: this is the biggest rework they have received in the past decade, not just rotationally but also visually.",
+          "spells": [
+            {
+              "spellId": 197147,
+              "spellName": "Festering Wound"
+            },
+            {
+              "spellId": 43265,
+              "spellName": "Death and Decay"
+            },
+            {
+              "spellId": 1247378,
+              "spellName": "Putrefy"
+            }
+          ],
+          "fullNameZH": "邪恶 死亡骑士",
+          "descZH": "邪恶死亡骑士在进入至暗之夜版本时进行了重大重做。这是少数几个进行了180度彻底改变的专精之一。一些亮点包括：没有[溃烂之伤]，你现在有次级食尸鬼，[枯萎凋零]不再是必须的，你拥有了智能疾病传播，以及一个全新的小冷却技能——[腐化]。老实说，对于邪DK来说，循环方面变化很大。有一件事是肯定的：这是他们过去十年中最大的一次重做，不仅是玩法循环，视觉效果也是如此。"
         }
       ]
     },
@@ -182,110 +344,248 @@
       "tier": "A",
       "children": [
         {
-          "fullNameEN": "Subtlety Rogue",
-          "roleClass": "rogue",
-          "classSpec": "subtlety",
-          "dataChange": "-",
-          "desc": "Aside from the impressive Rogue's utility package, Subtlety Rogue has one of the best bursts in the current Mythic+ meta, which makes it extremely competitive on all key levels. The strong AoE damage profile, paired with great priority-target damage while doing so is their biggest asset. In addition, their single-target is also considered above average. Utility and durability are largely unchanged, but we all know how strong defensively rogues are!",
-          "spells": [],
-          "fullNameZH": "敏锐 盗贼"
-        },
-        {
-          "fullNameEN": "Marksmanship Hunter",
-          "roleClass": "hunter",
-          "classSpec": "marksmanship",
-          "dataChange": "up",
-          "desc": "Marksmanship Hunter received a complete rework and is now in a much better state compared to before. With versatile builds, you can choose what exactly you would like your damage profile to be (going for mostly AoE talents? better single-target or 2-target cleave? etc.) They will retain their burst-orientated profile (thankfully!) which is a prominent feature of MM for a long time now and is incredibly useful against all key levels. Their single-target has improved compared to Season 1 (with Mythic+ builds), which is a welcoming change. Overall, the spec will have great damage when dealing damage without any cooldowns, while being one of the few \"target-cap ranged specs\", which can be punishing at times.",
-          "spells": [],
-          "fullNameZH": "射击 猎人"
-        },
-        {
-          "fullNameEN": "Outlaw Rogue",
-          "roleClass": "rogue",
-          "classSpec": "outlaw",
-          "dataChange": "up",
-          "desc": "Outlaw Rogue did not receive any major changes, but luckily for them, their tier-set is amazing. The spec will retain their great consistent damage, but unfortunately will still be target-capped. Their single-target will remain great, as well as their priority-target damage while doing AoE. The lack of burst is another issue the spec suffers from, as that can be quite offsetting on the lower level keys where burst is important to capitalize on the lower health mobs. This issue is completely neutralized on the higher level keys where sustained damage is just as important, allowing them to \"catch up\" in overall damage against most classes. Their defensive profile will remain unchanged, and so will their amazing group-wide utility and mob control.",
-          "spells": [],
-          "fullNameZH": "狂徒 盗贼"
-        },
-        {
-          "fullNameEN": "Havoc Demon Hunter",
-          "roleClass": "demon-hunter",
-          "classSpec": "havoc",
+          "fullNameEN": "Devastation Evoker",
+          "roleClass": "evoker",
+          "classSpec": "devastation",
           "dataChange": "down",
-          "desc": "Havoc Demon Hunter has recently seen several positive damage adjustments for the upcoming Mythic+ season. Their sustained damage (outside of cooldowns) has significantly improved, which was previously one of their weakest points. In addition, their single-target and priority-target damage has skyrocketed, considerably improving their performance compared to the last season. Unfortunately, they were hit with a few rounds of nerfs just a few days before the season, and with this in mind, their rankings have dropped a few slots.",
-          "spells": [],
-          "fullNameZH": "浩劫 恶魔猎手"
+          "desc": "Devastation Evoker received its fair share of changes leading up to the Midnight expansion. Both of their Hero Talents received major reworks, with Flameshaper winning the rework race due to the [焚身] being replaced by [吞噬烈焰]. Their damage profile will continue to be bursty and extremely strong in an AoE environment. Apart from some newly added cool talents ( [碧蓝横扫] being my personal favorite), Devastation Evoker lost some defensive options and will be slightly more squishy in Midnight.",
+          "spells": [
+            {
+              "spellId": 443328,
+              "spellName": "Engulf"
+            },
+            {
+              "spellId": 444088,
+              "spellName": "Consume Flame"
+            },
+            {
+              "spellId": 1265867,
+              "spellName": "Azure Sweep"
+            }
+          ],
+          "fullNameZH": "湮灭 唤魔师",
+          "descZH": "湮灭唤魔师在至暗之夜版本前也进行了一系列调整。他们的两大英雄天赋都进行了重大重做，其中‘火焰塑形者’因为[焚身]被[吞噬烈焰]替换而成为重做的赢家。他们的伤害构成将仍然是爆发性的，并且在AoE环境中极其强大。除了一些新添加的酷炫天赋（[碧蓝横扫]是我个人的最爱），湮灭唤魔师失去了一些防御选项，在Midnight中会显得稍微脆弱一些。"
+        },
+        {
+          "fullNameEN": "Enhancement Shaman",
+          "roleClass": "shaman",
+          "classSpec": "enhancement",
+          "dataChange": "up",
+          "desc": "Enhancement Shaman received a complete rework with the Midnight expansion, with some of the highlights focusing on pruning a fair amount of their rotational abilities. Their button-bloat is a thing of the past now, as it no longer feels like you actually need to have a PhD to fully optimize its rotation. The main focus of the rotation is put upon [毁灭闪电], which your Apex talents boosts further. Their damage profile remains a good mix of doing priority-target damage during AoE, as well as having funnel damage on demand.",
+          "spells": [
+            {
+              "spellId": 187874,
+              "spellName": "Crash Lightning"
+            }
+          ],
+          "fullNameZH": "增强 萨满",
+          "descZH": "增强萨满在至暗之夜版本中进行了彻底的重做，其中的一些亮点集中在精简了大量循环技能上。他们的技能臃肿已成为过去，现在不再感觉需要博士学位才能完全优化其循环。循环的主要焦点放在了[毁灭闪电]上，你的顶点天赋会进一步强化它。他们的伤害构成仍然是AoE期间对优先目标造成伤害以及按需进行集中伤害的良好结合。"
+        },
+        {
+          "fullNameEN": "Survival Hunter",
+          "roleClass": "hunter",
+          "classSpec": "survival",
+          "dataChange": "up",
+          "desc": "Survival Hunter received a major rework with the Midnight expansion, with some of the highlights being: Duel-wield options, Physical ( [爆裂火铳]) and Fire ( [燎焰沥青]) damage, major pruning of their core rotation (Example: [屠戮] removed, [协同进攻] and [锐矛之锋] now being one talent - [狩魂一击]). Their core rotation has become significantly easier, all while keeping their great sustained-damage profile. Lastly, every Hunter specialization will become slightly more durable in Midnight, together with better utility options, like the new [猎人印记] group buff and [牺牲咆哮] as a new external defensive option.",
+          "spells": [
+            {
+              "spellId": 1261193,
+              "spellName": "Boomstick"
+            },
+            {
+              "spellId": 1251592,
+              "spellName": "Flamefang Pitch"
+            },
+            {
+              "spellId": 212436,
+              "spellName": "Butchery"
+            },
+            {
+              "spellId": 360952,
+              "spellName": "Coordinated Assault"
+            },
+            {
+              "spellId": 360966,
+              "spellName": "Spearhead"
+            },
+            {
+              "spellId": 1250646,
+              "spellName": "Takedown"
+            },
+            {
+              "spellId": 257284,
+              "spellName": "Hunter's Mark"
+            },
+            {
+              "spellId": 53480,
+              "spellName": "Roar of Sacrifice"
+            }
+          ],
+          "fullNameZH": "生存 猎人",
+          "descZH": "生存猎人在至暗之夜版本中进行了重大重做，其中的一些亮点包括：双持武器的选项，物理（[爆裂火铳]）和火焰（[燎焰沥青]）伤害，以及核心循环的大幅精简（例如：[屠戮]被移除，[协同进攻]和[锐矛之锋]现在合并为一个天赋——[狩魂一击]）。他们的核心循环变得明显更简单，同时保持了其出色的持续伤害能力。最后，在Midnight中，每个猎人专精都会变得稍微更耐打一些，同时还有更好的效用选择，比如新的[猎人印记]团队增益和作为新外部防御选项的[牺牲咆哮]。"
+        },
+        {
+          "fullNameEN": "Fire Mage",
+          "roleClass": "mage",
+          "classSpec": "fire",
+          "dataChange": "down",
+          "desc": "Fire Mage received a major rework for the Midnight expansion with some of the highlights being: [太阳之王的祝福], [过热高温] [变易幻能] and [不死鸟之焰] removed, [精通：点燃] changes, and the damage instead shifted towards beefier [烈焰风暴] and [炎爆术]. Now that [[燃烧]] is a flat 1-minute cooldown (thanks to [薪火] flat CDR), the majority of your damage is baked into that 1-minute, which likely makes Fire the most CD-reliant spec in the game. Outside of CDs, their damage is ... quite lackluster. Although it's still early, this makes me believe that on the high level of keys, having [[燃烧]] on every pull will be amazing, but also required. At last, yes, as every single Mage spec, Fire defensives are also nerfed (totally deserved).",
+          "spells": [
+            {
+              "spellId": 383886,
+              "spellName": "Sun King's Blessing"
+            },
+            {
+              "spellId": 383860,
+              "spellName": "Hyperthermia"
+            },
+            {
+              "spellId": 382440,
+              "spellName": "Shifting Power"
+            },
+            {
+              "spellId": 257541,
+              "spellName": "Phoenix Flames"
+            },
+            {
+              "spellId": 12846,
+              "spellName": "Mastery: Ignite"
+            },
+            {
+              "spellId": 2120,
+              "spellName": "Flamestrike"
+            },
+            {
+              "spellId": 11366,
+              "spellName": "Pyroblast"
+            },
+            {
+              "spellId": 190319,
+              "spellName": "Combustion"
+            },
+            {
+              "spellId": 155148,
+              "spellName": "Kindling"
+            },
+            {
+              "spellId": 190319,
+              "spellName": "Combustion"
+            }
+          ],
+          "fullNameZH": "火焰 法师",
+          "descZH": "火焰法师在至暗之夜版本中进行了重大重做，其中的一些亮点包括：移除了[太阳之王的祝福]、[过热高温]、[变易幻能]和[不死鸟之焰]，更改了[精通：点燃]，伤害转而偏向更强力的[烈焰风暴]和[炎爆术]。现在[[燃烧]]是一个固定的1分钟冷却技能（得益于[薪火]的固定冷却缩减），你的大部分伤害都被打包进了那1分钟里，这可能使火法成为游戏中最依赖冷却技能的专精。在冷却技能之外，他们的伤害……相当平庸。虽然现在下结论还为时过早，但这让我相信在高等级钥石地下城中，每一波小怪都有[[燃烧]]会很棒，但也将是必须的。最后，是的，就像所有法师专精一样，火焰的防御能力也被削弱了（完全应得的）。"
+        },
+        {
+          "fullNameEN": "Augmentation Evoker",
+          "roleClass": "evoker",
+          "classSpec": "augmentation",
+          "dataChange": "down",
+          "desc": "Augmentation Evoker received quite a few changes leading up to the Midnight expansion, with the most significant being the introduction of \"arguably\" the best Apex talents among all DPS specs. Overall, you can expect your core rotation to remain fairly similar, with several defensive options being removed from you, such as: [双生护卫] absorb shield and [新生光焰] not being a separate defensive option. Their ability to provide more damage to their allies is at a record high, compared to the previous expansion.",
+          "spells": [
+            {
+              "spellId": 370888,
+              "spellName": "Twin Guardian"
+            },
+            {
+              "spellId": 374348,
+              "spellName": "Renewing Blaze"
+            }
+          ],
+          "fullNameZH": "增辉 唤魔师",
+          "descZH": "增辉唤魔师在至暗之夜版本前进行了不少改动，其中最重要的是引入了“可以说是”所有DPS专精中最好的顶点天赋。总的来说，你可以预期你的核心循环将保持相当的相似性，同时有几个防御选项从你身上移除，例如：[双生护卫]的吸收护盾，以及[新生光焰]不再是一个单独的防御选项。与前一个扩展相比，他们为盟友提供更多伤害的能力达到了创纪录的高度。"
+        },
+        {
+          "fullNameEN": "Retribution Paladin",
+          "roleClass": "paladin",
+          "classSpec": "retribution",
+          "dataChange": "up",
+          "desc": "Retribution Paladin received its fair share of changes leading up to the Midnight expansion, with some of the highlights being several quality-of-life improvements in the form of talents that help the flow of their core rotation better. A redistribution of some of the power previously tied to Hero Talents has shifted into its single-target ( [最终审判]) and AoE ( [神圣风暴]) spenders instead, and some of their offensive cooldowns were reworked ( [神圣之锤] is now only for Templar, [处决宣判] is combined with [最终清算]). Overall the spec feels slightly more engaging in Midnight, and although an attempt was made to focus and work on their damage profile; their priority-target issues still exist.",
+          "spells": [
+            {
+              "spellId": 383327,
+              "spellName": "Final Verdict"
+            },
+            {
+              "spellId": 53385,
+              "spellName": "Divine Storm"
+            },
+            {
+              "spellId": 198137,
+              "spellName": "Divine Hammer"
+            },
+            {
+              "spellId": 343527,
+              "spellName": "Execution Sentence"
+            },
+            {
+              "spellId": 343721,
+              "spellName": "Final Reckoning"
+            }
+          ],
+          "fullNameZH": "惩戒 圣骑士",
+          "descZH": "惩戒圣骑士在至暗之夜版本前也进行了相应的改动，其中的一些亮点包括以天赋形式出现的几项生活质量改进，有助于其核心循环更顺畅地运行。一些先前与英雄天赋绑定的力量被重新分配到其单体（[最终审判]）和AoE（[神圣风暴]）资源消耗技能上，并且他们的一些进攻冷却技能也进行了重做（[神圣之锤]现在仅限‘圣殿骑士’使用，[处决宣判]与[最终清算]合并）。总体而言，这个专精在Midnight中感觉更具吸引力一些，尽管他们试图专注并优化其伤害构成，但他们对优先目标的问题仍然存在。"
+        },
+        {
+          "fullNameEN": "Frost Death Knight",
+          "roleClass": "death-knight",
+          "classSpec": "frost",
+          "dataChange": "up",
+          "desc": "Frost Death Knight received minor changes for the Midnight expansion, with the most notable one being their Apex talents. The core rotation of the spec will remain similar to the version of TWW, with the only difference being the addition of [冰霜巨龙之怒] It is now a must-pick since it interacts with your Apex talents. Frost DK will continue to excel at high burst damage, having high durability, and retain its unique utility toolkit.",
+          "spells": [
+            {
+              "spellId": 279302,
+              "spellName": "Frostwyrm's Fury"
+            }
+          ],
+          "fullNameZH": "冰霜 死亡骑士",
+          "descZH": "冰霜死亡骑士在至暗之夜版本中进行了微小的改动，其中最值得注意的是他们的顶点天赋。该专精的核心循环将与TWW版本保持相似，唯一的不同是加入了[冰霜巨龙之怒]。由于它与你的顶点天赋有互动，现在它成了一个必选天赋。冰霜DK将继续在高爆发伤害、高耐久度方面表现出色，并保留其独特的能力技。"
         },
         {
           "fullNameEN": "Destruction Warlock",
           "roleClass": "warlock",
           "classSpec": "destruction",
-          "dataChange": "down",
-          "desc": "Destruction [术士] is starting the Season 2 with a good performance, leading to one of the better Ranged DPS specs so far. Incredible mass AoE damage, decent single-target, and most importantly great sustained damage, are the primary factors why we consider this spec good. In addition, the playstyle went through some needed changes which slightly shifts the rotation (especially if you have talented [暴乱]/Demonfire Infusion builds). At last, every [术士] spec is quite durable and has a great party-wide utility, which fits perfectly for Mythic+.",
+          "dataChange": "-",
+          "desc": "Destruction Warlock received minor changes leading up to the Midnight expansion, with the highlight of it being their newly introduced Apex Talents. Their core rotation will remain quite similar to the TWW version, with a few quality-of-life features like the [咆哮烈焰] rework which allows for much easier maintenance of [献祭] and [枯萎] once [大灾变] is down. Their AoE performance looks good, but unfortunately they seem to struggle whenever the fight is purely single-target.",
           "spells": [
             {
-              "spellId": 387506,
-              "spellName": "Mayhem"
+              "spellId": 205184,
+              "spellName": "Roaring Blaze"
             },
             {
-              "spellId": 462481,
-              "spellName": "Warlock"
-            }
-          ],
-          "fullNameZH": "毁灭 术士"
-        },
-        {
-          "fullNameEN": "Arcane Mage",
-          "roleClass": "mage",
-          "classSpec": "arcane",
-          "dataChange": "up",
-          "desc": "Arcane Mage has received its fair share of changes leading to the Season 2 of TWW. The general playstyle has seen some shifts with the priority of spells, depending on your overall talent choice, and making their minor cooldown - [大法师之触] stronger. This will directly result in improvement in their consistent damage since that was one of the major issues leading up to the patch. In addition to all of that, Arcane has one of the strongest tier-sets with a massive power spike attached to them. They will retain its burst-orientated profile while simultaneously providing priority-target damage when doing so. The rankings of Arcane can fluctuate depending on the key level, as the higher the key goes the better the spec becomes (due to mobs having higher health and enduring your whole burst). Complexity issues / Hybrid builds are still part of the problem, making the barrier to entry one of the highest among all specs, which is never a good thing.",
-          "spells": [
-            {
-              "spellId": 321507,
-              "spellName": "Touch of the Magi"
-            }
-          ],
-          "fullNameZH": "奥术 法师"
-        },
-        {
-          "fullNameEN": "Windwalker Monk",
-          "roleClass": "monk",
-          "classSpec": "windwalker",
-          "dataChange": "-",
-          "desc": "Windwalker Monk recently received positive changes that are focusing on improving their AoE damage output, like the removal of [神鹤印记] and beefing up the [神鹤引项踢] itself and some further buffs to the Mastery effect. There are some new cool talents added like Slicing Winds (familiar spell?) which does decent damage but increases your mobility options. Unfortunately, Windwalker Monk is one of the few specs that yet remains to have its target cap present, which can result in problems in mass AoE. Regardless of that, their single-target is one of the best, followed by strong AoE output on low-target packs. It is important to note that the utility package is largely unchanged, and it is still going to have immense value for any team.",
-          "spells": [
-            {
-              "spellId": 220357,
-              "spellName": "Mark of the Crane"
+              "spellId": 348,
+              "spellName": "Immolate"
             },
             {
-              "spellId": 101546,
-              "spellName": "Spinning Crane Kick"
+              "spellId": 236138,
+              "spellName": "Wither"
+            },
+            {
+              "spellId": 152108,
+              "spellName": "Cataclysm"
             }
           ],
-          "fullNameZH": "踏风 武僧"
-        },
-        {
-          "fullNameEN": "Arms Warrior",
-          "roleClass": "warrior",
-          "classSpec": "arms",
-          "dataChange": "-",
-          "desc": "Arms Warrior have seen some recent nerfs to their damag,e for both single-target and AoE. Their executed damage profile (when there is demand) still remains as one of the best in the game. Although their utility will remain mostly the same, they have gained some quality-of-life changes on the general tree, leading to an increase in their durability capabilities.",
-          "spells": [],
-          "fullNameZH": "武器 战士"
-        },
+          "fullNameZH": "毁灭 术士",
+          "descZH": "毁灭术士在至暗之夜版本前进行了微小的改动，其中的亮点是他们新引入的顶点天赋。他们的核心循环将与TWW版本非常相似，有一些生活质量的改进，例如重做的[咆哮烈焰]，使得在[大灾变]冷却后更容易维持[献祭]和[枯萎]的效果。他们的AoE表现看起来不错，但不幸的是，每当战斗是纯粹的单体目标时，他们似乎就会陷入挣扎。"
+        }
+      ]
+    },
+    {
+      "tier": "B",
+      "children": [
         {
           "fullNameEN": "Affliction Warlock",
           "roleClass": "warlock",
           "classSpec": "affliction",
           "dataChange": "down",
-          "desc": "Affliction Warlock has seen minor changes in the upcoming Season 2. Their gameplay will remain similar, with a slight rotation change coming from their newly introduced tier-set. They will remain with the same issues as Season 1, relying on [[邪恶污染]] to do most of its work in AoE, which becomes a significant problem once it's on cooldown and a pack has been engaged (manual re-applications of the [痛楚] is also problematic). Either decreasing its cooldown (of [[邪恶污染]]) or making it have several changes will have a positive impact on the spec. Nonetheless, when managing pulls and such scenarios do not occur, its performance is incredible, with the current output on both ST and AoE (especially in AoE with its great on-demand burst + priority-target damage).",
+          "desc": "Affliction Warlock has seen a complete rework following the release of the expansion, with its core rotation moved back to [腐蚀之种] as an AoE Spender and [痛苦无常] as a single-target spender, applying [痛楚] for shard generation ( [邪恶污染] is gone, Shared [痛楚] is being introduced) and weaving [鬼影缠身] for priority-target damage and Apex talents triggering. The overall playstyle feels way smoother, resembling what Affliction used to look like it back in the Legion expansion.",
           "spells": [
             {
-              "spellId": 278350,
-              "spellName": "Vile Taint"
+              "spellId": 27243,
+              "spellName": "Seed of Corruption"
+            },
+            {
+              "spellId": 316099,
+              "spellName": "Unstable Affliction"
             },
             {
               "spellId": 980,
@@ -294,59 +594,280 @@
             {
               "spellId": 278350,
               "spellName": "Vile Taint"
+            },
+            {
+              "spellId": 1259825,
+              "spellName": "Shared Agony"
+            },
+            {
+              "spellId": 48181,
+              "spellName": "Haunt"
             }
           ],
-          "fullNameZH": "痛苦 术士"
-        }
-      ]
-    },
-    {
-      "tier": "B+",
-      "children": [
-        {
-          "fullNameEN": "Survival Hunter",
-          "roleClass": "hunter",
-          "classSpec": "survival",
-          "dataChange": "-",
-          "desc": "Survival Hunter has received its fair share of changes leading to the second season of Mythic+. There have been numerous attempts to shake up how this spec plays out ultimately keeping its rotation mostly unchanged. Their consistent damage is great since its major cooldowns are relatively short and thanks to their newly redesigned 4-piece, will now be even better. Unfortunately, the output is considered \"mid\", which is the major factor for their placement. If further changes come we will consider their placement and update the rankings.",
-          "spells": [],
-          "fullNameZH": "生存 猎人"
+          "fullNameZH": "痛苦 术士",
+          "descZH": "痛苦术士在扩展发布后进行了彻底的重做，其核心循环重新回归以[腐蚀之种]作为AoE资源消耗技能，[痛苦无常]作为单体目标资源消耗技能，施放[痛楚]来生成灵魂碎片（[邪恶污染]被移除，引入了共享[痛楚]），并穿插使用[鬼影缠身]来对优先目标造成伤害并触发顶点天赋。整体玩法感觉流畅了许多，类似于军团再临时期痛苦术士的样子。"
         },
         {
-          "fullNameEN": "Fury Warrior",
-          "roleClass": "warrior",
-          "classSpec": "fury",
+          "fullNameEN": "Windwalker Monk",
+          "roleClass": "monk",
+          "classSpec": "windwalker",
           "dataChange": "-",
-          "desc": "Fury Warrior will retain their signature burst-orientated profile as well as their general rotation (with a minor changes done to it). The most recent damage nerfs will negatively impact their rankings and demotem them down a tier. Furthermore, they are one of the few melee specs that is a 5-target hard capped, which significantly reduces its AoE output past 5 targets (compared to the rest of the DPS) On a good note, they have done a general revamp of the Warrior tree so now more than ever you will enjoy higher durability (+10% Stamina)and extra mobility! In addition, their Mythic+ toolkit remains mostly the same, having the lowest utility options across all DPS specs.",
-          "spells": [],
-          "fullNameZH": "狂怒 战士"
+          "desc": "Windwalker Monk received a major rework leading up to the Midnight expansion, with some of the most significant changes being: One combined major cooldown - [冥想专注] (a minor cooldown added if you play Conduit instead of Shado-Pan), [风领主之击] is now a choice node with [升龙霸], and extensive nerfs on behalf of your defensive choices. Your core rotation has been changed, and it will vary quite a bit based on your Hero Talent choices. Unfortunately your damage profile will still suffer from being target-capped, which means that in large pulls you will fall behind. Although it is quite fun to play this new Windwalker Monk, the numbers are just not there (yet).",
+          "spells": [
+            {
+              "spellId": 1271105,
+              "spellName": "Zenith"
+            },
+            {
+              "spellId": 392983,
+              "spellName": "Strike of the Windlord"
+            },
+            {
+              "spellId": 152175,
+              "spellName": "Whirling Dragon Punch"
+            }
+          ],
+          "fullNameZH": "踏风 武僧",
+          "descZH": "踏风武僧在至暗之夜版本前进行了重大重做，其中一些最重要的变化包括：一个合并的主要冷却技能——[冥想专注]（如果你选择‘道途行者’而不是‘影踪派’，还会增加一个小冷却技能），[风领主之击]现在是一个与[升龙霸]二选一的天赋节点，以及对你防御选项的大量削弱。你的核心循环已经改变，它将根据你的英雄天赋选择而有很大不同。不幸的是，你的伤害构成仍然会受到目标上限的影响，这意味着在拉大波怪物时你会落后。尽管玩这个新的踏风武僧很有趣，但伤害数字目前还不够高。"
+        },
+        {
+          "fullNameEN": "Subtlety Rogue",
+          "roleClass": "rogue",
+          "classSpec": "subtlety",
+          "dataChange": "down",
+          "desc": "Subtlety Rogue received one of the biggest pruning across all DPS specs in Midnight, to the point where it might actually be a 2-button spec to play the majority of the time ( [袖剑风暴] / [黑火药] in AoE). Not only that, but several other changes were made to further help ease the rotation flow, such as the removal of [割裂], [狂热鞭笞], a baked-in [死亡符记] inside [暗影之舞], and much more. Despite all of that, their damage profile is looking great for Mythic+: Short offensive cooldowns and good on-demand burst.",
+          "spells": [
+            {
+              "spellId": 197835,
+              "spellName": "Shuriken Storm"
+            },
+            {
+              "spellId": 319175,
+              "spellName": "Black Powder"
+            },
+            {
+              "spellId": 1943,
+              "spellName": "Rupture"
+            },
+            {
+              "spellId": 384631,
+              "spellName": "Flagellation"
+            },
+            {
+              "spellId": 212283,
+              "spellName": "Symbols of Death"
+            },
+            {
+              "spellId": 185313,
+              "spellName": "Shadow Dance"
+            }
+          ],
+          "fullNameZH": "敏锐 盗贼",
+          "descZH": "敏锐贼在Midnight中经历了所有DPS专精中最大的技能精简之一，精简到在大部分时间里可能实际上是一个只有两个技能的专精（AoE时用[袖剑风暴]/[黑火药]）。不仅如此，还进行了其他几项改动，以进一步帮助简化循环流程，例如移除了[割裂]和[狂热鞭笞]，将[死亡符记]内置到[暗影之舞]中，等等。尽管如此，他们的伤害构成在史诗钥石地下城中看起来非常出色：较短的进攻冷却时间和良好的按需爆发。"
+        },
+        {
+          "fullNameEN": "Beast Mastery Hunter",
+          "roleClass": "hunter",
+          "classSpec": "beast-mastery",
+          "dataChange": "up",
+          "desc": "Beast Mastery Hunter received quite a lot of changes leading up to the Midnight expansion, with the most notably being the great addition of their Apex talents and significantly easier [野兽顺劈] management due to the addition of [狂野鞭笞]. The spec will remain particularly welcoming for newcomers, while simultaneously offering min-max possibilities with the newly reworked Hero talents. Last but not least, BM will become slightly more durable in Midnight and offer better utility too, thanks to the new [猎人印记] group buff and [牺牲咆哮] as an external defensive option.",
+          "spells": [
+            {
+              "spellId": 115939,
+              "spellName": "Beast Cleave"
+            },
+            {
+              "spellId": 1264359,
+              "spellName": "Wild Thrash"
+            },
+            {
+              "spellId": 257284,
+              "spellName": "Hunter's Mark"
+            },
+            {
+              "spellId": 53480,
+              "spellName": "Roar of Sacrifice"
+            }
+          ],
+          "fullNameZH": "野兽掌控 猎人",
+          "descZH": "野兽掌控猎人在至暗之夜版本前进行了相当多的改动，其中最值得注意的是大幅增加了他们的顶点天赋，并且由于[狂野鞭笞]的加入，[野兽顺劈]的管理变得明显更容易。这个专精对新手来说仍然非常友好，同时通过新重做的英雄天赋也提供了追求极限的可能性。最后但同样重要的是，由于新的[猎人印记]团队增益和作为外部防御选项的[牺牲咆哮]，兽王猎在Midnight中将变得稍微更耐打，并且提供更好的效用。"
+        },
+        {
+          "fullNameEN": "Arms Warrior",
+          "roleClass": "warrior",
+          "classSpec": "arms",
+          "dataChange": "up",
+          "desc": "Arms Warrior received a lot of changes for the new expansion, with a primary focus being their Apex Talents, which makes juggling [英勇打击] procs to your [猛击] a core part of your rotation - It's tons of fun. Just like its sibling specs, Arms Warrior will benefit greatly from better party-wide utility. Their damage profile will further expand in the execution-orientated playstyle thanks to its brand new talent - [全面处决]. Arms Warrior's tuning is still far off from the top and is likely going to get future positive changes.",
+          "spells": [
+            {
+              "spellId": 1269383,
+              "spellName": "Heroic Strike"
+            },
+            {
+              "spellId": 1464,
+              "spellName": "Slam"
+            },
+            {
+              "spellId": 1273075,
+              "spellName": "Mass Execution"
+            }
+          ],
+          "fullNameZH": "武器 战士",
+          "descZH": "武器战士在新扩展中进行了大量改动，主要焦点是他们的顶点天赋，这使得将[英勇打击]的触发效果用于[猛击]成为你循环的核心部分——这非常有趣。就像它的同系专精一样，武器战士也将从更好的团队效用中受益匪浅。由于其全新的天赋——[全面处决]，他们的伤害构成将在以斩杀为导向的玩法中得到进一步扩展。武器战士的平衡调整距离顶尖水平还有很大差距，未来很可能会得到积极的改动。"
+        },
+        {
+          "fullNameEN": "Assassination Rogue",
+          "roleClass": "rogue",
+          "classSpec": "assassination",
+          "dataChange": "-",
+          "desc": "Assassination Rogue received some of the best quality-of-life changes leading up to the Midnight expansion. Their DoT management will be significantly easier due to their newly reworked [猩红风暴], which is now a combo-point generator that spreads their bleeds, leaving [毒伤] as the only spender in Midnight. Less button bloat, no longer needing to [毒刃] for damage, and a major focus on not needing [潜行] to execute your Bleed management, are also some of the features they can look forward to in Midnight. Assassination will retain its great damage profile - high burst and amazing funnel/priority-target damage, while providing faster front-loaded damage. Besides tuning, the only concerning issue is still their Energy regen. Yes, the Apex Talents help, but don't entirely solve it; there are still pockets of time where energy starvation occurs, especially on single-target.",
+          "spells": [
+            {
+              "spellId": 1247227,
+              "spellName": "Crimson Tempest"
+            },
+            {
+              "spellId": 32645,
+              "spellName": "Envenom"
+            },
+            {
+              "spellId": 5938,
+              "spellName": "Shiv"
+            },
+            {
+              "spellId": 1784,
+              "spellName": "Stealth"
+            }
+          ],
+          "fullNameZH": "刺杀 盗贼",
+          "descZH": "刺杀贼在至暗之夜版本前进行了一些最好的生活质量改进。由于新重做的[猩红风暴]（现在是一个生成连击点数并传播流血效果的核心技能），他们的持续伤害（DoT）管理将变得容易得多，使得[毒伤]成为Midnight中唯一的资源消耗技能。技能臃肿减少，不再需要[毒刃]来造成伤害，以及主要不再需要[潜行]来执行流血管理，也是他们在Midnight中可以期待的一些功能。刺杀贼将保持其出色的伤害构成——高爆发和惊人的集中/优先目标伤害，同时提供更快的起手伤害。除了平衡性调整，唯一令人担忧的问题仍然是他们的能量回复。是的，顶点天赋有帮助，但并不能完全解决这个问题；仍然存在能量短缺的时期，尤其是在单体目标战斗中。"
+        },
+        {
+          "fullNameEN": "Outlaw Rogue",
+          "roleClass": "rogue",
+          "classSpec": "outlaw",
+          "dataChange": "-",
+          "desc": "Outlaw Rogue received a substantial rework going into Midnight, significantly lowering the barrier to entry to play the spec. While the core rotation remains quite similar, (use [影袭] and spending your combo-points on [正中眉心], [斩击], and [影舞步]), not having to play around [潜行] and [裂额射击] windows is already a huge quality-of-life improvement. You won't have 100% uptime on [冲动], which can be a game changer, and the complete rework on [命运骨骰] made it much less RNG now.",
+          "spells": [
+            {
+              "spellId": 1752,
+              "spellName": "Sinister Strike"
+            },
+            {
+              "spellId": 315341,
+              "spellName": "Between the Eyes"
+            },
+            {
+              "spellId": 2098,
+              "spellName": "Dispatch"
+            },
+            {
+              "spellId": 51690,
+              "spellName": "Killing Spree"
+            },
+            {
+              "spellId": 1784,
+              "spellName": "Stealth"
+            },
+            {
+              "spellId": 423703,
+              "spellName": "Crackshot"
+            },
+            {
+              "spellId": 13750,
+              "spellName": "Adrenaline Rush"
+            },
+            {
+              "spellId": 315508,
+              "spellName": "Roll the Bones"
+            }
+          ],
+          "fullNameZH": "狂徒 盗贼",
+          "descZH": "狂徒贼在进入Midnight时进行了大量重做，显著降低了玩这个专精的门槛。虽然核心循环保持相当相似（使用[影袭]并将你的连击点消耗在[正中眉心]、[斩击]和[影舞步]上），但不再需要围绕着[潜行]和[裂额射击]的窗口期进行操作，这本身就是一个巨大的生活质量改善。你将不再拥有100%覆盖率的[冲动]，这可能改变游戏玩法，而对[命运骨骰]的彻底重做也大大降低了它的随机性。"
         }
       ]
     },
     {
-      "tier": "B",
+      "tier": "C",
       "children": [
         {
-          "fullNameEN": "Augmentation Evoker",
-          "roleClass": "evoker",
-          "classSpec": "augmentation",
-          "dataChange": "-",
-          "desc": "Augmentation Evoker has received a ton of attention leading to Season 2, unfortunately, with the majority of it being negative. Their powers have been significantly reduced with the most recent [变换流沙] and [亲如胞友] major nerfs. In addition, [黑檀之力] has been redesigned and no longer buffs tanks/healers, which is another massive blow to the spec. They will retain their great utility, good mob control, and the ability to bolster your team's defensive and offensive profiles (especially as a DPS player), but this time, with a much smaller impact. While there is still immense value in taking Augmentation Evoker to your team, it will no longer be as dominant and thus, for the first time in 2 years, Aug is falling off the S-tier rankings.",
+          "fullNameEN": "Shadow Priest",
+          "roleClass": "priest",
+          "classSpec": "shadow",
+          "dataChange": "down",
+          "desc": "Shadow Priest once again received a complete rework for their playstyle and the majority of their talents. Some of the highlights are: [噬灵疫病] is now called [噬灵疫病] (same features, different name), [暗影冲撞] is now [触须猛击] (more quality-of-life DoT application) and so much more. Their damage profile is quite similar to TWW; you can still expect great priority-target damage while doing AoE (thanks to [心智联结]) and good on-demand burst during [虚空形态] & [能量灌注] combo.",
           "spells": [
             {
-              "spellId": 413984,
-              "spellName": "Shifting Sands"
+              "spellId": 335467,
+              "spellName": "Devouring Plague"
             },
             {
-              "spellId": 396043,
-              "spellName": "Close as Clutchmates"
+              "spellId": 335467,
+              "spellName": "Shadow Word: Madness"
             },
             {
-              "spellId": 404269,
-              "spellName": "Ebon Might"
+              "spellId": 205385,
+              "spellName": "Shadow Crash"
+            },
+            {
+              "spellId": 1227280,
+              "spellName": "Tentacle Slam"
+            },
+            {
+              "spellId": 199484,
+              "spellName": "Psychic Link"
+            },
+            {
+              "spellId": 228264,
+              "spellName": "Voidform"
+            },
+            {
+              "spellId": 10060,
+              "spellName": "Power Infusion"
             }
           ],
-          "fullNameZH": "增辉 唤魔师"
+          "fullNameZH": "暗影 牧师",
+          "descZH": "暗影牧师再一次对他们的玩法和大部分天赋进行了彻底的重做。其中的一些亮点包括：[噬灵疫病]现在叫做[噬灵疫病]（功能相同，名称不同），[暗影冲撞]现在是[触须猛击]（一个更便捷的施加持续伤害技能）等等。他们的伤害构成与TWW版本非常相似；你仍然可以在进行AoE时对优先目标造成巨大伤害（得益于[心智联结]），并且在[虚空形态]和[能量灌注]的组合期间拥有良好的按需爆发。"
+        }
+      ]
+    },
+    {
+      "tier": "别急 等加强",
+      "children": [
+        {
+          "fullNameEN": "Marksmanship Hunter",
+          "roleClass": "hunter",
+          "classSpec": "marksmanship",
+          "dataChange": "down",
+          "desc": "Marksmanship Hunter received a ton of changes for the Midnight expansion, with some of the most important being that they are now the only Hunter spec that will feature [夺命射击], and the spec having a much slower rotational pace. While the core rotation remains identical, a [[瞄准射击]] / [急速射击] loop where you consume [弹无虚发] and [技巧射击], it is worth pointing out that [[瞄准射击]] had both its cast-time and damage increased. Although the spec will continue to have its signature burst-oriented damage profile, it currently struggles with sustained damage and single-target. Hopefully in future tunings some of these weaknesses will be addressed.",
+          "spells": [
+            {
+              "spellId": 53351,
+              "spellName": "Kill Shot"
+            },
+            {
+              "spellId": 19434,
+              "spellName": "Aimed Shot"
+            },
+            {
+              "spellId": 257044,
+              "spellName": "Rapid Fire"
+            },
+            {
+              "spellId": 260240,
+              "spellName": "Precise Shots"
+            },
+            {
+              "spellId": 257621,
+              "spellName": "Trick Shots"
+            },
+            {
+              "spellId": 19434,
+              "spellName": "Aimed Shot"
+            }
+          ],
+          "fullNameZH": "射击 猎人",
+          "descZH": "射击猎人在至暗之夜版本中进行了大量改动，其中最重要的一些包括：他们现在是唯一一个拥有[夺命射击]的猎人专精，并且该专精的循环节奏慢了很多。虽然核心循环保持不变，仍然是一个消耗[弹无虚发]和[技巧射击]的[[瞄准射击]]/[急速射击]循环，但值得指出的是，[[瞄准射击]]的施法时间和伤害都增加了。尽管这个专精将继续保持其标志性的以爆发为导向的伤害构成，但它目前在持续伤害和单体目标战斗方面表现挣扎。希望在未来的平衡调整中，能解决一些这样的弱点。"
         }
       ]
     }

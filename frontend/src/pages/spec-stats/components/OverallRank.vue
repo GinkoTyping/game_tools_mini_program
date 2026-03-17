@@ -187,7 +187,7 @@ async function initPage(params?: any) {
   const { role } = params ?? {};
 
   tierList.value = await queryTierList({
-    versionId: '11.2 - PTR',
+    versionId: '12.0',
     activityType: 'MYTHIC',
     role: role ?? 'DPS',
   });

@@ -1,20 +1,38 @@
 {
-  "updatedAt": "2025/03/23",
+  "updatedAt": "2026/03/15",
   "activityType": "MYTHIC",
   "role": "TANK",
-  "versionId": "11.1",
+  "versionId": "12.0",
   "data": [
     {
       "tier": "S",
       "children": [
         {
-          "fullNameEN": "Vengeance Demon Hunter",
-          "roleClass": "demon-hunter",
-          "classSpec": "vengeance",
+          "fullNameEN": "Brewmaster Monk",
+          "roleClass": "monk",
+          "classSpec": "brewmaster",
           "dataChange": "-",
-          "desc": "Vengeance Demon Hunter is entering Season 2 in a much better spot compared to the previous season. One of the biggest changes is the buff to the durability toolkit of the spec, allowing you to have less \"kiting\" tanking than before. The spec still possesses one of the best mob controls across any tanking spec in Mythic+, which will turn valuable for any team looking for a tank. One of their biggest advantages is having one of the highest damage profiles across all tank specs (even after the bug fixes), extremely high self-sustain and great mob-control, which are the mains reason why we believe their current performance warrants S-tier.",
-          "spells": [],
-          "fullNameZH": "复仇 恶魔猎手"
+          "desc": "Brewmaster Monk received its fair share of changes leading up to the Midnight expansion. An intense rotational pruning made it much easier and less button-bloaty, while keeping its core spells limited to 4-6 abilities. [躯不坏] and [散魔功] (at least the damage reduction part) were also removed. The core rotation will still rely on [醉拳] and [活血酒], which the spec has always been known for. A much more streamlined rotational approach was taken into consideration for this redesign, and I am personally a big fan of it, as it turned out to be one of the strongest tank options defensively thus far, on top of having one of the highest damage outputs across all tanks.",
+          "descZH": "酒仙武僧在《至暗之夜版本》即将到来之际进行了不少改动。一次大幅度的循环精简使其操作起来更加轻松，技能按键不再臃肿，同时将核心法术保持在4-6个。[躯不坏]和[散魔功]（至少是减伤部分）也被移除了。核心循环仍将依赖该专精一直闻名的[醉拳]和[活血酒]。本次重做考虑采用更精简的循环方式，我个人对此非常赞赏，因为事实证明，它不仅是目前防御最强的坦克选项之一，而且还拥有所有坦克中最高的伤害输出之一。",
+          "spells": [
+            {
+              "spellId": 122278,
+              "spellName": "Dampen Harm"
+            },
+            {
+              "spellId": 1243287,
+              "spellName": "Diffuse Magic"
+            },
+            {
+              "spellId": 115069,
+              "spellName": "Stagger"
+            },
+            {
+              "spellId": 119582,
+              "spellName": "Purifying Brew"
+            }
+          ],
+          "fullNameZH": "酒仙 武僧"
         }
       ]
     },
@@ -22,13 +40,50 @@
       "tier": "A+",
       "children": [
         {
-          "fullNameEN": "Protection Paladin",
-          "roleClass": "paladin",
+          "fullNameEN": "Protection Warrior",
+          "roleClass": "warrior",
           "classSpec": "protection",
-          "dataChange": "-",
-          "desc": "Protection Paladin is looking yet again incredibly strong, with them already being one of the most durable tanks on PTR, they will also retain their signature overpowered utility. Although the recent nerfs will lower their durability and DPS numbers, they will still have one of the highest outputs across all tanks. In addition, they have incredible mob control which is another reason why the spec is so highly desired. Overall, they are currently ranked as one of the better tank entering Season 2.",
-          "spells": [],
-          "fullNameZH": "防护 圣骑士"
+          "dataChange": "up",
+          "desc": "Protection Warrior received its fair share of changes leading up to the Midnight. Protection Warrior is likely one of the few specs that didn't really get any significant shift in rotation, as the core remains quite similar. The APM requirement for Protection warrior has slightly diminished, partly because of lower haste levels during Season 1 and part of it because of the [愤怒掌控] nerfs. With the most recent buffs, it helped elevate and improve its overall performance both offensively and defensively. As every warrior spec, Protection warrior will enjoy several new utility options to help your team!",
+          "descZH": "防护战士在《至暗之夜版本》即将到来之际也进行了不少改动。防护战士可能是少数几个循环方式没有发生重大变化的专精之一，因为其核心玩法相当类似。防护战士的每分钟操作次数要求略有降低，部分原因在于第一赛季急速水平较低，另一部分原因是[愤怒掌控]的削弱。得益于最近的增益调整，防护战士在进攻和防御两方面的整体表现都得到了提升和改善。与所有战士专精一样，防护战士将获得几个新的能力技选项来帮助你的团队！",
+          "spells": [
+            {
+              "spellId": 152278,
+              "spellName": "Anger Management"
+            }
+          ],
+          "fullNameZH": "防护 战士"
+        },
+        {
+          "fullNameEN": "Vengeance Demon Hunter",
+          "roleClass": "demon-hunter",
+          "classSpec": "vengeance",
+          "dataChange": "up",
+          "desc": "Vengeance Demon Hunter received a complete rework as we venture into Midnight, with some of the highlights being one of the best Apex talents across all tanks, an improved [恶魔变形], [邪能毁灭] has no [魔化] to follow, [灵魂裂劈] has now been changed to a 6-target soft cap (previously hard-capped) and [烈火烙印] received a much needed quality-of-life update. These changes are quite dramatic, and with the target-caps lifted their AoE capabilities improved, on top of also being super tanky. They will retain their great party-wide utility while getting better everywhere else.",
+          "descZH": "在我们踏入《至暗之夜》之际，复仇恶魔猎手进行了彻底的重做，其中一些亮点包括：拥有所有坦克中最好的巅峰天赋之一、一个改进的[恶魔变形]、[邪能毁灭]不再需要接续[魔化]、[灵魂裂劈]现在改为6个目标的软上限（以前是硬上限），以及[烈火烙印]获得了一项亟需的游戏体验更新。这些改动相当巨大，随着目标上限的放宽，他们的范围攻击能力得到了改善，同时本身也极为坚韧。他们将继续保留强大的全队能力技，同时在其他各个方面都变得更强。",
+          "spells": [
+            {
+              "spellId": 187827,
+              "spellName": "Metamorphosis"
+            },
+            {
+              "spellId": 212084,
+              "spellName": "Fel Devastation"
+            },
+            {
+              "spellId": 213410,
+              "spellName": "Demonic"
+            },
+            {
+              "spellId": 228477,
+              "spellName": "Soul Cleave"
+            },
+            {
+              "spellId": 204021,
+              "spellName": "Fiery Brand"
+            }
+          ],
+          "fullNameZH": "复仇 恶魔猎手"
         }
       ]
     },
@@ -36,41 +91,31 @@
       "tier": "A",
       "children": [
         {
-          "fullNameEN": "Blood Death Knight",
-          "roleClass": "death-knight",
-          "classSpec": "blood",
-          "dataChange": "-",
-          "desc": "Unfortunately, for Blood Death Knight there are not a lot of changes leading to the Season 2 of Mythic+. They are getting a new tier set supported by a hefty amount of RNG and arguably worse than what the Season 1 set had to offer. In addition, defensively and offensively are at a disadvantage compared to the top-ranked tanks, further pushing them down the list. Overall, it is still early to have a final estimate of how the spec will rank. Still, preliminary thoughts are that the spec performance is much better on the lower level keys (the main factory is the highest self-sustain) compared to the higher level ones, where you might struggle when tanking several packs together.",
-          "spells": [],
-          "fullNameZH": "鲜血 死亡骑士"
-        },
-        {
-          "fullNameEN": "Protection Warrior",
-          "roleClass": "warrior",
+          "fullNameEN": "Protection Paladin",
+          "roleClass": "paladin",
           "classSpec": "protection",
           "dataChange": "-",
-          "desc": "Protection Warrior has a ton of attention leading to the next season, primarily changing the spell priority and the focus of the class rotation (with the bread-and-butter basics staying the same). Luckily, the compensation buffs that came, (% flat damage adjustments, stronger [无视苦痛], and better self-sustain thanks to more Rage) which makes up for all the other nerfs. In addition, a new recent build has been discovered, making their single-target and AoE damage their strongest asset, which immensely improves their performance. In addition, the spec will continue to have durability troubles at time (especially against continuous magical damage), which may require more healer attention than other tanks.",
+          "desc": "Protection Paladin received a fair amount of changes leading up to the Midnight expansion, with some of the highlights being: Less defensive value tied to [奉献], [提尔之眼] removed, and [远古列王守卫] will have the option to get an extra stack thanks to [苍穹之谕]. Mana management has also become much better, and is only ever an issue if you try to spot-heal your allies instead of using it on yourself. The lack of a solid way to incur cooldown reduction on your major CDs has hit Protection Paladin quite heavily, as currently they are one of the squishiest tanks. Although the damage profile and overall utility package are looking great, a step forward towards improving durability must happen first before we can rank them higher.",
+          "descZH": "防护圣骑士在《至暗之夜版本》即将到来之际进行了相当多的改动，其中一些亮点包括：与[奉献]绑定的防御价值降低、移除了[提尔之眼]，并且由于[苍穹之谕]的存在，[远古列王守卫]可以选择获得额外一层充能。法力值管理也变得好多了，只有当你试图治疗盟友而不是用在自己身上时才会成为问题。缺乏有效减少主要冷却时间的方法对防护圣骑士打击相当大，因为目前他们是生存能力最差的坦克之一。尽管伤害轮廓和整体能力技包看起来很不错，但必须首先在提升生存能力方面有所进展，我们才能将其排名提高。",
           "spells": [
             {
-              "spellId": 190456,
-              "spellName": "Ignore Pain"
+              "spellId": 26573,
+              "spellName": "Consecration"
+            },
+            {
+              "spellId": 387174,
+              "spellName": "Eye of Tyr"
+            },
+            {
+              "spellId": 86659,
+              "spellName": "Guardian of Ancient Kings"
+            },
+            {
+              "spellId": 1246481,
+              "spellName": "Empyrean Authority"
             }
           ],
-          "fullNameZH": "防护 战士"
-        }
-      ]
-    },
-    {
-      "tier": "B+",
-      "children": [
-        {
-          "fullNameEN": "Guardian Druid",
-          "roleClass": "druid",
-          "classSpec": "guardian",
-          "dataChange": "-",
-          "desc": "Guardian Druid received a complete shuffle on the general talent tree, which will positively impact them. They have introduced some new cool talents (like Symbiotic Relationship and further increased their damage performance. Although their damage profile appears to be just fine (depending on the talent choices), durability is still an issue for the spec as it fails to compete against the higher-rated tanks at this stage of PTR.",
-          "spells": [],
-          "fullNameZH": "守护 德鲁伊"
+          "fullNameZH": "防护 圣骑士"
         }
       ]
     },
@@ -78,13 +123,34 @@
       "tier": "B",
       "children": [
         {
-          "fullNameEN": "Brewmaster Monk",
-          "roleClass": "monk",
-          "classSpec": "brewmaster",
+          "fullNameEN": "Guardian Druid",
+          "roleClass": "druid",
+          "classSpec": "guardian",
+          "dataChange": "down",
+          "desc": "Guardian Druid received a bunch of changes for the Midnight expansion. Overall the spec will play a lot less spammy, mostly due to the removal of [铁棘], and have a better optimized tree while retaining its low barrier-to-entry title among the tanks. Additionally, both sustain and durability are doing well, unfortunately after their most recent substantial damage nerfs, they have dropped a few ranks down.",
+          "descZH": "守护德鲁伊为《至暗之夜版本》进行了一系列改动。总的来说，该专精的玩法将不再那么依赖技能连按，这主要是由于移除了[铁棘]，并且拥有一个优化得更好的天赋树，同时保留了其在坦克中易于上手的名声。此外，其持续作战能力和生存能力都表现良好，不幸的是，在最近一次大幅的伤害削弱之后，他们的排名有所下降。",
+          "spells": [
+            {
+              "spellId": 400222,
+              "spellName": "Thorns of Iron"
+            }
+          ],
+          "fullNameZH": "守护 德鲁伊"
+        },
+        {
+          "fullNameEN": "Blood Death Knight",
+          "roleClass": "death-knight",
+          "classSpec": "blood",
           "dataChange": "-",
-          "desc": "Unfortunately for Brewmaster Monk, received no major changes leading up to Season 2. Their performance is currently better than what it was in Season 1 as the durability aspect of the spec has been improved. But, usual issues yet remain to be solved: not enough self-sustain, which often relies on much more \"babysitting\" from your healer. On top of this, they are one of the most difficult tanks to master, further pushing the barrier of entry higher and higher (especially with that many buttons in your rotation). We expect further tuning to hit PTR and hopefully, we can revisit the rankings.",
-          "spells": [],
-          "fullNameZH": "酒仙 武僧"
+          "desc": "Blood Death Knight received a few changes leading up to the Midnight expansion, for example a weaker and shorter [符文刃舞], on top of getting an RNG DRW from your capstone apex talents, and a significant rotational pruning of the spec. The barrier to entry is arguably the lowest BDK has ever had, as the spec offers a much more streamlined approach compared to before.",
+          "descZH": "鲜血死亡骑士在《至暗之夜版本》即将到来之际进行了一些改动，例如[符文刃舞]变得更弱、持续时间更短，此外还能从巅峰天赋中获得一个随机触发的[符文刃舞]，并对该专精的循环进行了大幅精简。可以说，其上手门槛是鲜血死亡骑士有史以来最低的，因为与以前相比，该专精提供了精简得多的玩法。",
+          "spells": [
+            {
+              "spellId": 49028,
+              "spellName": "Dancing Rune Weapon"
+            }
+          ],
+          "fullNameZH": "鲜血 死亡骑士"
         }
       ]
     }

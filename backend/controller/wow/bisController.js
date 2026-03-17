@@ -366,22 +366,23 @@ async function mapWowheadBis(wowheadBis) {
     return name;
   }
 
-  const detailedPuzzlingCartelChipAdvice = await Promise.allSettled(wowheadBis.detailedPuzzlingCartelChipAdvice.map(
-    async kind => {
-      const itemResults = await Promise.allSettled(kind.data.options.map(async item => {
-          const itemData = await itemMapper.getItemById(item.id);
-          return {
-            ...item,
-            name: itemData.name,
-            image: itemData.image,
-          };
-        }),
-      );
-      kind.typeName = mapTypeName(kind.type);
-      kind.data.options = itemResults.map(result => result.value).filter(item => item);
-      return kind;
-    }),
-  );
+  const detailedPuzzlingCartelChipAdvice = wowheadBis.detailedPuzzlingCartelChipAdvice?.length ? await Promise.allSettled(
+    wowheadBis.detailedPuzzlingCartelChipAdvice.map(
+      async kind => {
+        const itemResults = await Promise.allSettled(kind.data.options.map(async item => {
+            const itemData = await itemMapper.getItemById(item.id);
+            return {
+              ...item,
+              name: itemData.name,
+              image: itemData.image,
+            };
+          }),
+        );
+        kind.typeName = mapTypeName(kind.type);
+        kind.data.options = itemResults.map(result => result.value).filter(item => item);
+        return kind;
+      }),
+  ) : [];
   const ALL_CORRUPTIONS = [
     239095,
     239093,
@@ -601,8 +602,11 @@ export async function getBisBySpec(req, res) {
     );
     let bis_items = await mapBisItems(
       JSON.parse(bisData.bis_items),
-      maxrollEnhancements,
-      archonEnhancements,
+      [],
+      [],
+      // TODO: 待 12.0 Archon更新
+      // maxrollEnhancements,
+      // archonEnhancements,
     );
     const popularity_items = await mapEnhancements(
       JSON.parse(bisData.popularity_items),
@@ -610,12 +614,11 @@ export async function getBisBySpec(req, res) {
     );
 
     // 团本获取的BIS目前很鸡肋
-    // TODO: 待大秘境更新
     bis_items = bis_items.filter((item) => item.title !== '团本获取');
 
     // 展示archon上按热门度的配装
-    // TODO: 待大秘境更新
-    bis_items.splice(1, 0, { title: '大秘境热门度', items: popularity_items });
+    // TODO: 待12.0大秘境更新
+    bis_items.splice(1, 0, { title: '大秘境热门度', items: [] });
 
     bis_items = sortBisItems(bis_items);
 
