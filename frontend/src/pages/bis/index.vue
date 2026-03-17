@@ -26,7 +26,8 @@
         </view>
       </uni-card>
 
-      <uni-card class="section-card tiers-card">
+      <!--  临时屏蔽   -->
+      <uni-card class="section-card tiers-card" v-show="statSource === 'wowhead'">
         <view class="tiers">
           <view
             class="tier-bar"
@@ -195,6 +196,14 @@
             </text>
           </uni-tooltip>
         </view>
+      </uni-card>
+
+      <uni-card class="section-card tiers-card">
+        大秘境排行更新中...
+      </uni-card>
+
+      <uni-card class="section-card">
+        属性优先级更新中...
       </uni-card>
     </uni-section>
   </template>
@@ -755,8 +764,6 @@ onLoad(async (options: any) => {
 
   setNaviTitle(`${options.title} ${currentData.value.version}`);
 
-  setFooterMenu();
-
   checkJumpTo();
 });
 
@@ -819,7 +826,7 @@ const relationIcon = computed(() => {
     }
   };
 });
-const statSource = ref('maxroll');
+const statSource = ref('');
 const statDetailCollapse = ref();
 const getStatValue = computed(() => (index: number) => {
   const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
@@ -1254,18 +1261,20 @@ const currentBuildIndex = ref(0);
 
 //#region 切换底部菜单
 const activeMenu = ref('index');
-const footerMenus = ref([
+const footerMenus = computed(() => [
   {
     title: '总览',
     value: 'index',
     icon: 'icon-Crown-',
   },
-  {
-    title: '天赋',
-    value: 'talent',
-    icon: 'icon-tree',
-    feature: true,
-  },
+  ...(currentData.value?.wowheadBis?.talents?.length ? [
+    {
+      title: '天赋',
+      value: 'talent',
+      icon: 'icon-tree',
+      feature: true,
+    },
+  ] : []),
   {
     title: '分享',
     value: 'share',
@@ -1276,17 +1285,14 @@ const footerMenus = ref([
     value: 'bis',
     icon: 'icon-leg-armor',
   },
-]);
-
-function setFooterMenu() {
-  if (currentData.value?.wowheadBis?.rotationAssist) {
-    footerMenus.value.push({
+  ...(currentData.value?.wowheadBis?.rotationAssist ? [
+    {
       title: '循环',
       value: 'rotation',
       icon: 'icon-rotate-d',
-    });
-  }
-}
+    },
+  ] : []),
+]);
 
 async function onMenuChange(menuValue: string) {
   clearNoticeBarTimer();
