@@ -1,6 +1,7 @@
 import { BlizzAPI } from 'blizzapi';
 import Bottleneck from 'bottleneck';
 import { configDotenv } from 'dotenv';
+import uniqBy from 'lodash/uniqBy.js';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -128,9 +129,12 @@ async function mapBisTrinket(dataList, propKey) {
         };
       }),
     );
+    const outputList = data.map((item) => item.value);
     return {
       ...tierItem,
-      [propKey]: data.map((item) => item.value),
+
+      // trinkets 数据收集到了重复的
+      [propKey]: propKey === 'trinkets' ? uniqBy(outputList, 'id') : outputList,
     };
   }
 

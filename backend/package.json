@@ -9,6 +9,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.23",
     "md5": "^2.3.0",
     "node-schedule": "^2.1.1",
     "puppeteer": "^24.2.0",
