@@ -681,7 +681,10 @@ export async function getBisBySpec(req, res) {
       ratings: JSON.parse(bisData.ratings),
       talents: JSON.parse(bisData.talents),
       wowhead_bis: wowheadBis,
-      popular_mythic_dungeon_trinkets: popularMythicDungeonTrinkets,
+
+      // TODO: 待 12.0 Archon更新
+      popular_mythic_dungeon_trinkets: [],
+
       mythicOverallTier,
       mythicDpsTier,
       maxroll_bis: undefined,
