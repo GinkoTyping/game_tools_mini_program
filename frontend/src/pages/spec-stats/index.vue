@@ -312,7 +312,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, nextTick, onMounted, reactive, ref } from 'vue';
+import { computed, nextTick, reactive, ref } from 'vue';
 import { onLoad, onShareAppMessage } from '@dcloudio/uni-app';
 
 import { querySpecDpsRank, querySpecPopularity } from '@/api/wow';
