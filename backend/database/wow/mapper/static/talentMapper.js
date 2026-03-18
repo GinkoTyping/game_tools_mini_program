@@ -34,6 +34,7 @@ async function addTalent(params) {
     hero_talent_trees,
     spec_talent_nodes,
     restriction_lines,
+    url,
   } = params;
   return db.run(`INSERT
                      OR
@@ -45,8 +46,10 @@ async function addTalent(params) {
                   class_talent_nodes,
                   hero_talent_trees,
                   spec_talent_nodes,
-                  restriction_lines)
+                  restriction_lines,
+                  url)
                  VALUES (?,
+                         ?,
                          ?,
                          ?,
                          ?,
@@ -60,6 +63,7 @@ async function addTalent(params) {
     objToString(hero_talent_trees),
     objToString(spec_talent_nodes),
     objToString(restriction_lines),
+    url,
   ]);
 }
 

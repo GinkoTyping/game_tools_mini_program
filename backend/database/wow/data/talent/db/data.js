@@ -55,23 +55,21 @@ export async function addTalentBySpec(spec) {
         locale: 'zh_CN',
       },
     });
-    let isFrostMage;
-    if (spec.name === 'frost') {
-      isFrostMage = talentData.playable_class?.id === 8;
-    }
 
-    const specDetail = await playableRoleMapper.getSpecByNameEN(spec.name, isFrostMage);
+    const specDetail = await playableRoleMapper.getSpecById(talentData.playable_specialization.id);
+
     const result = await talentMapper.addTalent({
       ...talentData,
+      url: spec.url,
       role_class: specDetail.class_name_en,
       class_spec: specDetail.spec_name_en,
     });
     if (result.changes) {
-      console.log(`成功：`, specDetail.spec_name_zh, specDetail.spec_name_en);
+      console.log(`成功：`, specDetail.class_name_en, specDetail.spec_name_en);
     }
     return result;
   } catch (e) {
-    console.log(`失败：`, spec.name);
+    console.log(`失败：`, spec.name, spec.url);
     throw new Error(e.message);
   }
 }

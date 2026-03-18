@@ -282,7 +282,8 @@ export async function getArchonHash(classSpec, roleClass) {
 async function queryArchon(pathHash, category, classSpec, roleClass, zoneType = 'mythic-plus') {
   try {
     const url = zoneType === 'mythic-plus'
-      ? `https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/mythic-plus/${category}/10/all-dungeons/this-week.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=mythic-plus&categorySlug=${category}&difficultySlug=10&encounterSlug=all-dungeons&affixesSlug=this-week`
+      // TODO: 12.0大秘境开了之后 去掉beta-
+      ? `https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/beta-mythic-plus/${category}/10/all-dungeons/this-week.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=beta-mythic-plus&categorySlug=${category}&difficultySlug=10&encounterSlug=all-dungeons&affixesSlug=this-week`
       : `https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/raid/${category}/mythic/all-bosses.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=raid&categorySlug=${category}&difficultySlug=mythic&encounterSlug=all-bosses`;
     const res = await axios.get(url);
     return res?.data?.pageProps?.page;

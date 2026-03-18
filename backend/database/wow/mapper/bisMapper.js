@@ -85,7 +85,8 @@ async function updateOverviewBis(roleClass, classSpec, data) {
     const bisData = JSON.parse(existed.bis_items);
     const date = formatDate();
     bisData.forEach((item) => {
-      if (item.title === '汇总') {
+      // TODO: 12.0 beta的汇总bis并不完美
+      if (item.title === '汇总-beta') {
         item.items = data.overview.map((bisItem) => bisItem.id).join('@');
         item.enhancements = data.overview
           .map((bisItem) => bisItem.enhancements)

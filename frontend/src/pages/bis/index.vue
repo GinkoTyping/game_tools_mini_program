@@ -75,6 +75,10 @@
         </view>
       </uni-card>
 
+      <uni-card class="section-card tiers-card">
+        大秘境排行更新中...
+      </uni-card>
+
       <uni-card class="section-card" v-show="statSource === 'wowhead'">
         <view class="menu stat-menu">
           <text
@@ -196,14 +200,6 @@
             </text>
           </uni-tooltip>
         </view>
-      </uni-card>
-
-      <uni-card class="section-card tiers-card">
-        大秘境排行更新中...
-      </uni-card>
-
-      <uni-card class="section-card">
-        属性优先级更新中...
       </uni-card>
     </uni-section>
   </template>
@@ -722,7 +718,7 @@ const relationIcon = computed(() => {
     }
   };
 });
-const statSource = ref('');
+const statSource = ref('maxroll');
 const statDetailCollapse = ref();
 const getStatValue = computed(() => (index: number) => {
   const key = isMythicPlusStats.value ? 'archonStatsPriority' : 'archonRaidStatsPriority';
@@ -1117,14 +1113,12 @@ const footerMenus = computed(() => [
     value: 'index',
     icon: 'icon-Crown-',
   },
-  ...(currentData.value?.wowheadBis?.talents?.length ? [
-    {
-      title: '天赋',
-      value: 'talent',
-      icon: 'icon-tree',
-      feature: true,
-    },
-  ] : []),
+  {
+    title: '天赋',
+    value: 'talent',
+    icon: 'icon-tree',
+    feature: true,
+  },
   {
     title: '分享',
     value: 'share',

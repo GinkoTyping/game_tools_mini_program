@@ -1,13 +1,9 @@
-import { BlizzAPI } from 'blizzapi';
 import Bottleneck from 'bottleneck';
-import { configDotenv } from 'dotenv';
 import uniqBy from 'lodash/uniqBy.js';
-
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 import { getDailyDB, getDB } from '../../database/utils/index.js';
 import { getDynamicDB } from '../../database/utils/index.js';
+import setBlizzAPI from '../../util/blizz.js';
 
 import { useBisMapper } from '../../database/wow/mapper/bisMapper.js';
 import { useItemMapper } from '../../database/wow/mapper/itemMapper.js';
@@ -30,7 +26,7 @@ import {
 import { useTalentMapper } from '../../database/wow/mapper/static/talentMapper.js';
 import { useSpellMapper } from '../../database/wow/mapper/spellMapper.js';
 
-let api;
+const api = setBlizzAPI();
 const database = await getDB();
 const bisMapper = useBisMapper(database);
 const itemMapper = useItemMapper(database);
@@ -42,19 +38,6 @@ const specBisCountMapper = useSpecBisCountMapper(dynamicDB);
 
 const dailyDB = await getDailyDB();
 const specStatMapper = useSpecStatMapper(dailyDB);
-
-function setBlizzAPI() {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-  configDotenv({ path: path.resolve(__dirname, '../../.env') });
-  api = new BlizzAPI({
-    region: 'us',
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
-  });
-}
-
-setBlizzAPI();
 
 export async function queryBlizzItemById(id, locale) {
   return api.query(`/data/wow/item/${id}`, {
@@ -607,10 +590,10 @@ export async function getBisBySpec(req, res) {
     let bis_items = await mapBisItems(
       JSON.parse(bisData.bis_items),
       [],
-      [],
+      // [],
       // TODO: 待 12.0 Archon更新
       // maxrollEnhancements,
-      // archonEnhancements,
+      archonEnhancements,
     );
     const popularity_items = await mapEnhancements(
       JSON.parse(bisData.popularity_items),
@@ -618,11 +601,11 @@ export async function getBisBySpec(req, res) {
     );
 
     // 团本获取的BIS目前很鸡肋
-    bis_items = bis_items.filter((item) => item.title !== '团本获取');
+    bis_items = bis_items.filter((item) => !['团本获取', '汇总-beta'].includes(item.title));
 
     // 展示archon上按热门度的配装
     // TODO: 待12.0大秘境更新
-    bis_items.splice(1, 0, { title: '大秘境热门度', items: [] });
+    bis_items.splice(1, 0, { title: '测试服大秘境', items: popularity_items });
 
     bis_items = sortBisItems(bis_items);
 
@@ -685,10 +668,7 @@ export async function getBisBySpec(req, res) {
       ratings: JSON.parse(bisData.ratings),
       talents: JSON.parse(bisData.talents),
       wowhead_bis: wowheadBis,
-
-      // TODO: 待 12.0 Archon更新
-      popular_mythic_dungeon_trinkets: [],
-
+      popular_mythic_dungeon_trinkets: popularMythicDungeonTrinkets,
       mythicOverallTier,
       mythicDpsTier,
       maxroll_bis: undefined,

@@ -210,10 +210,12 @@ const messageText = ref('默认文本');
     padding: 10rpx;
     color: #fff;
     font-size: 24rpx;
+    min-width: 30%;
 
     .hero-talent-bold {
       font-size: 28rpx;
       font-weight: bold;
+      white-space: nowrap;
     }
 
     &:first-child {
@@ -225,7 +227,6 @@ const messageText = ref('默认文本');
     }
 
     &:last-child {
-      min-width: 40%;
       flex: 1;
       background: $color-mythic;
 

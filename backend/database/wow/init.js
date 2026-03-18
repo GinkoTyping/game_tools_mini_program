@@ -87,6 +87,10 @@ async function updateWowheadData() {
             items: mapItems(spec.overall ?? []),
           },
           {
+            title: '汇总-beta',
+            items: [],
+          },
+          {
             title: '大秘境获取',
             items: mapItems(spec.bisItemMythic),
           },
