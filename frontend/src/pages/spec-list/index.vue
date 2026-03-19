@@ -1,4 +1,12 @@
 <template>
+  <uni-notice-bar
+    v-if="noticeMessage"
+    single
+    showClose
+    color="#2979FF"
+    background-color="#EAF2FF"
+    :text="noticeMessage"
+  />
   <uni-collapse ref="collapse" accordion>
     <template v-for="item in displayData" :key="item.role_class">
       <uni-collapse-item>
@@ -78,11 +86,13 @@ onLoad(async (options) => {
   await uni.setNavigationBarTitle({ title: queryParams.value?.title ?? '专精列表' });
 });
 
+const noticeMessage = ref('');
 // 用专精页面返回该页面时，也需要刷新
 onShow(async () => {
   const data: any = await queryTrend();
   trendData.value = data.trend;
   displayData.value = getSortData();
+  noticeMessage.value = data.message;
 
   spriteConfig.value = data.sprite;
 });

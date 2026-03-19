@@ -501,13 +501,19 @@ export async function queryTrend(version = '') {
 }
 
 export interface IHomeViewDTO {
+  carouselsType: string;
   carousels: {
     role_class: string;
     class_spec: string;
     avg: string;
     custom: boolean;
   }[];
-  hotTopics: { role_class: string; class_spec: string; count: number }[];
+  hotTopics: {
+    role_class: string;
+    class_spec: string;
+    count: number;
+    custom: boolean
+  }[];
   tierLists: { version_id: string; role: string; activity_type: string }[];
   entries: {
     feature: boolean;

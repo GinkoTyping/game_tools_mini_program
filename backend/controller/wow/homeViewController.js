@@ -160,6 +160,7 @@ export async function queryHomeView(req, res) {
         color: '#e37e00',
       },
     ],
+    carouselsType: 'byView',
   };
 
   const time = new Intl.DateTimeFormat('zh-CN', {

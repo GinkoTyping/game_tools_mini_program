@@ -3,6 +3,7 @@
     v-if="isShowNotice && scrollText"
     single
     show-icon
+    scrollable
     show-get-more
     color="#2979FF"
     background-color="#EAF2FF"
@@ -11,14 +12,14 @@
     @click="onClickNotice"
   />
   <uni-swiper-dot
-    :info="homeViewData?.carousels"
+    :info="carouselsData"
     :dots-styles="dotsStyles"
     :current="currentSwipper"
     field="content"
     mode="round"
   >
     <swiper class="swiper-box" @change="onSwipperChange" autoplay>
-      <template v-for="(item, index) in homeViewData?.carousels" :key="index">
+      <template v-for="(item, index) in carouselsData" :key="index">
         <swiper-item v-if="item.custom"></swiper-item>
         <swiper-item
           v-else
@@ -45,12 +46,15 @@
                       }}
                     </text>
                   </view>
-                  <view class="info-type">大秘境输出: {{ item.avg }}</view>
+                  <view class="info-type">
+                    {{ homeViewData?.carouselsType === 'byView' ? `浏览量: ${(item as any).count}` : `大秘境输出: ${(item as any).avg}`
+                    }}
+                  </view>
                 </view>
               </view>
               <view class="tags">
                 <text class="tag-label"
-                >大秘境输出排行
+                >{{ homeViewData?.carouselsType === 'byView' ? '攻略热度排行' : '大秘境输出排行' }}
                   <text style="font-weight: bold"
                   >NO.{{ index + 1 }}
                   </text
@@ -257,6 +261,8 @@ const currentSwipper = ref(0);
 const scrollText = ref('');
 const store = useUserStore();
 const notViewedRelationCount = computed(() => store.notViewedRelations?.count);
+const carouselsData = computed(() => homeViewData.value?.carouselsType === 'byView' ? homeViewData.value?.hotTopics : homeViewData.value?.carousels);
+
 onLoad(async () => {
   store.getNotViewedRelations();
 

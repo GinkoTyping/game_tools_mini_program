@@ -739,6 +739,7 @@ export async function queryBisTrends(req, res) {
   res.json({
     trend,
     sprite,
+    message: '🔥各专精的浏览量统计已重置',
   });
 }
 
