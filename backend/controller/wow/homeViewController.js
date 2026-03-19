@@ -38,7 +38,7 @@ const userTagMapper = useUserTagMapper(dynamicDB);
 const commonDynamicDB = await getCommonDynamicDB();
 const tarotMapper = useTarotMapper(commonDynamicDB);
 
-const UPDATE_INTERVAL_HOUR = 1;
+const UPDATE_INTERVAL_HOUR = 0.1;
 const UPDATE_INTERVAL = UPDATE_INTERVAL_HOUR * 3600 * 1000;
 let lastUpdateAt = 0;
 let mythicMarkCount = 0;
