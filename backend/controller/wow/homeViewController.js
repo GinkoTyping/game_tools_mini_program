@@ -91,7 +91,7 @@ export async function queryHomeView(req, res) {
         label: '排行',
         value: 'rating',
         icon: 'fire-filled',
-        page: '/pages/spec-stats/index?menu=overall',
+        page: '/pages/spec-stats/index',
         color: '#e37e00',
         feature: true,
       },
@@ -160,7 +160,7 @@ export async function queryHomeView(req, res) {
         color: '#e37e00',
       },
     ],
-    carouselsType: 'byView',
+    carouselsType: 'byDPS',
   };
 
   const time = new Intl.DateTimeFormat('zh-CN', {

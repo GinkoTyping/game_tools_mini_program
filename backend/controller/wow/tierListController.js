@@ -1,5 +1,5 @@
 import { getDB } from '../../database/utils/index.js';
-import { collectMythicTierList } from '../../database/wow/data/archon-tier-list/crawler.js';
+import { collectMythicTierList, collectMythicTierListV2 } from '../../database/wow/data/archon-tier-list/crawler.js';
 import { useTierListMapper } from '../../database/wow/mapper/tierListMapper.js';
 
 const db = await getDB();
@@ -29,10 +29,11 @@ export async function queryTierList(req, res) {
 
 export async function queryUpdateArchonMythicTier(req, res) {
   try {
-    const tierData = await collectMythicTierList(req.body.useCache);
+    const api = req.body.byApi ? collectMythicTierListV2 : collectMythicTierList;
+    const tierData = await api(req.body);
 
     const results = await Promise.allSettled(
-      tierData.map((roleTier) => tierListMapper.updateTierList(roleTier))
+      tierData.map((roleTier) => tierListMapper.updateTierList(roleTier)),
     );
     const err = results.filter((item) => item.status !== 'fulfilled');
     if (err.length) {

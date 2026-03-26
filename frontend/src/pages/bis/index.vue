@@ -26,8 +26,7 @@
         </view>
       </uni-card>
 
-      <!--  临时屏蔽   -->
-      <uni-card class="section-card tiers-card" v-show="statSource === 'wowhead'">
+      <uni-card class="section-card tiers-card">
         <view class="tiers">
           <view
             class="tier-bar"
@@ -73,10 +72,6 @@
             </view>
           </view>
         </view>
-      </uni-card>
-
-      <uni-card class="section-card tiers-card">
-        大秘境排行更新中...
       </uni-card>
 
       <uni-card class="section-card" v-show="statSource === 'wowhead'">
