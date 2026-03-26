@@ -89,17 +89,10 @@ export async function queryHomeView(req, res) {
       },
       {
         label: 'DPS排行',
-        value: 'rating',
-        icon: 'pyq',
+        icon: 'fire-filled',
         page: '/pages/spec-stats/index',
         feature: true,
-      },
-      {
-        label: '综合排行',
-        value: 'rating',
-        icon: 'fire-filled',
-        page: '/pages/spec-stats/index?menu=overall',
-        feature: true,
+        color: '#e37e00',
       },
       {
         label: '专精攻略',
@@ -107,14 +100,15 @@ export async function queryHomeView(req, res) {
         icon: 'map-filled',
         page: '/pages/spec-list/index',
         color: '#e37e00',
+      },
+      {
+        label: '大秘天梯',
+        value: 'rating',
+        icon: 'vip-filled',
+        color: '#e37e00',
+        page: '/pages/mythic-rank/index',
         feature: true,
       },
-      // {
-      //   label: '大秘天梯',
-      //   value: 'rating',
-      //   icon: 'vip-filled',
-      //   page: '/pages/mythic-rank/index',
-      // },
       // {
       //   label: '做题家',
       //   value: 'question',
