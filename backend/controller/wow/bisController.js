@@ -604,8 +604,7 @@ export async function getBisBySpec(req, res) {
     bis_items = bis_items.filter((item) => !['团本获取', '汇总-beta'].includes(item.title));
 
     // 展示archon上按热门度的配装
-    // TODO: 待12.0大秘境更新
-    bis_items.splice(1, 0, { title: '测试服大秘境', items: popularity_items });
+    bis_items.splice(1, 0, { title: '大秘境热门度', items: popularity_items });
 
     bis_items = sortBisItems(bis_items);
 
