@@ -887,6 +887,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
         flatSpecs[0].classSpec,
         flatSpecs[0].roleClass,
       );
+      console.log('ArchonHash:' + archonHash);
       if (!archonHash) {
         throw new Error('ArchonHash not found');
       }

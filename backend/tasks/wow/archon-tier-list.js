@@ -11,8 +11,8 @@ const __dirname = path.dirname(__filename);
 configDotenv({ path: path.resolve(__dirname, '../../.env') });
 
 const complexRule = {
-  hour: [23],
-  minute: [3],
+  hour: [6],
+  minute: [0],
   tz: 'Asia/Shanghai',
 };
 
