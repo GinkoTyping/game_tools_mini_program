@@ -25,6 +25,7 @@ import {
 } from '../../database/wow/mapper/daliy/specStatMapper.js';
 import { useTalentMapper } from '../../database/wow/mapper/static/talentMapper.js';
 import { useSpellMapper } from '../../database/wow/mapper/spellMapper.js';
+import { bark } from '../../util/bark.js';
 
 const api = setBlizzAPI();
 const database = await getDB();
@@ -949,15 +950,22 @@ export async function queryUpdateArchonBisOverview(req, res) {
 
     const errors = results.filter((item) => item.status !== 'fulfilled');
     if (errors.length) {
-      res.json({ message: '更新 ARCHON OVERVIEW 失败。' });
+      const message = '更新 ARCHON OVERVIEW 失败。';
+      res.json({ message });
+      bark.sendNotify(message);
     } else {
       // TODO: 运行更新 icon 和 slot 的脚本
       const freshItemMsg = freshItems?.length ? `总计新增物品：${freshItems?.map(item => item.name)?.join(', ')}` : '';
-      const message = `更新 ARCHON OVERVIEW 成功。 ${freshItemMsg}`;
+      const message = `ARCHON OVERVIEW 更新成功。 ${freshItemMsg}`;
       console.log(message);
+      bark.sendNotify(freshItemMsg ? {
+        title: 'ARCHON OVERVIEW 更新成功',
+        content: freshItemMsg,
+      } : 'ARCHON OVERVIEW 更新成功');
       res.json({ message });
     }
   } catch (error) {
+    bark.sendNotify(error?.message ?? '更新 ARCHON OVERVIEW 失败。');
     res.status(500).json({ error: error?.message });
   }
 }
