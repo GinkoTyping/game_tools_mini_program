@@ -26,6 +26,24 @@ export async function queryAccessCount(req, res) {
 }
 
 export async function queryScrollInfo(req, res) {
+  try {
+    const { date, text } = await patchMapper.getLatestPatch();
+
+    if (Math.abs(new Date(date).getTime() - Date.now()) <= 7 * 24 * 60 * 1000) {
+      res.json(`${text.replaceAll('\n', ' ')}(${date})`);
+    }
+
+    res.json('');
+  } catch {
+
+    res.json('');
+  }
+}
+
+export async function queryScrollInfoV2(req, res) {
   const { date, text } = await patchMapper.getLatestPatch();
-  res.json(`${text.replaceAll('\n', ' ')}(${date})`);
+  res.json({
+    message: text.replaceAll('\n', ' '),
+    date,
+  });
 }
