@@ -12,7 +12,7 @@ configDotenv({ path: path.resolve(__dirname, '../../.env') });
 
 const complexRule = {
   hour: [23],
-  minute: 6,
+  minute: 8,
   tz: 'Asia/Shanghai',
 };
 
@@ -20,7 +20,7 @@ schedule.scheduleJob(complexRule, () => {
   console.log('定时任务 更新archon bis:', new Date().toLocaleString());
   axios
     .post(
-      'https://ginkolearn.cyou/api/wow/tier-list/update',
+      'https://ginkolearn.cyou/api/wow/bis/archon-overview',
       {
         useCache: false,
         forceUpdate: true,
