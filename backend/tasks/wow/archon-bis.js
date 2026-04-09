@@ -11,13 +11,13 @@ const __dirname = path.dirname(__filename);
 configDotenv({ path: path.resolve(__dirname, '../../.env') });
 
 const complexRule = {
-  hour: [6],
-  minute: 0,
+  hour: [23],
+  minute: 6,
   tz: 'Asia/Shanghai',
 };
 
 schedule.scheduleJob(complexRule, () => {
-  console.log('定时任务 更新archon tier list:', new Date().toLocaleString());
+  console.log('定时任务 更新archon bis:', new Date().toLocaleString());
   axios
     .post(
       'https://ginkolearn.cyou/api/wow/tier-list/update',
