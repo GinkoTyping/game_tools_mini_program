@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { configDotenv } from 'dotenv';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 configDotenv({ path: path.resolve(__dirname, '../../.env') });
@@ -21,13 +22,13 @@ schedule.scheduleJob(complexRule, () => {
     .post(
       'https://ginkolearn.cyou/api/wow/tier-list/update',
       {
-        useCache: false,
+        byApi: false,
       },
       {
         headers: {
           Authorization: `Bearer ${process.env.ADMIN_TOKEN}`,
         },
-      }
+      },
     )
     .then((res) => {
       console.log(res?.data?.message);

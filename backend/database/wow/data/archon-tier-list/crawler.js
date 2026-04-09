@@ -15,7 +15,7 @@ function getStaticFilePath() {
 }
 
 function getUrl() {
-  return 'https://www.archon.gg/wow/tier-list/dps-rankings/mythic-plus/10/all-dungeons/this-week';
+  return 'https://www.archon.gg/wow';
 }
 
 export async function collectMythicTierList() {
@@ -24,56 +24,57 @@ export async function collectMythicTierList() {
   const dpsTier = [];
   const tankTier = [];
   const healerTier = [];
+
+  let tier = 'S';
   $('.builds-tier-list-section__tiers')
     .children()
     .each((tierIdx, rowEle) => {
-      const tier = $(rowEle).children().first().text()?.split(' ')[0];
 
-      $(rowEle)
-        .children('ul')
-        .each((roleIdx, roleEle) => {
-          const tierItem = {
-            tier,
-            children: [],
-          };
+      if (tierIdx === 0 || tierIdx % 4 === 0) {
+        tier = $(rowEle).children().first().text()?.split(' ')[0];
+      } else {
+        const tierItem = {
+          tier,
+          children: [],
+        };
 
-          $(roleEle)
-            .children('li')
-            .each((specIdx, specEle) => {
-              let [classSpec, roleClass] = $(specEle)
-                .attr('title')
-                .toLowerCase()
-                .split(' ');
-              if (classSpec === 'beastmastery') {
-                classSpec = 'beast-mastery';
-                roleClass = 'hunter';
-              } else if (roleClass === 'deathknight') {
-                roleClass = 'death-knight';
-              } else if (roleClass === 'demonhunter') {
-                roleClass = 'demon-hunter';
-              }
+        $(rowEle)
+          .children('li')
+          .each((specIdx, specEle) => {
+            let [classSpec, roleClass] = $(specEle)
+              .attr('title')
+              .toLowerCase()
+              .split(' ');
+            if (classSpec === 'beastmastery') {
+              classSpec = 'beast-mastery';
+              roleClass = 'hunter';
+            } else if (roleClass === 'deathknight') {
+              roleClass = 'death-knight';
+            } else if (roleClass === 'demonhunter') {
+              roleClass = 'demon-hunter';
+            }
 
-              tierItem.children.push({
-                roleClass,
-                classSpec,
-                fullNameEN: `${classSpec} ${roleClass}`,
-                fullNameZH: `${classLocale[roleClass][classSpec]} ${classLocale.class[roleClass]}`,
-              });
+            tierItem.children.push({
+              roleClass,
+              classSpec,
+              fullNameEN: `${classSpec} ${roleClass}`,
+              fullNameZH: `${classLocale[roleClass][classSpec]} ${classLocale.class[roleClass]}`,
             });
+          });
 
-          if (roleIdx === 0) {
-            dpsTier.push(tierItem);
-          } else if (roleIdx === 1) {
-            tankTier.push(tierItem);
-          } else if (roleIdx === 2) {
-            healerTier.push(tierItem);
-          }
-        });
+        if (tierIdx % 4 === 1) {
+          dpsTier.push(tierItem);
+        } else if (tierIdx % 4 === 2) {
+          tankTier.push(tierItem);
+        } else if (tierIdx % 4 === 3) {
+          healerTier.push(tierItem);
+        }
+      }
     });
   const basic = {
     // TODO 默认返回昨天的时间，archon是每日更新 ？
     createdAt: formatDate(Date.now() - 24 * 60 * 60 * 1000),
-    versionId: '11.1',
+    versionId: '12.0',
     activityType: 'MYTHIC',
   };
   return [
@@ -101,7 +102,7 @@ export async function collectMythicTierListV2(params) {
   const basic = {
     // TODO 默认返回昨天的时间，archon是每日更新 ？
     createdAt: formatDate(Date.now() - 24 * 60 * 60 * 1000),
-    versionId: '11.1',
+    versionId: '12.0',
     activityType: 'MYTHIC',
   };
 
