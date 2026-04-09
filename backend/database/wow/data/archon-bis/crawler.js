@@ -401,6 +401,7 @@ function getFormatItem(item) {
 }
 
 async function queryGears(hash, classSpec, roleClass) {
+  const missingBisGears = [];
   const data = await queryArchon(hash, 'gear-and-tier-set', classSpec, roleClass);
   const gearsTable = data.sections.find(section => section.navigationId === 'gear-tables');
   let bisGears = [];
@@ -454,7 +455,7 @@ async function queryGears(hash, classSpec, roleClass) {
 
     // 如果没有找到 BIS 标签的装备，默认取第一个
     if (collectCount === 0) {
-      console.log('未匹配BIS装备，使用热门度第一代替', `${classSpec} ${roleClass}`, slotLabel);
+      missingBisGears.push(slotLabel);
       slotLabel === 'Trinket'
         ? trinkets.push(getFormatItem(kind.data?.[0]))
         : bisGears.push(getFormatItem(kind.data?.[0]));
@@ -473,6 +474,11 @@ async function queryGears(hash, classSpec, roleClass) {
       enhancements: matchEnhancementIds(gearItem.icon),
     };
   });
+
+  if (missingBisGears?.length) {
+    console.log(` ${missingBisGears.length}个部位未匹配BIS，使用热门度第一代替，${classSpec} ${roleClass}`);
+  }
+
   return { bisGears, trinkets, popularGears };
 }
 
