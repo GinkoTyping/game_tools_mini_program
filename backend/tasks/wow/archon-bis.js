@@ -47,4 +47,4 @@ schedule.scheduleJob(complexRule, () => {
     });
 });
 
-console.log('自动化任务：更新archon tier list', new Date().toLocaleString());
+console.log('自动化任务：更新archon bis', new Date().toLocaleString());
