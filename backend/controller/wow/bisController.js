@@ -70,7 +70,7 @@ export async function getItemPreviewById(req, res) {
 
   const item = await itemMapper.getItemById(req.params.id);
   if (item?.preview) {
-    res.json({
+    return res.json({
       ...adaptDiscBelt(JSON.parse(
         req.query?.locale === 'en_US' ? item.preview_en : item.preview,
       )),
@@ -92,10 +92,13 @@ export async function getItemPreviewById(req, res) {
         }`,
       );
 
-      res.json(data);
+      return res.json({
+        ...data ?? {},
+        fresh: true,
+      });
     } catch (error) {
       console.log(error?.config?.url, error?.message);
-      res.status(500).json({ message: '获取物品信息失败' });
+      return res.status?.(500).json({ message: '获取物品信息失败' });
     }
   }
 }
@@ -855,16 +858,19 @@ export async function queryRegisterItem(req, res) {
   }
 }
 
-async function checkValidItems(enhancements) {
-  if (enhancements?.length) {
-    return Promise.allSettled(
-      enhancements.map((item) =>
+async function checkValidItems(items) {
+  if (items?.length) {
+    const results = await Promise.allSettled(
+      items.map((item) =>
         getItemPreviewById({ params: { id: item } }, {
-          json: function() {
+          json(data) {
+            return Promise.resolve(data);
           },
         }),
       ),
     );
+
+    return results.map(item => item?.value)?.filter(item => item?.fresh);
   }
 }
 
@@ -897,6 +903,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
       ? (classSpec, roleClass) => collectArchonByApi(archonHash, classSpec, roleClass)
       : (classSpec, roleClass) => collectBisOverview(classSpec, roleClass, req.body.useCache);
 
+    const freshItems = [];
     const results = await Promise.allSettled(
       flatSpecs.map((item) =>
         limiter.schedule(async () => {
@@ -909,7 +916,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
           console.log(
             `更新BIS进度: ${doneCount}/${totalCount}, ${item.classSpec} ${item.roleClass}`,
           );
-          const checkResults = await checkValidItems(
+          const freshPopularItems = await checkValidItems(
             data.popularityItems.reduce((pre, cur) => {
               cur.enhancements.forEach((enhancement) => {
                 if (enhancement && !pre.includes(enhancement)) {
@@ -924,7 +931,13 @@ export async function queryUpdateArchonBisOverview(req, res) {
               return pre;
             }, []),
           );
-          await checkValidItems([...data.popularTrinkets, ...data.overview].map((item) => item.id));
+          const freshOtherItems = await checkValidItems([
+            ...data.popularTrinkets,
+            ...data.overview,
+          ].map((item) => item.id));
+
+          freshItems.push(...freshPopularItems, ...freshOtherItems);
+
           return bisMapper.updateOverviewBis(
             item.roleClass,
             item.classSpec,
@@ -933,11 +946,16 @@ export async function queryUpdateArchonBisOverview(req, res) {
         }),
       ),
     );
+
     const errors = results.filter((item) => item.status !== 'fulfilled');
     if (errors.length) {
       res.json({ message: '更新 ARCHON OVERVIEW 失败。' });
     } else {
-      res.json({ message: '更新 ARCHON OVERVIEW 成功。' });
+      // TODO: 运行更新 icon 和 slot 的脚本
+      const freshItemMsg = freshItems?.length ? `总计新增物品：${freshItems?.map(item => item.name)?.join(', ')}` : '';
+      const message = `更新 ARCHON OVERVIEW 成功。 ${freshItemMsg}`;
+      console.log(message);
+      res.json({ message });
     }
   } catch (error) {
     res.status(500).json({ error: error?.message });
