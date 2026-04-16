@@ -267,7 +267,7 @@ export async function getArchonHash(classSpec, roleClass) {
         const url = new URL(response.url());
         const pathname = url.pathname;
         if (!pathHash && pathname.includes('/this-week.json')) {
-          const match = pathname.match(/^\/_next\/data\/([a-zA-Z0-9_]+)\//);
+          const match = pathname.match(/^\/_next\/data\/([\w-]+)\//);
           pathHash = match?.[1];
         }
       },
