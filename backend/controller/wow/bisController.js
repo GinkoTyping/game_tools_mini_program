@@ -605,7 +605,7 @@ export async function getBisBySpec(req, res) {
     );
 
     // 团本获取的BIS目前很鸡肋
-    bis_items = bis_items.filter((item) => !['团本获取', '汇总-beta'].includes(item.title));
+    bis_items = bis_items.filter((item) => !['团本获取', '汇总-beta'].includes(item?.title));
 
     // 展示archon上按热门度的配装
     bis_items.splice(1, 0, { title: '大秘境热门度', items: popularity_items });
