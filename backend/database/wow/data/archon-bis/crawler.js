@@ -17,7 +17,7 @@ function getStaticFilePath(classSpec, roleClass) {
 }
 
 function getUrl(classSpec, roleClass) {
-  return `https://www.archon.gg/wow/builds/${classSpec}/${roleClass}/mythic-plus/gear-and-tier-set/high-keys/all-dungeons/this-week`;
+  return `https://www.archon.gg/wow/builds/${classSpec}/${roleClass}/mythic-plus/overview/10/all-dungeons/this-week`;
 }
 
 function getOverviewUrl(classSpec, roleClass) {
