@@ -80,13 +80,16 @@ function collectTable(context, table, tableIndex) {
   };
 }
 
+const BASE_WEEK_INDEX = 1056;
+
 export async function getSpecDpsRankData(week, maxWeek) {
   try {
     if (week > maxWeek) {
       throw new Error(`当前周数(${week})超出最大允许的值(${maxWeek})。`);
     }
 
-    const period = `10${week < 10 ? `0${week}` : week}`;
+
+    const period = BASE_WEEK_INDEX + week - 1;
     const filePath = path.resolve(__dirname, `./cache/${period}.html`);
 
     let html;
