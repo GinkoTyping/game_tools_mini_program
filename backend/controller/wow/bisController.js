@@ -357,23 +357,6 @@ async function mapWowheadBis(wowheadBis) {
     return name;
   }
 
-  const detailedPuzzlingCartelChipAdvice = wowheadBis.detailedPuzzlingCartelChipAdvice?.length ? await Promise.allSettled(
-    wowheadBis.detailedPuzzlingCartelChipAdvice.map(
-      async kind => {
-        const itemResults = await Promise.allSettled(kind.data.options.map(async item => {
-            const itemData = await itemMapper.getItemById(item.id);
-            return {
-              ...item,
-              name: itemData.name,
-              image: itemData.image,
-            };
-          }),
-        );
-        kind.typeName = mapTypeName(kind.type);
-        kind.data.options = itemResults.map(result => result.value).filter(item => item);
-        return kind;
-      }),
-  ) : [];
   const ALL_CORRUPTIONS = [
     239095,
     239093,
@@ -396,7 +379,7 @@ async function mapWowheadBis(wowheadBis) {
   return {
     ...wowheadBis,
     corruptions: { ...wowheadBis.corruptions, items: detailedCorruptionItems },
-    detailedPuzzlingCartelChipAdvice: detailedPuzzlingCartelChipAdvice.map(item => item.value),
+    detailedPuzzlingCartelChipAdvice: [],
   };
 }
 
@@ -906,7 +889,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
 
     const freshItems = [];
     const results = await Promise.allSettled(
-      flatSpecs.map((item) =>
+      flatSpecs.slice(0, 1).map((item) =>
         limiter.schedule(async () => {
           console.log(`获取${item.classSpec} ${item.roleClass}...`);
           const data = await collectFn(
