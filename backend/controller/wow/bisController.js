@@ -889,7 +889,7 @@ export async function queryUpdateArchonBisOverview(req, res) {
 
     const freshItems = [];
     const results = await Promise.allSettled(
-      flatSpecs.slice(0, 1).map((item) =>
+      flatSpecs.map((item) =>
         limiter.schedule(async () => {
           console.log(`获取${item.classSpec} ${item.roleClass}...`);
           const data = await collectFn(
