@@ -12,6 +12,8 @@
     "lodash": "^4.17.23",
     "md5": "^2.3.0",
     "node-schedule": "^2.1.1",
+    "playwright": "^1.63.0",
+    "playwright-stealth": "^0.0.1",
     "puppeteer": "^24.2.0",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7"
