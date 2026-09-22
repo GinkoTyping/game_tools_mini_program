@@ -14,7 +14,7 @@ function sendNotify(params) {
     if (typeof params === 'string') {
       url = `https://api.day.app/${process.env.BARK_HASH}/小程序/${params}${query}`;
     } else {
-      url = `https://api.day.app/${process.env.BARK_HASH}/${title}/${content}${query}`;
+      url = `https://api.day.app/${process.env.BARK_HASH}/${params.title}/${params.content}${query}`;
     }
     return axios.get(url);
   } catch (e) {

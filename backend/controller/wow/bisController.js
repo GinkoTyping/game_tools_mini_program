@@ -13,6 +13,8 @@ import {
 import { isLocal } from '../../auth/validateAdmin.js';
 import spriteMap from '../../assets/wow/sprites/sprite-map.js';
 import {
+  initArchonSession,
+  closeArchonSession,
   collectArchonByApi,
   collectBisOverview, getArchonHash,
 } from '../../database/wow/data/archon-bis/crawler.js';
@@ -860,27 +862,22 @@ async function checkValidItems(items) {
 
 const limiter = new Bottleneck({
   minTime: 2000, // 拉大基础间隔
-  maxConcurrent: 2, // 限制同时请求数
+  maxConcurrent: 1, // 限制同时请求数
 });
 
 export async function queryUpdateArchonBisOverview(req, res) {
   try {
+    const hash = await initArchonSession();
+
     const flatSpecs = req.body.forceUpdate
       ? await bisMapper.getAllBisDateInfo()
       : await bisMapper.getOutdatedBIS();
     let doneCount = 0;
     let totalCount = flatSpecs.length;
 
-    let archonHash = req.body.hash;
-    if (req.body.byApi && !archonHash) {
-      archonHash = await getArchonHash(
-        flatSpecs[0].classSpec,
-        flatSpecs[0].roleClass,
-      );
-      console.log('ArchonHash:' + archonHash);
-      if (!archonHash) {
-        throw new Error('ArchonHash not found');
-      }
+    let archonHash = req.body.hash || hash;
+    if (!archonHash) {
+      throw new Error('ArchonHash not found');
     }
 
     let collectFn = req.body.byApi
@@ -950,6 +947,8 @@ export async function queryUpdateArchonBisOverview(req, res) {
   } catch (error) {
     bark.sendNotify(error?.message ?? '更新 ARCHON OVERVIEW 失败。');
     res.status(500).json({ error: error?.message });
+  } finally {
+    await closeArchonSession();
   }
 }
 
@@ -957,7 +956,7 @@ export async function queryUpdateMaxrollBisOverview(req, res) {
   try {
     const flatSpecs = await bisMapper.getMaxrollBis();
     const results = await Promise.allSettled(
-      flatSpecs.map((item) =>
+      flatSpecs.slice(0, 1).map((item) =>
         limiter.schedule(async () => {
           const data = await collectMaxrollBis(
             item.class_spec,

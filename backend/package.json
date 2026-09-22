@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
+    "@mr_ozio/playwright-stealth": "^1.0.0",
     "archiver": "^7.0.1",
     "axios-retry": "^4.5.0",
     "blizzapi": "^2.6.5",

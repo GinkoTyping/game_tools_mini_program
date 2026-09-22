@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { chromium } from 'playwright';
+import { stealth } from '@mr_ozio/playwright-stealth';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -253,41 +255,157 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
 // endregion
 
 // region API 查询数据
+
+// playwright 全局单例
+let browser = null;
+let context = null;
+let page = null;
+
+/**
+ * 初始化会话，只会执行一次：访问 archon.gg，完成CF验证，获取cf_clearance、human_verified cookie
+ */
+export async function initArchonSession() {
+  // 已经初始化直接返回，不再重复打开页面
+  if (browser && context && page) return;
+
+  browser = await stealth(chromium).launch({
+    headless: false,
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage', // Linux云服务器必加，解决/dev/shm不足崩溃
+      '--disable-gpu',
+      '--disable-background-networking',
+      '--disable-background-timer-throttling',
+      '--disable-backgrounding-occluded-windows',
+      '--disable-renderer-backgrounding',
+    ],
+  });
+
+  context = await browser.newContext({
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36',
+    viewport: { width: 1280, height: 720 },
+  });
+
+  page = await context.newPage();
+
+  let hashResolve;
+  const hashPromise = new Promise(resolve => hashResolve = resolve);
+  let archonHash = null;
+
+  // ✅ 在goto之前注册response监听，捕获页面加载请求
+  const onResponse = (response) => {
+    const resUrl = new URL(response.url());
+    const pathname = resUrl.pathname;
+    if (!archonHash && pathname.includes('/this-week.json')) {
+      const match = pathname.match(/^\/_next\/data\/([\w-]+)\//);
+      if (match?.[1]) {
+        archonHash = match[1];
+        console.log('✅ 初始化阶段捕获到hash：', archonHash);
+        hashResolve();
+      }
+    }
+  };
+  page.on('response', onResponse);
+
+  try {
+    // 访问wow主页，触发CF验证以及页面资源加载
+    await page.goto('https://www.archon.gg/wow', { timeout: 20000 });
+
+    try {
+      // 定位页面的人机验证提交按钮
+      const humanBtn = page.locator('button[type="submit"]');
+      // 检测按钮是否可见，最多等待5秒
+      const btnVisible = await humanBtn.isVisible({ timeout: 5000 });
+
+      if (btnVisible) {
+        console.log('✅ 检测到CF人机验证按钮，准备点击');
+        // 模拟真人延迟
+        await page.waitForTimeout(400 + Math.random() * 600);
+        await humanBtn.click();
+        console.log('✅ 已点击人机验证按钮');
+        // 点击提交表单后，等待页面跳转完成
+        await page.waitForNavigation({ timeout: 15000 });
+        console.log('✅ 人机验证表单提交成功，页面跳转完成');
+      } else {
+        console.log('ℹ️ 未检测到人机验证按钮，跳过');
+      }
+    } catch (err) {
+      console.log('ℹ️ 没有弹出人机验证页面，继续加载页面：', err.message);
+    }
+
+    // 等待hash，最长等待20秒，超时不阻断初始化（只是拿不到hash）
+    const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('初始化监听hash超时')), 20000));
+    await Promise.race([hashPromise, timeoutPromise]);
+    return archonHash;
+
+  } catch (err) {
+    throw new Error(`initArchonSession 失败: ${err.message}`);
+  } finally {
+    // 清除监听，防止事件堆积
+    page.removeListener('response', onResponse);
+  }
+}
+
+export async function closeArchonSession() {
+  if (browser) {
+    await browser.close();
+    browser = null;
+    context = null;
+    page = null;
+  }
+}
+
 // 获取hash
 export async function getArchonHash(classSpec, roleClass) {
+  let pathHash = '';
+  const url = getUrl(classSpec, roleClass);
+
   try {
-    let pathHash = '';
-    await getCheerioByPuppeteer({
-      staticFilePath: getStaticFilePath(classSpec, roleClass),
-      urlPath: getUrl(classSpec, roleClass),
-      useCache: false,
-      waitForSelector: null,
-      disableSaveCache: true,
-      async onResponse(response) {
-        const url = new URL(response.url());
-        const pathname = url.pathname;
-        if (!pathHash && pathname.includes('/this-week.json')) {
-          const match = pathname.match(/^\/_next\/data\/([\w-]+)\//);
-          pathHash = match?.[1];
+    // 监听页面所有网络响应，等价原来 onResponse
+    page.on('response', async (response) => {
+      const resUrl = new URL(response.url());
+      const pathname = resUrl.pathname;
+      if (!pathHash && pathname.includes('/this-week.json')) {
+        const match = pathname.match(/^\/_next\/data\/([\w-]+)\//);
+        if (match?.[1]) {
+          pathHash = match[1];
         }
-      },
+      }
     });
+
+    // 访问页面
+    await page.goto(url, { timeout: 20000, waitUntil: 'networkidle' });
+
+    // 移除事件监听，防止多次调用时事件堆积
+    page.removeAllListeners('response');
 
     return pathHash;
   } catch (e) {
-    throw new Error(`获取hash失败`);
+    page.removeAllListeners('response'); // 异常也要清理监听
+    throw new Error(`获取hash失败: ${e.message}`);
   }
 }
 
 async function queryArchon(pathHash, category, classSpec, roleClass, zoneType = 'mythic-plus') {
+  const url = zoneType === 'mythic-plus'
+    ? `https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/mythic-plus/${category}/10/all-dungeons/this-week.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=mythic-plus&categorySlug=${category}&difficultySlug=10&encounterSlug=all-dungeons&affixesSlug=this-week`
+    : `https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/raid/${category}/mythic/all-bosses.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=raid&categorySlug=${category}&difficultySlug=mythic&encounterSlug=all-bosses`;
+
   try {
-    const url = zoneType === 'mythic-plus'
-      ? `https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/mythic-plus/${category}/10/all-dungeons/this-week.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=mythic-plus&categorySlug=${category}&difficultySlug=10&encounterSlug=all-dungeons&affixesSlug=this-week`
-      : `https://www.archon.gg/_next/data/${pathHash}/wow/builds/${classSpec}/${roleClass}/raid/${category}/mythic/all-bosses.json?gameSlug=wow&specSlug=${classSpec}&classSlug=${roleClass}&zoneTypeSlug=raid&categorySlug=${category}&difficultySlug=mythic&encounterSlug=all-bosses`;
-    const res = await axios.get(url);
-    return res?.data?.pageProps?.page;
+    // ✅ 关键改动：用page.goto访问接口地址，浏览器页面自动跑CF JS验证
+    await page.goto(url, { timeout: 20000 });
+    // 等待页面加载完成，CF挑战脚本执行完毕
+    await page.waitForTimeout(2500);
+
+    // 在浏览器page环境内执行fetch获取json数据
+    const data = await page.evaluate(async () => {
+      return JSON.parse(document.body.textContent);
+    });
+
+    return data?.pageProps?.page;
   } catch (e) {
-    throw new Error(`获取archon数据失败: ${category}, ${classSpec} ${roleClass}`);
+    throw new Error(`获取archon数据失败: ${category}, ${classSpec} ${roleClass} | ${e.message}`);
   }
 }
 
