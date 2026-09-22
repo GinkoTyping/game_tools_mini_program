@@ -22,7 +22,7 @@ schedule.scheduleJob(complexRule, () => {
     .post(
       'https://ginkolearn.cyou/api/wow/tier-list/update',
       {
-        byApi: false,
+        byApi: true,
       },
       {
         headers: {

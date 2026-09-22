@@ -259,17 +259,17 @@ export async function collectBisOverview(classSpec, roleClass, useCache) {
 // playwright 全局单例
 let browser = null;
 let context = null;
-let page = null;
+export let playwrightPage = null;
 
 /**
  * 初始化会话，只会执行一次：访问 archon.gg，完成CF验证，获取cf_clearance、human_verified cookie
  */
 export async function initArchonSession() {
   // 已经初始化直接返回，不再重复打开页面
-  if (browser && context && page) return;
+  if (browser && context && playwrightPage) return;
 
   browser = await stealth(chromium).launch({
-    headless: false,
+    headless: true,
     args: [
       '--no-sandbox',
       '--disable-setuid-sandbox',
@@ -287,7 +287,7 @@ export async function initArchonSession() {
     viewport: { width: 1280, height: 720 },
   });
 
-  page = await context.newPage();
+  playwrightPage = await context.newPage();
 
   let hashResolve;
   const hashPromise = new Promise(resolve => hashResolve = resolve);
@@ -306,26 +306,26 @@ export async function initArchonSession() {
       }
     }
   };
-  page.on('response', onResponse);
+  playwrightPage.on('response', onResponse);
 
   try {
     // 访问wow主页，触发CF验证以及页面资源加载
-    await page.goto('https://www.archon.gg/wow', { timeout: 20000 });
+    await playwrightPage.goto('https://www.archon.gg/wow', { timeout: 20000 });
 
     try {
       // 定位页面的人机验证提交按钮
-      const humanBtn = page.locator('button[type="submit"]');
+      const humanBtn = playwrightPage.locator('button[type="submit"]');
       // 检测按钮是否可见，最多等待5秒
       const btnVisible = await humanBtn.isVisible({ timeout: 5000 });
 
       if (btnVisible) {
         console.log('✅ 检测到CF人机验证按钮，准备点击');
         // 模拟真人延迟
-        await page.waitForTimeout(400 + Math.random() * 600);
+        await playwrightPage.waitForTimeout(400 + Math.random() * 600);
         await humanBtn.click();
         console.log('✅ 已点击人机验证按钮');
         // 点击提交表单后，等待页面跳转完成
-        await page.waitForNavigation({ timeout: 15000 });
+        await playwrightPage.waitForNavigation({ timeout: 15000 });
         console.log('✅ 人机验证表单提交成功，页面跳转完成');
       } else {
         console.log('ℹ️ 未检测到人机验证按钮，跳过');
@@ -343,7 +343,7 @@ export async function initArchonSession() {
     throw new Error(`initArchonSession 失败: ${err.message}`);
   } finally {
     // 清除监听，防止事件堆积
-    page.removeListener('response', onResponse);
+    playwrightPage.removeListener('response', onResponse);
   }
 }
 
@@ -352,7 +352,7 @@ export async function closeArchonSession() {
     await browser.close();
     browser = null;
     context = null;
-    page = null;
+    playwrightPage = null;
   }
 }
 
@@ -363,7 +363,7 @@ export async function getArchonHash(classSpec, roleClass) {
 
   try {
     // 监听页面所有网络响应，等价原来 onResponse
-    page.on('response', async (response) => {
+    playwrightPage.on('response', async (response) => {
       const resUrl = new URL(response.url());
       const pathname = resUrl.pathname;
       if (!pathHash && pathname.includes('/this-week.json')) {
@@ -375,14 +375,14 @@ export async function getArchonHash(classSpec, roleClass) {
     });
 
     // 访问页面
-    await page.goto(url, { timeout: 20000, waitUntil: 'networkidle' });
+    await playwrightPage.goto(url, { timeout: 20000, waitUntil: 'networkidle' });
 
     // 移除事件监听，防止多次调用时事件堆积
-    page.removeAllListeners('response');
+    playwrightPage.removeAllListeners('response');
 
     return pathHash;
   } catch (e) {
-    page.removeAllListeners('response'); // 异常也要清理监听
+    playwrightPage.removeAllListeners('response'); // 异常也要清理监听
     throw new Error(`获取hash失败: ${e.message}`);
   }
 }
@@ -394,12 +394,12 @@ async function queryArchon(pathHash, category, classSpec, roleClass, zoneType = 
 
   try {
     // ✅ 关键改动：用page.goto访问接口地址，浏览器页面自动跑CF JS验证
-    await page.goto(url, { timeout: 20000 });
+    await playwrightPage.goto(url, { timeout: 20000 });
     // 等待页面加载完成，CF挑战脚本执行完毕
-    await page.waitForTimeout(2500);
+    await playwrightPage.waitForTimeout(2500);
 
     // 在浏览器page环境内执行fetch获取json数据
-    const data = await page.evaluate(async () => {
+    const data = await playwrightPage.evaluate(async () => {
       return JSON.parse(document.body.textContent);
     });
 
