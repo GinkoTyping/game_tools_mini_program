@@ -29,13 +29,12 @@ export async function queryScrollInfo(req, res) {
   try {
     const { date, text } = await patchMapper.getLatestPatch();
 
-    if (Math.abs(new Date(date).getTime() - Date.now()) <= 7 * 24 * 60 * 1000) {
+    if (Math.abs(new Date(date).getTime() - Date.now()) <= 7 * 24 * 60 * 60 * 1000) {
       res.json(`${text.replaceAll('\n', ' ')}(${date})`);
+    } else {
+      res.json('');
     }
-
-    res.json('');
   } catch {
-
     res.json('');
   }
 }
