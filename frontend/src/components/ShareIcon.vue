@@ -36,14 +36,6 @@
       <image src="https://ginkolearn.cyou/api/wow/assets/home/wotlk-icon.png" mode="widthFix" />
     </button>
 
-    <button
-      v-if="props.showChipEntry"
-      class="shortcuts-button"
-      @click="() => navigator.toSpecStats('dpswow')"
-    >
-      <view class="iconfont icon-rankfill animate__animated animate__heartBeat animate__repeat-3"></view>
-      <view class="badage"></view>
-    </button>
   </view>
 
   <uni-popup ref="adPopup" type="dialog">

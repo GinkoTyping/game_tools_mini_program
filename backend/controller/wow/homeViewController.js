@@ -83,15 +83,17 @@ export async function queryHomeView(req, res) {
   let basicOutput = {
     entries: [
       {
-        label: 'DPS模拟',
-        value: 'dpswow',
-        dpswow: true,
-      },
-      {
-        label: 'DPS排行',
+        label: '输出排行',
         icon: 'fire-filled',
         page: '/pages/spec-stats/index',
-        feature: true,
+        feature: false,
+        color: '#e37e00',
+      },
+      {
+        label: '综合排行',
+        icon: 'medal-filled',
+        page: '/pages/spec-stats/index?menu=overall',
+        feature: false,
         color: '#e37e00',
       },
       {
@@ -107,7 +109,7 @@ export async function queryHomeView(req, res) {
         icon: 'vip-filled',
         color: '#e37e00',
         page: '/pages/mythic-rank/index',
-        feature: true,
+        feature: false,
       },
       // {
       //   label: '做题家',

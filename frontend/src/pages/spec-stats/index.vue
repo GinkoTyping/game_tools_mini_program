@@ -12,13 +12,6 @@
 
       <view
         class="rank-menu-item"
-        :class="[currentMenu === 'dpswow' ? 'rank-menu-item--active' : '']"
-        @click="() => switchMenu('dpswow')"
-      >输出模拟
-      </view>
-
-      <view
-        class="rank-menu-item"
         :class="[currentMenu === 'popular' ? 'rank-menu-item--active' : '']"
         @click="() => switchMenu('popular')"
       >专精热度
