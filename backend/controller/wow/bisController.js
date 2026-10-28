@@ -1,4 +1,5 @@
 import Bottleneck from 'bottleneck';
+import zlib from 'zlib';
 import uniqBy from 'lodash/uniqBy.js';
 
 import { getDailyDB, getDB } from '../../database/utils/index.js';
@@ -865,33 +866,36 @@ const limiter = new Bottleneck({
   maxConcurrent: 1, // 限制同时请求数
 });
 
+export async function queryFlatSpecData(req, res) {
+  const data = await bisMapper.getAllBisDateInfo();
+  res.json({ data });
+}
+
 export async function queryUpdateArchonBisOverview(req, res) {
   try {
-    const hash = await initArchonSession();
+    const decompressed = zlib.gunzipSync(req.body);
+    const reqBody = JSON.parse(decompressed.toString('utf-8'));
 
-    const flatSpecs = req.body.forceUpdate
-      ? await bisMapper.getAllBisDateInfo()
-      : await bisMapper.getOutdatedBIS();
-    let doneCount = 0;
-    let totalCount = flatSpecs.length;
-
-    let archonHash = req.body.hash || hash;
-    if (!archonHash) {
-      throw new Error('ArchonHash not found');
+    if (!reqBody) {
+      res.status(500).json({ error: '入参错误' });
+      return;
     }
 
-    let collectFn = req.body.byApi
-      ? (classSpec, roleClass) => collectArchonByApi(archonHash, classSpec, roleClass)
-      : (classSpec, roleClass) => collectBisOverview(classSpec, roleClass, req.body.useCache);
+    let doneCount = 0;
+    let totalCount = reqBody.existData?.length;
 
     const freshItems = [];
+    const list = reqBody.existData;
+
     const results = await Promise.allSettled(
-      flatSpecs.map((item) =>
+      list.map((item) =>
         limiter.schedule(async () => {
           console.log(`获取${item.classSpec} ${item.roleClass}...`);
-          const data = await collectFn(
+          const data = await collectArchonByApi(
+            '',
             item.classSpec,
             item.roleClass,
+            item.data,
           );
           doneCount++;
           console.log(

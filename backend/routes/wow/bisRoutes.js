@@ -3,7 +3,7 @@ import {
   getBisBySpec,
   getItemPreviewById,
   queryBisTrends,
-  queryBlankSourceItem,
+  queryBlankSourceItem, queryFlatSpecData,
   queryRegisterItem, queryTalentBySpec,
   queryUpdateArchonBisOverview,
   queryUpdateItem,
@@ -35,6 +35,8 @@ router.post('/item/add', validateAdmin, queryRegisterItem);
 
 router.post('/bis/popularity', queryPopularityByCondition);
 router.post('/bis/dps-rank', querySpecDpsRank);
+
+router.post('/bis/flat-spec-list', queryFlatSpecData);
 
 router.post(
   '/bis/archon-overview',

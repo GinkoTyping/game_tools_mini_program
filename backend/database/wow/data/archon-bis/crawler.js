@@ -460,8 +460,11 @@ async function calculateStats(classSpec, roleClass, statsData) {
   return results.map(result => result.value);
 }
 
-async function queryOverview(hash, classSpec, roleClass, zoneType = 'mythic-plus') {
-  const data = await queryArchon(hash, 'overview', classSpec, roleClass, zoneType);
+async function queryOverview(hash, classSpec, roleClass, zoneType, existData) {
+  let data = existData;
+  if (!data) {
+    data = await queryArchon(hash, 'overview', classSpec, roleClass, zoneType);
+  }
   const statsSection = data.sections.find(section => section.navigationId === 'stats');
 
   // 不需要展示主属性
@@ -518,9 +521,13 @@ function getFormatItem(item) {
   };
 }
 
-async function queryGears(hash, classSpec, roleClass) {
+async function queryGears(hash, classSpec, roleClass, existData) {
   const missingBisGears = [];
-  const data = await queryArchon(hash, 'gear-and-tier-set', classSpec, roleClass);
+  let data = existData;
+  if (!data) {
+    data = await queryArchon(hash, 'gear-and-tier-set', classSpec, roleClass);
+  }
+
   const gearsTable = data.sections.find(section => section.navigationId === 'gear-tables');
   let bisGears = [];
   let trinkets = [];
@@ -660,8 +667,11 @@ function getTalentHeatMap(data, nodesMap) {
     ], nodesMap)) ?? [];
 }
 
-async function queryTalents(hash, classSpec, roleClass) {
-  const data = await queryArchon(hash, 'talents', classSpec, roleClass);
+async function queryTalents(hash, classSpec, roleClass, existData) {
+  let data = existData;
+  if (!data) {
+    data = await queryArchon(hash, 'talents', classSpec, roleClass);
+  }
   const nodesMap = Object.values(data.talentTreeBlueprints)[0]?.changeSet?.allNodes;
   const heroTreeStats = getHeroTalentStats(data);
   const talentTreeBuilds = getTalentTreeBuilds(data, nodesMap);
@@ -675,11 +685,16 @@ async function queryTalents(hash, classSpec, roleClass) {
   };
 }
 
-export async function collectArchonByApi(hash, classSpec, roleClass) {
-  const stats = await queryOverview(hash, classSpec, roleClass, 'mythic-plus');
-  const raidStats = await queryOverview(hash, classSpec, roleClass, 'raid');
-  const { bisGears, trinkets, popularGears } = await queryGears(hash, classSpec, roleClass);
-  const talents = await queryTalents(hash, classSpec, roleClass);
+export async function collectArchonByApi(hash, classSpec, roleClass, data = {}) {
+  const stats = await queryOverview(hash, classSpec, roleClass, 'mythic-plus', data.statsData);
+  const raidStats = await queryOverview(hash, classSpec, roleClass, 'raid', data.raidStatsData);
+  const { bisGears, trinkets, popularGears } = await queryGears(
+    hash,
+    classSpec,
+    roleClass,
+    data.gearData,
+  );
+  const talents = await queryTalents(hash, classSpec, roleClass, data.talentsData);
   return {
     classSpec,
     roleClass,

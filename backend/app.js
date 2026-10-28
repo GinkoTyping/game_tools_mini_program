@@ -31,6 +31,13 @@ app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+app.use(express.raw({
+  type: 'application/octet-stream',
+  limit: '10mb',
+  inflate: false,
+}));
+
 app.use(
   '/api/wow/assets',
   express.static(path.resolve(__dirname, 'assets/wow')),

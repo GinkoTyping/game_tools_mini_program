@@ -29,13 +29,12 @@ export async function queryTierList(req, res) {
 
 export async function queryUpdateArchonMythicTier(req, res) {
   try {
-    // 版本更新前几天才使用 collectMythicTierListV2， 只要 https://www.archon.gg/wow 能获取到排行就直接使用 collectMythicTierList
-    const api = req.body.byApi ? collectMythicTierListV2 : collectMythicTierList;
-    const tierData = await api(req.body);
+    const tierData = req.body;
 
     const results = await Promise.allSettled(
       tierData.map((roleTier) => tierListMapper.updateTierList(roleTier)),
     );
+
     const err = results.filter((item) => item.status !== 'fulfilled');
     if (err.length) {
       res.status(500).json({ error: '更新大秘境专精排名失败' });
